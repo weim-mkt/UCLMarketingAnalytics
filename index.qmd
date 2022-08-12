@@ -1,0 +1,7 @@
+---
+title: "Home"
+---
+
+![](images/wordcloud.png)
+
+This is the online supplement to the [MSIN0094 Marketing Analytics](https://www.ucl.ac.uk/module-catalogue/modules/marketing-analytics/MSIN0094) Module for the [MSc Business Analytics program](http://www.mgmt.ucl.ac.uk/business-analytics) at UCL School of Management.

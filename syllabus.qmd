@@ -1,0 +1,74 @@
+---
+title: "Syllabus"
+date: "`r (lubridate::today())|> format('%a, %d %b %Y')`"
+---
+
+# Instructor Information
+
+-   Module leader: Dr. Wei Miao[^1]
+
+-   Email: wei.miao\@ucl.ac.uk
+
+-   Office: S3, Level 38, One Canada Square
+
+-   Office hours: Please use this [link](https://fantastical.app/miao87216932/marketing-analytics-office-hours) to book an office hour session
+
+[^1]: Wei is pronounced as "way", which means jade in Mandarin; Miao is my surname name, which is exactly pronounced as "meow".
+
+# Course Objective
+
+Marketing analytics addresses how to utilize the right analytics tools to guide marketing tactics and strategies in a scientific manner. Driven by recent advances in information and communication technologies, the very nature of marketing analytics has evolved. This module provides students with systematic and practical training in causal inference, predictive analytics, and programming tools in solving real-life marketing problems.[^2]
+
+[^2]: Just a little heads up -- unlike undergrad marketing modules where you mainly learn marketing strategies and concepts, this module focuses on "analytics" (which comes first) and its application in .
+
+In week 1, students will learn the concept of marketing process and how to compute customer lifetime value using R.  In week 2, students will start building up dataset cleaning and manipulation skills with the `dplyr` package. 
+
+From week 3 to week 6, students will learn causal inference tools, which help marketers correctly measure the causal effects of marketing initiatives on marketing outcomes. Students will get hands-on training of A-B testing (randomized controlled trials), instrumental variable, difference-in-differences, and regression discontinuity designs. Through a series of case studies each week, students will learn how to apply these causal inference techniques in optimizing marketing mix such as promotion and pricing. 
+
+In the remaining weeks, students will learn predictive analytics and how to apply machine learning models for segmentation, targeting, and customer relationship management.
+
+At the end of the module, students will be able to carry out independent marketing research for their dissertation projects and their future jobs.
+
+# Course Structure (tentative)
+
+![Course Structure](images/course structure.png)
+
+# Office Hours
+
+We will create a Microsoft Teams channel for the module at the beginning of term. It is a good practice to utilize the Microsoft Teams Q&A channels as an interactive place to promote peer-to-peer learning. For any questions, please first check the Teams channels and see if the questions are already posted and answered by any of your classmates there. If not, please post your questions in the Teams channels. I will monitor and summarize the questions posted on Teams channels and provide answers in class.
+
+You can also ask questions during my office hours. I am happy to answer any questions you may have about this module (of course excluding how to solve assignment problem sets). To make an appointment, please use this [link](https://fantastical.app/miao87216932/marketing-analytics-office-hours).
+
+# Textbook
+
+Since the marketing field is evolving rapidly, we aim to cover the latest marketing analytics techniques; therefore, we will not rely on any specific textbook in this module. All classes will be based on the lecture notes and supplementary readings I have prepared for you.
+
+Nevertheless, if you would like to further enrich your learning journey and extend your knowledge of marketing analytics, I recommend ["Handbook of Marketing Analytics"](https://ucl-new-primo.hosted.exlibrisgroup.com/permalink/f/5qfvbu/UCL_LMS_DS51237610180004761). This book is free for download at UCL's E-library.
+
+# Programming with R
+
+We will use an open-source programming language R throughout the module. R is one of the most commonly used programming languages by data scientists, economists, and statisticians, and is sometimes called the "golden child" of data science. R is cross-platform compatible on Windows, Mac, and Linux, with thousands of packages ready for use. Undoubtedly, it has one of the richest ecosystems to perform data analytics tasks. More importantly, it is free of charge compared with other commercial software!
+
+If you have little prior exposure to R before joining MSc Business Analytics, it is highly advised that you should self-study this tutorial, ["Introduction to R"](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf), before attending the induction week. Focus on Chapters 1, 2, 3, 5, and 6.
+
+# Assignments and Grading policy
+
+There will be no exams in this module. Learning outcomes will be examined through three individual assignments. Your final grade in this module will be a weighted average of the following:
+
+-   First assignment, 30% weight, 1500 words
+-   Second assignment, 40% weight, 2000 words
+-   Third assignment, 30% weight, 1500 words
+
+Detailed assignment descriptions will be given in due course.
+
+-   **Academic integrity**: You will receive training in Student Academic Misconduct Procedure in the induction week, in which you will learn how to properly reference your work and avoid plagiarism. As all assignments in this module are individual assignments, you should NOT work with other students in any way. Note that it will be a severe violation of academic integrity if you look for solutions on the Internet or even outsource the assignments to any agency. You may risk failing this module if such a violation is found and investigated by the University.
+
+-   **Word count**: You should follow the word limit. Otherwise, your marks may be reduced. Therefore, try to keep your answer concise and to the point.
+
+-   **Submission** Please double check (or even triple check) whether the file to be uploaded is the correct, finalized answer sheet before submission. The final marks will be ONLY based on the file you submit, even though you may be able to show evidence that a wrong file is uploaded. 
+
+-   **Assistance with submission**: Neither I nor the TAs are authorized to handle ECs or any emergencies related to assignment submission. Please directly contact the MSc program admin [here](mailto:%20mgmt.ba-admin@ucl.ac.uk) for any assistance.
+
+# Copyright
+
+All of the materials in this module are copyrighted, either purchased by UCL or written by me. Please refrain from uploading any materials (including uploading assignments to unauthorized websites for answers) in the module to other external websites or sharing any materials with anyone unauthorized. A copyright violation may be investigated by the school.

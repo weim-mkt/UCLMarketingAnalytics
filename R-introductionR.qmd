@@ -1,0 +1,945 @@
+---
+title: "Introduction to R"
+author: Wei Miao
+affiliation: UCL School of Management
+date: "`r (lubridate::today())|> format('%a, %d %b %Y')`"
+format:
+    html:
+      number-sections: true
+      df-print: paged
+      self-contained: true
+      page-layout: full
+      toc-depth: 2
+      code-line-numbers: false
+      code-copy: hover
+      
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  cache: true
+  freeze: auto
+---
+
+# Class Objective
+
+-   Setup R and Rstudio
+
+-   Install and load packages in R; comment codes
+
+-   Learn R data types and common functions for each data type
+
+    -   scalar, vector, matrix, data frame, list
+
+-   Learn R programming basics
+
+    -   variables, conditional statement, loops, and user-defined functions
+
+# Install and Setup R
+
+## What is R
+
+-   R is both a programming language and software environment for statistical computing, which is free and open-source (<https://www.r-project.org/about.html>).
+
+-   The R Project was initiated by Robert Gentleman and Ross Ihaka (University of Auckland) in the early 1990s as a different implementation of the S language, which was developed at Bell Laboratories. Since 1997, R has been developed by the R Development Core Team.
+
+## What is R used for?
+
+R can do almost anything you can think of! Below is a list of what I use R for for my research and daily work.
+
+-   Super powerful data analytics
+
+    -   statistics and econometrics
+    -   data manipulation and wrangling
+    -   machine learning models
+
+-   Write research report and prepare presentations slides using `quarto` developed by RStudio team.
+
+-   Build and maintain my own webpage. I build and maintain my [personal website](http://miaowei.netlify.app) with the `blogdown` package; this course website is built with `quarto` package.
+
+## Why Learn R at MSc BA.
+
+1.  R is one of the most popular programming languages used by statisticians, economists, and data analysts. Below is the popularity index of different languages by [tiobe.com](https://www.tiobe.com). Your future colleagues will likely be using R.
+
+![Trend of R](images/R%20ranking.png){#fig-trend-of-R}
+
+2.  Economists and statisticians prefer R, so there are many powerhouse packages exclusive to R, such as the state-of-the-art causal machine learning [`grf`](https://grf-labs.github.io/grf/articles/grf.html) package.
+
+3.  R versus Python
+
+## Install and Setup R: Step 1
+
+**Step 1**: Download R from the official website [CRAN](https://www.r-project.org).
+
+-   Note that R version is updated on a regular basis, to fix bugs or add new features. It's good to keep your R up to date.
+    -   However, be mindful that sometimes across major versions, some R's base functions may be depreciated and cause breaks in your code, so it's important to read the R News after each update, so that you understand what's been updated in the latest version and if there will be any breaks in your previous code. For a deeper understanding of this issue, please refer to this [article](http://datacolada.org/95) regarding reproducible research with R.
+-   For Windows users, remember to download and install the `RTools` as well.
+
+## Install and Setup R on your computers: Step 2
+
+**Step 2**: Download and install Rstudio from [Rstudio's website](https://www.rstudio.com/products/rstudio/download/).
+
+For a introduction to the Rstudio IDE, refer to this [cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf).
+
+## Glossary for RStudio
+
+-   ***script***: (top left) where you write codes a text-readable file (E.g., 'test.R', 'test.Rmd', etc.), each separated by a new line.
+
+-   ***console***: (bottom left) where you can type commands interactively with R and get the results immediately
+
+-   ***environment***: (top right) a list of named variables/objects that we have generated; can be checked on the 'environment' panel.
+
+-   ***history***: (top right) the list of past commands that we have used
+
+-   ***help***: (bottom right) a documentation of all the functions available in R (the user manual)
+
+-   ***package***: (bottom right) a collection of additional functions and dataset
+
+## Comment your codes
+
+You can put a "\#" before any line of code, to indicate that this line is your comment, and this line will turn green and not run by R.
+
+It's a good practice to often comment your codes, so that you can help the future you to remember what you were trying to achieve.
+
+```{r, include=T, echo=T}
+# print("David is handsome")
+
+```
+
+## Packages management: the coventional way
+
+To achieve certain tasks, for instance, to run a regression analysis, we can definitely write our own code from scratch. However, it may take much time if we would like to build everything from zero. That's when the packages/libraries can help us to improve our efficiency by a large margin.
+
+One of the best things about R is that it has tens of thousands of extremely useful packages/libraries. And some are even exclusive to R, for instance, the `grf` package that runs the causal forest model, which I have used for my research.
+
+```{r, include=T, echo=T}
+# install.packages('dplyr') # install the package
+library('dplyr') # load the package
+```
+
+## Libraries and packages management: a simpler way
+
+In R, there is a package called `pacman`, which stands for package management and is probably the most convenient way to manage R packages.
+
+**Task:** Load `ggplot2` and `data.table` packages; if they are not installed, install them and then load them.
+
+```{r, include=T, echo=T}
+# if you have not yet installed pacman package, run the following code to install it.
+
+# install.packages('pacman')
+
+pacman::p_load(data.table,ggplot2)
+
+```
+
+## To learn functions in a package: Use `help()`
+
+Whenever you don't know how to use a function from a package, you can either
+
+-   use `help()`. Enter the command `help(log)` in R console
+
+```{r help, include=T, echo=T}
+?log
+help(log)
+```
+
+-   or you can directly search for the function in RStudio help panel.
+
+![Example of function help](images/help.png){#fig-help}
+
+# Scalars
+
+## Use R as a calculator
+
+We can do the basic mathematical calculation in R as follows:
+
+```{r calculator1, include=T, echo=T}
+8+8
+8-8
+8*8
+2/2
+```
+
+Common mathematical operations/functions can also be used in R.
+
+```{r calculator2, include=T, echo=T}
+log(1)
+exp(1)
+log(exp(1))
+sqrt(25)
+```
+
+## Assign value
+
+In R, we normally use the left arrow to assign a value to an object `<-`
+
+```{r assign, include=T, echo=T}
+x <- log(2)
+x
+```
+
+You can also use equal sign `=` without issues, but it's recommended to stick with R's tradition.
+
+## Data types
+
+-   Numeric/Double (e.g. 2.5, 1/5, 1.0, etc.)
+
+```{r}
+# Numeric Vector 
+num2 <- c(1, 2, 3.4, 5, 5.9)
+```
+
+-   Complex (e.g. 1 + 2i, etc.)
+
+```{r}
+# Complex
+com5 <- c(2+3i, 3+5i, 4+5i)
+```
+
+-   Logical (e.g. TRUE, FALSE)
+
+```{r, include=T, echo=T}
+# Logical Vector 
+log4 <- c(TRUE, FALSE, FALSE, T, F) 
+
+```
+
+-   Character (e.g. "Wei", "UCL", "1 + 1 = 3", "TRUE", etc.)
+
+```{r}
+# Character Vector
+str1 <- c("R","Python","Java","Scala","Julia")
+```
+
+-   Factor ("male", "female", etc.); this is an important class for describing categories. We will discuss in more detail later in the module.
+
+```{r}
+country <- c('UK','Spain','Italy','Multiverse')
+
+factor(country)
+```
+
+## Special data types: `NA`
+
+`NA` stands for missing values; this is a very tricky type that needs additional attention.
+
+```{r}
+missing <- c(1,NA,2,NA)
+```
+
+-   The following will return `NA`, because we haven't told R how to deal with missing values
+
+```{r}
+mean(missing)
+```
+
+-   If we tell R to remove missing values, we get what we want
+
+```{r}
+mean(missing,na.rm = T)
+```
+
+::: callout-important
+When cleaning data using `sum()`, `mean()`, `sd()`, etc., always put `na.rm = T` at the end !
+:::
+
+-   Commonly used functions to check missing values
+
+```{r}
+# check missing values
+is.na(missing)
+
+anyNA(missing)
+
+sum(is.na(missing))
+```
+
+## Special data types: `Inf`
+
+-   `Inf` is infinity. You can have either positive or negative infinity.
+
+```{r, include=T, echo=T}
+a <- c(1/0,1,2) #Inf
+a
+```
+
+-   How to check for `Inf`
+
+```{r}
+is.infinite(a)
+```
+
+-   However, `Inf` **is not** a missing value!!
+
+```{r}
+is.na(a)
+```
+
+-   Therefore, if we take average, `na.rm = T` no longer works
+
+```{r}
+mean(a)
+mean(a, na.rm = T)
+```
+
+## Special data types: `NaN`
+
+-   `NaN` means "Not a Number". It's an undefined value.
+
+```{r, include=T, echo=T}
+b <- c(0/0,1,2) #NaN
+b
+```
+
+-   How to check for `NaN`
+
+```{r}
+is.nan(b)
+```
+
+-   `NaN` **is** a missing value!
+
+```{r}
+is.na(b)
+```
+
+-   Therefore, if we take average, `na.rm = T` works
+
+```{r}
+mean(b)
+mean(b,na.rm = T)
+```
+
+## Data type: check data type using class()
+
+We can use `class()` to check the type of an object in R.
+
+```{r, include=T, echo=T}
+
+a <- '1+1'
+class(a)
+```
+
+```{r}
+b <- 1+1
+class(b)
+```
+
+## Data type: conversion
+
+Sometimes, data types of variables from raw data may not be what we want; we need to change the data type of a variable to the appropriate one, so that we can run some operations. See the following example:
+
+-   `a` is a string, and we cannot use mathematical operations on it, or R will report errors.
+
+```{r}
+#| error: true
+a <- '1'
+class(a)
+a + 1
+```
+
+-   We can convert `a` to a numeric value. To convert from character to numeric, we use `as.numeric()`
+
+```{r}
+b <- as.numeric(a)
+class(b)
+```
+
+## Data structures
+
+Previous slides discuss a single value, i.e., a scalar. When we deal with datasets, we will run into variables and data frames.
+
+![Visualization of data structures](images/r_data_structures.png){#fig-R-datastructure}
+
+# Vectors
+
+## Vectors: creating vectors
+
+### Creating vectors: c()
+
+Vector can be created using the command `c()`.
+
+```{r vectors_base, include=T, echo=T}
+x <- c(1, 3, 5, 10)
+x
+class(x)
+```
+
+Vectors must contain elements of the same data type. Otherwise, it will convert elements into the same type.
+
+```{r vectors_type, include=T, echo=T}
+x <- c(1, "intro", TRUE)
+
+class(x)
+```
+
+### Creating vectors: length()
+
+You can measure the length of a **vector** using the command `length()`
+
+```{r vectors_length, include=T, echo=T}
+x <- c('R',' is', ' fun')
+length(x)
+
+y <- c()
+length(y)
+```
+
+### Creating vectors with patterns: seq() and rep()
+
+It is also possible to easily create sequences
+
+-   manually use colon `:`
+
+```{r vectors_sequences, include=T, echo=T}
+
+1:10
+```
+
+-   use `seq()` to create sequence with fixed steps
+
+```{r}
+# use seq()
+seq(from = 1, to = 2, by = 0.1)
+```
+
+-   use `seq.Date()` to create a sequence of dates
+
+```{r}
+seq.Date(from = as.Date("2021-09-27"), 
+         to = as.Date("2021-10-01"), 
+         by = '1 days')
+```
+
+-   use `rep()` to create repeated sequences
+
+```{r}
+# replication using rep()
+rep("A", times = 5)
+```
+
+### Creating vectors: combine vectors
+
+You can use `c()` to combine different vectors; this is very commonly used when concatenating vectors.
+
+```{r vectors_multiple, include=T, echo=T}
+x <- 1:3 # from 1 to 3
+y <- c(10, 15) # 10 and 15
+z <- c(x,y) # x first and then y 
+z
+```
+
+## Vectors: subsetting
+
+We put the index of elements we would like to extract in a **square bracket**.
+
+Note that Python uses different ways to index and subset vectors and matrices.
+
+-   Which element is in the second position?
+
+```{r vectors_subset, include=T, echo=T}
+x <- c(1,3,8,7) 
+x[2]
+
+
+```
+
+-   What are the first 2 elements?
+
+```{r}
+x[1:2] 
+```
+
+-   What are the 1st, 3rd and 4th elements?
+
+```{r}
+x[c(1,3,4)] 
+```
+
+## Vectors: relational operations
+
+-   We can compare a vector with a single scalar value
+
+```{r vectors_subset2, include=T, echo=T}
+
+x < 6 # is each element lower than 6?
+x == 10 # is the element equal to 10?
+
+```
+
+-   Find the position of elements that satisfy certain conditions: `which()`
+
+```{r}
+which(x == 8) # which element equals 8 
+which.max(x) # which is the max element 
+which.min(x)
+```
+
+::: callout-note
+### Exercise
+
+Find the minimum value of vector `x`
+:::
+
+-   Sometimes, we may need to operation on multiple relational operations. For instance, we may want to find out elements that are smaller than 7 **and** larger than 3.
+
+```{r}
+T & F # and
+
+T | F # or
+
+!T # not
+```
+
+## Vectors: `%in%`
+
+-   A special relational operation is `%in%` in R, which tests whether an element exists in the object.
+
+```{r}
+
+x <- c(1,3,8,7) 
+
+3 %in% x
+
+4 %in% x
+
+```
+
+## Vectors: elementwise operations
+
+R is a **vectorized** language, meaning by default it will do vector operation internally.
+
+```{r vectors_operations, include=T, echo=T}
+x <- c(1,3,8,7)
+x+2
+x-2
+x*2
+x^2
+```
+
+::: callout-important
+When the length of vectors do not match, R will still do it for your without reporting error but a warning message. As you can see, even if the length of vectors does not match, R can still return an output. It's important to check the warning messages when there is any!
+:::
+
+```{r Caveat, include=T, echo=T}
+x <- c(1,3,8,7)
+
+y <- c(1,3,4) # careful!!! does not report error
+x + y
+
+```
+
+# Matrices
+
+## Matrices: creating matrices
+
+### Creating matrices: matrix()
+
+-   A matrix can be created using the command `matrix()`
+    -   the first argument is the vector to be converted into matrix
+    -   the second argument is the number of rows
+    -   the last argument is the number of cols (optional)
+
+```{r matrix, include=T, echo=T}
+matrix(1:9, nrow = 3, ncol = 3)
+```
+
+::: callout-important
+R by default inserts elements **vertically** by **columns**
+:::
+
+-   R will fill in the matrix by order and discard the remaining elements once fully filled
+
+```{r}
+matrix(1:9, nrow = 3, ncol = 2)
+```
+
+-   R will fill in the matrix by order and recycle to fill in the remaining elements
+
+```{r}
+matrix(1:9, nrow = 3, ncol = 4)
+```
+
+### Creating matrices: inserting by row
+
+However, we can ask R to insert by rows by setting the `byrow` argument.
+
+```{r matrix_byrow, include=T, echo=T}
+matrix(1:9, nrow = 3, ncol = 3, byrow = TRUE)
+```
+
+### Creating matrices: concatenation of matrices cbind() and rbind()
+
+We can use `cbind()` and `rbind()` to concatenate vectors and matrices into new matrices.
+
+-   `cbind()` does the column binding
+
+```{r, include=T, echo=T}
+x <- cbind(1:3, 4:6) # column bind
+x
+```
+
+-   `cbind()` can also operate on matrices.
+
+```{r}
+cbind(x,x)
+```
+
+-   `rbind()` does the row binding
+
+```{r}
+rbind(7:9, 10:12) # row bind
+```
+
+## Matrices: indexing and subsetting
+
+Matrices have two dimensions: rows and columns. Therefore, to extract elements from a matrix, we just need to specify which row(s) and which column(s) we want.
+
+```{r}
+x
+```
+
+-   Extract an element
+    -   1 is specified for row index, so we will extract elements from the first row
+    -   1 is specified for column index, so we will extract elements from the the second column
+    -   Altogether, we extract the single element in row 1, column 2.
+
+```{r matrix_subset, include=T, echo=T}
+x[1,2] # the element in the 1st row, 2nd column
+
+```
+
+-   If we leave blank for a dimension, we extract all elements of that dimension.
+    -   1 is specified for row index, so we will extract elements from the first row
+    -   Nothing is specified for column index, so we will extract all elements from all columns
+    -   Altogether, we extract all elements in the first row
+
+```{r}
+x[1,] # all elements in the first row
+```
+
+::: callout-note
+### Exercise
+
+1.  Extract all elements in the second column
+
+2.  Extract all elements in the first and third rows
+:::
+
+## Matrices: operations
+
+Let's use 3 matrices `x`, `y`, and `z`:
+
+```{r}
+x <- matrix(1:6, nrow = 3)
+y <- matrix(1:6, byrow = T, nrow = 2)
+```
+
+-   Functions will be vectorized over all elements in a matrix
+
+```{r matrix_operations1, include=T, echo=T}
+x
+z<- x^2
+z
+```
+
+### Matrices' operations: matrix addition and multiplication
+
+-   If the two matrices are of the same dimensions, they can do element-wise operations, including the `*`
+
+```{r matrix_operations2, include=T, echo=T}
+x + z   # elementwise addition
+x * z
+
+```
+
+-   We can also use `%*%` to indicate matrix multiplication
+
+```{r}
+x%*%y # matrix multiplication
+```
+
+### Matrices' operations: inverse and transpose
+
+-   We use `t()` to do matrix transpose
+
+```{r matrix_operations3, include=T, echo=T}
+t(x) # transpose
+```
+
+-   We use `solve()` to get the inverse of an matrix
+
+```{r}
+solve(t(x)%*%x) # inverse; must be on a square matrix
+```
+
+# Data Frames
+
+## Data Frames: creating dataframe
+
+### Data Frames: create dataframe using data.frame()
+
+-   Data Frame is the R object that we will deal with most of the time in the MSc program. You can think of `data.frame` as a spreadsheet in excel.
+
+```{r dataframe, include=T, echo=T}
+df <-  data.frame(id = 1:4,
+  name = c("David", "Yongdong", "Anil", "Wei"),
+  wage = rnorm(n=4, mean = 10^5, sd = 10^3), 
+  male = c(T, T, T, T)
+  )
+df
+```
+
+-   Data frames can also be created from external sources, e.g., from a csv file or database.
+
+## Data Frames: Basics
+
+-   Each row stands for an `observation`; each column stands for a `variable`.
+
+-   Each column should have a **unique** name.
+
+-   Each column must contain the same data type, but the different columns can store different data types.
+
+    -   compare with matrix?
+
+-   Each column must be of same length, because rows have the same length across variables.
+
+## Data Frames: check dimensions and variable types
+
+-   You can verify the size of the `data.frame` using the command `dim()`; or `nrow()` and `ncol()`
+
+```{r, include=T, echo=T}
+dim(df)
+nrow(df)
+ncol(df)
+```
+
+-   You can get the data type info using the command `str()`
+
+```{r, include=T, echo=T}
+class(df)
+str(df)
+```
+
+-   Get the variables names
+
+```{r}
+names(df)
+```
+
+## Data Frames: summary
+
+-   Summarize the data frame
+
+```{r dataframe_subset2, include=T, echo=T}
+summary(df)
+```
+
+## Data Frames: subsetting
+
+Since a dataframe is essentially a matrix, all the subsetting syntax with matrices can be applied here.
+
+```{r dataframe_subset, include=T, echo=T}
+df$name # subset a column
+df[,c(2,3)] # can also subset like a matrix
+```
+
+We are interesting in the cylinders and the weights of inefficient cars (lower than 15 miles per gallon).
+
+```{r dataframe_subset_mtcars, include=T, echo=T}
+poll_cars <- mtcars[mtcars$mpg<15, c("cyl", "wt")] # remember to assign the generated dataframe to a new name
+poll_cars
+```
+
+# Other data structures (Optional)
+
+## Arrays
+
+-   We can use `array()` to generate a high-dimensional array
+
+-   Just like vectors and matrices, arrays can include only data types of the same kind.
+
+-   A 3D array is basically a combination of matrices each laid on top of other
+
+```{r arrays, include=T, echo=T}
+x <- 1:4
+x <- array(data = x, dim = c(2,3,2))
+x
+```
+
+## Lists
+
+A list is an R object that can contain anything. List is pretty useful when you need to store objects for latter use.
+
+```{r list, include=T, echo=T}
+x <- 1:2
+y <- c("a", "b")
+L <- list( numbers = x, letters = y)
+```
+
+## Lists: indexing and subsetting
+
+There are many ways to extract a certain element from a list.
+
+-   by index
+-   by the name of the element
+-   by dollar sign `$`
+
+```{r list_subsetting, include=T, echo=T}
+L[[1]] # extract the first element
+L[['numbers']] # based on element name
+L$numbers # extract the element called numbers
+```
+
+After extracting the element, we can work on the element further:
+
+```{r list_subsetting2, include=T, echo=T}
+L$numbers[1:3] > 2
+```
+
+# Programming Basics
+
+## Variables
+
+In programming, a variable denotes an object, i.e., a variable is a name that refers to an object in the memory. Variables in R programming can be used to store any R object discussed previously, including numbers, characters, matrices, and data frames.
+
+R is a **dynamically programmed language**, which means that unlike other programming languages (such as C++, which is a pain to debug), we do not have to declare the data type of a variable before we can use it in our program.
+
+For a variable to be valid, it should follow these rules
+
+-   It should contain letters, numbers, and only dot or underscore characters.
+-   It should not start with a number (eg:- 2iota)
+-   It should not start with a dot followed by a number (eg:- .2iota)
+-   It should not start with an underscore (eg:- \_iota)
+-   It should not be a reserved keyword.
+
+## if/else
+
+Sometimes, you want to run your code based on different conditions. For instance, if the observation is a missing value, then use the population average to impute the missing value. This is where `if/else` kicks in.
+
+    if (condition == TRUE) {
+      action 1
+    } else if (condition == TRUE ){
+      action 2
+    } else {
+      action 3
+    }
+
+Example 1:
+
+```{r controlflow, include=T, echo=T}
+
+a <- 15
+
+if (a > 10) {
+larger_than_10 <- TRUE  
+} else {
+  larger_than_10 <- FALSE
+}
+
+larger_than_10  
+```
+
+Example 2:
+
+```{r, include=T, echo=T}
+x <- -5
+if(x > 0){
+  print("x is a non-negative number")
+} else {
+  print("x is a negative number")
+}
+```
+
+## Loops
+
+As the name suggests, in a loop the program repeats a set of instructions many times, until the stopping criteria is met.
+
+Loop is very useful for repetitive jobs.
+
+```{r loops, include=T, echo=T}
+for (i in 1:10){ # i is the iterator
+  # loop body: gets executed each time
+  # the value of i changes with each iteration
+}
+```
+
+## Nested loops
+
+We can also nest loops into other loops.
+
+```{r loops3, include=T, echo=T}
+x <- cbind(1:3, 4:6) # column bind
+x
+y <- cbind(7:9, 10:12) # row bind
+y
+
+z <- x
+
+for (i in 1:nrow(x)) {
+  for (j in 1:ncol(x)){
+    z[i,j] <- x[i,j] + y[i,j]
+  }
+}
+
+z
+```
+
+## Functions
+
+A function takes the argument as input, run some specified actions, and then return the result to us.
+
+Functions are very useful. When we would like to test different ideas, we can combine functions with loops: We can write a function which takes different parameters as input, and we can use a loop to go through all the possible combinations of parameters.
+
+### User-defined function syntax
+
+Here is how to define a function in general:
+
+```{r functions, include=T, echo=T}
+function_name <- function(arg1 ,arg2 = default_value){
+  # write the actions to be done with arg1 and arg2
+  # you can have any number of arguments, with or without defaults
+  return() # the last line is to return some value 
+}
+```
+
+Example:
+
+```{r functions2, include=T, echo=T}
+magic <- function( x, y){
+  return(x^2 + y)
+}
+
+magic(1,3)
+
+```
+
+## A comprehensive example
+
+Task: write a function, which takes a vector as input, and returns the max value of the vector
+
+```{r, include=T, echo=T}
+
+get_max <- function(input){
+  max_value <- input[1]
+  for (i in 2:length(input) ) {
+    if (input[i] > max_value) {
+      max <- input[i]
+    }
+  }
+  
+  return(max)
+}
+
+get_max(c(-1,3,2))
+
+```
+
+::: callout-note
+### Exercise
+
+Write your own version of `which.max()` function
+:::
