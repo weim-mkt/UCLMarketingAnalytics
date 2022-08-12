@@ -2,12 +2,14 @@ project:
   type: website
 
 website:
+  google-analytics: "G-FTK61TBF7L"
   title: "Marketing Analytics"
   page-navigation: true
   reader-mode: true
   sidebar:
     style: "docked"
     search: true
+    background: primary
     contents:
       - syllabus.qmd
       - section: "R Tutorials"
