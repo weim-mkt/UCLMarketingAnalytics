@@ -1,0 +1,220 @@
+---
+title: "Module Contents"
+---
+
+# Induction Week: R Basics
+
+-   Pre-class preparation
+    - Finish reading "An introduction to R" (can be assessed in this [link](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf)) Chapters 1, 2, 3, 5, and 6.
+    - It's highly recommended that you not only read the tutorial but also practice the codes along your reading. It is Okay not to fully understand the tutorial now, as I will explain R basics in greater detail in the induction week.
+
+-   After-class tasks
+    - Finish data camp "Introduction to R" tutorial before Week 1 class. We will learn how to use R to compute customer lifetime value in week 1's class, so it's necessary that you are familiar with R basics before class.
+    
+    
+# Week 1
+
+## Marketing Process and Marketing Analytics
+
+-   What you will learn 
+    - Concept of marketing and marketing process
+    - An overview of the course topics and requirements
+    - How marketing analytics can empower marketers in the digital era
+    
+-   After-class reading
+    -   LBS Case 520-0109-5: The Marketing Process (optional)
+
+## Customer Profitability and Lifetime Value
+
+-   What you will learn 
+    - The concept of customer lifecycle
+    - How to compute customer acquisition cost (CAC) and conduct break-even analysis
+    - Compute customer lifetime value (CLV) 
+    - *To use to compute CLV*
+
+-   Pre-class preparation
+
+-   After-class tasks
+    - 
+    
+# Week 2
+
+## Application: Customer Lifetime Social Value
+
+-   What you will learn 
+    - How to apply CLV calculation in a case study
+    - How to extend the concept of CLV as needed
+    - How CLV can be used by marketers to guide marketing decisions
+
+-   Pre-class preparation
+    - HBS 9-518-077: Customer Lifetime Social Value (CLSV). 
+    - Please carefully read the Application before class, especially the background information, as we will be discussing the case in class.
+
+-   After-class tasks
+
+
+## Data Manipulation with R: Part I
+
+-   What you will learn 
+    - Typical steps in a data analytics/dissertation project
+    - *How to use `filter`, `select`, `mutate`, and `arrange` for data manipulation with `dplyr` package in R*
+
+-   After-class tasks
+    - Finish the practice exercise on data camp: [Data Manipulation with dplyr: 1.Transforming Data with dplyr](https://app.datacamp.com/learn/courses/data-manipulation-with-dplyr)
+
+# Week 3
+
+## Data Manipulation with R: Part II
+
+-   What you will learn 
+    - *The usage of `group_by` and `join` for data aggregation and merge with `dplyr` package*
+    - *Basics of `rmarkdown` and `quarto`*
+
+-   Pre-class preparation (30 minutes preparation) 
+    - Go through the markdown tutorial at this [link](https://www.markdowntutorial.com)
+    
+-   After-class tasks
+    - Finish the practice exercise on data camp: [Data Manipulation with dplyr: 2.Aggregating Data](https://app.datacamp.com/learn/courses/data-manipulation-with-dplyr)
+
+## Causal Inference and Randomized Controlled Trials
+
+-   What you will learn 
+    - The concept of causal inference and Rubin's potential outcome framework
+    - The steps to conduct randomized controlled trials (RCT)
+    - How to compute the average treatment effects (ATE)
+
+-   After-class tasks
+
+# Week 4
+
+## Application: Marketing Promotion with RCT
+
+-   What you will learn 
+    -  Design and analyze A-B testing to solve real-life marketing problems
+    -  *Make plots with `ggplot2`*
+    
+-   Pre-class preparation
+    - 
+
+## Linear Regression
+
+-   What you will learn 
+    - The concept of Data Generating Process (DGP) and models
+    - *Run linear regression models in R*
+    - How to interpret the regression coefficients and statistics
+    - The intuition behind coefficient estimation of linear regression models
+
+- Pre-class preparation
+    - This week's content will involve quite some maths and will be likely challenging. It's highly recommended that you go through this tutorial to refresh your knowledge of linear algebra before class. Only focus on 1, 2, 3.1 - 3.3, 3.6 - 3.7. 
+    
+-   After-class tasks
+    - Kellogg technical note: Regression Basics
+
+# Week 5
+
+## Application: Pricing Optimization with Regression Models
+
+-   What you will learn 
+    - How to interpret coefficients of log transformed variables
+    - How to model non-linear relationship using linear regression
+    - How to interpret the coefficients of categorical variables
+    - Build regression-based marketing mix models to solve optimal pricing and promotion problems
+
+-   Pre-class preparation
+
+-   After-class tasks
+
+## Endogeneity: When Marketing Analytics Can Go Wrong
+
+-   What you will learn 
+    - The concept of endogeneity
+    - The common causes of endogeneity
+    
+-   Pre-class preparation
+
+-   After-class tasks
+
+# Week 6
+
+## Solving Endogeneity: Instrumental Variable
+
+-   What you will learn 
+    - The concept of instrumental variable method
+    - The two requirements for a valid instrumental variable and how to find good instruments
+    - Apply two-stage least square method to estimate the causal effects using instrumental variables
+    - Apply 2SLS in R with `lfe`
+    
+-   After-class tasks
+
+## Solving Endogeneity: Quasi-Experiment
+
+-   What you will learn 
+
+-   Pre-class preparation
+
+-   After-class tasks
+
+# Week 7
+
+## Application: Quasi-Experiment in Marketing
+
+-   What you will learn 
+    - Apply quasi-experiment methods to obtain causal inference in real-life marketing problems
+    
+-   Pre-class preparation
+    - Case study: 
+    
+## Predictive Analytics I: Unsupervised Learning
+
+-   What you will learn 
+
+-   Pre-class preparation
+
+-   After-class tasks
+
+# Week 8
+
+## Application: Customer Segmentation with Clustering Analysis
+
+-   What you will learn 
+
+-   Pre-class preparation
+
+-   After-class tasks
+
+
+## Predictive Analytics II: Supervised Learning
+
+-   What you will learn 
+
+-   Pre-class preparation
+
+-   After-class tasks
+
+# Week 9
+
+## Application: Customer Relationship Management
+
+-   What you will learn 
+
+-   Pre-class preparation
+
+-   After-class tasks
+
+
+# Week 10
+
+## Causal Machine Learning
+
+-   What you will learn 
+
+-   Pre-class preparation
+
+-   After-class tasks
+
+
+## Module Wrap-up
+
+-   What you will learn 
+
+

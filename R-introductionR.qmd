@@ -21,7 +21,7 @@ knitr:
     error: true
 execute: 
   cache: true
-  freeze: auto
+  freeze: true
 ---
 
 # Class Objective
@@ -72,11 +72,10 @@ R can do almost anything you can think of! Below is a list of what I use R for f
 
 ## Install and Setup R: Step 1
 
-**Step 1**: Download R from the official website [CRAN](https://www.r-project.org).
+**Step 1**: Download R from the official website following this [guide](R-installR.qmd)
 
 -   Note that R version is updated on a regular basis, to fix bugs or add new features. It's good to keep your R up to date.
     -   However, be mindful that sometimes across major versions, some R's base functions may be depreciated and cause breaks in your code, so it's important to read the R News after each update, so that you understand what's been updated in the latest version and if there will be any breaks in your previous code. For a deeper understanding of this issue, please refer to this [article](http://datacolada.org/95) regarding reproducible research with R.
--   For Windows users, remember to download and install the `RTools` as well.
 
 ## Install and Setup R on your computers: Step 2
 

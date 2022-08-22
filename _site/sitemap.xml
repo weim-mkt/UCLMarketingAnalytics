@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/R-errors.html</loc>
+    <lastmod>2022-08-22T15:38:29.106Z</lastmod>
+  </url>
+  <url>
     <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/index.html</loc>
-    <lastmod>2022-08-12T20:04:09.495Z</lastmod>
+    <lastmod>2022-08-22T15:38:29.563Z</lastmod>
+  </url>
+  <url>
+    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/R-installR.html</loc>
+    <lastmod>2022-08-22T15:38:33.101Z</lastmod>
   </url>
   <url>
     <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/R-introductionR.html</loc>
-    <lastmod>2022-08-12T20:04:15.023Z</lastmod>
+    <lastmod>2022-08-22T15:38:40.158Z</lastmod>
   </url>
   <url>
     <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/syllabus.html</loc>
-    <lastmod>2022-08-12T20:04:16.267Z</lastmod>
+    <lastmod>2022-08-22T15:38:41.384Z</lastmod>
   </url>
 </urlset>

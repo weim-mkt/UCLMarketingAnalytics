@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Module Contents</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="_ClassPreparation_files/libs/clipboard/clipboard.min.js"></script>
+<script src="_ClassPreparation_files/libs/quarto-html/quarto.js"></script>
+<script src="_ClassPreparation_files/libs/quarto-html/popper.min.js"></script>
+<script src="_ClassPreparation_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="_ClassPreparation_files/libs/quarto-html/anchor.min.js"></script>
+<link href="_ClassPreparation_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="_ClassPreparation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="_ClassPreparation_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="_ClassPreparation_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="_ClassPreparation_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Module Contents</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="induction-week-r-basics" class="level1">
+<h1>Induction Week: R Basics</h1>
+<ul>
+<li><p>Learning objective</p></li>
+<li><p>Pre-class preparation</p>
+<ul>
+<li>Finish reading “An introduction to R” (can be assessed in this <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf">link</a>) Chapters 1, 2, 3, 5, and 6.</li>
+<li>It’s highly recommended that you not only read the tutorial but also practice the codes along your reading. It is Okay not to fully understand the tutorial now, as I will explain R basics in greater detail in the induction week.</li>
+</ul></li>
+<li><p>After-class tasks</p>
+<ul>
+<li>Finish data camp “Introduction to R” tutorial before Week 1 class. We will learn how to use R to compute customer lifetime value in week 1’s class, so it’s necessary that you are familiar with R basics before class.</li>
+</ul></li>
+</ul>
+</section>
+<section id="week-1" class="level1">
+<h1>Week 1</h1>
+<section id="marketing-process-and-marketing-analytics" class="level2">
+<h2 class="anchored" data-anchor-id="marketing-process-and-marketing-analytics">Marketing Process and Marketing Analytics</h2>
+<ul>
+<li><p>Class objective</p>
+<ul>
+<li>To introduce the concept of marketing and typical marketing process</li>
+<li>To provide an overview of the course topics and requirements</li>
+<li>To demonstrate how marketing analytics empower marketers with a case study</li>
+</ul></li>
+<li><p>Pre-class reading</p>
+<ul>
+<li>A Peek into the Power of Marketing Analytics</li>
+</ul></li>
+<li><p>After-class reading</p>
+<ul>
+<li>LBS Case 520-0109-5: The Marketing Process (optional)</li>
+</ul></li>
+</ul>
+</section>
+<section id="customer-profitability-and-lifetime-value" class="level2">
+<h2 class="anchored" data-anchor-id="customer-profitability-and-lifetime-value">Customer Profitability and Lifetime Value</h2>
+<ul>
+<li><p>Class objective</p>
+<ul>
+<li>To introduce the concept of customer lifecycle</li>
+<li>To understand how to compute customer acquisition cost (CAC)</li>
+<li>To understand the concept of break-even analysis and customer profitability</li>
+<li>To understand how to compute customer lifetime value (CLV) in R</li>
+</ul></li>
+<li><p>Pre-class preparation</p></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+</section>
+<section id="week-2" class="level1">
+<h1>Week 2</h1>
+<section id="case-study-clv-calculation-with-r" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-clv-calculation-with-r">Case Study: CLV Calculation with R</h2>
+<ul>
+<li><p>Class objective</p>
+<ul>
+<li>To apply CLV calculation in a real-life case study</li>
+<li>To learn how CLV can be used by marketers to guide marketing decisions</li>
+</ul></li>
+<li><p>Pre-class preparation</p>
+<ul>
+<li>HBS 9-518-077: Customer Lifetime Social Value (CLSV). Please carefully read the case study before class, as we will be solving the case in class.</li>
+</ul></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+<section id="data-manipulation-with-r-part-i" class="level2">
+<h2 class="anchored" data-anchor-id="data-manipulation-with-r-part-i">Data Manipulation with R: Part I</h2>
+<ul>
+<li>Class objective
+<ul>
+<li>To learn the typical processes in a data analytics project</li>
+<li>To master the usage of <code>filter</code>, <code>select</code>, <code>mutate</code>, and <code>arrange</code> for data manipulation with <code>dplyr</code> package</li>
+</ul></li>
+<li>After-class tasks
+<ul>
+<li>Finish the practice exercise on data camp: <a href="https://app.datacamp.com/learn/courses/data-manipulation-with-dplyr">Data Manipulation with dplyr: 1.Transforming Data with dplyr</a></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="week-3" class="level1">
+<h1>Week 3</h1>
+<section id="data-manipulation-with-r-part-ii" class="level2">
+<h2 class="anchored" data-anchor-id="data-manipulation-with-r-part-ii">Data Manipulation with R: Part II</h2>
+<ul>
+<li>Class objective
+<ul>
+<li>To master the usage of <code>group_by</code> and <code>join</code> for data aggregation and merge with <code>dplyr</code> package</li>
+<li>To apply <code>dplyr</code> package to a case study for basic customer analysis</li>
+</ul></li>
+<li><h2 id="pre-class-preparation" class="anchored">Pre-class preparation</h2></li>
+<li>After-class tasks
+<ul>
+<li>Finish the practice exercise on data camp: <a href="https://app.datacamp.com/learn/courses/data-manipulation-with-dplyr">Data Manipulation with dplyr: 2.Aggregating Data</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="causal-inference-and-randomized-controlled-trials" class="level2">
+<h2 class="anchored" data-anchor-id="causal-inference-and-randomized-controlled-trials">Causal Inference and Randomized Controlled Trials</h2>
+<ul>
+<li><p>Class objective</p>
+<ul>
+<li>To understand the concept of causal inference and Rubin’s potential outcome framework</li>
+<li>To learn the steps to conduct randomized controlled trials (RCT)</li>
+<li>To learn how to analyze the collected data to quantify the average treatment effects (ATE)</li>
+</ul></li>
+<li><p>Pre-class preparation</p></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+</section>
+<section id="week-4" class="level1">
+<h1>Week 4</h1>
+<section id="case-study-marketing-promotion-with-rct" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-marketing-promotion-with-rct">Case Study: Marketing Promotion with RCT</h2>
+<ul>
+<li>Class objective
+<ul>
+<li>To apply RCT techniques to solve real-life marketing problems</li>
+</ul></li>
+<li><h2 id="pre-class-preparation-1" class="anchored">Pre-class preparation</h2></li>
+</ul>
+</section>
+<section id="linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression">Linear Regression</h2>
+<ul>
+<li>Class objective
+<ul>
+<li>To understand the relationship between the Data Generating Process (DGP)</li>
+<li>To Understand the intuition behind linear regression models and coefficient estimation</li>
+<li>To learn how to interpret the regression coefficients and important regression statistics</li>
+</ul></li>
+<li>Pre-class preparation
+<ul>
+<li>Preview Kellogg technical note: Regression Basics (optional; highly recommended if you had no exposure to regression previously)</li>
+</ul></li>
+<li>After-class tasks
+<ul>
+<li>Kellogg technical note: Regression Basics</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="week-5" class="level1">
+<h1>Week 5</h1>
+<section id="case-study-pricing-optimization-with-regression-models" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-pricing-optimization-with-regression-models">Case Study: Pricing Optimization with Regression Models</h2>
+<ul>
+<li><p>Class objective</p>
+<ul>
+<li>To learn how to examine non-linear relationship between variables using regression models</li>
+<li>To apply regression models on solving optimal pricing</li>
+<li>To apply regression models on solving optimal promotion spending</li>
+</ul></li>
+<li><p>Pre-class preparation</p></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+<section id="endogeneity-and-instrumental-variable" class="level2">
+<h2 class="anchored" data-anchor-id="endogeneity-and-instrumental-variable">Endogeneity and Instrumental Variable</h2>
+<ul>
+<li><p>Class objective</p></li>
+<li><p>Pre-class preparation</p></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+</section>
+<section id="week-6" class="level1">
+<h1>Week 6</h1>
+<section id="natural-experiment-difference-in-differences" class="level2">
+<h2 class="anchored" data-anchor-id="natural-experiment-difference-in-differences">Natural Experiment: Difference-in-Differences</h2>
+<ul>
+<li><p>Class objective</p></li>
+<li><p>Pre-class preparation</p></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+<section id="natural-experiment-regression-discontinuity-design" class="level2">
+<h2 class="anchored" data-anchor-id="natural-experiment-regression-discontinuity-design">Natural Experiment: Regression Discontinuity Design</h2>
+<ul>
+<li><p>Class objective</p></li>
+<li><p>Pre-class preparation</p></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+</section>
+<section id="week-7" class="level1">
+<h1>Week 7</h1>
+<section id="application-natural-experiment-in-marketing" class="level2">
+<h2 class="anchored" data-anchor-id="application-natural-experiment-in-marketing">Application: Natural Experiment in Marketing</h2>
+<ul>
+<li><p>Class objective</p></li>
+<li><p>Pre-class preparation</p></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+<section id="predictive-analytics-i-unsupervised-learning" class="level2">
+<h2 class="anchored" data-anchor-id="predictive-analytics-i-unsupervised-learning">Predictive Analytics I: Unsupervised Learning</h2>
+<ul>
+<li><p>Class objective</p></li>
+<li><p>Pre-class preparation</p></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+</section>
+<section id="week-8" class="level1">
+<h1>Week 8</h1>
+<section id="application-customer-segmentation-with-clustering-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="application-customer-segmentation-with-clustering-analysis">Application: Customer Segmentation with Clustering Analysis</h2>
+<ul>
+<li><p>Class objective</p></li>
+<li><p>Pre-class preparation</p></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+<section id="predictive-analytics-ii-supervised-learning" class="level2">
+<h2 class="anchored" data-anchor-id="predictive-analytics-ii-supervised-learning">Predictive Analytics II: Supervised Learning</h2>
+<ul>
+<li><p>Class objective</p></li>
+<li><p>Pre-class preparation</p></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+</section>
+<section id="week-9" class="level1">
+<h1>Week 9</h1>
+<section id="application-customer-targetting" class="level2">
+<h2 class="anchored" data-anchor-id="application-customer-targetting">Application: Customer Targetting</h2>
+<ul>
+<li><p>Class objective</p></li>
+<li><p>Pre-class preparation</p></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+</section>
+<section id="week-10" class="level1">
+<h1>Week 10</h1>
+<section id="causal-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="causal-machine-learning">Causal Machine Learning</h2>
+<ul>
+<li><p>Class objective</p></li>
+<li><p>Pre-class preparation</p></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+<section id="module-wrap-up" class="level2">
+<h2 class="anchored" data-anchor-id="module-wrap-up">Module Wrap-up</h2>
+<ul>
+<li><p>Class objective</p></li>
+<li><p>Pre-class preparation</p></li>
+<li><p>After-class tasks</p></li>
+<li><p>Optional reading</p></li>
+</ul>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

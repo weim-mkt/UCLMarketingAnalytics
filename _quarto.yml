@@ -14,14 +14,17 @@ website:
       - syllabus.qmd
       - section: "R Tutorials"
         contents:
+          - R-installR.qmd
           - R-introductionR.qmd
+          - R-errors.qmd
+          
         
 format:
   html:
-    theme: yeti
+    theme: lumen
     css: styles.css
     toc: true
     number-sections: true
     df-print: paged
-    toc-depth: 2
+    toc-depth: 3
 

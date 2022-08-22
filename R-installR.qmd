@@ -1,0 +1,93 @@
+---
+title: "Install and Setup R"
+author: Wei Miao
+affiliation: UCL School of Management
+date: "`r (lubridate::today())|> format('%a, %d %b %Y')`"
+format:
+    html:
+      number-sections: true
+      df-print: paged
+      self-contained: true
+      page-layout: full
+      toc-depth: 2
+      code-line-numbers: false
+      code-copy: hover
+      
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  cache: true
+  freeze: true
+---
+
+#  For Windows computers
+
+1. Go to R's official website in this [link](https://www.r-project.org)
+
+2. Click `CRAN` under download section
+
+![](images/R homepage.png)
+
+3. These are different mirrors for R download. Basically they store the same installation files but on different servers in different places. Simply click into any mirror.
+
+![](images/R mirror.png)
+
+4. Click into `download R for Windows` for installation files for Windows computers 
+
+![](images/R download.png)
+
+5. Download and install (1) `base` and (2) `Rtools`. It's recommended to use the default options during the installations.
+    - Notes: The former is the R program, and the latter is the tool to compile R packages.
+
+![](images/R windows.png)
+
+# For Mac computers
+
+1. Go to R's official website in this [link](https://www.r-project.org)
+
+2. Click CRAN under download section
+
+![](images/R homepage.png)
+
+3. These are different mirrors for R download. Basically they store the same installation files but on different servers in different places. Simply click into any mirror.
+
+![](images/R mirror.png)
+
+4. Click into `download R for macOS` for the download file
+
+![](images/R download.png)
+
+5. Download the correct pkg file to install R
+    - if you use Intel based CPU, download the `R-4.2.1.pkg`
+    - if you use Apple's silicon chip such as M1, M1 pro, or M2, download the `R-4.2.1-arm64.pkg`
+    - refer to this [link](https://support.apple.com/en-gb/HT211814) if you don't know how to check Intel or Apple CPU
+
+![](images/R macos.png)
+    
+    
+6. Install `Command Line Tools` following the steps below. This is essential for R to be able to compile packages so do not skip this step.
+    1. Open `terminal` app on your mac (the icon is in the screenshot)  
+![](images/R terminal.png)    
+    2. Type the following code `xcode-select --install` into terminal and hit `enter` to run the code. The code may run for a few minutes. This step is to install MacOS tools that can help compile R packages.
+![](images/R commandline tools.png)
+
+    
+# Installation Q&As
+
+## Why do we need to install `Rtools` and `Commandline tools`?
+
+Many R packages are written in R. Since R is an interpreted language, source code written in R doesn't have to be translated into system-specific machine language before running. However, some R packages have significant portions written in compiled languages, such as C/C++ or Fortran. These languages need accessory software tools to translate ("compile") their source code into machine language that can run on a particular system.
+
+Package developers have two choices when distributing code for compiled languages: 
+
+
+(1) They can prepare compiled, realdy-to-use "binaries" matched against common systems, so that people can simply download the binaries and directly use their packages code without having to know how to compile it.
+
+(2) They can distribute source code (i.e., the raw C++ codes) only, and expect the user to have the right compiler software to build system-specific runnable code themselves. `Rtools` and `Commandline tools` are the compliers that do the job, therefore needed as an additional installation step.
+
+
+On UNIX/Linux, only source code is distributed and all packages are compiled from source during installation (for packages written entirely in R, this is trivial!). For Windows and Mac, CRAN makes pre-compiled binaries available. On Windows, install.packages() will only install precompiled binaries, unless explicitly forced to install from source (you can read a lot more about this in the R Installation and Administration guide).

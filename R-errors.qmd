@@ -1,0 +1,152 @@
+---
+title: "Troubleshooting R"
+author: Wei Miao
+affiliation: UCL School of Management
+date: "`r (lubridate::today())|> format('%a, %d %b %Y')`"
+format:
+    html:
+      number-sections: true
+      df-print: paged
+      self-contained: true
+      page-layout: full
+      toc-depth: 2
+      code-line-numbers: false
+      code-copy: hover
+      
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  cache: true
+  freeze: true
+---
+
+In this page, I summarize the common issues running R and the troubleshooting tips. If you run into any R issues, please refer to this page as the first step for any solution. 
+
+
+
+## Where you can run R codes
+
+You can run R codes in 3 places.
+
+### R Console
+
+If the code is simple and just one line, then you can type the command in R console. This is convenient when you want to run some interactive codes that test your hypotheses or do some preliminary data analyses (e.g., check the variable names of a dataframe, or check the number of rows of a dataframe).
+
+![](images/class5_RConsole.png)
+
+
+### R Script
+
+- R Script has the extension of `.R`, and any text in this file will be treated as R codes
+
+- R Script (with `.R` extension) is different from a R Markdown file (with `.Rmd` extension) or a R Quarto file (with `.qmd` extension)
+
+- R Script is used when we do not need to generate any report and we just need to run some analyses. In this case, R Scripts are the best choice.
+
+To create a new R Script, click the `insert new file` button, and select `R Script` option:
+
+![](images/class5_addRScript.png)
+
+And then, you can copy the codes in lecture slides and paste them into R Script file. 
+
+Select the codes you want to run and run them by hitting the `Run` button
+
+- Note: not the `Knit` button; `Knit` is only for generating reports from .rmd/.qmd files). 
+
+![](images/class5_RScript.png)
+
+### R Markdown/Quarto
+
+In a `.rmd/.qmd` file, R codes can only be run in R code chunks; otherwise, they will be treated as normal text.
+
+
+## Warnings: Packages not installed
+
+If you see this banner in your RStudio in the screenshot, it means RStudio detects some packages mentioned in the R Markdown file or R script but are not yet installed on your computer. So it prompts you for installation.
+
+![](images/class5_RErrorPackageNotInstalled.png)
+
+For instance, in this case, the error message means, `knitr` and `pacman` are found in the .Rmd file, but they are not installed, so RStudio is smart enough to prompt you to install. 
+
+:::{.callout-notes}
+### Solution
+Just click install button in the banner. RStudio will install the missing components.
+:::
+
+
+## R packages not up-to-date
+
+Since the R packages are being updated every day (just like our mobile apps, there could be bugs so that the developers have to update R packages to fix those bugs), sometimes, though we may have installed some packages, they are too old to run the functions. And you may see this prompted message:
+
+![](images/class5_RErrorPackageNeedsUpdated.png)
+
+It means, the aforementioned packages, `base64enc`, `digest`, etc. are outdated and must be updated to function. 
+
+:::{.callout-notes}
+### Solution 
+
+Click `Yes` and RStudio will update all the packages for you.
+
+:::
+
+
+
+## Latex not found when kniting the .rmd/.qmd file.
+
+If this is your first time to knit the PDF document, you may see an error message as below:
+
+![](images/class5_RErrorLatexNotFound.png)
+
+
+The error message has usually told us everything on how to troubleshoot (that's what an error message is for!).
+
+In this screenshot, if you read along, you will find the cause of problem: 
+
+>[...] LaTex failed to compile, 
+
+because
+
+> [...] No LaTeX installation detected (LaTeX is required to create PDF output).
+
+and the **solution** is also consideratebly given in this error message:
+
+> [...] You should install a LaTeX distribution for your platform: https://www.latex-project.org/get/
+
+>  If you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()
+
+So this error message tells us the solution: 
+
+:::{.callout-notes}
+### Solution
+
+Run the following command in Console
+
+`tinytex::install_tinytex()`
+
+in order to install LaTex on your laptop.
+
+:::
+
+
+If you run the command in R Console, you will see that Latex is being installed 
+
+![](images/Class5_RErrorInstallTinyTex.png)
+
+After this progress bar finishes, you will be able to knit the PDF document!
+
+## Error: Connection Not Found
+
+Connection Not Found error is usually caused by RStudio being unable to locate your files on your hard disk. 
+
+In the .Rmd file I give to you, the purchase data and demographics data are using the file paths on my laptop. So you should change them to yours.
+
+If you don't know how to find the path names for a file on your computer, please refer to this [link](https://www.sony.com/electronics/support/articles/00015251) for Windows and this [link](https://macpaw.com/how-to/get-file-path-mac) for Mac. 
+
+
+## More Questions
+
+Please leave a screenshot of error message in the MSTeams channel named "R QnA". I will keep updating this webpage as more questions come in.

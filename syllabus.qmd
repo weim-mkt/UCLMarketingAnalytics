@@ -31,7 +31,7 @@ At the end of the module, students will be able to carry out independent marketi
 
 # Course Structure (tentative)
 
-![Course Structure](images/course structure.png)
+![](images/course structure.png)
 
 # Office Hours
 
