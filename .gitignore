@@ -2,5 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
-
+_*.qmd
 /.quarto/
+_site/
+*cache/
+*site/

@@ -1,0 +1,111 @@
+---
+title: "Speed Up Matrix Operations"
+author: Wei Miao
+affiliation: UCL School of Management
+date: "`r (lubridate::ymd(20220827))|> format('%a, %d %b %Y')`"
+format:
+    html:
+      number-sections: true
+      df-print: paged
+      self-contained: true
+      page-layout: full
+      toc-depth: 3
+      code-line-numbers: false
+      code-copy: hover
+      
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  cache: true
+  freeze: true
+---
+
+If your codes include lots of vector/matrix operations, especially those computation intensive tasks such as matrix inverse,^[For instance, in my research projects that involve structural modelling, I often need to write my own codes in matrix form to compute the value functions, policy functions, equlibrium computation, etc.] you will probably feel that the default R is slow.   Your intuition is likely correct! The reason is that the default R distributions from CRAN make use of the default BLAS/LAPACK implementation for linear algebra operations. The purpose of using such reference BLAS libraries by the development team is good: These implementations are built to be stable and cross platform compatible. However, the price that comes with stability is the sacrifice of speed. Is there a way to tweak your R settings to significantly boost the running speed? The answer is yes, and the steps are actually quite simple. We will review the steps to install highly optimized libraries and benchmark their performance.
+
+# What is BLAS?
+
+BLAS, which is short for Basic Linear Algebra Subprograms, is a specification that prescribes a set of low-level routines for performing common linear algebra operations such as vector addition, scalar multiplication, dot products, linear combinations, and matrix multiplication. In short, it's a library that can do many basic matrix operations. Because the BLAS is efficient, portable, and widely available, they are commonly used in the development of high quality linear algebra software. 
+
+LAPACK is written in Fortran 90 and provides routines for solving systems of simultaneous linear equations, least-squares solutions of linear systems of equations, eigenvalue problems, and singular value problems. The associated matrix factorizations (LU, Cholesky, QR, SVD, Schur, generalized Schur) are also provided, as are related computations such as reordering of the Schur factorizations and estimating condition numbers. 
+
+These default libraries are aimed for high stability and compatibility. And the cost is the speed, because these libraries are not optimized for your specific computers. Therefore, to overcome this bottleneck, we can switch the default linear algebra libraries to more efficient ones depending on your hardware. 
+
+# For Apple Silicon CPU Macs
+
+vecLib is a part of Apple’s Accelerate framework^[Apple's Accelerate framework provides high-performance, energy-efficient computations on the CPU by leveraging its vector-processing capability. For more details, refer to Apple's documentation [here](https://developer.apple.com/documentation/accelerate/blas).], which provides an optimized BLAS implementation for Mac hardware. 
+
+Although in recent MacOS updates, vecLib is no long provided with the MacOS, the R binaries distributed by CRAN do provide vecLib BLAS, just that vecLib is not used by default. Next, I will show you how to switch to vecLib.
+
+## How to Switch to VecLib BLAS
+
+On MacOS, the R's framework path is `/Library/Frameworks/R.framework/Resources/lib`. To go to the folder, open `terminal` on your Mac, and enter the following command:
+
+```{zsh}
+#| echo: true
+cd /Library/Frameworks/R.framework/Resources/lib
+ls -l
+```
+
+which will change (c) the directory (d) to R's framework folder. In this folder, you will see a few files by hitting `ls`:
+
+
+- `libRblas.0.dylib`  is the default BLAS library. 
+- `libRblas.vecLib.dylib` is the more efficient vecLib BLAS, which we are going to switch to.
+- `libRblas.dylib` is of *alias* file type. This means it's kind of like a shortcut and points to a another file we set. By default, `libRblas.dylib` is pointed to `libRblas.0.dylib`, so R uses the default BLAS library. All we need to do is to relink the `libRblas.0.dylib` to `libRblas.vecLib.dylib`, such that R will use the vecLib.
+
+To do so, type the following command in `terminal`:
+
+```{zsh}
+#| eval: false
+ln -sf libRblas.vecLib.dylib libRblas.dylib
+```
+
+If vecLib has issues on your computer^[As warned by CRAN, "Although fast, it is not under our control and may possibly deliver inaccurate results."] and you would like to switch back to the default BLAS/LAPACK, simply link the `libRblas.dylib` back to `libRblas.0.dylib`, by entering the following command in `terminal`:
+
+```{zsh}
+#| eval: false
+ln -sf libRblas.0.dylib libRblas.dylib
+```
+
+
+## Performance Comparison
+
+We will compare the performance before and after switching to vecLib using the following R codes. The code generates a 1000 by 1000 matrix, and obtains the inverse of that matrix. I use `microbenchmark` package to run the inverse operation for 100 times, and capture the performance metrics.
+
+
+```{r}
+#| eval: false
+#| include: true
+set.seed(888)
+nd = 1000
+a <- matrix(rnorm(nd^2), nd, nd)
+library(microbenchmark)
+mb <- microbenchmark(
+  solve(a),
+  times = 100,
+  unit = "ms"
+)
+```
+
+
+When I use the default BLAS/LAPACK, the benchmark result is as follows:
+
+```{r}
+#| echo: false
+#| cache: true
+library(microbenchmark)
+readRDS('data/mb_defaultBLAS.rds')|>print()
+```
+
+After we switch to vecLib, the benchmarks are as follows. As can be seen, the speed has increased dramatically!
+
+```{r}
+#| echo: false
+#| cache: true
+readRDS('data/mb_vecLib.rds')|>print()
+
+```

@@ -11,17 +11,26 @@ website:
     search: true
     background: primary
     contents:
-      - syllabus.qmd
+      - section: "Lectures"
+        contents:
+          - syllabus.qmd
+          - ClassPreparation.qmd
+          - LectureSlides.qmd
+          - R-InductionWeek.qmd
       - section: "R Tutorials"
         contents:
           - R-installR.qmd
           - R-introductionR.qmd
           - R-errors.qmd
-          
-        
+      - section: "Advanced R Tips"
+        contents:
+          - RTip-BLAS.qmd
+      
 format:
   html:
     theme: lumen
+    self-contained: true
+    self-contained-math: true
     css: styles.css
     toc: true
     number-sections: true

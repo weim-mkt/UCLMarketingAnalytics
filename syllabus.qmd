@@ -1,6 +1,6 @@
 ---
 title: "Syllabus"
-date: "`r (lubridate::today())|> format('%a, %d %b %Y')`"
+date: "`r (lubridate::ymd('20220904'))|> format('%a, %d %b %Y')`"
 ---
 
 # Instructor Information
@@ -19,19 +19,21 @@ date: "`r (lubridate::today())|> format('%a, %d %b %Y')`"
 
 Marketing analytics addresses how to utilize the right analytics tools to guide marketing tactics and strategies in a scientific manner. Driven by recent advances in information and communication technologies, the very nature of marketing analytics has evolved. This module provides students with systematic and practical training in causal inference, predictive analytics, and programming tools in solving real-life marketing problems.[^2]
 
-[^2]: Just a little heads up -- unlike undergrad marketing modules where you mainly learn marketing strategies and concepts, this module focuses on "analytics" (which comes first) and its application in .
+[^2]: Just a little heads up -- unlike undergrad marketing modules where you mainly learn marketing strategies and concepts, this module focuses on "analytics" (which comes first) and its application in "marketing" (which comes next).
 
 In week 1, students will learn the concept of marketing process and how to compute customer lifetime value using R.  In week 2, students will start building up dataset cleaning and manipulation skills with the `dplyr` package. 
 
-From week 3 to week 6, students will learn causal inference tools, which help marketers correctly measure the causal effects of marketing initiatives on marketing outcomes. Students will get hands-on training of A-B testing (randomized controlled trials), instrumental variable, difference-in-differences, and regression discontinuity designs. Through a series of case studies each week, students will learn how to apply these causal inference techniques in optimizing marketing mix such as promotion and pricing. 
+From week 3 to week 7, students will learn causal inference tools, which help marketers correctly measure the causal effects of marketing initiatives on marketing outcomes. Students will get hands-on training of A-B testing (randomized controlled trials), instrumental variable, difference-in-differences, and regression discontinuity designs. Through a series of case studies each week, students will learn how to apply these causal inference techniques in optimizing marketing mix such as promotion and pricing. 
 
-In the remaining weeks, students will learn predictive analytics and how to apply machine learning models for segmentation, targeting, and customer relationship management.
+In week 8 and week 9, students will learn predictive analytics and how to apply machine learning models for segmentation, targeting, and customer relationship management. 
+
+In the final week, students will be introduced to the state-of-the-art causal machine learning (causal forest), which combines causal inference with machine learning.
 
 At the end of the module, students will be able to carry out independent marketing research for their dissertation projects and their future jobs.
 
 # Course Structure (tentative)
 
-![](images/course structure.png)
+Please refer to the [lecture guide](ClassPreparation.qmd) for the detailed course structure, learning objectives, and preparation required each week. Note that the topics are tentative and are subject to adjustments depending on our learning progress.
 
 # Office Hours
 
@@ -43,7 +45,11 @@ You can also ask questions during my office hours. I am happy to answer any ques
 
 Since the marketing field is evolving rapidly, we aim to cover the latest marketing analytics techniques; therefore, we will not rely on any specific textbook in this module. All classes will be based on the lecture notes and supplementary readings I have prepared for you.
 
-Nevertheless, if you would like to further enrich your learning journey and extend your knowledge of marketing analytics, I recommend ["Handbook of Marketing Analytics"](https://ucl-new-primo.hosted.exlibrisgroup.com/permalink/f/5qfvbu/UCL_LMS_DS51237610180004761). This book is free for download at UCL's E-library.
+Nevertheless, if you would like to further enrich your learning journey and extend your knowledge of marketing analytics, I recommend 
+
+- ["Handbook of Marketing Analytics"](https://ucl-new-primo.hosted.exlibrisgroup.com/permalink/f/5qfvbu/UCL_LMS_DS51237610180004761). This book is free for download at UCL's E-library.
+
+- ["Introduction to Econometrics with R"](https://www.econometrics-with-r.org/index.html), which is a good textbook for learning econometrics with R.
 
 # Programming with R
 

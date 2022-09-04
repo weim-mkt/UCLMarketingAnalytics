@@ -1,0 +1,6 @@
+---
+title: "Lecture Slides"
+editor: visual
+---
+
+Lecture slides will be released on Monday each week. Stay tuned!
