@@ -7,3 +7,6 @@ _*.qmd
 _site/
 *cache/
 *site/
+*/execute-results/
+_freeze/
+*_cache/

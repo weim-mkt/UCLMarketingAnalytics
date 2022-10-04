@@ -1,18 +1,27 @@
 ---
-title: "Induction Week"
-author: Wei Miao
-affiliation: UCL School of Management
-date: "`r (lubridate::today())|> format('%a, %d %b %Y')`"
+author: Dr Wei Miao
+date: "`r (lubridate::ymd('20220928'))|> format('%a, %b %d %Y')`"
+institute: UCL School of Management
+toc: true
+toc-depth: 2
 format:
-    html:
-      number-sections: true
-      df-print: paged
-      self-contained: true
-      page-layout: full
-      toc-depth: 2
-      code-line-numbers: false
-      code-copy: hover
-      
+  html: 
+    number-sections: true
+    df-print: paged
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: false
+    code-copy: hover
+    title: "html version"
+    subtitle: "Last Updated 28 Sep 2022"
+  pdf: 
+    number-sections: true
+    number-depth: 2
+    fontsize: 10pt
+    colorlinks: true
+    code-line-numbers: true
+    title: "R Basics (induction week)"
+    subtitle: "Last Updated 28 Sep 2022"
 knitr:
   opts_chunk:
     echo: true
@@ -20,312 +29,400 @@ knitr:
     message: true
     error: true
 execute: 
-  cache: true
-  freeze: true
+  freeze: auto
 ---
 
 # Hello R
 
-## What is R
+## Bilingual arrangements at MSc BA
 
--   R is both a programming language for statistical computing, which is free and open-source (<https://www.r-project.org/about.html>).
+-   Primary language is Python
 
--   The R Project was initiated by Robert Gentleman and Ross Ihaka (University of Auckland) in the early 1990s as a different implementation of the S language, which was developed at Bell Laboratories. Since 1997, R has been developed by the R Development Core Team.
+    -   Programming (MSIN00143), Business Strategy (MSIN0093), Machine Learning electives
 
-## What is R used for?
+-   Secondary language is R
 
-R can do almost anything you can think of! Below is a list of what I use R for for my research and daily work.
+    -   Marketing Analytics (MSIN0094), Operations Analytics (MSIN0095), Statistical Foundations (MSIN0096)
 
--   Super powerful data analytics
+## A brief history of R
 
-    -   statistics and econometrics
-    -   data manipulation and wrangling
-    -   machine learning models
+-   R project was initiated by **R**obert Gentleman and **R**oss Ihaka (Univ of Auckland) in 1991; both are statisticians, who later made the language open-source.
 
--   Write research report and prepare presentations slides using `quarto` developed by RStudio team.
+-   Since 1997, R has been developed by the R Core Team on CRAN.
 
--   Build and maintain my own webpage. I build and maintain my [personal website](http://miaowei.netlify.app) with the `blogdown` package; this course website is built with `quarto` package.
+-   As of January 2022, it has 18,728 contributed packages. As of March 2022, R ranks 11th in the TIOBE index[^1]; the language peaked in 8th place in August 2020.
 
-## Why Learn R at MSc BA
+[^1]: A measure of programming language popularity
 
-1.  R is one of the most popular programming languages used by statisticians, economists, and data analysts. Below is the popularity index of different languages by [tiobe.com](https://www.tiobe.com). Your future colleagues will likely be using R.
+## Why learn R?
 
-![Trend of R](images/R%20ranking.png){#fig-trend-of-R}
+-   Super powerful data analytics and visualizations, including[^2]
 
-2.  Economists and statisticians prefer R, so there are many powerhouse packages exclusive to R, such as the state-of-the-art causal machine learning [`grf`](https://grf-labs.github.io/grf/articles/grf.html) package.
+    -   Data wrangling (`dplyr`) and data visualization (`ggplot`)
 
-## R versus Python
+    -   Econometrics (numerous packages)
 
-## R versus Python
+    -   Predictive analytics (numerous packages)
 
-![](images/week4_fathers.png)
+-   Write beautiful reports/dissertations/presentations using `quarto`
 
-## A few glossaries
+    -   Write your MSc dissertation (highly recommended; super efficient)
 
--   ***script***: (top left) where you write codes a text-readable file (E.g., 'test.R', 'test.Rmd', etc.), each separated by a new line.
+    -   Effortlessly build websites. I built and maintain my [personal website](http://miaowei.netlify.app) and the marketing course website all in R.
 
--   ***console***: (bottom left) where you can type commands interactively with R and get the results immediately
+[^2]: There are many R-exclusive packages, such as the state-of-the-art causal machine learning library `grf` , which we will learn in the final week.
 
--   ***environment***: (top right) a list of named variables/objects that we have generated; can be checked on the 'environment' panel.
+## One-One comparison with Python
+
+|                  | R                                                                                                                                                             | Python                                                                                                                                         |
+|--------------|-------------------------------|----------------------------|
+| Language purpose | R is a **statistical language** specialized in the **data analytics and visualization**. Best for data science, may not be robust for production environment. | Python is a **general-purpose language** that is used for the deployment and development of various projects. Best for production environment. |
+| Data analytics   | R is better at **statistical models** and **econometrics**.                                                                                                   | Python is better at **machine learning** due to support from PyTorch and TensorFlow.                                                           |
+| IDEs             | RStudio                                                                                                                                                       | Many options such as Jupyter Notebook, Spyder, Pycharm, etc.                                                                                   |
+| Targeted users   | Primary users of R include **researchers** in academia and **data** **scientists**, who heavily rely on data analyses and visualization.                      | Primary users of python include **developers and programmers.**                                                                                |
+
+: R versus Python
+
+## A first look at the RStudio Interface
+
+R is the **programming language**, and we need a "place" to write codes. This place is called an **Integrated development environment (IDE)**.
+
+RStudio is THE BEST R IDE to date. And it's interface consists of the following:
+
+-   ***script***: (top left) where you do the coding
+
+-   ***console***: (bottom left) where you can run commands interactively with R and see code outputs
+
+-   ***environment***: (top right) a list of named objects that we have generated
 
 -   ***history***: (top right) the list of past commands that we have used
 
--   ***help***: (bottom right) a documentation of all the functions available in R (the user manual)
+-   ***help***: (bottom right) user manuals of functions available in R
 
--   ***package***: (bottom right) a collection of additional functions and dataset
+-   ***package***: (bottom right) a collection of ready-to-use packages written by others
 
-# R Basics
+![](images/r_Rstudio.png)
 
-## Where to write your R codes: Console
+## Where to write R codes (I): Console
 
-## Where to write your R codes: `.R` Script
+-   You can write codes *interactively* in the R console. See an example: Type the following code into your console and see what happens.
 
-## Where to write your R codes: `Quarto`
+    ```{r}
+    print('Hello World')
+    ```
 
-## Variables
+-   Often used for simple exploratory tasks, where you don't need to keep a record of codes.
 
-In programming, a variable denotes an object, i.e., a variable is a name that refers to an object in the memory. Variables in R programming can be used to store any R object discussed previously, including numbers, characters, matrices, and data frames.
+    -   check summary statistics; inspect datasets; etc.
 
-R is a **dynamically programmed language**, which means that unlike other programming languages (such as C++, which is a pain to debug), we do not have to declare the data type of a variable before we can use it in our program.
+## Where to write R codes (II): `.R` script
 
-For a variable to be valid, it should follow these rules
+-   `R script` is a text-readable file ending with `.R` suffix. See an example.
 
--   It should contain letters, numbers, and only dot or underscore characters.
--   It should not start with a number (eg:- 2iota)
--   It should not start with a dot followed by a number (eg:- .2iota)
--   It should not start with an underscore (eg:- \_iota)
--   It should not be a reserved keyword.
+    -   codes can be run line-by-line or *sourced* altogether
 
-## Functions
+        ::: callout-important
+        All texts in the script will be treated as R codes unless commented out.
+        :::
 
-A function takes the argument as input, run some specified actions, and then return the result to us.
+-   Often used for project development and deployment, where you don't need to communicate results to others
 
-Functions are very useful. When we would like to test different ideas, we can combine functions with loops: We can write a function which takes different parameters as input, and we can use a loop to go through all the possible combinations of parameters.
+## Where to write R codes (III): `.qmd` script
 
-## Packages management: the coventional way
+-   `Quarto`[^3] files have a `.qmd` suffix. You can think of Quarto as Microsoft Word that can run R codes.
 
-To achieve certain tasks, for instance, to run a regression analysis, we can definitely write our own code from scratch. However, it may take much time if we would like to build everything from zero. That's when the packages/libraries can help us to improve our efficiency by a large margin.
+-   Quarto can create dynamic content with Python and R, conveniently combining data analytics work with beautiful reporting.
 
-One of the best things about R is that it has tens of thousands of extremely useful packages/libraries. And some are even exclusive to R, for instance, the `grf` package that runs the causal forest model, which I have used for my research.
+    -   Quarto can be thought of as the R equivalent of Jupyter Notebook but is much more powerful.
+    -   We will be mainly using Quarto in the marketing analytics module. You can also use Quarto to do your assignments, write your dissertation, and build your own blogging websites.
 
-```{r, include=T, echo=T}
-# install.packages('dplyr') # install the package
-library('dplyr') # load the package
+-   Let's create a new quarto file together!
+
+[^3]: Why the name Quarto? "We wanted to use a name that had meaning in the history of publishing and landed on Quarto, which is the format of a book or pamphlet produced from full sheets printed with eight pages of text, four to a side, then folded twice to produce four leaves. The earliest known European printed book is a Quarto, the [Sibyllenbuch](https://en.wikipedia.org/wiki/Sibyllenbuch_fragment), believed to have been printed by [Johannes Gutenberg](https://en.wikipedia.org/wiki/Johannes_Gutenberg) in 1452--53."
+
+# Introduction to Quarto
+
+## YAML header
+
+-   You can think of YAML header as a MS Word template, which determines how your final report looks like (font, font size, color, margins, etc.).
+
+-   The YAML header is typically at the beginning of a document, separated from the main text by three dashes (`---`). YAML will not appear in the final report.
+
+-   To make life easier, I will set `YAML` headers for all .`qmd` files for you in Marketing Analytics module.
+
+## Authoring with normal texts
+
+RStudio provides two ways to edit a quarto file (1) **visual mode** and (2) **source mode**.
+
+-   RStudio's [visual editor](https://quarto.org/docs/visual-editor/) offers an [WYSIWYM](https://en.wikipedia.org/wiki/WYSIWYM) (Microsoft Word like) authoring experience for markdown
+
+    -   recommended and easier to learn; we will be using this mode in class
+    -   check the rich formatting tools we can use for authoring a report
+
+-   In the source mode, you can edit the file using markdown syntax
+
+    -   optional; for advanced users once you're familiar with the markdown syntax
+
+![Visual Mode versus Source Mode](images/quarto%20mode.png){fig-align="center"}
+
+::: callout-note
+### Exercise
+
+Create a new quarto file from RStudio with the following level-1 and level-2 headers
+
+-   Basics of R
+
+-   Vectors
+
+    -   Creating vectors
+:::
+
+## Coding with code blocks
+
+-   In qmd files, we write actual R codes in **code chunks** identified with `{r}`.
+
+-   You can run each code chunk interactively by clicking the render icon. RStudio executes the code and displays the results below the code chunks.
+
+-   To insert a code chunk, click `Insert` -\>`Code Chunk` -\> `R`.
+
+-   See an example and try on your computer!
+
+```{r}
+print('R is the Best Language! Better than Python! And dont tell David I said this!')
 ```
 
-## Libraries and packages management: a simpler way
+::: callout-note
+### Exercise
 
-In R, there is a package called `pacman`, which stands for package management and is probably the most convenient way to manage R packages.
+Insert the above R code block in your quarto file under any section.
+:::
 
-**Task:** Load `ggplot2` and `data.table` packages; if they are not installed, install them and then load them.
+## Rendering a report
 
-```{r, include=T, echo=T}
-# if you have not yet installed pacman package, run the following code to install it.
+At the end, when codes and main texts are ready, use the **`Render`** button in the RStudio IDE to render the file.
 
-# install.packages('pacman')
+The rendered report will be in the same folder with your qmd file.
 
-pacman::p_load(data.table,ggplot2)
+![](images/render_icon.png)
 
-```
+::: callout-note
+### Exercise
 
-## Get help using `help()`
+Render your quarto file into a document and see how it looks like.
+:::
 
-Whenever you don't know how to use a function from a package, you can either
+## More learning resources for Quarto
 
--   use `help()`. Enter the command `help(log)` in R console
+-   The available YAML fields vary based on document format
 
-```{r help, include=T, echo=T}
-?log
-help(log)
-```
+    -   [Here](https://quarto.org/docs/reference/formats/pdf.html) for YAML fields for PDF documents
+    -   [Here](https://quarto.org/docs/reference/formats/docx.html) for MS Word
+    -   [Here](https://quarto.org/docs/reference/formats/html.html) for HTML documents
 
--   or you can directly search for the function in RStudio help panel.
+-   Markdown syntax
 
-![Example of function help](images/help.png){#fig-help}
+    -   [Markdown basics](https://quarto.org/docs/authoring/markdown-basics.html)
 
-## Practical tips
+    -   [Markdown practice](https://www.markdowntutorial.com/)
 
--   Indents don't matter in R
+-   Quarto (recommended to be reviewed after-class)
 
-## Comment your codes
+    -   [Get started](https://quarto.org/docs/get-started/)
 
-You can put a "\#" before any line of code, to indicate that this line is your comment, and this line will turn green and not run by R.
+# Basics of R
 
-It's a good practice to often comment your codes, so that you can help the future you to remember what you were trying to achieve.
+## Named objects
 
-```{r, include=T, echo=T}
-# print("David is handsome")
+-   R is an **object-oriented language**, so we will be working on named objects.
 
-```
+-   We use the **left arrow** `<-` to create a named object, which assigns the **objects** on the RHS to the **name** on the LHS.[^4]
 
-# Scalars
+    -   The below code creates a new object called 'x' in the **environment**, which is a number 2.
 
-## Use R as a calculator
+[^4]: You can also use equal sign `=`, but it's recommended to stick with R's tradition.
 
-We can do the basic mathematical calculation in R as follows:
-
-```{r calculator1, include=T, echo=T}
-8+8
-8-8
-8*8
-2/2
-```
-
-Common mathematical operations/functions can also be used in R.
-
-```{r calculator2, include=T, echo=T}
-log(1)
-exp(1)
-log(exp(1))
-sqrt(25)
-```
-
-## Assign value
-
-In R, we normally use the left arrow to assign a value to an object `<-`
-
-```{r assign, include=T, echo=T}
-x <- log(2)
+```{r}
+x <- 3
 x
 ```
 
-You can also use equal sign `=` without issues, but it's recommended to stick with R's tradition.
+-   After an object is created, we can refer to the object by its name, and operates on it.
+
+```{r}
+# Question: why Wei chooses these two numbers?
+x^2
+x^3
+```
+
+::: callout-note
+### Exercise
+
+Insert a code block in your quarto file, which does the following:
+
+-   Create an object with name 'x' with value 2 + 2
+:::
+
+## Rules for object names
+
+For a variable to be valid, it should follow these rules
+
+-   It should contain **letters**, **numbers**, and only **dot** or **underscore** characters.
+
+-   It *cannot* start with a number (eg: 2iota).
+
+```{r}
+# 2iota <- 2
+```
+
+-   It *cannot* start with a dot followed by a number (eg: .2iota).
+
+```{r}
+# .iota <- 2
+```
+
+-   It should not start with an underscore (eg: \_iota).
+
+```{r}
+# _iota <- 2
+```
+
+-   It should not be a [reserved keyword](https://rdrr.io/r/base/Reserved.html).
+
+```{r}
+# mean <- 2
+```
+
+::: callout-tip
+It's good practice to use memorable names to name an object
+
+-   For instance, use prefix "df\_" or "data\_" to name datasets.
+:::
+
+## Functions
+
+-   In R, a **function** takes object(s) as input, run specific actions on the object(s) defined by the function, and then return an outcome object.
+
+    -   The example below shows the function `mean`, which computes the average of several numbers.
+
+```{r}
+a <- 1:3 # which generates a sequence 1,2,3
+a
+mean(a)
+```
+
+-   We will heavily rely on functions to conduct data analyses. For how to use a new function, search the function in RStudio's `help` panel.
+
+    -   **Description**: what the function does in a nutshell
+
+    -   **Usage**: how to call the function
+
+    -   **Arguments**: how you would like to run the function
+
+    -   **Value**: what will be returned
+
+    -   **Examples**: examples of how to use the function
+
+::: callout-note
+### Exercise
+
+1.  Search and learn the usage of function "sum"
+2.  Insert a code block in your quarto file to compute the sum of vector 1:3
+:::
+
+## Collection of functions: Packages
+
+The base R already has many useful built-in functions to perform basic tasks, but as data scientists, we need more.
+
+To perform certain tasks (such as a machine learning model), we can definitely write our own code from scratch, but it takes lots of (unnecessary) effort. Fortunately, many packages have been written by others for us to directly use.
+
+-   Install the package using the built-in function `install.packages()`. R will download the package.
+
+```{r}
+install.packages('praise')
+
+```
+
+-   Load the packages using `library()`. Every time you restart the RStudio, packages need to be reloaded.
+
+```{r}
+library(praise)
+```
+
+-   Now that the package is loaded, you can use the functions in it. `praise()` is a function in the `praise` package.
+
+```{r}
+praise()
+```
+
+::: callout-tip
+## Tips
+
+Installation of a package is only needed for the first time. After installation, just need to reload the packages using library() every time your restart RStudio.
+:::
+
+## Comment codes
+
+You can put a `#` before any code, to indicate that any codes after the `#` on the same line are your comments, and will not be run by R.
+
+It's a good practice to often comment your codes, so that you can help the future you to remember what you were trying to achieve.
+
+```{r}
+# print("Support Wei for an iPhone 14 Pro!")
+
+# Below, x will be 1 rather than 1+1
+x <- 1 # +1
+
+```
+
+## Data structures
+
+Below are the complete list of objects in R.
+
+![](images/r_data_structures.png){#fig-R-datastructure alt="Visualization of data structures"}
 
 ## Data types
 
--   Numeric/Double (e.g. 2.5, 1/5, 1.0, etc.)
+To make the best of the R language, you'll need a strong understanding of the basic data types and data structures and how to operate on them. Data structures are very important to understand because these are the objects you will manipulate on a day-to-day basis in R.
+
+-   Numeric (e.g.,2.5)
+    -   We can use R as a calculator for numeric objects
 
 ```{r}
 # Numeric Vector 
-num2 <- c(1, 2, 3.4, 5, 5.9)
+num2 <- 2.5
+log(num2)
+num2^2
+exp(num2)
 ```
 
--   Complex (e.g. 1 + 2i, etc.)
+-   Logical (TRUE, FALSE)
+    -   `TRUE` is equivalent to 1 in R; `FALSE` is equivalent to 0.
 
 ```{r}
-# Complex
-com5 <- c(2+3i, 3+5i, 4+5i)
-```
-
--   Logical (e.g. TRUE, FALSE)
-
-```{r, include=T, echo=T}
-# Logical Vector 
-log4 <- c(TRUE, FALSE, FALSE, T, F) 
-
+log1 <- TRUE
+log2 <- FALSE
 ```
 
 -   Character (e.g. "Wei", "UCL", "1 + 1 = 3", "TRUE", etc.)
+    -   within a pair of quotation marks; single or double quotation marks can both work.
 
 ```{r}
-# Character Vector
-str1 <- c("R","Python","Java","Scala","Julia")
+str1 <- "1 + 1 = 2"
 ```
 
--   Factor ("male", "female", etc.); this is an important class for describing categories. We will discuss in more detail later in the module.
+-   Factor ("male", "female", etc.)
+    -   this is an important class for describing categories. We will discuss in more detail later in class when we learn linear regression.
 
 ```{r}
 country <- c('UK','Spain','Italy','Multiverse')
-
 factor(country)
 ```
 
-## Special data types: `NA`
-
-`NA` stands for missing values; this is a very tricky type that needs additional attention.
-
-```{r}
-missing <- c(1,NA,2,NA)
-```
-
--   The following will return `NA`, because we haven't told R how to deal with missing values
-
-```{r}
-mean(missing)
-```
-
--   If we tell R to remove missing values, we get what we want
-
-```{r}
-mean(missing,na.rm = T)
-```
-
-::: callout-important
-When cleaning data using `sum()`, `mean()`, `sd()`, etc., always put `na.rm = T` at the end !
-:::
-
--   Commonly used functions to check missing values
-
-```{r}
-# check missing values
-is.na(missing)
-
-anyNA(missing)
-
-sum(is.na(missing))
-```
-
-## Special data types: `Inf`
-
--   `Inf` is infinity. You can have either positive or negative infinity.
-
-```{r, include=T, echo=T}
-a <- c(1/0,1,2) #Inf
-a
-```
-
--   How to check for `Inf`
-
-```{r}
-is.infinite(a)
-```
-
--   However, `Inf` **is not** a missing value!!
-
-```{r}
-is.na(a)
-```
-
--   Therefore, if we take average, `na.rm = T` no longer works
-
-```{r}
-mean(a)
-mean(a, na.rm = T)
-```
-
-## Special data types: `NaN`
-
--   `NaN` means "Not a Number". It's an undefined value.
-
-```{r, include=T, echo=T}
-b <- c(0/0,1,2) #NaN
-b
-```
-
--   How to check for `NaN`
-
-```{r}
-is.nan(b)
-```
-
--   `NaN` **is** a missing value!
-
-```{r}
-is.na(b)
-```
-
--   Therefore, if we take average, `na.rm = T` works
-
-```{r}
-mean(b)
-mean(b,na.rm = T)
-```
-
-## Data type: check data type using class()
+## Check data types using class()
 
 We can use `class()` to check the type of an object in R.
 
-```{r, include=T, echo=T}
+```{r}
 
 a <- '1+1'
 class(a)
@@ -336,9 +433,13 @@ b <- 1+1
 class(b)
 ```
 
+This is very useful when we first load data from external databases, we need to make sure variables are of the correct data types.
+
 ## Data type: conversion
 
-Sometimes, data types of variables from raw data may not be what we want; we need to change the data type of a variable to the appropriate one, so that we can run some operations. See the following example:
+Sometimes, data types of variables from raw data may not be what we want; we need to change the data type of a variable to the appropriate one.
+
+See the following example:
 
 -   `a` is a string, and we cannot use mathematical operations on it, or R will report errors.
 
@@ -356,117 +457,33 @@ b <- as.numeric(a)
 class(b)
 ```
 
-## Data structures
-
-Previous slides discuss a single value, i.e., a scalar. When we deal with datasets, we will run into variables and data frames.
-
-![Visualization of data structures](images/r_data_structures.png){#fig-R-datastructure}
-
-# Data Frames
-
-## Data Frames: creating dataframe
-
-### Data Frames: create dataframe using data.frame()
-
--   Data Frame is the R object that we will deal with most of the time in the MSc program. You can think of `data.frame` as a spreadsheet in excel.
-
-```{r dataframe, include=T, echo=T}
-df <-  data.frame(id = 1:4,
-  name = c("David", "Yongdong", "Anil", "Wei"),
-  wage = rnorm(n=4, mean = 10^5, sd = 10^3), 
-  male = c(T, T, T, T)
-  )
-df
-```
-
--   Data frames can also be created from external sources, e.g., from a csv file or database.
-
-## Data Frames: Basics
-
--   Each row stands for an `observation`; each column stands for a `variable`.
-
--   Each column should have a **unique** name.
-
--   Each column must contain the same data type, but the different columns can store different data types.
-
-    -   compare with matrix?
-
--   Each column must be of same length, because rows have the same length across variables.
-
-## Data Frames: check dimensions and variable types
-
--   You can verify the size of the `data.frame` using the command `dim()`; or `nrow()` and `ncol()`
-
-```{r, include=T, echo=T}
-dim(df)
-nrow(df)
-ncol(df)
-```
-
--   You can get the data type info using the command `str()`
-
-```{r, include=T, echo=T}
-class(df)
-str(df)
-```
-
--   Get the variables names
-
-```{r}
-names(df)
-```
-
-## Data Frames: summary
-
--   Summarize the data frame
-
-```{r dataframe_subset2, include=T, echo=T}
-summary(df)
-```
-
-## Data Frames: subsetting
-
-Since a dataframe is essentially a matrix, all the subsetting syntax with matrices can be applied here.
-
-```{r dataframe_subset, include=T, echo=T}
-df$name # subset a column
-df[,c(2,3)] # can also subset like a matrix
-```
-
-We are interesting in the cylinders and the weights of inefficient cars (lower than 15 miles per gallon).
-
-```{r dataframe_subset_mtcars, include=T, echo=T}
-poll_cars <- mtcars[mtcars$mpg<15, c("cyl", "wt")] # remember to assign the generated dataframe to a new name
-poll_cars
-```
-
 # Vectors
 
-## Vectors: creating vectors
+## Creating vectors
 
 ### Creating vectors: c()
 
-Vector can be created using the command `c()`.
+Vector can be created using the function `c()` by listing all the values in the parenthesis, separated by comma ','.
 
-```{r vectors_base, include=T, echo=T}
+```{r}
 x <- c(1, 3, 5, 10)
 x
 class(x)
 ```
 
-Vectors must contain elements of the same data type. Otherwise, it will convert elements into the same type.
+Vectors must contain elements of the same data type. Otherwise, it will implicitly convert elements into the same type.
 
-```{r vectors_type, include=T, echo=T}
+```{r}
 x <- c(1, "intro", TRUE)
 
 class(x)
 ```
 
-### Creating vectors: length()
+### Checking the number of elements in a vector: length()
 
 You can measure the length of a **vector** using the command `length()`
 
-```{r vectors_length, include=T, echo=T}
+```{r}
 x <- c('R',' is', ' fun')
 length(x)
 
@@ -474,16 +491,9 @@ y <- c()
 length(y)
 ```
 
-### Creating vectors with patterns: seq() and rep()
+### Creating numeric sequences: seq() and rep()
 
-It is also possible to easily create sequences
-
--   manually use colon `:`
-
-```{r vectors_sequences, include=T, echo=T}
-
-1:10
-```
+It is also possible to easily create sequences with patterns
 
 -   use `seq()` to create sequence with fixed steps
 
@@ -492,45 +502,47 @@ It is also possible to easily create sequences
 seq(from = 1, to = 2, by = 0.1)
 ```
 
--   use `seq.Date()` to create a sequence of dates
+-   If step is 1, there's a simpler way using `:`
 
 ```{r}
-seq.Date(from = as.Date("2021-09-27"), 
-         to = as.Date("2021-10-01"), 
-         by = '1 days')
+1:5
 ```
 
--   use `rep()` to create repeated sequences
+-   use `rep()` to create repeated sequences.
 
 ```{r}
 # replication using rep()
-rep("A", times = 5)
+rep(c("A","B"), times = 5)
 ```
 
-### Creating vectors: combine vectors
+### Combine vectors
 
-You can use `c()` to combine different vectors; this is very commonly used when concatenating vectors.
+You can use `c()` to combine different vectors; this is very commonly used to concatenate vectors.
 
-```{r vectors_multiple, include=T, echo=T}
+```{r vectors_multiple}
 x <- 1:3 # from 1 to 3
 y <- c(10, 15) # 10 and 15
 z <- c(x,y) # x first and then y 
 z
 ```
 
-## Vectors: subsetting
+::: callout-note
+### Exercise
 
-We put the index of elements we would like to extract in a **square bracket**.
+Create a sequence of {1,1,2,2,3,3,3} using different methods.
+:::
 
-Note that Python uses different ways to index and subset vectors and matrices.
+## Indexing and subsetting
+
+We put the **index** of elements we would like to extract in a **square bracket `[ ]`**.[^5]
+
+[^5]: Note that Python uses different ways to index and subset vectors and matrices.
 
 -   Which element is in the second position?
 
-```{r vectors_subset, include=T, echo=T}
+```{r}
 x <- c(1,3,8,7) 
 x[2]
-
-
 ```
 
 -   What are the first 2 elements?
@@ -545,42 +557,93 @@ x[1:2]
 x[c(1,3,4)] 
 ```
 
-## Vectors: relational operations
+## Element-wise operations
 
--   We can compare a vector with a single scalar value
+R is a **vectorized** language, meaning by default it will do vector operation internally.
 
-```{r vectors_subset2, include=T, echo=T}
+-   If you operate on a vector with a single number, the operation will be applied to all elements in the vector
 
-x < 6 # is each element lower than 6?
-x == 10 # is the element equal to 10?
+```{r}
+x <- c(1,3,8,7)
+x+2
+x^2
+```
+
+::: callout-caution
+### Caveats
+
+When the length of vectors do not match, R will still do it for you without reporting error but a warning message. As you can see, even if the length of vectors does not match, R can still return an output but throws a warning message. It's important to check the warning messages when there is any!
+:::
+
+```{r}
+x <- c(1,3,8,7)
+
+y <- c(1,3,4) # careful!!! does not report error
+x + y
 
 ```
 
--   Find the position of elements that satisfy certain conditions: `which()`
+::: callout-note
+### Exercise
+
+Create a geometric sequence {2,4,8,16,32} using seq().
+:::
+
+## Relational operations
+
+-   We can compare a vector with a vector **of the same length**, which will do element-wise (element-by-element) comparison
+
+```{r}
+x <- c(1,3,8,7) 
+y <- c(2,3,7,8)
+x > y
+x == y
+
+```
+
+-   We can also compare a vector with a scalar, because R is vectorized
+
+```{r}
+x <- c(1,3,8,7) 
+x < 6 # is each element lower than 6?
+x == 10 # is the element equal to 10?
+```
+
+-   Return the positions of elements that satisfy certain conditions: `which()`
 
 ```{r}
 which(x == 8) # which element equals 8 
+
 which.max(x) # which is the max element 
+
 which.min(x)
 ```
 
 ::: callout-note
 ### Exercise
 
-Find the minimum value of vector `x`
+Find the minimum value of vector `x` using `which()`
 :::
 
--   Sometimes, we may need to operation on multiple relational operations. For instance, we may want to find out elements that are smaller than 7 **and** larger than 3.
+-   Sometimes, we may need to operation on multiple relational operations using `and` `or` `no`
+
+    ```{r}
+    T & F # and
+
+    T | F # or
+
+    !T # not
+    ```
+
+    -   For instance, we may want to find out elements that are smaller than 8 **and** larger than 3.
 
 ```{r}
-T & F # and
+  
 
-T | F # or
-
-!T # not
+which(x < 8 & x > 3 )
 ```
 
-## Vectors: `%in%`
+## Special relational operation: `%in%`
 
 -   A special relational operation is `%in%` in R, which tests whether an element exists in the object.
 
@@ -594,26 +657,10 @@ x <- c(1,3,8,7)
 
 ```
 
-## Vectors: elementwise operations
+# After-class exercise
 
-R is a **vectorized** language, meaning by default it will do vector operation internally.
+-   Datacamp [Introduction to R](https://app.datacamp.com/learn/courses/free-introduction-to-r), finish the following:
 
-```{r vectors_operations, include=T, echo=T}
-x <- c(1,3,8,7)
-x+2
-x-2
-x*2
-x^2
-```
+    -   Intro to basics
 
-::: callout-important
-When the length of vectors do not match, R will still do it for your without reporting error but a warning message. As you can see, even if the length of vectors does not match, R can still return an output. It's important to check the warning messages when there is any!
-:::
-
-```{r Caveat, include=T, echo=T}
-x <- c(1,3,8,7)
-
-y <- c(1,3,4) # careful!!! does not report error
-x + y
-
-```
+    -   Vectors

@@ -1,0 +1,149 @@
+---
+title: "Marketing Analytics in-Class Exercise Notebook"
+author: "Wei Miao"
+institute: UCL School of Management
+df-print: kable
+colorlinks: true
+code-line-numbers: true
+format:
+  html: 
+    toc: true
+    number-sections: true
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+---
+
+# Induction Week
+
+-   Create a sequence of {1,1,2,2,3,3,3} using different methods
+
+    -   using `c()`
+
+    -   using `rep()` and `c()`
+
+```{r}
+c(1,1,2,2,3,3,3)
+
+c(rep(1,2),rep(2,2),rep(3,3))
+
+```
+
+2.  Create a geometric sequence {2,4,8,16,32} using `seq()`.
+
+```{r}
+
+seq(from = 1, to = 5, by = 1)
+
+2 ^ seq(from = 1, to = 5, by = 1)
+```
+
+3.  Find the minimum value of vector x using `which()`
+
+```{r}
+x <- c(6,5,1,3,8)
+
+min(x)
+
+which(x == min(x))
+
+x[which(x == min(x))]
+
+```
+
+# Week 1
+
+## PineApple Case
+
+The marketing analytics team at Pinapple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach 10 million unit at the retail price of £600, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of Pineapple 14, which is 60%. The Research and Development (R&D) costs for PinePhone 14 is 100 million pounds.
+
+Based on the above information, we first translate the necessary background information into the following R objects.
+
+```{r}
+# translate the above information into R variables
+
+price <- 600 # retail price
+quantity <- 10 # sales 
+COGS <- 0.6 # cost of goods sold
+RD_costs <- 100 # operating and marketing costs
+endorsement_fee <- 50 # endorsement
+endorsement_sales_increase <- 0.025
+
+```
+
+### Question 1
+
+**Compute the contribution margin**
+
+```{r}
+# Create a variable called contribution_margin from price and COGS
+# Use variables but not the raw numbers. --- Why?
+
+contribution_margin <- (1 - COGS) * price
+contribution_margin
+```
+
+### Question 2
+
+**Based on the information at hand, should Tom approve the influencer marketing plan?**
+
+To decide whether Tom should approve the marketing plan, we need to conduct break-even analyses.
+
+The first step is to compute the break-even quantity, as shown in the following code
+
+```{r}
+BEQ <- endorsement_fee / contribution_margin
+BEQ
+```
+
+The second step is to compare if the BEQ is larger than the incremental sales from the campaign.
+
+BEQ is 0.208, which is smaller than incremental sales is `r quantity` \* `r endorsement_sales_increase`. Therefore, based on the above calculation, Tom should approve the influencer marketing campaign.
+
+### Question 3
+
+(Please follow the above example to finish both *authoring* and *R codes* for the NPV question)
+
+1.  Compute the sequence of monthly cash flows
+
+```{r}
+monthly_sales_increase_1stmonth <- 0.003
+monthly_sales_increase_after <- 0.002
+# incremental profit each month
+monthly_incremental_sales <- c(monthly_sales_increase_1stmonth,
+                     rep(monthly_sales_increase_after,11))
+
+CF <-  monthly_incremental_sales * 
+  quantity * 
+  contribution_margin 
+
+CF
+```
+
+2.  Compute the sequence of discount factors
+
+```{r}
+monthly_WACC <- 0.1/12 
+
+# Generate a sequence of discounted CFs for 12 months
+
+discount_factor <- (1/(1+monthly_WACC))^c(1:12)
+
+discount_factor
+```
+
+3.  Compute the NPV
+
+```{r}
+
+NetPresentValue <- sum(CF * discount_factor) - endorsement_fee
+
+NetPresentValue
+```

@@ -7,7 +7,6 @@ format:
     html:
       number-sections: true
       df-print: paged
-      self-contained: true
       page-layout: full
       toc-depth: 3
       code-line-numbers: false

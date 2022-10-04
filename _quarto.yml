@@ -15,25 +15,51 @@ website:
         contents:
           - syllabus.qmd
           - ClassPreparation.qmd
-          - LectureSlides.qmd
-          - R-InductionWeek.qmd
+          - href: ClassExercise.html
+            text: "In-Class Exercise Solutions"
+          - section: "Week 1"
+            contents: 
+              - href: Week1-Lecture1.html
+                text: "Class 1 Slides (HTML)"
+              - href: Week1-Lecture1.pdf
+                text: "Class 1 Slides (PDF)"
+              - href: Week1-Lecture2.html
+                text: "Class 2 Slides (HTML)"
+              - href: Week1-Lecture2.pdf
+                text: "Class 2 Slides (PDF)"
+              - href: Case-BreakEvenAnalysis.html
+                text: "Break-Even Analyses for PineApple Inc (HTML)"
+              - href: Case-BreakEvenAnalysis.pdf
+                text: "Break-Even Analyses for PineApple Inc (PDF)"
       - section: "R Tutorials"
         contents:
           - R-installR.qmd
-          - R-introductionR.qmd
+          - section: "R Basics Part I (Induction Week)"
+            contents: 
+              - R-InductionWeek.qmd
+              - href: R-InductionWeek.pdf
+                text: "pdf version"
+          - section: "R Basics Part II (Induction Week)"
+            contents: 
+              - R-InductionWeek-II.qmd
+              - href: R-InductionWeek-II.pdf
+                text: "pdf version"
           - R-errors.qmd
       - section: "Advanced R Tips"
         contents:
           - RTip-BLAS.qmd
+          
       
 format:
   html:
     theme: lumen
-    self-contained: true
-    self-contained-math: true
+    embed-resources: true
+    standalone: true
     css: styles.css
     toc: true
     number-sections: true
     df-print: paged
     toc-depth: 3
+execute: 
+  freeze: auto
 

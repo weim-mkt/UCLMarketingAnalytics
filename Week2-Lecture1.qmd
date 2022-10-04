@@ -1,0 +1,275 @@
+---
+author: Dr Wei Miao
+date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(1))|> format('%a, %b %d %Y')`"
+institute: UCL School of Management
+title: "Class 3 Customer Lifetime Social Value"
+df-print: kable
+colorlinks: true
+code-line-numbers: true
+format:
+  html: 
+    toc: true
+    number-sections: true
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+  beamer: 
+    toc: false
+    toc-title: ""
+    slide-level: 2
+    section-titles: true
+    theme: Frankfurt
+    colortheme: beaver
+    fonttheme: structurebold
+    navigation: horizontal
+    tbl-colwidths: auto
+    fontsize: 9pt
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  freeze: auto
+---
+
+# Case Study: CLSV
+
+## i-basket Case
+
+-   *\[...\] Consider the case of i-basket, an online grocery service.*
+    -   This case background can apply to any business context where customers buy regularly and the shopping basket is relatively stable.
+-   *\[...\] Management was thus keen to understand and quantify how social influence affects customer profitability, hoping to use this information to guide a number of strategic decisions.*
+    -   Customers may talk, so even a customer does not buy much, she may convert her friends/family members into customers
+-   *\[...\] The assembled team quickly realized that they should probably break down the valuation assignment at hand into assessing three key components: CLV, CSV, and CLSV*
+    -   We will see how to compute CLV in this case.
+    -   Optional after class: continue reading the CLSV part of the case study
+
+## i-basket Case: Step 1
+
+1.  Time unit of analysis
+
+-   *\[...\] Because the typical customer contract is renewed annually, all relevant variables will be measured on a yearly basis.*
+-   When should we use monthly analysis?
+    -   check customer shopping patterns for any within-year seasonality
+
+## i-basket Case: Step 2
+
+2.  $N$: the number of years over which the customer relationship is assessed
+
+-   *\[...\] i-basket typically used a five-year horizon for revenue and profitability calculations*
+
+```{r}
+N <- 5
+```
+
+## i-basket Case: Step 3
+
+3.  $g = M - c$: gross profit each year
+
+```{=html}
+<!-- -->
+```
+(1) *most customers paid the \$99 annual membership fee*
+(2) *40 times each year; each time \$100*
+(3) *profit margin 7% (COGS 93%)*
+(4) *variable delivery costs each order: \$8.5*
+
+## i-basket Case: Step 3
+
+```{r}
+membership <- 99; n_visit <- 40; 
+revenue_each_visit <- 100; profit_margin <- 0.07
+
+M <- membership + n_visit * revenue_each_visit * profit_margin; M
+
+deliverycost_each_visit <- 5 + 100 * 0.035
+c <- deliverycost_each_visit * n_visit; c
+
+annual_profit <- M - c
+profit_seq <- rep(annual_profit,N); profit_seq
+
+```
+
+## i-basket Case: Step 4
+
+4.  $r$: retention rate
+
+-   *\[...\] i-basket examined the proportion of customers who renewed their membership from one year to the next (using an average across three years). This proportion was 0.7*
+
+```{r}
+retention_rate <- 0.7
+retention_seq <- retention_rate ^ (seq(1,N) - 1)
+round(retention_seq,2)
+```
+
+## i-basket Case: Step 5
+
+5.  $d$: the discount rate
+
+-   *\[...\] A yearly discount rate of 10%*
+
+```{r}
+discount_factor <- 0.1
+discount_factor_seq <- (1 / (1+discount_factor)) ^ (seq(1,N))
+discount_factor_seq
+```
+
+-   *\[...\] The team decided to take a conservative approach whereby all profits are booked at the end of year*.
+    -   All profits earned per customer in year 1 need to be discounted once, the profits earned in year 2 need to be discounted twice, and so on
+
+## i-basket Case: Step 6
+
+6.  CAC = total costs for customer ad clicks + total costs of \$15 promo + total costs of free deliveries
+
+## i-basket Case: Step 6
+
+\small
+
+(1) **total costs for customer clicks**
+
+-   *\[...\] 20% of those that signed up for the free trial ended up becoming members*
+-   *\[...\] a fifth of those who clicked on an ad were willing to give the service a try*
+
+```{r}
+conversion_rate <- 0.2; click_through_rate <- 0.2
+```
+
+-   How many customers need to click the ad to get 1 new customer?
+
+```{r}
+n_clicks <- 1/click_through_rate/conversion_rate
+
+```
+
+-   Total costs for customer clicks
+
+```{r}
+total_cost_clicks <- 0.4 * n_clicks
+total_cost_clicks
+```
+
+## i-basket Case: Step 6
+
+\small
+
+(2) **total costs of \$15 promo for first order each trier customer**
+
+-   How many customers need to try the service to get 1 new customer?
+
+```{r}
+n_triers <- 1/conversion_rate
+
+```
+
+-   What is the total promo cost for these trier customers' first order?
+
+```{r}
+promo_first_order_each_trier <- 15
+total_cost_promo <- round(promo_first_order_each_trier *  
+                            (1 - profit_margin) * 
+                            n_triers )
+total_cost_promo
+```
+
+## i-basket Case: Step 6
+
+\small
+
+(3) **total costs from free deliveries**
+
+-   Assume two visits, the delivery costs for each visit
+
+```{r}
+deliverycost_1st <- 5 + 115 * 0.035
+deliverycost_2nd <- 5 + 100 * 0.035
+deliverycost_each_trier <- deliverycost_1st + deliverycost_2nd
+```
+
+-   We also make a profit each trier
+
+```{r}
+profit_each_trier <-  revenue_each_visit * profit_margin * 2
+```
+
+## i-basket Case: Step 6
+
+-   Net delivery costs each trier
+
+```{r}
+
+NetDeliveryCost_each_trier<-deliverycost_each_trier - profit_each_trier
+
+total_cost_delivery <- round(NetDeliveryCost_each_trier,1) * n_triers
+
+total_cost_delivery
+```
+
+## i-basket Case: Step 6
+
+(4) **CAC**
+
+```{r}
+CAC <- total_cost_clicks + 
+  total_cost_promo + 
+  total_cost_delivery
+CAC
+```
+
+## i-basket Case: Step 7
+
+7.  Compute the CLV based on the CLV formula (Table A)
+
+```{=html}
+<!-- -->
+```
+(1) Revenues, variables costs, and profit for the next 5 years
+
+```{r}
+profit_seq
+```
+
+(2) Apply retention rate
+
+```{r}
+profit_seq_after_churn <- profit_seq * retention_seq
+round(profit_seq_after_churn)
+```
+
+## i-basket Case: Step 7
+
+(3) Apply discount factor
+
+```{r}
+profit_seq_after_churn_discount<- 
+  round(profit_seq_after_churn * discount_factor_seq,1)
+
+profit_seq_after_churn_discount
+```
+
+(4) Compute CLV by summing up future expected profits
+
+```{r}
+sum(profit_seq_after_churn_discount)
+sum(profit_seq_after_churn_discount) - CAC
+```
+
+# CLV for Marketing Decisions
+
+## CLV as a Key Management Tool
+
+```{r, echo=FALSE,out.width="100%", fig.align='center'}
+knitr::include_graphics(path = "images/class3_CLVAsDecisionTool.png")
+```
+
+**We can use CLV as the key managerial tool for evaluating different marketing initiatives!**
+
+## After-class Exercise
+
+Assume the company has 10,000 customers at this moment.
+
+1.  How much annual membership fee should the company charge to break even?
+
+2.  The company is looking to develop a personalized recommendation system that can increase the average shopping basket to \$150. Compute the upper bound for the company's investment in developing the algorithm in order to break even?
