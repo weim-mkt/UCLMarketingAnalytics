@@ -33,7 +33,7 @@ knitr:
     message: true
     error: true
 execute: 
-  freeze: auto
+  freeze: true
 ---
 
 # Module Overview
@@ -80,7 +80,8 @@ My industrial collaborations include:
 ## Lecture Notes and How to Prepare
 
 -   I'm updating my Lecture notes every year to keep up with the latest development in marketing analytics. So lecture notes will be released each week before the Thursday lecture (I will aim for Tuesday).
-    -   PDF version includes the slides you see now; html version additionally includes the solution R codes for in-class questions.
+    -   PDF version includes the slides you see now
+    -   html version additionally includes the solution R codes for in-class questions
 -   For each class, there may be **pre-class preparation** needed
     -   If so, materials will be pre-posted under each week's Moodle section with instructions
     -   These are **mandatory**, usually involves reading case studies necessary for class discussion
@@ -100,7 +101,7 @@ My industrial collaborations include:
 
 ## Still Have Questions? Use Office Hours
 
--   Office hour sessions will be hosted on **MS Teams** each Friday 1 pm - 2:30 pm.
+-   Office hour sessions will be hosted on **MS Teams** each Tuesday and Friday.
 
 -   The links to book office hours are below (also under Moodle's "`Module Overview`" Section for easier access)
 
@@ -193,6 +194,8 @@ include_graphics('images/T4.jpeg')
 
 ## What is Marketing? A Word Cloud Approach
 
+\[[link to code](https://weim-mkt.github.io/UCLMarketingAnalytics/Week1-Lecture1.html)\]
+
 ```{r}
 #| echo: false
 #| message: false
@@ -269,7 +272,7 @@ wordcloud(words = df$words, freq = df$freq,
 
 ![Marketing Process](images/MarketingProcess.png){#marketingprocess fig-align="center" width="399"}
 
--   We will go through the above concepts quickly in the case of Uber. You'll later have a group discussion for Airbnb.
+-   We will go through the above concepts quickly in the case of Uber. We will later have a group discussion for Airbnb.
 
 ## Situation Analysis: 5 C's
 

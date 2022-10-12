@@ -15,8 +15,6 @@ website:
         contents:
           - syllabus.qmd
           - ClassPreparation.qmd
-          - href: ClassExercise.html
-            text: "In-Class Exercise Solutions"
           - section: "Week 1"
             contents: 
               - href: Week1-Lecture1.html
@@ -31,6 +29,20 @@ website:
                 text: "Break-Even Analyses for PineApple Inc (HTML)"
               - href: Case-BreakEvenAnalysis.pdf
                 text: "Break-Even Analyses for PineApple Inc (PDF)"
+              - href: ClassExercise.html
+                text: "In-Class Exercise Solutions"
+          - section: "Week 2"
+            contents: 
+              - href: Week2-Lecture1.html
+                text: "Class 3 Slides (HTML)"
+              - href: Week2-Lecture1.pdf
+                text: "Class 3 Slides (PDF)"
+              - href: Week2-Lecture2.html
+                text: "Class 4 Slides (HTML)"
+              - href: Week2-Lecture2.pdf
+                text: "Class 4 Slides (PDF)"
+              - href: CLSV-Case.html
+                text: "CLSV Solutions"
       - section: "R Tutorials"
         contents:
           - R-installR.qmd
@@ -48,8 +60,6 @@ website:
       - section: "Advanced R Tips"
         contents:
           - RTip-BLAS.qmd
-          
-      
 format:
   html:
     theme: lumen

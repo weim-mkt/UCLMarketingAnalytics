@@ -124,7 +124,21 @@ All materials, including the lecture slides and before-class readings will be re
 ### Pre-class preparation
 
 -   HBS 9-518-077: Customer Lifetime Social Value (CLSV).
-    -   Please carefully read the case background before class; we will be discussing the case in class
+    -   In the first class this week, we will go through how to compute the customer lifetime value for i-basket in this case study. We will only discuss the CLV calculation part and you can finish the CLSV as an after-class exercise. **Please read pages 1 - 8, focusing on pages 5 - 8.**
+
+    -   When reading the case, please fill in the table at the beginning of the quarto document to find out all key information, including the variable, the value, and the page where it shows up. This can help you quickly find that information in class.
+
+    -   Prepare for the following questions, which we will discuss in class.
+
+        1.  What would be the time unit of analyses? monthly or yearly? How many years of customer lifetime to consider for CLV calculation?
+
+        2.  What is the information needed to calculate the net cashflow of a customer in each period? Where can you find the M and c in the CLV formula? Highlight these key numbers so that we can create them in R directly. 
+
+        3.  How do we incorporate customer churn in CLV calculation?
+
+        4.  What are the costs i-basket needs to incur to acquire a customer? Based on this information, how to compute the customer acquisition costs (CAC)?
+
+        5.  Can you figure out how to compute CLV with R before class? You can try your best to use what we have learned in Week 1 to compute the CLV for i-basket on your own with R. The exercise qmd file is already given.
 :::
 
 -   What you will learn
@@ -137,7 +151,10 @@ All materials, including the lecture slides and before-class readings will be re
 ## Data Wrangling with R: Part I
 
 -   What you will learn
-    -   How to use `filter`, `select`, `mutate`, and `arrange` for data manipulation with `dplyr` package in R
+    -   Process of a typical data analytics task
+
+    -   How to use `filter`, `mutate`, and `arrange` for data manipulation with `dplyr` package in R
+
 -   After-class reading
     -   (essential) Finish the practice exercise on data camp: [Data Manipulation with dplyr: 1.Transforming Data with dplyr](https://app.datacamp.com/learn/courses/data-manipulation-with-dplyr)
     -   (essential) [Cheatsheet for `dplyr`](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)

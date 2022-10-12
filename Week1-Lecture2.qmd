@@ -33,7 +33,7 @@ knitr:
     message: true
     error: true
 execute: 
-  freeze: auto
+  freeze: true
 ---
 
 # Overview
@@ -344,14 +344,15 @@ Customer lifetime value (CLV or LTV) is the total worth to a business of a custo
 ## CLV: Calculation
 
 $$
-\mathrm{CLV} =\sum_{t=1}^{N} \frac{\left(M_{t}-c_{t}\right) r^{(t-1)}}{(1+d)^{t}} - CAC
+\mathrm{CLV} = - CAC + \sum_{t=1}^{N} \frac{CF_t * r^{(t-1)}}{(1+k)^{t}},
+where \space CF_t = M_t - c_t
 $$
 
 -   $r$ is the average annual retention rate; $r^{(t-1)}$ is the cumulative retention rate in year $t$
 -   $N$ is the number of years over which the relationship is calculated
 -   $M_{t}$ is the margin the customer generates in year $t$
 -   $c_{t}$ is the expected cost of marketing communications or promotions targeted to the customer in year $t$
--   $d$ is the rate for discounting future cash flows
+-   $k$ is the rate for discounting future cash flows
 
 ## Retention Rate
 
@@ -370,8 +371,8 @@ The churn rate, also known as the rate of attrition or customer churn, is the ra
 -   If we assume **infinite** customer economic life, we can simplify the formula into the following using the property of geometric sequence.
 
 $$
-C L V_{N} = \sum_{t=1}^{N} \frac{g r^{(t-1)}}{(1+d)^{t}} => C L V_{N}=\mathrm{g} \cdot \frac{1-\left(\frac{r}{1+d}\right)^{N}}{1+d-r}  => 
-C L V_{\infty}=\frac{g}{(1+d-r)}
+C L V_{N} = \sum_{t=1}^{N} \frac{g r^{(t-1)}}{(1+k)^{t}} => C L V_{N}=\mathrm{g} \cdot \frac{1-\left(\frac{r}{1+k}\right)^{N}}{1+k-r}  => 
+C L V_{\infty}=\frac{g}{(1+k-r)}
 $$
 
 -   However, most of the time, we are more comfortable to assume **finite** customer economic life; we need to decide on a cutoff date for CLV calculation

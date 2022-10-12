@@ -15,7 +15,7 @@ date: "`r (lubridate::ymd('20220927'))|> format('%a, %d %b %Y')`"
 
     -   Rafael Machado Molina, [rafael.molina.21\@ucl.ac.uk](mailto:rafael.molina.21@ucl.ac.uk) (UCL MSc BA 2022)
     -   Shuyue Wang, [uceis09\@ucl.ac.uk](mailto:uceis09@ucl.ac.uk) (UCL MSc BA 2021)
-    -   Kayi Yeung,[ka.yeung.21\@ucl.ac.uk](mailto:ka.yeung.21@ucl.ac.uk) (UCL MSc BA 2022)
+    -   Kayi Yeung, [ka.yeung.21\@ucl.ac.uk](mailto:ka.yeung.21@ucl.ac.uk) (UCL MSc BA 2022)
 
 -   Office hours: See Moodle for the links to book an office hour session with Wei (for lecture contents) and TAs (for R programming)
 
