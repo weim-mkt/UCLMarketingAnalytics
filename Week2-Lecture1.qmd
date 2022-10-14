@@ -59,7 +59,7 @@ library(knitr)
 
 -   The core idea of a break-even analysis is to compare the benefit with the cost
 
-    -  BEA is sometimes called cost-benefit analysis.
+    -   BEA is sometimes called cost-benefit analysis.
 
 ## Break-Even Quantity
 
@@ -69,7 +69,7 @@ library(knitr)
 
 ## Break-Even Quantity Formula
 
--   [Contribution margin per unit](https://www.investopedia.com/terms/c/contributionmargin.asp) = Price Per Unit - Variable Costs Per Unit
+-   [Contribution Margin Per Unit](https://www.investopedia.com/terms/c/contributionmargin.asp) = Price Per Unit - Variable Costs Per Unit
 
     -   Measures how much money each additional sale "contributes" to the company's total profits.
 
@@ -79,7 +79,7 @@ library(knitr)
 
 <!-- -->
 
--   Break-even quantity = Marketing Expenditure / Contribution Margin Per Unit
+-   Break-Even Quantity = Marketing Expenditure / Contribution Margin Per Unit
 
 -   Compare BEQ with estimated **incremental** sales to finish break-even analyses
 
@@ -256,7 +256,7 @@ vector_CF
 
 \normalsize
 
--   **Interpretation**: 7.2 means that, the first month incremental sales units would be 7.2 million pounds.
+-   **Interpretation**: 7.2 means that, the first month incremental net profits would be 7.2 million pounds.
 
 ## PineApple NPV: Step 2
 
@@ -306,7 +306,7 @@ sum(vector_CF * vector_discount_factor)
 
 \normalsize
 
--   We need to subtract the endorsement fee, which is the marketing expense, to get the next present value
+-   We need to subtract the endorsement fee, which is the marketing expense, to get the net present value
 
 \footnotesize
 
@@ -325,7 +325,7 @@ NPV
 
     -   customer generates profits for the company in each period
 
-    -   Customer churn
+    -   customer churns at some point in time
 
 ![](images/CustomerLifeCycle.png){fig-align="center" width="300"}
 
@@ -515,11 +515,11 @@ discount_factor_seq <-
 
 ```{r}
 #| eval: false
-# click through rate is the % of clicking customer who see the ads
-click_through_rate <- 0.2
+# click_to_trier_rate is the % of trier customers from clickers
+click_to_trier_rate <- 0.2
 
-# conversion rate is the % of purchasing customer who clicked
-conversion_rate <- 0.2
+# trier_to_buyer_rate is the % of final customer from trier customers
+trier_to_buyer_rate <- 0.2
 ```
 
 \normalsize
@@ -530,7 +530,7 @@ conversion_rate <- 0.2
 
 ```{r}
 #| eval: false
-n_clicks_1newcustomer <- 1/click_through_rate/conversion_rate
+n_clicks_1newcustomer <- 1/click_to_trier_rate/trier_to_buyer_rate
 ```
 
 \normalsize
