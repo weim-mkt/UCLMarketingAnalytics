@@ -43,6 +43,18 @@ website:
                 text: "Class 4 Slides (PDF)"
               - href: CLSV-Case.html
                 text: "CLSV Solutions"
+          - section: "Week 3"
+            contents: 
+              - href: Week3-Lecture1.html
+                text: "Class 5 Slides (HTML)"
+              - href: Week3-Lecture1.pdf
+                text: "Class 5 Slides (PDF)"
+              - href: Week3-Lecture2.html
+                text: "Class 6 Slides (HTML)"
+              - href: Week3-Lecture2.pdf
+                text: "Class 6 Slides (PDF)"
+              - href: Case-PreliminaryCustomerAnalysis-stu.pdf
+                text: "Preliminary Customer Analyses"  
       - section: "R Tutorials"
         contents:
           - R-installR.qmd

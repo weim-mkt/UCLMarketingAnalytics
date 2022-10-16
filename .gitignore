@@ -10,3 +10,6 @@ _site/
 */execute-results/
 _freeze/
 *_cache/
+*/figure-latex/
+*/figure-beamer/
+*/figure-html/

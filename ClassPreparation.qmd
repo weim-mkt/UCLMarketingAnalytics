@@ -154,7 +154,6 @@ All materials, including the lecture slides and before-class readings will be re
     -   Process of a typical data analytics task
 
     -   How to use `filter`, `mutate`, and `arrange` for data manipulation with `dplyr` package in R
-
 -   After-class reading
     -   (essential) Finish the practice exercise on data camp: [Data Manipulation with dplyr: 1.Transforming Data with dplyr](https://app.datacamp.com/learn/courses/data-manipulation-with-dplyr)
     -   (essential) [Cheatsheet for `dplyr`](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
@@ -167,6 +166,11 @@ All materials, including the lecture slides and before-class readings will be re
 ::: callout-important
 ### Pre-class preparation
 
+-   Read the variable description of `mtcars` [here](https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars)
+
+```{=html}
+<!-- -->
+```
 -   Case Study: Preliminary Customer Analysis
     -   Please carefully read the case background before class; we will be discussing the case in class
 :::
@@ -176,6 +180,7 @@ All materials, including the lecture slides and before-class readings will be re
     -   How to use `dplyr` to conduct preliminary customer analyses
 -   After-class reading
     -   (essential) Finish the practice exercise on data camp: [Data Manipulation with dplyr: 2.Aggregating Data](https://app.datacamp.com/learn/courses/data-manipulation-with-dplyr)
+    -   (optional) Go through the [tutorial](https://vincentarelbundock.github.io/modelsummary/articles/datasummary.html) of `modelsummary` package to learn more features
 
 ## Predictive Analytics: Unsupervised Learning
 
@@ -183,6 +188,8 @@ All materials, including the lecture slides and before-class readings will be re
     -   Important concepts in predictive analytics
     -   Concept of unsupervised learning
     -   How to run K-means clustering in R
+-   After-class reading
+    -   (recommended) [K-means Cluster Analysis](https://uc-r.github.io/kmeans_clustering), which provides more details on the maths behind the K-means clustering
 
 # Week 4: Predictive Analytics for Customer Targeting
 
