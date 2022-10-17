@@ -153,11 +153,11 @@ mtcars %>%
 ```
 :::
 
--   A new column is added to the original dataset, the value of which is from group-by aggregation.
+-   A new column is added to the original dataset, the value of which is from the group-by aggregation.
 
-## Consolidate Multiple Databases
+## Consolidate Multiple Data Frames
 
--   When consolidating databases, we usually have 4 types of dataset joining/merging/consolidation
+-   When consolidating multiple data frames, we usually have 4 types of joining methods
 
 ![](images/class4_DataJoin.png){fig-align="center" width="250"}
 
@@ -242,9 +242,11 @@ df_right %>%
 
     -   Some statistical techniques only work with one type of variable
 
--   The same variable can be
+-   We need to make sure the variables are of the correct data types. Or we may need to convert them to the correct types.
 
-## Missing Values 
+    -   e.g., from character to date time using [`lubridate`](https://lubridate.tidyverse.org) package
+
+## Missing Values
 
 -   In R, missing values are represented by the symbol `NA` (i.e., *not available*).
 
@@ -268,7 +270,7 @@ df_right %>%
 
 ## Two Major Tasks of Descriptive Analytics
 
-1.  **Describe data depending on your business purpose**
+1.  **Describe data depending on your business purposes**
 
     -   "How much do our customers spend each month on average?"
 
@@ -291,11 +293,13 @@ df_right %>%
 -   In descriptive analytics, **summary statistics** are used to summarize a set of observations, in order to communicate the largest amount of information as simply as possible.
 
 -   There are two main types of summary statistics used in evaluation: **measures of central tendency** and **measures of dispersion**.
+
     -   Measures of central tendency provide different versions of the average, including the mean, the median, 25 percentile, 75 percentile, the mode, etc.
 
     -   Measures of dispersion provide information about how much variation there is in the data, including the range and the standard deviation.
 
 -   It's good to include summary statistics table in your dissertation before any statistical analysis!
+
     -   Commonly reported summary statistics include *mean*, *standard deviation*, *number of observations*, *min*, *25 percentile*, *median*, *75 percentile*, and *max*.
 
     -   Then describe the distribution of the variable, dispersion of the variable, etc.
@@ -353,7 +357,7 @@ mtcars %>%
 
 -   Spend 30 min-ish to work on the case study in a group.
 
--   There are 7 questions in total. At the end of the discussion, each group selects a group leader to answer one question
+-   There are 7 questions in total. At the end of the discussion, each group selects a group leader to answer one question.
 
 -   To show your codes, join the Zoom link under "Module Overview" on Moodle.
 

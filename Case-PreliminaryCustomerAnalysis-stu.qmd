@@ -1,5 +1,5 @@
 ---
-title: "Descriptive Analytics: Preliminary Customer Analysis"
+title: "Descriptive Analytics: Preliminary Customer Analysis^[This case was prepared by Dr. Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised to assure confidentiality. Please do not circulate without permission.]"
 author: Dr Wei Miao
 subtitle: "MSIN0094 Case Study"
 institute: UCL School of Management
@@ -23,7 +23,7 @@ format:
     linestretch: 1.25
 knitr:
   opts_chunk:
-    echo: true
+    echo: false
     eval: false
     warning: false
     message: false
@@ -39,22 +39,7 @@ The amount of data created worldwide has been increasing exponentially over the 
 
 By identifying patterns and trends in massive amounts of data, business analytics enables organizations to make better decisions and improve performance. Descriptive analytics is the simplest and most widely used type of analytics; it is used to generate key performance indicators (KPIs) and metrics for business reports and dashboards. The latest research shows that, even with the adoption of very simple descriptive analytics, businesses can improve their performance by a large extent --- Berman and Israeli (2022)[^1] use the synthetic difference-in-differences method to analyze the staggered adoption of a retail analytics dashboard by more than 1,500 e-commerce websites,[^2] and find an increase of 4%--10% in average weekly revenues postadoption. The increase in revenue is not explained by price changes or advertising optimization. Instead, it is consistent with the addition of customer relationship management, personalization, and prospecting technologies to retailer websites. The adoption and usage of descriptive analytics also increases the diversity of products sold, the number of transactions, the numbers of website visitors and unique customers, and the revenue from repeat customers. These findings are consistent with a complementary effect of descriptive analytics that serve as a monitoring device that helps retailers control additional martech tools and amplify their value. Without using the descriptive dashboard, retailers are unable to reap the benefits associated with these technologies.
 
-[^1]: 
-
-    	
-    		
-    		
-    	
-    	
-    		
-
-    			
-    				
-    					
-
-    Berman, Ron, and Ayelet Israeli. 2022. \"The Value of Descriptive Analytics: Evidence from Online Retailers.\"
-    Marketing Science, March, mksc.2022.1352. https://doi.org/10.1287/mksc.2022.1352.
-    	
+[^1]: Berman, Ron, and Ayelet Israeli. 2022. "The Value of Descriptive Analytics: Evidence from Online Retailers." Marketing Science, March, mksc.2022.1352. https://doi.org/10.1287/mksc.2022.1352.
 
 [^2]: We will cover the difference-in-differences technique to establish causal inference later in the module.
 
@@ -76,7 +61,7 @@ Demographics define the qualities of clients. To be successful, business owners 
 
 The following demographic information is usually of interest to business managers:
 
-*Age*: Consumer behavior is strongly influenced by age. Younger consumers are more affluent and willing to spend more on entertainment, fashion, and movies. Seniors spend less on these items; they are less active, spend more time indoors, and require more medical treatment. Additionally, market segments can be defined by age groups. For instance, digital devices such as iPhones are targeted more towards millennials than at seniors. While older adults are increasingly utilizing technology, they remain less digitally savvy than millennials and purchase less digital products.
+*Age*: Consumer behavior is strongly influenced by age. Younger consumers are more affluent and willing to spend more on entertainment, fashion, and movies. Seniors spend less on these items; they are less active, spend more time indoors, and require more medical treatment. Additionally, market segments can be defined by age groups. For instance, digital devices such as iPhones are targeted more towards millennials than at seniors. While older adults are increasingly utilizing technology, they remain less digitally savvy than millennials and purchase fewer digital products.
 
 *Gender*: Gender also matters. Males and females have vastly diverse demands and tastes, which influence their purchasing decisions. As a result, some products are created with a specific gender in mind. Macy's, Nordstrom, and The Gap all have departments dedicated to teenage girls' clothes, while Seiko has a specific line of diver watches for men only.
 
@@ -84,7 +69,7 @@ The following demographic information is usually of interest to business manager
 
 *Education*: Consumers' level of education has an effect on their impressions of the world around them and on the amount of research they conduct prior to making a purchase. Individuals with a higher level of education will spend more time educating themselves before investing their money. Education has an impact on fashion, film, and television programming. Consumers with a higher level of education can be more distrustful of commercials and the facts offered.
 
-Tesco has collected rich customer demographic information through its loyalty program, Tesco Clubcard membership. In the demograhpics.csv dataset, the data scientist team have the following demographic variables:
+Tesco has collected rich customer demographic information through its loyalty program, Tesco Clubcard membership. In the demograhpics.csv dataset, the data scientist team has the following demographic variables:
 
 -   ID: Customer's unique identifier
 -   Year_Birth: Customer's birth year
@@ -122,7 +107,7 @@ Tesco's data engineering team has assembled a cross-sectional customer purchase 
 
 ## Data Loading
 
-To work on datasets, we first need to load the raw data into R. The demographic information data are stored as csv files. In R, we can use read.csv(filepath) to load the data into R environment.
+To work on the datasets, we first need to load the raw data into R. The demographic information data are stored as csv files. In R, we can use read.csv(filepath) to load the data into R environment.
 
 For your convenience, I have stored the `demographic.csv` and purchase.csv files on my Dropbox. We can directly feed the url links to `read.csv()` to download and create the dataset.
 
@@ -193,7 +178,7 @@ data_full_full_join <-
 
 -   *Tasks*: Are there any missing values in the data?
 
-    -   tip: use `datasummary_skim()`, which report the number of missing values
+    -   tip: use `datasummary_skim()`, which reports the number of missing values
 
 ```{r}
 
@@ -227,7 +212,7 @@ Descriptive analytics is concerned with summarizing and highlighting patterns in
 
 Your task is to 'get to know' the data by conducting some statistical analysis using Tesco's customer database.
 
-1.  Provide the summary statistics of the cleaned data. From summary statistics, do you already see any insights? (open question; from central tendency and disperion perspectives)
+1.  Provide the summary statistics of the cleaned data. From summary statistics, do you already see any insights? (open question; from central tendency and dispersion perspectives)
 
 ```{r}
 
@@ -241,7 +226,7 @@ Your task is to 'get to know' the data by conducting some statistical analysis u
 
 ```
 
-3.  Which education group account for the largest percentage of customers? Answering this question using `dplyr` only.
+3.  Which education group accounts for the largest percentage of customers? Answering this question using `dplyr` only.
     -   tip: in dplyr, there is a function called `n()`, which counts the number of rows in the group after `group_by()`
 
 ```{r}

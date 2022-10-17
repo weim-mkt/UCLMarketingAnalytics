@@ -15,44 +15,44 @@ website:
         contents:
           - syllabus.qmd
           - ClassPreparation.qmd
-          - section: "Week 1"
+          - section: "[Week 1] Marketing Process and Break-Even Analyses"
             contents: 
               - href: Week1-Lecture1.html
-                text: "Class 1 Slides (HTML)"
+                text: "Class 1 Intro to Marketing (HTML)"
               - href: Week1-Lecture1.pdf
-                text: "Class 1 Slides (PDF)"
+                text: "Class 1 Intro to Marketing (PDF)"
               - href: Week1-Lecture2.html
-                text: "Class 2 Slides (HTML)"
+                text: "Class 2 Break-Even Analyses (HTML)"
               - href: Week1-Lecture2.pdf
-                text: "Class 2 Slides (PDF)"
+                text: "Class 2 Break-Even Analyses (PDF)"
               - href: Case-BreakEvenAnalysis.html
                 text: "Break-Even Analyses for PineApple Inc (HTML)"
               - href: Case-BreakEvenAnalysis.pdf
                 text: "Break-Even Analyses for PineApple Inc (PDF)"
               - href: ClassExercise.html
                 text: "In-Class Exercise Solutions"
-          - section: "Week 2"
+          - section: "[Week 2] Customer Lifetime Value and Data Wrangling with R"
             contents: 
               - href: Week2-Lecture1.html
-                text: "Class 3 Slides (HTML)"
+                text: "Class 3 Customer Lifetime Value Case Study (HTML)"
               - href: Week2-Lecture1.pdf
-                text: "Class 3 Slides (PDF)"
+                text: "Class 3 Customer Lifetime Value Case Study (PDF)"
               - href: Week2-Lecture2.html
-                text: "Class 4 Slides (HTML)"
+                text: "Class 4 Data Wrangling with R I (HTML)"
               - href: Week2-Lecture2.pdf
-                text: "Class 4 Slides (PDF)"
+                text: "Class 4 Data Wrangling with R I (PDF)"
               - href: CLSV-Case.html
                 text: "CLSV Solutions"
-          - section: "Week 3"
+          - section: "[Week 3] Unsupervised Learning and Customer Segmentation"
             contents: 
               - href: Week3-Lecture1.html
-                text: "Class 5 Slides (HTML)"
+                text: "Class 5 Data Wrangling with R II  (HTML)"
               - href: Week3-Lecture1.pdf
-                text: "Class 5 Slides (PDF)"
+                text: "Class 5 Data Wrangling with R II (PDF)"
               - href: Week3-Lecture2.html
-                text: "Class 6 Slides (HTML)"
+                text: "Class 6 Clustering for Customer Segmentation (HTML)"
               - href: Week3-Lecture2.pdf
-                text: "Class 6 Slides (PDF)"
+                text: "Class 6 Clustering for Customer Segmentation (PDF)"
               - href: Case-PreliminaryCustomerAnalysis-stu.pdf
                 text: "Preliminary Customer Analyses"  
       - section: "R Tutorials"

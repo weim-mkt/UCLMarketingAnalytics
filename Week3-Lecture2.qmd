@@ -87,7 +87,7 @@ Segmentation is the process of dividing customers into meaningful groups based o
 
 ## Conventional Ways for Customer Segmentation
 
--   **Customer value segmentation** is for targeting decisions based on customers' potential longterm financial and strategic value to your company.
+-   **Customer value segmentation** is for targeting decisions based on customers' potential long-term financial and strategic value to your company.
 
 -   **Benefit segmentation** is for positioning and marketing mix design on the basis of customer and consumer goals or usage, the needs, wants, problems and the trade-offs they are willing to make across benefits (e.g., price vs. quality).
 
@@ -95,7 +95,7 @@ Segmentation is the process of dividing customers into meaningful groups based o
 
 -   **Demographic segmentation** uses variables such as age, gender, income, family life cycle, educational qualification, socio-economic status, religion, company size and income, etc. These serve as proxies for goals, preferences or psychographics, as well as to characterize segments for marketing mix decisions.
 
-Conventional segmentation methods require heavy human judgments. A more sensible more is to "let the data speak".
+Conventional segmentation methods require heavy human judgments. A more sensible way is to "let the data speak".
 
 ## Commonly Used Clustering Algorithms
 
@@ -106,7 +106,9 @@ Conventional segmentation methods require heavy human judgments. A more sensible
 
 ## K-Means Clustering
 
-K-means clustering is the most commonly used unsupervised machine learning algorithm for partitioning a given data set into a set of *k* groups (i.e. *k* clusters), where *k* represents the number of groups pre-specified by the analyst. It classifies customers into multiple segments (i.e., clusters), such that customers within the same cluster are as similar as possible, whereas customers from different clusters are as dissimilar as possible. 
+K-means clustering is one of the most commonly used unsupervised machine learning algorithms for partitioning a given data set into a set of *k* groups (i.e. *k* clusters), where *k* represents the number of groups pre-specified by the analyst.
+
+It can classify customers into multiple segments (i.e., clusters), such that customers within the same cluster are as similar as possible, whereas customers from different clusters are as dissimilar as possible. 
 
 -   Input: customer data (characteristics of interest) and the number of clusters
 -   Output: clusters
@@ -143,7 +145,7 @@ data_full <- data_purchase %>%
 -   `iter.max`: the maximum number of iterations allowed
 -   `nstart`: how many random sets should be chosen
 -   `algorithm`: which algorithm to choose; default often works
--   `trace`: provide intermediate step information?
+-   `trace`: do you want to trace intermediate steps?
 
 ## Implementation of K-Means in R for Tesco
 
@@ -233,7 +235,7 @@ fviz_gap_stat(gap_stat)
 
 4.  Determine the optimal number of clusters using statistical criteria
 
--   silhoutte method
+-   Silhouette method
 
 ```{r}
 #| out-width: "70%"
@@ -245,7 +247,7 @@ fviz_nbclust(data_kmeans, kmeans, method = "silhouette")
 ## Implementation of K-Means in R for Tesco
 
 5.  Compare the CLV in the two segments, and decide which segment to serve.
-    -   This is general idea of segmentation and targeting using unsupervised learning
+    -   This is a general idea of segmentation and targeting using unsupervised learning
     -   Finish this exercise after class
 
 ## Pros and Cons of K-means Clustering
@@ -260,9 +262,9 @@ Drawbacks
 
 -   As the number of variable increases, curse of dimensionality problem occurs
 
--   Sensitive to outliers.
+-   Sensitive to outliers
 
--   Sensitive to initial seeds.
+-   Sensitive to initial seeds
 
 ## After-Class Readings
 
