@@ -55,6 +55,8 @@ website:
                 text: "Class 6 Clustering for Customer Segmentation (PDF)"
               - href: Case-PreliminaryCustomerAnalysis-stu.pdf
                 text: "Preliminary Customer Analyses"  
+              - href: Case-PreliminaryCustomerAnalysis.html
+                text: "Case Solution"  
       - section: "R Tutorials"
         contents:
           - R-installR.qmd

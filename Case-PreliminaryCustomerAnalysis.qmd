@@ -1,5 +1,5 @@
 ---
-title: "Descriptive Analytics: Preliminary Customer Analysis^[This case was prepared by Dr. Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised to assure confidentiality. Please do not circulate without permission.]"
+title: "Descriptive Analytics: Preliminary Customer Analysis"
 author: Dr Wei Miao
 subtitle: "MSIN0094 Case Study"
 institute: UCL School of Management
@@ -23,7 +23,7 @@ format:
     linestretch: 1.25
 knitr:
   opts_chunk:
-    echo: false
+    echo: true
     warning: false
     message: false
     error: false
@@ -173,6 +173,20 @@ str(data_full)
 ```
 
 -   *Discussion*: If the variables types are incorrect, think about how would you make it right using `dplyr`?
+    -   For instance, we can observe that `Dt_Customer` is of `character` type, we need to convert it to `date` type in R.
+
+```{r}
+# use mutate to overwrite the previous Dt_Customer
+# use as.Date() to make the conversion from character to date type
+data_full <- data_full %>%
+  mutate(Dt_Customer = as.Date(Dt_Customer, format = "%d/%m/%Y" ))
+```
+
+Now, if we check the data type of `Dt_Customer` using `class()`, it is `date` type now!
+
+```{r}
+class(data_full$Dt_Customer)
+```
 
 ## Missing Values
 
@@ -190,7 +204,7 @@ datasummary_skim(data_full)
     -   tip: use `mean(var, na.rm = T)` to get the average income; and then replace missing values in `data_full` with the average income using `replace()` function. See below an example or check `replace()` help file to find out its syntax.
 
 ```{r}
-# the below code generates a vector with 2 NAs
+# the below code generates a vector a with 2 NAs (not relevant to case study)
 # the 2nd and 4th elements are missing values
 # the last line of code replaces any missing value with 2
 a <- c(1,NA,3,NA)
@@ -215,23 +229,53 @@ Your task is to 'get to know' the data by conducting some statistical analysis u
 1.  Provide the summary statistics of the cleaned data. From summary statistics, do you already see any insights? (open question; from central tendency and dispersion perspectives)
 
 ```{r}
+# remember to load package modelsummary before calling this function
 datasummary_skim(data_full)
 ```
 
 2.  Report the percent of customers in each Marital Status group and compare the average spendings in each group. What insights can you draw? Tips: at least two methods to do this task
-    -   Method 1: use `group_by()` + `summarise()`
-    -   Method 2: use `datasummary_balance()`
+    -   Tips: use `group_by()` + `summarise()`
+
+To compute the percentage of customers in each marital status group
 
 ```{r}
-datasummary_balance(~ Marital_Status,
-                     data = data_full)
+# The below code computes the percentage of customers in each marital status group
+data_full %>%
+  group_by(Marital_Status)%>%
+  summarise(n_customer_each_group = n())%>% #n() counts the # of customer in each group
+  ungroup() %>%
+  mutate(total_customers = sum(n_customer_each_group))%>% # total number of customers is the sum of number of customers in each marital status group
+  mutate(percentage_customers = n_customer_each_group/total_customers)
+```
+
+To compare the average spendings of customers in each marital status group
+
+```{r}
+data_full %>%
+  mutate(total_spending = MntWines + MntFruits + MntMeatProducts + MntFishProducts + MntSweetProducts + MntGoldProds) %>% # mutate total spending 
+  group_by(Marital_Status)%>% # group by 
+  summarise(avg_spending = mean(total_spending))%>% # compute the mean of spending for each group
+  ungroup() 
+```
+
+In fact, the two questions can be answers in one code block, due to the utmost elegance of R dplyr!
+
+```{r}
+data_full %>%
+  mutate(total_spending = MntWines + MntFruits + MntMeatProducts + MntFishProducts + MntSweetProducts + MntGoldProds) %>% # mutate total spending 
+  group_by(Marital_Status)%>%
+  summarise(n_customer_each_group = n(),#n() counts the # of customer in each group
+            avg_spending = mean(total_spending))%>% # compute the mean of spending for each group
+  ungroup() %>%
+  mutate(total_customers = sum(n_customer_each_group))%>% # total number of customers is the sum of number of customers in each marital status group
+  mutate(percentage_customers = n_customer_each_group/total_customers)
 ```
 
 3.  Which education group accounts for the largest percentage of customers? Answering this question using `dplyr` only.
     -   tip: in dplyr, there is a function called `n()`, which counts the number of rows in the group after `group_by()`
 
 ```{r}
-data_demo%>%
+data_demo%>% # Think about why data_demo? what if we use data_full?
   group_by(Education)%>% # group by Education
   summarise(n_customers_in_group = n()) %>% # compute the number of customers in each education group
   ungroup() %>% # important to do the ungroup after each group_by
@@ -258,7 +302,7 @@ data_full %>%
 ```{r}
 
 data_full %>%
-  select(starts_with("Mnt")) %>%
+  select(starts_with("Mnt")) %>% # this is a shortcut `select` function by dplyr; check its help manual
   sapply(sum) %>%
   sort()
 
@@ -279,7 +323,22 @@ data_full %>%
 
 ```
 
-7.  Compute the individual CLV and identify the top 50% customers, assuming the following: - the annual retention rate is 60% for complainers and 80% for non-complainers (generate a new column called retention rate, based on complainer or non-complainer) - consider 5 years for customer life - average COGS 60% - Variable marketing cost: 15% of total spending - 10% annual discount rate
+7.  Compute the individual CLV and identify the top 50% customers, assuming the following:
+
+-   the annual retention rate is 60% for complainers and 80% for non-complainers (generate a new column called retention rate, based on complainer or non-complainer)
+-   consider 5 years for customer life
+-   average COGS 60% - Variable marketing cost: 15% of total spending
+-   10% annual discount rate
+
+::: callout-note
+## User Defined Function
+
+UDF is covered in the induction week Friday session (by Lina). You can also refer to the following tutorials to learn more about UDF.
+
+-   [simple](https://campus.datacamp.com/courses/data-science-r-basics/programming-basics-3c77f83c-b970-4d34-a0af-ceaf3cdd6868?ex=4)
+
+-   [advanced](https://www.datacamp.com/tutorial/functions-in-r-a-tutorial)
+:::
 
 ```{r}
 # define a function that can compute CLV for each customer.
@@ -298,7 +357,7 @@ compute_CLV <- function(retention,N,spending,discount,COGS, marketing_cost){
   
   profit_after_churn_discount <- profit_after_churn * ( 1/ (1+discount)) ^ seq(1:N)
   
-  # CLV
+  # CLV; note that CAC is not available in this case, so the CLV here does not include CAC. If CAC information is available, CLV should consider them.
   
   CLV <- sum(profit_after_churn_discount)
   
@@ -307,8 +366,8 @@ compute_CLV <- function(retention,N,spending,discount,COGS, marketing_cost){
 }
 
 data_full <- data_full %>%
-  mutate(retention_rate = ifelse(Complain == 1, 0.6, 0.8),
-         total_spending = MntFishProducts + MntFruits + MntGoldProds + MntMeatProducts + MntSweetProducts + MntWines)%>% # generate individual specific churn rate
+  mutate(retention_rate = ifelse(Complain == 1, 0.6, 0.8),# generate individual specific churn rate
+         total_spending = MntFishProducts + MntFruits + MntGoldProds + MntMeatProducts + MntSweetProducts + MntWines)%>% 
   rowwise()%>% # row-wise operation for each row to compute the CLV
   mutate(CLV = compute_CLV(retention_rate,5,total_spending/2,0.1,0.6,0.15))%>%
   ungroup() %>%

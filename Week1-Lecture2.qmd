@@ -330,6 +330,29 @@ The cost of sending a leaflet, which includes production and labor costs, is **Â
 
 Compute the CAC for each choice.
 
+::: {.content-hidden when-format="beamer"}
+```{r}
+cost_per_random_offer <- 0.5
+response_rate_random_offer <- 0.01
+# Following the formula in the previous slide
+CAC_random_offer <- cost_per_random_offer / response_rate_random_offer
+CAC_random_offer
+```
+
+```{r}
+cost_per_targeted_offer <- 0.5 + 0.2 
+response_rate_targeted_offer <- 0.04
+CAC_targeted_offer <- cost_per_targeted_offer/response_rate_targeted_offer
+CAC_targeted_offer
+```
+
+::: callout-note
+## Tips for assignment 1
+
+The cost structures for sending out offers are different from the simple example here, but the logic of calculation is the same. Think carefully about how to compute the cost per offer (the components) in the assignment.
+:::
+:::
+
 ## Customer Lifetime Value (CLV)
 
 ::: {.callout-note icon="false"}
