@@ -22,6 +22,12 @@ execute:
   freeze: auto
 ---
 
+::: callout-important
+## Uninstall Old R and RStudio
+
+If you have used R or RStudio before, please uninstall both R and RStudio and follow the guide below to install the latest versions. Otherwise, Quarto may not work properly on older versions.
+:::
+
 # Installation of R
 
 ## For Windows computers
@@ -45,6 +51,10 @@ execute:
     -   **It's highly recommended to change your system language to English** before proceeding, or there could be weird bugs later on.
 
 ![](images/R%20windows.png)
+
+6.  Click into this [link](https://quarto.org/docs/get-started/). Download and instsall Quarto CLI plugin.
+
+![](images/quarto%20CLI.png)
 
 ## For Mac computers
 
@@ -78,7 +88,7 @@ execute:
 
 ![](images/R%20commandline%20tools.png)
 
-# Installation of RStudio and LaTex
+# Install RStudio  
 
 RStudio is where we will write our R codes. Please install RStudio following the steps below.
 
@@ -86,6 +96,8 @@ RStudio is where we will write our R codes. Please install RStudio following the
 2.  Scroll down to the download list, and select the right version that suits your computer (Mac/Windows)
 3.  After downloading the installation file, follow the instructions to finish the installation. Recommended to use the default settings during installation.
 4.  After installation, you can find RStudio in the Application folder on Mac or Windows menu on Windows computers.
+
+# Install LaTex
 
 LaTex is needed to compile PDF reports from RStudio, please install LaTex on your computers.
 

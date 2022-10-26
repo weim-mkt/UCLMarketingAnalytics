@@ -50,13 +50,27 @@ website:
               - href: Week3-Lecture1.pdf
                 text: "Class 5 Data Wrangling with R II (PDF)"
               - href: Week3-Lecture2.html
-                text: "Class 6 Clustering for Customer Segmentation (HTML)"
+                text: "Class 6 Unsupervised Learning (HTML)"
               - href: Week3-Lecture2.pdf
-                text: "Class 6 Clustering for Customer Segmentation (PDF)"
+                text: "Class 6 Unsupervised Learning (PDF)"
               - href: Case-PreliminaryCustomerAnalysis-stu.pdf
                 text: "Preliminary Customer Analyses"  
               - href: Case-PreliminaryCustomerAnalysis.html
                 text: "Case Solution"  
+          - section: "[Week 4] Supervised Learning and Customer Targeting"
+            contents: 
+              - href: Week4-Lecture1.html
+                text: "Class 7 Supervised Learning (html)"
+              - href: Week4-Lecture1.pdf
+                text: "Class 7 Supervised Learning (PDF)"
+              - href: Week4-Lecture2.html
+                text: "Class 8: Improve Marketing Efficiency Using Predictive Analytics (HTML)"
+              - href: Week4-Lecture2.pdf
+                text: "Class 8: Improve Marketing Efficiency Using Predictive Analytics (PDF)"
+              - href: Case-PredictiveAnalytics-stu.pdf
+                text: "Improving Marketing Efficiency Using Predictive Analytics"  
+              - href: Case-PredictiveAnalytics.html
+                text: "Case Solution"
       - section: "R Tutorials"
         contents:
           - R-installR.qmd

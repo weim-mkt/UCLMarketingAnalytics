@@ -213,7 +213,7 @@ replace(a, is.na(a), 2)
 
 ```{r}
 data_full <- data_full %>%
-  mutate(Income = replace(Income, is.na(Income), mean(Income,na.rm =T)))
+  mutate(Income = replace(Income, is.na(Income), mean(Income,na.rm = T)))
 ```
 
 # Preliminary Customer Analysis (Descriptive Analytics)
@@ -303,7 +303,7 @@ data_full %>%
 
 data_full %>%
   select(starts_with("Mnt")) %>% # this is a shortcut `select` function by dplyr; check its help manual
-  sapply(sum) %>%
+  sapply( sum) %>%
   sort()
 
 ```
@@ -346,7 +346,7 @@ compute_CLV <- function(retention,N,spending,discount,COGS, marketing_cost){
   # revenue sequence
   revenue_seq <- rep(spending,N)
   
-  # profit sequence
+  # profit sequence g = M-c
   profit_seq <- revenue_seq * (1 - COGS - marketing_cost)
   
   # apply retention rate

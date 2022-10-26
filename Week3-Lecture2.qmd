@@ -2,7 +2,7 @@
 author: Dr Wei Miao
 date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(2))|> format('%a, %b %d %Y')`"
 institute: UCL School of Management
-title: "Class 6 Predictive Analytics for STP"
+title: "Class 7 Predictive Analytics for STP (I): Unsupervised Learning"
 df-print: kable
 colorlinks: true
 code-line-numbers: true
@@ -37,7 +37,7 @@ editor_options:
   chunk_output_type: inline
 ---
 
-# Overview
+# Overview of Predictive Analytics
 
 ## Our Journey So Far
 
@@ -65,10 +65,10 @@ editor_options:
 
 ## Types of Predictive Analytics
 
--   Supervised Learning
-    -   Observe both X and Y =\> Want to predict Y for new data
 -   Unsupervised Learning
     -   Only observe X =\> Want to uncover unknown subgroups
+-   Supervised Learning
+    -   Observe both X and Y =\> Want to predict Y for new data
 -   Reinforcement Learning
     -   Rewards and punishments =\> Learn the best decision rules
     -   [Dynamic Coupon Targeting Using Batch Deep Reinforcement Learning: An Application to Livestream Shopping](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4146060)
@@ -152,6 +152,7 @@ data_full <- data_purchase %>%
 -   Need to re-scale the two variables using `scale()`, because the two variables are of very different scales
 
     -   **This is extremely important!**
+    -   `set.seed()` is to allow replication of results. Refer to this data camp [tutorial](https://campus.datacamp.com/courses/sampling-in-r/introduction-to-sampling-1?ex=10) for more details.
 
 ```{r}
 set.seed(888)
@@ -200,6 +201,9 @@ str(result_kmeans)
 ## Implementation of K-Means in R for Tesco
 
 3.  Visualize the clusters
+    -   We need 2 packages `cluster` and `factoextra`
+
+    -   Use `fviz_cluster()` to generate visualizations
 
 ```{r}
 #| out-width: "70%"
@@ -214,7 +218,7 @@ fviz_cluster(result_kmeans,
 
 4.  Determine the optimal number of clusters using statistical criteria
 
--   Gap Method
+-   **Gap** Method
 
 ```{r}
 #| message: false
@@ -235,7 +239,7 @@ fviz_gap_stat(gap_stat)
 
 4.  Determine the optimal number of clusters using statistical criteria
 
--   Silhouette method
+-   **Silhouette** method
 
 ```{r}
 #| out-width: "70%"
@@ -252,19 +256,17 @@ fviz_nbclust(data_kmeans, kmeans, method = "silhouette")
 
 ## Pros and Cons of K-means Clustering
 
-Advantages
+**Advantages**
 
 -   Easy to implement and explain
 
 -   Computationally eﬃcient
 
-Drawbacks
+**Drawbacks**
 
 -   As the number of variable increases, curse of dimensionality problem occurs
 
--   Sensitive to outliers
-
--   Sensitive to initial seeds
+-   Sensitive to outliers and initial seeds
 
 ## After-Class Readings
 

@@ -39,7 +39,7 @@ All materials, including the lecture slides and before-class readings will be re
 +-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
 | 2         | Data wrangling with R       | Preliminary customer analysis           | Preliminary Customer Analysis                            |                          |
 +-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
-| 3         | Unsupervised learning       | Segmentation                            | RFM Analysis                                             |                          |
+| 3         | Unsupervised learning       | Segmentation                            | Improving Marketing Efficiency with Predictive Analytics |                          |
 +-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
 | 4         | Supervised learning         | Targeting                               | Predicting Customer Churn at QWE Inc.                    | Friday, 28 October 2022  |
 |           |                             |                                         |                                                          |                          |
@@ -168,9 +168,8 @@ All materials, including the lecture slides and before-class readings will be re
 
 -   Read the variable description of `mtcars` [here](https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars)
 
-```{=html}
 <!-- -->
-```
+
 -   Case Study: Preliminary Customer Analysis
     -   Please carefully read the case background before class; we will be discussing the case in class
 :::
@@ -193,29 +192,31 @@ All materials, including the lecture slides and before-class readings will be re
 
 # Week 4: Predictive Analytics for Customer Targeting
 
+## Supervised Learning (Decision Trees and Random Forest)
+
+-   What you will learn
+    -   Important concepts of supervised learning
+
+    -   Intuition behind decision tree and random forest models
+
+    -   How to build random forest models in R
+-   After-class reading
+    -   (optional) [Varian, Hal R. "Big data: New tricks for econometrics." Journal of Economic Perspectives 28, no. 2 (2014): 3-28](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_proquest_miscellaneous_1541646040)
+    -   (recommended) [Decision tree in R](http://uc-r.github.io/regression_trees) and [Random forest in R](http://uc-r.github.io/random_forests). Both tutorials introduce the detailed maths behind the two models if you would like to learn more
+    -   (optional) [Available machine learning model packages in R](https://cran.r-project.org/web/views/MachineLearning.html). In class, we have learned how to use R packages to run random forest models. This link lists all other machine learning packages that can be used in R. You can learn how to use these models following their manuals.
+
 ## Workshop: Targeted Marketing with Predictive Analytics
 
 ::: callout-important
 ### Pre-class preparation
 
--   Case Study: Receny Frequency and Monetary Value (RFM) Analysis
-    -   Please carefully read the case background before class; we will be discussing the case in class
+-   Case Study: Improving Marketing Efficiency Using Targeted Marketing
+    -   Please carefully read the case background before class
 :::
 
 -   What you will learn
-    -   The premise behind RFM analysis
-    -   How to implement an RFM campaign in R
+    -   The application predictive analytics (supervised learning) in targeted marketing
     -   How targeted marketing improves ROI of marketing campaigns
-
-## Decision Trees and Random Forest
-
--   What you will learn
-    -   Intuition behind decision tree and random forest models
-    -   How to build random forest models in R
-    -   Application of random forest in targeted marketing
--   After-class reading
-    -   (optional) Varian, Hal R. "Big data: New tricks for econometrics." Journal of Economic Perspectives 28, no. 2 (2014): 3-28
-    -   (optional) Biau, Gérard, and Erwan Scornet. 'A Random Forest Guided Tour'. arXiv, 18 November 2015. http://arxiv.org/abs/1511.05741.
 
 # Week 5: Causal Inference and RCT
 

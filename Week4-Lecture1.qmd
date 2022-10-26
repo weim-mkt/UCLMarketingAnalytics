@@ -1,0 +1,351 @@
+---
+author: Dr Wei Miao
+date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(3))|> format('%a, %b %d %Y')`"
+institute: UCL School of Management
+title: "Class 7 Supervised Learning for STP (II): Supervised Learning"
+df-print: kable
+colorlinks: true
+code-line-numbers: true
+format:
+  html: 
+    toc: true
+    number-sections: true
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+  beamer: 
+    toc: false
+    toc-title: ""
+    slide-level: 2
+    section-titles: true
+    theme: Frankfurt
+    colortheme: beaver
+    fonttheme: structurebold
+    navigation: horizontal
+    tbl-colwidths: auto
+    fontsize: 9pt
+    suppress-bibliography: true
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  freeze: auto
+editor_options: 
+  chunk_output_type: inline
+bibliography: references.bib
+---
+
+# Supervised Learning
+
+## Motivation: Why Supervised Learning for Business?
+
+::: {.content-visible when-format="html"}
+![](images/Supervised%20learning%20and%20unsupersied%20learning.png){fig-align="center" width="1000"}
+:::
+
+::: {.content-visible when-format="beamer"}
+![](images/Supervised%20learning%20and%20unsupersied%20learning.png){fig-align="center" width="300"}
+:::
+
+## Data Generating Process
+
+$$
+Y = f(X;\theta) + \epsilon
+$$
+
+-   $f$ is the function that characterizes the true relationship between $X$ and $Y$
+    -   $f$ is often called Data Generating Process (DGP), which is NEVER known to us
+-   $Y$ the **response**/**outcome/explained** variable to be predicted
+    -   e.g., whether customer responds to our offer (1/0)
+-   $X = (X_1,X_2,...,X_p)$ are a set of **predictors/features/explanatory variables**
+    -   customers' past purchase history (e.g., spending in each category)
+    -   demographic variables (e.g., income, age, kids, etc.)
+-   $\theta$ represents the set of **function** **parameters** of the DGP $f$
+-   $\epsilon$ is the random **error term**, with mean zero.
+
+## Supervised Learning
+
+-   A **supervised learning model** is used when we have one or more explanatory variables and a response variable and we would like to find some function that describes the DGP between the explanatory variables and the response variable as accurately as possible.
+
+::: {.content-visible when-format="beamer"}
+![](images/supervisedlearning.png){fig-align="center" width="200"}
+:::
+
+::: {.content-visible when-format="html"}
+![](images/supervisedlearning.png){fig-align="center" width="400"}
+:::
+
+-   Since we never know the true DGP: All models are wrong, but some are useful[^1]
+
+[^1]: A famous [quote](https://en.wikipedia.org/wiki/All_models_are_wrong) by statistician George Box.
+
+## Types of Supervised Learning Tasks for Customer Relationship Management
+
+Depending on the type of the **response variable**, supervised learning tasks can be divided into two major groups
+
+-   **Classification tasks**: outcome is a categorical variable
+    -   Whether a customer responds to marketing offers (acquisition)
+    -   Whether a customer churns (retention)
+-   **Regression tasks**: outcome is a continuous variable
+    -   Probability of customers responding to marketing offers (acquisition)
+    -   Customer total spending in each period (development)
+    -   Probability of customer churn (retention)
+
+::: {.content-visible when-format="beamer"}
+![](images/CustomerLifeCycle.png){fig-align="center" width="250"}
+:::
+
+::: {.content-visible when-format="html"}
+![](images/CustomerLifeCycle.png){fig-align="center"}
+:::
+
+## Difference between Supervised and Unsupervised Learning
+
+::: {.content-visible when-format="beamer"}
+[![](images/SupervisedVSUnsupervised.png){fig-alt="source: Statology" fig-align="center" width="400"}](https://www.statology.org/supervised-vs-unsupervised-learning/)
+:::
+
+::: {.content-visible when-format="html"}
+[![](images/SupervisedVSUnsupervised.png){fig-alt="source: Statology" fig-align="center"}](https://www.statology.org/supervised-vs-unsupervised-learning/)
+:::
+
+## Commonly Used Supervised Learning Models
+
+-   Linear regression class models (easy to interpret, low accuracy)
+
+    -   OLS, Lasso, Ridge regressions
+
+-   **Tree-based Models (good balance between interpretability and accuracy)**
+
+    -   Decision tree, random forest
+
+-   Neural-network based models (hard to interpret, high accuracy)
+
+    -   Deep learning models
+
+## Overfitting and Underfitting
+
+-   **Overfitting** means a predictive model corresponds too closely to **historical data**, and therefore fails to predict **new data** reliably.
+
+    -   Overfitting leads to high **variance error**, which is the error from being unable to predict for new data points
+
+-   **Underfitting** occurs when a predictive model cannot adequately capture the underlying structure of **historical data**.
+
+    -   Underfitting leads to high **bias error**, which means high prediction error on the historical data, as the model fails to sufficiently capture the relations between $X$ and $Y$
+    -   An underfitting model also tends to have poor predictive performance for future data points.
+
+::: {.content-visible when-format="beamer"}
+![](images/OverfittingUnderfitting.png){fig-align="center" width="300"}
+:::
+
+::: {.content-visible when-format="html"}
+![](images/OverfittingUnderfitting.png){fig-align="center" width="500"}
+:::
+
+## Mitigate the Underfitting and Overfitting Problems
+
+-   To mitigate the underfitting problem, select better models and tune the parameters.
+-   To mitigate the overfitting problem, when building predictive models, we need to divide the **full labelled historical data** into different sets. The percentage of split depends on the context.
+    -   **Training** **set** (70% - 80% of labelled data)**:** train the model parameters
+    -   **Test** **set** (20% - 30% of labelled data)**:** evaluate the prediction accuracy
+
+::: {.content-visible when-format="beamer"}
+![](images/trainingtest.png){fig-align="center" width="200"}
+:::
+
+::: {.content-visible when-format="html"}
+![](images/trainingtest.png){fig-align="center" width="400"}
+:::
+
+-   For more complicated models with hyper-parameters such as deep learning models, we may even need to split our data into 3 sets (training, validation, and test sets). You will learn more details in term 2 from ML specialization modules.
+
+# Decision Tree and Random Forest
+
+## Introduction to Decision Tree
+
+-   There are many methodologies for constructing regression trees but one of the oldest and most commonly used is known as the **c**lassification **a**nd **r**egression **t**ree (CART) approach developed by Breiman et al. (1984).
+
+## Motivation Example: Predicting `mpg` from `mtcars`
+
+-   From `mtcars`, we want to predict the outcome variable `mpg` based on `cyl` and `hp`
+
+    -   Predictors $X$ include `cyl` and `hp`
+
+    -   Outcome variable $Y$ is `mpg`
+
+```{r}
+pacman::p_load(dplyr,modelsummary)
+data("mtcars")
+# Generate a new data for the task
+data_decision_tree <- mtcars %>%
+  select(mpg,cyl,hp)
+# check first 4 rows
+data_decision_tree %>%
+  head(n = 4) 
+```
+
+## Implementation of Decision Tree in R
+
+-   Package `rpart` provides implementation of decision trees in R
+
+    -   `rpart()` is the function in the package to train a decision tree; refer to its help function for more details.
+
+-   Package `rpart.plot` provides nice visualizations of decision trees
+
+```{r}
+# Load the necessary packages
+pacman::p_load(rpart,rpart.plot)
+# Below example shows how to train a decisin tree
+tree1 <- rpart(
+  formula = mpg ~ cyl + hp,
+  data    = data_decision_tree,
+  method  = "anova" 
+  )
+```
+
+## Intuition behind Decision Trees
+
+```{r}
+#| echo: false
+#| cache: true
+#| fig-align: "center"
+#| out-width: "60%"
+rpart.plot(tree1)
+```
+
+1.  First, we find that `cyl` matters more than `hp` in terms of predicting mpg, so we split two branches according to `cyl`. We find that {4} and {6,8} split can best differentiate car models.
+    -   `cyl` = 4, go to the left branch
+
+    -   `cyl` = 6 or 8, go to the right branch
+
+::: {.content-visible when-format="beamer"}
+## Intuition behind Decision Trees
+
+```{r}
+#| echo: false
+#| cache: true
+#| fig-align: "center"
+#| out-width: "60%"
+rpart.plot(tree1)
+```
+
+2.  For car models with 4 cylinders, we try all possible splits based on `hp`, and find that 193 can best differentiate car models.
+    -   `hp` \< 193, use the average `mpg` in that **terminal node,** 13, as the predicted `mpg`
+
+    -   `hp` \>= 193, use the average `mpg` in that **terminal node,** 18, as the predicted `mpg`
+:::
+
+::: {.content-visible when-format="html"}
+2.  For car models with 4 cylinders, we try all possible splits based on `hp`, and find that 193 can best differentiate car models.
+    -   `hp` \< 193, use the average `mpg` in that **terminal node,** 13, as the predicted `mpg`
+
+    -   `hp` \>= 193, use the average `mpg` in that **terminal node,** 18, as the predicted `mpg`
+:::
+
+::: {.content-visible when-format="beamer"}
+## Intuition behind Decision Trees
+
+```{r}
+#| echo: false
+#| cache: true
+#| fig-align: "center"
+#| out-width: "60%"
+rpart.plot(tree1)
+```
+
+3.  For car models with more than 5 cylinders, we find that `hp` does not differentiate car models, so we do not further split.
+    -   Use the average `mpg` in that **terminal node,** 27, as the predicted `mpg`
+:::
+
+::: {.content-visible when-format="html"}
+3.  For car models with more than 5 cylinders, we find that `hp` does not differentiate car models, so we do not further split.
+    -   Use the average `mpg` in that **terminal node,** 27, as the predicted `mpg`
+:::
+
+## Pros and Cons of Decision Trees
+
+**Advantages of Decision Trees**
+
+-   They are very interpretable.
+
+-   Making predictions is fast.
+
+-   It's easy to understand what variables are important in making the prediction. The internal nodes (splits) are those variables that most largely reduce the SSE (criteria for split).
+
+**Disadvantages of Decision Trees**
+
+-   Single regression trees have high variance (overfitting), resulting in unstable predictions
+
+-   Due to the high variance, single regression trees tend to have poor predictive accuracy.
+
+## Random Forest
+
+To overcome the overfitting tendency of a single decision tree, random forest has been developed by [@breimanRandomForests2001].
+
+1.  **Bootstrap subsampling**
+
+    -   Each tree is grown to a bootstrapped subsample
+
+2.  **Split-variable randomization**
+
+    -   each time a split is to be performed, the search for the split variable is limited to a random subset of *m* out of the *p* variables. For regression trees, typical default values are $m=p/3$.
+
+## Visualization of Random Forest
+
+::: {.content-visible when-format="beamer"}
+![](images/randomforest.png){fig-align="center" width="350"}
+:::
+
+::: {.content-visible when-format="html"}
+![](images/randomforest.png){fig-align="center"}
+:::
+
+-   Each tree gives a prediction
+
+-   Random forest takes the majority of voting as the final prediction
+
+## Implementation of Random Forest in R
+
+-   Package `ranger` provides implementation of random forest in R.
+
+-   `ranger()` is the function in the package to train a random forest; refer to its help function for more details.
+
+-   The following code shows how to train a random forest consisting of 500 decision trees, where the outcome variable is mpg, and the predictors are 5 car attribute variables.
+
+```{r}
+pacman::p_load(ranger)
+randomforest1 <- ranger(
+    formula   = mpg ~ hp + cyl + disp + wt + gear, 
+    data      = mtcars, # dataset to train the model
+    num.trees = 500, # 500 decision trees
+    seed = 888 # make sure of replication
+  )
+```
+
+## Make Predictions from Random Forest
+
+-   After we train the predictive model, we can use `predict()` function to make predictions
+
+    -   The 1st argument is the trained model object
+
+    -   The 2nd argument is the dataset to make predictions on
+
+```{r}
+# Make predictions on the mtcars
+prediction_rf <- predict(randomforest1,
+                         data = mtcars)
+
+# Because prediction_rf is a list object
+# Need to use $ to extract the predicted value as a numeric vector
+prediction_rf$predictions
+```
+
+## After-Class Reading
+
+-   (optional) Varian, Hal R. "Big data: New tricks for econometrics." Journal of Economic Perspectives 28, no. 2 (2014): 3-28
+-   (recommended) [Decision tree in R](http://uc-r.github.io/regression_trees)
+-   (recommended) [Random forest in R](http://uc-r.github.io/random_forests)
