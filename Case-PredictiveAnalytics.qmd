@@ -78,6 +78,90 @@ As a quick recap, the variable definitions are as follows:
 -   **Response: 1 if customer accepted the offer in the last campaign, 0 otherwise**
 -   Recency: Number of days since customer's last purchase
 
+# Uncover Customer Segments Using Unsupervised Learning
+
+1.  We aim to do customer segmentation based on *total spending* and *income.*
+
+```{r}
+pacman::p_load(dplyr)
+# Load both datasets
+data_purchase <- read.csv(file = "https://www.dropbox.com/s/126e9vkq80y9ti9/purchase.csv?dl=1", 
+                      header = T)
+
+data_demo <- read.csv("https://www.dropbox.com/s/hbrgktcz98y0igs/demographics.csv?dl=1",
+                      header = T)
+
+# Left join demographic data into purchase data
+data_full <- data_purchase %>%
+  left_join(data_demo, by = "ID")
+
+# Handle Missing Values of Income
+data_full <- data_full %>%
+  mutate(Income = replace(Income, is.na(Income), mean(Income,na.rm =T))) 
+```
+
+First of all, we need to re-scale the two variables using `scale()`, because the two variables are of very different scales
+
+```{r}
+
+data_kmeans <- data_full%>%
+  mutate(total_spending = MntFishProducts + MntFruits + MntGoldProds + MntMeatProducts + MntSweetProducts + MntWines) %>%
+  select(Income,total_spending)%>%
+  mutate(Income = scale(Income),
+         total_spending = scale(total_spending))
+
+
+```
+
+2.  Run the K-means clustering algorithm using `kmeans()`
+
+```{r}
+set.seed(888)
+result_kmeans <- kmeans(data_kmeans,
+                        centers = 2,
+                        nstart = 10)
+```
+
+We can examine the structure of the `result_kmeans` using `str()`
+
+```{r}
+str(result_kmeans)
+```
+
+3.  Visualize the clustering
+
+```{r}
+pacman::p_load(cluster,factoextra)
+set.seed(888)
+fviz_cluster(result_kmeans,
+             data = data_kmeans)
+```
+
+4.  Determine the optimal number of clusters using statistical criteria
+
+-   Gap Method
+
+```{r}
+set.seed(888)
+gap_stat <- clusGap(data_kmeans, 
+                    FUN = kmeans,
+                    K.max = 10,
+                    B = 50)
+fviz_gap_stat(gap_stat)
+```
+
+-   Silhouette method
+
+```{r}
+set.seed(888)
+fviz_nbclust(data_kmeans, kmeans, method = "silhouette")
+```
+
+From both methods, it seems K = 2 is the best choice.
+
+5.  Compare the CLV in the two segments, and decide which segment to serve.
+
+
 # Tesco's Task: Acquire Customers to Try New Products
 
 Tesco is looking to promote its new [private-label](https://en.wikipedia.org/wiki/Private_label) products to existing customers. The marketing analytics team decides to use the conventional mailing marketing strategy so that customers would receive color-printed leaflets via Royal Mails to their doorsteps.
@@ -343,66 +427,3 @@ ROI_randomforest
 ```
 
 Predictive analytics model can help the company boost the marketing ROI by allowing Tesco to target customers who are more likely to respond to the marketing offers than the break-even response rate. By doing so, Tesco saves unnecessary marketing costs on those unresponsive customers and therefore improves its marketing efficiency.
-
-# Uncover Customer Segments Using Unsupervised Learning
-
-1.  We aim to do customer segmentation based on *total spending* and *income.* First of all, we need to re-scale the two variables using `scale()`, because the two variables are of very different scales
-
-```{r}
-
-data_kmeans <- data_full%>%
-  mutate(total_spending = MntFishProducts + MntFruits + MntGoldProds + MntMeatProducts + MntSweetProducts + MntWines) %>%
-  select(Income,total_spending)%>%
-  mutate(Income = scale(Income),
-         total_spending = scale(total_spending))
-
-
-```
-
-2.  Run the K-means clustering algorithm using `kmeans()`
-
-```{r}
-set.seed(888)
-result_kmeans <- kmeans(data_kmeans,
-                        centers = 2,
-                        nstart = 10)
-```
-
-We can examine the structure of the `result_kmeans` using `str()`
-
-```{r}
-str(result_kmeans)
-```
-
-3.  Visualize the clustering
-
-```{r}
-pacman::p_load(cluster,factoextra)
-set.seed(888)
-fviz_cluster(result_kmeans,
-             data = data_kmeans)
-```
-
-4.  Determine the optimal number of clusters using statistical criteria
-
--   Gap Method
-
-```{r}
-set.seed(888)
-gap_stat <- clusGap(data_kmeans, 
-                    FUN = kmeans,
-                    K.max = 10,
-                    B = 50)
-fviz_gap_stat(gap_stat)
-```
-
--   Silhouette method
-
-```{r}
-set.seed(888)
-fviz_nbclust(data_kmeans, kmeans, method = "silhouette")
-```
-
-From both methods, it seems K = 2 is the best choice.
-
-5.  Compare the CLV in the two segments, and decide which segment to serve.
