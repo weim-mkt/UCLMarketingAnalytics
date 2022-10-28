@@ -2,7 +2,7 @@
 author: Dr Wei Miao
 date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(3))|> format('%a, %b %d %Y')`"
 institute: UCL School of Management
-title: "Class 7 Supervised Learning for STP (II): Supervised Learning"
+title: "Class 7 Predictive Analytics for STP (II): Supervised Learning"
 df-print: kable
 colorlinks: true
 code-line-numbers: true

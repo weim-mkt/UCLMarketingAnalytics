@@ -13,3 +13,7 @@ _freeze/
 */figure-latex/
 */figure-beamer/
 */figure-html/
+*/figure-pdf/
+.DS_Store
+Week1-Lecture1_files/.DS_Store
+.DS_Store

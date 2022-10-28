@@ -39,7 +39,7 @@ editor_options:
 
 # Data Wrangling
 
-## More Convenient Package Management Using `pacman`
+## R Tips: More Convenient Package Management Using `pacman`
 
 ```{r}
 pacman::p_load(dplyr,ggplot2)
@@ -53,9 +53,21 @@ pacman::p_load(dplyr,ggplot2)
 
     -   If the package is not downloaded yet, download it, and then load it
 
--   R tip: if you want to use a function without loading the whole package, you can use two colons to call the function: `pacakge::function`
+-   R tip: if you want to use a function without loading the whole package, you can use two colons to call the function: `package::function`
 
-## Recap: filter()
+## R Tips: Managing Objects in the RStudio Environment
+
+-   Best practice is to not save any objects once you close your RStudio session
+
+![](images/RStudio_general-setting.png){fig-align="center" width="200"}
+
+-   `rm(list = ls())` is the command to remove everything in the current environment
+
+    -   `ls()` is a function that returns the list of all objects in the current environment
+
+    -   `rm(list = )` removes any objects passed to `list` argument
+
+## Recap: `filter()`, `arrange()`, and `mutate()`
 
 -   **`filter(dataset, criteria)`**: pick observations by their values
 
@@ -67,7 +79,58 @@ pacman::p_load(dplyr,ggplot2)
 
 ![](images/mutate.png){fig-align="center" width="300"}
 
--   pipe operator: `%>%`
+## Pipe Operator
+
+-   Imagine a factory with different machines placed along a belt. Each machine is a **dplyr** **function** that performs a data cleaning step, like filtering or arranging data.
+
+<!-- -->
+
+-   The pipe therefore works like a conveyor belt, passing the output of one machine to another for further processing.
+
+![](images/pipeillustration.png){fig-align="center" width="150"}
+
+## Pipe Operator
+
+-   The pipe has a huge advantage over any other method of processing data in R or Python: It makes data wrangling processes easy to read. If we read %\>% as "then", the code will be very easy to interpret as a set of instructions in plain English:
+
+::: {.columns data-latex=""}
+::: {.column width="40%"}
+```{r}
+#| eval: false
+mtcars %>%
+  filter(cyl>=5) %>%
+  mutate(sqrt_wt=sqrt(wt)) %>%
+  filter(sqrt_wt>1.5) %>%
+  arrange(hp)
+## can go on and on
+```
+:::
+
+::: {.column width="60%"}
+1.  take the mtcars data, THEN
+2.  find cars cyl \>= 5, THEN
+3.  mutate a new variable sqrt_wt, THEN
+4.  find cars sqrt_wt \> 1.5 THEN
+5.  reorder all cars based on hp
+6.  chain more operations ...
+:::
+:::
+
+## Without Pipe Operator
+
+-   As a comparison, without using pipe operators, the previous data cleaning steps need to be done as follows. Overwriting our output dataframe `new_data` in every line is problematic.
+
+    -   First, doing this for a procedure with lots of steps isn't efficient and creates unnecessary repetition in the code.
+
+    -   Second, this repetition also makes it harder to identify exactly what is changing on each line in some cases.
+
+```{r}
+#| eval: false
+new_data <- filter(mtcars, cyl >=5)
+new_data <- mutate(new_data, sqrt_wt=sqrt(wt))
+new_data <- filter(new_data,sqrt_wt>1.5)
+new_data <- arrange(new_data,hp)
+```
 
 ## Select Variables: `select`
 
@@ -286,7 +349,11 @@ df_right %>%
 
     -   "Based on our test mailing, can we conclude that ad-copy A works better than ad-copy B?"
 
+## Descriptive Analytics
+
 -   You can think of descriptive analytics as **creating a dashboard** to display the key information you would like to know for your business.
+
+![](images/dashboard.png){fig-align="center" width="350"}
 
 ## Summary Statistics
 
@@ -335,7 +402,7 @@ mtcars %>%
 
 -   `datasummary_correlation()` reports the pairwise correlation coefficient
 
--   In general, in a statistical model, variables of high correlation should not be included together, which leads instability
+-   In general, in a statistical model, variables of high correlation should not be included together, which leads to instability
 
 ::: {.content-visible when-format="beamer"}
 ```{r}
@@ -362,3 +429,15 @@ mtcars %>%
 -   To show your codes, join the Zoom link under "Module Overview" on Moodle.
 
 -   The group that did not answer correctly needs to do a performance next week!
+
+## After-Class Exercise
+
+-   What percent of customers are single? Try alternative ways to do the calculation.
+
+-   Is the average total spending by responders and non-responders statistically different? Answer this question using a t-test.
+
+-   Is income and total spending correlated?
+
+-   Are PhDs more likely to respond to marketing offers than Graduation? Use a statistical test to answer the question. Is the result what you expected?
+
+-   What would be the other useful descriptive analytics you would like to know for Tesco?

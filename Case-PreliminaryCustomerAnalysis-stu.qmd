@@ -274,7 +274,17 @@ data_full %>%
 
 ```
 
-7.  Compute the individual CLV and identify the top 50% customers, assuming the following: - the annual retention rate is 60% for complainers and 80% for non-complainers (generate a new column called retention rate, based on complainer or non-complainer) - consider 5 years for customer life - average COGS 60% - Variable marketing cost: 15% of total spending - 10% annual discount rate
+7.  Compute the individual CLV and identify the top 50% customers, assuming the following:
+
+-   the annual retention rate is 60% for complainers and 80% for non-complainers (generate a new column called retention rate, based on complainer or non-complainer)
+
+-   consider 5 years for customer life
+
+-   average COGS 60%
+
+-   Variable marketing cost: 15% of total spending
+
+-   10% annual discount rate
 
 ```{r}
 # define a function that can compute CLV for each customer.

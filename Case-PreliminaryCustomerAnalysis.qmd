@@ -351,7 +351,7 @@ compute_CLV <- function(retention,N,spending,discount,COGS, marketing_cost){
   
   # apply retention rate
   
-  profit_after_churn <- profit_seq * (retention ^ (seq(1:N) - 1) )
+  profit_after_churn <- profit_seq * (retention ^ (seq(1,N) - 1) )
   
   # discount the future profits 
   
