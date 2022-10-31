@@ -220,19 +220,18 @@ All materials, including the lecture slides and before-class readings will be re
 
 # Week 5: Causal Inference and RCT
 
-## Workshop: CSR with Machine Learning
-
-::: callout-important
-### Pre-class preparation
-
--   Case study: Predicting Customer Churn at QWE Inc.
-    -   Please carefully read the case background before class; we will be discussing the case in class
-:::
+## Causal Inference
 
 -   What you will learn
-    -   How to use predictive models for Customer Relationship Management (CSR)
+    -   Concept of causal inference
+    -   Concept of Rubin's potential outcome framework and various treatment effects
+    -   Concept of fundemental problem of causal inference and basic identity of causal inference
+-   After-class reading
+    -   (optional) [Varian, Hal R. 'Causal Inference in Economics and Marketing'. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310--15.](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_pubmedcentral_primary_oai_pubmedcentral_nih_gov_4941501)
 
-## Causal Inference & Randomized Experiments
+    -   (optional) [Angrist, Joshua & Pischke, Jörn-Steffen. (2009). Mostly Harmless Econometrics: An Empiricist's Companion.](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/hd4h9s/alma9931045212804761)
+
+## Randomized Experiments
 
 ::: callout-important
 ### Pre-class preparation
@@ -241,12 +240,10 @@ All materials, including the lecture slides and before-class readings will be re
 :::
 
 -   What you will learn
-    -   Concept of causal inference
-    -   Concept of Rubin's potential outcome framework
-    -   The intuition of why RCT guarantees causal inference
-    -   Steps to scientifically design and conduct an RCT
+    -   Why RCT is the gold standard of causal inference
+    -   Steps to design and conduct an RCT
 -   After-class reading
-    -   [Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing. Cambridge University Press, 2020.](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_askewsholts_vlebooks_9781108653985), by Ronny Kohavi (Airbnb, formerly Microsoft and Amazon), Diane Tang (Google), and Ya Xu (LinkedIn). This is a very practically oriented guide to experimentation, with many examples relevant to marketing and product management.
+    -   (optional) [Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing. Cambridge University Press, 2020.](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_askewsholts_vlebooks_9781108653985), by Ronny Kohavi (Airbnb, formerly Microsoft and Amazon), Diane Tang (Google), and Ya Xu (LinkedIn). This is a very practically oriented guide to experimentation, with many examples relevant to marketing and product management.
 
 # Week 6: Linear Regression
 

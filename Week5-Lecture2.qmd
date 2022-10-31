@@ -1,0 +1,212 @@
+---
+author: Dr Wei Miao
+date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(4))|> format('%a, %b %d %Y')`"
+institute: UCL School of Management
+title: "Class 10 Randomized Controlled Trials"
+df-print: kable
+colorlinks: true
+code-line-numbers: true
+format:
+  html: 
+    toc: true
+    number-sections: true
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+  beamer: 
+    toc: false
+    toc-title: ""
+    slide-level: 2
+    section-titles: true
+    theme: Frankfurt
+    colortheme: beaver
+    fonttheme: structurebold
+    navigation: horizontal
+    tbl-colwidths: auto
+    fontsize: 9pt
+    suppress-bibliography: true
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  freeze: auto
+editor_options: 
+  chunk_output_type: inline
+bibliography: references.bib
+---
+
+# Gold Standard of Causal Inference
+
+## Revisit of Basic Identity of Causal Inference
+
+-   After assigning individuals into the treatment group and control group, we also observe the outcome for each individual in both groups.
+
+-   We can decompose the **observed** outcome of a treatment into two effects
+
+::: {.content-visible when-format="beamer"}
+![](images/BasicIdentityofCausalInference.png){fig-align="center" width="300"}
+:::
+
+::: {.content-visible when-format="html"}
+![](images/BasicIdentityofCausalInference.png){fig-align="center" width="800"}
+:::
+
+## Random Assignment of Individuals
+
+-   Basic Identity of Causal Inference shows why randomized controlled trials are the **gold standard for causal inference**: If the treated group is a random sample of the population,
+    -   the first term is an estimate of the causal impact of the treatment on the population
+    -   the second term has an expected value of zero.
+-   Then by computing the average difference between the treatment group and control group, we obtain the **average treatment effect**!
+
+## Randomized Controlled Trials
+
+::: block
+### Randomized Controlled Trials
+
+A **randomized controlled trial** (RCT) is an experimental form of impact evaluation in which the population receiving the program or policy intervention is chosen *at random* from the eligible population, and a control group is also chosen *at random* from the same eligible population.
+:::
+
+::: {.content-visible when-format="beamer"}
+![](images/RCTMedical.jpeg){fig-align="center" width="300"}
+:::
+
+::: {.content-visible when-format="html"}
+![](images/RCTMedical.jpeg){fig-align="center" width="800"}
+:::
+
+## Types of RCTs in Marketing: Based on Location
+
+::: {.content-visible when-format="beamer"}
+![](images/LabVersusField.png){fig-align="center" width="300"}
+:::
+
+::: {.content-visible when-format="html"}
+![](images/LabVersusField.png){fig-align="center" width="800"}
+:::
+
+## Types of RCTs in Marketing: Univariate Testing
+
+**We only vary the level of a single treatment variable (e.g., loyalty program)**
+
+-   A/B testing (treatment group + control group)
+    1.  Loyalty program
+    2.  No loyalty program
+-   A/B/N testing (multiple treatment groups + control group)
+    1.  Point-based loyalty program; points can be redeemd for price vouchers
+
+    2.  Point-based loyalty program; points can be redeemd for gifts
+
+    3.  Point-based loyalty program; points can be redeemd for free top ups
+
+    4.  No loyalty program
+
+## Types of RCTs in Marketing: Multivariate Testing
+
+We are interested in multiple treatment variables and their interaction effects.
+
+-   2-by-2 factorial design
+    -   treatment group 1: LP Yes + Promo Yes
+    -   treatment group 2: LP Yes + Promo No
+    -   treatment group 3: LP No + Promo Yes
+    -   control group: LP No + Promo No
+
+# Steps to Run a RCT
+
+## Motivating Example
+
+-   Tom is considering whether or not to introduce a loyalty program for his bubble tea business. This decision is essentially a cost-benefit analysis
+
+    -   Cost: it takes money and time to develop the loyalty program
+
+    -   Benefit: it may increase spending and retention rate, and hence future CLV
+
+-   Cost can be estimated through budgeting, but how to estimate the benefit from introducing LP?
+
+-   How you design the experiment is more an art than a science.
+
+## Step 1: Decide on the Unit of Randomization
+
+**In the first step, we decide the level of granularity random assignment should occur at.**
+
+-   individual/household/store/city level
+
+## Step 1: Proposal I
+
+**Proposal 1**: It decides at random to test 'No' in West London and 'Yes' in East London.
+
+-   Do you expect the "at random" to be true randomization?
+
+## Step 1: Proposal II
+
+**Proposal 2**: It randomizes each individual customer to either the 'No' condition or 'Yes' pricing condition.
+
+-   Is this true randomization?
+
+-   What problems can we still have?
+
+## Step 1: Pros and Cons of Granularity
+
+**Disadvantages of granularity:**
+
+-   Costs and logistics
+
+-   Spillovers and crossovers
+
+**Advantages of granularity:**
+
+-   Reduces the chance that the unobserved factors matter ex ante
+
+-   Reduces the chance that there might be a systematic error/unbalance of covariates
+
+## Step 2: Ensure No Spillover and Crossover Effects
+
+-   **Crossover Effects**: A crossover occurs when an individual who was supposed to be assigned to one treatment is accidentally exposed to another treatment.
+    -   Solution: Make sure that the same unit receives the same treatment throughout the experiment
+-   **Spillover effects**: the behavior of the treatment group can affect control group as well
+    -   Solution: Randomize at the level of plausibly isolated social networks such as a community, rather than individual level.
+
+## Step 2: Ensure No Spillover and Crossover Effects
+
+**Proposal**: How should Tom mitigate spillover and crossover effects
+
+## Step 3: Decide on Complete or Stratified Randomization
+
+-   **Complete Randomization**: individuals (or the relevant unit of randomization) are simply allocated at random into a treatment.
+    -   Most commonly used; easy to implement; no data required ex ante
+-   **Stratified Randomization**: individuals are first divided into subsamples based on certain characteristics, and then randomization is conducted in each subsample
+    -   This stratified technique is useful if a covariate is strongly correlated with an outcome.
+    -   Limitations: reliable data that would allow such stratification may not be present
+
+**Proposal:** We can use complete randomization as customer purchase history data may not be available.
+
+## Step 4: Collect Data
+
+-   Any field experiment should be aware of the potential need for a large sample size
+    -   The larger sample size, the higher statistical power for the experiment
+    -   run a power calculation \[[link for tutorial](https://www.povertyactionlab.org/resource/power-calculations)\] if there is a budget
+-   Collect both data on the outcome variables of interest and consumer characteristics data
+
+## Step 4: Ensure that Appropriate Data Are Collected
+
+**Proposal:** We need to collect customers retention rate data and link the retention data with their treatment assignment.
+
+## Step 5: Interpreting Results from a Field Experiment
+
+**Step 5.1: Randomization check**
+
+-   We need to check if the treatment group and control group are indifferent and well-balanced in terms of their **pre-treatment** characteristics.
+
+**Step 5.2: Analyze the data and estimate the ATE**
+
+-   **t-test** to examine the difference in the average outcome between the treatment group and control group. In R, we can use `t.test()`
+-   **Regression analysis** (next week)
+
+## After-Class Readings
+
+-   (optional) [Varian, Hal R. 'Causal Inference in Economics and Marketing'. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310--15.](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_pubmedcentral_primary_oai_pubmedcentral_nih_gov_4941501)
+
+-   (optional) [Angrist, Joshua & Pischke, Jörn-Steffen. (2009). Mostly Harmless Econometrics: An Empiricist's Companion.](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/hd4h9s/alma9931045212804761)

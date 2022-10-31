@@ -71,6 +71,16 @@ website:
                 text: "Improving Marketing Efficiency Using Predictive Analytics"  
               - href: Case-PredictiveAnalytics.html
                 text: "Case Solution"
+          - section: "[Week 5] Causal Inference and RCT"
+            contents: 
+              - href: Week5-Lecture1.html
+                text: "Class 9 Causal Inference (html)"
+              - href: Week5-Lecture1.pdf
+                text: "Class 9 Causal Inference (PDF)"
+              - href: Week5-Lecture2.html
+                text: "Class 10 Randomized Controlled Trials (HTML)"
+              - href: Week5-Lecture2.pdf
+                text: "Class 10 Randomized Controlled Trials (PDF)"
       - section: "R Tutorials"
         contents:
           - R-installR.qmd
