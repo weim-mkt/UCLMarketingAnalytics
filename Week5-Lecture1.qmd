@@ -61,7 +61,7 @@ In reality, this "benefit" information is not readily available, and will be for
 
 ## Learning Objectives
 
--   Understand keys concepts of causal inference and Rubin's potential outcome framework
+-   Understand key concepts of causal inference and Rubin's potential outcome framework
 
 -   Learn the steps to conduct randomized controlled trials (RCTs)
 
@@ -69,7 +69,7 @@ In reality, this "benefit" information is not readily available, and will be for
 
 ## Why Causal Inference Matters? Example 1
 
-Car manufacturer BMW partnered with a car dealership ("the retailer") for an **online** advertising campaign. Ads are targeted to individuals who are predicted to have a higher likelihood of being in the market to buy a car. In the end, a customer either saw no ads, saw only the dealership (retailer) ad, saw only the BMW (manufacturer) ad, or saw both the dealership and BMW ad. The **conversion rates** for each group are shown below.
+Car manufacturer BMW partnered with a car dealership ("the retailer") for an **online** advertising campaign. Ads are targeted to individuals who are predicted to have a higher likelihood of being in the market to buy a car. In the end, a customer either saw no ads, saw only the dealership (retailer) ads, saw only the BMW (manufacturer) ads, or saw both the dealership and BMW ads. The **conversion rates** for each group are shown below.
 
 ::: {.content-visible when-format="beamer"}
 ![](images/BMWConversion.png){fig-align="center" width="200"}
@@ -87,7 +87,6 @@ A bubble tea business owner Tom bought a marketing survey dataset from a consult
 
 **Question**: What is your favoriate bubble tea flavor?
 
-
 ## Why Causal Inference Matters? Example 3
 
 This is a plane that just returned from the battlefield. Red dots are bullet holes.
@@ -104,9 +103,9 @@ Which part of A, B, and C would you reinforce to increase the pilot's survival r
 
 ## Why Causal Inference Matters? Example 4
 
-To test the effectiveness of a new COVID vaccine, the government sends invites to the general public to seek volunteers for the clinical trial. The voluntarily recruited subjects then received the vaccination.
+To test the effectiveness of a new COVID vaccine, the government sent invites to the general public to seek volunteers for the clinical trial. The voluntarily recruited subjects then received the vaccination.
 
-After 3 months, the government runs a t-test on the infection rate between general public who didn't receive the vaccine versus volunteers who received the vaccine, and finds that the infection rate is statistically indifferent.
+After 3 months, the government ran a t-test on the infection rate between general public who didn't receive the vaccine versus volunteers who received the vaccine, and found that the infection rate was statistically indifferent.
 
 The scientists concluded that the new vaccine is ineffective and should not be adopted.
 
@@ -135,10 +134,10 @@ Correlation != Causation !!!
 -   On rainy days, we observe more umbrellas on the street
     -   correct correlational statement: number of umbrellas is positively correlated with rainfall
     -   correct causal statement: more rainfall causes more umbrellas
-    -   incorrect causal statement: more umbrellas causes more rainfall
+    -   incorrect causal statement: more umbrellas cause more rainfall
 -   Causality becomes less straightforward in the business world, and managers can easily make mistakes if not understanding how to infer causal relations. It's extremely important for you to train a "causal mindset"
 
-## Conceptualization of Causal Inference for Business Managers
+## Rule of Thumb for Checking Causal Inference for Business Managers
 
 ::: {.content-visible when-format="beamer"}
 ![](images/CausalInferenceMarketing.png){fig-align="center" width="300"}
@@ -155,6 +154,21 @@ Essentially, we need to show
 2.  If we do not run the initiative, the desired outcome does not occur
     -   This proves: The outcome was not caused by other factors
     -   This step is to rule out **alternative explanations**
+
+## Revisit of BMW Example
+
+::: {.content-visible when-format="beamer"}
+![](images/BMWConversion.png){fig-align="center" width="200"}
+:::
+
+::: {.content-visible when-format="html"}
+![](images/BMWConversion.png){fig-align="center" width="800"}
+:::
+
+1.  If we show the ads to the targeted customers, will the sales be higher compared with customers who didn't see the ads?
+2.  If we do not show the ads to the targeted customers, will the sales be higher compared with customers who didn't see the ads?
+
+Therefore, the BMW ads campaign can NOT reveal the causal effect of the ads.
 
 # Rubin Causal Model
 
@@ -198,16 +212,16 @@ $$
 
 Let's say we have retrieved all infinity stones from Thanos, and have created 2 parallel universes, where everything else is equal, except that only in universe 1 Tom has adopted the LP.
 
-For a random customer Tony Stark,
+For a random customer Dr Strange,
 
--   In universe 1, Tom adopts the LP, and Tony has a retention rate of 70%
--   In universe 2, Tom does not adopt the LP, and Tony has a retention rate 60%.
+-   In universe 1, Tom adopts the LP, and Dr Strange has a retention rate of 70%
+-   In universe 2, Tom does not adopt the LP, and Dr Strange has a retention rate of 60%.
 
 ```{r}
 #| echo: false
 pacman::p_load(data.table,knitr,kableExtra)
 
-kable(data.frame(subject = c("Tony"), 
+kable(data.frame(subject = c("Dr Strange"), 
            Yt = 0.7,
            Yc = 0.6,
            `Yt-Yc` = 0.1,
@@ -217,7 +231,7 @@ kable(data.frame(subject = c("Tony"),
   kable_styling(font_size = 8, bootstrap_options = c("striped", "hover"))
 ```
 
--   Conclusion: The treatment effect of LP on Tony is +10%.
+-   Conclusion: The treatment effect of LP on Dr Strange is +10%.
 
 ## A Motivating Example: A Group of Customers
 
@@ -225,7 +239,7 @@ kable(data.frame(subject = c("Tony"),
 
 ```{r}
 #| echo: false
-kable(data.frame(subject = c("Tony","Captain","Thor","Hulk"), 
+kable(data.frame(subject = c("Dr Strange","Iron Man","Thor","Hulk"), 
            Yt = c(0.7,0.55,0.8,0.6),
            Yc = c(0.6,0.5,0.72,0.62),
            `Yt-Yc` = c(0.7,0.55,0.8,0.6) - c(0.6,0.5,0.72,0.62),
@@ -245,7 +259,7 @@ In reality, to measure the treatment effect of LP on a customer's retention rate
 
 ```{r}
 #| echo: false
-kable(data.frame(subject = c("Tony","Captain","Thor","Hulk"), 
+kable(data.frame(subject = c("Dr Strange","Captain","Thor","Hulk"), 
            Yt = c(0.7,"?","?",0.6),
            Yc = c("?",0.5,0.72,"?"),
            `Yt-Yc` = c("?","?","?","?"),
@@ -259,7 +273,7 @@ kable(data.frame(subject = c("Tony","Captain","Thor","Hulk"),
 
 ## Average Treatment Effect (ATE)
 
--   Individual treatment is never observed, and individual treatment effects are likely to vary with individual customers
+-   Individual treatment is never observed, and individual treatment effects are likely to vary with individual customers. Therefore, estimating individual treatment effects is infeasible and not policy interesting.
 
 -   As data scientists/policymakers, we often care more about the treatment effects on the **population**, which is often referred to as the **average treatment effects (ATE)**.
 
@@ -269,21 +283,21 @@ $$
 
 ## ATT and ATU
 
--   Sometimes, we may also care about the treatment effects on the treated (ATT)
+-   Sometimes, we may also care about the treatment effects on the treated (ATT).
 
-    -   e.g., NHS only gives booster jabs to vulnerable group
+    -   e.g., NHS only gives booster jabs to vulnerable groups
 
 $$
 ATT = E[\delta_i|D_i = 1] = E[Y^1_i - Y^0_i|D_i = 1]
 $$
 
--   Similarly, we can also define the Treatment Effect on the Untreated (ATU), but ATU is often of less policy interest.
+-   Similarly, we can also define the Treatment Effect on the Untreated (ATU), but ATU is often of less interest to policymakers.
 
 $$
 ATU = E[\delta_i|D_i = 0] = E[Y^1_i - Y^0_i|D_i = 0]
 $$
 
--   If treatment is randomly assigned among the whole population, then we have the following equality
+-   If treatment is randomly assigned among the whole population, then we have the following equality:
 
 $$
 ATE = ATT = ATU
@@ -305,4 +319,39 @@ Average outcome for treated - Average outcome for untreated
 = **ATT** + **Selection Bias**
 :::
 
--   If the treatment allocation is random among all individuals, the above gives ATE, because the first term is an estimate of the ATT and ATT = ATE under randomization; the second term has an expected value of zero.
+## Basic Identity of Causal Inference: BMW Case
+
+-   If BMW only shows ads to customers who have shown a strong interest in buying from BMW through targeted marketing
+
+::: {.content-visible when-format="beamer"}
+![](images/BMWConversion.png){fig-align="center" width="200"}
+:::
+
+::: {.content-visible when-format="html"}
+![](images/BMWConversion.png){fig-align="center" width="800"}
+:::
+
+-   **ATT != ATE**, because those who saw the ads are different from those who didn't.
+-   **Selection bias** is not equal to 0, because those who saw the ads alreayd have a higher purchase intention than those who didn't.
+
+## Basic Identity of Causal Inference: Random Assignment
+
+-   If BMW randomly decides which customers see the ads rather than through targeted marketing
+
+::: {.content-visible when-format="beamer"}
+![](images/BMWConversion.png){fig-align="center" width="200"}
+:::
+
+::: {.content-visible when-format="html"}
+![](images/BMWConversion.png){fig-align="center" width="800"}
+:::
+
+-   If the treatment (i.e., seeing the ads) is randomly assigned among customers, the above figure gives causal effects, because
+    -   The first term is an estimate of the ATT; but because customers are randomly selected, the treatment group and control group should be similar; therefore, we have **ATT = ATU = ATE**.
+    -   The second term **selection bias** has an expected value of **zero**, because customers are randomly selected.
+
+## Concluding Remarks
+
+-   Randomized Treatment not only makes sure ATE = ATT = ATU, but also fully removes selection bias.
+
+-   This is why randomized experiments are considered the g**old standard of causal inference**.

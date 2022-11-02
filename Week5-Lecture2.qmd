@@ -47,12 +47,14 @@ bibliography: references.bib
 
 -   We can decompose the **observed** outcome of a treatment into two effects
 
-::: {.content-visible when-format="beamer"}
-![](images/BasicIdentityofCausalInference.png){fig-align="center" width="300"}
-:::
+::: callout-note
+## Basic Identity of Causal Inference
 
-::: {.content-visible when-format="html"}
-![](images/BasicIdentityofCausalInference.png){fig-align="center" width="800"}
+Average outcome for treated - Average outcome for untreated
+
+= \[Average outcome for treated - Average counterfactual outcome for treated\] + \[Average counterfactual outcome for treated - Avereage outcome for untreated\]
+
+= **ATT** + **Selection Bias**
 :::
 
 ## Random Assignment of Individuals
@@ -95,13 +97,11 @@ A **randomized controlled trial** (RCT) is an experimental form of impact evalua
 -   A/B testing (treatment group + control group)
     1.  Loyalty program
     2.  No loyalty program
+    
 -   A/B/N testing (multiple treatment groups + control group)
     1.  Point-based loyalty program; points can be redeemd for price vouchers
-
     2.  Point-based loyalty program; points can be redeemd for gifts
-
     3.  Point-based loyalty program; points can be redeemd for free top ups
-
     4.  No loyalty program
 
 ## Types of RCTs in Marketing: Multivariate Testing
@@ -162,18 +162,22 @@ We are interested in multiple treatment variables and their interaction effects.
 
 -   Reduces the chance that there might be a systematic error/unbalance of covariates
 
+**Additional Questions:**
+
+- How can we randomize individualized price discounts to customers?
+
 ## Step 2: Ensure No Spillover and Crossover Effects
 
 -   **Crossover Effects**: A crossover occurs when an individual who was supposed to be assigned to one treatment is accidentally exposed to another treatment.
     -   Solution: Make sure that the same unit receives the same treatment throughout the experiment
--   **Spillover effects**: the behavior of the treatment group can affect control group as well
+-   **Spillover effects**: The behavior of the treatment group can affect control group as well
     -   Solution: Randomize at the level of plausibly isolated social networks such as a community, rather than individual level.
 
 ## Step 2: Ensure No Spillover and Crossover Effects
 
 **Proposal**: How should Tom mitigate spillover and crossover effects
 
-## Step 3: Decide on Complete or Stratified Randomization
+## Step 3: Decide on Randomization Allocation Scheme
 
 -   **Complete Randomization**: individuals (or the relevant unit of randomization) are simply allocated at random into a treatment.
     -   Most commonly used; easy to implement; no data required ex ante
@@ -190,9 +194,7 @@ We are interested in multiple treatment variables and their interaction effects.
     -   run a power calculation \[[link for tutorial](https://www.povertyactionlab.org/resource/power-calculations)\] if there is a budget
 -   Collect both data on the outcome variables of interest and consumer characteristics data
 
-## Step 4: Ensure that Appropriate Data Are Collected
-
-**Proposal:** We need to collect customers retention rate data and link the retention data with their treatment assignment.
+**Proposal:** We need to collect customers' retention rate data and link the retention data with their treatment assignment.
 
 ## Step 5: Interpreting Results from a Field Experiment
 
