@@ -1,0 +1,219 @@
+---
+author: Dr Wei Miao
+date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(5))|> format('%a, %b %d %Y')`"
+institute: UCL School of Management
+title: "Class 11 Application of RCT"
+df-print: kable
+colorlinks: true
+code-line-numbers: true
+format:
+  html: 
+    toc: true
+    number-sections: true
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+  beamer: 
+    toc: false
+    toc-title: ""
+    slide-level: 2
+    section-titles: true
+    theme: Frankfurt
+    colortheme: beaver
+    fonttheme: structurebold
+    navigation: horizontal
+    tbl-colwidths: auto
+    fontsize: 9pt
+    suppress-bibliography: true
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  freeze: auto
+editor_options: 
+  chunk_output_type: inline
+bibliography: references.bib
+---
+
+# Synopsis
+
+## Case Background
+
+Andrew and Hammond, 2 recently graduated MBA students, were tasked with developing an **ad-serving learning algorithm** for Vungle, a **mobile ad-serving** company.
+
+Zain Jaffer, the firm's CEO, planned to **test the developed method in parallel with the existing Vungle algorithm**.
+
+The hope was that the new algorithm would increase **conversion rates** and, more specifically, **profits** (as measured by **eRPM**).
+
+To test this, two conditions (A, Vungle's existing algorithm, and B, the data science approach) were evaluated in parallel on **randomly assigned users**.
+
+## Case Core Question
+
+The case examines the results of an A/B test of the two algorithms during the month of June 2014. You will need to determine whether B outperformed A.
+
+-   How might Jaffer conclude that B is better than A?
+
+-   If it is, what would the financial benefits be?
+
+-   Finally, how long would Jaffer need to wait before declaring a winning algorithm?
+
+# Situation Analysis
+
+## Company
+
+-   Business model of Vungle?
+
+    ::: {.content-visible when-format="html"}
+    > Platform model
+    :::
+
+-   What are the key players in this mobile video ads market (i.e., Vungle)? Find the info in the case.
+
+    -   As a comparison, what are the key players in website ads case?
+
+![](images/paste-D62FD0DD.png){fig-align="center" width="250"}
+
+::: {.content-visible when-format="html"}
+> "Four parties participated in the in-app mobile advertisement channel. The user of the mobile device (user), the owner of the app being used (publisher), the sponsor of the video ad the user was exposed to (advertiser), and the platform that matched the choice of ad to a specific user (e.g., Vungle)."
+:::
+
+## Company
+
+-   How does Vungle make money? Find the info in the case.
+
+![](images/vungle-revenue.png){fig-align="center" width="300"}
+
+::: {.content-visible when-format="html"}
+> "In most cases, payment was made by the advertiser upon **installation**. **Publishers** typically received 60% of the revenues and the **ad provider** the remaining 40%. See Figure 1 for the conversion funnel depicting how an install is achieved. Of all ad requests, most were served and became impressions. When at least 80% of a video ad was watched, it was considered complete. When the user clicked on the ad to get more information, it was counted as a click. The process could then result in an install."
+:::
+
+-   How can Vungle improve its revenue using what we've learned in Marketing Analytics so far?
+
+::: {.content-visible when-format="html"}
+> Vungle should use predictive analytics to fill the ads that a customer is most likely to click and install. This is essentially a supervised learning problem.
+:::
+
+## Customer
+
+-   Due to the nature of business model (multi-sided market), who are Vungle's customers? Find the info in the case.
+
+::: {.content-visible when-format="html"}
+> "In the mobile advertising domain, supply was considered to be the slots available for showing ads, and demand consisted of the advertisers willing to buy the supply by placing ads."
+:::
+
+## Collaborators
+
+## Competitors
+
+![](images/competitoranalysis.png){fig-align="center" width="300"}
+
+-   Direct competitors
+
+-   Indirect competitors
+
+-   Potential competitors
+
+## Context
+
+![](images/class1_Context.png){fig-align="center" width="200"}
+
+-   Legal: GDPR
+
+-   Technological: penetration of mobile phones
+
+-   ...
+
+# Implementation of Experiment
+
+## Step 1: Decide on the Unit of Randomization
+
+-   What would be the best unit of randomization?
+
+::: {.content-visible when-format="html" }
+> The best level would be user level. 
+> User-device level would be too granular and can easily cause crossover effects.
+:::
+
+- How about website-based online ads, say Google ads?
+
+
+## Step 2: Ensure No Spillover and Crossover Effects
+
+-   What are the potential problems for spillover and crossover?
+
+::: {.content-visible when-format="html" }
+
+> A user may use multiple devices, causing crossover effects
+> A user may talk to family members/friends, causing spillover effects.
+
+:::
+
+- How about website-based online ads, say Google ads?
+
+## Step 3: Decide on Randomization Allocation Scheme
+
+-   How did Vungle implement the randomization scheme? Is it sensible?
+
+::: {.content-visible when-format="html"}
+> Chan's team thought it would make sense to direct only 1/16th of the users to the B condition. The other randomly assigned 15/16ths of users would receive an ad based on the existing algorithm (i.e., the A condition).
+:::
+
+
+## Step 4: Collect Data
+
+-   What data did Vungle collect?
+
+::: {.content-visible when-format="html" }
+> After two weeks, B was looking pretty good. Its daily eRPM was on average $0.131 higher than A’s. Would this translate into annual revenues worthy of the necessary data science investment? Exhibits 2 and 3 provide the daily results of the A/B test.10
+:::
+
+-   Can you do better?
+
+::: {.content-visible when-format="html" }
+> User-level data rather than day-level data would be more granular and can provide higher statistical power.
+:::
+
+## Step 5: Interpreting Results from a Field Experiment
+
+-  Which step is missing in Vungle A-B testing?
+
+::: {.content-visible when-format="html" }
+
+> Vungle didn't do randomization check.
+
+:::
+
+-  How to draw statistical conclusions from the Exhibits A and B?
+
+::: {.content-visible when-format="html" }
+
+> We can conduct a paired t-test to statistically test the effectiveness of B.
+
+:::
+
+## Step 5: Paired t-test
+
+```{r}
+pacman::p_load(dplyr)
+```
+
+
+```{r}
+#| echo: true
+
+data_vungle <- read.csv("https://www.dropbox.com/s/nsxnworjggreh4s/UV6968-XLS-ENG.csv?dl=1")
+
+t.test((data_vungle%>%filter(Strategy == "Vungle A"))$eRPM,
+       (data_vungle%>%filter(Strategy == "Vungle B"))$eRPM,
+       paired = TRUE) 
+
+```
+
+
+## Conclusion
+
+Guerin was curious to see how the superior condition would be chosen. How would one conclude that B was better than A?

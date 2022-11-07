@@ -259,12 +259,12 @@ In reality, to measure the treatment effect of LP on a customer's retention rate
 
 ```{r}
 #| echo: false
-kable(data.frame(subject = c("Dr Strange","Captain","Thor","Hulk"), 
+kable(data.frame(subject = c("Dr Strange","Iron Man","Thor","Hulk"), 
            Yt = c(0.7,"?","?",0.6),
            Yc = c("?",0.5,0.72,"?"),
            `Yt-Yc` = c("?","?","?","?"),
            check.names = F),
-      col.names = c("Subject", "$Y_t$","$Y_c$","$Y_t - Y_c$"),
+      col.names = c("Subject", "$Y_1$","$Y_0$","$Y_1 - Y_0$"),
       escape = F) %>%
   kable_styling(font_size = 8, bootstrap_options = c("striped", "hover"))
 ```

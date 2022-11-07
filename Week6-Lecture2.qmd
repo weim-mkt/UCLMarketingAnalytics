@@ -1,0 +1,273 @@
+---
+author: Dr Wei Miao
+date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(5))|> format('%a, %b %d %Y')`"
+institute: UCL School of Management
+title: "Class 12 OLS Regression Basics"
+df-print: kable
+colorlinks: true
+code-line-numbers: true
+format:
+  html: 
+    toc: true
+    number-sections: true
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+  beamer: 
+    toc: false
+    toc-title: ""
+    slide-level: 2
+    section-titles: true
+    theme: Frankfurt
+    colortheme: beaver
+    fonttheme: structurebold
+    navigation: horizontal
+    tbl-colwidths: auto
+    fontsize: 9pt
+    suppress-bibliography: true
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  freeze: auto
+editor_options: 
+  chunk_output_type: inline
+bibliography: references.bib
+---
+
+# Background of Regression
+
+## Data Generating Process
+
+```{r}
+#| echo: false
+data_full <- readRDS("/Users/weimiao/Dropbox/UCL/Teaching/MSIN0094 Marketing Analytics/UCL 2021 - 2022/slides/Week 4/data_full.rds")
+pacman::p_load(dplyr,ggplot2,ggthemes)
+```
+
+$$
+Y = f(X;\theta) + \epsilon
+$$
+
+-   $f$ is the function that characterizes the true relationship between $X$ and $Y$.
+    -   $f$ is often called Data Generating Process (DGP), which is NEVER known to us
+-   $Y$ the **outcome** variable; $X = (X_1,X_2,...,X_p)$ are a set of **explanatory variables**.
+-   $\theta$ represents the set of **function** **parameters** of the DGP $f$.
+-   $\epsilon$ is the random **error term**, with mean zero.
+
+## Conditional Mean
+
+- In causal inference, we care about the conditional mean of the outcome variable, denoted as $E[Y|X=x]$.
+    
+- For example, in an RCT, Y is the outcome variable, X is whether or not customers receive the treatment, then from the basic identity of causal inference, we have
+$$
+ATE = E[Y^1 - Y^0] = E[Y^1|D=1] - E[Y^0|D=0]
+$$
+
+- However, since we never know the true DGP, we need to come up with a **model** that approximates the $E[Y|X=x]$.
+
+- Why not start with something simple? What would be the simplest possible functional relationship for $E[Y|X=x]$?
+
+## Linear Regression Models
+
+- If we assume a **linear**, **additive** relationship for $Y = f(X;\theta) + \epsilon$, we have a simple linear regression model, as follows,
+
+$$
+y_i = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k + \epsilon_i
+$$
+
+-   $y_i$: Outcome variable/dependent variable/regressand/response variable/LHS variable
+
+-   $\beta$: Regression coefficients/estimates/parameters; $\beta_0$: intercept
+
+-   $x_k$: control variable/independent variable/regressor/explanatory variable/RHS variable
+
+    -   Lower case such as $x_1$ usually indicates a single variable while upper case such as $X_{ik}$ indicates several variables
+
+-   $\epsilon_i$: error term/disturbance
+
+    -   Error term will have the expected mean of 0
+
+## Why the Name "Regression"?
+
+-   The term "regression" was coined by Francis Galton to describe a biological phenomenon: The heights of descendants of tall ancestors tend to regress down towards a normal average.
+
+-   The term "regression" was later extended by Udny Yule and Karl Pearson to a more general statistical context (Pearson, 1903).
+
+-   In supervised learning models, "regression" can have different meanings:[^1]
+
+    -   The regression-class models (OLS, Lasso, Ridge, etc.)
+    -   Regression task
+
+-   To establish causal inference, **OLS regression model** is all we need.
+
+[^1]: ML models are developed by computer science; causal inference models are developed by economists.
+
+# Estimation
+
+## How to Run Regression in R
+
+-   In R, there are tons of packages that can run OLS regression.
+
+-   In this module, we will be using the `lfe` package, because it's able to estimate high-dimensional fixed effects.
+
+```{r echo=TRUE}
+
+pacman::p_load(modelsummary,lfe)
+
+OLS_result <- felm( 
+   formula = total_spending ~ Income, # Y ~ X
+   data = data_full, # dataset from Tesco
+   ) 
+
+```
+
+## Report Regression Results
+
+```{r}
+OLS_result%>%
+  modelsummary(
+    stars = TRUE,  # export statistical significance
+  )
+```
+
+## Parameter Estimation: Univariate Regression Case
+
+-   Let's take a **univariate regression**[^2] as an example
+
+[^2]: Regressions with a single regressor is called univariate regressions.
+
+$$
+    y = a + b x_1  + \epsilon
+$$
+
+-   For each guess of a and b, we can compute the error of for customer $i$, $$
+    e_i = y_{i}-a-b x_{1i}
+    $$
+
+-   We can compute the **sum of squared residuals (SSR)** across all customers
+
+$$
+        SSR =\sum_{i=1}^{n}\left(y_{i}-a-b x_{1i}\right)^{2}
+$$
+
+-   **Objective of estimation**: Search for the unique set of $a$ and $b$ that can minimize the SSR.
+
+-   This estimation method that minimizes SSR is called **Ordinary Least Square (OLS).**
+
+## Visualization: Estimation of Univariate Regression
+
+-   If in the Tesco dataset, if we regress **total spending** (Y) on **income** (X)
+
+::: {.content-visible when-format="beamer" }
+```{r}
+#| out-width: "50%"
+#| fig-align: "center"
+#| echo: false
+library(ggplot2)
+
+lm_obj <- lm(data = data_full,
+             total_spending ~ Income)
+
+get_ssr <- function(a,b){
+  return(sum(data_full$total_spending - a - b * data_full$Income)^2)
+}
+
+ggplot(data = data_full, 
+       aes(x = Income, y = total_spending)) + 
+  geom_point() + 
+  theme_stata() + 
+  geom_abline(slope = 0.004, intercept = 0, color = "red") + 
+  # geom_abline(slope = 0.004, intercept = 200, color = "blue") + 
+  geom_abline(slope = 0.06, intercept = - 552, color = "purple") + 
+  geom_abline(slope = lm_obj$coefficients[2], 
+              intercept = lm_obj$coefficients[1], color = "green") 
+  
+```
+
+:::
+
+::: {.content-visible when-format="html" }
+```{r}
+#| fig-align: "center"
+#| echo: false
+library(ggplot2)
+
+lm_obj <- lm(data = data_full,
+             total_spending ~ Income)
+
+get_ssr <- function(a,b){
+  return(sum(data_full$total_spending - a - b * data_full$Income)^2)
+}
+
+ggplot(data = data_full, 
+       aes(x = Income, y = total_spending)) + 
+  geom_point() + 
+  theme_stata() + 
+  geom_abline(slope = 0.004, intercept = 0, color = "red") + 
+  # geom_abline(slope = 0.004, intercept = 200, color = "blue") + 
+  geom_abline(slope = 0.06, intercept = - 552, color = "purple") + 
+  geom_abline(slope = lm_obj$coefficients[2], 
+              intercept = lm_obj$coefficients[1], color = "green") 
+  
+```
+
+:::
+
+
+| Model                              | Color  | Sum of Squared Error                                              |
+|----------------------------------|---------------|-----------------------|
+| $Y = -552 + 0.06 * X$  | Purple | `r get_ssr(-552,0.06)`   |
+| $Y = 0 + 0.004 * X$    | Red    | `r get_ssr(0,0.004)`      |
+| $Y = -552 + 0.021 * X$ | Green  | `r get_ssr(-552,0.021)` |
+
+## Multivariate Regression
+
+-   The OLS estimation also applies to multivariate regression with multiple regressors.
+
+$$
+y_i = b_0 + b_1 x_{1} + ... + b_k x_{k}+\epsilon_i
+$$
+
+-   **Objective of estimation**: Search for the set of $b$ that can minimize the **sum of squared residuals**.
+
+$$
+    SSR= \sum_{i=1}^{n}\left(y_{i}-b_0 - b_1 x_{1} - ... - b_k x_{k} \right)^{2}
+$$
+
+# Interpretation
+
+## Coefficients Interpretation
+
+-   Now on your Quarto document, let's run a new regression, where the DV is $total\_spending$, and X includes $Income$ and $Kidhome$.
+
+```{r}
+#| echo: false
+felm(data = data_full,
+     formula = total_spending ~ Income + Kidhome) %>%
+  modelsummary(stars = T)
+```
+
+- Controlling for Kidhome / everything else being equal / ceteris paribus, one unit increase in Income increases total spending by 0.019 pounds.
+
+## Standard Errors and P-values
+
+-   Due to randomness of the error term, all coefficients estimates follow a $t$ distribution, with the mean being the true coefficient value, and the standard deviation being the standard error we estimated.
+
+-   Therefore, we need **p-values** to check whether the coefficients are statistically different from 0
+
+-   `Income`/`Kidhome` is statistically significant at the 1% level.
+
+## R-squared
+
+-   R-squared (R2) is a statistical measure that represents the proportion of the variance for a dependent variable that's explained by an independent variable or variables in a regression model.
+
+-   Interpretation: 65.8% of the variation in `Spending` can be explained by `Income` and `Kidhome`.
+
+-   As the number of variables increases, the $R^2$ will naturally increase.
+
+- In causal inference tasks, $R^2$ does not mean much.

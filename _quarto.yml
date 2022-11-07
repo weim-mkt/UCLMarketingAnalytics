@@ -81,6 +81,16 @@ website:
                 text: "Class 10 Randomized Controlled Trials (HTML)"
               - href: Week5-Lecture2.pdf
                 text: "Class 10 Randomized Controlled Trials (PDF)"
+          - section: "[Week 6] Linear Regression Models"
+            contents: 
+              - href: Week6-Lecture1.html
+                text: "Class 11 Application of A-B Testing at Vungle (html)"
+              - href: Week6-Lecture1.pdf
+                text: "Class 11 Application of A-B Testing at Vungle (PDF)"
+              - href: Week6-Lecture2.html
+                text: "Class 12 Linear Regression Basics (HTML)"
+              - href: Week6-Lecture2.pdf
+                text: "Class 12 Linear Regression Basics (PDF)"
       - section: "R Tutorials"
         contents:
           - R-installR.qmd

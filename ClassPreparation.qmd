@@ -30,39 +30,39 @@ All materials, including the lecture slides and before-class readings will be re
 
 ## Module Outline
 
-+-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
-| Week      | Analytics/Methodology Topic | Substantive Topic                       | Case Study[^1]                                           | Important dates          |
-+===========+=============================+=========================================+==========================================================+==========================+
-| Induction | Introduction to R           |                                         |                                                          |                          |
-+-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
-| 1         | Computation with R          | Customer lifetime value                 | CLSV                                                     |                          |
-+-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
-| 2         | Data wrangling with R       | Preliminary customer analysis           | Preliminary Customer Analysis                            |                          |
-+-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
-| 3         | Unsupervised learning       | Segmentation                            | Improving Marketing Efficiency with Predictive Analytics |                          |
-+-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
-| 4         | Supervised learning         | Targeting                               | Predicting Customer Churn at QWE Inc.                    | Friday, 28 October 2022  |
-|           |                             |                                         |                                                          |                          |
-|           |                             |                                         |                                                          | 1st assignment due       |
-+-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
-| 5         | Randomized controlled trial | Promotion analytics                     | A/B Testing at Vungle                                    |                          |
-+-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
-| 6         | Linear regression I         | Pricing analytics I                     | Zalora: Data-Driven Pricing                              |                          |
-+-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
-| 7         | Linear regression II        | Pricing analytics II                    | Zalora: Data-Driven Pricing                              |                          |
-+-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
-| 8         | Instrumental variable       | Platform Businesses and Platform Design | Evaluating the Impact of COVID-19 on Ride-sharing Market | Friday, 25 November 2022 |
-|           |                             |                                         |                                                          |                          |
-|           |                             |                                         |                                                          | 2nd assignment due       |
-+-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
-| 9         | Quasi-experiments           | Search engine marketing                 | The power of ranking                                     |                          |
-+-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
-| 10        | Causal forest               | Causal machine learning                 |                                                          |                          |
-+-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
-|           |                             |                                         |                                                          | Friday, 16 December 2022 |
-|           |                             |                                         |                                                          |                          |
-|           |                             |                                         |                                                          | 3rd assignment due       |
-+-----------+-----------------------------+-----------------------------------------+----------------------------------------------------------+--------------------------+
++-----------+----------------------------------------------------+-------------------------------+-------------------------------------------------------------+--------------------------+
+| Week      | Analytics/Methodology Topic                        | Substantive Topic             | Case Study[^1]                                              | Important dates          |
++===========+====================================================+===============================+=============================================================+==========================+
+| Induction | Introduction to R                                  |                               |                                                             |                          |
++-----------+----------------------------------------------------+-------------------------------+-------------------------------------------------------------+--------------------------+
+| 1         | Computation with R                                 | Customer lifetime value       | CLSV                                                        |                          |
++-----------+----------------------------------------------------+-------------------------------+-------------------------------------------------------------+--------------------------+
+| 2         | Data wrangling with R                              | Preliminary customer analysis | Preliminary Customer Analysis                               |                          |
++-----------+----------------------------------------------------+-------------------------------+-------------------------------------------------------------+--------------------------+
+| 3         | Unsupervised learning                              | Segmentation                  | Improving Marketing Efficiency with Predictive Analytics I  |                          |
++-----------+----------------------------------------------------+-------------------------------+-------------------------------------------------------------+--------------------------+
+| 4         | Supervised learning                                | Targeting                     | Improving Marketing Efficiency with Predictive Analytics II | Friday, 28 October 2022  |
+|           |                                                    |                               |                                                             |                          |
+|           |                                                    |                               |                                                             | 1st assignment due       |
++-----------+----------------------------------------------------+-------------------------------+-------------------------------------------------------------+--------------------------+
+| 5         | Rubin Causal Model and Potential Outcome Framework | Causal Inference              |                                                             |                          |
++-----------+----------------------------------------------------+-------------------------------+-------------------------------------------------------------+--------------------------+
+| 6         | RCT                                                | Promotion Analytics           | A/B Testing at Vungle                                       |                          |
++-----------+----------------------------------------------------+-------------------------------+-------------------------------------------------------------+--------------------------+
+| 7         | Linear regression                                  | Pricing analytics             | Zalora: Data-Driven Pricing                                 |                          |
++-----------+----------------------------------------------------+-------------------------------+-------------------------------------------------------------+--------------------------+
+| 8         | Instrumental variable                              | Platform Design               | Evaluating the Impact of COVID-19 on Ride-sharing Market    | Friday, 25 November 2022 |
+|           |                                                    |                               |                                                             |                          |
+|           |                                                    |                               |                                                             | 2nd assignment due       |
++-----------+----------------------------------------------------+-------------------------------+-------------------------------------------------------------+--------------------------+
+| 9         | Quasi-experiments                                  | Search engine marketing       | The power of ranking                                        |                          |
++-----------+----------------------------------------------------+-------------------------------+-------------------------------------------------------------+--------------------------+
+| 10        | Causal forest                                      | Causal machine learning       |                                                             |                          |
++-----------+----------------------------------------------------+-------------------------------+-------------------------------------------------------------+--------------------------+
+|           |                                                    |                               |                                                             | Friday, 16 December 2022 |
+|           |                                                    |                               |                                                             |                          |
+|           |                                                    |                               |                                                             | 3rd assignment due       |
++-----------+----------------------------------------------------+-------------------------------+-------------------------------------------------------------+--------------------------+
 
 : Module Outline
 
@@ -167,9 +167,6 @@ All materials, including the lecture slides and before-class readings will be re
 ### Pre-class preparation
 
 -   Read the variable description of `mtcars` [here](https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars)
-
-<!-- -->
-
 -   Case Study: Preliminary Customer Analysis
     -   Please carefully read the case background before class; we will be discussing the case in class
 :::
@@ -266,14 +263,8 @@ All materials, including the lecture slides and before-class readings will be re
 
 ## Linear Regression Model: Basics
 
-::: callout-important
-### Pre-class preparation
-
--   This week's content will involve quite some maths and will be likely challenging. It's highly recommended that you go through [this tutorial](https://cs229.stanford.edu/section/cs229-linalg.pdf) to refresh your knowledge of linear algebra before class. Only read Sections 1, 2, 3.1 - 3.3, 3.6 - 3.7.
-:::
-
 -   What you will learn
-    -   The concept of Data Generating Process (DGP) and a model
+    -   Review of concept for Data Generating Process (DGP) and a model
     -   The intuition behind coefficient estimation of linear regression models
     -   Run linear regression models in R
     -   How to interpret the regression coefficients and statistics
