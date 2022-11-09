@@ -41,6 +41,78 @@ bibliography: references.bib
 
 # Gold Standard of Causal Inference
 
+
+## Revisit of ATE, ATT, and ATU in BMW Case: Targeted Ads
+
+
+**If BMW ads are not randomized to consumers but targeted at interested consumers**
+
+
+::: columns
+::: {.column width="50%"}
+![](images/BMWConversion2.png){fig-align="center" width="125"}
+:::
+
+::: {.column width="50%"}
+
+- Observed outcomes in data
+    - $E[Y^1 | D = 1] = 14\%$
+    - $E[Y^0 | D = 0] = 0.7\%$
+
+- Counterfactual outcomes in parallel universe
+    - $E[Y^0 | D = 1] = 5\%$
+    - $E[Y^1 | D = 0] = 2.7\%$
+    
+:::
+:::
+
+
+- Average outcome for treated - Average outcome for untreated 
+    - = $E[Y^1| D = 1] - E[Y^0| D = 0]$ = 13.3% 
+    - = $(E[Y^1| D = 1] - E[Y^0 | D = 1]) + (E[Y^0 | D = 1] -  E[Y^0| D = 0])$
+    - = ATT + Selection Bias
+
+- ATT = $E[Y^1| D = 1] - E[Y^0| D = 1]$ = 14% - 5% = 9%
+- ATU = $E[Y^1| D = 0] - E[Y^0| D = 0]$ = 2.7% - 0.7% = 2%
+- Selection Bias = $E[Y^0 | D = 1] - E[Y^0 | D = 0]$ = 5% - 0.7% = 4.3%
+- ATE = 0.5 * ATT + 0.5 * ATU = 5.5%
+
+## Revisit of ATE, ATT, and ATU in BMW Case: Randomized Ads
+
+
+**If BMW ads are randomized to consumers**
+
+
+::: columns
+::: {.column width="50%"}
+![](images/BMWConversion2.png){fig-align="center" width="125"}
+:::
+
+::: {.column width="50%"}
+
+- Observed outcomes in data
+    - $E[Y^1 | D = 1] = 14\%$
+    - $E[Y^0 | D = 0] = 0.7\%$
+
+- Counterfactual outcomes in parallel universe
+    - $E[Y^0 | D = 1] = 0.7\%$
+    - $E[Y^1 | D = 0] = 14\%$
+    
+:::
+:::
+
+
+- Average outcome for treated - Average outcome for untreated 
+    - = $E[Y^1| D = 1] - E[Y^0| D = 0]$ = 13.3% 
+    - = $(E[Y^1| D = 1] - E[Y^0 | D = 1]) + (E[Y^0 | D = 1] -  E[Y^0| D = 0])$
+    - = ATT + Selection Bias
+
+- ATT = $E[Y^1| D = 1] - E[Y^0| D = 1]$ = 14% - 0.7% = 13.3%
+- ATU = $E[Y^1| D = 0] - E[Y^0| D = 0]$ = 14% - 0.7% = 13.3%
+- Selection Bias = $E[Y^0 | D = 1] - E[Y^0 | D = 0]$ = 0.7% - 0.7% = 0%
+- ATE = 0.5 * ATT + 0.5 * ATU = 13.3%
+
+
 ## Revisit of Basic Identity of Causal Inference
 
 -   After assigning individuals into the treatment group and control group, we also observe the outcome for each individual in both groups.
@@ -56,6 +128,7 @@ Average outcome for treated - Average outcome for untreated
 
 = **ATT** + **Selection Bias**
 :::
+
 
 ## Random Assignment of Individuals
 
@@ -97,7 +170,6 @@ A **randomized controlled trial** (RCT) is an experimental form of impact evalua
 -   A/B testing (treatment group + control group)
     1.  Loyalty program
     2.  No loyalty program
-    
 -   A/B/N testing (multiple treatment groups + control group)
     1.  Point-based loyalty program; points can be redeemd for price vouchers
     2.  Point-based loyalty program; points can be redeemd for gifts
@@ -164,7 +236,7 @@ We are interested in multiple treatment variables and their interaction effects.
 
 **Additional Questions:**
 
-- How can we randomize individualized price discounts to customers?
+-   How can we randomize individualized price discounts to customers?
 
 ## Step 2: Ensure No Spillover and Crossover Effects
 
