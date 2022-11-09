@@ -107,6 +107,8 @@ The case examines the results of an A/B test of the two algorithms during the mo
 
 ## Collaborators
 
+-   Who are the collaborators of Vungle?
+
 ## Competitors
 
 ![](images/competitoranalysis.png){fig-align="center" width="300"}
@@ -133,26 +135,23 @@ The case examines the results of an A/B test of the two algorithms during the mo
 
 -   What would be the best unit of randomization?
 
-::: {.content-visible when-format="html" }
-> The best level would be user level. 
-> User-device level would be too granular and can easily cause crossover effects.
+::: {.content-visible when-format="html"}
+> The best level would be user level. User-device level would be too granular and can easily cause crossover effects.
 :::
 
-- How about website-based online ads, say Google ads?
-
+-   How about website-based online ads, say Google ads?
 
 ## Step 2: Ensure No Spillover and Crossover Effects
 
 -   What are the potential problems for spillover and crossover?
 
-::: {.content-visible when-format="html" }
-
-> A user may use multiple devices, causing crossover effects
-> A user may talk to family members/friends, causing spillover effects.
-
+::: {.content-visible when-format="html"}
+> -   A user may use multiple devices, causing crossover effects
+>
+> -   A user may talk to family members/friends, causing spillover effects.
 :::
 
-- How about website-based online ads, say Google ads?
+-   How about website-based online ads, say Google ads?
 
 ## Step 3: Decide on Randomization Allocation Scheme
 
@@ -162,37 +161,32 @@ The case examines the results of an A/B test of the two algorithms during the mo
 > Chan's team thought it would make sense to direct only 1/16th of the users to the B condition. The other randomly assigned 15/16ths of users would receive an ad based on the existing algorithm (i.e., the A condition).
 :::
 
-
 ## Step 4: Collect Data
 
 -   What data did Vungle collect?
 
-::: {.content-visible when-format="html" }
-> After two weeks, B was looking pretty good. Its daily eRPM was on average $0.131 higher than A’s. Would this translate into annual revenues worthy of the necessary data science investment? Exhibits 2 and 3 provide the daily results of the A/B test.10
+::: {.content-visible when-format="html"}
+> After two weeks, B was looking pretty good. Its daily eRPM was on average \$0.131 higher than A's. Would this translate into annual revenues worthy of the necessary data science investment? Exhibits 2 and 3 provide the daily results of the A/B test.
 :::
 
 -   Can you do better?
 
-::: {.content-visible when-format="html" }
+::: {.content-visible when-format="html"}
 > User-level data rather than day-level data would be more granular and can provide higher statistical power.
 :::
 
 ## Step 5: Interpreting Results from a Field Experiment
 
--  Which step is missing in Vungle A-B testing?
+-   Which step is missing in Vungle A-B testing?
 
-::: {.content-visible when-format="html" }
-
+::: {.content-visible when-format="html"}
 > Vungle didn't do randomization check.
-
 :::
 
--  How to draw statistical conclusions from the Exhibits A and B?
+-   How to draw statistical conclusions from the Exhibits A and B?
 
-::: {.content-visible when-format="html" }
-
+::: {.content-visible when-format="html"}
 > We can conduct a paired t-test to statistically test the effectiveness of B.
-
 :::
 
 ## Step 5: Paired t-test
@@ -200,7 +194,6 @@ The case examines the results of an A/B test of the two algorithms during the mo
 ```{r}
 pacman::p_load(dplyr)
 ```
-
 
 ```{r}
 #| echo: true
@@ -212,7 +205,6 @@ t.test((data_vungle%>%filter(Strategy == "Vungle A"))$eRPM,
        paired = TRUE) 
 
 ```
-
 
 ## Conclusion
 

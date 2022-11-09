@@ -55,26 +55,25 @@ $$
 
 -   $f$ is the function that characterizes the true relationship between $X$ and $Y$.
     -   $f$ is often called Data Generating Process (DGP), which is NEVER known to us
--   $Y$ the **outcome** variable; $X = (X_1,X_2,...,X_p)$ are a set of **explanatory variables**.
+-   $Y$ is the **outcome** variable; $X = (X_1,X_2,...,X_p)$ are a set of **explanatory variables**.
 -   $\theta$ represents the set of **function** **parameters** of the DGP $f$.
 -   $\epsilon$ is the random **error term**, with mean zero.
 
 ## Conditional Mean
 
-- In causal inference, we care about the conditional mean of the outcome variable, denoted as $E[Y|X=x]$.
-    
-- For example, in an RCT, Y is the outcome variable, X is whether or not customers receive the treatment, then from the basic identity of causal inference, we have
-$$
-ATE = E[Y^1 - Y^0] = E[Y^1|D=1] - E[Y^0|D=0]
-$$
+-   In causal inference, we care about the conditional mean of the outcome variable, denoted as $E[Y|X=x]$.
 
-- However, since we never know the true DGP, we need to come up with a **model** that approximates the $E[Y|X=x]$.
+-   For example, in an RCT, Y is the outcome variable, X is whether or not customers receive the treatment, then from the basic identity of causal inference, we have $$
+    ATE = E[Y^1 - Y^0] = E[Y^1|D=1] - E[Y^0|D=0]
+    $$
 
-- Why not start with something simple? What would be the simplest possible functional relationship for $E[Y|X=x]$?
+-   However, since we never know the true DGP, we need to come up with a **model** that approximates the $E[Y|X=x]$.
+
+-   Why not start with something simple? What would be the simplest possible functional relationship for $E[Y|X=x]$?
 
 ## Linear Regression Models
 
-- If we assume a **linear**, **additive** relationship for $Y = f(X;\theta) + \epsilon$, we have a simple linear regression model, as follows,
+-   If we assume a **linear**, **additive** relationship for $Y = f(X;\theta) + \epsilon$, we have a simple linear regression model, as follows,
 
 $$
 y_i = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k + \epsilon_i
@@ -145,7 +144,7 @@ $$
     y = a + b x_1  + \epsilon
 $$
 
--   For each guess of a and b, we can compute the error of for customer $i$, $$
+-   For each guess of a and b, we can compute the error for customer $i$, $$
     e_i = y_{i}-a-b x_{1i}
     $$
 
@@ -163,7 +162,7 @@ $$
 
 -   If in the Tesco dataset, if we regress **total spending** (Y) on **income** (X)
 
-::: {.content-visible when-format="beamer" }
+::: {.content-visible when-format="beamer"}
 ```{r}
 #| out-width: "50%"
 #| fig-align: "center"
@@ -188,10 +187,9 @@ ggplot(data = data_full,
               intercept = lm_obj$coefficients[1], color = "green") 
   
 ```
-
 :::
 
-::: {.content-visible when-format="html" }
+::: {.content-visible when-format="html"}
 ```{r}
 #| fig-align: "center"
 #| echo: false
@@ -215,14 +213,12 @@ ggplot(data = data_full,
               intercept = lm_obj$coefficients[1], color = "green") 
   
 ```
-
 :::
 
-
-| Model                              | Color  | Sum of Squared Error                                              |
-|----------------------------------|---------------|-----------------------|
-| $Y = -552 + 0.06 * X$  | Purple | `r get_ssr(-552,0.06)`   |
-| $Y = 0 + 0.004 * X$    | Red    | `r get_ssr(0,0.004)`      |
+| Model                  | Color  | Sum of Squared Error    |
+|------------------------|--------|-------------------------|
+| $Y = -552 + 0.06 * X$  | Purple | `r get_ssr(-552,0.06)`  |
+| $Y = 0 + 0.004 * X$    | Red    | `r get_ssr(0,0.004)`    |
 | $Y = -552 + 0.021 * X$ | Green  | `r get_ssr(-552,0.021)` |
 
 ## Multivariate Regression
@@ -252,7 +248,7 @@ felm(data = data_full,
   modelsummary(stars = T)
 ```
 
-- Controlling for Kidhome / everything else being equal / ceteris paribus, one unit increase in Income increases total spending by 0.019 pounds.
+-   Controlling for Kidhome / everything else being equal / ceteris paribus, one unit increase in Income increases total spending by 0.019 pounds.
 
 ## Standard Errors and P-values
 
@@ -270,4 +266,4 @@ felm(data = data_full,
 
 -   As the number of variables increases, the $R^2$ will naturally increase.
 
-- In causal inference tasks, $R^2$ does not mean much.
+-   In causal inference tasks, $R^2$ does not mean much.
