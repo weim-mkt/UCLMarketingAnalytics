@@ -95,8 +95,7 @@ data_full <- data_full %>%
 ## Handling Categorical Variables using `factor()`
 
 -   In R, we need to use a function `factor()` to inform R that this variable is a categorical variable, such that statistical models will treat them differently from continuous variables.
-    - Refer to this [link](https://www.datacamp.com/tutorial/factors-in-r) for more examples in datacamp.
-
+    -   Refer to this [link](https://www.datacamp.com/tutorial/factors-in-r) for more examples in datacamp.
 -   We can use `factor(Education)` to indicate that, `Education` is a categorical variable.
 
 ```{r}
@@ -248,3 +247,42 @@ feols_coefficient
   (2 * feols_coefficient[3])
 
 ```
+
+# Linear Probability Model
+
+## Linear Probability Model
+
+-   In Predictive Analytics, we learned how to use decision tree and random forest to make predictions. In fact, linear regression can also be used as another supervised learning model.
+
+-   On the one hand, regression predicts the expectation of response $Y$ conditional on $X$; that is
+$$
+    E[Y|X]= X\beta
+$$
+
+-   On the other hand, for a binary outcome variable, if the probability of outcome occurring is $p$, then we can write the expectation of $Y$ is
+$$
+E[Y|X] = 1 * p + 0 * (1 - p) = p
+$$
+
+-   As a result, we have the following equation
+$$
+   \operatorname{Probability}[Y=1|X] = E[Y|X] = X \beta
+$$
+
+-   Interpretation of LPM: Everything else equal, a unit change in $x$ will change the probability of the outcome occurring by $\beta$ units.
+
+## Pros and Cons of LPM
+
+- The procedures of training LPM is similar to training a decision tree `rpart()`/random forest `ranger()`: we use linear regression function `feols()` to train the LPM on the **training data** and make predictions on the **test data**.
+
+- Advantages
+    - Easy and fast to run 
+    - High interpretability: coefficients have clear economic meanings
+    
+- Disadvantages
+    - Predicted probabilities of occurring may fall out of the [0,1] range
+    - Accuracy tends to be low
+
+
+
+

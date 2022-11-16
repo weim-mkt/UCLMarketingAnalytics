@@ -31,7 +31,7 @@ editor_options:
 
 ## Univariate regression
 
--   Load Tesco dataset and necessary packages
+-   Load the Tesco dataset and necessary packages
 
 ```{r}
 pacman::p_load(dplyr)
@@ -173,7 +173,7 @@ datasummary_skim(data_zalora)
 
 When building marketing mix modeling, we need to transform categorical variables into factor variables in R. Think about the following variables:
 
--   `Week_of_Year` should be treated as a categorical variables, because seasonality should not be linear in time.
+-   `Week_of_Year` should be treated as a categorical variable, because seasonality should not be linear in time.
 
 ```{r}
 #  Change Week_of_Year into a factor
@@ -182,7 +182,7 @@ data_zalora <- data_zalora %>%
 
 ```
 
--   `Brand_Name` and `Price_Band` should also be converted into factor variables
+-   `Brand_Name` and `Price_Band` should also be converted into factor variables.
 
 ```{r}
 # complete the code below
@@ -195,7 +195,7 @@ data_zalora <- data_zalora %>%
 
 ![](images/zalora_equation.png)
 
--   Run the above multivariate regression in R, where the dependent variable is `Units_Sold` and the RHS variables are `Unit_Price` and the others.
+-   Run the above multivariate regression in R, where the dependent variable is `Units_Sold` and the explanatory variables are `Unit_Price` and the others.
 
 ```{r}
 # If we do not care about the estimates of fixed effects
@@ -211,7 +211,7 @@ modelsummary(result_ols2,
 
 ```
 
--   **Exercise**: Interpret the coefficients in this regression table?
+-   **Exercise**: How would you interpret the coefficients in this regression table?
 
 ## Pricing Optimization
 
@@ -262,9 +262,9 @@ sum(data_SKU_afterweek3$Profit)
 
 -   From the above analyses, it seems if Zalora keeps using \$34.9, by the end of week 7, all products will be sold out. And the total profits will be 800 dollars.
 
-### Profit Optimization[^1] 
+### Profit Optimization[^1]
 
-[^1]: You will learn how to use optimize solver in term 2 Operations Analytics.
+[^1]: You will learn how to use optimization solver in term 2 Operations Analytics.
 
 -   Write a user-defined function to compute the revenue each week conditional on a new value of price
 
