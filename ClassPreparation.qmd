@@ -276,7 +276,6 @@ All materials, including the lecture slides and before-class readings will be re
 ## Linear Regression Model: Advanced Topics
 
 -   What you will learn
-    -   How to interpret coefficients of log transformed variables
     -   How to model non-linear relationship using linear regression
     -   How to interpret the coefficients of categorical variables
 

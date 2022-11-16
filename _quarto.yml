@@ -70,7 +70,7 @@ website:
               - href: Case-PredictiveAnalytics-stu.pdf
                 text: "Improving Marketing Efficiency Using Predictive Analytics"  
               - href: Case-PredictiveAnalytics.html
-                text: "Case Solution"
+                text: "Case Solution: Predictive Analytics"
           - section: "[Week 5] Causal Inference and RCT"
             contents: 
               - href: Week5-Lecture1.html
@@ -91,6 +91,18 @@ website:
                 text: "Class 12 Linear Regression Basics (HTML)"
               - href: Week6-Lecture2.pdf
                 text: "Class 12 Linear Regression Basics (PDF)"
+          - section: "[Week 7] Marketing Mix Modeling"
+            contents: 
+              - href: Week7-Lecture1.html
+                text: "Class 13 Linear Regression Advanced (HTML)"
+              - href: Week7-Lecture1.pdf
+                text: "Class 13 Linear Regression Advanced (PDF)"
+              - href: Week7-Lecture2.html
+                text: "Class 14 Marketing Mix Modeling (HTML)"
+              - href: Week7-Lecture2.pdf
+                text: "Class 14 Marketing Mix Modeling (PDF)"
+              - href: Case-Zalora.html
+                text: "Case Solution: Zalora"
       - section: "R Tutorials"
         contents:
           - R-installR.qmd

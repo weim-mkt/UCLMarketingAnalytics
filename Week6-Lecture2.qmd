@@ -112,14 +112,14 @@ $$
 
 -   In R, there are tons of packages that can run OLS regression.
 
--   In this module, we will be using the `lfe` package, because it's able to estimate high-dimensional fixed effects.
+-   In this module, we will be using the `fixest` package, because it's able to estimate high-dimensional fixed effects.
 
 ```{r echo=TRUE}
 
-pacman::p_load(modelsummary,lfe)
+pacman::p_load(modelsummary,fixest)
 
-OLS_result <- felm( 
-   formula = total_spending ~ Income, # Y ~ X
+OLS_result <- feols( 
+   fml = total_spending ~ Income, # Y ~ X
    data = data_full, # dataset from Tesco
    ) 
 
@@ -128,9 +128,8 @@ OLS_result <- felm(
 ## Report Regression Results
 
 ```{r}
-OLS_result%>%
-  modelsummary(
-    stars = TRUE,  # export statistical significance
+modelsummary(OLS_result,
+    stars = TRUE  # export statistical significance
   )
 ```
 
@@ -243,12 +242,12 @@ $$
 
 ```{r}
 #| echo: false
-felm(data = data_full,
-     formula = total_spending ~ Income + Kidhome) %>%
+feols(data = data_full,
+     fml = total_spending ~ Income + Kidhome) %>%
   modelsummary(stars = T)
 ```
 
--   Controlling for Kidhome / everything else being equal / ceteris paribus, one unit increase in Income increases total spending by 0.019 pounds.
+-   **Controlling for** Kidhome / everything else being equal / ceteris paribus, one unit increase in Income increases total spending by 0.019 pounds.
 
 ## Standard Errors and P-values
 
