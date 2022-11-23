@@ -218,9 +218,9 @@ rpart.plot(tree1)
 ```
 
 1.  First, we find that `cyl` matters more than `hp` in terms of predicting mpg, so we split two branches according to `cyl`. We find that {4} and {6,8} split can best differentiate car models.
-    -   `cyl` = 4, go to the left branch
+    -   `cyl` = 4, go to the right branch
 
-    -   `cyl` = 6 or 8, go to the right branch
+    -   `cyl` = 6 or 8, go to the left branch
 
 ::: {.content-visible when-format="beamer"}
 ## Intuition behind Decision Trees
@@ -234,16 +234,16 @@ rpart.plot(tree1)
 ```
 
 2.  For car models with 4 cylinders, we try all possible splits based on `hp`, and find that 193 can best differentiate car models.
-    -   `hp` \< 193, use the average `mpg` in that **terminal node,** 13, as the predicted `mpg`
+    -   `hp` \>= 193, use the average `mpg` in that **terminal node,** 13, as the predicted `mpg`
 
-    -   `hp` \>= 193, use the average `mpg` in that **terminal node,** 18, as the predicted `mpg`
+    -   `hp` \< 193, use the average `mpg` in that **terminal node,** 18, as the predicted `mpg`
 :::
 
 ::: {.content-visible when-format="html"}
 2.  For car models with 4 cylinders, we try all possible splits based on `hp`, and find that 193 can best differentiate car models.
-    -   `hp` \< 193, use the average `mpg` in that **terminal node,** 13, as the predicted `mpg`
+    -   `hp` \>= 193, use the average `mpg` in that **terminal node,** 13, as the predicted `mpg`
 
-    -   `hp` \>= 193, use the average `mpg` in that **terminal node,** 18, as the predicted `mpg`
+    -   `hp` \< 193, use the average `mpg` in that **terminal node,** 18, as the predicted `mpg`
 :::
 
 ::: {.content-visible when-format="beamer"}
@@ -257,12 +257,12 @@ rpart.plot(tree1)
 rpart.plot(tree1)
 ```
 
-3.  For car models with more than 5 cylinders, we find that `hp` does not differentiate car models, so we do not further split.
+3.  For car models with less than 5 cylinders (the right branch), we find that `hp` does not differentiate car models, so we do not further split.
     -   Use the average `mpg` in that **terminal node,** 27, as the predicted `mpg`
 :::
 
 ::: {.content-visible when-format="html"}
-3.  For car models with more than 5 cylinders, we find that `hp` does not differentiate car models, so we do not further split.
+3.  For car models with less than 5 cylinders (the right branch), we find that `hp` does not differentiate car models, so we do not further split.
     -   Use the average `mpg` in that **terminal node,** 27, as the predicted `mpg`
 :::
 
@@ -278,7 +278,7 @@ rpart.plot(tree1)
 
 **Disadvantages of Decision Trees**
 
--   Single regression trees have high variance (overfitting), resulting in unstable predictions
+-   Single regression trees have high variance (overfitting), resulting in unstable predictions.
 
 -   Due to the high variance, single regression trees tend to have poor predictive accuracy.
 

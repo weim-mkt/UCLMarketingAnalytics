@@ -50,20 +50,18 @@ pacman::p_load(dplyr,ggplot2,ggthemes)
 ```
 
 -   In causal inference, we often care about the expected mean of the outcome variable ($Y$) conditional on treatment variables ($X$).
-    
--   For example, in an RCT, Y is the outcome variable (e.g., purchase rate), X is whether or not customers receive the treatment (e.g., BMW ads), then from the **basic identity of causal inference**, we have 
-$$
-        ATE = E[Y|X=1] - E[Y|X=0]
-$$
 
-- Question: how can we model the expected mean of outcome variable conditional on $X$, $E[Y|X = x]$?
+-   For example, in an RCT, Y is the outcome variable (e.g., purchase rate), X is whether or not customers receive the treatment (e.g., BMW ads), then from the **basic identity of causal inference**, we have $$
+        ATE = E[Y|X=1] - E[Y|X=0]
+    $$
+
+-   Question: how can we model the expected mean of outcome variable conditional on $X$, $E[Y|X = x]$?
 
 ## Linear Regression Models
 
--   If we assume a **linear**, **additive** function for $E[Y|X=x]$, we have a simple linear regression model, as follows,
-$$
-Y_i = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k + \epsilon_i
-$$
+-   If we assume a **linear**, **additive** function for $E[Y|X=x]$, we have a simple linear regression model, as follows, $$
+    Y_i = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k + \epsilon_i
+    $$
 
 -   $y_i$: Outcome variable/dependent variable/regressand/response variable/LHS variable
 
@@ -75,10 +73,9 @@ $$
 
 -   $\epsilon_i$: error term/disturbance, which has the expected mean of 0, i.e., $E[\epsilon|X] = 0$
 
-- If we take the expectation of $Y$, we have:
-$$
-E[Y|X] = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k 
-$$
+-   If we take the expectation of $Y$, we have: $$
+    E[Y|X] = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k 
+    $$
 
 ## Why the Name "Regression"?
 
@@ -230,13 +227,16 @@ $$
 -   Now on your Quarto document, let's run a new regression, where the DV is $total\_spending$, and X includes $Income$ and $Kidhome$.
 
 \footnotesize
+
 ```{r}
 #| echo: false
 feols(data = data_full,
      fml = total_spending ~ Income + Kidhome) %>%
   modelsummary(stars = T)
 ```
+
 \normalsize
+
 -   **Controlling for** Kidhome / everything else being equal / ceteris paribus, one unit increase in Income increases total spending by 0.019 pounds.
 
 ## Standard Errors and P-values

@@ -1,0 +1,260 @@
+---
+title: "The Causal Impact of COVID-19 on Uber Driver Labor Supply"
+author: Dr Wei Miao
+subtitle: "MSIN0094 Case Study"
+institute: UCL School of Management
+date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(7))`"
+colorlinks: true
+code-line-numbers: true
+format:
+  html: 
+    toc: true
+    number-sections: true
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+    embed-resources: true
+    self-contained: true
+knitr:
+  opts_chunk:
+    echo: true
+    warning: false
+    message: false
+    error: false
+execute: 
+  cache: true
+bibliography: references.bib
+editor_options: 
+  chunk_output_type: inline
+---
+
+# Industry Background[^1]
+
+[^1]: This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module based on . This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. Copyrights reserved.
+
+The sharing economy has been booming in recent years, leading to a rapid increase in jobs in the "gig" economy. According to Hossain (2020), in the US alone, the sharing economy sector has created 6.23 million jobs with 78 million service providers, and 800 million people engage with it. The transportation sector is one of the most salient beneficiaries of the burgeoning sharing economy. For instance, commuting to work by shared bicycle (e.g., Citi Bike) has become an increasingly popular transportation option [@fordRidingWallStreet2019]. The ride-sharing service (e.g., Uber) allows drivers to enjoy more flexibility in work, which is proven valuable to drivers and has improved capacity utilization [@cramerDisruptiveChangeTaxi2016].
+
+However, the COVID-19 pandemic has brought unprecedented disruptions to many industries, and the transportation industry is among the most disrupted ones. Further, the COVID-19 has raised concerns about the survivability of the sharing economy in general. It is reported that gross bookings on Uber rides were down by 75% in the three months through June 2020, and that Lyft's April ridership was down by 75% from April 2019.
+
+Unlike the traditional taxi market, where taxi drivers rent vehicles from taxi companies and then directly provide transportation services to consumers, modern ride-sharing platforms typically serve as the matching intermediary between drivers and passengers. Due to such two-sided market nature, the profitability of modern ride-sharing platforms (and sharing economy in general) highly depends on the interdependence or externality between the two sides of economic agents [@rysmanEconomicsTwosidedMarkets2009]. Therefore, **a ride-sharing platform would benefit from the network effect if more drivers work for them.** It is thus managerially important for the ride-sharing platform to understand whether COVID-19 has affected drivers' labor supply patterns and if yes, the magnitude of the effect across drivers and over time.
+
+In this case study, we will answer the above question using the instrumental variable method.
+
+# Data Sets
+
+## Driver Daily Trip Data
+
+The data science team has aggregated the raw trip-level data into a driver-day level panel data. This first data set summarizes drivers' daily shift each day in April 2020, right during the period when the pandemic began in the UK. The data set consists of a random sample of around 4000 drivers in 3 UK cities (anonymized as g, s, and c) in 2020.
+
+```{r}
+#| echo: false
+pacman::p_load(dplyr)
+# load the driver data from dropbox
+data_driver <- read.csv('https://www.dropbox.com/s/znoqsgmymfyjs07/data_driver.csv?dl=1')
+
+```
+
+-   Check the data types of each variable
+    -   Identify any variables that need to be converted
+
+    -   Identify all economically meaningful variables
+
+```{r}
+str(data_driver)
+```
+
+## Data Wrangling
+
+-   Convert the booking date data from characters to date type using the `lubridate` package.
+    -   For more details on how to work on date objects in R, refer to this [tutorial](https://lubridate.tidyverse.org)
+
+```{r}
+pacman::p_load(lubridate)
+
+# function ymd(), dmy(), mdy() can convert characters into date format
+# lubridate is super powerful, refer to the tutorial for more usages
+data_driver <- data_driver %>%
+  mutate(booking_date = ymd(booking_date) )
+
+# check the class of booking_date now
+class(data_driver$booking_date)
+```
+
+-   Please report the summary statistics of the trip data
+
+```{r}
+pacman::p_load(modelsummary)
+# report the summary statistics below
+datasummary_skim(data_driver)
+```
+
+## COVID-19 Data
+
+To measure the severity of COVID-19, the data science team collected daily number of new cases in each city from the government database.
+
+```{r}
+data_covid <- read.csv("https://www.dropbox.com/s/q72b6j8nm8kkla0/data_covid.csv?dl=1")
+```
+
+-   Please check the data types and correct the data types as needed
+    -   Tips: need to convert the `booking_date` into a date type.
+
+```{r}
+# check the structure of data below
+str(data_covid)
+
+# convert the data types of booking_date below
+
+data_covid <- data_covid %>%
+  mutate(booking_date = ymd(booking_date))
+
+```
+
+## Data Wrangling
+
+-   Join the two datasets using appropriate functions
+    -   Tip: In Week 2 and 3, we have learned dplyr data joining. Please observe the data structure of the two datasets and carefully think about how we should do the data join in this case.
+
+```{r}
+data_driver <- data_driver %>%
+  left_join(data_covid, by = c('city' = 'city','booking_date'='booking_date'))
+
+```
+
+# Simple OLS Regressions
+
+## Key Outcome Variables
+
+To facilitate the empirical analysis of drivers' responses to COVID-19, the data science team has followed the literature [e.g., @farberReferencedependentPreferencesLabor2008] and further aggregate trips into a higher level for each driver so that we can measure both extensive margin (i.e., whether to work) and intensive margin (i.e., how much to work) of drivers' labor supply. As the COVID-19 measures vary at the daily level, the team aggregated the trip level data into driver-day level. Specifically, Uber cares about the following driver-day level KPI measures which serve as the dependent variables in the subsequent empirical analysis.
+
+1.  **Whether or not to work**, a binary outcome variable which equals 1 if a driver has at least one ride request on the day and 0 otherwise. We can use this variable to measure drivers' shift decision, i.e., willingness to work on a day, which proxies for the extensive margin of drivers' labor supply. It is ambiguous ex-ante how the number of new cases affects a driver's shift decision. On the one hand, more new cases may increase the risk of infection, which decease drivers' expected wellbeing, and therefore discourage drivers from working on a specific day; on the other hand, fewer drivers on the street suggest less competition among drivers and therefore higher chances of getting a passenger and potentially higher hourly earnings, which may motivate drivers to work. It is important for the ride-sharing company to understand how the severity of COVID-19 affects drivers' willingness to work, so that the company can adjust their stimulus plans for drivers accordingly.
+2.  Total **number of completed orders**, which contain three aspects of information which are of policy and managerial interest. First, the variable can proxy for the length of drivers' daily labor supply. Conditional on working, if a driver decides to work for longer hours, then we expect the driver to have a larger number of requests/orders. Second, both variables contain information on consumer demand. We expect the total number of requests/orders to decrease if there is a lower demand for ride-sharing service from consumers due to the COVID-19 outbreak. Finally, both variables can measure the intensity of competition among drivers. Keeping the level of demand fixed, the total number of requests/orders would be larger when there are fewer drivers working on the day. Due to the complexity of information contained, ex-ante, it is not straightforward how the COVID-19 measures affect the total number of orders for individual drivers.
+3.  **Earnings**. Earnings measure the driver's income from providing ride-sharing services, which is highly correlated with the number of completed orders and total trip distance. It allows us to directly assess the impact of the COVID-19 on drivers' financial wellbeing.
+4.  **Average trip distance**. In our empirical context, drivers cannot reject a booking request once being matched with a passenger, therefore, the trip distance is largely determined by passengers. Since passengers may be reluctant to take long distance trips during the pandemic, we expect a negative impact of the number of new cases on the average trip distance.
+
+## Univariate OLS regression Analyses
+
+To empirically investigate the causal impact of COVID-19 cases on driver behavior, we can use simple OLS regression to regress the labor supply measures of driver $i$, in city $j$, on day $t$ on the COVID-19 measure and other covariates as follows:
+
+$$
+Outcome_{ijt}=\beta_0+\alpha NewCases_{ijt}+X\beta+\varepsilon_{ijt}
+$$
+
+-   Please run three univariate simple linear regressions, with the outcome being the 3 aforementioned dependent variables and explanatory variable being new cases only. Interpret the results.
+
+```{r}
+pacman::p_load(fixest)
+OLS_is_work <- feols(fml = is_work ~ new_cases,
+      data = data_driver)
+OLS_income <- feols(fml = income ~ new_cases,
+      data = data_driver)
+OLS_n_order <- feols(fml = n_order ~ new_cases,
+      data = data_driver)
+OLS_avg_distance <- feols(fml = avg_distance ~ new_cases,
+      data = data_driver)
+
+modelsummary(list(OLS_is_work,OLS_income,OLS_n_order,OLS_avg_distance),
+             stars = TRUE)
+```
+
+## Fixed Effect OLS Regressions
+
+What confounding factors do we need to control in the above OLS regressions? Specifically, since this data is a panel data, what fixed effects do you need to control in the OLS regression?
+
+We first need to include **driver fixed effects** to control for **driver-specific** characteristics that may affect drivers' labor supply patterns. Such characteristics include, but are not limited to, the driver's sociodemographic characteristics (e.g., gender and age), the driver's degree of risk aversion, whether a driver is driving full-time or part-time, and the driver's innate abilities to search for passengers, etc.
+
+For instance, less risk-averse drivers may prefer to work on days when there are more new cases because they expect less competition from peer drivers and potentially higher profitability on such days. Another example is that, full-time drivers can be more subject to the impact of new cases compared to part-time drivers, because full-time drivers' income largely comes from providing ride-sharing services via the focal company. Driver fixed effects can mitigate such driver-specific time-invariant confounding effects and help us obtain more accurate estimates for our focal explanatory variable `NewCases`.
+
+In addition to driver fixed effects that remove cross-sectional confounding effects across drivers, we also include **time fixed effects** in Equation (1) to mitigate the intertemporal confounding effects. We consider time fixed effects at the day level. Moreover, given that the local government in each city may have enacted different policies on fighting COVID-19 and/or stimulating economy (e.g., subsidizing drivers) during our data period, we further control for **city fixed effects**.
+
+```{r}
+FE_is_work <- feols(fml = is_work ~ new_cases|
+                       driver_id + booking_date + city,
+      data = data_driver)
+FE_income <- feols(fml = income ~ new_cases|
+                       driver_id + booking_date + city,
+      data = data_driver)
+FE_n_order <- feols(fml = n_order ~ new_cases|
+                       driver_id + booking_date + city,
+      data = data_driver)
+FE_avg_distance <- feols(fml = avg_distance ~ new_cases|
+                       driver_id + booking_date + city,
+      data = data_driver)
+
+modelsummary(list(FE_is_work,FE_income,FE_n_order,FE_avg_distance),
+             stars = TRUE)
+```
+
+# Instrumental Variable
+
+## Potential Endogeneity
+
+After including the driver, city, date fixed effects fixed effects in the above Regression (1), the only challenge to obtaining causal inference is the potential endogeneity of `NewCases`.
+
+Equation (1) could be subject to **simultaneity issues** because drivers' labor supply decisions and number of new cases may be interdependent. On the one hand, drivers may adjust their labor supply accordingly to the number of new cases. On the other hand, prior research has demonstrated the potential effect of mobility on the COVID-19 case growth rate. If a city has a higher volume of private transportation through ride-sharing services, given the highly contagious nature of COVID-19, the city may have a higher number of new cases.
+
+## Instrumental Variables
+
+To tackle the potential endogeneity issue, we use the instrumental variable (IV) method, leveraging exogenous sources of variation in the explanatory variable that are uncorrelated with the error term in Equation (1) using two-stage least squares (2SLS). We can potentially select two instrumental variables. The first instrumental variable is imported new cases, which measures the number of infected travelers from overseas in each city as disclosed by local government. Because the imported cases relate to travelers from overseas, it should be exogenous to local confirmed cases and meet the **exogeneity requirement**. The second instrumental variable is *other city new cases*, which is the number of new cases confirmed in neighboring cities. Since confirmed cases in other cities should not directly affect the focal city's ride-sharing market, the variable *other city new cases* should also satisfy the **exogeneity requirement**.
+
+## Manual IV Regression
+
+The first-stage regression is specified below in Equation (2), where the definitions of variables are the same as in Equation (1).
+
+$$
+NewCase_{ijt}=\beta_0+\alpha OtherCityNewCase_{ijt}+X\beta+\varepsilon_{ijt}
+$$
+
+```{r}
+# Run first stage regression: new_cases ~ other_city_new_cases + controls
+IV_is_work_1ststage <- feols(fml = new_cases ~ other_city_new_cases|
+                       driver_id + booking_date + city,
+      data = data_driver)
+
+# mutate predicted new_cases in data_driver
+data_driver <- data_driver %>%
+  mutate(predicted_new_cases = predict(IV_is_work_1ststage))
+
+```
+
+In the second stage regression, we regress the outcome variables on the predicted new cases from the 1st stage, controlling for the same set of control variables.
+
+```{r}
+# Run second stage regression: is_work ~ predicted_new_cases + controls
+IV_is_work_2ndstage <- feols(fml = is_work ~ predicted_new_cases|
+                       driver_id + booking_date + city,
+      data = data_driver)
+
+modelsummary(list(IV_is_work_1ststage,IV_is_work_2ndstage),
+             stars = TRUE)
+```
+
+## IV Regression Using `feols()`
+
+In fact, the feols() function in the fixest package is powerful to help us estimate IV regression in a single step.
+
+```{r}
+IV_is_work <- feols(fml = is_work ~ 1|
+                       driver_id + booking_date + city|
+                      new_cases ~ other_city_new_cases,
+      data = data_driver)
+
+IV_no_order <- feols(fml = n_order ~ 1|
+                       driver_id + booking_date + city|
+                      new_cases ~ other_city_new_cases,
+      data = data_driver)
+
+IV_income <- feols(fml = income ~ 1|
+                       driver_id + booking_date + city|
+                      new_cases ~ other_city_new_cases,
+      data = data_driver)
+
+IV_avg_distance <- feols(fml = avg_distance ~ 1|
+                       driver_id + booking_date + city|
+                      new_cases ~ other_city_new_cases,
+      data = data_driver)
+
+modelsummary(list(IV_is_work,IV_no_order,IV_income,IV_avg_distance),
+             stars = TRUE)
+```

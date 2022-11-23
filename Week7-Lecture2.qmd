@@ -1,6 +1,6 @@
 ---
 author: Dr Wei Miao
-date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(6))|> format('%a, %b %d %Y')`"
+date: "`r format((lubridate::ymd('20221006')+lubridate::dweeks(6)),'%a, %b %d %Y')`"
 institute: UCL School of Management
 title: "Class 14 Workshop: Marketing Mix Modeling"
 df-print: kable

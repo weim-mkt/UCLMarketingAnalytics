@@ -295,19 +295,25 @@ All materials, including the lecture slides and before-class readings will be re
 
 # Week 8: Endogeneity and Instrumental Variables
 
-## Endogeneity and Panel Regression with Fixed Effects
+::: callout-important
+### Pre-class preparation
+
+-   Case Study: The Causal Impact of COVID-19 on Ridesharing
+    -   Please carefully read the case background before class and we will be discussing the case in class. This framework of IV analyses would be very helpful for your dissertation projects. You can work on similar topics such as the causal impact of COVID-19 on offline shopping, etc.
+    -   Finish the coding exercise in the Quarto document before Section 4 IV regression (similar questions will be in the last assignment).
+:::
+
+## Endogeneity
 
 -   What you will learn
     -   Endogeneity and its consequence in causal inference
     -   Omitted variable bias
     -   Reverse causality
-    -   Measurement error
-    -   fixed effects regression for panel data
 
 ## Instrumental Variables
 
 -   What you will learn
-    -   Intuition of why instrumental variables solve endogeneity
+    -   Intuition of why instrumental variables solve endogeneity problems
     -   The two requirements of a valid instrumental variable and how to find good instruments
     -   Apply two-stage least square method to estimate the causal effects using instrumental variables
     -   Application of instrumental variables in the marketing and business field

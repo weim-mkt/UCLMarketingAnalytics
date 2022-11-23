@@ -152,7 +152,7 @@ modelsummary(feols_categorical,
     -   The intercept stands for the effects of the baseline group.
     -   In the regression result table, `Basic` group is suppressed if we use `Education_factor_2`, because this group is chosen as the **baseline group**.
 -   The interpretation template of coefficients for factor variables: Ceteris paribus, compared with the \[baseline group\], the \[outcome variable\] of \[group XXX\] is higher/lower by \[coefficient\], and the coefficient is statistically \[significant/insignificant\].
-    -   Ceteris paribus, compared with the basic education group, the total spending of PhD group is lower by 132.252 dollors. The coefficient is statistically significant at the 5% level.
+    -   Ceteris paribus, compared with the basic education group, the total spending of PhD group is lower by 153.190 dollars. The coefficient is statistically significant at the 1% level.
 
 \
 

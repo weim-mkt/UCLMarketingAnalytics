@@ -41,7 +41,7 @@ website:
                 text: "Class 4 Data Wrangling with R I (HTML)"
               - href: Week2-Lecture2.pdf
                 text: "Class 4 Data Wrangling with R I (PDF)"
-              - href: CLSV-Case.html
+              - href: Case-CLSV.html
                 text: "CLSV Solutions"
           - section: "[Week 3] Unsupervised Learning and Customer Segmentation"
             contents: 
@@ -56,7 +56,7 @@ website:
               - href: Case-PreliminaryCustomerAnalysis-stu.pdf
                 text: "Preliminary Customer Analyses"  
               - href: Case-PreliminaryCustomerAnalysis.html
-                text: "Case Solution"  
+                text: "Case Solution: Descriptive Analytics"  
           - section: "[Week 4] Supervised Learning and Customer Targeting"
             contents: 
               - href: Week4-Lecture1.html
@@ -103,6 +103,20 @@ website:
                 text: "Class 14 Marketing Mix Modeling (PDF)"
               - href: Case-Zalora.html
                 text: "Case Solution: Zalora"
+          - section: "[Week 8] Endogeneity and Instrumental Variable"
+            contents: 
+              - href: Week8-Lecture1.html
+                text: "Class 15 Endogeneity (HTML)"
+              - href: Week8-Lecture1.pdf
+                text: "Class 15 Endogeneity (PDF)"
+              - href: Week8-Lecture2.html
+                text: "Class 16 Instrumental Variable (HTML)"
+              - href: Week8-Lecture2.pdf
+                text: "Class 16 Instrumental Variable (PDF)"
+              - href: Case-COVID-IV-stu.pdf
+                text: "Case: COVID-19 and Ridesharing"  
+              - href: Case-COVID-IV.html
+                text: "Case Solution: COVID-19 and Ridesharing"
       - section: "R Tutorials"
         contents:
           - R-installR.qmd
