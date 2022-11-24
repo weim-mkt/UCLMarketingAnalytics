@@ -106,13 +106,35 @@ $$
 
 ## More Examples of IVs
 
-**Can you come up with IV candidates for the following causation questions?**
+::: {.content-visible when-format="beamer" }
+**Can you come up with IV candidates for the following causation questions?**^[See html version for answers.]
 
 -   COVID-19 cases =\> Uber Driver Supply
 
 -   Number of restaurants on UberEat =\> Number of orders on UberEat
 
 -   Retail price =\> Sales
+
+:::
+
+::: {.content-visible when-format="html" }
+**Can you come up with IV candidates for the following causation questions?**
+
+-   COVID-19 cases =\> Uber Driver Supply
+    - new cases from neighboring cities
+    - new cases from overseas
+
+-   Number of restaurants on UberEat =\> Number of orders on UberEat
+    - close down of restaurants due to government inspections
+
+-   Retail price =\> Sales
+    - wholesale price
+    - costs of raw materials
+    - COGS
+    - Hausman instruments: the prices of the same product in other markets
+:::
+
+
 
 # Two-Stage Least Square
 
