@@ -117,6 +117,16 @@ website:
                 text: "Case: COVID-19 and Ridesharing"  
               - href: Case-COVID-IV.html
                 text: "Case Solution: COVID-19 and Ridesharing"
+          - section: "[Week 9] Natural Experiment"
+            contents: 
+              - href: Week9-Lecture1.html
+                text: "Class 17 Difference-in-Differences (HTML)"
+              - href: Week9-Lecture1.pdf
+                text: "Class 17 Difference-in-Differences (PDF)"
+              - href: Week9-Lecture2.html
+                text: "Class 18 Regression Discontinuity Design (HTML)"
+              - href: Week9-Lecture2.pdf
+                text: "Class 18 Regression Discontinuity Design (PDF)"
       - section: "R Tutorials"
         contents:
           - R-installR.qmd

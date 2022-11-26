@@ -54,7 +54,7 @@ data_driver <- read.csv('https://www.dropbox.com/s/znoqsgmymfyjs07/data_driver.c
     -   Identify all economically meaningful variables
 
 ```{r}
-
+str(data_driver)
 ```
 
 ## Data Wrangling
@@ -72,6 +72,7 @@ data_driver <- data_driver %>%
 
 # check the class of booking_date now
 class(data_driver$booking_date)
+str(data_driver)
 ```
 
 -   Please report the summary statistics of the trip data

@@ -1,0 +1,104 @@
+---
+author: Dr Wei Miao
+institute: UCL School of Management
+date: "`r lubridate::ymd('20221006')+lubridate::dweeks(8)`"
+title: "Class 18 Regression Discontinuity Design"
+df-print: kable
+colorlinks: true
+code-line-numbers: true
+format:
+  html: 
+    toc: true
+    number-sections: true
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+  beamer: 
+    toc: false
+    toc-title: ""
+    slide-level: 2
+    section-titles: true
+    theme: Frankfurt
+    colortheme: beaver
+    fonttheme: structurebold
+    navigation: horizontal
+    tbl-colwidths: auto
+    fontsize: 9pt
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  freeze: auto
+editor_options: 
+  chunk_output_type: inline
+bibliography: references.bib
+---
+
+# Regression Discontinuity Design
+
+## What is an RDD
+
+-   A **regression discontinuity design (RDD)** is a quasi-experimental design that aims to determine the causal effects of interventions by assigning a **cutoff** or **threshold** above or below which an intervention is assigned.
+
+-   It was invented by educational psychology[^1] and generalized by economists to economics and business fields.
+
+[^1]: Thistlethwaite, Donald L., and Donald T. Campbell. 1960. "Regression-Discontinuity Analysis: An Alternative to the Ex Post Facto Experiment." Journal of Educational Psychology 51 (6): 309.
+
+## Visual Illustration of RDD
+
+![](images/RDD.png){fig-align="center" width="350"}
+
+## Visual Illustration of RDD: An Example of Distinction on Salary
+
+**Question**: What is the causal effect of a Distinction honor on a student's future salary?
+
+![](images/RDDExample.png){fig-align="center" width="350"}
+
+## When to Use an RDD
+
+-   An RDD arises when treatment is assigned based on whether an underlying **continuous** **score variable** crosses a cutoff.
+    -   The characteristic is often referred to as **running variable**.
+-   **AND** the characteristic cannot be perfectly manipulated by individuals
+    -   We should only focus on individuals in the neighborhood of the cutoff point
+    -   We can only estimate the **local** treatment effects from an RDD study
+
+## Why RDD Gives Causal Effects?
+
+-   Because the "running variable" **cannot be perfectly controlled** by the individuals **around the cutoff point**, it's as if treatment were randomly assigned in the neighborhood of cutoff.
+
+-   At the same time, individuals on either side of the cut-off should be very similar to each other, such that there should be no systematic differences across the treatment and control group other than the treatment.
+
+-   With the **treatment** being the **only discontinuity** at this threshold, a discontinuous jump in the outcome of interest at the threshold is the treatment effect.
+
+# Steps of RDD Analyses
+
+## Step 1: Select Sample of Analysis
+
+1.  Determine the cutoff-point and select the subset of individuals near the cut-off point
+    -   e.g., filter out students with average scores between 69 and 70
+
+-   There is no econometric requirement on the "near"; however, we face a trade-off between external validity and internal validity:
+    -   **External validity**: If we have a narrower subset of individuals, we have a smaller subset of subjects which may not be representative of remaining subjects
+    -   **Internal validity**: If we have a broader subset of individuals, it is more likely the control group and treatment group are less likely to be "as-if randomized"
+-   In practice, we need to run a set of neighborhod band as **robustness checks**
+
+## Step 2: Examine Continuity of Observed Characteristics
+
+2.  Examine if the observed characteristics of the treatment group and control group are continuous at the cut-off point
+
+## Step 3: Analysis
+
+3.  Regress the outcome variable on the treatment indicator to obtain the statistical significance.
+    - In R, there is also a package [`rddtools`](http://qua.st/rddtools/) which can help us estimate an RDD model.
+
+# Case Study: Search Engine Marketing
+
+-   We will see the application of RDD approach in Search Engine Marketing next week!
+
+## After-class Reading
+
+-   (recommended) [Quasi-experiment](https://www.econometrics-with-r.org/13-4-quasi-experiments.html) (Econometrics with R)
