@@ -61,14 +61,14 @@ bibliography: references.bib
 ## When to Use an RDD
 
 -   An RDD arises when treatment is assigned based on whether an underlying **continuous** **score variable** crosses a cutoff.
-    -   The characteristic is often referred to as **running variable**.
+    -   The characteristic is often referred to as the **running variable**.
 -   **AND** the characteristic cannot be perfectly manipulated by individuals
-    -   We should only focus on individuals in the neighborhood of the cutoff point
-    -   We can only estimate the **local** treatment effects from an RDD study
+    -   We should only focus on individuals in the neighborhood of the cutoff point.
+    -   We can only estimate the **local** treatment effects from an RDD study.
 
 ## Why RDD Gives Causal Effects?
 
--   Because the "running variable" **cannot be perfectly controlled** by the individuals **around the cutoff point**, it's as if treatment were randomly assigned in the neighborhood of cutoff.
+-   Because the "running variable" **cannot be perfectly controlled** by the individuals **around the cutoff point**, it's as if the treatment was randomly assigned in the neighborhood of cutoff.
 
 -   At the same time, individuals on either side of the cut-off should be very similar to each other, such that there should be no systematic differences across the treatment and control group other than the treatment.
 
@@ -82,13 +82,15 @@ bibliography: references.bib
     -   e.g., filter out students with average scores between 69 and 70
 
 -   There is no econometric requirement on the "near"; however, we face a trade-off between external validity and internal validity:
-    -   **External validity**: If we have a narrower subset of individuals, we have a smaller subset of subjects which may not be representative of remaining subjects
-    -   **Internal validity**: If we have a broader subset of individuals, it is more likely the control group and treatment group are less likely to be "as-if randomized"
--   In practice, we need to run a set of neighborhod band as **robustness checks**
+    -   **External validity**: If we have a narrower subset of individuals, we have a smaller subset of subjects which may not be representative of remaining individuals.
+    -   **Internal validity**: If we have a broader subset of individuals, it is more likely the control group and treatment group are less likely to be "as-if randomized".
+
+-   In practice, we may need to run a set of different neighborhood bands as **robustness checks**.
 
 ## Step 2: Examine Continuity of Observed Characteristics
 
-2.  Examine if the observed characteristics of the treatment group and control group are continuous at the cut-off point
+2.  Examine if the observed characteristics of the treatment group and control group are continuous at the cut-off point.
+    - The idea is similar to "randomization check" in the Step 5 of an RCT.
 
 ## Step 3: Analysis
 
@@ -97,7 +99,7 @@ bibliography: references.bib
 
 # Case Study: Search Engine Marketing
 
--   We will see the application of RDD approach in Search Engine Marketing next week!
+-   We will see the application of the RDD approach in Search Engine Marketing case study!
 
 ## After-class Reading
 

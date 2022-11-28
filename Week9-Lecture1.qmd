@@ -1,7 +1,7 @@
 ---
 author: Dr Wei Miao
 institute: UCL School of Management
-date: "`r lubridate::ymd('20221006')+lubridate::dweeks(8)`"
+date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(8))|> format('%a, %b %d %Y')`"
 title: "Class 17 Difference-in-Differences Design"
 df-print: kable
 colorlinks: true
@@ -42,10 +42,10 @@ bibliography: references.bib
 
 ## "Real" Experiments: RCTs
 
-- RCTs are the gold standard of causal inference
-    - In an RCT, the treatment is randomized and hence not correlated with any confounding factors
+- RCTs are the gold standard of causal inference.
+    - In an RCT, the treatment is randomized and hence not correlated with any confounding factor.
 
-- In practice, however, it's challenging to implement a perfect RCT
+- In practice, however, it's challenging to implement a perfect RCT.
     - Crossover and spillover
     - Costly in terms of time and money
     - Potential moral issues^[If you collect any individual data in your dissertation, you need to seek [research ethics approval](https://www.ucl.ac.uk/research-ethics/ethical-approval/do-i-need-ucl-ethical-approval) from UCL.]
@@ -104,9 +104,14 @@ bibliography: references.bib
 
 -   We discussed that *the unit of randomization* should not be at the region level.
 
-    -   East London versus West London randomization would cause failed randomization checks
+    -   East London versus West London randomization would cause failed randomization checks.
 
--   However, in reality, individual-level randomization may be too costly or infeasible, and we may need to do a region-level A/B testing. In this case, how can design the A/B testing to avoid failed randomization?
+-   However, in reality, individual-level randomization may be too costly or infeasible, and we may need to do a region-level A/B testing. 
+
+
+\
+
+**In this case, how can we design the A/B testing to avoid failed randomization?**
 
 ## Proposal 1: Before-After Comparison on East London
 
@@ -144,18 +149,51 @@ $$
 -   No, because customers in East London and West London are intrinsically different. Even without the loyalty program, we may already see a difference in their retention rate. So the simple treatment-control comparison cannot tease out the causal effect of the loyalty program.
 :::
 
+
+::: {.content-visible when-format="html"}
 ## Proposal 3: Difference-in-Differences
 
 1.  Keep status quo (no loyalty program) in both East and West London for 1 month; collect data on customer retention for this month in both regions.
     -   Compute the difference in retention rate $Diff_{pre} = Y_{treated,pre} - Y_{control,pre}$, which measures the pre-existing difference across the treatment and control group even without the loyalty program.
 2.  Randomize which region (East London/West London) would receive the loyalty program, and then introduce the loyalty program in the treatment region; collect customer retention data for both regions for another 1 month
     -   Compute the difference in retention rate across the treatment and control group in this second month: $Diff_{post} = Y_{treated,post} - Y_{control,post}$, which measures the the total difference across the treatment and control group due to (1) pre-existing difference; and (2) treatment effect.
-3.  $DiD = Diff_{post} - Diff_{pre}$ or by running the below regression. $DiD$ can measure the causal effect of loyalty program on retention rate.
+
+
+3. Take the difference in the differences or by running the below regression. $DiD$ can measure the causal effect of loyalty program on retention rate.
+$$
+DiD = Diff_{post} - Diff_{pre} = [Y_{treated,post} - Y_{control,post}] - [Y_{treated,pre} - Y_{control,pre}]
+$$ 
+$$
+Retention_{i, t}=\beta_0+ \beta_{1} Post_{i}+\beta_{2} Treated_{i}+\beta_{3}  Treated_{i} \times Post_{i}  + \mu_{i, t}
+$$
+
+:::
+ 
+::: {.content-visible when-format="beamer"}
+## Proposal 3: Difference-in-Differences
+
+1.  Keep status quo (no loyalty program) in both East and West London for 1 month; collect data on customer retention for this month in both regions.
+    -   Compute the difference in retention rate $Diff_{pre} = Y_{treated,pre} - Y_{control,pre}$, which measures the pre-existing difference across the treatment and control group even without the loyalty program.
+2.  Randomize which region (East London/West London) would receive the loyalty program, and then introduce the loyalty program in the treatment region; collect customer retention data for both regions for another 1 month
+    -   Compute the difference in retention rate across the treatment and control group in this second month: $Diff_{post} = Y_{treated,post} - Y_{control,post}$, which measures the the total difference across the treatment and control group due to (1) pre-existing difference; and (2) treatment effect.
+
+## Proposal 3: Difference-in-Differences
+
+3. Take the difference in the differences or by running the below regression. 
+    - $DiD$ can measure the causal effect of loyalty program on retention rate.
+    
+$$
+DiD = Diff_{post} - Diff_{pre} = [Y_{treated,post} - Y_{control,post}] - [Y_{treated,pre} - Y_{control,pre}]
+$$ 
+
 
 $$
 Retention_{i, t}=\beta_0+ \beta_{1} Post_{i}+\beta_{2} Treated_{i}+\beta_{3}  Treated_{i} \times Post_{i}  + \mu_{i, t}
 $$
 
+
+::: 
+ 
 ## Difference-in-Differences
 
 -   Difference-in-differences (DiD or DD) is a statistical technique used in economics and business that attempts to mimic an experimental research design using observational data (secondary data), by studying the differential effect of a treatment on a 'treatment group' versus a 'control group' in a natural experiment.
@@ -271,11 +309,11 @@ iplot(est_did)
 ![](images/SurgePricing.png){fig-align="center" width="300"}
 
 -   Weekly income
-    -   Surge pricing leads to higher weekly income
+    -   Surge pricing leads to higher weekly revenues.
 -   Intensive margin of labor supply
-    -   Surge pricing leads to decreased daily income due to intensified competition
+    -   Surge pricing leads to decreased daily revenues due to intensified competition.
 -   Extensive margin of labor supply
-    -   Drivers have to work more days to make up of the decreased daily revenue
+    -   Drivers have to work more days to make up of the decreased daily revenues.
 
 ## Clustering for Heterogeneity Analyses
 
@@ -288,3 +326,5 @@ iplot(est_did)
     -   Part-time drivers flooded into the market and have increased weekly revenues by working more days.
 
     -   Although surge pricing enlarged the total pie for the company, the benefit was unevenly distributed among drivers.
+
+## References
