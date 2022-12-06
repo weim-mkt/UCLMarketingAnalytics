@@ -28,6 +28,13 @@ execute:
 If you have used R or RStudio before, please uninstall both R and RStudio and follow the guide below to install the latest versions. Otherwise, Quarto may not work properly on older versions.
 :::
 
+::: callout-important
+## If You Switch to a New Laptop
+
+If you switch to a new laptop later on, please come back to this tutorial and reinstall R and RStudio following the same procedures.
+
+:::
+
 # Installation of R
 
 ## For Windows computers

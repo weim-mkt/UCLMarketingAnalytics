@@ -75,7 +75,9 @@ An instrumental variable is a variable $z$ that satisfies two requirements:
 
 ## A Classic Example of Instrumental Variable
 
-**Return of Military Service to Lifetime Income**[^1] $$
+**Return of Military Service to Lifetime Income**[^1] 
+
+$$
 Income = \beta_0 + \beta_1MilitaryService + \epsilon
 $$
 
@@ -140,9 +142,12 @@ $$
 
 ## Solving Endogeneity Using IV
 
--   Given an endogenous OLS regression, $$
+-   Given an endogenous OLS regression, 
+
+$$
     y_{i}=X_{i} \beta+\varepsilon_{i}, \quad \operatorname{cov}\left(X_{i}, \varepsilon_{i}\right) \neq 0
-    $$
+$$
+
 -   Find instrumental variables $Z_i$ that do not (directly) inﬂuence $y_i$ , but are correlated with $X_i$
 
 ## Two-Stage Least Squares: Stage 1

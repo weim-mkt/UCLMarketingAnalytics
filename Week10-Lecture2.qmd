@@ -1,0 +1,398 @@
+---
+author: Dr Wei Miao
+institute: UCL School of Management
+date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(9))|> format('%a, %b %d %Y')`"
+title: "Class 20 Module Wrap-up"
+df-print: kable
+colorlinks: true
+code-line-numbers: true
+format:
+  html: 
+    toc: true
+    number-sections: true
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+  beamer: 
+    toc: false
+    toc-title: ""
+    slide-level: 2
+    section-titles: true
+    theme: Frankfurt
+    colortheme: beaver
+    fonttheme: structurebold
+    navigation: horizontal
+    tbl-colwidths: auto
+    fontsize: 9pt
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  freeze: auto
+editor_options: 
+  chunk_output_type: inline
+bibliography: references.bib
+---
+
+# Introduction to Marketing
+
+## Week 1: Introduction to Marketing
+
+- What is Marketing?
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', out.width="25%"}
+pacman::p_load(tm, wordcloud, RColorBrewer,wordcloud2)
+# generate text corpus
+definition_marketing <-  'Consumption is the sole end and purpose of all production  and the interests of the product ought to be attended to only so far as it may be necessary for promoting those of the customer.
+Marketing is a social and managerial process by which individuals and groups obtain what they  want and need through creating, offering and exchanging products of value with others.
+Marketing is the management process responsible for identifying, anticipating and satisfying customers requirements profitably.
+Marketing is the activity, set of institutions, and processes for creating, communicating, delivering, and exchanging offerings that have value for customers, clients, partners, and society at large.'
+
+definition_marketing_corpus <- Corpus(VectorSource(definition_marketing))
+# text cleaning 
+definition_marketing_corpus <- definition_marketing_corpus |> 
+  tm_map(removePunctuation) |>
+  tm_map(stripWhitespace) |>
+  tm_map(content_transformer(tolower)) |>
+  tm_map(removeWords, stopwords("english"))
+# Create a document-term-matrix
+definition_marketing_dtm <- TermDocumentMatrix(definition_marketing_corpus)
+definition_marketing_matrix <-  as.matrix(definition_marketing_dtm)
+df <- data.table(words = rownames(definition_marketing_matrix),
+                 freq = definition_marketing_matrix[,1])
+# draw wordcloud
+set.seed(888)
+wordcloud(words = df$words, freq = df$freq, min.freq = 1, max.words=200, random.order=FALSE, colors=brewer.pal(8, "Dark2"))
+```
+
+\
+
+## Week 1: Break-Even Analysis
+
+- **Break-even analysis** is essentially a cost-benefit analysis
+    - Break-even quantity (BEQ)
+    - Net present value (NPV)
+    
+- Since BEA is core to any company and business, all remaining weeks aim to provide answers to
+    - How to lower the cost using targeted marketing (Week 3-4, predictive analytics)
+    - How to quantify the benefit of a marketing treatment (Week 5-9, causal Inference)
+
+## "Not Nice to Meet You Tom" 
+
+- PineApple Case
+    - This is also when we first met **Tom**, a very loyal mate who has been with us for the whole term, a very "successful" alumnus from our BA program :D
+
+
+- You have to do a lot of assignments because of Tom's ignorance, the lesson learned:
+    - All play and no work makes Tom a dull BA!
+    - Never become a marketing manager like him! Or you gonna receive a call from Wayne Meow.
+    
+## Week 2: Customer-level Break Even Analysis
+
+- i-basket case study (Week 2)
+    - Customer Acquisition Costs (CAC)
+    - Customer Lifetime Value (CLV)
+
+- How to use CLV to guide marketing decisions
+    - 1st assignment: whether to launch the loyalty program for the bubble tea business
+
+\
+Calculation of CLV appears in job interviews very often! You can come back to the i-basket case study if needed.
+
+# Descriptive Analytics
+
+## Week 2: Data Wrangling with `dplyr`
+
+- Data manipulation with `dplyr`
+    - Single dataset manipulation: `filter`, `mutate`, `select`, `arrange` 
+    - Group aggregation: `group_by`
+    - Dataset concatenation: `join`
+
+- Tesco case study
+    - Summary statistics
+    - Preliminary customer analysis using `dplyr`
+
+(p.s., I am super happy to see that you all have made huge progress in your R skills! **R is the best language!!!!**)
+
+## Week 2: Preliminary Customer Analysis
+
+- How to design a marketing survey to collect first-hand data
+    - (debut of the first song in my first album)
+    
+:::::: {.cols data-latex=""}
+
+::: {.col data-latex="{0.4\textwidth}"}
+```{r, echo=FALSE,out.width="60%", fig.align='center'}
+  include_graphics(path = paste0(getwd(),"/images/class19_ShapeOfYou.png"))
+```
+:::
+
+::: {.col data-latex="{0.1\textwidth}"}
+\ 
+
+:::
+
+::: {.col data-latex="{0.5\textwidth}"}
+
+```{r, echo=FALSE,out.width="100%", fig.align='center'}
+  include_graphics(path = paste0(getwd(),"/images/class19_purchaseintention.png"))
+```
+
+\
+
+```{r, echo=FALSE,out.width="100%", fig.align='center'}
+  include_graphics(path = paste0(getwd(),"/images/class19_WTP.png"))
+```
+
+
+
+:::
+::::::
+
+
+
+
+# Predictive Analytics
+
+## Week 7-9: Predictive Analytics
+
+```{r, echo=FALSE,out.width="100%", fig.align='center'}
+  include_graphics(path = paste0(getwd(),"/images/class13_RoadMap.png"))
+```
+
+## Week 7-9: Predictive Analytics
+
+- Two fundamental tradeoffs in predictive analytics
+    - accuracy versus interpretability
+    - bias versus variance (underfitting versus overfitting)
+
+- CAC = cost per offer / *response rate*; we can use predictive analytics to conduct targeted marketing to target responsive customers
+    - RFM analysis (Week 7)
+    - Linear probability model (Week 8)
+    - Logistic regression  (Week 8)
+    - Machine learning models (Week 9)
+
+- With targeted marketing, we can greatly boost the return on investment
+    - No model can always perform the best on all datasets
+    - It's trial and error to get the best model
+    - Automatic machine learning can save us lots of time
+
+## Week 8: Multinomial Logit Model
+
+- Random utility framework and utility maximization
+
+- Multimonial logit model can help us understand how customers trade off between different attributes
+    - Train ticket choice (Week 8 case study)
+    
+- Application of multinomial logit model
+    - Conjoint analysis (very powerful for understanding customers' tradeoff between product attributes)
+
+## Week 9: Customer Relationship Management
+
+```{r, echo=FALSE,out.width="100%", fig.align='center'}
+  include_graphics(path = paste0(getwd(),"/images/customerlifecycle.png"))
+```
+
+- Cross-selling and up-selling
+- Churn management
+
+
+
+# Prescriptive Analytics
+
+## Week 3-6: Causal Inference
+
+- How to use **causal inference** tools to quantify the causal effect of a marketing campaign on marketing outcomes
+
+```{r, echo=FALSE,out.width="100%", fig.align='center'}
+  include_graphics(path = paste0(getwd(),"/images/CausalInference.png"))
+```
+
+## Week 3: RCTs
+
+- Selection bias in the BMW ads case
+
+```{r, echo=FALSE,out.width="50%", fig.align='center'}
+  include_graphics(path = paste0(getwd(),"/images/class5_BMWConversion.png"))
+```
+
+- We can use RCT to get causal inference
+    - Core idea is to use randomization to remove selection bias
+   
+## Week 3: RCTs
+
+- Advantages
+    - Gold standard of causal inference; the first-best option if time and money are not a concern
+
+- Disadvantages
+    - Costly to run
+    - Cross-overs and spill-overs if not properly implemented
+    
+- Application of RCTs
+    - Truck LP case study (Week 3)
+    - First assignment (quantify the loyalty program on customer retention)
+    - Keyword search ads case study (Week 6)
+
+## Week 4: OLS Regression
+
+- **First hand data** via RCTs are too costly to collect, economists look to obtain causal effects from **secondary data**.
+
+- Causal inference from secondary data is to find a model that approximates the **Data Generating Process** (DGP) as closely as possible.
+    - Linear regression is the simplest model (linear, additive)
+
+## Week 4: OLS Regression
+
+- Linear regression can give causal inference if and only if **all** confounders that are correlated with the focal variable of interest have been controlled in the regression.
+
+```{r, echo=FALSE,out.width="60%", fig.align='center'}
+  include_graphics(path = paste0(getwd(),"/images/class7_directindirecteffect.png"))
+```
+
+- In reality, this **never happens**, so technically speaking, linear regression can never give causal effects
+
+## Week 4: OLS Regression
+
+- How to design linear regressions to answer the causal effect of X on Y?
+    - Include all confounding factors that are correlated with X: it's a **must** to get cleaner direct effects
+    - Include all confounding factors that are uncorrelated with X: it's **optional** to reduce noise in the error term, so that coefficients get signifance more easily.
+    - Do not include non-confounding factors
+
+- Other tips
+    - Non-significant controls should also be retained because they still do their jobs. 
+    - Whether or not to take log or other transformation depends on the adjusted R-squared
+
+## Week 4: OLS Regression
+
+- Application: Marketing Mix Modelling (Week 4)
+    - Use `adstock` instead of `monthly_ads_spending` significantly increases the R-squared
+    - In the simulation study, using R-squared to determine the most appropriate regression specification can indeed lead us to the correct parameters.
+    - Tuning and developing MMM will be very likely one of your daily jobs if you work on a marketing analytics team
+
+## Week 5: Instrument Variables and 2SLS
+
+$$
+sales =a+b * finalprice +e
+$$
+
+- Endogeneity of simple linear regression
+    - Omitted variable bias
+    - Reverse causality
+    - Measurement error
+
+- An instrument variable can give causal inference. Two requirements:
+    - Exogeneity $\operatorname{cov}\left(Z_{i}, \varepsilon_{i}\right) = 0$
+    - Relevance $\operatorname{cov}\left(X_{i}, Z_{i}\right) \neq 0$
+
+- For retail price, we can use tax, BLP instruments, material costs, wholesale prices, etc.
+    
+- However, appropriate instrumental variables do not always exist
+    - Position effects of search ads (Week 6); no valid instrumental variable for the position.
+
+## Week 5: Instrument Variables and 2SLS
+
+Once we find appropriate instrument variables, we can use 2SLS to get causal effects.
+
+1. Explain $X$ with $Z$ (regress $X$ on $Z$). The predicted $X$, $\hat{X}$, is uncorrelated with the error term $\epsilon$ in the original regression.
+    - $\hat{X}$ is exogenous, because $Z$ is exogenous
+    - All endogenous parts are now absorbed/teased out into the error term in the first-stage regression $\epsilon_{i}$
+    
+$$
+X_{i}=Z\eta+\epsilon_{i}
+$$
+
+
+2. Use the explained part $\hat{X}$ to explain $y$, now $\hat{X}$ is exogenous and can give us causal inference.
+
+$$
+y_{i}=\hat{X} \beta+\varepsilon_{i}, \quad \operatorname{cov}\left(\hat{X}_{i}, \varepsilon_{i}\right) = 0
+$$
+
+## Week 6: Regression Discontinuity Design
+
+```{r, echo=FALSE,out.width="75%", fig.align='center'}
+  include_graphics(path = paste0(getwd(),"/images/class11_RDD Example.png"))
+```
+
+We can use RDD to quantify the causal effect of:
+
+- "Distinction" on students' future career
+- Position effects of search ads on a search engine (Week 6 case study)
+
+
+## Week 6: Difference-in-Differences
+
+```{r, echo=FALSE,out.width="50%", fig.align='center'}
+  include_graphics(path = paste0(getwd(),"/images/class12_DiD Graph.png"))
+```
+
+We can use DiD to quantify the causal effect of:
+
+- A new policy/regulation (GDPR, lockdown, etc.)
+- RCTs that are hard to randamize (East London and West London case)
+
+# Concluding Remarks
+
+## From Class 1: Challenges to Effectively Conduct Marketing Analytics
+
+\small
+- It's hard to gather and consolidate large databases from various sources
+- One can easily get lost in the ocean of variables if he does not know to look for useful information
+- Having detailed customer-level information can be a double-edged sword and may sometimes backfire
+- Data analysts often rely too much on secondary data without data acquisition in mind (via marketing surveys or experiments)
+- Acting intelligently on customer information requires a good grasping of modeling techniques; problem is: business people are (likely) bad at math, while mathematicians are (mostly) bad at business.
+
+**In this module, you have learned how to tackle these difficulties!**
+
+## Not Enough?
+
+- I love new challenges so my door is always open even after the class is over
+
+- More learning materials
+    - Handbook of Marketing Analytics: Methods and Applications in Marketing Management, Public Policy, and Litigation Support (free at UCL library)
+    - Most harmless Econometrics
+    - All optional reading materials in each week
+    
+## MSIN0094 Contract
+
+**I promised**
+
+- You will learn the state-of-the-art marketing analytics techniques that will be very helpful for your dissertation projects and future jobs.
+- You will have fun (hopefully)
+- Give you a way of thinking about Marketing Analytics that will be relevant when you need it, not just today
+- I will always be there whenever you need help.
+
+**You promised**
+
+- To duly prepare for each class (if any), including the case studies and reading materials 
+- To follow the code of conduct in class and in your assignments.
+
+## Lessons for Me
+
+- Impressed with your willingness to learn hard tools and to dig in 
+    - => My colleagues predicted you would chase me out of the classroom for making you learn Marketing, R, and so many complicated models at the same time
+
+- I learned something from you too
+    - Challenge the authority
+    - Good time management
+    - Your sense of achievement is also mine
+
+## Looking into the Future
+
+- The main thing you will probably remember in 10 years:
+    - There used to be a lame marketing manager named Tom, who claims to be Jeff Bezos' brother-in-law.
+    - There used to be a module leader who keeps drinking bubble tea despite he is getting fatter and fatter every week
+    - The module leader also keeps asking his students to use his UberEat invitation code.
+
+## Thank You for Being Amazing!!
+
+**Thank you for your hard work the whole term!**
+
+Hope in 10 years, you can still know the answer to this question!
+
+```{r, echo=FALSE,out.width="100%", fig.align='center'}
+  include_graphics(path = paste0(getwd(),"/images/class19_Jackie.png"))
+```

@@ -123,7 +123,7 @@ $$
 Retention_{i, t}=\alpha+\beta_{1} Post_{i}+\mu_{i, t}
 $$
 
-**Can this difference tell us the causal effect of the new pricing?**[^1]
+**Can this difference tell us the causal effect of the loyalty program?**[^1]
 
 [^1]: See html version for answers.
 
