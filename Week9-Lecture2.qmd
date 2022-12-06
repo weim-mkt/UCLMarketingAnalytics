@@ -136,16 +136,19 @@ $$
 #| eval: false
 #| echo: false
 load('/Users/weimiao/Dropbox/UCL/Teaching/MSIN0094 Marketing Analytics/UCL 2022 - 2023/Week 9/mlda.rda')
+load('/Volumes/data HP/Dropbox/UCL/Teaching/MSIN0094 Marketing Analytics/UCL 2022 - 2023/Week 9/mlda.rda')
 
 data_rdd <- mlda %>%
   mutate(score = agecell + 50,
-         salary = mva,
+         salary = all/2,
          experience = drugs,
          ) %>%
   filter(!is.na(salary))%>%
   mutate(student_id = 1:n())%>%
   select(student_id,salary,score,experience)
 write.csv(data_rdd,'/Users/weimiao/Dropbox/UCL/Teaching/MSIN0094 Marketing Analytics/UCL 2022 - 2023/Week 9/data_rdd.csv', row.names = FALSE)
+
+write.csv(data_rdd,'/Volumes/data HP/Dropbox/UCL/Teaching/MSIN0094 Marketing Analytics/UCL 2022 - 2023/Week 9/data_rdd.csv', row.names = FALSE)
 ```
 
 ```{r}
@@ -169,11 +172,26 @@ data_rdd <- data_rdd %>%
 ```{r}
 pacman::p_load(modelsummary,fixest)
 rdd_result <- feols(
-  fml = salary ~ treated + I()
+  fml = salary ~ treated,
+  data = data_rdd
 )
+modelsummary(rdd_result,stars = TRUE)
 ```
+
+## Regression Discontinuity in Time
+
+- An event or treatment occurred at a point in time. Meanwhile, the treatment affected all individuals.
+    - Because all individuals were affected, there were no control group and we could not do DiD analyses.
+    
+- However, if we can justify, **seasonality** is not strong within certain time window before and after the event, then we can do a **regression discontinuity in time** design (RDiT), as follows:
+
+$$
+Outcome_{i, t}=\alpha+\beta_{1} Post_{i}+X\beta + \mu_{i, t}
+$$
+
+- As we learned in DiD lecture, $\beta_1$ includes both (1) the treatment effect, and (2) seasonality
+    - If the time window is short, say a few weeks before and after, it is likely seasonality effect is null, and we can claim $\beta_1$ measures the causal effect of the event.
 
 ## After-class Reading
 
 -   (recommended) [Quasi-experiment](https://www.econometrics-with-r.org/13-4-quasi-experiments.html) (Econometrics with R)
--   

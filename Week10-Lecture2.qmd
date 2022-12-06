@@ -202,15 +202,13 @@ Calculation of CLV appears in job interviews very often! You can come back to th
 
 
 
-# Prescriptive Analytics
+# Causal Inference
 
-## Week 3-6: Causal Inference
+## Week 5-9: Causal Inference
 
-- How to use **causal inference** tools to quantify the causal effect of a marketing campaign on marketing outcomes
+- How to use **causal inference** tools to quantify the causal effect of a business campaign on business outcomes
 
-```{r, echo=FALSE,out.width="100%", fig.align='center'}
-  include_graphics(path = paste0(getwd(),"/images/CausalInference.png"))
-```
+![](images/CausalInference.png)
 
 ## Week 3: RCTs
 
@@ -223,78 +221,44 @@ Calculation of CLV appears in job interviews very often! You can come back to th
 - We can use RCT to get causal inference
     - Core idea is to use randomization to remove selection bias
    
-## Week 3: RCTs
+## Week 5: RCTs
 
 - Advantages
-    - Gold standard of causal inference; the first-best option if time and money are not a concern
+    - Gold standard of causal inference; 
+    - The first-best option if time and money are not a concern
 
 - Disadvantages
     - Costly to run
     - Cross-overs and spill-overs if not properly implemented
     
-- Application of RCTs
-    - Truck LP case study (Week 3)
-    - First assignment (quantify the loyalty program on customer retention)
-    - Keyword search ads case study (Week 6)
+- Application of RCTs: Vungle case study 
 
-## Week 4: OLS Regression
+## Week 6 & 7 : OLS Regression and Marketing Mix Modeling
 
-- **First hand data** via RCTs are too costly to collect, economists look to obtain causal effects from **secondary data**.
-
-- Causal inference from secondary data is to find a model that approximates the **Data Generating Process** (DGP) as closely as possible.
-    - Linear regression is the simplest model (linear, additive)
-
-## Week 4: OLS Regression
-
-- Linear regression can give causal inference if and only if **all** confounders that are correlated with the focal variable of interest have been controlled in the regression.
+- Linear regression can give causal inference if and only if **all** confounding factors have been controlled in the regression.
 
 ```{r, echo=FALSE,out.width="60%", fig.align='center'}
   include_graphics(path = paste0(getwd(),"/images/class7_directindirecteffect.png"))
 ```
 
-- In reality, this **never happens**, so technically speaking, linear regression can never give causal effects
+- In reality, this **never happens**, so strictly speaking, linear regression can never give causal effects.
 
-## Week 4: OLS Regression
+- We can use linear regression to build marketing mix modeling, in order to set optimal prices for profit maximization.
 
-- How to design linear regressions to answer the causal effect of X on Y?
-    - Include all confounding factors that are correlated with X: it's a **must** to get cleaner direct effects
-    - Include all confounding factors that are uncorrelated with X: it's **optional** to reduce noise in the error term, so that coefficients get signifance more easily.
-    - Do not include non-confounding factors
+## Week 8: Endogeneity and Instrument Variables
 
-- Other tips
-    - Non-significant controls should also be retained because they still do their jobs. 
-    - Whether or not to take log or other transformation depends on the adjusted R-squared
-
-## Week 4: OLS Regression
-
-- Application: Marketing Mix Modelling (Week 4)
-    - Use `adstock` instead of `monthly_ads_spending` significantly increases the R-squared
-    - In the simulation study, using R-squared to determine the most appropriate regression specification can indeed lead us to the correct parameters.
-    - Tuning and developing MMM will be very likely one of your daily jobs if you work on a marketing analytics team
-
-## Week 5: Instrument Variables and 2SLS
-
-$$
-sales =a+b * finalprice +e
-$$
-
-- Endogeneity of simple linear regression
+- Endogeneity of simple linear regressions
     - Omitted variable bias
     - Reverse causality
-    - Measurement error
+    - [Measurement error]
 
 - An instrument variable can give causal inference. Two requirements:
-    - Exogeneity $\operatorname{cov}\left(Z_{i}, \varepsilon_{i}\right) = 0$
-    - Relevance $\operatorname{cov}\left(X_{i}, Z_{i}\right) \neq 0$
+    - Exogeneity 
+    - Relevance
 
-- For retail price, we can use tax, BLP instruments, material costs, wholesale prices, etc.
-    
-- However, appropriate instrumental variables do not always exist
-    - Position effects of search ads (Week 6); no valid instrumental variable for the position.
+## Week 8: Endogeneity and Instrument Variables
 
-## Week 5: Instrument Variables and 2SLS
-
-Once we find appropriate instrument variables, we can use 2SLS to get causal effects.
+- Once we find an instrument, we can use 2-stage least square estimation to get the causal effects.
 
 1. Explain $X$ with $Z$ (regress $X$ on $Z$). The predicted $X$, $\hat{X}$, is uncorrelated with the error term $\epsilon$ in the original regression.
     - $\hat{X}$ is exogenous, because $Z$ is exogenous
@@ -304,26 +268,13 @@ $$
 X_{i}=Z\eta+\epsilon_{i}
 $$
 
-
 2. Use the explained part $\hat{X}$ to explain $y$, now $\hat{X}$ is exogenous and can give us causal inference.
 
 $$
 y_{i}=\hat{X} \beta+\varepsilon_{i}, \quad \operatorname{cov}\left(\hat{X}_{i}, \varepsilon_{i}\right) = 0
 $$
 
-## Week 6: Regression Discontinuity Design
-
-```{r, echo=FALSE,out.width="75%", fig.align='center'}
-  include_graphics(path = paste0(getwd(),"/images/class11_RDD Example.png"))
-```
-
-We can use RDD to quantify the causal effect of:
-
-- "Distinction" on students' future career
-- Position effects of search ads on a search engine (Week 6 case study)
-
-
-## Week 6: Difference-in-Differences
+## Week 9: Difference-in-Differences
 
 ```{r, echo=FALSE,out.width="50%", fig.align='center'}
   include_graphics(path = paste0(getwd(),"/images/class12_DiD Graph.png"))
@@ -334,28 +285,23 @@ We can use DiD to quantify the causal effect of:
 - A new policy/regulation (GDPR, lockdown, etc.)
 - RCTs that are hard to randamize (East London and West London case)
 
+
+## Week 9: Regression Discontinuity Design
+
+```{r, echo=FALSE,out.width="75%", fig.align='center'}
+  include_graphics(path = paste0(getwd(),"/images/class11_RDD Example.png"))
+```
+
+We can use RDD to quantify the causal effect of:
+
+- "Distinction" on students' future career
+- Regression discontinuity in time
+
+
 # Concluding Remarks
 
-## From Class 1: Challenges to Effectively Conduct Marketing Analytics
 
-\small
-- It's hard to gather and consolidate large databases from various sources
-- One can easily get lost in the ocean of variables if he does not know to look for useful information
-- Having detailed customer-level information can be a double-edged sword and may sometimes backfire
-- Data analysts often rely too much on secondary data without data acquisition in mind (via marketing surveys or experiments)
-- Acting intelligently on customer information requires a good grasping of modeling techniques; problem is: business people are (likely) bad at math, while mathematicians are (mostly) bad at business.
 
-**In this module, you have learned how to tackle these difficulties!**
-
-## Not Enough?
-
-- I love new challenges so my door is always open even after the class is over
-
-- More learning materials
-    - Handbook of Marketing Analytics: Methods and Applications in Marketing Management, Public Policy, and Litigation Support (free at UCL library)
-    - Most harmless Econometrics
-    - All optional reading materials in each week
-    
 ## MSIN0094 Contract
 
 **I promised**
@@ -370,6 +316,15 @@ We can use DiD to quantify the causal effect of:
 - To duly prepare for each class (if any), including the case studies and reading materials 
 - To follow the code of conduct in class and in your assignments.
 
+## Not Enough?
+
+- I love new challenges so my door is always open even after the class is over
+
+- More learning materials
+    - Handbook of Marketing Analytics: Methods and Applications in Marketing Management, Public Policy, and Litigation Support (free at UCL library)
+    - Most harmless Econometrics
+    - All optional reading materials in each week
+    
 ## Lessons for Me
 
 - Impressed with your willingness to learn hard tools and to dig in 
@@ -383,16 +338,11 @@ We can use DiD to quantify the causal effect of:
 ## Looking into the Future
 
 - The main thing you will probably remember in 10 years:
-    - There used to be a lame marketing manager named Tom, who claims to be Jeff Bezos' brother-in-law.
-    - There used to be a module leader who keeps drinking bubble tea despite he is getting fatter and fatter every week
-    - The module leader also keeps asking his students to use his UberEat invitation code.
+    - There used to be a module leader with bubble tea belly, who is likely bribed by T4 
+    - There used to be a lame alumnus named Tom, who claims to be Jeff Bezos' brother-in-law and made you do many assignments.
 
 ## Thank You for Being Amazing!!
 
 **Thank you for your hard work the whole term!**
 
 Hope in 10 years, you can still know the answer to this question!
-
-```{r, echo=FALSE,out.width="100%", fig.align='center'}
-  include_graphics(path = paste0(getwd(),"/images/class19_Jackie.png"))
-```
