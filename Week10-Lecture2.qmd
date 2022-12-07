@@ -2,7 +2,7 @@
 author: Dr Wei Miao
 institute: UCL School of Management
 date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(9))|> format('%a, %b %d %Y')`"
-title: "Class 20 Module Wrap-up"
+title: "Week 10 Module Wrap-up"
 df-print: kable
 colorlinks: true
 code-line-numbers: true
@@ -38,152 +38,139 @@ editor_options:
 bibliography: references.bib
 ---
 
-# Introduction to Marketing
+::: {.content-visible when-format="html"}
+![](images/coursestructure2022.png){fig-align="center"}
+:::
+
+::: {.content-visible when-format="beamer"}
+![](images/coursestructure2022.png){fig-align="center" width="350"}
+:::
+
+# Week 1: BEA
 
 ## Week 1: Marketing Process
 
-![](images/marketingprocess.png){fig-align="center" width="400"}
+::: {.content-visible when-format="html"}
+![](images/marketingprocess.png){fig-align="center"}
+:::
+
+::: {.content-visible when-format="beamer"}
+![](images/marketingprocess.png){fig-align="center" width="300"}
+:::
+
+-   What is marketing
+-   Situation analysis (5C analysis)
 
 ## Week 1: Break-Even Analysis
 
--   Break-even analysis is our starting point
+-   Break-even analysis is essential to any business activity
     -   Break-even quantity (BEQ)
     -   Net present value (NPV)
     -   Customer lifetime value (CLV)
 -   BEA is essentially cost-benefit analysis
-    -   Pineapple case
-
-    -   i-basket case
+    -   [Pineapple case](https://weim-mkt.github.io/UCLMarketingAnalytics/Case-BreakEvenAnalysis.pdf)
+    -   [i-basket case](https://weim-mkt.github.io/UCLMarketingAnalytics/Case-CLSV.html)
 
 ![](images/ppap.jpeg){fig-align="center" width="200"}
 
-# Descriptive Analytics
+# Week 2: Descriptive Analytics
 
 ## Week 2: Data Wrangling with `dplyr`
 
 -   Data manipulation with `dplyr`
-    -   `filter`, `mutate`, `select`, `arrange`
-    -   Group aggregation: `group_by`
-    -   Dataset join: `join`
--   Tesco case study
-    -   Summary statistics
-    -   Preliminary customer analysis using `dplyr`
+    -   basic operations: `filter`, `mutate`, `select`, `arrange`
+    -   group aggregation: `group_by`
+    -   multi-data joining: `left_join`
+-   [Tesco case study](https://weim-mkt.github.io/UCLMarketingAnalytics/Case-PreliminaryCustomerAnalysis.html): Preliminary customer analysis using `dplyr`
 
-(p.s., I am super happy to see that you all have made huge progress in your R skills! **R is the best language!!!!**)
+## Week 2: Nice to meet you, I'm Wei, and I'm a musician!
 
-## Week 2: Preliminary Customer Analysis
-
--   How to design a marketing survey to collect first-hand data
-    -   (debut of the first song in my first album)
-
-::: {.cols data-latex=""}
-::: {.col data-latex="{0.4\\textwidth}"}
-```{r, echo=FALSE,out.width="60%", fig.align='center'}
-  include_graphics(path = paste0(getwd(),"/images/class19_ShapeOfYou.png"))
-```
+::: columns
+::: {.column width="50%"}
+![](images/class19_shapeofyou.png){fig-align="center" width="100"}
 :::
 
-::: {.col data-latex="{0.1\\textwidth}"}
- 
-:::
-
-::: {.col data-latex="{0.5\\textwidth}"}
-```{r, echo=FALSE,out.width="100%", fig.align='center'}
-  include_graphics(path = paste0(getwd(),"/images/class19_purchaseintention.png"))
-```
-
-\
-
-```{r, echo=FALSE,out.width="100%", fig.align='center'}
-  include_graphics(path = paste0(getwd(),"/images/class19_WTP.png"))
-```
+::: {.column width="50%"}
+![](images/survey.png){fig-align="center" width="200"}
 :::
 :::
 
-# Predictive Analytics
+## Week 2: Nice to meet you, I'm Wei, and I'm a Youtuber!
 
-## Week 7-9: Predictive Analytics
+::: {.content-visible when-format="beamer"}
+![](images/youtube%20channel.png){fig-align="center" width="300"}
+:::
 
-```{r, echo=FALSE,out.width="100%", fig.align='center'}
-  include_graphics(path = paste0(getwd(),"/images/class13_RoadMap.png"))
-```
+::: {.content-visible when-format="html"}
+![](images/youtube%20channel.png){fig-align="center"}
+:::
 
-## Week 7-9: Predictive Analytics
+# Week 3-4: Predictive Analytics
 
--   Two fundamental tradeoffs in predictive analytics
-    -   accuracy versus interpretability
-    -   bias versus variance (underfitting versus overfitting)
--   CAC = cost per offer / *response rate*; we can use predictive analytics to conduct targeted marketing to target responsive customers
-    -   RFM analysis (Week 7)
-    -   Linear probability model (Week 8)
-    -   Logistic regression (Week 8)
-    -   Machine learning models (Week 9)
--   With targeted marketing, we can greatly boost the return on investment
-    -   No model can always perform the best on all datasets
-    -   It's trial and error to get the best model
-    -   Automatic machine learning can save us lots of time
+![](images/PredictiveAnalyticsTypes.png){fig-align="center" width="350"}
 
-## Week 8: Multinomial Logit Model
+## Week 3: Unsupervised Learning for Customer Segmentation
 
--   Random utility framework and utility maximization
+-   Unsupervised learning such as K-means clustering help classify individuals into different groups.
+-   K-means is usually supplementary to more complicated analyses.
 
--   Multimonial logit model can help us understand how customers trade off between different attributes
+![](images/paste-078A2FEB.png){fig-align="center" width="300"}
 
-    -   Train ticket choice (Week 8 case study)
+## Week 4: Supervised Learning for Customer Targeting
 
--   Application of multinomial logit model
+::: {.content-visible when-format="html"}
+![](images/Supervised%20learning%20and%20unsupersied%20learning.png){fig-align="center" width="1000"}
+:::
 
-    -   Conjoint analysis (very powerful for understanding customers' tradeoff between product attributes)
+::: {.content-visible when-format="beamer"}
+![](images/Supervised%20learning%20and%20unsupersied%20learning.png){fig-align="center" width="200"}
+:::
 
-## Week 9: Customer Relationship Management
+-   Supervised learning models predict outcome $Y$ based on predictors $X$
+    -   linear regression (high interpretability, low accuracy)
+    -   decision tree and random forest (good interpretability, good accuracy)
+    -   deep learning (no interpretability, high accuracy)
+-   With **targeted marketing** from supervised learning, we can effectively reduce marketing costs and boost the ROI.
+    -   [Improving Marketing Efficiency Using Predictive Analytics for Tesco case](https://weim-mkt.github.io/UCLMarketingAnalytics/Case-PredictiveAnalytics.html)
 
-```{r, echo=FALSE,out.width="100%", fig.align='center'}
-  include_graphics(path = paste0(getwd(),"/images/customerlifecycle.png"))
-```
+# Week 5-9: Causal Inference
 
--   Cross-selling and up-selling
--   Churn management
+![](images/CausalInference.png){fig-align="center" width="350"}
 
-# Causal Inference
+## Week 5: Rubin Causal Framework and RCTs
 
-## Week 5-9: Causal Inference
+-   Why causal inference matters?
 
--   How to use **causal inference** tools to quantify the causal effect of a business campaign on business outcomes
-
-![](images/CausalInference.png)
-
-## Week 3: RCTs
-
--   Selection bias in the BMW ads case
-
-```{r, echo=FALSE,out.width="50%", fig.align='center'}
-  include_graphics(path = paste0(getwd(),"/images/class5_BMWConversion.png"))
-```
+![](images/BMWConversion.png){fig-align="center" width="350"}
 
 -   We can use RCT to get causal inference
-    -   Core idea is to use randomization to remove selection bias
+    -   Randomization removes selection bias and pre-existing differences
+-   Application of RCTs
+    -   [Vungle case study](https://weim-mkt.github.io/UCLMarketingAnalytics/Week6-Lecture1.html)
 
-## Week 5: RCTs
+## Week 5: Nice to meet You, I'm Wei and I'm from Hogwarts
 
--   Advantages
-    -   Gold standard of causal inference;
-    -   The first-best option if time and money are not a concern
--   Disadvantages
-    -   Costly to run
-    -   Cross-overs and spill-overs if not properly implemented
--   Application of RCTs: Vungle case study
+::: columns
+::: {.column width="50%"}
+![](images/magic1.png){fig-align="center" width="150"}
+:::
+
+::: {.column width="50%"}
+![](images/magic2.png){fig-align="center" width="200"}
+:::
+:::
 
 ## Week 6 & 7 : OLS Regression and Marketing Mix Modeling
 
 -   Linear regression can give causal inference if and only if **all** confounding factors have been controlled in the regression.
 
-```{r, echo=FALSE,out.width="60%", fig.align='center'}
-  include_graphics(path = paste0(getwd(),"/images/class7_directindirecteffect.png"))
-```
+![](images/directindirecteffect.png){fig-align="center" width="200"}
 
--   In reality, this **never happens**, so strictly speaking, linear regression can never give causal effects.
+-   In reality, this **never** happens, so linear regression can **never** give causal effects.
 
--   We can use linear regression to build marketing mix modeling, in order to set optimal prices for profit maximization.
+-   In practice, companies often use linear regression to build **marketing mix modeling**, in order to set optimal prices for profit maximization (profit is a quadratic function of price).
+
+    -   [Zalora](https://weim-mkt.github.io/UCLMarketingAnalytics/Case-Zalora.html) case study
 
 ## Week 8: Endogeneity and Instrument Variables
 
@@ -191,13 +178,12 @@ bibliography: references.bib
     -   Omitted variable bias
     -   Reverse causality
     -   \[Measurement error\]
--   An instrument variable can give causal inference. Two requirements:
+-   An instrument variable can give causal inference. Requirements:
     -   Exogeneity
     -   Relevance
+    -   Observable (implicit)
 
 ## Week 8: Endogeneity and Instrument Variables
-
--   Once we find an instrument, we can use 2-stage least square estimation to get the causal effects.
 
 1.  Explain $X$ with $Z$ (regress $X$ on $Z$). The predicted $X$, $\hat{X}$, is uncorrelated with the error term $\epsilon$ in the original regression.
     -   $\hat{X}$ is exogenous, because $Z$ is exogenous
@@ -213,71 +199,108 @@ $$
 y_{i}=\hat{X} \beta+\varepsilon_{i}, \quad \operatorname{cov}\left(\hat{X}_{i}, \varepsilon_{i}\right) = 0
 $$
 
+-   [COVID-19 case study](https://weim-mkt.github.io/UCLMarketingAnalytics/Case-COVID-IV.html): The causal impact of COVID-19 on Uber Driver Decision
+
 ## Week 9: Difference-in-Differences
 
-```{r, echo=FALSE,out.width="50%", fig.align='center'}
-  include_graphics(path = paste0(getwd(),"/images/class12_DiD Graph.png"))
-```
-
-We can use DiD to quantify the causal effect of:
+![](images/DiDGraph.png){fig-align="center" width="200"}
 
 -   A new policy/regulation (GDPR, lockdown, etc.)
--   RCTs that are hard to randamize (East London and West London case)
+-   RCTs that are hard to randomize at the individual level (East London and West London)
 
 ## Week 9: Regression Discontinuity Design
 
-```{r, echo=FALSE,out.width="75%", fig.align='center'}
-  include_graphics(path = paste0(getwd(),"/images/class11_RDD Example.png"))
-```
+![](images/RDD.png){fig-align="center" width="300"}
 
-We can use RDD to quantify the causal effect of:
-
--   "Distinction" on students' future career
+-   "Distinction" honor on students' future salaries
 -   Regression discontinuity in time
+
+## One Causal Question, Many Solutions
+
+-   If we have historical data on **number of restaurants on UberEat** in each month, and **the total number of orders in each month**, can we get the causal effect?
+
+$$
+NumOrders_t = \beta_0 + \beta_1 NumRestaurants_t + \epsilon_t
+$$
+
+-   Solutions
+    -   RCT
+    -   Instrumental Variable
+    -   DiD
+    -   RDD
 
 # Concluding Remarks
 
-## MSIN0094 Contract
+## MSIN0094 Contract from Week 1
 
-**I promised**
+![](images/week1promise.png){fig-align="center" width="250"}
 
--   You will learn the state-of-the-art marketing analytics techniques that will be very helpful for your dissertation projects and future jobs.
--   You will have fun (hopefully)
--   Give you a way of thinking about Marketing Analytics that will be relevant when you need it, not just today
--   I will always be there whenever you need help.
-
-**You promised**
-
--   To duly prepare for each class (if any), including the case studies and reading materials
--   To follow the code of conduct in class and in your assignments.
-
-## Not Enough?
+## 10 Weeks Not Enough?
 
 -   I love new challenges so my door is always open even after the class is over
 
 -   More learning materials
 
-    -   Handbook of Marketing Analytics: Methods and Applications in Marketing Management, Public Policy, and Litigation Support (free at UCL library)
-    -   Most harmless Econometrics
-    -   All optional reading materials in each week
+    -   Optional reading materials in each week
+    -   I plan to update more R tutorials/data analytics tools on my Youtube channel. It's never too late to subscribe!
 
 ## Lessons for Me
 
 -   Impressed with your willingness to learn hard tools and to dig in
     -   =\> My colleagues predicted you would chase me out of the classroom for making you learn Marketing, R, and so many complicated models at the same time
+-   You've made me very proud:
+    -   It gives me see that you all have made huge progress in your R skills and marketing analytics models!
+
+    -   It feels weird but I'm flattered answer questions from other modules :))
+
+    -   **R is the best language!!!!**
 -   I learned something from you too
-    -   Challenge the authority
-    -   Good time management
-    -   Your sense of achievement is also mine
+    -   superb time management
+    -   hard-working attitude
 
 ## Looking into the Future
 
--   The main thing you will probably remember in 10 years:
-    -   There used to be a module leader with bubble tea belly, who is likely bribed by T4
-    -   There used to be a lame alumnus named Tom, who claims to be Jeff Bezos' brother-in-law and made you do many assignments.
+-   The only things you will probably remember in 10 years:
+    -   There used to be a module leader with a big bubble tea belly, who could have been bribed by T4
+    -   but he tries his best to be a good musician, magician, youtuber, standup comedian, and most importantly a (great) lecturer
+    -   There used to be a lame alumnus named Tom, who claims to be Jeff Bezos' brother-in-law and made us do many assignments.
 
 ## Thank You for Being Amazing!!
 
-**Thank you for your hard work the whole term!**
+**Thank you very much for your hard work the whole term!**
 
-Hope in 10 years, you can still know the answer to this question!
+Hope a few years later on a random street in London, you can still know the correct answer to this question!
+
+![](images/moduleleader.png){fig-align="center" width="300"}
+
+::: {.content-visible when-format="html"}
++------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| Hey Jude                                                                                       | Hey Tom                                                                                                             |
++================================================================================================+=====================================================================================================================+
+| Hey \[**G**\] Jude don't make it \[**D**\] bad                                                 | Hey \[**G**\] Tom don't make it \[**D**\] bad                                                                       |
+|                                                                                                |                                                                                                                     |
+| Take a \[**D7**\] sad song and make it \[**G**\] better                                        | Take a \[**D7**\] T4 Bubble Tea and nail the final \[**G**\] assignment                                             |
+|                                                                                                |                                                                                                                     |
+| Re\[**C**\]member to let her into your \[**G**\] heart                                         | Re\[**C**\]member to let R into your \[**G**\] heart                                                                |
+|                                                                                                |                                                                                                                     |
+| Then you can \[**D7**\] start to make it \[**G**\] better                                      | Then you can \[**D7**\] start to make Wei \[**G**\] happier                                                         |
++------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| Hey \[**G**\] Jude don't be a-\[**D**\]fraid                                                   | Hey \[**G**\] Tom don't skip my \[**D**\] class                                                                     |
+|                                                                                                |                                                                                                                     |
+| You were \[**D7**\] made to go out and \[**G**\] get her                                       | I saw you tap your card and leave \[**D7**\], making my heart \[**G**\] so broken                                   |
+|                                                                                                |                                                                                                                     |
+| The \[**C**\] minute you let her under your \[**G**\] skin                                     | The \[**C**\] minute you open Jupyter notebook \[**G**\] in my class                                                |
+|                                                                                                |                                                                                                                     |
+| Then you be\[**D7**\]gin to make it \[**G**\] better \[**G**\]                                 | I know it's time \[**D7**\] to fight the oppression \[**G**\] from Python!                                          |
++------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| **\[G7\]**And any time you feel the **\[C\]** pain hey **\[Em\]** Jude re-\[**Am**\]frain      | **\[G7\]**And any time you have any question **\[C\]** hey **\[Em\]** Tom come to \[**Am**\] Wei                    |
+|                                                                                                |                                                                                                                     |
+| Don't **\[Am7\]** carry the **\[D\]** world u**\[D7\]**pon your **\[G\]** shoulder **\[G\]**   | Don't **\[Am7\]** carry the **\[D\]** world u**\[D7\]**pon your **\[G\]** shoulder **\[G\]**                        |
+|                                                                                                |                                                                                                                     |
+| **\[G7\]**For well you know that it's a **\[C\]** fool who **\[Em\]** plays it **\[Am\]** cool | **\[G7\]**For well you know that it's a **\[C\]** fool who **\[Em\]** plays it **\[Am\]** cool                      |
+|                                                                                                |                                                                                                                     |
+| By **\[Am7\]** making his **\[D\]** world a **\[D7\]** little **\[G\]** colder                 | By **\[Am7\]** making his **\[D\]** world a **\[D7\]** little **\[G\]** colder                                      |
+|                                                                                                |                                                                                                                     |
+| **\[G\]** Na na na **\[G7\]**na na na na **\[D7\]** na na **\[G\]** **\[D7\]**                 | **\[G\]** Now repeat after me **\[G7\]** R is the best language **\[D7\]** Better than Python! **\[G\]** **\[D7\]** |
++------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+:::

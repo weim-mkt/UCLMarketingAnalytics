@@ -127,6 +127,12 @@ website:
                 text: "Class 18 Regression Discontinuity Design (HTML)"
               - href: Week9-Lecture2.pdf
                 text: "Class 18 Regression Discontinuity Design (PDF)"
+          - section: "[Week 10] Module Wrap-Up"
+            contents: 
+              - href: Week10-Lecture2.html
+                text: "Week 10 Module Wrap-Up (HTML)"
+              - href: Week10-Lecture2.pdf
+                text: "Week 10 Module Wrap-Up (PDF)"
       - section: "R Tutorials"
         contents:
           - R-installR.qmd

@@ -200,14 +200,13 @@ Two conditions for omitted variable bias
 
 ## Examples of OVB
 
--  If we would like to understand the causal effect of years in education on a person's salary.
+-   If we would like to understand the causal effect of years in education on a person's salary.
 
 $$
 Salary_t = \beta_0 + \beta_1 Education_t + \epsilon_t
 $$
 
-- Can we get causal effect from this regression? What would be the issue here?
-
+-   Can we get causal effect from this regression? What would be the issue here?
 
 ## Examples of OVB
 
@@ -217,8 +216,8 @@ $$
 Sales_t = \beta_0 + \beta_1 Price_t + \epsilon_t
 $$
 
--  However, is this regression correct?
-    - Very often, if we regress sales on price, we get a positive coefficient for price.
+-   However, is this regression correct?
+    -   Very often, if we regress sales on price, we get a positive coefficient for price.
 
 ## Cause II: Reverse Causality (Simultaneity)
 
@@ -239,8 +238,8 @@ Sales_t = \beta_0 + \beta_1 Price_t + \epsilon_t
 $$
 
 -   Price affects demand, and demand affects sellers' price setting decisions.
-    - Higher price leads to lower sales. (X => Y)
-    - If sellers expect higher demand, sellers may increase the price to increase profits. (Y => X)
+    -   Higher price leads to lower sales. (X =\> Y)
+    -   If sellers expect higher demand, sellers may increase the price to increase profits. (Y =\> X)
 
 ## Examples of Reverse Causality (Simultaneity)
 
@@ -252,8 +251,9 @@ $$
 
 -   If not, how can we measure the causal effects for UberEat?
 
-- This question is not just limited to UberEat; it is in fact related to any platform business with network effect!
-    - Amazon; Airbnb; Uber Ridesharing; etc.
+-   This question is not just limited to UberEat; it is in fact related to any platform business with network effect!
+
+    -   Amazon; Airbnb; Uber Ridesharing; etc.
 
 ## Main Takeaway
 
