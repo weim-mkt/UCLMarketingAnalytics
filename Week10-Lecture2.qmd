@@ -40,65 +40,31 @@ bibliography: references.bib
 
 # Introduction to Marketing
 
-## Week 1: Introduction to Marketing
+## Week 1: Marketing Process
 
-- What is Marketing?
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', out.width="25%"}
-pacman::p_load(tm, wordcloud, RColorBrewer,wordcloud2)
-# generate text corpus
-definition_marketing <-  'Consumption is the sole end and purpose of all production  and the interests of the product ought to be attended to only so far as it may be necessary for promoting those of the customer.
-Marketing is a social and managerial process by which individuals and groups obtain what they  want and need through creating, offering and exchanging products of value with others.
-Marketing is the management process responsible for identifying, anticipating and satisfying customers requirements profitably.
-Marketing is the activity, set of institutions, and processes for creating, communicating, delivering, and exchanging offerings that have value for customers, clients, partners, and society at large.'
-
-definition_marketing_corpus <- Corpus(VectorSource(definition_marketing))
-# text cleaning 
-definition_marketing_corpus <- definition_marketing_corpus |> 
-  tm_map(removePunctuation) |>
-  tm_map(stripWhitespace) |>
-  tm_map(content_transformer(tolower)) |>
-  tm_map(removeWords, stopwords("english"))
-# Create a document-term-matrix
-definition_marketing_dtm <- TermDocumentMatrix(definition_marketing_corpus)
-definition_marketing_matrix <-  as.matrix(definition_marketing_dtm)
-df <- data.table(words = rownames(definition_marketing_matrix),
-                 freq = definition_marketing_matrix[,1])
-# draw wordcloud
-set.seed(888)
-wordcloud(words = df$words, freq = df$freq, min.freq = 1, max.words=200, random.order=FALSE, colors=brewer.pal(8, "Dark2"))
-```
-
-\
+![](images/marketingprocess.png){fig-align="center" width="400"}
 
 ## Week 1: Break-Even Analysis
 
-- **Break-even analysis** is essentially a cost-benefit analysis
-    - Break-even quantity (BEQ)
-    - Net present value (NPV)
-    
-- Since BEA is core to any company and business, all remaining weeks aim to provide answers to
-    - How to lower the cost using targeted marketing (Week 3-4, predictive analytics)
-    - How to quantify the benefit of a marketing treatment (Week 5-9, causal Inference)
+-   Break-even analysis is our starting point
+    -   Break-even quantity (BEQ)
+    -   Net present value (NPV)
+    -   Customer lifetime value (CLV)
 
-## "Not Nice to Meet You Tom" 
+-   BEA is essentially cost-benefit analysis
 
-- PineApple Case
-    - This is also when we first met **Tom**, a very loyal mate who has been with us for the whole term, a very "successful" alumnus from our BA program :D
+![](images/ppap.jpeg){fig-align="center" width="200"}
 
+-   PineApple Break-Even Analysis Case
+    -   This is also when we first met Tom, a very "successful" alumnus from our BA program
 
-- You have to do a lot of assignments because of Tom's ignorance, the lesson learned:
-    - All play and no work makes Tom a dull BA!
-    - Never become a marketing manager like him! Or you gonna receive a call from Wayne Meow.
-    
 ## Week 2: Customer-level Break Even Analysis
 
-- i-basket case study (Week 2)
-    - Customer Acquisition Costs (CAC)
-    - Customer Lifetime Value (CLV)
-
-- How to use CLV to guide marketing decisions
-    - 1st assignment: whether to launch the loyalty program for the bubble tea business
+-   i-basket case study (Week 2)
+    -   Customer Acquisition Costs (CAC)
+    -   Customer Lifetime Value (CLV)
+-   How to use CLV to guide marketing decisions
+    -   1st assignment: whether to launch the loyalty program for the bubble tea business
 
 \
 Calculation of CLV appears in job interviews very often! You can come back to the i-basket case study if needed.
@@ -107,37 +73,33 @@ Calculation of CLV appears in job interviews very often! You can come back to th
 
 ## Week 2: Data Wrangling with `dplyr`
 
-- Data manipulation with `dplyr`
-    - Single dataset manipulation: `filter`, `mutate`, `select`, `arrange` 
-    - Group aggregation: `group_by`
-    - Dataset concatenation: `join`
-
-- Tesco case study
-    - Summary statistics
-    - Preliminary customer analysis using `dplyr`
+-   Data manipulation with `dplyr`
+    -   Single dataset manipulation: `filter`, `mutate`, `select`, `arrange`
+    -   Group aggregation: `group_by`
+    -   Dataset concatenation: `join`
+-   Tesco case study
+    -   Summary statistics
+    -   Preliminary customer analysis using `dplyr`
 
 (p.s., I am super happy to see that you all have made huge progress in your R skills! **R is the best language!!!!**)
 
 ## Week 2: Preliminary Customer Analysis
 
-- How to design a marketing survey to collect first-hand data
-    - (debut of the first song in my first album)
-    
-:::::: {.cols data-latex=""}
+-   How to design a marketing survey to collect first-hand data
+    -   (debut of the first song in my first album)
 
-::: {.col data-latex="{0.4\textwidth}"}
+::: {.cols data-latex=""}
+::: {.col data-latex="{0.4\\textwidth}"}
 ```{r, echo=FALSE,out.width="60%", fig.align='center'}
   include_graphics(path = paste0(getwd(),"/images/class19_ShapeOfYou.png"))
 ```
 :::
 
-::: {.col data-latex="{0.1\textwidth}"}
-\ 
-
+::: {.col data-latex="{0.1\\textwidth}"}
+ 
 :::
 
-::: {.col data-latex="{0.5\textwidth}"}
-
+::: {.col data-latex="{0.5\\textwidth}"}
 ```{r, echo=FALSE,out.width="100%", fig.align='center'}
   include_graphics(path = paste0(getwd(),"/images/class19_purchaseintention.png"))
 ```
@@ -147,14 +109,8 @@ Calculation of CLV appears in job interviews very often! You can come back to th
 ```{r, echo=FALSE,out.width="100%", fig.align='center'}
   include_graphics(path = paste0(getwd(),"/images/class19_WTP.png"))
 ```
-
-
-
 :::
-::::::
-
-
-
+:::
 
 # Predictive Analytics
 
@@ -166,30 +122,30 @@ Calculation of CLV appears in job interviews very often! You can come back to th
 
 ## Week 7-9: Predictive Analytics
 
-- Two fundamental tradeoffs in predictive analytics
-    - accuracy versus interpretability
-    - bias versus variance (underfitting versus overfitting)
-
-- CAC = cost per offer / *response rate*; we can use predictive analytics to conduct targeted marketing to target responsive customers
-    - RFM analysis (Week 7)
-    - Linear probability model (Week 8)
-    - Logistic regression  (Week 8)
-    - Machine learning models (Week 9)
-
-- With targeted marketing, we can greatly boost the return on investment
-    - No model can always perform the best on all datasets
-    - It's trial and error to get the best model
-    - Automatic machine learning can save us lots of time
+-   Two fundamental tradeoffs in predictive analytics
+    -   accuracy versus interpretability
+    -   bias versus variance (underfitting versus overfitting)
+-   CAC = cost per offer / *response rate*; we can use predictive analytics to conduct targeted marketing to target responsive customers
+    -   RFM analysis (Week 7)
+    -   Linear probability model (Week 8)
+    -   Logistic regression (Week 8)
+    -   Machine learning models (Week 9)
+-   With targeted marketing, we can greatly boost the return on investment
+    -   No model can always perform the best on all datasets
+    -   It's trial and error to get the best model
+    -   Automatic machine learning can save us lots of time
 
 ## Week 8: Multinomial Logit Model
 
-- Random utility framework and utility maximization
+-   Random utility framework and utility maximization
 
-- Multimonial logit model can help us understand how customers trade off between different attributes
-    - Train ticket choice (Week 8 case study)
-    
-- Application of multinomial logit model
-    - Conjoint analysis (very powerful for understanding customers' tradeoff between product attributes)
+-   Multimonial logit model can help us understand how customers trade off between different attributes
+
+    -   Train ticket choice (Week 8 case study)
+
+-   Application of multinomial logit model
+
+    -   Conjoint analysis (very powerful for understanding customers' tradeoff between product attributes)
 
 ## Week 9: Customer Relationship Management
 
@@ -197,78 +153,73 @@ Calculation of CLV appears in job interviews very often! You can come back to th
   include_graphics(path = paste0(getwd(),"/images/customerlifecycle.png"))
 ```
 
-- Cross-selling and up-selling
-- Churn management
-
-
+-   Cross-selling and up-selling
+-   Churn management
 
 # Causal Inference
 
 ## Week 5-9: Causal Inference
 
-- How to use **causal inference** tools to quantify the causal effect of a business campaign on business outcomes
+-   How to use **causal inference** tools to quantify the causal effect of a business campaign on business outcomes
 
 ![](images/CausalInference.png)
 
 ## Week 3: RCTs
 
-- Selection bias in the BMW ads case
+-   Selection bias in the BMW ads case
 
 ```{r, echo=FALSE,out.width="50%", fig.align='center'}
   include_graphics(path = paste0(getwd(),"/images/class5_BMWConversion.png"))
 ```
 
-- We can use RCT to get causal inference
-    - Core idea is to use randomization to remove selection bias
-   
+-   We can use RCT to get causal inference
+    -   Core idea is to use randomization to remove selection bias
+
 ## Week 5: RCTs
 
-- Advantages
-    - Gold standard of causal inference; 
-    - The first-best option if time and money are not a concern
-
-- Disadvantages
-    - Costly to run
-    - Cross-overs and spill-overs if not properly implemented
-    
-- Application of RCTs: Vungle case study 
+-   Advantages
+    -   Gold standard of causal inference;
+    -   The first-best option if time and money are not a concern
+-   Disadvantages
+    -   Costly to run
+    -   Cross-overs and spill-overs if not properly implemented
+-   Application of RCTs: Vungle case study
 
 ## Week 6 & 7 : OLS Regression and Marketing Mix Modeling
 
-- Linear regression can give causal inference if and only if **all** confounding factors have been controlled in the regression.
+-   Linear regression can give causal inference if and only if **all** confounding factors have been controlled in the regression.
 
 ```{r, echo=FALSE,out.width="60%", fig.align='center'}
   include_graphics(path = paste0(getwd(),"/images/class7_directindirecteffect.png"))
 ```
 
-- In reality, this **never happens**, so strictly speaking, linear regression can never give causal effects.
+-   In reality, this **never happens**, so strictly speaking, linear regression can never give causal effects.
 
-- We can use linear regression to build marketing mix modeling, in order to set optimal prices for profit maximization.
-
-## Week 8: Endogeneity and Instrument Variables
-
-- Endogeneity of simple linear regressions
-    - Omitted variable bias
-    - Reverse causality
-    - [Measurement error]
-
-- An instrument variable can give causal inference. Two requirements:
-    - Exogeneity 
-    - Relevance
+-   We can use linear regression to build marketing mix modeling, in order to set optimal prices for profit maximization.
 
 ## Week 8: Endogeneity and Instrument Variables
 
-- Once we find an instrument, we can use 2-stage least square estimation to get the causal effects.
+-   Endogeneity of simple linear regressions
+    -   Omitted variable bias
+    -   Reverse causality
+    -   \[Measurement error\]
+-   An instrument variable can give causal inference. Two requirements:
+    -   Exogeneity
+    -   Relevance
 
-1. Explain $X$ with $Z$ (regress $X$ on $Z$). The predicted $X$, $\hat{X}$, is uncorrelated with the error term $\epsilon$ in the original regression.
-    - $\hat{X}$ is exogenous, because $Z$ is exogenous
-    - All endogenous parts are now absorbed/teased out into the error term in the first-stage regression $\epsilon_{i}$
-    
+## Week 8: Endogeneity and Instrument Variables
+
+-   Once we find an instrument, we can use 2-stage least square estimation to get the causal effects.
+
+1.  Explain $X$ with $Z$ (regress $X$ on $Z$). The predicted $X$, $\hat{X}$, is uncorrelated with the error term $\epsilon$ in the original regression.
+    -   $\hat{X}$ is exogenous, because $Z$ is exogenous
+    -   All endogenous parts are now absorbed/teased out into the error term in the first-stage regression $\epsilon_{i}$
+
 $$
 X_{i}=Z\eta+\epsilon_{i}
 $$
 
-2. Use the explained part $\hat{X}$ to explain $y$, now $\hat{X}$ is exogenous and can give us causal inference.
+2.  Use the explained part $\hat{X}$ to explain $y$, now $\hat{X}$ is exogenous and can give us causal inference.
 
 $$
 y_{i}=\hat{X} \beta+\varepsilon_{i}, \quad \operatorname{cov}\left(\hat{X}_{i}, \varepsilon_{i}\right) = 0
@@ -282,9 +233,8 @@ $$
 
 We can use DiD to quantify the causal effect of:
 
-- A new policy/regulation (GDPR, lockdown, etc.)
-- RCTs that are hard to randamize (East London and West London case)
-
+-   A new policy/regulation (GDPR, lockdown, etc.)
+-   RCTs that are hard to randamize (East London and West London case)
 
 ## Week 9: Regression Discontinuity Design
 
@@ -294,52 +244,49 @@ We can use DiD to quantify the causal effect of:
 
 We can use RDD to quantify the causal effect of:
 
-- "Distinction" on students' future career
-- Regression discontinuity in time
-
+-   "Distinction" on students' future career
+-   Regression discontinuity in time
 
 # Concluding Remarks
-
-
 
 ## MSIN0094 Contract
 
 **I promised**
 
-- You will learn the state-of-the-art marketing analytics techniques that will be very helpful for your dissertation projects and future jobs.
-- You will have fun (hopefully)
-- Give you a way of thinking about Marketing Analytics that will be relevant when you need it, not just today
-- I will always be there whenever you need help.
+-   You will learn the state-of-the-art marketing analytics techniques that will be very helpful for your dissertation projects and future jobs.
+-   You will have fun (hopefully)
+-   Give you a way of thinking about Marketing Analytics that will be relevant when you need it, not just today
+-   I will always be there whenever you need help.
 
 **You promised**
 
-- To duly prepare for each class (if any), including the case studies and reading materials 
-- To follow the code of conduct in class and in your assignments.
+-   To duly prepare for each class (if any), including the case studies and reading materials
+-   To follow the code of conduct in class and in your assignments.
 
 ## Not Enough?
 
-- I love new challenges so my door is always open even after the class is over
+-   I love new challenges so my door is always open even after the class is over
 
-- More learning materials
-    - Handbook of Marketing Analytics: Methods and Applications in Marketing Management, Public Policy, and Litigation Support (free at UCL library)
-    - Most harmless Econometrics
-    - All optional reading materials in each week
-    
+-   More learning materials
+
+    -   Handbook of Marketing Analytics: Methods and Applications in Marketing Management, Public Policy, and Litigation Support (free at UCL library)
+    -   Most harmless Econometrics
+    -   All optional reading materials in each week
+
 ## Lessons for Me
 
-- Impressed with your willingness to learn hard tools and to dig in 
-    - => My colleagues predicted you would chase me out of the classroom for making you learn Marketing, R, and so many complicated models at the same time
-
-- I learned something from you too
-    - Challenge the authority
-    - Good time management
-    - Your sense of achievement is also mine
+-   Impressed with your willingness to learn hard tools and to dig in
+    -   =\> My colleagues predicted you would chase me out of the classroom for making you learn Marketing, R, and so many complicated models at the same time
+-   I learned something from you too
+    -   Challenge the authority
+    -   Good time management
+    -   Your sense of achievement is also mine
 
 ## Looking into the Future
 
-- The main thing you will probably remember in 10 years:
-    - There used to be a module leader with bubble tea belly, who is likely bribed by T4 
-    - There used to be a lame alumnus named Tom, who claims to be Jeff Bezos' brother-in-law and made you do many assignments.
+-   The main thing you will probably remember in 10 years:
+    -   There used to be a module leader with bubble tea belly, who is likely bribed by T4
+    -   There used to be a lame alumnus named Tom, who claims to be Jeff Bezos' brother-in-law and made you do many assignments.
 
 ## Thank You for Being Amazing!!
 
