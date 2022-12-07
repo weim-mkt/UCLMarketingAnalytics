@@ -152,6 +152,7 @@ write.csv(data_rdd,'/Volumes/data HP/Dropbox/UCL/Teaching/MSIN0094 Marketing Ana
 ```
 
 ```{r}
+pacman::p_load(dplyr)
 data_rdd <- read.csv('https://www.dropbox.com/s/4f0zaqqkzo0at5o/data_rdd.csv?dl=1')
 head(data_rdd,5)
 ```
@@ -178,19 +179,34 @@ rdd_result <- feols(
 modelsummary(rdd_result,stars = TRUE)
 ```
 
-## Regression Discontinuity in Time
+## Variant 1: Regression Discontinuity in Time
 
-- An event or treatment occurred at a point in time. Meanwhile, the treatment affected all individuals.
-    - Because all individuals were affected, there were no control group and we could not do DiD analyses.
-    
-- However, if we can justify, **seasonality** is not strong within certain time window before and after the event, then we can do a **regression discontinuity in time** design (RDiT), as follows:
+-   An event or treatment occurred at a point in time. Meanwhile, the treatment affected all individuals.
+    -   Because all individuals were affected, there were no control group and we could not do DiD analyses.
+-   However, if we can justify, **seasonality** is not strong within certain time window before and after the event, then we can do a **regression discontinuity in time** design (RDiT), as follows:
 
 $$
 Outcome_{i, t}=\alpha+\beta_{1} Post_{i}+X\beta + \mu_{i, t}
 $$
 
-- As we learned in DiD lecture, $\beta_1$ includes both (1) the treatment effect, and (2) seasonality
-    - If the time window is short, say a few weeks before and after, it is likely seasonality effect is null, and we can claim $\beta_1$ measures the causal effect of the event.
+-   As we learned in DiD lecture, $\beta_1$ includes both (1) the treatment effect, and (2) seasonality
+    -   If the time window is short, say a few weeks before and after, it is likely seasonality effect is null, and we can claim $\beta_1$ measures the causal effect of the event.
+
+## Variant 2: Spatial Regression Discontinuity
+
+-   Some new policies/events may be **region specific**. For instance, In the US, each state has their independent laws and regulations, so a state's new policy only affects that state but not other states.
+
+-   Residents near the same border should be similar in their characteristics, but only one side of the border receives the treatment.
+
+    -   As-if a randomized controlled trial
+
+## Variant 2: Spatial Regression Discontinuity
+
+-   Then we can compare the outcome of the treated residents and control residents near the border. Hence, spatial regression discontinuity is sometimes called **border strategy**.
+
+    -   Refer to this [paper](https://titiunik.mycpanel.princeton.edu/papers/KeeleTitiunik2015-PA.pdf) for a comprehensive description of the topic.
+
+        ![](images/borderstrategy.jpeg){fig-align="center" width="150"}
 
 ## After-class Reading
 
