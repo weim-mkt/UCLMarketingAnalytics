@@ -50,33 +50,21 @@ bibliography: references.bib
     -   Break-even quantity (BEQ)
     -   Net present value (NPV)
     -   Customer lifetime value (CLV)
-
 -   BEA is essentially cost-benefit analysis
+    -   Pineapple case
+
+    -   i-basket case
 
 ![](images/ppap.jpeg){fig-align="center" width="200"}
-
--   PineApple Break-Even Analysis Case
-    -   This is also when we first met Tom, a very "successful" alumnus from our BA program
-
-## Week 2: Customer-level Break Even Analysis
-
--   i-basket case study (Week 2)
-    -   Customer Acquisition Costs (CAC)
-    -   Customer Lifetime Value (CLV)
--   How to use CLV to guide marketing decisions
-    -   1st assignment: whether to launch the loyalty program for the bubble tea business
-
-\
-Calculation of CLV appears in job interviews very often! You can come back to the i-basket case study if needed.
 
 # Descriptive Analytics
 
 ## Week 2: Data Wrangling with `dplyr`
 
 -   Data manipulation with `dplyr`
-    -   Single dataset manipulation: `filter`, `mutate`, `select`, `arrange`
+    -   `filter`, `mutate`, `select`, `arrange`
     -   Group aggregation: `group_by`
-    -   Dataset concatenation: `join`
+    -   Dataset join: `join`
 -   Tesco case study
     -   Summary statistics
     -   Preliminary customer analysis using `dplyr`
