@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr Wei Miao">
+<meta name="dcterms.date" content="2001-10-27">
+
+<title>Marketing Analytics - Improving Marketing Efficiency Using Predictive Analytics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Week5-Lecture1.html" rel="next">
+<link href="./Case-PredictiveAnalytics-stu.pdf" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FTK61TBF7L"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FTK61TBF7L', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Improving Marketing Efficiency Using Predictive Analytics</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Marketing Analytics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Lectures</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">Syllabus</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassPreparation.html" class="sidebar-item-text sidebar-link">Weekly Arrangements</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">[Week 1] Marketing Process and Break-Even Analyses</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.html" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.html" class="sidebar-item-text sidebar-link">Class 2 Break-Even Analyses (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 2 Break-Even Analyses (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.html" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.pdf" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassExercise.html" class="sidebar-item-text sidebar-link">In-Class Exercise Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">[Week 2] Customer Lifetime Value and Data Wrangling with R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.html" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.html" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-CLSV.html" class="sidebar-item-text sidebar-link">CLSV Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">[Week 3] Unsupervised Learning and Customer Segmentation</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.html" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.html" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis-stu.pdf" class="sidebar-item-text sidebar-link">Preliminary Customer Analyses</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis.html" class="sidebar-item-text sidebar-link">Case Solution: Descriptive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">[Week 4] Supervised Learning and Customer Targeting</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.html" class="sidebar-item-text sidebar-link">Class 7 Supervised Learning (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 7 Supervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.html" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics-stu.pdf" class="sidebar-item-text sidebar-link">Improving Marketing Efficiency Using Predictive Analytics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics.html" class="sidebar-item-text sidebar-link active">Case Solution: Predictive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">[Week 5] Causal Inference and RCT</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.html" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.html" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">[Week 6] Linear Regression Models</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.html" class="sidebar-item-text sidebar-link">Class 11 Application of A-B Testing at Vungle (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 11 Application of A-B Testing at Vungle (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.html" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">[Week 7] Marketing Mix Modeling</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.html" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.html" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-Zalora.html" class="sidebar-item-text sidebar-link">Case Solution: Zalora</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">[Week 8] Endogeneity and Instrumental Variable</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.html" class="sidebar-item-text sidebar-link">Class 15 Endogeneity (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 15 Endogeneity (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.html" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV-stu.pdf" class="sidebar-item-text sidebar-link">Case: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV.html" class="sidebar-item-text sidebar-link">Case Solution: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">[Week 9] Natural Experiment</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.html" class="sidebar-item-text sidebar-link">Class 17 Difference-in-Differences (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 17 Difference-in-Differences (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.html" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">[Week 10] Module Wrap-Up</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.html" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.pdf" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">R Tutorials</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-installR.html" class="sidebar-item-text sidebar-link">Install and Setup R</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">R Basics Part I (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">R Basics Part II (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-errors.html" class="sidebar-item-text sidebar-link">Troubleshooting R</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">Advanced R Tips</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RTip-BLAS.html" class="sidebar-item-text sidebar-link">Speed Up Matrix Operations</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#predictive-analytics-and-marketing1" id="toc-predictive-analytics-and-marketing1" class="nav-link active" data-scroll-target="#predictive-analytics-and-marketing1"> <span class="header-section-number">1</span> Predictive Analytics and Marketing</a></li>
+  <li><a href="#uncover-customer-segments-using-unsupervised-learning" id="toc-uncover-customer-segments-using-unsupervised-learning" class="nav-link" data-scroll-target="#uncover-customer-segments-using-unsupervised-learning"> <span class="header-section-number">2</span> Uncover Customer Segments Using Unsupervised Learning</a></li>
+  <li><a href="#tescos-task-acquire-customers-to-try-new-products" id="toc-tescos-task-acquire-customers-to-try-new-products" class="nav-link" data-scroll-target="#tescos-task-acquire-customers-to-try-new-products"> <span class="header-section-number">3</span> Tesco’s Task: Acquire Customers to Try New Products</a>
+  <ul class="collapse">
+  <li><a href="#break-even-analysis-for-making-marketing-offers" id="toc-break-even-analysis-for-making-marketing-offers" class="nav-link" data-scroll-target="#break-even-analysis-for-making-marketing-offers"> <span class="header-section-number">3.1</span> Break-Even Analysis for Making Marketing Offers</a></li>
+  </ul></li>
+  <li><a href="#data-preparation-and-model-training" id="toc-data-preparation-and-model-training" class="nav-link" data-scroll-target="#data-preparation-and-model-training"> <span class="header-section-number">4</span> Data Preparation and Model Training</a>
+  <ul class="collapse">
+  <li><a href="#data-wrangling-and-cleaning" id="toc-data-wrangling-and-cleaning" class="nav-link" data-scroll-target="#data-wrangling-and-cleaning"> <span class="header-section-number">4.1</span> Data wrangling and cleaning</a></li>
+  <li><a href="#select-featurespredictors" id="toc-select-featurespredictors" class="nav-link" data-scroll-target="#select-featurespredictors"> <span class="header-section-number">4.2</span> Select features/predictors</a></li>
+  <li><a href="#construct-a-training-set-and-a-test-set" id="toc-construct-a-training-set-and-a-test-set" class="nav-link" data-scroll-target="#construct-a-training-set-and-a-test-set"> <span class="header-section-number">4.3</span> Construct a training set and a test set</a></li>
+  <li><a href="#train-a-decision-tree" id="toc-train-a-decision-tree" class="nav-link" data-scroll-target="#train-a-decision-tree"> <span class="header-section-number">4.4</span> Train a decision tree</a></li>
+  <li><a href="#train-a-random-forest" id="toc-train-a-random-forest" class="nav-link" data-scroll-target="#train-a-random-forest"> <span class="header-section-number">4.5</span> Train a random forest</a></li>
+  </ul></li>
+  <li><a href="#improving-marketing-efficiency-using-predictive-analytics" id="toc-improving-marketing-efficiency-using-predictive-analytics" class="nav-link" data-scroll-target="#improving-marketing-efficiency-using-predictive-analytics"> <span class="header-section-number">5</span> Improving Marketing Efficiency Using Predictive Analytics</a>
+  <ul class="collapse">
+  <li><a href="#blanket-marketing" id="toc-blanket-marketing" class="nav-link" data-scroll-target="#blanket-marketing"> <span class="header-section-number">5.1</span> Blanket marketing</a></li>
+  <li><a href="#targeted-marketing-using-predictive-analytics" id="toc-targeted-marketing-using-predictive-analytics" class="nav-link" data-scroll-target="#targeted-marketing-using-predictive-analytics"> <span class="header-section-number">5.2</span> Targeted marketing using predictive analytics</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Improving Marketing Efficiency Using Predictive Analytics</h1>
+<p class="subtitle lead">MSIN0094 Case Study</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr Wei Miao </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 27, 2001</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="predictive-analytics-and-marketing1" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Predictive Analytics and Marketing<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h1>
+<p>Marketing research has traditionally focused on causal inference. The focus on causation stems from the need to make counterfactual predictions. For example, will increasing advertising expenditure increase demand? Answering this question requires an unbiased estimate of advertising impact on demand. However, the need to make accurate predictions is also important to marketing practices. For example, which consumers to target, which product configuration a consumer is most likely to choose, which version of a banner advertisement will generate more clicks, and what the market shares and actions of competitors are likely to be. All of these are prediction problems. These problems do not require causation; rather, they require models with high out-of-sample predictive accuracy. Predictive analytics (machine learning, ML) tools can address these types of problems.</p>
+<p>Machine learning (ML) refers to the study of methods or algorithms designed to learn the underlying patterns in the data and make predictions based on these patterns. A key characteristic of predictive analytics techniques is their ability to produce accurate out-of-sample predictions. Consider the problem of predicting whether a user will click on an ad. We do not have a comprehensive theory of users’ clicking behavior. Predictive analytics methods can automatically learn which of these factors affect user behavior and how they interact with each other, potentially in a highly non-linear fashion, to derive the best functional form that explains user behavior virtually in real time. Predictive analytics methods typically assume a model or structure to learn, but they use a general class of models that can be very rich.</p>
+<p>Predictive analytics models can be divided into two groups: supervised learning and unsupervised learning. Supervised learning requires input data that has both predictor (independent) variables and a target (dependent) variable whose value is to be estimated. If the goal of an analysis is to predict the value of some variable (e.g., whether customer responds to our marketing offers; whether customers churn at some point in time), then supervised learning is used.</p>
+<p>On the other hand, unsupervised learning does not identify a target (dependent) variable, but rather treats all of the variables equally. In this case, the goal is not to predict the value of a variable, but rather to look for patterns, groupings, or other ways to characterize the data that may lead to an understanding of the way the data interrelate. Cluster analysis is an example of unsupervised learning, which helps data analysts find customer segments based on provided characteristics.</p>
+<p>In this case study, we are going to analyze the same dataset as in Week 2 Preliminary Customer Analysis. Our task is to use predictive analytics tools to help Tesco conduct more effective targeted marketing.</p>
+<p>As a quick recap, the variable definitions are as follows:</p>
+<p><strong>Demographic Variables</strong></p>
+<ul>
+<li>ID: Customer’s unique identifier</li>
+<li>Year_Birth: Customer’s birth year</li>
+<li>Education: Customer’s education level</li>
+<li>Marital_Status: Customer’s marital status</li>
+<li>Income: Customer’s yearly household income</li>
+<li>Kidhome: Number of children in customer’s household</li>
+<li>Teenhome: Number of teenagers in customer’s household</li>
+<li>Dt_Customer: Date of customer’s enrollment with the company</li>
+</ul>
+<p><strong>Customer Purchase History Data</strong></p>
+<ul>
+<li>ID: Customer’s unique identifier</li>
+<li>MntWines: Amount spent on wine in last 2 years</li>
+<li>MntFruits: Amount spent on fruits in last 2 years</li>
+<li>MntMeatProducts: Amount spent on meat in last 2 years</li>
+<li>MntFishProducts: Amount spent on fish in last 2 years</li>
+<li>MntSweetProducts: Amount spent on sweets in last 2 years</li>
+<li>NumDealsPurchases: Number of purchases made with a discount</li>
+<li>NumWebPurchases: Number of purchases made through the company’s web site</li>
+<li>NumCatalogPurchases: Number of purchases made using a catalogue</li>
+<li>NumStorePurchases: Number of purchases made directly in stores</li>
+<li>NumWebVisitsMonth: Number of visits to company’s web site in the last month</li>
+<li>Complain: 1 if customer complained in the last 2 years, 0 otherwise</li>
+<li><strong>Response: 1 if customer accepted the offer in the last campaign, 0 otherwise</strong></li>
+<li>Recency: Number of days since customer’s last purchase</li>
+</ul>
+</section>
+<section id="uncover-customer-segments-using-unsupervised-learning" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Uncover Customer Segments Using Unsupervised Learning</h1>
+<ol type="1">
+<li>We aim to do customer segmentation based on <em>total spending</em> and <em>income.</em></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># Load both datasets</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>data_purchase <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"https://www.dropbox.com/s/126e9vkq80y9ti9/purchase.csv?dl=1"</span>, </span>
+<span id="cb1-4"><a href="#cb1-4"></a>                      <span class="at">header =</span> T)</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a>data_demo <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://www.dropbox.com/s/hbrgktcz98y0igs/demographics.csv?dl=1"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>                      <span class="at">header =</span> T)</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># Left join demographic data into purchase data</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>data_full <span class="ot">&lt;-</span> data_purchase <span class="sc">%&gt;%</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">left_join</span>(data_demo, <span class="at">by =</span> <span class="st">"ID"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co"># Handle Missing Values of Income</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>data_full <span class="ot">&lt;-</span> data_full <span class="sc">%&gt;%</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>  <span class="fu">mutate</span>(<span class="at">Income =</span> <span class="fu">replace</span>(Income, <span class="fu">is.na</span>(Income), <span class="fu">mean</span>(Income,<span class="at">na.rm =</span>T))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>First of all, we need to re-scale the two variables using <code>scale()</code>, because the two variables are of very different scales</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>data_kmeans <span class="ot">&lt;-</span> data_full<span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">mutate</span>(<span class="at">total_spending =</span> MntFishProducts <span class="sc">+</span> MntFruits <span class="sc">+</span> MntGoldProds <span class="sc">+</span> MntMeatProducts <span class="sc">+</span> MntSweetProducts <span class="sc">+</span> MntWines) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">select</span>(Income,total_spending)<span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">mutate</span>(<span class="at">Income =</span> <span class="fu">scale</span>(Income),</span>
+<span id="cb2-5"><a href="#cb2-5"></a>         <span class="at">total_spending =</span> <span class="fu">scale</span>(total_spending))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Run the K-means clustering algorithm using <code>kmeans()</code></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">set.seed</span>(<span class="dv">888</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>result_kmeans <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(data_kmeans,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>                        <span class="at">centers =</span> <span class="dv">2</span>,</span>
+<span id="cb3-4"><a href="#cb3-4"></a>                        <span class="at">nstart =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can examine the structure of the <code>result_kmeans</code> using <code>str()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">str</span>(result_kmeans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 9
+ $ cluster     : int [1:2000] 1 2 1 2 2 1 2 2 2 2 ...
+ $ centers     : num [1:2, 1:2] 0.95 -0.663 1.022 -0.713
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ : chr [1:2] "1" "2"
+  .. ..$ : chr [1:2] "Income" "total_spending"
+ $ totss       : num 3998
+ $ withinss    : num [1:2] 726 553
+ $ tot.withinss: num 1280
+ $ betweenss   : num 2718
+ $ size        : int [1:2] 822 1178
+ $ iter        : int 1
+ $ ifault      : int 0
+ - attr(*, "class")= chr "kmeans"</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Visualize the clustering</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(cluster,factoextra)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">set.seed</span>(<span class="dv">888</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">fviz_cluster</span>(result_kmeans,</span>
+<span id="cb6-4"><a href="#cb6-4"></a>             <span class="at">data =</span> data_kmeans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Case-PredictiveAnalytics_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Determine the optimal number of clusters using statistical criteria</li>
+</ol>
+<ul>
+<li>Gap Method</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">set.seed</span>(<span class="dv">888</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>gap_stat <span class="ot">&lt;-</span> <span class="fu">clusGap</span>(data_kmeans, </span>
+<span id="cb7-3"><a href="#cb7-3"></a>                    <span class="at">FUN =</span> kmeans,</span>
+<span id="cb7-4"><a href="#cb7-4"></a>                    <span class="at">K.max =</span> <span class="dv">10</span>,</span>
+<span id="cb7-5"><a href="#cb7-5"></a>                    <span class="at">B =</span> <span class="dv">50</span>)</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="fu">fviz_gap_stat</span>(gap_stat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Case-PredictiveAnalytics_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>Silhouette method</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">set.seed</span>(<span class="dv">888</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">fviz_nbclust</span>(data_kmeans, kmeans, <span class="at">method =</span> <span class="st">"silhouette"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Case-PredictiveAnalytics_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>From both methods, it seems K = 2 is the best choice.</p>
+<ol start="5" type="1">
+<li>Compare the CLV in the two segments, and decide which segment to serve.</li>
+</ol>
+</section>
+<section id="tescos-task-acquire-customers-to-try-new-products" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Tesco’s Task: Acquire Customers to Try New Products</h1>
+<p>Tesco is looking to promote its new <a href="https://en.wikipedia.org/wiki/Private_label">private-label</a> products to existing customers. The marketing analytics team decides to use the conventional mailing marketing strategy so that customers would receive color-printed leaflets via Royal Mails to their doorsteps.</p>
+<p>Each mail costs £1.5 to produce and another £0.5 to mail to the customers. If a customer responds to the offer, the data analytics team expects customers to spend £20 on trying the new products, where the COGS is 60%.</p>
+<p>In this case study, we will learn how Tesco can use the power of predictive analytics to greatly improve its marketing efficiency and <a href="https://www.investopedia.com/articles/personal-finance/053015/how-calculate-roi-marketing-campaign.asp">return on investment</a>. Whether a customer responded to our marketing offer in the last marketing campaign is recorded in the <code>Respone</code> variable in the dataset.</p>
+<section id="break-even-analysis-for-making-marketing-offers" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="break-even-analysis-for-making-marketing-offers"><span class="header-section-number">3.1</span> Break-Even Analysis for Making Marketing Offers</h2>
+<p>First, we need to compute the profit margin (the net profit) if a customer responds to the marketing offer and buys from Tesco.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>cost_per_offer <span class="ot">&lt;-</span> <span class="fl">1.5</span> <span class="sc">+</span> <span class="fl">0.5</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a>COGS <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>profit_per_customer <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> COGS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Second, compute the break-even response rate for a customer.</p>
+<ul>
+<li><p>The cost is the marketing offer we send, <code>cost_per_offer</code></p></li>
+<li><p>The benefit is the profit margin if a customer responds, <code>profit_per_customer</code></p></li>
+<li><p>In order to break-even, we can calculate the break-even response rate from customers:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>break_even_response <span class="ot">&lt;-</span> cost_per_offer<span class="sc">/</span>profit_per_customer</span>
+<span id="cb10-2"><a href="#cb10-2"></a>break_even_response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.25</code></pre>
+</div>
+</div>
+<p>Which means, only if a customer responds to us with at least 25% response rate can we recover the costs of making an marketing offer.</p>
+</section>
+</section>
+<section id="data-preparation-and-model-training" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Data Preparation and Model Training</h1>
+<section id="data-wrangling-and-cleaning" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="data-wrangling-and-cleaning"><span class="header-section-number">4.1</span> Data wrangling and cleaning</h2>
+<p><em>Tasks</em>: Merge the demographic information into purchase history data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr)</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co"># Load both datasets</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>data_purchase <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"https://www.dropbox.com/s/126e9vkq80y9ti9/purchase.csv?dl=1"</span>, </span>
+<span id="cb12-4"><a href="#cb12-4"></a>                      <span class="at">header =</span> T)</span>
+<span id="cb12-5"><a href="#cb12-5"></a></span>
+<span id="cb12-6"><a href="#cb12-6"></a>data_demo <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://www.dropbox.com/s/hbrgktcz98y0igs/demographics.csv?dl=1"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7"></a>                      <span class="at">header =</span> T)</span>
+<span id="cb12-8"><a href="#cb12-8"></a></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="co"># Left join demographic data into purchase data</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a>data_full <span class="ot">&lt;-</span> data_purchase <span class="sc">%&gt;%</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>  <span class="fu">left_join</span>(data_demo, <span class="at">by =</span> <span class="st">"ID"</span>)</span>
+<span id="cb12-12"><a href="#cb12-12"></a></span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="co"># Handle Missing Values of Income</span></span>
+<span id="cb12-14"><a href="#cb12-14"></a>data_full <span class="ot">&lt;-</span> data_full <span class="sc">%&gt;%</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a>  <span class="fu">mutate</span>(<span class="at">Income =</span> <span class="fu">replace</span>(Income, <span class="fu">is.na</span>(Income), <span class="fu">mean</span>(Income,<span class="at">na.rm =</span>T))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="select-featurespredictors" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="select-featurespredictors"><span class="header-section-number">4.2</span> Select features/predictors</h2>
+<p><em>Tasks</em>: select meaningful features/predictors from <code>data_full</code>, named <code>data_full_small</code></p>
+<ul>
+<li><p>Since <code>ID</code> is customer ID only, so should be removed from final data</p></li>
+<li><p>Since <code>Dt_Customer</code> is a character string, which cannot be directly used in the model, we should also remove it</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Use select to remove the above two variables</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co"># Tip: a minus sign before the variable name can remove that variable</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a>data_full_smaller <span class="ot">&lt;-</span> data_full <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">select</span>(<span class="sc">-</span>ID) <span class="sc">%&gt;%</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">select</span>(<span class="sc">-</span>Dt_Customer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="construct-a-training-set-and-a-test-set" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="construct-a-training-set-and-a-test-set"><span class="header-section-number">4.3</span> Construct a training set and a test set</h2>
+<p><em>Tasks</em>: randomly divide <code>data_full</code> into a training set and a test set</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># use nrow() to count the number of rows in data_full_smaller</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>n_rows_data_full <span class="ot">&lt;-</span> <span class="fu">nrow</span>(data_full_smaller)</span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co"># set a seed, so that we can get the same set of results every time we rerun the model</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="fu">set.seed</span>(<span class="dv">8888</span>)</span>
+<span id="cb14-6"><a href="#cb14-6"></a></span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="co"># use sample() to randomly draw row index from data_full</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a>training_index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span>n_rows_data_full, <span class="co"># draw from 1 until 2000</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>                         <span class="at">size  =</span> <span class="fl">0.7</span> <span class="sc">*</span> n_rows_data_full, <span class="co"># size is 70% of 2000</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a>                         <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="co"># do not sample with replacement</span></span>
+<span id="cb14-11"><a href="#cb14-11"></a></span>
+<span id="cb14-12"><a href="#cb14-12"></a><span class="co"># think of data_full_smaller as a matrix, we can select rows based on training_index</span></span>
+<span id="cb14-13"><a href="#cb14-13"></a>data_training <span class="ot">&lt;-</span> data_full_smaller[training_index,]</span>
+<span id="cb14-14"><a href="#cb14-14"></a></span>
+<span id="cb14-15"><a href="#cb14-15"></a><span class="co"># minus sign means deselecting rows</span></span>
+<span id="cb14-16"><a href="#cb14-16"></a>data_test <span class="ot">&lt;-</span> data_full_smaller[<span class="sc">-</span>training_index,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="train-a-decision-tree" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="train-a-decision-tree"><span class="header-section-number">4.4</span> Train a decision tree</h2>
+<p><em>Tasks</em>: load the <code>rpart</code> and <code>rpart.plot</code> packages. Follow the code examples in the lecture notes and try to train a decision tree on <code>data_training</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(rpart,rpart.plot)</span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co"># write your codes below from what we learned in class.</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a>decision_tree <span class="ot">&lt;-</span> <span class="fu">rpart</span>(</span>
+<span id="cb15-6"><a href="#cb15-6"></a>  <span class="at">formula =</span> Response <span class="sc">~</span> MntWines <span class="sc">+</span> MntFruits <span class="sc">+</span> MntMeatProducts <span class="sc">+</span> MntFishProducts <span class="sc">+</span> </span>
+<span id="cb15-7"><a href="#cb15-7"></a>    MntSweetProducts <span class="sc">+</span> MntGoldProds <span class="sc">+</span> NumDealsPurchases <span class="sc">+</span> NumWebPurchases <span class="sc">+</span> NumCatalogPurchases <span class="sc">+</span> </span>
+<span id="cb15-8"><a href="#cb15-8"></a>    NumStorePurchases <span class="sc">+</span> NumWebVisitsMonth <span class="sc">+</span> Complain <span class="sc">+</span> Year_Birth <span class="sc">+</span> Education <span class="sc">+</span> </span>
+<span id="cb15-9"><a href="#cb15-9"></a>    Marital_Status <span class="sc">+</span> Income <span class="sc">+</span> Kidhome <span class="sc">+</span> Teenhome <span class="sc">+</span> Recency,</span>
+<span id="cb15-10"><a href="#cb15-10"></a>  <span class="at">data =</span>  data_training,</span>
+<span id="cb15-11"><a href="#cb15-11"></a>  <span class="at">method  =</span> <span class="st">"anova"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># visualize the decision tree we have built</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">rpart.plot</span>(decision_tree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Case-PredictiveAnalytics_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="train-a-random-forest" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="train-a-random-forest"><span class="header-section-number">4.5</span> Train a random forest</h2>
+<p><em>Tasks</em>: load the <code>ranger</code> packages. Follow the code examples in the lecture notes and try to train a random forest on <code>data_training</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ranger)</span>
+<span id="cb17-2"><a href="#cb17-2"></a></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="co"># write your codes below:</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="fu">set.seed</span>(<span class="dv">888</span>)</span>
+<span id="cb17-6"><a href="#cb17-6"></a>randomforest <span class="ot">&lt;-</span> <span class="fu">ranger</span>(</span>
+<span id="cb17-7"><a href="#cb17-7"></a>  <span class="at">formula =</span> Response <span class="sc">~</span>  MntWines <span class="sc">+</span> MntFruits <span class="sc">+</span> MntMeatProducts <span class="sc">+</span> MntFishProducts <span class="sc">+</span> </span>
+<span id="cb17-8"><a href="#cb17-8"></a>    MntSweetProducts <span class="sc">+</span> MntGoldProds <span class="sc">+</span> NumDealsPurchases <span class="sc">+</span> NumWebPurchases <span class="sc">+</span> NumCatalogPurchases <span class="sc">+</span> </span>
+<span id="cb17-9"><a href="#cb17-9"></a>    NumStorePurchases <span class="sc">+</span> NumWebVisitsMonth <span class="sc">+</span> Complain <span class="sc">+</span> Year_Birth <span class="sc">+</span> Education <span class="sc">+</span> </span>
+<span id="cb17-10"><a href="#cb17-10"></a>    Marital_Status <span class="sc">+</span> Income <span class="sc">+</span> Kidhome <span class="sc">+</span> Teenhome <span class="sc">+</span> Recency,</span>
+<span id="cb17-11"><a href="#cb17-11"></a>  <span class="at">data =</span> data_training,</span>
+<span id="cb17-12"><a href="#cb17-12"></a>  <span class="at">num.trees =</span> <span class="dv">500</span></span>
+<span id="cb17-13"><a href="#cb17-13"></a>)</span>
+<span id="cb17-14"><a href="#cb17-14"></a></span>
+<span id="cb17-15"><a href="#cb17-15"></a><span class="co"># make prediction on the test set</span></span>
+<span id="cb17-16"><a href="#cb17-16"></a>prediction_from_randomforest <span class="ot">&lt;-</span> <span class="fu">predict</span>(randomforest, data_test)</span>
+<span id="cb17-17"><a href="#cb17-17"></a></span>
+<span id="cb17-18"><a href="#cb17-18"></a><span class="co"># mutate a new column in data_test for the predicted probability from random forest</span></span>
+<span id="cb17-19"><a href="#cb17-19"></a>data_test <span class="ot">&lt;-</span> data_test <span class="sc">%&gt;%</span></span>
+<span id="cb17-20"><a href="#cb17-20"></a>  <span class="fu">mutate</span>(<span class="at">predicted_prob_randomforest =</span> prediction_from_randomforest<span class="sc">$</span>predictions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="improving-marketing-efficiency-using-predictive-analytics" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Improving Marketing Efficiency Using Predictive Analytics</h1>
+<section id="blanket-marketing" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="blanket-marketing"><span class="header-section-number">5.1</span> Blanket marketing</h2>
+<p>If Tesco does blanket marketing and sends marketing offers to all 600 customers in the test set, the total marketing costs would be</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>total_costs_of_mailing_blanket <span class="ot">&lt;-</span> cost_per_offer <span class="sc">*</span> <span class="fu">nrow</span>(data_test)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>total_costs_of_mailing_blanket</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1200</code></pre>
+</div>
+</div>
+<p>And the total profits from the blanket marketing would be</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># below is the total number of responding customers in the test set</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">sum</span>(data_test<span class="sc">$</span>Response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 99</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Multiply it with profit_per_customer, we get total profits from the marketing campaign</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>total_profit_blanket <span class="ot">&lt;-</span> <span class="fu">sum</span>(data_test<span class="sc">$</span>Response) <span class="sc">*</span> profit_per_customer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Therefore, the <strong>Return on Investment</strong> <strong>(ROI)</strong> on the marketing offer would be</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Return on Investment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>ROI = Net Profits / Initial Investments, which means the return rate of an investment activity.</p>
+<ul>
+<li>ROI needs to be a positive number in order for the company to make profits from the investment.</li>
+</ul>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># net profits = total_profit_blanket - total_costs_of_mailing_blanket</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="co"># initial investment = total_costs_of_mailing_blanket</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="co"># So ROI is below:</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a></span>
+<span id="cb23-5"><a href="#cb23-5"></a>ROI_blanket <span class="ot">&lt;-</span> (total_profit_blanket <span class="sc">-</span> total_costs_of_mailing_blanket)<span class="sc">/</span>total_costs_of_mailing_blanket</span>
+<span id="cb23-6"><a href="#cb23-6"></a></span>
+<span id="cb23-7"><a href="#cb23-7"></a>ROI_blanket</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.34</code></pre>
+</div>
+</div>
+<p>A negative ROI from blanket marketing means, the company makes a loss from sending offers to all customers in the test set. The reason is that, not all customers are responsive to our marketing offers. It does Tesco no good from sending offers to those customers who would not respond anyway.</p>
+</section>
+<section id="targeted-marketing-using-predictive-analytics" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="targeted-marketing-using-predictive-analytics"><span class="header-section-number">5.2</span> Targeted marketing using predictive analytics</h2>
+<p>However, if Tesco uses the trained decision tree model to conduct targeted marketing, and <strong>only target those customers who are predicted to be more responsive than the break-even response rate by decision trees</strong>, what would happen to the ROI?</p>
+<section id="predict-response-rate-from-decision-tree-model" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="predict-response-rate-from-decision-tree-model"><span class="header-section-number">5.2.1</span> Predict response rate from decision tree model</h3>
+<p>First, we have already trained the decision tree model, named <code>decision_tree</code>, from the training set. We can predict the probability of test set customer responding to our marketing offer, using <code>predict()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># use predict() to make prediction on the test set</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="co"># Note that prediction_from_decision_tree is already a vector,</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="co"># which we can directly mutate into </span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>prediction_from_decision_tree <span class="ot">&lt;-</span> <span class="fu">predict</span>(decision_tree, data_test)</span>
+<span id="cb25-5"><a href="#cb25-5"></a></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="co"># mutate a new column in data_test for the predicted probability</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>data_test <span class="ot">&lt;-</span> data_test <span class="sc">%&gt;%</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a>  <span class="fu">mutate</span>(<span class="at">predicted_prob_decisiontree =</span> prediction_from_decision_tree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="select-customers-to-target" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="select-customers-to-target"><span class="header-section-number">5.2.2</span> Select customers to target</h3>
+<p><em>Tasks</em>: We should only send marketing offers to consumers whose expected or predicted response rate is larger than the break-even response rate. This is called targeted marketing.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># mutate a new binary indicator for whether to target a customer based on predicted prob from decision tree model</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>data_test <span class="ot">&lt;-</span> data_test <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">mutate</span>(<span class="at">is_target_decisiontree =</span> <span class="fu">ifelse</span>(predicted_prob_decisiontree <span class="sc">&gt;</span> break_even_response,1L,0L))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="compute-roi-for-decision-tree-targeted-marketing" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="compute-roi-for-decision-tree-targeted-marketing"><span class="header-section-number">5.2.3</span> Compute ROI for decision tree targeted marketing</h3>
+<p>Finally, we have decided to send marketing offers to selected responsive customers. We can then compute the ROI for targeted marketing as in the blanket marketing case.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># total marketing costs</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>total_costs_of_mailing_decisiontree <span class="ot">&lt;-</span> cost_per_offer <span class="sc">*</span> <span class="fu">sum</span>(data_test<span class="sc">$</span>is_target_decisiontree)</span>
+<span id="cb27-3"><a href="#cb27-3"></a></span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="co"># total profits from responding customers</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a>total_profit_decisiontree <span class="ot">&lt;-</span> <span class="fu">sum</span>((data_test<span class="sc">%&gt;%</span><span class="fu">filter</span>(is_target_decisiontree<span class="sc">==</span><span class="dv">1</span>))<span class="sc">$</span>Response) <span class="sc">*</span> profit_per_customer</span>
+<span id="cb27-6"><a href="#cb27-6"></a></span>
+<span id="cb27-7"><a href="#cb27-7"></a><span class="co"># Compute ROI</span></span>
+<span id="cb27-8"><a href="#cb27-8"></a>ROI_decisiontree<span class="ot">&lt;-</span> (total_profit_decisiontree <span class="sc">-</span> total_costs_of_mailing_decisiontree)<span class="sc">/</span>total_costs_of_mailing_decisiontree</span>
+<span id="cb27-9"><a href="#cb27-9"></a></span>
+<span id="cb27-10"><a href="#cb27-10"></a>ROI_decisiontree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8550725</code></pre>
+</div>
+</div>
+<p>Finally, if Tesco uses random forest, an arguably better supervised learning model, to conduct targeted marketing, we can follow a similar logic as above, and compute the ROI from using random forest.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># mutate a new binary indicator for whether to target a customer based on predicted prob from random forest model</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>data_test <span class="ot">&lt;-</span> data_test <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">mutate</span>(<span class="at">is_target_randomforest =</span> <span class="fu">ifelse</span>(predicted_prob_randomforest <span class="sc">&gt;</span> break_even_response,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb29-4"><a href="#cb29-4"></a></span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="co"># total marketing costs</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>total_costs_of_mailing_randomforest <span class="ot">&lt;-</span> cost_per_offer <span class="sc">*</span> <span class="fu">sum</span>(data_test<span class="sc">$</span>is_target_randomforest)</span>
+<span id="cb29-7"><a href="#cb29-7"></a></span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="co"># total profits from responding customers</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a>total_profit_randomforest <span class="ot">&lt;-</span> <span class="fu">sum</span>((data_test<span class="sc">%&gt;%</span><span class="fu">filter</span>(is_target_randomforest<span class="sc">==</span><span class="dv">1</span>))<span class="sc">$</span>Response) <span class="sc">*</span> profit_per_customer</span>
+<span id="cb29-10"><a href="#cb29-10"></a></span>
+<span id="cb29-11"><a href="#cb29-11"></a><span class="co"># Compute ROI</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a>ROI_randomforest<span class="ot">&lt;-</span> (total_profit_randomforest <span class="sc">-</span> total_costs_of_mailing_randomforest)<span class="sc">/</span>total_costs_of_mailing_randomforest</span>
+<span id="cb29-13"><a href="#cb29-13"></a></span>
+<span id="cb29-14"><a href="#cb29-14"></a>ROI_randomforest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.031746</code></pre>
+</div>
+</div>
+<p>Predictive analytics model can help the company boost the marketing ROI by allowing Tesco to target customers who are more likely to respond to the marketing offers than the break-even response rate. By doing so, Tesco saves unnecessary marketing costs on those unresponsive customers and therefore improves its marketing efficiency.</p>
+
+
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1" role="doc-endnote"><p>This section is heavily borrowed from <a href="https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_proquest_ebookcentral_EBC5328483">Chapter 11 of Handbook of Marketing Analytics</a>. For the full article, you can have assess via UCL library service.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./Case-PredictiveAnalytics-stu.pdf" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Improving Marketing Efficiency Using Predictive Analytics</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Week5-Lecture1.html" class="pagination-link">
+        <span class="nav-page-text">Class 9 Causal Inference (html)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

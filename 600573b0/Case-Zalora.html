@@ -1,0 +1,2322 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr Wei Miao">
+<meta name="dcterms.date" content="2001-11-17">
+
+<title>Marketing Analytics - Zalora: Data-Driven Pricing Recommendations</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Week8-Lecture1.html" rel="next">
+<link href="./Week7-Lecture2.pdf" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FTK61TBF7L"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FTK61TBF7L', { 'anonymize_ip': true});
+</script>
+
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Zalora: Data-Driven Pricing Recommendations</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Marketing Analytics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Lectures</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">Syllabus</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassPreparation.html" class="sidebar-item-text sidebar-link">Weekly Arrangements</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">[Week 1] Marketing Process and Break-Even Analyses</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.html" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.html" class="sidebar-item-text sidebar-link">Class 2 Break-Even Analyses (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 2 Break-Even Analyses (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.html" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.pdf" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassExercise.html" class="sidebar-item-text sidebar-link">In-Class Exercise Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">[Week 2] Customer Lifetime Value and Data Wrangling with R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.html" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.html" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-CLSV.html" class="sidebar-item-text sidebar-link">CLSV Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">[Week 3] Unsupervised Learning and Customer Segmentation</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.html" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.html" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis-stu.pdf" class="sidebar-item-text sidebar-link">Preliminary Customer Analyses</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis.html" class="sidebar-item-text sidebar-link">Case Solution: Descriptive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">[Week 4] Supervised Learning and Customer Targeting</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.html" class="sidebar-item-text sidebar-link">Class 7 Supervised Learning (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 7 Supervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.html" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics-stu.pdf" class="sidebar-item-text sidebar-link">Improving Marketing Efficiency Using Predictive Analytics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics.html" class="sidebar-item-text sidebar-link">Case Solution: Predictive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">[Week 5] Causal Inference and RCT</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.html" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.html" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">[Week 6] Linear Regression Models</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.html" class="sidebar-item-text sidebar-link">Class 11 Application of A-B Testing at Vungle (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 11 Application of A-B Testing at Vungle (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.html" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">[Week 7] Marketing Mix Modeling</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.html" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.html" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-Zalora.html" class="sidebar-item-text sidebar-link active">Case Solution: Zalora</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">[Week 8] Endogeneity and Instrumental Variable</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.html" class="sidebar-item-text sidebar-link">Class 15 Endogeneity (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 15 Endogeneity (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.html" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV-stu.pdf" class="sidebar-item-text sidebar-link">Case: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV.html" class="sidebar-item-text sidebar-link">Case Solution: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">[Week 9] Natural Experiment</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.html" class="sidebar-item-text sidebar-link">Class 17 Difference-in-Differences (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 17 Difference-in-Differences (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.html" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">[Week 10] Module Wrap-Up</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.html" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.pdf" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">R Tutorials</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-installR.html" class="sidebar-item-text sidebar-link">Install and Setup R</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">R Basics Part I (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">R Basics Part II (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-errors.html" class="sidebar-item-text sidebar-link">Troubleshooting R</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">Advanced R Tips</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RTip-BLAS.html" class="sidebar-item-text sidebar-link">Speed Up Matrix Operations</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#linear-regression-basics" id="toc-linear-regression-basics" class="nav-link active" data-scroll-target="#linear-regression-basics"> <span class="header-section-number">1</span> Linear Regression Basics</a>
+  <ul class="collapse">
+  <li><a href="#univariate-regression" id="toc-univariate-regression" class="nav-link" data-scroll-target="#univariate-regression"> <span class="header-section-number">1.1</span> Univariate regression</a></li>
+  <li><a href="#multivariate-regression" id="toc-multivariate-regression" class="nav-link" data-scroll-target="#multivariate-regression"> <span class="header-section-number">1.2</span> Multivariate regression</a></li>
+  </ul></li>
+  <li><a href="#linear-regression-advanced" id="toc-linear-regression-advanced" class="nav-link" data-scroll-target="#linear-regression-advanced"> <span class="header-section-number">2</span> Linear Regression Advanced</a>
+  <ul class="collapse">
+  <li><a href="#factor-variables" id="toc-factor-variables" class="nav-link" data-scroll-target="#factor-variables"> <span class="header-section-number">2.1</span> Factor variables</a></li>
+  <li><a href="#non-linear-effects" id="toc-non-linear-effects" class="nav-link" data-scroll-target="#non-linear-effects"> <span class="header-section-number">2.2</span> Non-linear Effects</a></li>
+  </ul></li>
+  <li><a href="#zalora-data-driven-pricing" id="toc-zalora-data-driven-pricing" class="nav-link" data-scroll-target="#zalora-data-driven-pricing"> <span class="header-section-number">3</span> Zalora Data-Driven Pricing</a>
+  <ul class="collapse">
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling"> <span class="header-section-number">3.1</span> Data Wrangling</a></li>
+  <li><a href="#regression-analysis" id="toc-regression-analysis" class="nav-link" data-scroll-target="#regression-analysis"> <span class="header-section-number">3.2</span> Regression Analysis</a></li>
+  <li><a href="#pricing-optimization" id="toc-pricing-optimization" class="nav-link" data-scroll-target="#pricing-optimization"> <span class="header-section-number">3.3</span> Pricing Optimization</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Zalora: Data-Driven Pricing Recommendations</h1>
+<p class="subtitle lead">MSIN0094 Case Study</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr Wei Miao </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 17, 2001</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="linear-regression-basics" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Linear Regression Basics</h1>
+<section id="univariate-regression" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="univariate-regression"><span class="header-section-number">1.1</span> Univariate regression</h2>
+<ul>
+<li>Load the Tesco dataset and necessary packages</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># Load both datasets</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>data_purchase <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"https://www.dropbox.com/s/126e9vkq80y9ti9/purchase.csv?dl=1"</span>, </span>
+<span id="cb1-4"><a href="#cb1-4"></a>                      <span class="at">header =</span> T)</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a>data_demo <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://www.dropbox.com/s/hbrgktcz98y0igs/demographics.csv?dl=1"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>                      <span class="at">header =</span> T)</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># Left join demographic data into purchase data</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>data_full <span class="ot">&lt;-</span> data_purchase <span class="sc">%&gt;%</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">left_join</span>(data_demo, <span class="at">by =</span> <span class="st">"ID"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co"># Handle Missing Values of Income</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>data_full <span class="ot">&lt;-</span> data_full <span class="sc">%&gt;%</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>  <span class="fu">mutate</span>(<span class="at">Income =</span> <span class="fu">replace</span>(Income, <span class="fu">is.na</span>(Income), <span class="fu">mean</span>(Income,<span class="at">na.rm =</span>T))) <span class="sc">%&gt;%</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>  <span class="fu">mutate</span>(<span class="at">total_spending =</span> MntFishProducts <span class="sc">+</span> MntFruits <span class="sc">+</span> MntGoldProds <span class="sc">+</span> MntMeatProducts <span class="sc">+</span> MntSweetProducts <span class="sc">+</span> MntWines)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Run a linear regression by regressing <code>total_spending</code> on <code>Income</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(modelsummary,fixest)</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>OLS_result <span class="ot">&lt;-</span> <span class="fu">feols</span>( </span>
+<span id="cb2-4"><a href="#cb2-4"></a>   <span class="at">fml =</span> total_spending <span class="sc">~</span> Income, <span class="co"># Y ~ X</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>   <span class="at">data =</span> data_full, <span class="co"># dataset from Tesco</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>   ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Generate the regression result table using <code>modelsummary()</code> from the <code>modelsummary</code> package.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">modelsummary</span>(OLS_result,</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="at">stars =</span> <span class="cn">TRUE</span>,  <span class="co"># export statistical significance</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> Model 1 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:center;"> −556.823*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (21.654) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Income </td>
+   <td style="text-align:center;"> 0.022*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.0004) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 2000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 </td>
+   <td style="text-align:center;"> 0.629 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Adj. </td>
+   <td style="text-align:center;"> 0.629 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> RMSE </td>
+   <td style="text-align:center;"> 367.45 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Std.Errors </td>
+   <td style="text-align:center;"> IID </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+</table>
+
+</div>
+</div>
+</section>
+<section id="multivariate-regression" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="multivariate-regression"><span class="header-section-number">1.2</span> Multivariate regression</h2>
+<ul>
+<li>Run a linear regression by regressing <code>total_spending</code> on <code>Income</code> and <code>Kidhome</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">feols</span>(<span class="at">data =</span> data_full,</span>
+<span id="cb4-2"><a href="#cb4-2"></a>     <span class="at">fml =</span> total_spending <span class="sc">~</span> Income <span class="sc">+</span> Kidhome) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">modelsummary</span>(<span class="at">stars =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> Model 1 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:center;"> −299.119*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (28.069) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Income </td>
+   <td style="text-align:center;"> 0.019*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.0004) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kidhome </td>
+   <td style="text-align:center;"> −230.610*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (16.945) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 2000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 </td>
+   <td style="text-align:center;"> 0.661 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Adj. </td>
+   <td style="text-align:center;"> 0.660 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> RMSE </td>
+   <td style="text-align:center;"> 351.51 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Std.Errors </td>
+   <td style="text-align:center;"> IID </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+</table>
+
+</div>
+</div>
+</section>
+</section>
+<section id="linear-regression-advanced" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Linear Regression Advanced</h1>
+<section id="factor-variables" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="factor-variables"><span class="header-section-number">2.1</span> Factor variables</h2>
+<ul>
+<li>Generate a factor variable for <code>Education</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>data_full <span class="ot">&lt;-</span> data_full <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">mutate</span>(<span class="at">Education_factor =</span> <span class="fu">factor</span>(Education))</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># check levels of a factor</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">levels</span>(data_full<span class="sc">$</span>Education_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2n Cycle"   "Basic"      "Graduation" "Master"     "PhD"       </code></pre>
+</div>
+</div>
+<ul>
+<li>Change the baseline group to “Basic”</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>data_full <span class="ot">&lt;-</span> data_full <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">mutate</span>(<span class="at">Education_factor_2 =</span> <span class="fu">relevel</span>(Education_factor, </span>
+<span id="cb7-3"><a href="#cb7-3"></a>                                      <span class="at">ref =</span> <span class="st">"Basic"</span>) )</span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">levels</span>(data_full<span class="sc">$</span>Education_factor_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Basic"      "2n Cycle"   "Graduation" "Master"     "PhD"       </code></pre>
+</div>
+</div>
+<ul>
+<li>Run a regression with factor variable <code>Education_factor_2</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>feols_categorical <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="at">data =</span> data_full,</span>
+<span id="cb9-2"><a href="#cb9-2"></a>  total_spending <span class="sc">~</span> Income <span class="sc">+</span> Kidhome <span class="sc">+</span> Education_factor_2)</span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># report the result</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="fu">modelsummary</span>(feols_categorical,</span>
+<span id="cb9-6"><a href="#cb9-6"></a>             <span class="at">stars =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> Model 1 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:center;"> −180.297** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (56.305) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Income </td>
+   <td style="text-align:center;"> 0.020*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.0004) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kidhome </td>
+   <td style="text-align:center;"> −227.761*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (16.961) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Education_factor_22n Cycle </td>
+   <td style="text-align:center;"> −164.044** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (60.448) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Education_factor_2Graduation </td>
+   <td style="text-align:center;"> −119.695* </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (56.176) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Education_factor_2Master </td>
+   <td style="text-align:center;"> −143.015* </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (58.443) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Education_factor_2PhD </td>
+   <td style="text-align:center;"> −153.190** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (57.751) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 2000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 </td>
+   <td style="text-align:center;"> 0.662 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Adj. </td>
+   <td style="text-align:center;"> 0.661 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> RMSE </td>
+   <td style="text-align:center;"> 350.59 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Std.Errors </td>
+   <td style="text-align:center;"> IID </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+</table>
+
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>feols_categorical_2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="at">data =</span> data_full,</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  total_spending <span class="sc">~</span> Income <span class="sc">+</span> Kidhome <span class="sc">+</span> Education_factor)</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># report the result</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">modelsummary</span>(feols_categorical_2,</span>
+<span id="cb10-6"><a href="#cb10-6"></a>             <span class="at">stars =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> Model 1 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:center;"> −344.341*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (36.730) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Income </td>
+   <td style="text-align:center;"> 0.020*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.0004) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kidhome </td>
+   <td style="text-align:center;"> −227.761*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (16.961) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Education_factorBasic </td>
+   <td style="text-align:center;"> 164.044** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (60.448) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Education_factorGraduation </td>
+   <td style="text-align:center;"> 44.349 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (28.188) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Education_factorMaster </td>
+   <td style="text-align:center;"> 21.029 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (32.381) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Education_factorPhD </td>
+   <td style="text-align:center;"> 10.854 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (30.796) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 2000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 </td>
+   <td style="text-align:center;"> 0.662 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Adj. </td>
+   <td style="text-align:center;"> 0.661 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> RMSE </td>
+   <td style="text-align:center;"> 350.59 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Std.Errors </td>
+   <td style="text-align:center;"> IID </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+</table>
+
+</div>
+</div>
+</section>
+<section id="non-linear-effects" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="non-linear-effects"><span class="header-section-number">2.2</span> Non-linear Effects</h2>
+<ul>
+<li>Generate a quadratic term of <code>Income</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>data_full <span class="ot">&lt;-</span> data_full <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">mutate</span>(<span class="at">Income_quadartic =</span> Income<span class="sc">^</span><span class="dv">2</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Run 2 models with and without the quadratic term</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># model 1: without quadratic term</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>feols_noquadratic <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="at">data =</span> data_full,</span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="at">fml =</span>  total_spending <span class="sc">~</span> Income )</span>
+<span id="cb12-4"><a href="#cb12-4"></a></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="co"># model 2: with quadratic term</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>feols_quadratic <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="at">data =</span> data_full,</span>
+<span id="cb12-7"><a href="#cb12-7"></a>  <span class="at">fml =</span>  total_spending <span class="sc">~</span> Income  <span class="sc">+</span> Income_quadartic )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Report the results from the two regressions</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(feols_noquadratic,feols_quadratic),</span>
+<span id="cb13-2"><a href="#cb13-2"></a>             <span class="at">stars =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> Model 1 </th>
+   <th style="text-align:center;"> Model 2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:center;"> −556.823*** </td>
+   <td style="text-align:center;"> −627.040*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (21.654) </td>
+   <td style="text-align:center;"> (36.522) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Income </td>
+   <td style="text-align:center;"> 0.022*** </td>
+   <td style="text-align:center;"> 0.025*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.0004) </td>
+   <td style="text-align:center;"> (0.001) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Income_quadartic </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> −3e−08* </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (1e−08) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 2000 </td>
+   <td style="text-align:center;"> 2000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 </td>
+   <td style="text-align:center;"> 0.629 </td>
+   <td style="text-align:center;"> 0.630 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Adj. </td>
+   <td style="text-align:center;"> 0.629 </td>
+   <td style="text-align:center;"> 0.630 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> RMSE </td>
+   <td style="text-align:center;"> 367.45 </td>
+   <td style="text-align:center;"> 366.92 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Std.Errors </td>
+   <td style="text-align:center;"> IID </td>
+   <td style="text-align:center;"> IID </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+</table>
+
+</div>
+</div>
+</section>
+</section>
+<section id="zalora-data-driven-pricing" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Zalora Data-Driven Pricing</h1>
+<section id="data-wrangling" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="data-wrangling"><span class="header-section-number">3.1</span> Data Wrangling</h2>
+<section id="load-data" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="load-data"><span class="header-section-number">3.1.1</span> Load data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>data_zalora <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://www.dropbox.com/s/ok2b7pcudo9c5m5/519701-XLS-ENG.csv?dl=1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="examine-the-data-types" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="examine-the-data-types"><span class="header-section-number">3.1.2</span> Examine the data types</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">str</span>(data_zalora)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   3847 obs. of  12 variables:
+ $ SKU                : chr  "00075ZZA9550E1GS" "00075ZZA9550E1GS" "00075ZZA9550E1GS" "00075ZZA9550E1GS" ...
+ $ Color              : chr  "Black" "Black" "Black" "Black" ...
+ $ Week_of_Year       : int  36 38 39 43 49 52 33 35 38 39 ...
+ $ Brand_Name         : chr  "ZALORA" "ZALORA" "ZALORA" "ZALORA" ...
+ $ Units_Sold         : int  6 2 3 3 17 16 3 6 3 14 ...
+ $ Unit_Price         : num  39.9 39.9 39.9 29.9 19.9 19.9 34.9 34.9 32.4 29.9 ...
+ $ Web_SKU_Clicks     : int  1121 1215 1112 2336 190 635 177 359 3940 6144 ...
+ $ Web_SKU_Impressions: int  37237 23405 19632 43152 4196 12690 4379 10553 100899 237176 ...
+ $ Item_Cost          : num  15.5 15.5 15.5 15.5 15.5 ...
+ $ Price_Band         : int  4 4 4 4 4 4 4 4 4 4 ...
+ $ Weeks_Since_Release: int  1 3 4 8 14 17 1 3 6 7 ...
+ $ Stock              : int  60 54 52 49 46 29 92 89 83 80 ...</code></pre>
+</div>
+</div>
+</section>
+<section id="summary-statistics" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="summary-statistics"><span class="header-section-number">3.1.3</span> Summary Statistics</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">datasummary_skim</span>(data_zalora)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Unique (#) </th>
+   <th style="text-align:right;"> Missing (%) </th>
+   <th style="text-align:right;"> Mean </th>
+   <th style="text-align:right;"> SD </th>
+   <th style="text-align:right;"> Min </th>
+   <th style="text-align:right;"> Median </th>
+   <th style="text-align:right;"> Max </th>
+   <th style="text-align:right;">    </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year </td>
+   <td style="text-align:right;"> 52 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 40.3 </td>
+   <td style="text-align:right;"> 9.8 </td>
+   <td style="text-align:right;"> 1.0 </td>
+   <td style="text-align:right;"> 43.0 </td>
+   <td style="text-align:right;"> 52.0 </td>
+   <td style="text-align:right;">  <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewbox="0 0 48.00 12.00"><defs><style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clippath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="0.91" y="11.47" width="4.36" height="0.19" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.26" y="11.49" width="4.36" height="0.17" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="9.62" y="11.24" width="4.36" height="0.42" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.98" y="10.78" width="4.36" height="0.88" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="18.34" y="10.14" width="4.36" height="1.52" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="22.69" y="9.87" width="4.36" height="1.79" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="27.05" y="8.36" width="4.36" height="3.30" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="31.41" y="6.79" width="4.36" height="4.87" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="35.76" y="4.32" width="4.36" height="7.34" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="40.12" y="3.22" width="4.36" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="44.48" y="8.33" width="4.36" height="3.33" style="stroke-width: 0.38; fill: #000000;"></rect></g></svg>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Units_Sold </td>
+   <td style="text-align:right;"> 67 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 8.9 </td>
+   <td style="text-align:right;"> 9.5 </td>
+   <td style="text-align:right;"> 1.0 </td>
+   <td style="text-align:right;"> 6.0 </td>
+   <td style="text-align:right;"> 91.0 </td>
+   <td style="text-align:right;">  <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewbox="0 0 48.00 12.00"><defs><style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clippath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.28" y="3.22" width="2.47" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="3.75" y="7.41" width="2.47" height="4.25" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.22" y="9.43" width="2.47" height="2.24" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="8.69" y="10.33" width="2.47" height="1.34" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="11.16" y="11.06" width="2.47" height="0.60" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.63" y="11.27" width="2.47" height="0.39" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="16.10" y="11.50" width="2.47" height="0.17" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="18.57" y="11.51" width="2.47" height="0.15" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="21.04" y="11.59" width="2.47" height="0.074" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="23.51" y="11.60" width="2.47" height="0.065" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.98" y="11.65" width="2.47" height="0.014" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.44" y="11.64" width="2.47" height="0.023" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="30.91" y="11.63" width="2.47" height="0.028" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="33.38" y="11.63" width="2.47" height="0.028" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="35.85" y="11.64" width="2.47" height="0.019" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="38.32" y="11.65" width="2.47" height="0.014" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="40.79" y="11.66" width="2.47" height="0.0046" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="43.26" y="11.66" width="2.47" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="45.73" y="11.66" width="2.47" height="0.0046" style="stroke-width: 0.38; fill: #000000;"></rect></g></svg>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Unit_Price </td>
+   <td style="text-align:right;"> 548 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 32.5 </td>
+   <td style="text-align:right;"> 12.5 </td>
+   <td style="text-align:right;"> 9.9 </td>
+   <td style="text-align:right;"> 29.9 </td>
+   <td style="text-align:right;"> 129.9 </td>
+   <td style="text-align:right;">  <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewbox="0 0 48.00 12.00"><defs><style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clippath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="-1.89" y="11.61" width="3.70" height="0.053" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="1.81" y="7.95" width="3.70" height="3.72" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.52" y="3.22" width="3.70" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="9.22" y="4.78" width="3.70" height="6.88" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="12.93" y="9.32" width="3.70" height="2.34" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="16.63" y="11.16" width="3.70" height="0.51" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="20.33" y="11.32" width="3.70" height="0.34" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.04" y="11.41" width="3.70" height="0.25" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="27.74" y="11.60" width="3.70" height="0.059" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="31.44" y="11.62" width="3.70" height="0.047" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="35.15" y="11.66" width="3.70" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="38.85" y="11.66" width="3.70" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="42.56" y="11.65" width="3.70" height="0.012" style="stroke-width: 0.38; fill: #000000;"></rect></g></svg>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Web_SKU_Clicks </td>
+   <td style="text-align:right;"> 1924 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1721.5 </td>
+   <td style="text-align:right;"> 2772.1 </td>
+   <td style="text-align:right;"> 4.0 </td>
+   <td style="text-align:right;"> 673.0 </td>
+   <td style="text-align:right;"> 26720.0 </td>
+   <td style="text-align:right;">  <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewbox="0 0 48.00 12.00"><defs><style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clippath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.77" y="3.22" width="3.33" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.10" y="10.38" width="3.33" height="1.29" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="8.43" y="11.14" width="3.33" height="0.52" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="11.75" y="11.35" width="3.33" height="0.31" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.08" y="11.48" width="3.33" height="0.18" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="18.41" y="11.56" width="3.33" height="0.11" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="21.73" y="11.61" width="3.33" height="0.054" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.06" y="11.62" width="3.33" height="0.040" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.39" y="11.64" width="3.33" height="0.020" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="31.72" y="11.64" width="3.33" height="0.020" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="35.04" y="11.65" width="3.33" height="0.011" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="38.37" y="11.66" width="3.33" height="0.0057" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.70" y="11.66" width="3.33" height="0.0057" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="45.02" y="11.66" width="3.33" height="0.0057" style="stroke-width: 0.38; fill: #000000;"></rect></g></svg>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Web_SKU_Impressions </td>
+   <td style="text-align:right;"> 3640 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 35892.2 </td>
+   <td style="text-align:right;"> 63882.4 </td>
+   <td style="text-align:right;"> 11.0 </td>
+   <td style="text-align:right;"> 11919.0 </td>
+   <td style="text-align:right;"> 825936.0 </td>
+   <td style="text-align:right;">  <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewbox="0 0 48.00 12.00"><defs><style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clippath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.22" width="2.69" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="4.47" y="10.67" width="2.69" height="0.99" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="7.16" y="11.24" width="2.69" height="0.42" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="9.85" y="11.42" width="2.69" height="0.25" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="12.54" y="11.58" width="2.69" height="0.087" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.23" y="11.56" width="2.69" height="0.097" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="17.92" y="11.58" width="2.69" height="0.081" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="20.61" y="11.64" width="2.69" height="0.019" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="23.30" y="11.65" width="2.69" height="0.011" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.99" y="11.66" width="2.69" height="0.0054" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.68" y="11.66" width="2.69" height="0.0054" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="31.37" y="11.66" width="2.69" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="34.06" y="11.66" width="2.69" height="0.0054" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="36.75" y="11.66" width="2.69" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="39.45" y="11.66" width="2.69" height="0.0054" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="42.14" y="11.66" width="2.69" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="44.83" y="11.66" width="2.69" height="0.0027" style="stroke-width: 0.38; fill: #000000;"></rect></g></svg>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Item_Cost </td>
+   <td style="text-align:right;"> 419 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 14.1 </td>
+   <td style="text-align:right;"> 3.7 </td>
+   <td style="text-align:right;"> 4.7 </td>
+   <td style="text-align:right;"> 13.8 </td>
+   <td style="text-align:right;"> 45.2 </td>
+   <td style="text-align:right;">  <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewbox="0 0 48.00 12.00"><defs><style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clippath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="-3.41" y="11.65" width="5.49" height="0.0075" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="2.07" y="10.54" width="5.49" height="1.13" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="7.56" y="3.22" width="5.49" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.05" y="7.33" width="5.49" height="4.33" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="18.53" y="11.37" width="5.49" height="0.29" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.02" y="11.50" width="5.49" height="0.16" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="29.50" y="11.56" width="5.49" height="0.098" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="34.99" y="11.64" width="5.49" height="0.026" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="40.47" y="11.66" width="5.49" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="45.96" y="11.65" width="5.49" height="0.0075" style="stroke-width: 0.38; fill: #000000;"></rect></g></svg>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Price_Band </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 4.1 </td>
+   <td style="text-align:right;"> 1.1 </td>
+   <td style="text-align:right;"> 1.0 </td>
+   <td style="text-align:right;"> 4.0 </td>
+   <td style="text-align:right;"> 10.0 </td>
+   <td style="text-align:right;">  <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewbox="0 0 48.00 12.00"><defs><style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clippath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="11.64" width="2.47" height="0.025" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="4.25" y="11.45" width="2.47" height="0.21" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.72" y="11.66" width="2.47" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="9.19" y="7.91" width="2.47" height="3.75" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="11.65" y="11.66" width="2.47" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="14.12" y="3.22" width="2.47" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="16.59" y="11.66" width="2.47" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.06" y="8.81" width="2.47" height="2.85" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="21.53" y="11.66" width="2.47" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.00" y="11.33" width="2.47" height="0.33" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="26.47" y="11.66" width="2.47" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.94" y="11.33" width="2.47" height="0.33" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="31.41" y="11.66" width="2.47" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="33.88" y="11.44" width="2.47" height="0.22" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="36.35" y="11.66" width="2.47" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="38.81" y="11.59" width="2.47" height="0.076" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.28" y="11.66" width="2.47" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="43.75" y="11.62" width="2.47" height="0.042" style="stroke-width: 0.38; fill: #000000;"></rect></g></svg>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Weeks_Since_Release </td>
+   <td style="text-align:right;"> 43 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 8.0 </td>
+   <td style="text-align:right;"> 7.5 </td>
+   <td style="text-align:right;"> 1.0 </td>
+   <td style="text-align:right;"> 6.0 </td>
+   <td style="text-align:right;"> 46.0 </td>
+   <td style="text-align:right;">  <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewbox="0 0 48.00 12.00"><defs><style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clippath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="0.79" y="3.22" width="4.94" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.73" y="7.46" width="4.94" height="4.20" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="9.45" width="4.94" height="2.21" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.60" y="10.41" width="4.94" height="1.26" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="20.54" y="11.04" width="4.94" height="0.62" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.48" y="11.25" width="4.94" height="0.41" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="30.42" y="11.45" width="4.94" height="0.21" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="35.36" y="11.60" width="4.94" height="0.063" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="40.30" y="11.64" width="4.94" height="0.023" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="45.23" y="11.66" width="4.94" height="0.0045" style="stroke-width: 0.38; fill: #000000;"></rect></g></svg>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Stock </td>
+   <td style="text-align:right;"> 230 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 66.7 </td>
+   <td style="text-align:right;"> 45.3 </td>
+   <td style="text-align:right;"> 1.0 </td>
+   <td style="text-align:right;"> 56.0 </td>
+   <td style="text-align:right;"> 298.0 </td>
+   <td style="text-align:right;">  <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewbox="0 0 48.00 12.00"><defs><style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clippath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.63" y="7.04" width="2.99" height="4.63" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="4.62" y="3.22" width="2.99" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="7.61" y="4.63" width="2.99" height="7.04" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.61" y="5.90" width="2.99" height="5.76" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.60" y="7.24" width="2.99" height="4.42" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="16.59" y="8.90" width="2.99" height="2.77" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.59" y="9.70" width="2.99" height="1.96" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="22.58" y="10.50" width="2.99" height="1.16" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.57" y="10.83" width="2.99" height="0.84" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.56" y="11.20" width="2.99" height="0.46" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="31.56" y="11.50" width="2.99" height="0.16" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="34.55" y="11.51" width="2.99" height="0.15" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.54" y="11.64" width="2.99" height="0.020" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="40.54" y="11.63" width="2.99" height="0.030" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="43.53" y="11.62" width="2.99" height="0.039" style="stroke-width: 0.38; fill: #000000;"></rect></g></svg>
+</td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="variable-operationalization" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="variable-operationalization"><span class="header-section-number">3.1.4</span> Variable Operationalization</h3>
+<p>When building marketing mix modeling, we need to transform categorical variables into factor variables in R. Think about the following variables:</p>
+<ul>
+<li><code>Week_of_Year</code> should be treated as a categorical variable, because seasonality should not be linear in time.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co">#  Change Week_of_Year into a factor</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>data_zalora <span class="ot">&lt;-</span> data_zalora <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">mutate</span>(<span class="at">Week_of_Year =</span> <span class="fu">factor</span>(Week_of_Year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>Brand_Name</code> and <code>Price_Band</code> should also be converted into factor variables.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># complete the code below</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>data_zalora <span class="ot">&lt;-</span> data_zalora <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">mutate</span>(<span class="at">Brand_Name =</span> <span class="fu">factor</span>(Brand_Name),</span>
+<span id="cb19-4"><a href="#cb19-4"></a>         <span class="at">Price_Band =</span> <span class="fu">factor</span>(Price_Band))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="regression-analysis" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="regression-analysis"><span class="header-section-number">3.2</span> Regression Analysis</h2>
+<p><img src="images/zalora_equation.png" class="img-fluid"></p>
+<ul>
+<li>Run the above multivariate regression in R, where the dependent variable is <code>Units_Sold</code> and the explanatory variables are <code>Unit_Price</code> and the others.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># If we do not care about the estimates of fixed effects</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a>result_ols2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(</span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="at">fml =</span>  Units_Sold <span class="sc">~</span> Unit_Price <span class="sc">+</span> Weeks_Since_Release <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>    Price_Band <span class="sc">+</span> Brand_Name <span class="sc">+</span> Week_of_Year,</span>
+<span id="cb20-6"><a href="#cb20-6"></a>  <span class="at">data =</span> data_zalora</span>
+<span id="cb20-7"><a href="#cb20-7"></a>)</span>
+<span id="cb20-8"><a href="#cb20-8"></a></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="fu">modelsummary</span>(result_ols2,</span>
+<span id="cb20-10"><a href="#cb20-10"></a>             <span class="at">stars =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> Model 1 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:center;"> 14.608* </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (7.189) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Unit_Price </td>
+   <td style="text-align:center;"> −0.412*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.029) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Weeks_Since_Release </td>
+   <td style="text-align:center;"> −0.282*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.029) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Price_Band2 </td>
+   <td style="text-align:center;"> −1.807 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (3.783) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Price_Band3 </td>
+   <td style="text-align:center;"> −0.481 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (3.589) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Price_Band4 </td>
+   <td style="text-align:center;"> 2.027 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (3.582) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Price_Band5 </td>
+   <td style="text-align:center;"> 4.676 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (3.606) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Price_Band6 </td>
+   <td style="text-align:center;"> 6.139 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (3.777) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Price_Band7 </td>
+   <td style="text-align:center;"> 11.266** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (3.833) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Price_Band8 </td>
+   <td style="text-align:center;"> 15.093*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (4.014) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Price_Band9 </td>
+   <td style="text-align:center;"> 19.105*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (4.385) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Price_Band10 </td>
+   <td style="text-align:center;"> 28.518*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (4.997) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brand_NameZALORA </td>
+   <td style="text-align:center;"> 0.464 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.320) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year2 </td>
+   <td style="text-align:center;"> −3.099 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (7.126) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year3 </td>
+   <td style="text-align:center;"> 1.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (7.297) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year4 </td>
+   <td style="text-align:center;"> 5.009 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (7.965) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year5 </td>
+   <td style="text-align:center;"> 5.138 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.994) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year6 </td>
+   <td style="text-align:center;"> −1.787 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (7.963) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year7 </td>
+   <td style="text-align:center;"> 3.975 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (7.963) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year8 </td>
+   <td style="text-align:center;"> 0.613 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (7.554) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year9 </td>
+   <td style="text-align:center;"> 6.766 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (7.299) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year10 </td>
+   <td style="text-align:center;"> 3.478 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (7.301) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year11 </td>
+   <td style="text-align:center;"> 2.958 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.895) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year12 </td>
+   <td style="text-align:center;"> 2.996 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.758) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year13 </td>
+   <td style="text-align:center;"> 5.265 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.626) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year14 </td>
+   <td style="text-align:center;"> 4.064 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.706) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year15 </td>
+   <td style="text-align:center;"> 2.840 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.896) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year16 </td>
+   <td style="text-align:center;"> 2.894 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.544) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year17 </td>
+   <td style="text-align:center;"> 4.654 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.402) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year18 </td>
+   <td style="text-align:center;"> 4.274 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.567) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year19 </td>
+   <td style="text-align:center;"> 6.291 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.444) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year20 </td>
+   <td style="text-align:center;"> 5.714 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.402) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year21 </td>
+   <td style="text-align:center;"> 4.199 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.354) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year22 </td>
+   <td style="text-align:center;"> 3.272 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.393) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year23 </td>
+   <td style="text-align:center;"> 6.793 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.365) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year24 </td>
+   <td style="text-align:center;"> 8.726 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.302) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year25 </td>
+   <td style="text-align:center;"> 4.851 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.308) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year26 </td>
+   <td style="text-align:center;"> 5.636 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.309) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year27 </td>
+   <td style="text-align:center;"> 11.933+ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.301) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year28 </td>
+   <td style="text-align:center;"> 6.108 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.292) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year29 </td>
+   <td style="text-align:center;"> 8.166 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.327) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year30 </td>
+   <td style="text-align:center;"> 5.859 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.346) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year31 </td>
+   <td style="text-align:center;"> 10.385 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.315) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year32 </td>
+   <td style="text-align:center;"> 5.501 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.272) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year33 </td>
+   <td style="text-align:center;"> 5.980 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.239) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year34 </td>
+   <td style="text-align:center;"> 8.400 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.239) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year35 </td>
+   <td style="text-align:center;"> 8.738 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.223) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year36 </td>
+   <td style="text-align:center;"> 6.126 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.229) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year37 </td>
+   <td style="text-align:center;"> 8.147 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.229) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year38 </td>
+   <td style="text-align:center;"> 6.702 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.220) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year39 </td>
+   <td style="text-align:center;"> 6.285 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.216) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year40 </td>
+   <td style="text-align:center;"> 7.229 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.220) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year41 </td>
+   <td style="text-align:center;"> 9.075 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.208) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year42 </td>
+   <td style="text-align:center;"> 5.403 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.208) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year43 </td>
+   <td style="text-align:center;"> 5.637 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.201) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year44 </td>
+   <td style="text-align:center;"> 5.304 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.207) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year45 </td>
+   <td style="text-align:center;"> 6.763 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.201) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year46 </td>
+   <td style="text-align:center;"> 13.841* </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.206) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year47 </td>
+   <td style="text-align:center;"> 4.474 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.200) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year48 </td>
+   <td style="text-align:center;"> 13.203* </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.201) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year49 </td>
+   <td style="text-align:center;"> 6.688 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.201) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year50 </td>
+   <td style="text-align:center;"> 4.299 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.197) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year51 </td>
+   <td style="text-align:center;"> 12.704* </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (6.201) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Week_of_Year52 </td>
+   <td style="text-align:center;"> 3.666 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (6.202) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 3847 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 </td>
+   <td style="text-align:center;"> 0.169 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Adj. </td>
+   <td style="text-align:center;"> 0.155 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> RMSE </td>
+   <td style="text-align:center;"> 8.65 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Std.Errors </td>
+   <td style="text-align:center;"> IID </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+</table>
+
+</div>
+</div>
+<ul>
+<li><strong>Exercise</strong>: How would you interpret the coefficients in this regression table?</li>
+</ul>
+</section>
+<section id="pricing-optimization" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="pricing-optimization"><span class="header-section-number">3.3</span> Pricing Optimization</h2>
+<section id="if-we-use-the-same-price-level" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="if-we-use-the-same-price-level"><span class="header-section-number">3.3.1</span> If we use the same price level</h3>
+<ul>
+<li>Load the data for the focal product, SKU #0D159AAFC1DF38GS.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>data_SKU <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://www.dropbox.com/s/hdl3gw6utjirvf4/data_sku.csv?dl=1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>If keep the same pricing from week 3, $34.9, for the remaining weeks, predict the weekly sales.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr)</span>
+<span id="cb22-2"><a href="#cb22-2"></a>data_SKU_afterweek3 <span class="ot">&lt;-</span> data_SKU <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">filter</span>(Weeks_Since_Release <span class="sc">&gt;</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="co"># only keep data after week 3</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">mutate</span>(<span class="at">Unit_Price =</span> <span class="fl">34.9</span>)  <span class="co"># fill in unit price as 34.9</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a></span>
+<span id="cb22-6"><a href="#cb22-6"></a><span class="co"># predict the weekly sales from Marketing Mix Modeling</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a>predicted_weekly_sales <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">predict</span>(result_ols2,data_SKU_afterweek3),<span class="dv">0</span>)</span>
+<span id="cb22-8"><a href="#cb22-8"></a>predicted_weekly_sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  0 -1 -1 -1 -2 -2 -2 -2 -3 -3 -3 -4 -4 -4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># fill in the predicted sales</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>data_SKU_afterweek3 <span class="ot">&lt;-</span> data_SKU_afterweek3<span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">mutate</span>(<span class="at">predicted_sales =</span> predicted_weekly_sales)<span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">mutate</span>(<span class="at">Stock =</span> <span class="fu">pmax</span>(<span class="dv">39</span> <span class="sc">+</span>predicted_weekly_sales[<span class="dv">1</span>] <span class="sc">-</span> (<span class="fu">cumsum</span>(predicted_sales)),<span class="dv">0</span>) )<span class="sc">%&gt;%</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">mutate</span>(<span class="at">Profit =</span> <span class="fu">pmin</span>(predicted_sales,Stock) <span class="sc">*</span> (Unit_Price <span class="sc">-</span> Item_Cost) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>data_SKU_afterweek3 <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">select</span>(Weeks_Since_Release, Unit_Price, predicted_sales, Stock, Profit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Weeks_Since_Release"],"name":[1],"type":["int"],"align":["right"]},{"label":["Unit_Price"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["predicted_sales"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Stock"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Profit"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"34.9","3":"0","4":"39","5":"0.00"},{"1":"5","2":"34.9","3":"-1","4":"40","5":"-19.51"},{"1":"6","2":"34.9","3":"-1","4":"41","5":"-19.51"},{"1":"7","2":"34.9","3":"-1","4":"42","5":"-19.51"},{"1":"8","2":"34.9","3":"-2","4":"44","5":"-39.02"},{"1":"9","2":"34.9","3":"-2","4":"46","5":"-39.02"},{"1":"10","2":"34.9","3":"-2","4":"48","5":"-39.02"},{"1":"11","2":"34.9","3":"-2","4":"50","5":"-39.02"},{"1":"12","2":"34.9","3":"-3","4":"53","5":"-58.53"},{"1":"13","2":"34.9","3":"-3","4":"56","5":"-58.53"},{"1":"14","2":"34.9","3":"-3","4":"59","5":"-58.53"},{"1":"15","2":"34.9","3":"-4","4":"63","5":"-78.04"},{"1":"16","2":"34.9","3":"-4","4":"67","5":"-78.04"},{"1":"17","2":"34.9","3":"-4","4":"71","5":"-78.04"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># compute the total profits</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">sum</span>(data_SKU_afterweek3<span class="sc">$</span>Profit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -624.32</code></pre>
+</div>
+</div>
+<ul>
+<li>From the above analyses, it seems if Zalora keeps using $34.9, by the end of week 7, all products will be sold out. And the total profits will be 800 dollars.</li>
+</ul>
+</section>
+<section id="profit-optimization1" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="profit-optimization1"><span class="header-section-number">3.3.2</span> Profit Optimization<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h3>
+<ul>
+<li>Write a user-defined function to compute the revenue each week conditional on a new value of price</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># define a function, given the price input, return the revenue</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>compute_revenue <span class="ot">&lt;-</span> <span class="cf">function</span>(price, week_of_year) {</span>
+<span id="cb28-3"><a href="#cb28-3"></a>  data_SKU_week <span class="ot">&lt;-</span> data_SKU<span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>    <span class="fu">filter</span>(Week_of_Year <span class="sc">==</span> <span class="fu">as.character</span>(week_of_year) ) <span class="sc">%&gt;%</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>    <span class="fu">mutate</span>(<span class="at">Unit_Price =</span> price)</span>
+<span id="cb28-6"><a href="#cb28-6"></a>  </span>
+<span id="cb28-7"><a href="#cb28-7"></a>  <span class="co"># predict the sales</span></span>
+<span id="cb28-8"><a href="#cb28-8"></a>  sales <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">predict</span>(result_ols2,</span>
+<span id="cb28-9"><a href="#cb28-9"></a>                   data_SKU_week),<span class="dv">0</span>)</span>
+<span id="cb28-10"><a href="#cb28-10"></a>  </span>
+<span id="cb28-11"><a href="#cb28-11"></a>  <span class="co"># compute revenue</span></span>
+<span id="cb28-12"><a href="#cb28-12"></a>  revenue <span class="ot">&lt;-</span> sales <span class="sc">*</span> price</span>
+<span id="cb28-13"><a href="#cb28-13"></a>  </span>
+<span id="cb28-14"><a href="#cb28-14"></a>  <span class="co"># compute profits</span></span>
+<span id="cb28-15"><a href="#cb28-15"></a>  profit <span class="ot">&lt;-</span> sales <span class="sc">*</span> (price <span class="sc">-</span> <span class="fl">15.39</span>)</span>
+<span id="cb28-16"><a href="#cb28-16"></a>  </span>
+<span id="cb28-17"><a href="#cb28-17"></a>  <span class="fu">return</span>(<span class="fu">list</span>(revenue, <span class="co"># return all results as a R list</span></span>
+<span id="cb28-18"><a href="#cb28-18"></a>              profit,</span>
+<span id="cb28-19"><a href="#cb28-19"></a>              sales))</span>
+<span id="cb28-20"><a href="#cb28-20"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Use optimization solver to find the best price, that can maximize profit for each individual week</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="cf">for</span> (i_iter <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(data_SKU_afterweek3))){</span>
+<span id="cb29-2"><a href="#cb29-2"></a>  data_SKU_afterweek3<span class="sc">$</span>Unit_Price[i_iter] <span class="ot">&lt;-</span> <span class="fu">optimize</span>(</span>
+<span id="cb29-3"><a href="#cb29-3"></a>    <span class="at">f =</span>  \(x) {<span class="sc">-</span><span class="dv">1</span> <span class="sc">*</span> <span class="fu">compute_revenue</span>(x,data_SKU_afterweek3<span class="sc">$</span>Week_of_Year[i_iter])[[<span class="dv">2</span>]]},</span>
+<span id="cb29-4"><a href="#cb29-4"></a>         <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))<span class="sc">$</span>minimum</span>
+<span id="cb29-5"><a href="#cb29-5"></a>  </span>
+<span id="cb29-6"><a href="#cb29-6"></a>  <span class="fu">print</span>(data_SKU_afterweek3<span class="sc">$</span>Unit_Price[i_iter])</span>
+<span id="cb29-7"><a href="#cb29-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25.32307
+[1] 24.63913
+[1] 23.95517
+[1] 23.27124
+[1] 25.01213
+[1] 24.32814
+[1] 23.64422
+[1] 22.96025
+[1] 22.2763
+[1] 24.01721
+[1] 20.9084
+[1] 22.64926
+[1] 21.96535
+[1] 21.28136</code></pre>
+</div>
+</div>
+<ul>
+<li>Compute the sales and profit from the prices that maximize profit for each individual week</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># predict the weekly sales from Marketing Mix Modeling</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>predicted_weekly_sales <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">predict</span>(result_ols2,data_SKU_afterweek3),<span class="dv">0</span>)</span>
+<span id="cb31-3"><a href="#cb31-3"></a></span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="co"># fill in the predicted sales</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a>data_SKU_afterweek3 <span class="ot">&lt;-</span> data_SKU_afterweek3<span class="sc">%&gt;%</span> </span>
+<span id="cb31-6"><a href="#cb31-6"></a>  <span class="fu">mutate</span>(<span class="at">predicted_sales =</span> predicted_weekly_sales)<span class="sc">%&gt;%</span></span>
+<span id="cb31-7"><a href="#cb31-7"></a>  <span class="fu">mutate</span>(<span class="at">Stock =</span> <span class="fu">pmax</span>(<span class="dv">39</span> <span class="sc">+</span>predicted_weekly_sales[<span class="dv">1</span>] <span class="sc">-</span> (<span class="fu">cumsum</span>(predicted_sales)),<span class="dv">0</span>) ) <span class="sc">%&gt;%</span> <span class="co"># calculate the remaining stock from last week</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a>  </span>
+<span id="cb31-9"><a href="#cb31-9"></a>  <span class="fu">mutate</span>(<span class="at">Profit =</span> <span class="fu">pmin</span>(predicted_sales,Stock) <span class="sc">*</span> (Unit_Price <span class="sc">-</span> Item_Cost) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># print out the dataset</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>data_SKU_afterweek3 <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">select</span>(Weeks_Since_Release, Unit_Price, predicted_sales, Stock, Profit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Weeks_Since_Release"],"name":[1],"type":["int"],"align":["right"]},{"label":["Unit_Price"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["predicted_sales"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Stock"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Profit"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"25.32307","3":"4","4":"39","5":"39.732282"},{"1":"5","2":"24.63913","3":"4","4":"35","5":"36.996511"},{"1":"6","2":"23.95517","3":"4","4":"31","5":"34.260665"},{"1":"7","2":"23.27124","3":"4","4":"27","5":"31.524959"},{"1":"8","2":"25.01213","3":"3","4":"24","5":"28.866394"},{"1":"9","2":"24.32814","3":"3","4":"21","5":"26.814408"},{"1":"10","2":"23.64422","3":"3","4":"18","5":"24.762669"},{"1":"11","2":"22.96025","3":"3","4":"15","5":"22.710760"},{"1":"12","2":"22.27630","3":"3","4":"12","5":"20.658908"},{"1":"13","2":"24.01721","3":"2","4":"10","5":"17.254413"},{"1":"14","2":"20.90840","3":"3","4":"7","5":"16.555197"},{"1":"15","2":"22.64926","3":"2","4":"5","5":"14.518515"},{"1":"16","2":"21.96535","3":"2","4":"3","5":"13.150704"},{"1":"17","2":"21.28136","3":"2","4":"1","5":"5.891362"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># compute the total profits from data-driven pricing</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">sum</span>(data_SKU_afterweek3<span class="sc">$</span>Profit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 333.6977</code></pre>
+</div>
+</div>
+<ul>
+<li>From the above analyses, it seems if Zalora uses profit maximization pricing, by the end of week 7, all products will be sold out. And the total profits will be 911 dollars.</li>
+</ul>
+<p>We observe a huge boost in profits after we use marketing mix models and data-driven pricing analytics!</p>
+
+
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1" role="doc-endnote"><p>You will learn how to use optimization solver in term 2 Operations Analytics.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./Week7-Lecture2.pdf" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Class 14 Marketing Mix Modeling (PDF)</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Week8-Lecture1.html" class="pagination-link">
+        <span class="nav-page-text">Class 15 Endogeneity (HTML)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr Wei Miao">
+<meta name="dcterms.date" content="2022-12-01">
+
+<title>Marketing Analytics - Class 17 Difference-in-Differences Design</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Week9-Lecture1.pdf" rel="next">
+<link href="./Case-COVID-IV.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FTK61TBF7L"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FTK61TBF7L', { 'anonymize_ip': true});
+</script>
+
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Class 17 Difference-in-Differences Design</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Marketing Analytics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Lectures</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">Syllabus</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassPreparation.html" class="sidebar-item-text sidebar-link">Weekly Arrangements</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">[Week 1] Marketing Process and Break-Even Analyses</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.html" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.html" class="sidebar-item-text sidebar-link">Class 2 Break-Even Analyses (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 2 Break-Even Analyses (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.html" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.pdf" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassExercise.html" class="sidebar-item-text sidebar-link">In-Class Exercise Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">[Week 2] Customer Lifetime Value and Data Wrangling with R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.html" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.html" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-CLSV.html" class="sidebar-item-text sidebar-link">CLSV Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">[Week 3] Unsupervised Learning and Customer Segmentation</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.html" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.html" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis-stu.pdf" class="sidebar-item-text sidebar-link">Preliminary Customer Analyses</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis.html" class="sidebar-item-text sidebar-link">Case Solution: Descriptive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">[Week 4] Supervised Learning and Customer Targeting</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.html" class="sidebar-item-text sidebar-link">Class 7 Supervised Learning (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 7 Supervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.html" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics-stu.pdf" class="sidebar-item-text sidebar-link">Improving Marketing Efficiency Using Predictive Analytics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics.html" class="sidebar-item-text sidebar-link">Case Solution: Predictive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">[Week 5] Causal Inference and RCT</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.html" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.html" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">[Week 6] Linear Regression Models</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.html" class="sidebar-item-text sidebar-link">Class 11 Application of A-B Testing at Vungle (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 11 Application of A-B Testing at Vungle (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.html" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">[Week 7] Marketing Mix Modeling</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.html" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.html" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-Zalora.html" class="sidebar-item-text sidebar-link">Case Solution: Zalora</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">[Week 8] Endogeneity and Instrumental Variable</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.html" class="sidebar-item-text sidebar-link">Class 15 Endogeneity (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 15 Endogeneity (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.html" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV-stu.pdf" class="sidebar-item-text sidebar-link">Case: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV.html" class="sidebar-item-text sidebar-link">Case Solution: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">[Week 9] Natural Experiment</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.html" class="sidebar-item-text sidebar-link active">Class 17 Difference-in-Differences (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 17 Difference-in-Differences (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.html" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">[Week 10] Module Wrap-Up</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.html" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.pdf" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">R Tutorials</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-installR.html" class="sidebar-item-text sidebar-link">Install and Setup R</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">R Basics Part I (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">R Basics Part II (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-errors.html" class="sidebar-item-text sidebar-link">Troubleshooting R</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">Advanced R Tips</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RTip-BLAS.html" class="sidebar-item-text sidebar-link">Speed Up Matrix Operations</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#natural-experiment" id="toc-natural-experiment" class="nav-link active" data-scroll-target="#natural-experiment"> <span class="header-section-number">1</span> Natural Experiment</a>
+  <ul class="collapse">
+  <li><a href="#real-experiments-rcts" id="toc-real-experiments-rcts" class="nav-link" data-scroll-target="#real-experiments-rcts"> <span class="header-section-number">1.1</span> “Real” Experiments: RCTs</a></li>
+  <li><a href="#natural-experiments" id="toc-natural-experiments" class="nav-link" data-scroll-target="#natural-experiments"> <span class="header-section-number">1.2</span> “Natural” Experiments</a></li>
+  <li><a href="#natural-experiment-examples" id="toc-natural-experiment-examples" class="nav-link" data-scroll-target="#natural-experiment-examples"> <span class="header-section-number">1.3</span> “Natural” Experiment Examples</a></li>
+  <li><a href="#comparison-rct-natural-experiment" id="toc-comparison-rct-natural-experiment" class="nav-link" data-scroll-target="#comparison-rct-natural-experiment"> <span class="header-section-number">1.4</span> Comparison: RCT &amp; Natural Experiment</a></li>
+  </ul></li>
+  <li><a href="#did-on-primary-data" id="toc-did-on-primary-data" class="nav-link" data-scroll-target="#did-on-primary-data"> <span class="header-section-number">2</span> DiD on Primary Data</a>
+  <ul class="collapse">
+  <li><a href="#a-motivating-example" id="toc-a-motivating-example" class="nav-link" data-scroll-target="#a-motivating-example"> <span class="header-section-number">2.1</span> A Motivating Example</a></li>
+  <li><a href="#proposal-1-before-after-comparison-on-east-london" id="toc-proposal-1-before-after-comparison-on-east-london" class="nav-link" data-scroll-target="#proposal-1-before-after-comparison-on-east-london"> <span class="header-section-number">2.2</span> Proposal 1: Before-After Comparison on East London</a></li>
+  <li><a href="#proposal-2-east-west-london-comparison" id="toc-proposal-2-east-west-london-comparison" class="nav-link" data-scroll-target="#proposal-2-east-west-london-comparison"> <span class="header-section-number">2.3</span> Proposal 2: East-West London Comparison</a></li>
+  <li><a href="#proposal-3-difference-in-differences" id="toc-proposal-3-difference-in-differences" class="nav-link" data-scroll-target="#proposal-3-difference-in-differences"> <span class="header-section-number">2.4</span> Proposal 3: Difference-in-Differences</a></li>
+  <li><a href="#difference-in-differences" id="toc-difference-in-differences" class="nav-link" data-scroll-target="#difference-in-differences"> <span class="header-section-number">2.5</span> Difference-in-Differences</a></li>
+  <li><a href="#did-estimator-graphical-illustration" id="toc-did-estimator-graphical-illustration" class="nav-link" data-scroll-target="#did-estimator-graphical-illustration"> <span class="header-section-number">2.6</span> DiD Estimator: Graphical Illustration</a></li>
+  <li><a href="#did-estimator-alternative-illustration" id="toc-did-estimator-alternative-illustration" class="nav-link" data-scroll-target="#did-estimator-alternative-illustration"> <span class="header-section-number">2.7</span> DiD Estimator: Alternative Illustration</a></li>
+  <li><a href="#parallel-pre-trend-assumption" id="toc-parallel-pre-trend-assumption" class="nav-link" data-scroll-target="#parallel-pre-trend-assumption"> <span class="header-section-number">2.8</span> Parallel Pre-trend Assumption</a></li>
+  </ul></li>
+  <li><a href="#did-analyses-with-r" id="toc-did-analyses-with-r" class="nav-link" data-scroll-target="#did-analyses-with-r"> <span class="header-section-number">3</span> DiD Analyses with R</a>
+  <ul class="collapse">
+  <li><a href="#sample-data" id="toc-sample-data" class="nav-link" data-scroll-target="#sample-data"> <span class="header-section-number">3.1</span> Sample Data</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset"> <span class="header-section-number">3.2</span> Dataset</a></li>
+  <li><a href="#estimation-of-did" id="toc-estimation-of-did" class="nav-link" data-scroll-target="#estimation-of-did"> <span class="header-section-number">3.3</span> Estimation of DiD</a></li>
+  <li><a href="#report-the-regression-results" id="toc-report-the-regression-results" class="nav-link" data-scroll-target="#report-the-regression-results"> <span class="header-section-number">3.4</span> Report the Regression Results</a></li>
+  <li><a href="#plot-estimates-of-did" id="toc-plot-estimates-of-did" class="nav-link" data-scroll-target="#plot-estimates-of-did"> <span class="header-section-number">3.5</span> Plot Estimates of DiD</a></li>
+  <li><a href="#pre-trend-test" id="toc-pre-trend-test" class="nav-link" data-scroll-target="#pre-trend-test"> <span class="header-section-number">3.6</span> Pre-trend Test</a></li>
+  </ul></li>
+  <li><a href="#did-on-secondary-data" id="toc-did-on-secondary-data" class="nav-link" data-scroll-target="#did-on-secondary-data"> <span class="header-section-number">4</span> DiD on Secondary Data</a>
+  <ul class="collapse">
+  <li><a href="#did-on-secondary-data-1" id="toc-did-on-secondary-data-1" class="nav-link" data-scroll-target="#did-on-secondary-data-1"> <span class="header-section-number">4.1</span> DiD on Secondary Data</a></li>
+  <li><a href="#causal-effect-of-surge-pricing-on-drivers" id="toc-causal-effect-of-surge-pricing-on-drivers" class="nav-link" data-scroll-target="#causal-effect-of-surge-pricing-on-drivers"> <span class="header-section-number">4.2</span> Causal Effect of Surge Pricing on Drivers</a></li>
+  <li><a href="#framework-of-analyses" id="toc-framework-of-analyses" class="nav-link" data-scroll-target="#framework-of-analyses"> <span class="header-section-number">4.3</span> Framework of Analyses</a></li>
+  <li><a href="#clustering-for-heterogeneity-analyses" id="toc-clustering-for-heterogeneity-analyses" class="nav-link" data-scroll-target="#clustering-for-heterogeneity-analyses"> <span class="header-section-number">4.4</span> Clustering for Heterogeneity Analyses</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"> <span class="header-section-number">4.5</span> References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Class 17 Difference-in-Differences Design</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr Wei Miao </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 1, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="natural-experiment" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Natural Experiment</h1>
+<section id="real-experiments-rcts" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="real-experiments-rcts"><span class="header-section-number">1.1</span> “Real” Experiments: RCTs</h2>
+<ul>
+<li>RCTs are the gold standard of causal inference.
+<ul>
+<li>In an RCT, the treatment is randomized and hence not correlated with any confounding factor.</li>
+</ul></li>
+<li>In practice, however, it’s challenging to implement a perfect RCT.
+<ul>
+<li>Crossover and spillover</li>
+<li>Costly in terms of time and money</li>
+<li>Potential moral issues<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ul></li>
+</ul>
+</section>
+<section id="natural-experiments" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="natural-experiments"><span class="header-section-number">1.2</span> “Natural” Experiments</h2>
+<ul>
+<li><p>A <strong>natural experiment</strong> is an empirical study in which individuals are exposed to the experimental and control conditions that are determined by <strong>nature</strong> or by <strong>other factors outside the control of the investigators</strong>. The process governing the exposures arguably <strong>resembles random assignment</strong>.</p></li>
+<li><p>Natural experiments are <strong>observational studies</strong> using <strong>secondary data</strong> and are not controlled in the sense of an RCT.</p></li>
+</ul>
+</section>
+<section id="natural-experiment-examples" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="natural-experiment-examples"><span class="header-section-number">1.3</span> “Natural” Experiment Examples</h2>
+<ul>
+<li>A new government regulation (say, a local COVID-19 lockdown or GDPR) is implemented in city A but not the neighboring city B
+<ul>
+<li>Residents in city A are treated due to uncontrollable forces but residents in city B are untreated</li>
+</ul></li>
+<li>MSc students get Merit honor for getting 69.9 and Disctinction for getting 70 score
+<ul>
+<li>Students can definitely work harder to get higher scores, but the 0.1 score may not be controllable by students</li>
+</ul></li>
+</ul>
+</section>
+<section id="comparison-rct-natural-experiment" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="comparison-rct-natural-experiment"><span class="header-section-number">1.4</span> Comparison: RCT &amp; Natural Experiment</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>RCT</strong></p>
+<ol type="1">
+<li><p>Assignment of treatment is purely randomized</p></li>
+<li><p>Treatment is under control of a researcher</p></li>
+<li><p>Primary data</p></li>
+<li><p>We can proactively design an RCT for the research questions we have</p></li>
+</ol>
+</div><div class="column" style="width:50%;">
+<p><strong>Natural Experiment</strong></p>
+<ol type="1">
+<li><p>Assignment of treatment is “as-if” randomized</p></li>
+<li><p>Treatment is not controlled by a researcher</p></li>
+<li><p>Secondary data</p></li>
+<li><p>We can only look for natural experiments from current data that fit our questions</p></li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="did-on-primary-data" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> DiD on Primary Data</h1>
+<section id="a-motivating-example" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="a-motivating-example"><span class="header-section-number">2.1</span> A Motivating Example</h2>
+<ul>
+<li><p>In the RCT lecture, we learned how to design an A/B testing in 5 steps to help Tom evaluate the causal impact of a loyalty program on customers’ retention rate.</p></li>
+<li><p>We discussed that <em>the unit of randomization</em> should not be at the region level.</p>
+<ul>
+<li>East London versus West London randomization would cause failed randomization checks.</li>
+</ul></li>
+<li><p>However, in reality, individual-level randomization may be too costly or infeasible, and we may need to do a region-level A/B testing.</p></li>
+</ul>
+<p><br>
+</p>
+<p><strong>In this case, how can we design the A/B testing to avoid failed randomization?</strong></p>
+</section>
+<section id="proposal-1-before-after-comparison-on-east-london" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="proposal-1-before-after-comparison-on-east-london"><span class="header-section-number">2.2</span> Proposal 1: Before-After Comparison on East London</h2>
+<ol type="1">
+<li>Keep status quo (<strong>no loyalty program)</strong> in East London for 1 month; collect customer retention data for this month.</li>
+<li><strong>Then Introduce the loyalty program</strong> in East London; collect customer retention data for another 1 month.</li>
+<li>Compare the before-after difference in retention rate by a t-test or running the following regression:</li>
+</ol>
+<p><span class="math display">\[
+Retention_{i, t}=\alpha+\beta_{1} Post_{i}+\mu_{i, t}
+\]</span></p>
+<p><strong>Can this difference tell us the causal effect of the loyalty program?</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div>
+<ul>
+<li>No, because the variable <span class="math inline">\(post\)</span> is confounded with seasonality. Even without the loyalty program, customers’ retention may already change with time due to seasonality. So this simple before-after difference cannot tease out the causal effect of the loyalty program.</li>
+</ul>
+</div>
+</section>
+<section id="proposal-2-east-west-london-comparison" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="proposal-2-east-west-london-comparison"><span class="header-section-number">2.3</span> Proposal 2: East-West London Comparison</h2>
+<ol type="1">
+<li>Randomize which region (East London/West London) would receive the loyalty program, and then introduce the loyalty program in the treatment region.</li>
+<li>Collect customer retention data for both regions for a month.</li>
+<li>Compare the treatment-control difference in retention rate by a t-test or running the following regression:</li>
+</ol>
+<p><span class="math display">\[
+Retention_{i, t}=\alpha+\beta_{1} Treated_{i}+\mu_{i, t}
+\]</span></p>
+<p><strong>Can this difference tell us the causal effect of the loyalty program?</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<div>
+<ul>
+<li>No, because customers in East London and West London are intrinsically different. Even without the loyalty program, we may already see a difference in their retention rate. So the simple treatment-control comparison cannot tease out the causal effect of the loyalty program.</li>
+</ul>
+</div>
+</section>
+<section id="proposal-3-difference-in-differences" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="proposal-3-difference-in-differences"><span class="header-section-number">2.4</span> Proposal 3: Difference-in-Differences</h2>
+<ol type="1">
+<li>Keep status quo (no loyalty program) in both East and West London for 1 month; collect data on customer retention for this month in both regions.
+<ul>
+<li>Compute the difference in retention rate <span class="math inline">\(Diff_{pre} = Y_{treated,pre} - Y_{control,pre}\)</span>, which measures the pre-existing difference across the treatment and control group even without the loyalty program.</li>
+</ul></li>
+<li>Randomize which region (East London/West London) would receive the loyalty program, and then introduce the loyalty program in the treatment region; collect customer retention data for both regions for another 1 month
+<ul>
+<li>Compute the difference in retention rate across the treatment and control group in this second month: <span class="math inline">\(Diff_{post} = Y_{treated,post} - Y_{control,post}\)</span>, which measures the the total difference across the treatment and control group due to (1) pre-existing difference; and (2) treatment effect.</li>
+</ul></li>
+<li>Take the difference in the differences or by running the below regression. <span class="math inline">\(DiD\)</span> can measure the causal effect of loyalty program on retention rate.</li>
+</ol>
+<p><span class="math display">\[
+DiD = Diff_{post} - Diff_{pre} = [Y_{treated,post} - Y_{control,post}] - [Y_{treated,pre} - Y_{control,pre}]
+\]</span></p>
+<p><span class="math display">\[
+Retention_{i, t}=\beta_0+ \beta_{1} Post_{i}+\beta_{2} Treated_{i}+\beta_{3}  Treated_{i} \times Post_{i}  + \mu_{i, t}
+\]</span></p>
+</section>
+<section id="difference-in-differences" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="difference-in-differences"><span class="header-section-number">2.5</span> Difference-in-Differences</h2>
+<ul>
+<li><p>Difference-in-differences (DiD or DD) is a statistical technique used in economics and business that attempts to mimic an experimental research design using observational data (secondary data), by studying the differential effect of a treatment on a ‘treatment group’ versus a ‘control group’ in a natural experiment.</p></li>
+<li><p>In practice, DiD can also be combined with an RCT, if true randomization is costly or infeasible.</p></li>
+</ul>
+</section>
+<section id="did-estimator-graphical-illustration" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="did-estimator-graphical-illustration"><span class="header-section-number">2.6</span> DiD Estimator: Graphical Illustration</h2>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/DiDGraph.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="did-estimator-alternative-illustration" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="did-estimator-alternative-illustration"><span class="header-section-number">2.7</span> DiD Estimator: Alternative Illustration</h2>
+<ul>
+<li>We can also use linear regression to quantify the treatment effects from a Diff-in-Diff experiment:</li>
+</ul>
+<p><span class="math display">\[
+Outcome_{i, t}=\beta_0+ \beta_{1} Post_{t}+\beta_{2} Treated_{i}+\beta_{3}  Treated_{i} \times Post_{t}  + \mu_{i, t}
+\]</span></p>
+<ul>
+<li><p>The idea of running a regression is to control the confounding factors: (1) <span class="math inline">\(Post_{t}\)</span> can control for the seasonality for all customers (2) <span class="math inline">\(Treated_{i}\)</span> can control for the pre-existing difference between the treatment group and control group.</p></li>
+<li><p>Therefore, <span class="math inline">\(\beta_3\)</span> is the actual treatment effect, after teasing out (1) seasonality and (2) pre-existing differences.</p></li>
+</ul>
+</section>
+<section id="parallel-pre-trend-assumption" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="parallel-pre-trend-assumption"><span class="header-section-number">2.8</span> Parallel Pre-trend Assumption</h2>
+<ul>
+<li>The requirement for a valid DiD analysis is that there is <strong>no differential trend</strong> between the treatment and control group before the treatment happens, or we must need <strong>parallel pre-trend</strong>.</li>
+</ul>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/DiDPretrend.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="did-analyses-with-r" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> DiD Analyses with R</h1>
+<section id="sample-data" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sample-data"><span class="header-section-number">3.1</span> Sample Data</h2>
+<ul>
+<li><code>base_did</code> is a data frame with 1,040 observations and 6 variables named <span class="math inline">\(y\)</span>, <span class="math inline">\(x1\)</span>, <span class="math inline">\(id\)</span>, <span class="math inline">\(period\)</span>, <span class="math inline">\(post\)</span> and <span class="math inline">\(treat\)</span>.
+<ul>
+<li><span class="math inline">\(y\)</span>: The outcome variable (e.g., retention) affected by the treatment (e.g., loyalty program).</li>
+<li><span class="math inline">\(x1\)</span>: standardized customer income.</li>
+<li><span class="math inline">\(id\)</span>: Identifier of the individual.</li>
+<li><span class="math inline">\(period\)</span>: From 1 to 10</li>
+<li><span class="math inline">\(post\)</span>: Indicator taking value 1 if the period is strictly greater than 5, 0 otherwise.</li>
+<li><span class="math inline">\(treat\)</span>: Indicator taking value 1 if the individual is treated, 0 otherwise.</li>
+</ul></li>
+</ul>
+</section>
+<section id="dataset" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="dataset"><span class="header-section-number">3.2</span> Dataset</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(fixest,modelsummary)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">data</span>(<span class="st">"base_did"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">head</span>(base_did,<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: right;">y</th>
+<th style="text-align: right;">x1</th>
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">period</th>
+<th style="text-align: right;">post</th>
+<th style="text-align: right;">treat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2.8753063</td>
+<td style="text-align: right;">0.5365377</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.8606527</td>
+<td style="text-align: right;">-3.0431894</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0941652</td>
+<td style="text-align: right;">5.5768439</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.7814749</td>
+<td style="text-align: right;">-2.8300587</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-2.5581996</td>
+<td style="text-align: right;">-5.0443544</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.7287324</td>
+<td style="text-align: right;">-0.6363849</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.2842363</td>
+<td style="text-align: right;">-2.1298837</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.7668878</td>
+<td style="text-align: right;">3.4918558</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="estimation-of-did" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="estimation-of-did"><span class="header-section-number">3.3</span> Estimation of DiD</h2>
+<blockquote class="blockquote">
+<p>[in <code>help(feols)</code>] … You can interact a numeric variable with a “factor-like” variable by using i(factor_var, continuous_var, ref), where continuous_var will be interacted with each value of factor_var and the argument ref is a value of factor_var taken as a reference (optional).</p>
+</blockquote>
+<p><br>
+</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>est_did <span class="ot">=</span> <span class="fu">feols</span>(</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="at">fml =</span> y <span class="sc">~</span> x1 <span class="sc">+</span> <span class="fu">i</span>(period, treat, <span class="dv">1</span>) <span class="sc">|</span> </span>
+<span id="cb2-3"><a href="#cb2-3"></a>                  id <span class="sc">+</span> period, </span>
+<span id="cb2-4"><a href="#cb2-4"></a>                <span class="at">data =</span> base_did)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="report-the-regression-results" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="report-the-regression-results"><span class="header-section-number">3.4</span> Report the Regression Results</h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> Model 1 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> x1 </td>
+   <td style="text-align:center;"> 0.973*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.046) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> period = 2 × treat </td>
+   <td style="text-align:center;"> 0.156 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (1.121) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> period = 3 × treat </td>
+   <td style="text-align:center;"> 1.130 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (1.071) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> period = 4 × treat </td>
+   <td style="text-align:center;"> −0.393 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (1.091) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> period = 5 × treat </td>
+   <td style="text-align:center;"> 1.403 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (1.110) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> period = 6 × treat </td>
+   <td style="text-align:center;"> 2.187* </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (1.025) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> period = 7 × treat </td>
+   <td style="text-align:center;"> 5.002*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.998) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> period = 8 × treat </td>
+   <td style="text-align:center;"> 5.215*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (1.155) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> period = 9 × treat </td>
+   <td style="text-align:center;"> 6.134*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (1.095) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> period = 10 × treat </td>
+   <td style="text-align:center;"> 8.009*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (1.072) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 1080 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 </td>
+   <td style="text-align:center;"> 0.548 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Adj. </td>
+   <td style="text-align:center;"> 0.488 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Within </td>
+   <td style="text-align:center;"> 0.390 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Within Adj. </td>
+   <td style="text-align:center;"> 0.383 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> RMSE </td>
+   <td style="text-align:center;"> 3.84 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Std.Errors </td>
+   <td style="text-align:center;"> by: id </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> FE: id </td>
+   <td style="text-align:center;"> X </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> FE: period </td>
+   <td style="text-align:center;"> X </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+</table>
+
+</div>
+</div>
+</section>
+<section id="plot-estimates-of-did" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="plot-estimates-of-did"><span class="header-section-number">3.5</span> Plot Estimates of DiD</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">iplot</span>(est_did)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Week9-Lecture1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="pre-trend-test" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="pre-trend-test"><span class="header-section-number">3.6</span> Pre-trend Test</h2>
+<ul>
+<li><p>The treatment happens in period 5, we need to make sure that, the differences across the treatment group and control group are not statistically changing over time.</p></li>
+<li><p>In terms of the regression coefficients, we need to make sure that the interactions between <span class="math inline">\(treated\)</span> and <span class="math inline">\(period\)</span> before the treatment are statistically insignificant.</p></li>
+</ul>
+</section>
+</section>
+<section id="did-on-secondary-data" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> DiD on Secondary Data</h1>
+<section id="did-on-secondary-data-1" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="did-on-secondary-data-1"><span class="header-section-number">4.1</span> DiD on Secondary Data</h2>
+<ul>
+<li><p>Although DiD method can be combined with RCT to collect primary data, DiD is more commonly used on secondary data.</p></li>
+<li><p>For your dissertation project, once you collect data from the companies, you can also work on a causal inference project using the DiD method.</p></li>
+</ul>
+</section>
+<section id="causal-effect-of-surge-pricing-on-drivers" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="causal-effect-of-surge-pricing-on-drivers"><span class="header-section-number">4.2</span> Causal Effect of Surge Pricing on Drivers</h2>
+<ul>
+<li><p><span class="citation" data-cites="miaoEffectsSurgePricing2022">Miao et al. (<a href="#ref-miaoEffectsSurgePricing2022" role="doc-biblioref">2022</a>)</span> study the causal effects of surge pricing on driver labor supply decisions. The ridesharing company introduced surge pricing in one city but not the other, such that we have a nice DiD setup:</p>
+<ul>
+<li>Treatment group: drivers in the city that implemented the surge pricing</li>
+<li>Control group: drivers in the city that did not implement the surge pricing</li>
+</ul></li>
+</ul>
+</section>
+<section id="framework-of-analyses" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="framework-of-analyses"><span class="header-section-number">4.3</span> Framework of Analyses</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/SurgePricing.png" class="img-fluid figure-img" width="300"></p>
+</figure>
+</div>
+<ul>
+<li>Weekly income
+<ul>
+<li>Surge pricing leads to higher weekly revenues.</li>
+</ul></li>
+<li>Intensive margin of labor supply
+<ul>
+<li>Surge pricing leads to decreased daily revenues due to intensified competition.</li>
+</ul></li>
+<li>Extensive margin of labor supply
+<ul>
+<li>Drivers have to work more days to make up of the decreased daily revenues.</li>
+</ul></li>
+</ul>
+</section>
+<section id="clustering-for-heterogeneity-analyses" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="clustering-for-heterogeneity-analyses"><span class="header-section-number">4.4</span> Clustering for Heterogeneity Analyses</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/SurgePricingClustering.png" class="img-fluid figure-img" width="300"></p>
+</figure>
+</div>
+<ul>
+<li><p>We use K-means clustering to segment out 2 clusters of drivers: full time and part time drivers.</p>
+<ul>
+<li><p>Full-time drivers have decreased weekly revenue due to capacity constraint.</p></li>
+<li><p>Part-time drivers flooded into the market and have increased weekly revenues by working more days.</p></li>
+<li><p>Although surge pricing enlarged the total pie for the company, the benefit was unevenly distributed among drivers.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="references" class="level2" data-number="4.5">
+
+
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">4.5 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-miaoEffectsSurgePricing2022" class="csl-entry" role="doc-biblioentry">
+Miao, Wei, Yiting Deng, Wei Wang, Yongdong Liu, and Christopher S. Tang. 2022. <span>“The <span>Effects</span> of <span>Surge Pricing</span> on <span>Driver Behavior</span> in the <span>Ride-Sharing Market</span>: <span>Evidence</span> from a <span>Quasi-Experiment</span>.”</span> <em>Journal of Operations Management</em>. <a href="https://doi.org/10.2139/ssrn.3909409">https://doi.org/10.2139/ssrn.3909409</a>.
+</div>
+</div></section><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1" role="doc-endnote"><p>If you collect any individual data in your dissertation, you need to seek <a href="https://www.ucl.ac.uk/research-ethics/ethical-approval/do-i-need-ucl-ethical-approval">research ethics approval</a> from UCL.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>See html version for answers.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>See html version for answers.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./Case-COVID-IV.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Case Solution: COVID-19 and Ridesharing</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Week9-Lecture1.pdf" class="pagination-link">
+        <span class="nav-page-text">Class 17 Difference-in-Differences (PDF)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

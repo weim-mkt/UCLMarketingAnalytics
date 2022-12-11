@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr Wei Miao">
+<meta name="dcterms.date" content="2022-11-10">
+
+<title>Marketing Analytics - Class 11 Application of RCT</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Week6-Lecture1.pdf" rel="next">
+<link href="./Week5-Lecture2.pdf" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FTK61TBF7L"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FTK61TBF7L', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Class 11 Application of RCT</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Marketing Analytics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Lectures</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">Syllabus</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassPreparation.html" class="sidebar-item-text sidebar-link">Weekly Arrangements</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">[Week 1] Marketing Process and Break-Even Analyses</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.html" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.html" class="sidebar-item-text sidebar-link">Class 2 Break-Even Analyses (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 2 Break-Even Analyses (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.html" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.pdf" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassExercise.html" class="sidebar-item-text sidebar-link">In-Class Exercise Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">[Week 2] Customer Lifetime Value and Data Wrangling with R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.html" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.html" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-CLSV.html" class="sidebar-item-text sidebar-link">CLSV Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">[Week 3] Unsupervised Learning and Customer Segmentation</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.html" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.html" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis-stu.pdf" class="sidebar-item-text sidebar-link">Preliminary Customer Analyses</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis.html" class="sidebar-item-text sidebar-link">Case Solution: Descriptive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">[Week 4] Supervised Learning and Customer Targeting</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.html" class="sidebar-item-text sidebar-link">Class 7 Supervised Learning (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 7 Supervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.html" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics-stu.pdf" class="sidebar-item-text sidebar-link">Improving Marketing Efficiency Using Predictive Analytics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics.html" class="sidebar-item-text sidebar-link">Case Solution: Predictive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">[Week 5] Causal Inference and RCT</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.html" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.html" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">[Week 6] Linear Regression Models</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.html" class="sidebar-item-text sidebar-link active">Class 11 Application of A-B Testing at Vungle (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 11 Application of A-B Testing at Vungle (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.html" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">[Week 7] Marketing Mix Modeling</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.html" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.html" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-Zalora.html" class="sidebar-item-text sidebar-link">Case Solution: Zalora</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">[Week 8] Endogeneity and Instrumental Variable</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.html" class="sidebar-item-text sidebar-link">Class 15 Endogeneity (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 15 Endogeneity (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.html" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV-stu.pdf" class="sidebar-item-text sidebar-link">Case: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV.html" class="sidebar-item-text sidebar-link">Case Solution: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">[Week 9] Natural Experiment</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.html" class="sidebar-item-text sidebar-link">Class 17 Difference-in-Differences (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 17 Difference-in-Differences (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.html" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">[Week 10] Module Wrap-Up</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.html" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.pdf" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">R Tutorials</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-installR.html" class="sidebar-item-text sidebar-link">Install and Setup R</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">R Basics Part I (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">R Basics Part II (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-errors.html" class="sidebar-item-text sidebar-link">Troubleshooting R</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">Advanced R Tips</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RTip-BLAS.html" class="sidebar-item-text sidebar-link">Speed Up Matrix Operations</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#synopsis" id="toc-synopsis" class="nav-link active" data-scroll-target="#synopsis"> <span class="header-section-number">1</span> Synopsis</a>
+  <ul class="collapse">
+  <li><a href="#case-background" id="toc-case-background" class="nav-link" data-scroll-target="#case-background"> <span class="header-section-number">1.1</span> Case Background</a></li>
+  <li><a href="#case-core-question" id="toc-case-core-question" class="nav-link" data-scroll-target="#case-core-question"> <span class="header-section-number">1.2</span> Case Core Question</a></li>
+  </ul></li>
+  <li><a href="#situation-analysis" id="toc-situation-analysis" class="nav-link" data-scroll-target="#situation-analysis"> <span class="header-section-number">2</span> Situation Analysis</a>
+  <ul class="collapse">
+  <li><a href="#company" id="toc-company" class="nav-link" data-scroll-target="#company"> <span class="header-section-number">2.1</span> Company</a></li>
+  <li><a href="#company-1" id="toc-company-1" class="nav-link" data-scroll-target="#company-1"> <span class="header-section-number">2.2</span> Company</a></li>
+  <li><a href="#customer" id="toc-customer" class="nav-link" data-scroll-target="#customer"> <span class="header-section-number">2.3</span> Customer</a></li>
+  <li><a href="#collaborators" id="toc-collaborators" class="nav-link" data-scroll-target="#collaborators"> <span class="header-section-number">2.4</span> Collaborators</a></li>
+  <li><a href="#competitors" id="toc-competitors" class="nav-link" data-scroll-target="#competitors"> <span class="header-section-number">2.5</span> Competitors</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"> <span class="header-section-number">2.6</span> Context</a></li>
+  </ul></li>
+  <li><a href="#implementation-of-experiment" id="toc-implementation-of-experiment" class="nav-link" data-scroll-target="#implementation-of-experiment"> <span class="header-section-number">3</span> Implementation of Experiment</a>
+  <ul class="collapse">
+  <li><a href="#step-1-decide-on-the-unit-of-randomization" id="toc-step-1-decide-on-the-unit-of-randomization" class="nav-link" data-scroll-target="#step-1-decide-on-the-unit-of-randomization"> <span class="header-section-number">3.1</span> Step 1: Decide on the Unit of Randomization</a></li>
+  <li><a href="#step-2-ensure-no-spillover-and-crossover-effects" id="toc-step-2-ensure-no-spillover-and-crossover-effects" class="nav-link" data-scroll-target="#step-2-ensure-no-spillover-and-crossover-effects"> <span class="header-section-number">3.2</span> Step 2: Ensure No Spillover and Crossover Effects</a></li>
+  <li><a href="#step-3-decide-on-randomization-allocation-scheme" id="toc-step-3-decide-on-randomization-allocation-scheme" class="nav-link" data-scroll-target="#step-3-decide-on-randomization-allocation-scheme"> <span class="header-section-number">3.3</span> Step 3: Decide on Randomization Allocation Scheme</a></li>
+  <li><a href="#step-4-collect-data" id="toc-step-4-collect-data" class="nav-link" data-scroll-target="#step-4-collect-data"> <span class="header-section-number">3.4</span> Step 4: Collect Data</a></li>
+  <li><a href="#step-5-interpreting-results-from-a-field-experiment" id="toc-step-5-interpreting-results-from-a-field-experiment" class="nav-link" data-scroll-target="#step-5-interpreting-results-from-a-field-experiment"> <span class="header-section-number">3.5</span> Step 5: Interpreting Results from a Field Experiment</a></li>
+  <li><a href="#step-5-paired-t-test" id="toc-step-5-paired-t-test" class="nav-link" data-scroll-target="#step-5-paired-t-test"> <span class="header-section-number">3.6</span> Step 5: Paired t-test</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"> <span class="header-section-number">3.7</span> Conclusion</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Class 11 Application of RCT</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr Wei Miao </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 10, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="synopsis" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Synopsis</h1>
+<section id="case-background" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="case-background"><span class="header-section-number">1.1</span> Case Background</h2>
+<p>Andrew and Hammond, 2 recently graduated MBA students, were tasked with developing an <strong>ad-serving learning algorithm</strong> for Vungle, a <strong>mobile ad-serving</strong> company.</p>
+<p>Zain Jaffer, the firm’s CEO, planned to <strong>test the developed method in parallel with the existing Vungle algorithm</strong>.</p>
+<p>The hope was that the new algorithm would increase <strong>conversion rates</strong> and, more specifically, <strong>profits</strong> (as measured by <strong>eRPM</strong>).</p>
+<p>To test this, two conditions (A, Vungle’s existing algorithm, and B, the data science approach) were evaluated in parallel on <strong>randomly assigned users</strong>.</p>
+</section>
+<section id="case-core-question" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="case-core-question"><span class="header-section-number">1.2</span> Case Core Question</h2>
+<p>The case examines the results of an A/B test of the two algorithms during the month of June 2014. You will need to determine whether B outperformed A.</p>
+<ul>
+<li><p>How might Jaffer conclude that B is better than A?</p></li>
+<li><p>If it is, what would the financial benefits be?</p></li>
+<li><p>Finally, how long would Jaffer need to wait before declaring a winning algorithm?</p></li>
+</ul>
+</section>
+</section>
+<section id="situation-analysis" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Situation Analysis</h1>
+<section id="company" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="company"><span class="header-section-number">2.1</span> Company</h2>
+<ul>
+<li><p>Business model of Vungle?</p>
+<div>
+<blockquote class="blockquote">
+<p>Platform model</p>
+</blockquote>
+</div></li>
+<li><p>What are the key players in this mobile video ads market (i.e., Vungle)? Find the info in the case.</p>
+<ul>
+<li>As a comparison, what are the key players in website ads case?</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-D62FD0DD.png" class="img-fluid figure-img" width="250"></p>
+</figure>
+</div>
+<div>
+<blockquote class="blockquote">
+<p>“Four parties participated in the in-app mobile advertisement channel. The user of the mobile device (user), the owner of the app being used (publisher), the sponsor of the video ad the user was exposed to (advertiser), and the platform that matched the choice of ad to a specific user (e.g., Vungle).”</p>
+</blockquote>
+</div>
+</section>
+<section id="company-1" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="company-1"><span class="header-section-number">2.2</span> Company</h2>
+<ul>
+<li>How does Vungle make money? Find the info in the case.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/vungle-revenue.png" class="img-fluid figure-img" width="300"></p>
+</figure>
+</div>
+<div>
+<blockquote class="blockquote">
+<p>“In most cases, payment was made by the advertiser upon <strong>installation</strong>. <strong>Publishers</strong> typically received 60% of the revenues and the <strong>ad provider</strong> the remaining 40%. See Figure 1 for the conversion funnel depicting how an install is achieved. Of all ad requests, most were served and became impressions. When at least 80% of a video ad was watched, it was considered complete. When the user clicked on the ad to get more information, it was counted as a click. The process could then result in an install.”</p>
+</blockquote>
+</div>
+<ul>
+<li>How can Vungle improve its revenue using what we’ve learned in Marketing Analytics so far?</li>
+</ul>
+<div>
+<blockquote class="blockquote">
+<p>Vungle should use predictive analytics to fill the ads that a customer is most likely to click and install. This is essentially a supervised learning problem.</p>
+</blockquote>
+</div>
+</section>
+<section id="customer" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="customer"><span class="header-section-number">2.3</span> Customer</h2>
+<ul>
+<li>Due to the nature of business model (multi-sided market), who are Vungle’s customers? Find the info in the case.</li>
+</ul>
+<div>
+<blockquote class="blockquote">
+<p>“In the mobile advertising domain, supply was considered to be the slots available for showing ads, and demand consisted of the advertisers willing to buy the supply by placing ads.”</p>
+</blockquote>
+</div>
+</section>
+<section id="collaborators" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="collaborators"><span class="header-section-number">2.4</span> Collaborators</h2>
+<ul>
+<li>Who are the collaborators of Vungle?</li>
+</ul>
+</section>
+<section id="competitors" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="competitors"><span class="header-section-number">2.5</span> Competitors</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/competitoranalysis.png" class="img-fluid figure-img" width="300"></p>
+</figure>
+</div>
+<ul>
+<li><p>Direct competitors</p></li>
+<li><p>Indirect competitors</p></li>
+<li><p>Potential competitors</p></li>
+</ul>
+</section>
+<section id="context" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="context"><span class="header-section-number">2.6</span> Context</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/class1_Context.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<ul>
+<li><p>Legal: GDPR</p></li>
+<li><p>Technological: penetration of mobile phones</p></li>
+<li><p>…</p></li>
+</ul>
+</section>
+</section>
+<section id="implementation-of-experiment" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Implementation of Experiment</h1>
+<section id="step-1-decide-on-the-unit-of-randomization" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="step-1-decide-on-the-unit-of-randomization"><span class="header-section-number">3.1</span> Step 1: Decide on the Unit of Randomization</h2>
+<ul>
+<li>What would be the best unit of randomization?</li>
+</ul>
+<div>
+<blockquote class="blockquote">
+<p>The best level would be user level. User-device level would be too granular and can easily cause crossover effects.</p>
+</blockquote>
+</div>
+<ul>
+<li>How about website-based online ads, say Google ads?</li>
+</ul>
+</section>
+<section id="step-2-ensure-no-spillover-and-crossover-effects" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="step-2-ensure-no-spillover-and-crossover-effects"><span class="header-section-number">3.2</span> Step 2: Ensure No Spillover and Crossover Effects</h2>
+<ul>
+<li>What are the potential problems for spillover and crossover?</li>
+</ul>
+<div>
+<blockquote class="blockquote">
+<ul>
+<li><p>A user may use multiple devices, causing crossover effects</p></li>
+<li><p>A user may talk to family members/friends, causing spillover effects.</p></li>
+</ul>
+</blockquote>
+</div>
+<ul>
+<li>How about website-based online ads, say Google ads?</li>
+</ul>
+</section>
+<section id="step-3-decide-on-randomization-allocation-scheme" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="step-3-decide-on-randomization-allocation-scheme"><span class="header-section-number">3.3</span> Step 3: Decide on Randomization Allocation Scheme</h2>
+<ul>
+<li>How did Vungle implement the randomization scheme? Is it sensible?</li>
+</ul>
+<div>
+<blockquote class="blockquote">
+<p>Chan’s team thought it would make sense to direct only 1/16th of the users to the B condition. The other randomly assigned 15/16ths of users would receive an ad based on the existing algorithm (i.e., the A condition).</p>
+</blockquote>
+</div>
+</section>
+<section id="step-4-collect-data" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="step-4-collect-data"><span class="header-section-number">3.4</span> Step 4: Collect Data</h2>
+<ul>
+<li>What data did Vungle collect?</li>
+</ul>
+<div>
+<blockquote class="blockquote">
+<p>After two weeks, B was looking pretty good. Its daily eRPM was on average $0.131 higher than A’s. Would this translate into annual revenues worthy of the necessary data science investment? Exhibits 2 and 3 provide the daily results of the A/B test.</p>
+</blockquote>
+</div>
+<ul>
+<li>Can you do better?</li>
+</ul>
+<div>
+<blockquote class="blockquote">
+<p>User-level data rather than day-level data would be more granular and can provide higher statistical power.</p>
+</blockquote>
+</div>
+</section>
+<section id="step-5-interpreting-results-from-a-field-experiment" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="step-5-interpreting-results-from-a-field-experiment"><span class="header-section-number">3.5</span> Step 5: Interpreting Results from a Field Experiment</h2>
+<ul>
+<li>Which step is missing in Vungle A-B testing?</li>
+</ul>
+<div>
+<blockquote class="blockquote">
+<p>Vungle didn’t do randomization check.</p>
+</blockquote>
+</div>
+<ul>
+<li>How to draw statistical conclusions from the Exhibits A and B?</li>
+</ul>
+<div>
+<blockquote class="blockquote">
+<p>We can conduct a paired t-test to statistically test the effectiveness of B.</p>
+</blockquote>
+</div>
+</section>
+<section id="step-5-paired-t-test" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="step-5-paired-t-test"><span class="header-section-number">3.6</span> Step 5: Paired t-test</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>data_vungle <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://www.dropbox.com/s/nsxnworjggreh4s/UV6968-XLS-ENG.csv?dl=1"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">t.test</span>((data_vungle<span class="sc">%&gt;%</span><span class="fu">filter</span>(Strategy <span class="sc">==</span> <span class="st">"Vungle A"</span>))<span class="sc">$</span>eRPM,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>       (data_vungle<span class="sc">%&gt;%</span><span class="fu">filter</span>(Strategy <span class="sc">==</span> <span class="st">"Vungle B"</span>))<span class="sc">$</span>eRPM,</span>
+<span id="cb2-5"><a href="#cb2-5"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  (data_vungle %&gt;% filter(Strategy == "Vungle A"))$eRPM and (data_vungle %&gt;% filter(Strategy == "Vungle B"))$eRPM
+t = -3.2837, df = 29, p-value = 0.002677
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.17959566 -0.04173767
+sample estimates:
+mean difference 
+     -0.1106667 </code></pre>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">3.7</span> Conclusion</h2>
+<p>Guerin was curious to see how the superior condition would be chosen. How would one conclude that B was better than A?</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./Week5-Lecture2.pdf" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Class 10 Randomized Controlled Trials (PDF)</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Week6-Lecture1.pdf" class="pagination-link">
+        <span class="nav-page-text">Class 11 Application of A-B Testing at Vungle (PDF)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

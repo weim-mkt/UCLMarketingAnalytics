@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr Wei Miao">
+<meta name="dcterms.date" content="2022-11-24">
+
+<title>Marketing Analytics - Class 15 Endogeneity</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Week8-Lecture1.pdf" rel="next">
+<link href="./Case-Zalora.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FTK61TBF7L"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FTK61TBF7L', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Class 15 Endogeneity</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Marketing Analytics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Lectures</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">Syllabus</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassPreparation.html" class="sidebar-item-text sidebar-link">Weekly Arrangements</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">[Week 1] Marketing Process and Break-Even Analyses</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.html" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.html" class="sidebar-item-text sidebar-link">Class 2 Break-Even Analyses (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 2 Break-Even Analyses (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.html" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.pdf" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassExercise.html" class="sidebar-item-text sidebar-link">In-Class Exercise Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">[Week 2] Customer Lifetime Value and Data Wrangling with R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.html" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.html" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-CLSV.html" class="sidebar-item-text sidebar-link">CLSV Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">[Week 3] Unsupervised Learning and Customer Segmentation</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.html" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.html" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis-stu.pdf" class="sidebar-item-text sidebar-link">Preliminary Customer Analyses</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis.html" class="sidebar-item-text sidebar-link">Case Solution: Descriptive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">[Week 4] Supervised Learning and Customer Targeting</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.html" class="sidebar-item-text sidebar-link">Class 7 Supervised Learning (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 7 Supervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.html" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics-stu.pdf" class="sidebar-item-text sidebar-link">Improving Marketing Efficiency Using Predictive Analytics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics.html" class="sidebar-item-text sidebar-link">Case Solution: Predictive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">[Week 5] Causal Inference and RCT</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.html" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.html" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">[Week 6] Linear Regression Models</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.html" class="sidebar-item-text sidebar-link">Class 11 Application of A-B Testing at Vungle (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 11 Application of A-B Testing at Vungle (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.html" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">[Week 7] Marketing Mix Modeling</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.html" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.html" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-Zalora.html" class="sidebar-item-text sidebar-link">Case Solution: Zalora</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">[Week 8] Endogeneity and Instrumental Variable</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.html" class="sidebar-item-text sidebar-link active">Class 15 Endogeneity (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 15 Endogeneity (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.html" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV-stu.pdf" class="sidebar-item-text sidebar-link">Case: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV.html" class="sidebar-item-text sidebar-link">Case Solution: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">[Week 9] Natural Experiment</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.html" class="sidebar-item-text sidebar-link">Class 17 Difference-in-Differences (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 17 Difference-in-Differences (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.html" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">[Week 10] Module Wrap-Up</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.html" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.pdf" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">R Tutorials</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-installR.html" class="sidebar-item-text sidebar-link">Install and Setup R</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">R Basics Part I (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">R Basics Part II (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-errors.html" class="sidebar-item-text sidebar-link">Troubleshooting R</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">Advanced R Tips</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RTip-BLAS.html" class="sidebar-item-text sidebar-link">Speed Up Matrix Operations</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#causal-inference-with-ols" id="toc-causal-inference-with-ols" class="nav-link active" data-scroll-target="#causal-inference-with-ols"> <span class="header-section-number">1</span> Causal Inference with OLS</a>
+  <ul class="collapse">
+  <li><a href="#causal-effect-from-linear-regression-models" id="toc-causal-effect-from-linear-regression-models" class="nav-link" data-scroll-target="#causal-effect-from-linear-regression-models"> <span class="header-section-number">1.1</span> Causal Effect from Linear Regression Models</a></li>
+  <li><a href="#regression-results" id="toc-regression-results" class="nav-link" data-scroll-target="#regression-results"> <span class="header-section-number">1.2</span> Regression Results</a></li>
+  <li><a href="#direct-and-indirect-effects" id="toc-direct-and-indirect-effects" class="nav-link" data-scroll-target="#direct-and-indirect-effects"> <span class="header-section-number">1.3</span> Direct and Indirect Effects</a></li>
+  <li><a href="#causal-inference-from-regression-models" id="toc-causal-inference-from-regression-models" class="nav-link" data-scroll-target="#causal-inference-from-regression-models"> <span class="header-section-number">1.4</span> Causal Inference from Regression Models</a></li>
+  <li><a href="#practical-suggestions-for-running-regression-models" id="toc-practical-suggestions-for-running-regression-models" class="nav-link" data-scroll-target="#practical-suggestions-for-running-regression-models"> <span class="header-section-number">1.5</span> Practical Suggestions for Running Regression Models</a></li>
+  <li><a href="#causal-inference-from-regressions" id="toc-causal-inference-from-regressions" class="nav-link" data-scroll-target="#causal-inference-from-regressions"> <span class="header-section-number">1.6</span> Causal Inference from Regressions</a></li>
+  <li><a href="#rcts-and-causal-inference" id="toc-rcts-and-causal-inference" class="nav-link" data-scroll-target="#rcts-and-causal-inference"> <span class="header-section-number">1.7</span> RCTs and Causal Inference</a></li>
+  <li><a href="#rcts-and-causal-inference-cont." id="toc-rcts-and-causal-inference-cont." class="nav-link" data-scroll-target="#rcts-and-causal-inference-cont."> <span class="header-section-number">1.8</span> RCTs and Causal Inference (cont.)</a></li>
+  </ul></li>
+  <li><a href="#endogeneity-and-its-causes" id="toc-endogeneity-and-its-causes" class="nav-link" data-scroll-target="#endogeneity-and-its-causes"> <span class="header-section-number">2</span> Endogeneity and Its Causes</a>
+  <ul class="collapse">
+  <li><a href="#endogeneity" id="toc-endogeneity" class="nav-link" data-scroll-target="#endogeneity"> <span class="header-section-number">2.1</span> Endogeneity</a></li>
+  <li><a href="#cause-i-omitted-variable-bias" id="toc-cause-i-omitted-variable-bias" class="nav-link" data-scroll-target="#cause-i-omitted-variable-bias"> <span class="header-section-number">2.2</span> Cause I: Omitted Variable Bias</a></li>
+  <li><a href="#examples-of-ovb" id="toc-examples-of-ovb" class="nav-link" data-scroll-target="#examples-of-ovb"> <span class="header-section-number">2.3</span> Examples of OVB</a></li>
+  <li><a href="#examples-of-ovb-1" id="toc-examples-of-ovb-1" class="nav-link" data-scroll-target="#examples-of-ovb-1"> <span class="header-section-number">2.4</span> Examples of OVB</a></li>
+  <li><a href="#cause-ii-reverse-causality-simultaneity" id="toc-cause-ii-reverse-causality-simultaneity" class="nav-link" data-scroll-target="#cause-ii-reverse-causality-simultaneity"> <span class="header-section-number">2.5</span> Cause II: Reverse Causality (Simultaneity)</a></li>
+  <li><a href="#examples-of-reverse-causality-simultaneity" id="toc-examples-of-reverse-causality-simultaneity" class="nav-link" data-scroll-target="#examples-of-reverse-causality-simultaneity"> <span class="header-section-number">2.6</span> Examples of Reverse Causality (Simultaneity)</a></li>
+  <li><a href="#examples-of-reverse-causality-simultaneity-1" id="toc-examples-of-reverse-causality-simultaneity-1" class="nav-link" data-scroll-target="#examples-of-reverse-causality-simultaneity-1"> <span class="header-section-number">2.7</span> Examples of Reverse Causality (Simultaneity)</a></li>
+  <li><a href="#main-takeaway" id="toc-main-takeaway" class="nav-link" data-scroll-target="#main-takeaway"> <span class="header-section-number">2.8</span> Main Takeaway</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Class 15 Endogeneity</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr Wei Miao </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 24, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="causal-inference-with-ols" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Causal Inference with OLS</h1>
+<section id="causal-effect-from-linear-regression-models" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="causal-effect-from-linear-regression-models"><span class="header-section-number">1.1</span> Causal Effect from Linear Regression Models</h2>
+<ul>
+<li><strong><em>Task</em></strong>: Tesco would like to understand the causal impact of customer <span class="math inline">\(Income\)</span> on customer <span class="math inline">\(Spending\)</span></li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in file(file, "rt"): URL 'https://
+uc00c0806d9351ec088b15dedf0f.dl.dropboxusercontent.com/cd/0/get/
+ByMdrbVRVKCpv6_lhiFZ6WiaJmvSQ6kDaWG0JI9mh5U0499stUE09rYG7wSkeBcEwmgswNsbxu9h4fwmH8ztkghPybAesws6UE2ONKG2t-
+G6ZvNuIoLgUhmL502GUU-
+AKbLaUHWyy6nCAv6mOxNzntZFKxYXpVei0nUheo6CGjU3zXiUy5gfD1M9whkfeXe3IYs/file?dl=1':
+Timeout of 60 seconds was reached</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in file(file, "rt"): cannot open the connection to 'https://www.dropbox.com/s/hbrgktcz98y0igs/demographics.csv?dl=1'</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in is.data.frame(y): object 'data_demo' not found</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in mutate(., Income = replace(Income, is.na(Income), mean(Income, : object 'data_full' not found</code></pre>
+</div>
+</div>
+<ul>
+<li><p>Please run the two regressions on your laptop:</p>
+<ul>
+<li><p>Regression 1: <span class="math inline">\(Spending\)</span> ~ <span class="math inline">\(Income\)</span></p></li>
+<li><p>Regression 2: <span class="math inline">\(Spending\)</span> ~ <span class="math inline">\(Income\)</span> + <span class="math inline">\(Kidhome\)</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="regression-results" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="regression-results"><span class="header-section-number">1.2</span> Regression Results</h2>
+<div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(fixest,modelsummary)</span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a>regression1 <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="at">data =</span> data_full,</span>
+<span id="cb5-4"><a href="#cb5-4"></a>     <span class="at">fml =</span> total_spending <span class="sc">~</span> Income ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in feols(data = data_full, fml = total_spending ~ Income): Argument 'data' could not be evaluated. Problem: object 'data_full' not
+found.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>regression2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="at">data =</span> data_full,</span>
+<span id="cb7-2"><a href="#cb7-2"></a>     <span class="at">fml =</span> total_spending <span class="sc">~</span> Income <span class="sc">+</span> Kidhome) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in feols(data = data_full, fml = total_spending ~ Income + Kidhome): Argument 'data' could not be evaluated. Problem: object 'data_full' not
+found.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(regression1,regression2),</span>
+<span id="cb9-2"><a href="#cb9-2"></a>             <span class="at">stars =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in sanitize_models(models): object 'regression1' not found</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li><strong><em>Question</em></strong>: if we want to evaluate income’s causal effect on spending, which value (0.022, 0.019) should we use?</li>
+</ul>
+</section>
+<section id="direct-and-indirect-effects" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="direct-and-indirect-effects"><span class="header-section-number">1.3</span> Direct and Indirect Effects</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/directindirecteffect.png" class="img-fluid figure-img" width="250"></p>
+</figure>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Direct Effect (causal effect)
+<ul>
+<li>Keeping other variables ﬁxed (ceteris paribus)</li>
+<li>Direct effect only</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Total Effect
+<ul>
+<li>Including side effects through other variables</li>
+<li>Direct + indirect effects</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="causal-inference-from-regression-models" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="causal-inference-from-regression-models"><span class="header-section-number">1.4</span> Causal Inference from Regression Models</h2>
+<ul>
+<li><p>To obtain causal inference, we need to obtain the <strong>direct effects</strong> of an <span class="math inline">\(X\)</span> variable on the outcome variable <span class="math inline">\(Y\)</span>.</p></li>
+<li><p><strong>Total effects</strong> include both direct effects and indirect effects (i.e., the impacts of other confounding variables).</p></li>
+<li><p>Therefore, it is important to include <strong>all confounding variables</strong>, which affect income and total spending at the same time, to control for the side effects from other variables.</p></li>
+</ul>
+</section>
+<section id="practical-suggestions-for-running-regression-models" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="practical-suggestions-for-running-regression-models"><span class="header-section-number">1.5</span> Practical Suggestions for Running Regression Models</h2>
+<ul>
+<li><p>For causal inference tasks, we need to use business senses to decide which confounding variables to control, but the safest way is to include everything we have in the data.</p></li>
+<li><p>Sometimes, control variables may be statistically insignificant, they should <strong>NOT</strong> be removed because they still serve the purpose of control variables.</p></li>
+<li><p>If some variables are mechanically correlated, then we should not put all of them in the regression, to avoid perfect collinearity problems.</p></li>
+</ul>
+<p><br>
+</p>
+<blockquote class="blockquote">
+<p>Question: what is the best you can do with <code>data_full</code> to estimate the causal effect of income on spending?</p>
+</blockquote>
+</section>
+<section id="causal-inference-from-regressions" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="causal-inference-from-regressions"><span class="header-section-number">1.6</span> Causal Inference from Regressions</h2>
+<p>Now we have included <code>Kidhome</code> to tease out the effect of kids, what problems do we still have which hinder us from getting causal effect of income on total spending?</p>
+<ul>
+<li>Due to data availability, we are never able to include all confounding variables in the regression.</li>
+<li>Strictly speaking, we can <strong>never obtain causal effects from simple regression models</strong> based on <strong>non-experiment data</strong>.</li>
+<li>Mathematically speaking, because we can never control all confounding factors, the error term is very likely to be correlated with income, violating <span class="math inline">\(E[\epsilon|X] = 0\)</span>.</li>
+</ul>
+</section>
+<section id="rcts-and-causal-inference" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="rcts-and-causal-inference"><span class="header-section-number">1.7</span> RCTs and Causal Inference</h2>
+<ul>
+<li>Why RCTs are the gold standard for causal inference?
+<ul>
+<li>If we are able to randomize people into different income groups, we can then collect the <code>total_spending</code> for each individual in each <code>income</code> group.</li>
+<li>We can run a linear regression to examine the impact of <code>income</code> on <code>total_spending</code>.</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+Spending = \beta_0 + \beta_1Income + \epsilon
+\]</span></p>
+<ul>
+<li>In the above regression
+<ul>
+<li>Are there still any confounding effects?</li>
+<li>Is <span class="math inline">\(Income\)</span> correlated with any of the confounding effects?</li>
+</ul></li>
+</ul>
+</section>
+<section id="rcts-and-causal-inference-cont." class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="rcts-and-causal-inference-cont."><span class="header-section-number">1.8</span> RCTs and Causal Inference (cont.)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/RCTDirectEffect.png" class="img-fluid figure-img" width="250"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="endogeneity-and-its-causes" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Endogeneity and Its Causes</h1>
+<section id="endogeneity" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="endogeneity"><span class="header-section-number">2.1</span> Endogeneity</h2>
+<section id="endogeneity-1" class="level3 block" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="endogeneity-1"><span class="header-section-number">2.1.1</span> Endogeneity</h3>
+<p>Endogeneity refers to an econometric issue with OLS linear regression, in which an explanatory variable is correlated with the error term, such that the requirement for OLS linear regression <span class="math inline">\(E[\epsilon|X] = 0\)</span> is violated.</p>
+</section>
+</section>
+<section id="cause-i-omitted-variable-bias" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="cause-i-omitted-variable-bias"><span class="header-section-number">2.2</span> Cause I: Omitted Variable Bias</h2>
+<section id="omitted-variable-bias-ovb" class="level3 block" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="omitted-variable-bias-ovb"><span class="header-section-number">2.2.1</span> Omitted Variable Bias (OVB)</h3>
+<p>An omitted variable is a determinant of the outcome variable <span class="math inline">\(y_i\)</span> that is correlated with the focal explanatory variable <span class="math inline">\(x_i\)</span>, but is not included in the regression, either due to data unavailability or ignorance of data scientists.</p>
+</section>
+<p>Two conditions for omitted variable bias</p>
+<ul>
+<li>The variable affects the dependent variable.</li>
+<li>The variable is correlated with the focal explanatory variable.</li>
+</ul>
+</section>
+<section id="examples-of-ovb" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="examples-of-ovb"><span class="header-section-number">2.3</span> Examples of OVB</h2>
+<ul>
+<li>If we would like to understand the causal effect of years in education on a person’s salary.</li>
+</ul>
+<p><span class="math display">\[
+Salary_t = \beta_0 + \beta_1 Education_t + \epsilon_t
+\]</span></p>
+<ul>
+<li>Can we get causal effect from this regression? What would be the issue here?</li>
+</ul>
+</section>
+<section id="examples-of-ovb-1" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="examples-of-ovb-1"><span class="header-section-number">2.4</span> Examples of OVB</h2>
+<ul>
+<li>When building Marketing Mix Modeling, the common practice in the industry is to regress the sales in each period on the price in each period.</li>
+</ul>
+<p><span class="math display">\[
+Sales_t = \beta_0 + \beta_1 Price_t + \epsilon_t
+\]</span></p>
+<ul>
+<li>However, is this regression correct?
+<ul>
+<li>Very often, if we regress sales on price, we get a positive coefficient for price.</li>
+</ul></li>
+</ul>
+</section>
+<section id="cause-ii-reverse-causality-simultaneity" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="cause-ii-reverse-causality-simultaneity"><span class="header-section-number">2.5</span> Cause II: Reverse Causality (Simultaneity)</h2>
+<section id="reverse-causality" class="level3 block" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="reverse-causality"><span class="header-section-number">2.5.1</span> Reverse Causality</h3>
+<p>Reverse causality refers to the phenomenon that the independent variable <span class="math inline">\(X_i\)</span> affects the dependent variable <span class="math inline">\(y_i\)</span> and the dependent variable <span class="math inline">\(y_i\)</span> also affects the independent variable <span class="math inline">\(X_i\)</span> at the same time.</p>
+</section>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/class9_ReverseCausality.png" class="img-fluid figure-img" width="117"></p>
+</figure>
+</div>
+</section>
+<section id="examples-of-reverse-causality-simultaneity" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="examples-of-reverse-causality-simultaneity"><span class="header-section-number">2.6</span> Examples of Reverse Causality (Simultaneity)</h2>
+<ul>
+<li>Besides potential omitted variable biases, there may also exist reverse causality problems with marketing mix modelling.</li>
+</ul>
+<p><span class="math display">\[
+Sales_t = \beta_0 + \beta_1 Price_t + \epsilon_t
+\]</span></p>
+<ul>
+<li>Price affects demand, and demand affects sellers’ price setting decisions.
+<ul>
+<li>Higher price leads to lower sales. (X =&gt; Y)</li>
+<li>If sellers expect higher demand, sellers may increase the price to increase profits. (Y =&gt; X)</li>
+</ul></li>
+</ul>
+</section>
+<section id="examples-of-reverse-causality-simultaneity-1" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="examples-of-reverse-causality-simultaneity-1"><span class="header-section-number">2.7</span> Examples of Reverse Causality (Simultaneity)</h2>
+<ul>
+<li>UberEat interview question: If we have historical data on <strong>number of restaurants on UberEat</strong> in each month, and <strong>the total number of orders in each month</strong>, can we run an OLS regression to get the causal effect?</li>
+</ul>
+<p><span class="math display">\[
+NumOrders_t = \beta_0 + \beta_1 NumRestaurants_t + \epsilon_t
+\]</span></p>
+<ul>
+<li><p>If not, how can we measure the causal effects for UberEat?</p></li>
+<li><p>This question is not just limited to UberEat; it is in fact related to any platform business with network effect!</p>
+<ul>
+<li>Amazon; Airbnb; Uber Ridesharing; etc.</li>
+</ul></li>
+</ul>
+</section>
+<section id="main-takeaway" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="main-takeaway"><span class="header-section-number">2.8</span> Main Takeaway</h2>
+<ul>
+<li><p>Common threats to causal inference from secondary data include</p>
+<ul>
+<li><p>Omitted Variable Bias</p></li>
+<li><p>Reverse Causality</p></li>
+</ul></li>
+<li><p>We can overcome the endogeneity problem using <strong>instrumental variable method</strong>.</p></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./Case-Zalora.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Case Solution: Zalora</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Week8-Lecture1.pdf" class="pagination-link">
+        <span class="nav-page-text">Class 15 Endogeneity (PDF)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

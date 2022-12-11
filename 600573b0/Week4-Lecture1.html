@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr Wei Miao">
+<meta name="dcterms.date" content="2022-10-27">
+
+<title>Marketing Analytics - Class 7 Predictive Analytics for STP (II): Supervised Learning</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Week4-Lecture1.pdf" rel="next">
+<link href="./Case-PreliminaryCustomerAnalysis.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FTK61TBF7L"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FTK61TBF7L', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Class 7 Predictive Analytics for STP (II): Supervised Learning</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Marketing Analytics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Lectures</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">Syllabus</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassPreparation.html" class="sidebar-item-text sidebar-link">Weekly Arrangements</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">[Week 1] Marketing Process and Break-Even Analyses</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.html" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.html" class="sidebar-item-text sidebar-link">Class 2 Break-Even Analyses (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 2 Break-Even Analyses (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.html" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.pdf" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassExercise.html" class="sidebar-item-text sidebar-link">In-Class Exercise Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">[Week 2] Customer Lifetime Value and Data Wrangling with R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.html" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.html" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-CLSV.html" class="sidebar-item-text sidebar-link">CLSV Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">[Week 3] Unsupervised Learning and Customer Segmentation</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.html" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.html" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis-stu.pdf" class="sidebar-item-text sidebar-link">Preliminary Customer Analyses</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis.html" class="sidebar-item-text sidebar-link">Case Solution: Descriptive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">[Week 4] Supervised Learning and Customer Targeting</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.html" class="sidebar-item-text sidebar-link active">Class 7 Supervised Learning (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 7 Supervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.html" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics-stu.pdf" class="sidebar-item-text sidebar-link">Improving Marketing Efficiency Using Predictive Analytics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics.html" class="sidebar-item-text sidebar-link">Case Solution: Predictive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">[Week 5] Causal Inference and RCT</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.html" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.html" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">[Week 6] Linear Regression Models</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.html" class="sidebar-item-text sidebar-link">Class 11 Application of A-B Testing at Vungle (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 11 Application of A-B Testing at Vungle (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.html" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">[Week 7] Marketing Mix Modeling</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.html" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.html" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-Zalora.html" class="sidebar-item-text sidebar-link">Case Solution: Zalora</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">[Week 8] Endogeneity and Instrumental Variable</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.html" class="sidebar-item-text sidebar-link">Class 15 Endogeneity (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 15 Endogeneity (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.html" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV-stu.pdf" class="sidebar-item-text sidebar-link">Case: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV.html" class="sidebar-item-text sidebar-link">Case Solution: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">[Week 9] Natural Experiment</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.html" class="sidebar-item-text sidebar-link">Class 17 Difference-in-Differences (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 17 Difference-in-Differences (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.html" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">[Week 10] Module Wrap-Up</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.html" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.pdf" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">R Tutorials</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-installR.html" class="sidebar-item-text sidebar-link">Install and Setup R</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">R Basics Part I (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">R Basics Part II (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-errors.html" class="sidebar-item-text sidebar-link">Troubleshooting R</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">Advanced R Tips</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RTip-BLAS.html" class="sidebar-item-text sidebar-link">Speed Up Matrix Operations</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#supervised-learning" id="toc-supervised-learning" class="nav-link active" data-scroll-target="#supervised-learning"> <span class="header-section-number">1</span> Supervised Learning</a>
+  <ul class="collapse">
+  <li><a href="#motivation-why-supervised-learning-for-business" id="toc-motivation-why-supervised-learning-for-business" class="nav-link" data-scroll-target="#motivation-why-supervised-learning-for-business"> <span class="header-section-number">1.1</span> Motivation: Why Supervised Learning for Business?</a></li>
+  <li><a href="#data-generating-process" id="toc-data-generating-process" class="nav-link" data-scroll-target="#data-generating-process"> <span class="header-section-number">1.2</span> Data Generating Process</a></li>
+  <li><a href="#supervised-learning-1" id="toc-supervised-learning-1" class="nav-link" data-scroll-target="#supervised-learning-1"> <span class="header-section-number">1.3</span> Supervised Learning</a></li>
+  <li><a href="#types-of-supervised-learning-tasks-for-customer-relationship-management" id="toc-types-of-supervised-learning-tasks-for-customer-relationship-management" class="nav-link" data-scroll-target="#types-of-supervised-learning-tasks-for-customer-relationship-management"> <span class="header-section-number">1.4</span> Types of Supervised Learning Tasks for Customer Relationship Management</a></li>
+  <li><a href="#difference-between-supervised-and-unsupervised-learning" id="toc-difference-between-supervised-and-unsupervised-learning" class="nav-link" data-scroll-target="#difference-between-supervised-and-unsupervised-learning"> <span class="header-section-number">1.5</span> Difference between Supervised and Unsupervised Learning</a></li>
+  <li><a href="#commonly-used-supervised-learning-models" id="toc-commonly-used-supervised-learning-models" class="nav-link" data-scroll-target="#commonly-used-supervised-learning-models"> <span class="header-section-number">1.6</span> Commonly Used Supervised Learning Models</a></li>
+  <li><a href="#overfitting-and-underfitting" id="toc-overfitting-and-underfitting" class="nav-link" data-scroll-target="#overfitting-and-underfitting"> <span class="header-section-number">1.7</span> Overfitting and Underfitting</a></li>
+  <li><a href="#mitigate-the-underfitting-and-overfitting-problems" id="toc-mitigate-the-underfitting-and-overfitting-problems" class="nav-link" data-scroll-target="#mitigate-the-underfitting-and-overfitting-problems"> <span class="header-section-number">1.8</span> Mitigate the Underfitting and Overfitting Problems</a></li>
+  </ul></li>
+  <li><a href="#decision-tree-and-random-forest" id="toc-decision-tree-and-random-forest" class="nav-link" data-scroll-target="#decision-tree-and-random-forest"> <span class="header-section-number">2</span> Decision Tree and Random Forest</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-decision-tree" id="toc-introduction-to-decision-tree" class="nav-link" data-scroll-target="#introduction-to-decision-tree"> <span class="header-section-number">2.1</span> Introduction to Decision Tree</a></li>
+  <li><a href="#motivation-example-predicting-mpg-from-mtcars" id="toc-motivation-example-predicting-mpg-from-mtcars" class="nav-link" data-scroll-target="#motivation-example-predicting-mpg-from-mtcars"> <span class="header-section-number">2.2</span> Motivation Example: Predicting <code>mpg</code> from <code>mtcars</code></a></li>
+  <li><a href="#implementation-of-decision-tree-in-r" id="toc-implementation-of-decision-tree-in-r" class="nav-link" data-scroll-target="#implementation-of-decision-tree-in-r"> <span class="header-section-number">2.3</span> Implementation of Decision Tree in R</a></li>
+  <li><a href="#intuition-behind-decision-trees" id="toc-intuition-behind-decision-trees" class="nav-link" data-scroll-target="#intuition-behind-decision-trees"> <span class="header-section-number">2.4</span> Intuition behind Decision Trees</a></li>
+  <li><a href="#pros-and-cons-of-decision-trees" id="toc-pros-and-cons-of-decision-trees" class="nav-link" data-scroll-target="#pros-and-cons-of-decision-trees"> <span class="header-section-number">2.5</span> Pros and Cons of Decision Trees</a></li>
+  <li><a href="#random-forest" id="toc-random-forest" class="nav-link" data-scroll-target="#random-forest"> <span class="header-section-number">2.6</span> Random Forest</a></li>
+  <li><a href="#visualization-of-random-forest" id="toc-visualization-of-random-forest" class="nav-link" data-scroll-target="#visualization-of-random-forest"> <span class="header-section-number">2.7</span> Visualization of Random Forest</a></li>
+  <li><a href="#implementation-of-random-forest-in-r" id="toc-implementation-of-random-forest-in-r" class="nav-link" data-scroll-target="#implementation-of-random-forest-in-r"> <span class="header-section-number">2.8</span> Implementation of Random Forest in R</a></li>
+  <li><a href="#make-predictions-from-random-forest" id="toc-make-predictions-from-random-forest" class="nav-link" data-scroll-target="#make-predictions-from-random-forest"> <span class="header-section-number">2.9</span> Make Predictions from Random Forest</a></li>
+  <li><a href="#after-class-reading" id="toc-after-class-reading" class="nav-link" data-scroll-target="#after-class-reading"> <span class="header-section-number">2.10</span> After-Class Reading</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Class 7 Predictive Analytics for STP (II): Supervised Learning</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr Wei Miao </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 27, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="supervised-learning" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Supervised Learning</h1>
+<section id="motivation-why-supervised-learning-for-business" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="motivation-why-supervised-learning-for-business"><span class="header-section-number">1.1</span> Motivation: Why Supervised Learning for Business?</h2>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Supervised%20learning%20and%20unsupersied%20learning.png" class="img-fluid figure-img" width="1000"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="data-generating-process" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="data-generating-process"><span class="header-section-number">1.2</span> Data Generating Process</h2>
+<p><span class="math display">\[
+Y = f(X;\theta) + \epsilon
+\]</span></p>
+<ul>
+<li><span class="math inline">\(f\)</span> is the function that characterizes the true relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>
+<ul>
+<li><span class="math inline">\(f\)</span> is often called Data Generating Process (DGP), which is NEVER known to us</li>
+</ul></li>
+<li><span class="math inline">\(Y\)</span> the <strong>response</strong>/<strong>outcome/explained</strong> variable to be predicted
+<ul>
+<li>e.g., whether customer responds to our offer (1/0)</li>
+</ul></li>
+<li><span class="math inline">\(X = (X_1,X_2,...,X_p)\)</span> are a set of <strong>predictors/features/explanatory variables</strong>
+<ul>
+<li>customers’ past purchase history (e.g., spending in each category)</li>
+<li>demographic variables (e.g., income, age, kids, etc.)</li>
+</ul></li>
+<li><span class="math inline">\(\theta\)</span> represents the set of <strong>function</strong> <strong>parameters</strong> of the DGP <span class="math inline">\(f\)</span></li>
+<li><span class="math inline">\(\epsilon\)</span> is the random <strong>error term</strong>, with mean zero.</li>
+</ul>
+</section>
+<section id="supervised-learning-1" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="supervised-learning-1"><span class="header-section-number">1.3</span> Supervised Learning</h2>
+<ul>
+<li>A <strong>supervised learning model</strong> is used when we have one or more explanatory variables and a response variable and we would like to find some function that describes the DGP between the explanatory variables and the response variable as accurately as possible.</li>
+</ul>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/supervisedlearning.png" class="img-fluid figure-img" width="400"></p>
+</figure>
+</div>
+</div>
+<ul>
+<li>Since we never know the true DGP: All models are wrong, but some are useful<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ul>
+</section>
+<section id="types-of-supervised-learning-tasks-for-customer-relationship-management" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="types-of-supervised-learning-tasks-for-customer-relationship-management"><span class="header-section-number">1.4</span> Types of Supervised Learning Tasks for Customer Relationship Management</h2>
+<p>Depending on the type of the <strong>response variable</strong>, supervised learning tasks can be divided into two major groups</p>
+<ul>
+<li><strong>Classification tasks</strong>: outcome is a categorical variable
+<ul>
+<li>Whether a customer responds to marketing offers (acquisition)</li>
+<li>Whether a customer churns (retention)</li>
+</ul></li>
+<li><strong>Regression tasks</strong>: outcome is a continuous variable
+<ul>
+<li>Probability of customers responding to marketing offers (acquisition)</li>
+<li>Customer total spending in each period (development)</li>
+<li>Probability of customer churn (retention)</li>
+</ul></li>
+</ul>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/CustomerLifeCycle.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="difference-between-supervised-and-unsupervised-learning" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="difference-between-supervised-and-unsupervised-learning"><span class="header-section-number">1.5</span> Difference between Supervised and Unsupervised Learning</h2>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.statology.org/supervised-vs-unsupervised-learning/"><img src="images/SupervisedVSUnsupervised.png" class="img-fluid figure-img" alt="source: Statology"></a></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="commonly-used-supervised-learning-models" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="commonly-used-supervised-learning-models"><span class="header-section-number">1.6</span> Commonly Used Supervised Learning Models</h2>
+<ul>
+<li><p>Linear regression class models (easy to interpret, low accuracy)</p>
+<ul>
+<li>OLS, Lasso, Ridge regressions</li>
+</ul></li>
+<li><p><strong>Tree-based Models (good balance between interpretability and accuracy)</strong></p>
+<ul>
+<li>Decision tree, random forest</li>
+</ul></li>
+<li><p>Neural-network based models (hard to interpret, high accuracy)</p>
+<ul>
+<li>Deep learning models</li>
+</ul></li>
+</ul>
+</section>
+<section id="overfitting-and-underfitting" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="overfitting-and-underfitting"><span class="header-section-number">1.7</span> Overfitting and Underfitting</h2>
+<ul>
+<li><p><strong>Overfitting</strong> means a predictive model corresponds too closely to <strong>historical data</strong>, and therefore fails to predict <strong>new data</strong> reliably.</p>
+<ul>
+<li>Overfitting leads to high <strong>variance error</strong>, which is the error from being unable to predict for new data points</li>
+</ul></li>
+<li><p><strong>Underfitting</strong> occurs when a predictive model cannot adequately capture the underlying structure of <strong>historical data</strong>.</p>
+<ul>
+<li>Underfitting leads to high <strong>bias error</strong>, which means high prediction error on the historical data, as the model fails to sufficiently capture the relations between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></li>
+<li>An underfitting model also tends to have poor predictive performance for future data points.</li>
+</ul></li>
+</ul>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/OverfittingUnderfitting.png" class="img-fluid figure-img" width="500"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="mitigate-the-underfitting-and-overfitting-problems" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="mitigate-the-underfitting-and-overfitting-problems"><span class="header-section-number">1.8</span> Mitigate the Underfitting and Overfitting Problems</h2>
+<ul>
+<li>To mitigate the underfitting problem, select better models and tune the parameters.</li>
+<li>To mitigate the overfitting problem, when building predictive models, we need to divide the <strong>full labelled historical data</strong> into different sets. The percentage of split depends on the context.
+<ul>
+<li><strong>Training</strong> <strong>set</strong> (70% - 80% of labelled data)<strong>:</strong> train the model parameters</li>
+<li><strong>Test</strong> <strong>set</strong> (20% - 30% of labelled data)<strong>:</strong> evaluate the prediction accuracy</li>
+</ul></li>
+</ul>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/trainingtest.png" class="img-fluid figure-img" width="400"></p>
+</figure>
+</div>
+</div>
+<ul>
+<li>For more complicated models with hyper-parameters such as deep learning models, we may even need to split our data into 3 sets (training, validation, and test sets). You will learn more details in term 2 from ML specialization modules.</li>
+</ul>
+</section>
+</section>
+<section id="decision-tree-and-random-forest" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Decision Tree and Random Forest</h1>
+<section id="introduction-to-decision-tree" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="introduction-to-decision-tree"><span class="header-section-number">2.1</span> Introduction to Decision Tree</h2>
+<ul>
+<li>There are many methodologies for constructing regression trees but one of the oldest and most commonly used is known as the <strong>c</strong>lassification <strong>a</strong>nd <strong>r</strong>egression <strong>t</strong>ree (CART) approach developed by Breiman et al.&nbsp;(1984).</li>
+</ul>
+</section>
+<section id="motivation-example-predicting-mpg-from-mtcars" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="motivation-example-predicting-mpg-from-mtcars"><span class="header-section-number">2.2</span> Motivation Example: Predicting <code>mpg</code> from <code>mtcars</code></h2>
+<ul>
+<li><p>From <code>mtcars</code>, we want to predict the outcome variable <code>mpg</code> based on <code>cyl</code> and <code>hp</code></p>
+<ul>
+<li><p>Predictors <span class="math inline">\(X\)</span> include <code>cyl</code> and <code>hp</code></p></li>
+<li><p>Outcome variable <span class="math inline">\(Y\)</span> is <code>mpg</code></p></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr,modelsummary)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">data</span>(<span class="st">"mtcars"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Generate a new data for the task</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>data_decision_tree <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">select</span>(mpg,cyl,hp)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># check first 4 rows</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>data_decision_tree <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">4</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">mpg</th>
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">hp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Mazda RX4</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">110</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mazda RX4 Wag</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">110</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Datsun 710</td>
+<td style="text-align: right;">22.8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">93</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hornet 4 Drive</td>
+<td style="text-align: right;">21.4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">110</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="implementation-of-decision-tree-in-r" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="implementation-of-decision-tree-in-r"><span class="header-section-number">2.3</span> Implementation of Decision Tree in R</h2>
+<ul>
+<li><p>Package <code>rpart</code> provides implementation of decision trees in R</p>
+<ul>
+<li><code>rpart()</code> is the function in the package to train a decision tree; refer to its help function for more details.</li>
+</ul></li>
+<li><p>Package <code>rpart.plot</code> provides nice visualizations of decision trees</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Load the necessary packages</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(rpart,rpart.plot)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Below example shows how to train a decisin tree</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>tree1 <span class="ot">&lt;-</span> <span class="fu">rpart</span>(</span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="at">formula =</span> mpg <span class="sc">~</span> cyl <span class="sc">+</span> hp,</span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="at">data    =</span> data_decision_tree,</span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="at">method  =</span> <span class="st">"anova"</span> </span>
+<span id="cb2-8"><a href="#cb2-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="intuition-behind-decision-trees" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="intuition-behind-decision-trees"><span class="header-section-number">2.4</span> Intuition behind Decision Trees</h2>
+<div class="cell" data-layout-align="center" data-hash="Week4-Lecture1_cache/html/unnamed-chunk-3_4938a42849eb1fc2e60d28692f9ab551">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Week4-Lecture1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol type="1">
+<li>First, we find that <code>cyl</code> matters more than <code>hp</code> in terms of predicting mpg, so we split two branches according to <code>cyl</code>. We find that {4} and {6,8} split can best differentiate car models.
+<ul>
+<li><p><code>cyl</code> = 4, go to the right branch</p></li>
+<li><p><code>cyl</code> = 6 or 8, go to the left branch</p></li>
+</ul></li>
+</ol>
+<div>
+<ol start="2" type="1">
+<li>For car models with 4 cylinders, we try all possible splits based on <code>hp</code>, and find that 193 can best differentiate car models.
+<ul>
+<li><p><code>hp</code> &gt;= 193, use the average <code>mpg</code> in that <strong>terminal node,</strong> 13, as the predicted <code>mpg</code></p></li>
+<li><p><code>hp</code> &lt; 193, use the average <code>mpg</code> in that <strong>terminal node,</strong> 18, as the predicted <code>mpg</code></p></li>
+</ul></li>
+</ol>
+</div>
+<div>
+<ol start="3" type="1">
+<li>For car models with less than 5 cylinders (the right branch), we find that <code>hp</code> does not differentiate car models, so we do not further split.
+<ul>
+<li>Use the average <code>mpg</code> in that <strong>terminal node,</strong> 27, as the predicted <code>mpg</code></li>
+</ul></li>
+</ol>
+</div>
+</section>
+<section id="pros-and-cons-of-decision-trees" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="pros-and-cons-of-decision-trees"><span class="header-section-number">2.5</span> Pros and Cons of Decision Trees</h2>
+<p><strong>Advantages of Decision Trees</strong></p>
+<ul>
+<li><p>They are very interpretable.</p></li>
+<li><p>Making predictions is fast.</p></li>
+<li><p>It’s easy to understand what variables are important in making the prediction. The internal nodes (splits) are those variables that most largely reduce the SSE (criteria for split).</p></li>
+</ul>
+<p><strong>Disadvantages of Decision Trees</strong></p>
+<ul>
+<li><p>Single regression trees have high variance (overfitting), resulting in unstable predictions.</p></li>
+<li><p>Due to the high variance, single regression trees tend to have poor predictive accuracy.</p></li>
+</ul>
+</section>
+<section id="random-forest" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="random-forest"><span class="header-section-number">2.6</span> Random Forest</h2>
+<p>To overcome the overfitting tendency of a single decision tree, random forest has been developed by <span class="citation" data-cites="breimanRandomForests2001">(<a href="#ref-breimanRandomForests2001" role="doc-biblioref">Breiman 2001</a>)</span>.</p>
+<ol type="1">
+<li><p><strong>Bootstrap subsampling</strong></p>
+<ul>
+<li>Each tree is grown to a bootstrapped subsample</li>
+</ul></li>
+<li><p><strong>Split-variable randomization</strong></p>
+<ul>
+<li>each time a split is to be performed, the search for the split variable is limited to a random subset of <em>m</em> out of the <em>p</em> variables. For regression trees, typical default values are <span class="math inline">\(m=p/3\)</span>.</li>
+</ul></li>
+</ol>
+</section>
+<section id="visualization-of-random-forest" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="visualization-of-random-forest"><span class="header-section-number">2.7</span> Visualization of Random Forest</h2>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/randomforest.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<ul>
+<li><p>Each tree gives a prediction</p></li>
+<li><p>Random forest takes the majority of voting as the final prediction</p></li>
+</ul>
+</section>
+<section id="implementation-of-random-forest-in-r" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="implementation-of-random-forest-in-r"><span class="header-section-number">2.8</span> Implementation of Random Forest in R</h2>
+<ul>
+<li><p>Package <code>ranger</code> provides implementation of random forest in R.</p></li>
+<li><p><code>ranger()</code> is the function in the package to train a random forest; refer to its help function for more details.</p></li>
+<li><p>The following code shows how to train a random forest consisting of 500 decision trees, where the outcome variable is mpg, and the predictors are 5 car attribute variables.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ranger)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>randomforest1 <span class="ot">&lt;-</span> <span class="fu">ranger</span>(</span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="at">formula   =</span> mpg <span class="sc">~</span> hp <span class="sc">+</span> cyl <span class="sc">+</span> disp <span class="sc">+</span> wt <span class="sc">+</span> gear, </span>
+<span id="cb3-4"><a href="#cb3-4"></a>    <span class="at">data      =</span> mtcars, <span class="co"># dataset to train the model</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>    <span class="at">num.trees =</span> <span class="dv">500</span>, <span class="co"># 500 decision trees</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>    <span class="at">seed =</span> <span class="dv">888</span> <span class="co"># make sure of replication</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="make-predictions-from-random-forest" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="make-predictions-from-random-forest"><span class="header-section-number">2.9</span> Make Predictions from Random Forest</h2>
+<ul>
+<li><p>After we train the predictive model, we can use <code>predict()</code> function to make predictions</p>
+<ul>
+<li><p>The 1st argument is the trained model object</p></li>
+<li><p>The 2nd argument is the dataset to make predictions on</p></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Make predictions on the mtcars</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>prediction_rf <span class="ot">&lt;-</span> <span class="fu">predict</span>(randomforest1,</span>
+<span id="cb4-3"><a href="#cb4-3"></a>                         <span class="at">data =</span> mtcars)</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co"># Because prediction_rf is a list object</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co"># Need to use $ to extract the predicted value as a numeric vector</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>prediction_rf<span class="sc">$</span>predictions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 20.80814 20.80526 24.13373 20.14718 17.50231 18.98494 14.73153 24.16436
+ [9] 22.84680 18.73638 18.73638 16.26754 16.26130 16.17000 11.96695 11.57377
+[17] 13.35940 29.91299 30.71855 31.04063 22.58045 16.30967 16.48256 14.42590
+[25] 17.42216 29.60584 26.18860 28.29520 15.87313 20.14866 14.97831 22.12769</code></pre>
+</div>
+</div>
+</section>
+<section id="after-class-reading" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="after-class-reading"><span class="header-section-number">2.10</span> After-Class Reading</h2>
+<ul>
+<li>(optional) Varian, Hal R. “Big data: New tricks for econometrics.” Journal of Economic Perspectives 28, no. 2 (2014): 3-28</li>
+<li>(recommended) <a href="http://uc-r.github.io/regression_trees">Decision tree in R</a></li>
+<li>(recommended) <a href="http://uc-r.github.io/random_forests">Random forest in R</a></li>
+</ul>
+
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-breimanRandomForests2001" class="csl-entry" role="doc-biblioentry">
+Breiman, Leo. 2001. <span>“Random <span>Forests</span>.”</span> <em>Machine Learning</em> 45 (1): 5–32. <a href="https://doi.org/10.1023/A:1010933404324">https://doi.org/10.1023/A:1010933404324</a>.
+</div>
+</div></section><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1" role="doc-endnote"><p>A famous <a href="https://en.wikipedia.org/wiki/All_models_are_wrong">quote</a> by statistician George Box.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./Case-PreliminaryCustomerAnalysis.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Case Solution: Descriptive Analytics</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Week4-Lecture1.pdf" class="pagination-link">
+        <span class="nav-page-text">Class 7 Supervised Learning (PDF)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr.&nbsp;Wei Miao">
+<meta name="dcterms.date" content="2001-10-06">
+
+<title>Marketing Analytics - Class 2 Break-Even Analysis and Customer Lifetime Value</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Week1-Lecture2.pdf" rel="next">
+<link href="./Week1-Lecture1.pdf" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FTK61TBF7L"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FTK61TBF7L', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Class 2 Break-Even Analysis and Customer Lifetime Value</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Marketing Analytics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Lectures</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">Syllabus</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassPreparation.html" class="sidebar-item-text sidebar-link">Weekly Arrangements</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">[Week 1] Marketing Process and Break-Even Analyses</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.html" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 1 Intro to Marketing (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.html" class="sidebar-item-text sidebar-link active">Class 2 Break-Even Analyses (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 2 Break-Even Analyses (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.html" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-BreakEvenAnalysis.pdf" class="sidebar-item-text sidebar-link">Break-Even Analyses for PineApple Inc (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ClassExercise.html" class="sidebar-item-text sidebar-link">In-Class Exercise Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">[Week 2] Customer Lifetime Value and Data Wrangling with R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.html" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 3 Customer Lifetime Value Case Study (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.html" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 4 Data Wrangling with R I (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-CLSV.html" class="sidebar-item-text sidebar-link">CLSV Solutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">[Week 3] Unsupervised Learning and Customer Segmentation</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.html" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 5 Data Wrangling with R II (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.html" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 6 Unsupervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis-stu.pdf" class="sidebar-item-text sidebar-link">Preliminary Customer Analyses</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PreliminaryCustomerAnalysis.html" class="sidebar-item-text sidebar-link">Case Solution: Descriptive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">[Week 4] Supervised Learning and Customer Targeting</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.html" class="sidebar-item-text sidebar-link">Class 7 Supervised Learning (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 7 Supervised Learning (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.html" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 8: Improve Marketing Efficiency Using Predictive Analytics (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics-stu.pdf" class="sidebar-item-text sidebar-link">Improving Marketing Efficiency Using Predictive Analytics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-PredictiveAnalytics.html" class="sidebar-item-text sidebar-link">Case Solution: Predictive Analytics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">[Week 5] Causal Inference and RCT</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.html" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 9 Causal Inference (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.html" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 10 Randomized Controlled Trials (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">[Week 6] Linear Regression Models</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.html" class="sidebar-item-text sidebar-link">Class 11 Application of A-B Testing at Vungle (html)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 11 Application of A-B Testing at Vungle (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.html" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week6-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 12 Linear Regression Basics (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">[Week 7] Marketing Mix Modeling</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.html" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 13 Linear Regression Advanced (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.html" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week7-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 14 Marketing Mix Modeling (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-Zalora.html" class="sidebar-item-text sidebar-link">Case Solution: Zalora</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">[Week 8] Endogeneity and Instrumental Variable</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.html" class="sidebar-item-text sidebar-link">Class 15 Endogeneity (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 15 Endogeneity (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.html" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week8-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 16 Instrumental Variable (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV-stu.pdf" class="sidebar-item-text sidebar-link">Case: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Case-COVID-IV.html" class="sidebar-item-text sidebar-link">Case Solution: COVID-19 and Ridesharing</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">[Week 9] Natural Experiment</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.html" class="sidebar-item-text sidebar-link">Class 17 Difference-in-Differences (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture1.pdf" class="sidebar-item-text sidebar-link">Class 17 Difference-in-Differences (PDF)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.html" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week9-Lecture2.pdf" class="sidebar-item-text sidebar-link">Class 18 Regression Discontinuity Design (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">[Week 10] Module Wrap-Up</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.html" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (HTML)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week10-Lecture2.pdf" class="sidebar-item-text sidebar-link">Week 10 Module Wrap-Up (PDF)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">R Tutorials</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-installR.html" class="sidebar-item-text sidebar-link">Install and Setup R</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">R Basics Part I (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">R Basics Part II (Induction Week)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.html" class="sidebar-item-text sidebar-link">html version</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-InductionWeek-II.pdf" class="sidebar-item-text sidebar-link">pdf version</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-errors.html" class="sidebar-item-text sidebar-link">Troubleshooting R</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">Advanced R Tips</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RTip-BLAS.html" class="sidebar-item-text sidebar-link">Speed Up Matrix Operations</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"> <span class="header-section-number">1</span> Overview</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"> <span class="header-section-number">1.1</span> Learning Objectives</a></li>
+  </ul></li>
+  <li><a href="#break-even-analysis" id="toc-break-even-analysis" class="nav-link" data-scroll-target="#break-even-analysis"> <span class="header-section-number">2</span> Break-Even Analysis</a>
+  <ul class="collapse">
+  <li><a href="#decisions-for-marketing-managers" id="toc-decisions-for-marketing-managers" class="nav-link" data-scroll-target="#decisions-for-marketing-managers"> <span class="header-section-number">2.1</span> Decisions for Marketing Managers</a></li>
+  <li><a href="#break-even-quantity" id="toc-break-even-quantity" class="nav-link" data-scroll-target="#break-even-quantity"> <span class="header-section-number">2.2</span> Break-Even Quantity</a></li>
+  <li><a href="#break-even-quantity-steps-and-decision-rule" id="toc-break-even-quantity-steps-and-decision-rule" class="nav-link" data-scroll-target="#break-even-quantity-steps-and-decision-rule"> <span class="header-section-number">2.3</span> Break-Even Quantity: Steps and Decision Rule</a></li>
+  <li><a href="#compute-beq" id="toc-compute-beq" class="nav-link" data-scroll-target="#compute-beq"> <span class="header-section-number">2.4</span> Compute BEQ</a></li>
+  <li><a href="#pineapple-inc-background" id="toc-pineapple-inc-background" class="nav-link" data-scroll-target="#pineapple-inc-background"> <span class="header-section-number">2.5</span> Pineapple Inc: Background</a></li>
+  <li><a href="#pineapple-inc-key-information" id="toc-pineapple-inc-key-information" class="nav-link" data-scroll-target="#pineapple-inc-key-information"> <span class="header-section-number">2.6</span> Pineapple Inc: Key Information</a></li>
+  <li><a href="#pineapple-inc-bea" id="toc-pineapple-inc-bea" class="nav-link" data-scroll-target="#pineapple-inc-bea"> <span class="header-section-number">2.7</span> Pineapple Inc: BEA</a></li>
+  </ul></li>
+  <li><a href="#net-present-value" id="toc-net-present-value" class="nav-link" data-scroll-target="#net-present-value"> <span class="header-section-number">3</span> Net Present Value</a>
+  <ul class="collapse">
+  <li><a href="#definition-of-npv" id="toc-definition-of-npv" class="nav-link" data-scroll-target="#definition-of-npv"> <span class="header-section-number">3.1</span> Definition of NPV</a></li>
+  <li><a href="#formula-of-npv" id="toc-formula-of-npv" class="nav-link" data-scroll-target="#formula-of-npv"> <span class="header-section-number">3.2</span> Formula of NPV</a></li>
+  <li><a href="#pineapple-inc-npv-influencer-marketing-i" id="toc-pineapple-inc-npv-influencer-marketing-i" class="nav-link" data-scroll-target="#pineapple-inc-npv-influencer-marketing-i"> <span class="header-section-number">3.3</span> Pineapple Inc: NPV Influencer Marketing I</a></li>
+  <li><a href="#pineapple-inc-npv-influencer-marketing-ii" id="toc-pineapple-inc-npv-influencer-marketing-ii" class="nav-link" data-scroll-target="#pineapple-inc-npv-influencer-marketing-ii"> <span class="header-section-number">3.4</span> Pineapple Inc: NPV Influencer Marketing II</a></li>
+  <li><a href="#pineapple-inc-npv-influencer-marketing-iii" id="toc-pineapple-inc-npv-influencer-marketing-iii" class="nav-link" data-scroll-target="#pineapple-inc-npv-influencer-marketing-iii"> <span class="header-section-number">3.5</span> Pineapple Inc: NPV Influencer Marketing III</a></li>
+  </ul></li>
+  <li><a href="#customer-lifetime-value" id="toc-customer-lifetime-value" class="nav-link" data-scroll-target="#customer-lifetime-value"> <span class="header-section-number">4</span> Customer Lifetime Value</a>
+  <ul class="collapse">
+  <li><a href="#from-campaign-centric-to-customer-centric-marketing" id="toc-from-campaign-centric-to-customer-centric-marketing" class="nav-link" data-scroll-target="#from-campaign-centric-to-customer-centric-marketing"> <span class="header-section-number">4.1</span> From Campaign-Centric to Customer-Centric Marketing</a></li>
+  <li><a href="#customer-acquisition-cost" id="toc-customer-acquisition-cost" class="nav-link" data-scroll-target="#customer-acquisition-cost"> <span class="header-section-number">4.2</span> Customer Acquisition Cost</a></li>
+  <li><a href="#how-to-acquire-new-customers" id="toc-how-to-acquire-new-customers" class="nav-link" data-scroll-target="#how-to-acquire-new-customers"> <span class="header-section-number">4.3</span> How to Acquire New Customers</a></li>
+  <li><a href="#how-to-acquire-new-customers-1" id="toc-how-to-acquire-new-customers-1" class="nav-link" data-scroll-target="#how-to-acquire-new-customers-1"> <span class="header-section-number">4.4</span> How to Acquire New Customers</a></li>
+  <li><a href="#customer-acquisition-cost-calculation" id="toc-customer-acquisition-cost-calculation" class="nav-link" data-scroll-target="#customer-acquisition-cost-calculation"> <span class="header-section-number">4.5</span> Customer Acquisition Cost: Calculation</a></li>
+  <li><a href="#customer-acquisition-cost-an-example" id="toc-customer-acquisition-cost-an-example" class="nav-link" data-scroll-target="#customer-acquisition-cost-an-example"> <span class="header-section-number">4.6</span> Customer Acquisition Cost: An Example</a></li>
+  <li><a href="#customer-lifetime-value-clv" id="toc-customer-lifetime-value-clv" class="nav-link" data-scroll-target="#customer-lifetime-value-clv"> <span class="header-section-number">4.7</span> Customer Lifetime Value (CLV)</a></li>
+  <li><a href="#clv-calculation" id="toc-clv-calculation" class="nav-link" data-scroll-target="#clv-calculation"> <span class="header-section-number">4.8</span> CLV: Calculation</a></li>
+  <li><a href="#retention-rate" id="toc-retention-rate" class="nav-link" data-scroll-target="#retention-rate"> <span class="header-section-number">4.9</span> Retention Rate</a></li>
+  <li><a href="#number-of-years-of-customer-relationship" id="toc-number-of-years-of-customer-relationship" class="nav-link" data-scroll-target="#number-of-years-of-customer-relationship"> <span class="header-section-number">4.10</span> Number of Years of Customer Relationship</a></li>
+  <li><a href="#after-class" id="toc-after-class" class="nav-link" data-scroll-target="#after-class"> <span class="header-section-number">4.11</span> After-class</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Class 2 Break-Even Analysis and Customer Lifetime Value</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Wei Miao </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 6, 2001</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="overview" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Overview</h1>
+<section id="learning-objectives" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">1.1</span> Learning Objectives</h2>
+<div class="cell">
+
+</div>
+<ul>
+<li>How to conduct break-even analyses for marketing campaigns
+<ul>
+<li>Break-even quantity</li>
+<li>Net present value</li>
+</ul></li>
+<li>Concept of customer life cycle</li>
+<li>Concept of and how to compute customer acquisition cost (CAC)</li>
+<li>Concept of and how to compute customer lifetime value (CLV)</li>
+<li>Practice R basic calculations and vector operations in the case study</li>
+</ul>
+</section>
+</section>
+<section id="break-even-analysis" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Break-Even Analysis</h1>
+<section id="decisions-for-marketing-managers" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="decisions-for-marketing-managers"><span class="header-section-number">2.1</span> Decisions for Marketing Managers</h2>
+<ul>
+<li><p>Ultimate goal in the marketing process: create value and improve profitability for firms</p></li>
+<li><p>As any marketing activity comes with a cost, marketers need to correctly evaluate whether a campaign creates or destroys value to the company. Such analyses are called break-even analyses (BEA).</p></li>
+<li><p>In this class, we will learn how to conduct BEA from the following points of view</p>
+<ol type="1">
+<li>Campaign-centric or customer-centric</li>
+<li>Static or dynamic</li>
+</ol></li>
+</ul>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td><strong>Static View</strong></td>
+<td><strong>Dynamic View</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Campaign-centric</strong></td>
+<td>Break-Even Quantity</td>
+<td>Net Present Value</td>
+</tr>
+<tr class="odd">
+<td><strong>Customer-centric</strong></td>
+<td>-</td>
+<td>Customer Lifetime Value</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="break-even-quantity" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="break-even-quantity"><span class="header-section-number">2.2</span> Break-Even Quantity</h2>
+<ul>
+<li>Marketing managers often use break-even analyses to evaluate the financial feasibility of marketing investments. One commonly used way is to compute the break-even quantity.</li>
+</ul>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>The break-even quantity (BEQ)</strong> calculates the number of <em>incremental</em> units the firm needs to sell to cover the cost of the marketing campaign.</p>
+</div>
+</div>
+</section>
+<section id="break-even-quantity-steps-and-decision-rule" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="break-even-quantity-steps-and-decision-rule"><span class="header-section-number">2.3</span> Break-Even Quantity: Steps and Decision Rule</h2>
+<ul>
+<li>Steps to conduct break-even analysis
+<ul>
+<li><p><em>Step 1</em>: Compute the BEQ based on the company’s product demand and production cost structure</p></li>
+<li><p><em>Step 2</em>: Evaluate whether the campaign can guarantee incremental sales to that quantity</p></li>
+</ul></li>
+<li>The decision rule
+<ul>
+<li>if incremental sales &gt; BEQ, the company makes money so accept the campaign; otherwise, reject the campaign</li>
+</ul></li>
+</ul>
+</section>
+<section id="compute-beq" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="compute-beq"><span class="header-section-number">2.4</span> Compute BEQ</h2>
+<p>Marketers often refer to the difference between the <strong>price per unit</strong> and <strong>variable costs per unit</strong> as the <strong>contribution margin per unit</strong>. That is,</p>
+<p><span class="math display">\[
+Contribution Margin Per Unit = Price Per Unit - Variable Costs Per Unit
+\]</span></p>
+<ul>
+<li><strong>Price per unit</strong>: retail price or transaction price</li>
+<li><strong>Variable costs per unit:</strong> Costs of goods sold (COGS)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> + any other variable costs</li>
+<li><strong>Marketing expenditure:</strong> total costs of marketing investment</li>
+</ul>
+<p>This gives the second formula for computing BEQ:</p>
+<p><span class="math display">\[
+BEQ = Marketing Expenditure / Contribution Margin Per Unit
+\]</span></p>
+</section>
+<section id="pineapple-inc-background" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="pineapple-inc-background"><span class="header-section-number">2.5</span> Pineapple Inc: Background</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/class2_pineapple.png" style="height:25.0%" width="154" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Tom Cooper, is looking to launch a series of marketing campaigns to promote its new product PinePhone 14 against its competitor iPhone 14. Tom was a proud graduate from UCL MSc BA program in 2020, and he remembered learning from Marketing Analytics module that, marketers often use break-even analysis to help evaluate different types of marketing decisions.</p>
+<div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>price <span class="ot">&lt;-</span> <span class="dv">600</span> <span class="co"># retail price</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>quantity <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># sales </span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>COGS <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="co"># cost of goods sold</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>RD_costs <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># operating and marketing costs</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>endorsement_fee <span class="ot">&lt;-</span> <span class="dv">50</span> <span class="co"># endorsement</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><strong>Case objectives:</strong></p>
+<ul>
+<li><p>Practice how to conduct BEA and compute BEQ</p></li>
+<li><p>Practice R basic computations and vector operations</p></li>
+</ul>
+</section>
+<section id="pineapple-inc-key-information" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="pineapple-inc-key-information"><span class="header-section-number">2.6</span> Pineapple Inc: Key Information</h2>
+<p><strong>From the case:</strong> The marketing analytics team at Pinapple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach <strong>10</strong> million units at the retail price of <strong>£600</strong>, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of Pineapple 14, which is <strong>60%</strong>. The Research and Development (R&amp;D) costs for PinePhone 14 is <strong>100</strong> million pounds.</p>
+<ul>
+<li>Open the .qmd answer sheet downloaded from Moodle. And let’s solve this case using the R basics we learned last week!</li>
+</ul>
+</section>
+<section id="pineapple-inc-bea" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="pineapple-inc-bea"><span class="header-section-number">2.7</span> Pineapple Inc: BEA</h2>
+<ul>
+<li><strong>Question 1:</strong> Compute the contribution margin
+<ul>
+<li>Do we need to consider R&amp;D costs?</li>
+</ul></li>
+</ul>
+<div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>contribution_margin <span class="ot">&lt;-</span> (<span class="dv">1</span> <span class="sc">-</span> COGS) <span class="sc">*</span> price</span>
+<span id="cb2-2"><a href="#cb2-2"></a>contribution_margin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 240</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Question 2</strong>: Based on the information at hand, should Tom approve the influencer marketing plan?</li>
+</ul>
+</section>
+</section>
+<section id="net-present-value" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Net Present Value</h1>
+<section id="definition-of-npv" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="definition-of-npv"><span class="header-section-number">3.1</span> Definition of NPV</h2>
+<ul>
+<li>When the effect of the marketing campaign is expected to have a long-term effect or when time value of money is important to the question at hand, we need to take the future into account.</li>
+</ul>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Net present value (NPV) is the difference between the present value of cash inflows and the present value of cash outflows over a period of time.</p>
+</div>
+</div>
+</section>
+<section id="formula-of-npv" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="formula-of-npv"><span class="header-section-number">3.2</span> Formula of NPV</h2>
+<p><span class="math display">\[
+N P V=-I_{0}+\frac{CF_{1}}{(1+k)}+\frac{C F_{2}}{(1+k)^{2}}+\cdots+\frac{C F_{n}}{(1+k)^{n}}
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(I_{0}\)</span> is the initial marketing expense</p></li>
+<li><p><span class="math inline">\(C F_{n}\)</span> is the <strong>incremental</strong> sales in period <span class="math inline">\(n\)</span>: it must be the additional sales due to the marketing campaign</p></li>
+<li><p><span class="math inline">\(k\)</span> is the discount rate: reflects the value of time: the same £1 today is more valuable than £1 tomorrow</p></li>
+<li><p>The decision rule</p>
+<ul>
+<li>if NPV &gt; 0, then the marketing campaign can bring in more values to the company, accept</li>
+<li>if NPV &lt; 0, then the marketing campaign will decrease the company’s value, reject</li>
+</ul></li>
+</ul>
+</section>
+<section id="pineapple-inc-npv-influencer-marketing-i" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="pineapple-inc-npv-influencer-marketing-i"><span class="header-section-number">3.3</span> Pineapple Inc: NPV Influencer Marketing I</h2>
+<p><strong>Question 3:</strong> Based on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?</p>
+<ol type="1">
+<li>Compute the sequence of monthly cash flows
+<ul>
+<li>Generate a sequence of incremental sales for 12 months (a vector with 12 elements)
+<ul>
+<li>Hint: use <code>rep()</code>, <code>c()</code>, and vector element-wise multiplication</li>
+</ul></li>
+</ul></li>
+</ol>
+<div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>monthly_sales_increase_1stmonth <span class="ot">&lt;-</span> <span class="fl">0.003</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>monthly_sales_increase_after <span class="ot">&lt;-</span> <span class="fl">0.002</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># incremental profit each month</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>monthly_incremental_sales <span class="ot">&lt;-</span> <span class="fu">c</span>(monthly_sales_increase_1stmonth,</span>
+<span id="cb4-5"><a href="#cb4-5"></a>                     <span class="fu">rep</span>(monthly_sales_increase_after,<span class="dv">11</span>))</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a>CF <span class="ot">&lt;-</span>  monthly_incremental_sales <span class="sc">*</span> </span>
+<span id="cb4-8"><a href="#cb4-8"></a>                    quantity <span class="sc">*</span> </span>
+<span id="cb4-9"><a href="#cb4-9"></a>                    contribution_margin </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>The resulting monthly CFs are: 7.2, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8</p>
+</section>
+<section id="pineapple-inc-npv-influencer-marketing-ii" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="pineapple-inc-npv-influencer-marketing-ii"><span class="header-section-number">3.4</span> Pineapple Inc: NPV Influencer Marketing II</h2>
+<ol start="2" type="1">
+<li>Compute the sequence of discount factors
+<ul>
+<li>Generate a sequence of WACC for 12 months (a vector with 12 elements)</li>
+<li>Generate a sequence of discount factor for 12 months (a vector with 12 elements)
+<ul>
+<li>Hint: use <code>seq()</code> to generate geometric sequence with patterns</li>
+</ul></li>
+</ul></li>
+</ol>
+<div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>monthly_WACC <span class="ot">&lt;-</span> <span class="fl">0.1</span><span class="sc">/</span><span class="dv">12</span> </span>
+<span id="cb5-2"><a href="#cb5-2"></a>discount_factor <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span>monthly_WACC))<span class="sc">^</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>The resulting monthly discount factors are: 0.9917355, 0.9835394, 0.975411, 0.9673497, 0.9593551, 0.9514265, 0.9435635, 0.9357654, 0.9280319, 0.9203622, 0.9127559, 0.9052124</p>
+</section>
+<section id="pineapple-inc-npv-influencer-marketing-iii" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="pineapple-inc-npv-influencer-marketing-iii"><span class="header-section-number">3.5</span> Pineapple Inc: NPV Influencer Marketing III</h2>
+<ol start="3" type="1">
+<li>Compute the NPV
+<ul>
+<li>Generate a sequence of discounted CFs for 12 months</li>
+<li>Sum up all discounted CFs across the 12 months using <code>sum()</code></li>
+<li>Subtract endorsement fee from the sum to get NPV</li>
+</ul></li>
+</ol>
+<div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>NetPresentValue <span class="ot">&lt;-</span> <span class="fu">sum</span>(CF <span class="sc">*</span> discount_factor) <span class="sc">-</span> endorsement_fee</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li>The NPV is 6.9778057</li>
+</ul>
+</section>
+</section>
+<section id="customer-lifetime-value" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Customer Lifetime Value</h1>
+<section id="from-campaign-centric-to-customer-centric-marketing" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="from-campaign-centric-to-customer-centric-marketing"><span class="header-section-number">4.1</span> From Campaign-Centric to Customer-Centric Marketing</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/CustomerLifeCycle.png" class="img-fluid figure-img" width="820"></p>
+<p></p><figcaption class="figure-caption">Customer Life Cycle</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="customer-acquisition-cost" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="customer-acquisition-cost"><span class="header-section-number">4.2</span> Customer Acquisition Cost</h2>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Customer Acquisition Cost (CAC)</strong> is the cost of winning a customer to purchase a product or service.</p>
+</div>
+</div>
+<ul>
+<li>Why should we care about CAC? Having a new customer may not always be a good thing. For example, no company would spend £500 to acquire a new customer worth £300</li>
+</ul>
+</section>
+<section id="how-to-acquire-new-customers" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="how-to-acquire-new-customers"><span class="header-section-number">4.3</span> How to Acquire New Customers</h2>
+<ul>
+<li>Free sampling/trials</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FreeSampling%201.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FreeSampling%202.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-to-acquire-new-customers-1" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="how-to-acquire-new-customers-1"><span class="header-section-number">4.4</span> How to Acquire New Customers</h2>
+<ul>
+<li>Referral Programs: Customer Lifetime Social Value (CLSV, week 2)</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/UberEatReferral.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/DeliverooReferral.jpeg" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="customer-acquisition-cost-calculation" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="customer-acquisition-cost-calculation"><span class="header-section-number">4.5</span> Customer Acquisition Cost: Calculation</h2>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When the marketing cost can be attributed to each individual customer</p>
+<ul>
+<li>CAC = (# of offers needed to acquire 1 customer) * (cost of making a marketing offer)</li>
+<li>CAC = (cost of making a marketing offer) / (customer response rate)</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>After we study predictive analytics later in this module, we will be able to predict response rate for each individual customer and compute individual-specific CAC.</li>
+</ul>
+</section>
+<section id="customer-acquisition-cost-an-example" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="customer-acquisition-cost-an-example"><span class="header-section-number">4.6</span> Customer Acquisition Cost: An Example</h2>
+<p>A new Bubble Tea shop in Canary Wharf is contemplating whether or not to attract new customers by sending ads leaflets to nearby residents.</p>
+<p>The cost of sending a leaflet, which includes production and labor costs, is <strong>£0.5</strong>.</p>
+<ol type="1">
+<li>randomly sending out leaflets
+<ul>
+<li>expected response rate of <strong>1%</strong></li>
+</ul></li>
+<li>using names purchased from a marketing agency
+<ul>
+<li>each name costs <strong>£0.2</strong></li>
+<li>expected response rate of <strong>4%</strong> by analyzing the buying behavior and demographics of current customers</li>
+</ul></li>
+</ol>
+<p>Compute the CAC for each choice.</p>
+<div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>cost_per_random_offer <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>response_rate_random_offer <span class="ot">&lt;-</span> <span class="fl">0.01</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># Following the formula in the previous slide</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>CAC_random_offer <span class="ot">&lt;-</span> cost_per_random_offer <span class="sc">/</span> response_rate_random_offer</span>
+<span id="cb7-5"><a href="#cb7-5"></a>CAC_random_offer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 50</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>cost_per_targeted_offer <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">+</span> <span class="fl">0.2</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>response_rate_targeted_offer <span class="ot">&lt;-</span> <span class="fl">0.04</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>CAC_targeted_offer <span class="ot">&lt;-</span> cost_per_targeted_offer<span class="sc">/</span>response_rate_targeted_offer</span>
+<span id="cb9-4"><a href="#cb9-4"></a>CAC_targeted_offer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17.5</code></pre>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tips for assignment 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The cost structures for sending out offers are different from the simple example here, but the logic of calculation is the same. Think carefully about how to compute the cost per offer (the components) in the assignment.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="customer-lifetime-value-clv" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="customer-lifetime-value-clv"><span class="header-section-number">4.7</span> Customer Lifetime Value (CLV)</h2>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Customer lifetime value (CLV or LTV) is the total worth to a business of a customer over the whole period of their relationship.</p>
+</div>
+</div>
+<ul>
+<li>The underlying idea of CLV is essentially NPV, but at the customer level.
+<ul>
+<li>Think of acquiring a new customer as an investment in an “asset” that can generate future cash flows</li>
+</ul></li>
+</ul>
+</section>
+<section id="clv-calculation" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="clv-calculation"><span class="header-section-number">4.8</span> CLV: Calculation</h2>
+<p><span class="math display">\[
+\mathrm{CLV} = - CAC + \sum_{t=1}^{N} \frac{CF_t * r^{(t-1)}}{(1+k)^{t}},
+where \space CF_t = M_t - c_t
+\]</span></p>
+<ul>
+<li><span class="math inline">\(r\)</span> is the average annual retention rate; <span class="math inline">\(r^{(t-1)}\)</span> is the cumulative retention rate in year <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(N\)</span> is the number of years over which the relationship is calculated</li>
+<li><span class="math inline">\(M_{t}\)</span> is the margin the customer generates in year <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(c_{t}\)</span> is the expected cost of marketing communications or promotions targeted to the customer in year <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(k\)</span> is the rate for discounting future cash flows</li>
+</ul>
+</section>
+<section id="retention-rate" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="retention-rate"><span class="header-section-number">4.9</span> Retention Rate</h2>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The churn rate, also known as the rate of attrition or customer churn, is the rate at which customers stop doing business with an entity.</p>
+</div>
+</div>
+<ul>
+<li><p>retention rate = 1 - churn rate</p></li>
+<li><p><strong>How to compute <em>individual</em> churn rate</strong>: machine learning models to predict the churn rate of an individual customer (Week 4)</p></li>
+</ul>
+</section>
+<section id="number-of-years-of-customer-relationship" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="number-of-years-of-customer-relationship"><span class="header-section-number">4.10</span> Number of Years of Customer Relationship</h2>
+<ul>
+<li>If we assume <strong>infinite</strong> customer economic life, we can simplify the formula into the following using the property of geometric sequence.</li>
+</ul>
+<p><span class="math display">\[
+C L V_{N} = \sum_{t=1}^{N} \frac{g r^{(t-1)}}{(1+k)^{t}} =&gt; C L V_{N}=\mathrm{g} \cdot \frac{1-\left(\frac{r}{1+k}\right)^{N}}{1+k-r}  =&gt;
+C L V_{\infty}=\frac{g}{(1+k-r)}
+\]</span></p>
+<ul>
+<li>However, most of the time, we are more comfortable to assume <strong>finite</strong> customer economic life; we need to decide on a cutoff date for CLV calculation
+<ul>
+<li>Rule 1: until the year when the <span class="math inline">\(g = M-c\)</span> becomes negative</li>
+<li>Rule 2: industry’s average customer lifespan</li>
+</ul></li>
+</ul>
+</section>
+<section id="after-class" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="after-class"><span class="header-section-number">4.11</span> After-class</h2>
+<ul>
+<li><p>Review the coding practice in today’s class.</p></li>
+<li><p>We will solve Harvard Business Case: <strong>Customer Lifetime Social Value.</strong> Remember to read the case background before next week’s class.</p></li>
+<li><p>You can try to solve the case on your own using what we’ve covered today.</p></li>
+<li><p>Optional readings are for alternative ways to compute CLV in the industry.</p></li>
+</ul>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1" role="doc-endnote"><p>Material and production labor costs for producing a unit of product<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./Week1-Lecture1.pdf" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Class 1 Intro to Marketing (PDF)</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Week1-Lecture2.pdf" class="pagination-link">
+        <span class="nav-page-text">Class 2 Break-Even Analyses (PDF)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
