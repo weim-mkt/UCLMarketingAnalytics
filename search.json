@@ -389,7 +389,7 @@
     "href": "Week4-Lecture1.html#implementation-of-decision-tree-in-r",
     "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
     "section": "2.3 Implementation of Decision Tree in R",
-    "text": "2.3 Implementation of Decision Tree in R\n\nPackage rpart provides implementation of decision trees in R\n\nrpart() is the function in the package to train a decision tree; refer to its help function for more details.\n\nPackage rpart.plot provides nice visualizations of decision trees\n\n\n# Load the necessary packages\npacman::p_load(rpart,rpart.plot)\n\n\nThe downloaded binary packages are in\n    /var/folders/zv/5cydqfcx20b0p1lfmtwn2mv40000gn/T//RtmphAORTs/downloaded_packages\n\n\n\nrpart.plot installed\n\n# Below example shows how to train a decisin tree\ntree1 &lt;- rpart(\n  formula = mpg ~ cyl + hp,\n  data    = data_decision_tree,\n  method  = \"anova\" \n  )"
+    "text": "2.3 Implementation of Decision Tree in R\n\nPackage rpart provides implementation of decision trees in R\n\nrpart() is the function in the package to train a decision tree; refer to its help function for more details.\n\nPackage rpart.plot provides nice visualizations of decision trees\n\n\n# Load the necessary packages\npacman::p_load(rpart,rpart.plot)\n# Below example shows how to train a decisin tree\ntree1 &lt;- rpart(\n  formula = mpg ~ cyl + hp,\n  data    = data_decision_tree,\n  method  = \"anova\" \n  )"
   },
   {
     "objectID": "Week4-Lecture1.html#intuition-behind-decision-trees",
@@ -424,7 +424,7 @@
     "href": "Week4-Lecture1.html#implementation-of-random-forest-in-r",
     "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
     "section": "2.8 Implementation of Random Forest in R",
-    "text": "2.8 Implementation of Random Forest in R\n\nPackage ranger provides implementation of random forest in R.\nranger() is the function in the package to train a random forest; refer to its help function for more details.\nThe following code shows how to train a random forest consisting of 500 decision trees, where the outcome variable is mpg, and the predictors are 5 car attribute variables.\n\n\npacman::p_load(ranger)\n\n\nThe downloaded binary packages are in\n    /var/folders/zv/5cydqfcx20b0p1lfmtwn2mv40000gn/T//RtmphAORTs/downloaded_packages\n\n\n\nranger installed\n\nrandomforest1 &lt;- ranger(\n    formula   = mpg ~ hp + cyl + disp + wt + gear, \n    data      = mtcars, # dataset to train the model\n    num.trees = 500, # 500 decision trees\n    seed = 888 # make sure of replication\n  )"
+    "text": "2.8 Implementation of Random Forest in R\n\nPackage ranger provides implementation of random forest in R.\nranger() is the function in the package to train a random forest; refer to its help function for more details.\nThe following code shows how to train a random forest consisting of 500 decision trees, where the outcome variable is mpg, and the predictors are 5 car attribute variables.\n\n\npacman::p_load(ranger)\nrandomforest1 &lt;- ranger(\n    formula   = mpg ~ hp + cyl + disp + wt + gear, \n    data      = mtcars, # dataset to train the model\n    num.trees = 500, # 500 decision trees\n    seed = 888 # make sure of replication\n  )"
   },
   {
     "objectID": "Week4-Lecture1.html#make-predictions-from-random-forest",
