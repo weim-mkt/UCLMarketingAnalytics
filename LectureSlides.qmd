@@ -3,4 +3,4 @@ title: "Lecture Slides"
 editor: visual
 ---
 
-Lecture slides will be released on Monday each week. Stay tuned!
+Lecture slides of subsequent weeks will be released on Monday each week. Stay tuned!

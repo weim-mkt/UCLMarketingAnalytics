@@ -2,7 +2,8 @@
 title: "Class 2 Break-Even Analysis and Customer Lifetime Value"
 author: Dr. Wei Miao
 institute: UCL School of Management
-date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(0))|> format('%a, %d %b')`"
+date: "`r (lubridate::ymd('20231004') + lubridate::dweeks(0))`"
+date-format: long
 df-print: kable
 colorlinks: true
 code-line-numbers: true
@@ -74,7 +75,7 @@ pacman::p_load(knitr)
 
 ## Break-Even Quantity
 
--   Marketing managers often use break-even analyses to evaluate the financial feasibility of marketing investments. One commonly used way is to compute the break-even quantity.
+-   Marketing managers often use **break-even analyses** to evaluate the financial feasibility of marketing investments. One commonly used way is to compute the **break-even quantity**.
 
 ::: {.callout-note icon="false"}
 ### Definition
@@ -89,7 +90,7 @@ pacman::p_load(knitr)
 
     -   *Step 2*: Evaluate whether the campaign can guarantee incremental sales to that quantity
 -   The decision rule
-    -   if incremental sales \> BEQ, the company makes money so accept the campaign; otherwise, reject the campaign
+    -   if incremental quantity sales \> BEQ, the company makes money, so accept the campaign; otherwise, reject the campaign
 
 ## Compute BEQ
 
@@ -118,7 +119,7 @@ $$
 include_graphics("images/class2_pineapple.png")
 ```
 
-Tom Cooper, is looking to launch a series of marketing campaigns to promote its new product PinePhone 14 against its competitor iPhone 14. Tom was a proud graduate from UCL MSc BA program in 2020, and he remembered learning from Marketing Analytics module that, marketers often use break-even analysis to help evaluate different types of marketing decisions.
+Tom Cooper, is looking to launch a series of marketing campaigns to promote its new product PinePhone 15 Pro against its competitor iPhone 15 Pro. Tom was a proud graduate from UCL MSc BA program in 2020, and he remembered learning from Marketing Analytics module that, marketers often use break-even analysis to help evaluate different types of marketing decisions.
 
 ::: {.content-hidden when-format="beamer"}
 ```{r}
@@ -138,7 +139,7 @@ endorsement_fee <- 50 # endorsement
 
 ## Pineapple Inc: Key Information
 
-**From the case:** The marketing analytics team at Pinapple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach **`r quantity`** million units at the retail price of **£`r price`**, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of Pineapple 14, which is **`r COGS *100`%**. The Research and Development (R&D) costs for PinePhone 14 is **`r RD_costs`** million pounds.
+**From the case:** The marketing analytics team at Pinapple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach **`r quantity`** million units at the retail price of **£`r price`**, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of Pineapple 15, which is **`r COGS *100`%**. The Research and Development (R&D) costs for PinePhone 15 is **`r RD_costs`** million pounds.
 
 -   Open the .qmd answer sheet downloaded from Moodle. And let's solve this case using the R basics we learned last week!
 
@@ -408,6 +409,6 @@ $$
 
 -   We will solve Harvard Business Case: **Customer Lifetime Social Value.** Remember to read the case background before next week's class.
 
--   You can try to solve the case on your own using what we've covered today.
+    -   You can try to solve the case on your own using what we've covered today.
 
 -   Optional readings are for alternative ways to compute CLV in the industry.

@@ -1,7 +1,8 @@
 ---
 author: Dr Wei Miao
 institute: UCL School of Management
-date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(7))|> format('%a, %b %d %Y')`"
+date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(7))`"
+date-format: long
 title: "Class 15 Endogeneity"
 df-print: kable
 colorlinks: true
@@ -139,7 +140,9 @@ modelsummary(list(regression1,regression2),
 
 ## Practical Suggestions for Running Regression Models
 
--   For causal inference tasks, we need to use business senses to decide which confounding variables to control, but the safest way is to include everything we have in the data.
+-   For causal inference tasks, we need to use business senses to decide which confounding variables to control.
+
+    -   good controls and bad controls
 
 -   Sometimes, control variables may be statistically insignificant, they should **NOT** be removed because they still serve the purpose of control variables.
 

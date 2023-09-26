@@ -1,7 +1,8 @@
 ---
 author: Dr Wei Miao
 institute: UCL School of Management
-date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(8))|> format('%a, %b %d %Y')`"
+date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(8))`"
+date-format: long
 title: "Class 18 Regression Discontinuity Design"
 df-print: kable
 colorlinks: true

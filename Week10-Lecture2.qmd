@@ -1,7 +1,8 @@
 ---
 author: Dr Wei Miao
 institute: UCL School of Management
-date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(9))|> format('%a, %b %d %Y')`"
+date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(9))`"
+date-format: long
 title: "Week 10 Module Wrap-up"
 df-print: kable
 colorlinks: true
@@ -39,11 +40,11 @@ bibliography: references.bib
 ---
 
 ::: {.content-visible when-format="html"}
-![](images/coursestructure2022.png){fig-align="center"}
+![](images/coursestructure.png){fig-align="center"}
 :::
 
 ::: {.content-visible when-format="beamer"}
-![](images/coursestructure2022.png){fig-align="center" width="350"}
+![](images/coursestructure.png){fig-align="center" width="350"}
 :::
 
 # Week 1: BEA

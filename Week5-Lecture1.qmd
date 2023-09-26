@@ -1,6 +1,7 @@
 ---
 author: Dr Wei Miao
-date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(4))|> format('%a, %b %d %Y')`"
+date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(4))`"
+date-format: long
 institute: UCL School of Management
 title: "Class 9 Causal Inference"
 df-print: kable

@@ -1,6 +1,7 @@
 ---
 author: Dr Wei Miao
-date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(1))|> format('%a, %b %d %Y')`"
+date: "`r (lubridate::ymd('20231004') + lubridate::dweeks(1))`"
+date-format: long
 institute: UCL School of Management
 title: "Class 4 Data Wrangling with R Part I"
 df-print: paged

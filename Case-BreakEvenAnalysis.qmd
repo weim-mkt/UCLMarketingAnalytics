@@ -2,7 +2,8 @@
 title: "Beak-Even Analysis for PineApple Inc"
 subtitle: "MSIN0094 Case Study"
 institute: UCL School of Management
-date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(0))|> format('%a, %d %b')`"
+date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(0))`"
+date-format: long
 df-print: kable
 colorlinks: true
 code-line-numbers: true
@@ -46,18 +47,20 @@ WACC <- 0.1
 ```{r}
 #| fig-align: center
 #| out-width: "10%"
-include_graphics("images/class2_pineapple.png")
+include_graphics("images/class2_PineApple.png")
 ```
 
-It was Oct 6, 2022, and Tom Cooper, the senior marketing manager of Pineapple Inc, had just returned to his office after sitting in a marketing analytics lecture at the UCL School of Management (SoM). He had graduated from UCL MSc Business Analytics program in 2020, but he was always so excited to return to his alma mater, as every time he could refresh his knowledge of marketing analytics and learn something new from the younger cohorts. More importantly, he could never resist the delicious T4 Bubble Tea in Jubilee Place, which, he would never admit, is the main reason for his frequent revisits.
+**4th October 2023**: Tom Cooper, the suave Senior Marketing Manager of PineApple Inc, felt a rush of nostalgia as he stepped into the lecture halls of the UCL School of Management. Having graduated from UCL's esteemed MSc Business Analytics programme, coming back felt like reuniting with an old friend. But, between us, the actual magnet pulling him back wasn't just academic---it was the allure of the T4 Bubble Tea in Jubilee Place. A man's got his priorities, right?
 
-Tom was looking to launch a series of marketing campaigns to further promote Pineapple's new product, PinePhone 14, against its direct competitor, Apple Inc, who just launched its brand new iPhone 14 product line. The marketing analytics team at Pinapple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach **`r quantity` million** units at the retail price of **£`r price`**, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of Pineapple 14, which is **`r COGS *100`%**. The Research and Development (R&D) costs for PinePhone 14 is **`r RD_costs` million** pounds.
+**The Stage Is Set**: Tom was looking to launch a series of marketing campaigns to further promote Pineapple's new product, PinePhone 15, against its direct competitor, Apple Inc, who just launched its brand new iPhone 15 product line earlier this year.
+
+**Diving Into The Figures**: The marketing analytics team at PineApple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach **`r quantity` million** units at the retail price of **£`r price`**, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of PinePhone 15, which is **`r COGS *100`%**. The Research and Development (R&D) costs for PinePhone 15 is **`r RD_costs` million** pounds.
 
 > **Question `r question_index<-question_index+1; question_index-1`:**
+>
+> -   *Numbers & Nuances: Contribution Margin*: In the world of finance, the contribution margin is a fancy way of expressing how much profit each unit brings in after accounting for variable costs. Can you help Tom and his team at PineApple to crunch these numbers for the PinePhone 15?
 
--   Compute the contribution margin
-
-In the class Tom sat in, the module leader, Dr Wayne Meow, was introducing the concepts of break-even analysis and the methods to evaluate the feasibility of a marketing campaign, which was just handy for the task. Tom would like to use the concept of break-even analysis to help guide Pineapple Inc's marketing decisions.
+In the class Tom sat in, the module leader, Dr Wayne Meow, was introducing the concepts of break-even analysis and the methods to evaluate the feasibility of a marketing campaign, which was just handy for the task. Tom would like to use the concept of break-even analysis to help guide PineApple Inc's marketing decisions.
 
 Calculating the break-even quantity is one way to determine the feasibility of a marketing campaign. The break-even quantity determines how many additional units the company must sell to cover the expense of the campaign. If the business sells fewer than the break-even quantity, it loses money since it does not sell enough to recover its investment. If the company sells more than the break-even quantity, the marketing campaign can be approved as it is profitable to the company.
 
@@ -67,11 +70,11 @@ After a few months of researching and brainstorming, the marketing analytics tea
 
 The marketing analytics team has proposed a plan of an influencer marketing campaign. Influencer marketing is a type of social media marketing that entails endorsements and product placement by influencers, individuals and organizations with a reputed expert degree of knowledge or social influence in their industry. Influencers are individuals who have the ability to influence others' purchasing habits other quantifiable activities by uploading original---often sponsored---content to social media platforms such as TikTok, Instagram, YouTube, Snapchat, or other social media platforms.
 
-The team proposes to collaborate with the top tech influencers, such as Dave2D and MKBHD, on Tiktok and Youtube to promote the new PinePhone 14. The one-off endorsement fee is estimated to be **£`r endorsement_fee`** million in total. And from historical data, the team estimates that such an influencer campaign can increase the total sales within the next financial year by **`r endorsement_sales_increase*100`%**.
+The team proposes to collaborate with the top tech influencers on Tiktok and Youtube to promote the new PinePhone 15. The one-off endorsement fee is estimated to be **£`r endorsement_fee`** million in total. And from historical data, the team estimates that such an influencer campaign can increase the total sales within the next financial year by **`r endorsement_sales_increase*100`%**.
 
 > **Question `r question_index<-question_index+1; question_index-1`**:
-
--   Based on the information at hand, should Tom approve the influencer marketing plan?
+>
+> -   Based on the information at hand, should Tom approve the influencer marketing plan?
 
 ## Marketing Decision: A Dynamic View
 
@@ -82,5 +85,5 @@ Right after the meeting, Tom asked his team for a decomposition of the predicted
 The team came back with the predicted monthly incremental sales: with influencer marketing, the first month sales will increase by **`r monthly_sales_increase_1stmonth*100`%** and **`r monthly_sales_increase_after*100`%** in the following 11 months.
 
 > **Question `r question_index<-question_index+1; question_index-1`**:
-
--   Based on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?
+>
+> -   Based on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?

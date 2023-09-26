@@ -15,44 +15,30 @@ website:
         contents:
           - syllabus.qmd
           - ClassPreparation.qmd
-          - section: "[Week 1] Marketing Process and Break-Even Analyses"
+          - section: "[Week 1] Module Intro and Break-Even Analyses"
             contents: 
               - href: Week1-Lecture1.html
-                text: "Class 1 Intro to Marketing (HTML)"
-              - href: Week1-Lecture1.pdf
-                text: "Class 1 Intro to Marketing (PDF)"
+                text: "Class 1 Module Intro"
               - href: Week1-Lecture2.html
-                text: "Class 2 Break-Even Analyses (HTML)"
-              - href: Week1-Lecture2.pdf
-                text: "Class 2 Break-Even Analyses (PDF)"
+                text: "Class 2 Break-Even Analyses"
               - href: Case-BreakEvenAnalysis.html
-                text: "Break-Even Analyses for PineApple Inc (HTML)"
-              - href: Case-BreakEvenAnalysis.pdf
-                text: "Break-Even Analyses for PineApple Inc (PDF)"
-              - href: ClassExercise.html
-                text: "In-Class Exercise Solutions"
+                text: "Break-Even Analyses for PineApple Inc"
+              - href: Case-BreakEvenAnalysis-Solutions.html
+                text: "Break-Even Analyses for PineApple Inc (Solutions)"
           - section: "[Week 2] Customer Lifetime Value and Data Wrangling with R"
             contents: 
               - href: Week2-Lecture1.html
-                text: "Class 3 Customer Lifetime Value Case Study (HTML)"
-              - href: Week2-Lecture1.pdf
-                text: "Class 3 Customer Lifetime Value Case Study (PDF)"
+                text: "Class 3 Customer Lifetime Value Case Study"
               - href: Week2-Lecture2.html
-                text: "Class 4 Data Wrangling with R I (HTML)"
-              - href: Week2-Lecture2.pdf
-                text: "Class 4 Data Wrangling with R I (PDF)"
+                text: "Class 4 Data Wrangling with R I"
               - href: Case-CLSV.html
                 text: "CLSV Solutions"
           - section: "[Week 3] Unsupervised Learning and Customer Segmentation"
             contents: 
               - href: Week3-Lecture1.html
-                text: "Class 5 Data Wrangling with R II  (HTML)"
-              - href: Week3-Lecture1.pdf
-                text: "Class 5 Data Wrangling with R II (PDF)"
+                text: "Class 5 Data Wrangling with R II "
               - href: Week3-Lecture2.html
-                text: "Class 6 Unsupervised Learning (HTML)"
-              - href: Week3-Lecture2.pdf
-                text: "Class 6 Unsupervised Learning (PDF)"
+                text: "Class 6 Unsupervised Learning"
               - href: Case-PreliminaryCustomerAnalysis-stu.pdf
                 text: "Preliminary Customer Analyses"  
               - href: Case-PreliminaryCustomerAnalysis.html
@@ -60,13 +46,9 @@ website:
           - section: "[Week 4] Supervised Learning and Customer Targeting"
             contents: 
               - href: Week4-Lecture1.html
-                text: "Class 7 Supervised Learning (html)"
-              - href: Week4-Lecture1.pdf
-                text: "Class 7 Supervised Learning (PDF)"
+                text: "Class 7 Supervised Learning"
               - href: Week4-Lecture2.html
-                text: "Class 8: Improve Marketing Efficiency Using Predictive Analytics (HTML)"
-              - href: Week4-Lecture2.pdf
-                text: "Class 8: Improve Marketing Efficiency Using Predictive Analytics (PDF)"
+                text: "Class 8: Improve Marketing Efficiency Using Predictive Analytics"
               - href: Case-PredictiveAnalytics-stu.pdf
                 text: "Improving Marketing Efficiency Using Predictive Analytics"  
               - href: Case-PredictiveAnalytics.html
@@ -74,45 +56,29 @@ website:
           - section: "[Week 5] Causal Inference and RCT"
             contents: 
               - href: Week5-Lecture1.html
-                text: "Class 9 Causal Inference (html)"
-              - href: Week5-Lecture1.pdf
-                text: "Class 9 Causal Inference (PDF)"
+                text: "Class 9 Causal Inference"
               - href: Week5-Lecture2.html
-                text: "Class 10 Randomized Controlled Trials (HTML)"
-              - href: Week5-Lecture2.pdf
-                text: "Class 10 Randomized Controlled Trials (PDF)"
+                text: "Class 10 Randomized Controlled Trials"
           - section: "[Week 6] Linear Regression Models"
             contents: 
               - href: Week6-Lecture1.html
-                text: "Class 11 Application of A-B Testing at Vungle (html)"
-              - href: Week6-Lecture1.pdf
-                text: "Class 11 Application of A-B Testing at Vungle (PDF)"
+                text: "Class 11 Application of A-B Testing at Vungle"
               - href: Week6-Lecture2.html
-                text: "Class 12 Linear Regression Basics (HTML)"
-              - href: Week6-Lecture2.pdf
-                text: "Class 12 Linear Regression Basics (PDF)"
+                text: "Class 12 Linear Regression Basics"
           - section: "[Week 7] Marketing Mix Modeling"
             contents: 
               - href: Week7-Lecture1.html
-                text: "Class 13 Linear Regression Advanced (HTML)"
-              - href: Week7-Lecture1.pdf
-                text: "Class 13 Linear Regression Advanced (PDF)"
+                text: "Class 13 Linear Regression Advanced"
               - href: Week7-Lecture2.html
-                text: "Class 14 Marketing Mix Modeling (HTML)"
-              - href: Week7-Lecture2.pdf
-                text: "Class 14 Marketing Mix Modeling (PDF)"
+                text: "Class 14 Marketing Mix Modeling"
               - href: Case-Zalora.html
                 text: "Case Solution: Zalora"
           - section: "[Week 8] Endogeneity and Instrumental Variable"
             contents: 
               - href: Week8-Lecture1.html
-                text: "Class 15 Endogeneity (HTML)"
-              - href: Week8-Lecture1.pdf
-                text: "Class 15 Endogeneity (PDF)"
+                text: "Class 15 Endogeneity"
               - href: Week8-Lecture2.html
-                text: "Class 16 Instrumental Variable (HTML)"
-              - href: Week8-Lecture2.pdf
-                text: "Class 16 Instrumental Variable (PDF)"
+                text: "Class 16 Instrumental Variable"
               - href: Case-COVID-IV-stu.pdf
                 text: "Case: COVID-19 and Ridesharing"  
               - href: Case-COVID-IV.html
@@ -120,32 +86,14 @@ website:
           - section: "[Week 9] Natural Experiment"
             contents: 
               - href: Week9-Lecture1.html
-                text: "Class 17 Difference-in-Differences (HTML)"
-              - href: Week9-Lecture1.pdf
-                text: "Class 17 Difference-in-Differences (PDF)"
+                text: "Class 17 Difference-in-Differences"
               - href: Week9-Lecture2.html
-                text: "Class 18 Regression Discontinuity Design (HTML)"
-              - href: Week9-Lecture2.pdf
-                text: "Class 18 Regression Discontinuity Design (PDF)"
-          - section: "[Week 10] Module Wrap-Up"
-            contents: 
-              - href: Week10-Lecture2.html
-                text: "Week 10 Module Wrap-Up (HTML)"
-              - href: Week10-Lecture2.pdf
-                text: "Week 10 Module Wrap-Up (PDF)"
+                text: "Class 18 Regression Discontinuity Design"
+              
       - section: "R Tutorials"
         contents:
           - R-installR.qmd
-          - section: "R Basics Part I (Induction Week)"
-            contents: 
-              - R-InductionWeek.qmd
-              - href: R-InductionWeek.pdf
-                text: "pdf version"
-          - section: "R Basics Part II (Induction Week)"
-            contents: 
-              - R-InductionWeek-II.qmd
-              - href: R-InductionWeek-II.pdf
-                text: "pdf version"
+          - R-InductionWeek.qmd
           - R-errors.qmd
       - section: "Advanced R Tips"
         contents:

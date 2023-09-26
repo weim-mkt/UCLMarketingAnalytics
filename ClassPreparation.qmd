@@ -8,16 +8,17 @@ format:
     number-sections: false
     df-print: paged
     toc-depth: 2
-date: "`r (lubridate::ymd('20220930'))|> format('%a, %d %b %Y')`"
+date: "2023/09/17"
+date-format: long
 ---
 
 # Preface: How to Use This Guide
 
 ## Arrangements each week
 
-We will have a 3-hour session each Thursday and I will aim to cover a new marketing analytics model each week. Whenever we learn a new technique (e.g., a new statistical model or a new analytics tool), the subsequent week will often start with some warm-up exercise and a seminar workshop (with a case study) for you to review and practice the new technique learned in the previous week. This way, you would have time to digest what you've learned and can further reflect on your understanding of the technique by practicing your skills with a real-life application.
+We will have a 3-hour session each week and I will aim to cover a new marketing analytics model. Whenever we learn a new technique (e.g., a new statistical model or a new analytics tool), the subsequent week will often start with some warm-up exercise and a seminar workshop (with a case study) for you to review and practice the new technique learned in the previous week. This way, you would have time to digest what you've learned and can further reflect on your understanding of the technique by practicing your skills with a real-life application.
 
-For instance, on Thursday 6 Oct (Week 1), I will first introduce the concepts of marketing and marketing process, and then will cover the concept of customer lifetime value (CLV) and how to compute CLV with R. In week 2, we will therefore begin with a case study that helps you practice your knowledge of CLV, so you can understand how to use CLV for better marketing decisions in your future projects/jobs.
+For instance, in week 1, I will first introduce the concepts of marketing and marketing process, and then will cover the concept of customer lifetime value (CLV) and how to compute CLV with R. In week 2, we will therefore begin with a case study that helps you practice your knowledge of CLV, so you can understand how to use CLV for better marketing decisions in your future projects/jobs.
 
 In the remaining time of week 2, I will then introduce a new technique: the `dplyr` package in R, which helps us clean and manipulate datasets in R. Following a similar logic, then in week 3, we will start with a case study for you to practice the `dplyr` package. So on and so forth.
 
@@ -30,41 +31,41 @@ All materials, including the lecture slides and before-class readings will be re
 
 ## Module Outline
 
-+-----------+----------------------------------------------------+---------------------------------+-------------------------------------------------------------+--------------------------+
-| Week      | Analytics/Methodology Topic                        | Substantive Topic               | Case Study[^1]                                              | Important dates          |
-+===========+====================================================+=================================+=============================================================+==========================+
-| Induction | Introduction to R                                  |                                 |                                                             |                          |
-+-----------+----------------------------------------------------+---------------------------------+-------------------------------------------------------------+--------------------------+
-| 1         | Computation with R                                 | Customer lifetime value         | CLSV                                                        |                          |
-+-----------+----------------------------------------------------+---------------------------------+-------------------------------------------------------------+--------------------------+
-| 2         | Data wrangling with R                              | Preliminary customer analysis   | Preliminary Customer Analysis                               |                          |
-+-----------+----------------------------------------------------+---------------------------------+-------------------------------------------------------------+--------------------------+
-| 3         | Unsupervised learning                              | Segmentation                    | Improving Marketing Efficiency with Predictive Analytics I  |                          |
-+-----------+----------------------------------------------------+---------------------------------+-------------------------------------------------------------+--------------------------+
-| 4         | Supervised learning                                | Targeting                       | Improving Marketing Efficiency with Predictive Analytics II | Friday, 28 October 2022  |
-|           |                                                    |                                 |                                                             |                          |
-|           |                                                    |                                 |                                                             | 1st assignment due       |
-+-----------+----------------------------------------------------+---------------------------------+-------------------------------------------------------------+--------------------------+
-| 5         | Rubin Causal Model and Potential Outcome Framework | Causal Inference                |                                                             |                          |
-+-----------+----------------------------------------------------+---------------------------------+-------------------------------------------------------------+--------------------------+
-| 6         | RCT                                                | Promotion Analytics             | A/B Testing at Vungle                                       |                          |
-+-----------+----------------------------------------------------+---------------------------------+-------------------------------------------------------------+--------------------------+
-| 7         | Linear regression                                  | Pricing analytics               | Zalora: Data-Driven Pricing                                 |                          |
-+-----------+----------------------------------------------------+---------------------------------+-------------------------------------------------------------+--------------------------+
-| 8         | Instrumental variable                              | Platform Design                 | Evaluating the Impact of COVID-19 on Ride-sharing Market    | Friday, 25 November 2022 |
-|           |                                                    |                                 |                                                             |                          |
-|           |                                                    |                                 |                                                             | 2nd assignment due       |
-+-----------+----------------------------------------------------+---------------------------------+-------------------------------------------------------------+--------------------------+
-| 9         | Quasi-experiments                                  | Difference-in-Differences       |                                                             |                          |
-|           |                                                    |                                 |                                                             |                          |
-|           |                                                    | Regression Discontinuity Design |                                                             |                          |
-+-----------+----------------------------------------------------+---------------------------------+-------------------------------------------------------------+--------------------------+
-| 10        | Causal forest                                      | Causal machine learning         |                                                             |                          |
-+-----------+----------------------------------------------------+---------------------------------+-------------------------------------------------------------+--------------------------+
-|           |                                                    |                                 |                                                             | Friday, 16 December 2022 |
-|           |                                                    |                                 |                                                             |                          |
-|           |                                                    |                                 |                                                             | 3rd assignment due       |
-+-----------+----------------------------------------------------+---------------------------------+-------------------------------------------------------------+--------------------------+
++-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------+--------------------------+
+| Week      | Analytics/Methodology Topic                        | Substantive Topic               | Case Study[^1]                                                       | Important dates          |
++===========+====================================================+=================================+======================================================================+==========================+
+| Induction | Introduction to R                                  |                                 |                                                                      |                          |
++-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------+--------------------------+
+| 1         | Computation with R                                 | Customer lifetime value         | Customer Lifetime Value                                              |                          |
++-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------+--------------------------+
+| 2         | Data wrangling with R                              | Preliminary customer analysis   | Preliminary Customer Analysis                                        |                          |
++-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------+--------------------------+
+| 3         | Unsupervised learning                              | Segmentation                    | Improving Marketing Efficiency with Predictive Analytics I           |                          |
++-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------+--------------------------+
+| 4         | Supervised learning                                | Targeting                       | Improving Marketing Efficiency with Predictive Analytics II          | Friday, 27 October 2023  |
+|           |                                                    |                                 |                                                                      |                          |
+|           |                                                    |                                 |                                                                      | 1st assignment due       |
++-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------+--------------------------+
+| 5         | Rubin Causal Model and Potential Outcome Framework | Causal Inference                |                                                                      |                          |
++-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------+--------------------------+
+| 6         | RCT                                                | Promotion Analytics             | Improve User Engagement on Social Media Platforms using A/B Testings |                          |
++-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------+--------------------------+
+| 7         | Linear regression                                  | Pricing analytics               | Optimizing Marketing Mixes Using Regression Models                   |                          |
++-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------+--------------------------+
+| 8         | Instrumental variable                              | Platform Design                 | Evaluating the Impact of COVID-19 on Ride-sharing Market             | Friday, 24 November 2023 |
+|           |                                                    |                                 |                                                                      |                          |
+|           |                                                    |                                 |                                                                      | 2nd assignment due       |
++-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------+--------------------------+
+| 9         | Quasi-experiments                                  | Difference-in-Differences       |                                                                      |                          |
+|           |                                                    |                                 |                                                                      |                          |
+|           |                                                    | Regression Discontinuity Design |                                                                      |                          |
++-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------+--------------------------+
+| 10        | Causal forest                                      | Causal machine learning         |                                                                      |                          |
++-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------+--------------------------+
+|           |                                                    |                                 |                                                                      | Friday, 15 December 2023 |
+|           |                                                    |                                 |                                                                      |                          |
+|           |                                                    |                                 |                                                                      | 3rd assignment due       |
++-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------+--------------------------+
 
 : Module Outline
 
@@ -191,7 +192,7 @@ All materials, including the lecture slides and before-class readings will be re
 
 # Week 4: Predictive Analytics for Customer Targeting
 
-## Supervised Learning (Decision Trees and Random Forest)
+## Supervised Learning with Tree-based Models
 
 -   What you will learn
     -   Important concepts of supervised learning
@@ -224,7 +225,7 @@ All materials, including the lecture slides and before-class readings will be re
 -   What you will learn
     -   Concept of causal inference
     -   Concept of Rubin's potential outcome framework and various treatment effects
-    -   Concept of fundemental problem of causal inference and basic identity of causal inference
+    -   Concept of fundamental problem of causal inference and basic identity of causal inference
 -   After-class reading
     -   (optional) [Varian, Hal R. 'Causal Inference in Economics and Marketing'. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310--15.](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_pubmedcentral_primary_oai_pubmedcentral_nih_gov_4941501)
 
@@ -246,12 +247,12 @@ All materials, including the lecture slides and before-class readings will be re
 
 # Week 6: Linear Regression
 
-## Workshop: A/B Testing at Vungle
+## Workshop: Improve User Engagement on Social Media Platforms Using A/B Testings
 
 ::: callout-important
 ### Pre-class preparation
 
--   UVA-QA-0821: A/B Testing at Vungle
+-   Case study: Improve User Engagement on Social Media Platforms Using A/B Testings
     -   Please carefully read the case background before class; we will be discussing the case in class
 :::
 
@@ -261,7 +262,6 @@ All materials, including the lecture slides and before-class readings will be re
 -   After-class reading
     -   (recommended) [Test and learn: How a culture of experimentation can help grow your business](https://www.thinkwithgoogle.com/intl/en-gb/marketing-strategies/data-and-measurement/test-learn-experiment-culture/)
     -   (optional) [A Comparison of Approaches to Advertising Measurement: Evidence from Big Field Experiments at Facebook](https://www.kellogg.northwestern.edu/faculty/gordon_b/files/kellogg_fb_whitepaper.pdf)
-    -   (optional): Berman, Ron, and Christophe Van den Bulte. ['False Discovery in A/B Testing'](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_crossref_primary_10_1287_mnsc_2021_4207). Management Science, 30 December 2021
 
 ## Linear Regression Model: Basics
 
@@ -286,7 +286,7 @@ All materials, including the lecture slides and before-class readings will be re
 ::: callout-important
 ### Pre-class preparation
 
--   Case study: Zalora: Data-Driven Pricing Recommendations
+-   Case study: Optimizing Marketing Mixes Using Regression Models
     -   Please carefully read the case background before class; we will be discussing the case in class
 :::
 
@@ -342,20 +342,6 @@ All materials, including the lecture slides and before-class readings will be re
     -   (optional) [Econometrics with R: Quasi-experiments](https://www.econometrics-with-r.org/13.4-qe.html)
 
 # Week 10: Frontiers of Marketing Analytics
-
-## Workshop: Search Engine Marketing
-
-::: callout-important
-### Pre-class preparation
-
--   Case study: The Power of Ranking
-    -   Please carefully read the case background before class; we will be discussing the case in class
-:::
-
--   What you will learn
-    -   What is search engine marketing (SEM)
-    -   How to apply data-driven analytics for optimal SEM
-    -   More applications of quasi-experimental method in Marketing
 
 ## Frontiers of Marketing Analytics
 

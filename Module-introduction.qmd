@@ -1,0 +1,109 @@
+---
+author: Dr Wei Miao
+date: "`r (lubridate::ymd('20231004'))|> format('%a, %b %d %Y')`"
+date-format: long
+institute: UCL School of Management
+title: "Module Introduction"
+df-print: kable
+colorlinks: true
+code-line-numbers: true
+format:
+  html: 
+    toc: true
+    number-sections: true
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+  beamer: 
+    toc: false
+    toc-depth: 1
+    toc-title: "Class Overview"
+    slide-level: 2
+    section-titles: true
+    theme: Frankfurt
+    colortheme: beaver
+    fonttheme: structurebold
+    navigation: horizontal
+    tbl-colwidths: auto
+    fontsize: 9pt
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  freeze: true
+---
+
+## Textbook
+
+-   We will not rely on any specific textbook in this module.
+    -   ["Handbook of Marketing Analytics"](https://ucl-new-primo.hosted.exlibrisgroup.com/permalink/f/5qfvbu/UCL_LMS_DS51237610180004761). This book is free for download at UCL's E-library.
+    -   ["Introduction to Econometrics with R"](https://www.econometrics-with-r.org/index.html), which is a good textbook for learning econometrics with R.
+-   All classes will be based on the lecture notes and supplementary readings I have prepared for you.
+
+## Lecture Notes and How to Prepare
+
+-   I'm updating my Lecture notes every year to keep up with the latest development in marketing analytics. So lecture notes will be released each week before the lecture.
+    -   **PDF version** includes the slides you see now
+    -   **html version** additionally includes the solution R codes for in-class questions
+-   For each week's class, there may be **pre-class preparation** needed
+    -   Materials will be posted under each week's Moodle section with instructions
+    -   These are **mandatory**, usually involves reading case studies necessary for class discussion
+-   There are also supplementary **after-class reading/exercise** to further enhance your understanding
+
+## Module Communications and Any Questions
+
+-   We will use **Microsoft Teams** for all communications of this module. Please use the code to join the MS Team now.
+
+-   Make sure you hit "**Change Notifications =\> All Activities**" for all channels, especially the **General** Channel where important module announcements will be made.
+
+-   For any questions you have, please post them in the corresponding Teams channel first, so that everyone can see the question.
+
+    -   We have separate channels for assignments, lectures, and R programming questions.
+
+-   The teaching team will monitor the channel and answer them.
+
+## Still Have Questions? Use Office Hours
+
+-   Office hour sessions will be hosted on **MS Teams** each Tuesday by TAs and Friday by me.
+
+-   The links to book office hours are below (also under Moodle's "`Module Overview`" Section for easier access)
+
+    -   For questions related to **lecture contents and assignments**, book with Wei
+    -   For questions regarding **R programming** (such as R codes used in class, general R troubleshooting), book with our TAs
+
+![](images/OfficeHourLinks.png){fig-align="center" width="261"}
+
+## About R Programming
+
+-   **Please bring your laptops in all classes.** There will be R exercises in class every week.
+
+-   It's totally normal to feel overwhelmed in the first few weeks from learning R.
+
+-   If you run into any problems with R
+
+    -   ["Common R Programming Errors Faced by Beginners"](https://weim-mkt.github.io/UCLMarketingAnalytics/R-errors.html); I will constantly update this page based on your questions, so this should be the first place to look for an answer
+    -   Google and ChatGPT are always your best places to seek answers for most debugging issues
+    -   Office hours with TAs
+
+## Classroom Etiquette
+
+-   **Class participation**
+    -   Please remember to bring you name tags. Please let me know how to pronounce your name correctly.
+-   **Attendance**
+    -   School will track your attendance per university policy
+    -   Please email me if you couldn't attend a class
+
+## 10-week Contract between Us
+
+-   **I promise**
+    -   I will teach you the "science" part of marketing including the state-of-the-art marketing analytics tools
+    -   You will be in a position to intelligently manage and benefit from marketing analytics people (without turning you into a statistician)
+    -   Give you a way of thinking about how to use data analytics tools to solve business problems in the future, not just marketing, not just today
+    -   Accessible when you need help
+-   **You promise**
+    -   Duly prepared for each class
+    -   Attend classes regularly

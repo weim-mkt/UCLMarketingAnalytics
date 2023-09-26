@@ -1,11 +1,12 @@
 ---
 title: "Syllabus"
-date: "`r (lubridate::ymd('20220927'))|> format('%a, %d %b %Y')`"
+date: "2023/09/17"
+date-format: long
 ---
 
 # Instructor Information
 
--   Module leader: Dr. Wei Miao[^1]
+-   Module leader: Dr. Wei Miao
 
 -   Email: wei.miao\@ucl.ac.uk
 
@@ -14,12 +15,11 @@ date: "`r (lubridate::ymd('20220927'))|> format('%a, %d %b %Y')`"
 -   Teaching assistants
 
     -   Rafael Machado Molina, [rafael.molina.21\@ucl.ac.uk](mailto:rafael.molina.21@ucl.ac.uk) (UCL MSc BA 2022)
-    -   Shuyue Wang, [uceis09\@ucl.ac.uk](mailto:uceis09@ucl.ac.uk) (UCL MSc BA 2021)
     -   Kayi Yeung, [ka.yeung.21\@ucl.ac.uk](mailto:ka.yeung.21@ucl.ac.uk) (UCL MSc BA 2022)
+    - Jiafan Lu, [jiafan.lu\@ucl.ac.uk](mailto:jiafan.lu.22@ucl.ac.uk) (UCL PhD Management 2022)
 
 -   Office hours: See Moodle for the links to book an office hour session with Wei (for lecture contents) and TAs (for R programming)
 
-[^1]: Wei is pronounced as "way", which means jade in Mandarin; Miao is my surname name, which is pronounced as "meow".
 
 # Course Objective
 
@@ -67,9 +67,9 @@ If you have little prior exposure to R before joining MSc Business Analytics, it
 
 There will be no exams in this module. Learning outcomes will be examined through three individual assignments. Your final grade in this module will be a weighted average of the following:
 
--   First assignment, 30% weight, 1500 words, due Friday, 28 October 2022
--   Second assignment, 40% weight, 2000 words, due Friday, 25 November 2022
--   Third assignment, 30% weight, 1500 words, due Friday, 16 December 2022
+-   First assignment, 30% weight, 1500 words, due Friday, 27 October 2023
+-   Second assignment, 30% weight, 1500 words, due Friday, 24 November 2023
+-   Third assignment, 40% weight, 2000 words, due Friday, 15 December 2023
 
 Detailed assignment descriptions will be given in due course.
 
