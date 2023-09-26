@@ -2,322 +2,315 @@
   {
     "objectID": "R-InductionWeek.html",
     "href": "R-InductionWeek.html",
-    "title": "html version",
+    "title": "R Basics",
     "section": "",
-    "text": "Primary language is Python\n\nProgramming (MSIN00143), Business Strategy (MSIN0093), Machine Learning electives\n\nSecondary language is R\n\nMarketing Analytics (MSIN0094), Operations Analytics (MSIN0095), Statistical Foundations (MSIN0096)\n\n\n\n\n\n\nR project was initiated by Robert Gentleman and Ross Ihaka (Univ of Auckland) in 1991; both are statisticians, who later made the language open-source.\nSince 1997, R has been developed by the R Core Team on CRAN.\nAs of January 2022, it has 18,728 contributed packages. As of March 2022, R ranks 11th in the TIOBE index1; the language peaked in 8th place in August 2020.\n\n\n\n\n\nSuper powerful data analytics and visualizations, including2\n\nData wrangling (dplyr) and data visualization (ggplot)\nEconometrics (numerous packages)\nPredictive analytics (numerous packages)\n\nWrite beautiful reports/dissertations/presentations using quarto\n\nWrite your MSc dissertation (highly recommended; super efficient)\nEffortlessly build websites. I built and maintain my personal website and the marketing course website all in R.\n\n\n\n\n\n\nR versus Python\n\n\n\n\n\n\n\n\nR\nPython\n\n\n\n\nLanguage purpose\nR is a statistical language specialized in the data analytics and visualization. Best for data science, may not be robust for production environment.\nPython is a general-purpose language that is used for the deployment and development of various projects. Best for production environment.\n\n\nData analytics\nR is better at statistical models and econometrics.\nPython is better at machine learning due to support from PyTorch and TensorFlow.\n\n\nIDEs\nRStudio\nMany options such as Jupyter Notebook, Spyder, Pycharm, etc.\n\n\nTargeted users\nPrimary users of R include researchers in academia and data scientists, who heavily rely on data analyses and visualization.\nPrimary users of python include developers and programmers.\n\n\n\n\n\n\nR is the programming language, and we need a “place” to write codes. This place is called an Integrated development environment (IDE).\nRStudio is THE BEST R IDE to date. And it’s interface consists of the following:\n\nscript: (top left) where you do the coding\nconsole: (bottom left) where you can run commands interactively with R and see code outputs\nenvironment: (top right) a list of named objects that we have generated\nhistory: (top right) the list of past commands that we have used\nhelp: (bottom right) user manuals of functions available in R\npackage: (bottom right) a collection of ready-to-use packages written by others\n\n\n\n\n\n\nYou can write codes interactively in the R console. See an example: Type the following code into your console and see what happens.\n\nprint('Hello World')\n\n[1] \"Hello World\"\n\n\nOften used for simple exploratory tasks, where you don’t need to keep a record of codes.\n\ncheck summary statistics; inspect datasets; etc.\n\n\n\n\n\n\nR script is a text-readable file ending with .R suffix. See an example.\n\ncodes can be run line-by-line or sourced altogether\n\n\n\n\n\n\nImportant\n\n\n\nAll texts in the script will be treated as R codes unless commented out.\n\n\n\nOften used for project development and deployment, where you don’t need to communicate results to others\n\n\n\n\n\nQuarto3 files have a .qmd suffix. You can think of Quarto as Microsoft Word that can run R codes.\nQuarto can create dynamic content with Python and R, conveniently combining data analytics work with beautiful reporting.\n\nQuarto can be thought of as the R equivalent of Jupyter Notebook but is much more powerful.\nWe will be mainly using Quarto in the marketing analytics module. You can also use Quarto to do your assignments, write your dissertation, and build your own blogging websites.\n\nLet’s create a new quarto file together!"
+    "text": "Primary language is Python\n\nProgramming (MSIN00143), Business Strategy (MSIN0093), Machine Learning electives\n\nSecondary language is R\n\nMarketing Analytics (MSIN0094), Operations Analytics (MSIN0095), Statistical Foundations (MSIN0096)\n\n\n\n\n\n\nR project was initiated by Robert Gentleman and Ross Ihaka (Univ of Auckland) in 1991; both are statisticians, who later made the language open-source.\nSince 1997, R has been developed by the R Core Team on CRAN.\nAs of January 2022, it has almost 20k contributed packages. As of March 2022, R ranks 11th in the TIOBE index1.\n\n\n\n\n\nSuper powerful data analytics and visualizations, including2\n\nData wrangling (dplyr) and data visualization (ggplot)\nEconometrics (major advantage of R over Python)\nPredictive analytics such as machine learning\n\nWrite beautiful reports/dissertations/presentations using Quarto\n\nWrite your MSc dissertation (highly recommended)\nEffortlessly build websites. I built and maintain my personal website and the marketing course website all in R.\n\n\n\n\n\n\nR versus Python\n\n\n\n\n\n\n\n\nR\nPython\n\n\n\n\nLanguage purpose\nR is a statistical language specialized in the data analytics and visualization.\nBest for data science, may not be robust for production environment.\nPython is a general-purpose language that is used for the deployment and development of various projects.\nBest for production environment.\n\n\nData analytics\nR is better at statistical models and econometrics.\nPython is better at machine learning due to support from PyTorch and TensorFlow.\n\n\nIDEs (Intergrated Development Environment)\nRStudio\nMany options such as Jupyter Notebook, Spyder, Pycharm, etc.\n\n\nTargeted users\nPrimary users of R include data scientists and researchers in academia, who heavily rely on data analyses and visualization.\nPrimary users of python include developers and programmers.\n\n\n\n\n\n\nR is the programming language, and we need a “place” to write codes. This place is called an Integrated development environment (IDE).\nRStudio is THE best R IDE to date. And it’s interface consists of the following major components:\n\nscript: (top left) where you do the coding\nconsole: (bottom left) where you can run commands interactively with R and see code outputs\nenvironment: (top right) a list of named objects that we have generated\nhistory: (top right) the list of past commands that we have used\nhelp: (bottom right) user manuals of functions available in R\npackage: (bottom right) a collection of ready-to-use packages written by others\n\n\n\n\n\n\nYou can write codes interactively in the R console. See an example: Type the following code into your console and see what happens.\n\nprint('Hello World')\n\n[1] \"Hello World\"\n\n\nUsed for simple exploratory, unstructured tasks, where you don’t need to keep a record of codes.\n\ne.g., summary statistics; check variable values, etc.\n\n\n\n\n\n\nR script is a text-readable file ending with .R suffix. See an example.\n\ncodes can be run line-by-line or sourced altogether\n\n\n\n\n\n\nImportant\n\n\n\nAll texts in the script will be treated as R codes\n\n\n\nOften used for project development and deployment, where you don’t need to communicate results to others\n\n\n\n\n\nQuarto3 files have a .qmd suffix. You can think of Quarto as Microsoft Word that can run R codes.\nQuarto can create dynamic contents with Python and R, conveniently combining data analytics work with beautiful reporting.\n\nIf you are familiar with Python, Quarto can be thought of as the R equivalent of Jupyter Notebook\nWe will be mainly using Quarto in the marketing analytics module.\nYou can also use Quarto to do your assignments for other modules, write your dissertation, and build your own blogging websites.\n\nNow, let’s create a new quarto file together!"
   },
   {
     "objectID": "R-InductionWeek.html#bilingual-arrangements-at-msc-ba",
     "href": "R-InductionWeek.html#bilingual-arrangements-at-msc-ba",
-    "title": "html version",
+    "title": "R Basics",
     "section": "",
     "text": "Primary language is Python\n\nProgramming (MSIN00143), Business Strategy (MSIN0093), Machine Learning electives\n\nSecondary language is R\n\nMarketing Analytics (MSIN0094), Operations Analytics (MSIN0095), Statistical Foundations (MSIN0096)"
   },
   {
     "objectID": "R-InductionWeek.html#a-brief-history-of-r",
     "href": "R-InductionWeek.html#a-brief-history-of-r",
-    "title": "html version",
+    "title": "R Basics",
     "section": "",
-    "text": "R project was initiated by Robert Gentleman and Ross Ihaka (Univ of Auckland) in 1991; both are statisticians, who later made the language open-source.\nSince 1997, R has been developed by the R Core Team on CRAN.\nAs of January 2022, it has 18,728 contributed packages. As of March 2022, R ranks 11th in the TIOBE index1; the language peaked in 8th place in August 2020."
+    "text": "R project was initiated by Robert Gentleman and Ross Ihaka (Univ of Auckland) in 1991; both are statisticians, who later made the language open-source.\nSince 1997, R has been developed by the R Core Team on CRAN.\nAs of January 2022, it has almost 20k contributed packages. As of March 2022, R ranks 11th in the TIOBE index1."
   },
   {
     "objectID": "R-InductionWeek.html#why-learn-r",
     "href": "R-InductionWeek.html#why-learn-r",
-    "title": "html version",
+    "title": "R Basics",
     "section": "",
-    "text": "Super powerful data analytics and visualizations, including2\n\nData wrangling (dplyr) and data visualization (ggplot)\nEconometrics (numerous packages)\nPredictive analytics (numerous packages)\n\nWrite beautiful reports/dissertations/presentations using quarto\n\nWrite your MSc dissertation (highly recommended; super efficient)\nEffortlessly build websites. I built and maintain my personal website and the marketing course website all in R."
+    "text": "Super powerful data analytics and visualizations, including2\n\nData wrangling (dplyr) and data visualization (ggplot)\nEconometrics (major advantage of R over Python)\nPredictive analytics such as machine learning\n\nWrite beautiful reports/dissertations/presentations using Quarto\n\nWrite your MSc dissertation (highly recommended)\nEffortlessly build websites. I built and maintain my personal website and the marketing course website all in R."
   },
   {
     "objectID": "R-InductionWeek.html#one-one-comparison-with-python",
     "href": "R-InductionWeek.html#one-one-comparison-with-python",
-    "title": "html version",
+    "title": "R Basics",
     "section": "",
-    "text": "R versus Python\n\n\n\n\n\n\n\n\nR\nPython\n\n\n\n\nLanguage purpose\nR is a statistical language specialized in the data analytics and visualization. Best for data science, may not be robust for production environment.\nPython is a general-purpose language that is used for the deployment and development of various projects. Best for production environment.\n\n\nData analytics\nR is better at statistical models and econometrics.\nPython is better at machine learning due to support from PyTorch and TensorFlow.\n\n\nIDEs\nRStudio\nMany options such as Jupyter Notebook, Spyder, Pycharm, etc.\n\n\nTargeted users\nPrimary users of R include researchers in academia and data scientists, who heavily rely on data analyses and visualization.\nPrimary users of python include developers and programmers."
+    "text": "R versus Python\n\n\n\n\n\n\n\n\nR\nPython\n\n\n\n\nLanguage purpose\nR is a statistical language specialized in the data analytics and visualization.\nBest for data science, may not be robust for production environment.\nPython is a general-purpose language that is used for the deployment and development of various projects.\nBest for production environment.\n\n\nData analytics\nR is better at statistical models and econometrics.\nPython is better at machine learning due to support from PyTorch and TensorFlow.\n\n\nIDEs (Intergrated Development Environment)\nRStudio\nMany options such as Jupyter Notebook, Spyder, Pycharm, etc.\n\n\nTargeted users\nPrimary users of R include data scientists and researchers in academia, who heavily rely on data analyses and visualization.\nPrimary users of python include developers and programmers."
   },
   {
     "objectID": "R-InductionWeek.html#a-first-look-at-the-rstudio-interface",
     "href": "R-InductionWeek.html#a-first-look-at-the-rstudio-interface",
-    "title": "html version",
+    "title": "R Basics",
     "section": "",
-    "text": "R is the programming language, and we need a “place” to write codes. This place is called an Integrated development environment (IDE).\nRStudio is THE BEST R IDE to date. And it’s interface consists of the following:\n\nscript: (top left) where you do the coding\nconsole: (bottom left) where you can run commands interactively with R and see code outputs\nenvironment: (top right) a list of named objects that we have generated\nhistory: (top right) the list of past commands that we have used\nhelp: (bottom right) user manuals of functions available in R\npackage: (bottom right) a collection of ready-to-use packages written by others"
+    "text": "R is the programming language, and we need a “place” to write codes. This place is called an Integrated development environment (IDE).\nRStudio is THE best R IDE to date. And it’s interface consists of the following major components:\n\nscript: (top left) where you do the coding\nconsole: (bottom left) where you can run commands interactively with R and see code outputs\nenvironment: (top right) a list of named objects that we have generated\nhistory: (top right) the list of past commands that we have used\nhelp: (bottom right) user manuals of functions available in R\npackage: (bottom right) a collection of ready-to-use packages written by others"
   },
   {
     "objectID": "R-InductionWeek.html#where-to-write-r-codes-i-console",
     "href": "R-InductionWeek.html#where-to-write-r-codes-i-console",
-    "title": "html version",
+    "title": "R Basics",
     "section": "",
-    "text": "You can write codes interactively in the R console. See an example: Type the following code into your console and see what happens.\n\nprint('Hello World')\n\n[1] \"Hello World\"\n\n\nOften used for simple exploratory tasks, where you don’t need to keep a record of codes.\n\ncheck summary statistics; inspect datasets; etc."
+    "text": "You can write codes interactively in the R console. See an example: Type the following code into your console and see what happens.\n\nprint('Hello World')\n\n[1] \"Hello World\"\n\n\nUsed for simple exploratory, unstructured tasks, where you don’t need to keep a record of codes.\n\ne.g., summary statistics; check variable values, etc."
   },
   {
-    "objectID": "R-InductionWeek.html#where-to-write-r-codes-ii-.r-script",
-    "href": "R-InductionWeek.html#where-to-write-r-codes-ii-.r-script",
-    "title": "html version",
+    "objectID": "R-InductionWeek.html#where-to-write-r-codes-ii-.r-script-v",
+    "href": "R-InductionWeek.html#where-to-write-r-codes-ii-.r-script-v",
+    "title": "R Basics",
     "section": "",
-    "text": "R script is a text-readable file ending with .R suffix. See an example.\n\ncodes can be run line-by-line or sourced altogether\n\n\n\n\n\n\nImportant\n\n\n\nAll texts in the script will be treated as R codes unless commented out.\n\n\n\nOften used for project development and deployment, where you don’t need to communicate results to others"
+    "text": "R script is a text-readable file ending with .R suffix. See an example.\n\ncodes can be run line-by-line or sourced altogether\n\n\n\n\n\n\nImportant\n\n\n\nAll texts in the script will be treated as R codes\n\n\n\nOften used for project development and deployment, where you don’t need to communicate results to others"
   },
   {
     "objectID": "R-InductionWeek.html#where-to-write-r-codes-iii-.qmd-script",
     "href": "R-InductionWeek.html#where-to-write-r-codes-iii-.qmd-script",
-    "title": "html version",
+    "title": "R Basics",
     "section": "",
-    "text": "Quarto3 files have a .qmd suffix. You can think of Quarto as Microsoft Word that can run R codes.\nQuarto can create dynamic content with Python and R, conveniently combining data analytics work with beautiful reporting.\n\nQuarto can be thought of as the R equivalent of Jupyter Notebook but is much more powerful.\nWe will be mainly using Quarto in the marketing analytics module. You can also use Quarto to do your assignments, write your dissertation, and build your own blogging websites.\n\nLet’s create a new quarto file together!"
+    "text": "Quarto3 files have a .qmd suffix. You can think of Quarto as Microsoft Word that can run R codes.\nQuarto can create dynamic contents with Python and R, conveniently combining data analytics work with beautiful reporting.\n\nIf you are familiar with Python, Quarto can be thought of as the R equivalent of Jupyter Notebook\nWe will be mainly using Quarto in the marketing analytics module.\nYou can also use Quarto to do your assignments for other modules, write your dissertation, and build your own blogging websites.\n\nNow, let’s create a new quarto file together!"
   },
   {
     "objectID": "R-InductionWeek.html#yaml-header",
     "href": "R-InductionWeek.html#yaml-header",
-    "title": "html version",
+    "title": "R Basics",
     "section": "2.1 YAML header",
     "text": "2.1 YAML header\n\nYou can think of YAML header as a MS Word template, which determines how your final report looks like (font, font size, color, margins, etc.).\nThe YAML header is typically at the beginning of a document, separated from the main text by three dashes (---). YAML will not appear in the final report.\nTo make life easier, I will set YAML headers for all .qmd files for you in Marketing Analytics module."
   },
   {
     "objectID": "R-InductionWeek.html#authoring-with-normal-texts",
     "href": "R-InductionWeek.html#authoring-with-normal-texts",
-    "title": "html version",
+    "title": "R Basics",
     "section": "2.2 Authoring with normal texts",
-    "text": "2.2 Authoring with normal texts\nRStudio provides two ways to edit a quarto file (1) visual mode and (2) source mode.\n\nRStudio’s visual editor offers an WYSIWYM (Microsoft Word like) authoring experience for markdown\n\nrecommended and easier to learn; we will be using this mode in class\ncheck the rich formatting tools we can use for authoring a report\n\nIn the source mode, you can edit the file using markdown syntax\n\noptional; for advanced users once you’re familiar with the markdown syntax\n\n\n\n\n\nVisual Mode versus Source Mode\n\n\n\n\n\n\n\n\nExercise\n\n\n\nCreate a new quarto file from RStudio with the following level-1 and level-2 headers\n\nBasics of R\nVectors\n\nCreating vectors"
+    "text": "2.2 Authoring with normal texts\nRStudio provides two ways to edit a quarto file (1) visual mode and (2) source mode.\n\nRStudio’s visual editor offers an WYSIWYM (Microsoft Word like) authoring experience for markdown\n\nrecommended and easier to learn; we will be using this mode in class\ncheck the rich formatting tools we can use for authoring a report\n\nIn the source mode, you can edit the file using markdown syntax\n\noptional; recommended for advanced users once you’re familiar with the markdown syntax\n\n\n\n\n\nVisual Mode versus Source Mode\n\n\n\n\n\n\n\n\nExercise\n\n\n\nCreate a new quarto file from RStudio with the following level-1 and level-2 headers\n\nBasics of R\nBasics of Quarto"
   },
   {
     "objectID": "R-InductionWeek.html#coding-with-code-blocks",
     "href": "R-InductionWeek.html#coding-with-code-blocks",
-    "title": "html version",
+    "title": "R Basics",
     "section": "2.3 Coding with code blocks",
-    "text": "2.3 Coding with code blocks\n\nIn qmd files, we write actual R codes in code chunks identified with {r}.\nYou can run each code chunk interactively by clicking the render icon. RStudio executes the code and displays the results below the code chunks.\nTo insert a code chunk, click Insert -&gt;Code Chunk -&gt; R.\nSee an example and try on your computer!\n\n\nprint('R is the Best Language! Better than Python! And dont tell David I said this!')\n\n[1] \"R is the Best Language! Better than Python! And dont tell David I said this!\"\n\n\n\n\n\n\n\n\nExercise\n\n\n\nInsert the above R code block in your quarto file under any section."
+    "text": "2.3 Coding with code blocks\n\nIn qmd files, we write R codes in so-called code chunks identified with {r}.\nYou can run each code chunk interactively by clicking the green solid triangle. RStudio executes the codes in the code chunk and displays the results.\nTo insert a code chunk, click Insert -&gt;Code Chunk -&gt; R.\nSee an example and try on your computer!\n\n\n\n\n\n\n\nCaveat\n\n\n\nLeave the first line as {r} only, do not write anything else on the first line!\n\n\n\nprint('R is the Best Language! Much better than Python! And please dont tell David I said this!')\n\n[1] \"R is the Best Language! Much better than Python! And please dont tell David I said this!\"\n\n\n\n\n\n\n\n\nExercise\n\n\n\nInsert the above R code block in your quarto file under any section."
   },
   {
     "objectID": "R-InductionWeek.html#rendering-a-report",
     "href": "R-InductionWeek.html#rendering-a-report",
-    "title": "html version",
+    "title": "R Basics",
     "section": "2.4 Rendering a report",
-    "text": "2.4 Rendering a report\nAt the end, when codes and main texts are ready, use the Render button in the RStudio IDE to render the file.\nThe rendered report will be in the same folder with your qmd file.\n\n\n\n\n\n\n\nExercise\n\n\n\nRender your quarto file into a document and see how it looks like."
+    "text": "2.4 Rendering a report\nAt the end, when the Quarto document (including codes and main texts) are ready, use the Render button in the RStudio IDE to render the file.\nThe rendered report will be in the same folder with your qmd file.\n\n\n\n\n\n\n\nExercise\n\n\n\nRender your quarto file into a document and see how it looks like."
   },
   {
     "objectID": "R-InductionWeek.html#more-learning-resources-for-quarto",
     "href": "R-InductionWeek.html#more-learning-resources-for-quarto",
-    "title": "html version",
+    "title": "R Basics",
     "section": "2.5 More learning resources for Quarto",
     "text": "2.5 More learning resources for Quarto\n\nThe available YAML fields vary based on document format\n\nHere for YAML fields for PDF documents\nHere for MS Word\nHere for HTML documents\n\nMarkdown syntax\n\nMarkdown basics\nMarkdown practice\n\nQuarto (recommended to be reviewed after-class)\n\nGet started"
   },
   {
     "objectID": "R-InductionWeek.html#named-objects",
     "href": "R-InductionWeek.html#named-objects",
-    "title": "html version",
+    "title": "R Basics",
     "section": "3.1 Named objects",
-    "text": "3.1 Named objects\n\nR is an object-oriented language, so we will be working on named objects.\nWe use the left arrow &lt;- to create a named object, which assigns the objects on the RHS to the name on the LHS.4\n\nThe below code creates a new object called ‘x’ in the environment, which is a number 2.\n\n\n\nx &lt;- 3\nx\n\n[1] 3\n\n\n\nAfter an object is created, we can refer to the object by its name, and operates on it.\n\n\n# Question: why Wei chooses these two numbers?\nx^2\n\n[1] 9\n\nx^3\n\n[1] 27\n\n\n\n\n\n\n\n\nExercise\n\n\n\nInsert a code block in your quarto file, which does the following:\n\nCreate an object with name ‘x’ with value 2 + 2"
+    "text": "3.1 Named objects\n\nR is an object-oriented language, so we will be working on named objects.\nWe use the left arrow &lt;- to create a named object, which assigns the objects on the RHS to the name on the LHS.4\n\nThe below code creates a new object called ‘x’ in the environment; x is a numeric object; its value is 2.\n\n\n\nx &lt;- 3\nx\n\n[1] 3\n\n\n\nAfter an object is created, we can refer to the object by its name, and operates on it.\n\n\n# Question: hmmm, why does Wei chooses these two numbers?\nx^2\n\n[1] 9\n\nx^3\n\n[1] 27\n\n\n\n\n\n\n\n\nExercise\n\n\n\nInsert a code block in your quarto file, which does the following:\n\nCreate an object with name ‘x’ with value 2 + 2"
   },
   {
-    "objectID": "R-InductionWeek.html#rules-for-object-names",
-    "href": "R-InductionWeek.html#rules-for-object-names",
-    "title": "html version",
-    "section": "3.2 Rules for object names",
-    "text": "3.2 Rules for object names\nFor a variable to be valid, it should follow these rules\n\nIt should contain letters, numbers, and only dot or underscore characters.\nIt cannot start with a number (eg: 2iota).\n\n\n# 2iota &lt;- 2\n\n\nIt cannot start with a dot followed by a number (eg: .2iota).\n\n\n# .iota &lt;- 2\n\n\nIt should not start with an underscore (eg: _iota).\n\n\n# _iota &lt;- 2\n\n\nIt should not be a reserved keyword.\n\n\n# mean &lt;- 2\n\n\n\n\n\n\n\nTip\n\n\n\nIt’s good practice to use memorable names to name an object\n\nFor instance, use prefix “df_” or “data_” to name datasets."
+    "objectID": "R-InductionWeek.html#rules-for-naming-object",
+    "href": "R-InductionWeek.html#rules-for-naming-object",
+    "title": "R Basics",
+    "section": "3.2 Rules for naming object",
+    "text": "3.2 Rules for naming object\nFor a variable to be valid, it should follow these rules\n\nIt should contain letters, numbers, and only dot or underscore characters.\nIt cannot start with a number (eg: 2iota).\n\n\n# 2iota &lt;- 2\n\n\nIt cannot start with a dot followed by a number (eg: .2iota).\n\n\n# .iota &lt;- 2\n\n\nIt should not start with an underscore (eg: _iota).\n\n\n# _iota &lt;- 2\n\n\nIt should not be a reserved keyword.\n\n\n# mean &lt;- 2\n\n\n\n\n\n\n\nTips\n\n\n\nIt’s good practice to use memorable names to name an object\n\nFor instance, use prefix “df_” or “data_” to name datasets."
   },
   {
     "objectID": "R-InductionWeek.html#functions",
     "href": "R-InductionWeek.html#functions",
-    "title": "html version",
+    "title": "R Basics",
     "section": "3.3 Functions",
-    "text": "3.3 Functions\n\nIn R, a function takes object(s) as input, run specific actions on the object(s) defined by the function, and then return an outcome object.\n\nThe example below shows the function mean, which computes the average of several numbers.\n\n\n\na &lt;- 1:3 # which generates a sequence 1,2,3\na\n\n[1] 1 2 3\n\nmean(a)\n\n[1] 2\n\n\n\nWe will heavily rely on functions to conduct data analyses. For how to use a new function, search the function in RStudio’s help panel.\n\nDescription: what the function does in a nutshell\nUsage: how to call the function\nArguments: how you would like to run the function\nValue: what will be returned\nExamples: examples of how to use the function\n\n\n\n\n\n\n\n\nExercise\n\n\n\n\nSearch and learn the usage of function “sum”\nInsert a code block in your quarto file to compute the sum of vector 1:3"
+    "text": "3.3 Functions\n\nIn R, a function takes objects as input, run specific operations on the object(s) defined by the function, and then return an outcome object.\n\nThe example below shows the R built-in function mean, which computes the average of several numbers.\n\n\n\n# generates a sequence 1,2,3\na &lt;- 1:3 \n\n\n# print out a\na\n\n[1] 1 2 3\n\n\n\n# take the mean of a using function mean()\nmean(a)\n\n[1] 2\n\n\n\nWe will heavily rely on functions to conduct data analyses. For how to use a new function, search the function in RStudio’s help panel.\n\nDescription: what the function does in a nutshell\nUsage: how to call the function\nArguments: how you would like to run the function\nValue: what will be returned\nExamples: examples of how to use the function\n\n\n\n\n\n\n\n\nExercise\n\n\n\n\nSearch and learn the usage of function “sum”\nInsert a code block in your quarto file to compute the sum of vector 1:3"
   },
   {
     "objectID": "R-InductionWeek.html#collection-of-functions-packages",
     "href": "R-InductionWeek.html#collection-of-functions-packages",
-    "title": "html version",
+    "title": "R Basics",
     "section": "3.4 Collection of functions: Packages",
-    "text": "3.4 Collection of functions: Packages\nThe base R already has many useful built-in functions to perform basic tasks, but as data scientists, we need more.\nTo perform certain tasks (such as a machine learning model), we can definitely write our own code from scratch, but it takes lots of (unnecessary) effort. Fortunately, many packages have been written by others for us to directly use.\n\nInstall the package using the built-in function install.packages(). R will download the package.\n\n\ninstall.packages('praise')\n\nError in contrib.url(repos, \"source\"): trying to use CRAN without setting a mirror\n\n\n\nLoad the packages using library(). Every time you restart the RStudio, packages need to be reloaded.\n\n\nlibrary(praise)\n\n\nNow that the package is loaded, you can use the functions in it. praise() is a function in the praise package.\n\n\npraise()\n\n[1] \"You are beautiful!\"\n\n\n\n\n\n\n\n\nTips\n\n\n\nInstallation of a package is only needed for the first time. After installation, just need to reload the packages using library() every time your restart RStudio."
+    "text": "3.4 Collection of functions: Packages\nThe base R already has many useful built-in functions to perform basic tasks, but as data scientists, we need more.\nTo perform certain tasks (such as a machine learning model), we can definitely write our own code from scratch, but it takes lots of (unnecessary) effort.\nFortunately, many packages have been written by others for us to directly use.\n\nInstall the package using the built-in function install.packages(). R will download the package to your computer. Installation of a package is only needed for the first time.\n\n\ninstall.packages('praise')\n\nError in contrib.url(repos, \"source\"): trying to use CRAN without setting a mirror\n\n\n\nLoad the packages using library(). Every time you restart the RStudio, packages need to be reloaded.\n\n\nlibrary(praise)\n\n\nNow that the package is loaded, you can use the functions in it. praise() is a function in the praise package.\n\n\npraise()\n\n[1] \"You are striking!\"\n\n\n\n\n\n\n\n\nTips\n\n\n\nAfter installation, just need to reload the packages using library() every time your restart RStudio."
   },
   {
     "objectID": "R-InductionWeek.html#comment-codes",
     "href": "R-InductionWeek.html#comment-codes",
-    "title": "html version",
+    "title": "R Basics",
     "section": "3.5 Comment codes",
     "text": "3.5 Comment codes\nYou can put a # before any code, to indicate that any codes after the # on the same line are your comments, and will not be run by R.\nIt’s a good practice to often comment your codes, so that you can help the future you to remember what you were trying to achieve.\n\n# print(\"Support Wei for an iPhone 14 Pro!\")\n\n# Below, x will be 1 rather than 1+1\nx &lt;- 1 # +1"
   },
   {
-    "objectID": "R-InductionWeek.html#data-structures",
-    "href": "R-InductionWeek.html#data-structures",
-    "title": "html version",
-    "section": "3.6 Data structures",
-    "text": "3.6 Data structures\nBelow are the complete list of objects in R."
-  },
-  {
     "objectID": "R-InductionWeek.html#data-types",
     "href": "R-InductionWeek.html#data-types",
-    "title": "html version",
-    "section": "3.7 Data types",
-    "text": "3.7 Data types\nTo make the best of the R language, you’ll need a strong understanding of the basic data types and data structures and how to operate on them. Data structures are very important to understand because these are the objects you will manipulate on a day-to-day basis in R.\n\nNumeric (e.g.,2.5)\n\nWe can use R as a calculator for numeric objects\n\n\n\n# Numeric Vector \nnum2 &lt;- 2.5\nlog(num2)\n\n[1] 0.9162907\n\nnum2^2\n\n[1] 6.25\n\nexp(num2)\n\n[1] 12.18249\n\n\n\nLogical (TRUE, FALSE)\n\nTRUE is equivalent to 1 in R; FALSE is equivalent to 0.\n\n\n\nlog1 &lt;- TRUE\nlog2 &lt;- FALSE\n\n\nCharacter (e.g. “Wei”, “UCL”, “1 + 1 = 3”, “TRUE”, etc.)\n\nwithin a pair of quotation marks; single or double quotation marks can both work.\n\n\n\nstr1 &lt;- \"1 + 1 = 2\"\n\n\nFactor (“male”, “female”, etc.)\n\nthis is an important class for describing categories. We will discuss in more detail later in class when we learn linear regression.\n\n\n\ncountry &lt;- c('UK','Spain','Italy','Multiverse')\nfactor(country)\n\n[1] UK         Spain      Italy      Multiverse\nLevels: Italy Multiverse Spain UK"
+    "title": "R Basics",
+    "section": "4.1 Data types",
+    "text": "4.1 Data types\nTo make the best of the R language, you’ll need a strong understanding of the basic data types and data structures and how to operate on them. Data structures are very important to understand because these are the objects you will manipulate on a day-to-day basis in R.\n\nNumeric (e.g.,2.5)\n\nWe can use R as a calculator for numeric objects\n\n\n\n# Numeric Vector \nnum2 &lt;- 2.5\nlog(num2)\n\n[1] 0.9162907\n\nnum2^2\n\n[1] 6.25\n\nexp(num2)\n\n[1] 12.18249\n\n\n\nLogical (TRUE, FALSE)\n\nTRUE is equivalent to 1 in R; FALSE is equivalent to 0.\n\n\n\nlog1 &lt;- TRUE\nlog2 &lt;- FALSE\n\n\nCharacter (e.g. “Wei”, “UCL”, “1 + 1 = 3”, “TRUE”, etc.)\n\nwithin a pair of quotation marks; single or double quotation marks can both work.\n\n\n\nstr1 &lt;- \"1 + 1 = 2\"\n\n\nFactor (“male”, “female”, etc.)\n\nthis is an important R class for describing categories. We will discuss in more detail later in class when we learn linear regression.\n\n\n\ncountry &lt;- c('UK','Spain','Italy','Multiverse')\nfactor(country)\n\n[1] UK         Spain      Italy      Multiverse\nLevels: Italy Multiverse Spain UK"
   },
   {
     "objectID": "R-InductionWeek.html#check-data-types-using-class",
     "href": "R-InductionWeek.html#check-data-types-using-class",
-    "title": "html version",
-    "section": "3.8 Check data types using class()",
-    "text": "3.8 Check data types using class()\nWe can use class() to check the type of an object in R.\n\na &lt;- '1+1'\nclass(a)\n\n[1] \"character\"\n\n\n\nb &lt;- 1+1\nclass(b)\n\n[1] \"numeric\"\n\n\nThis is very useful when we first load data from external databases, we need to make sure variables are of the correct data types."
+    "title": "R Basics",
+    "section": "4.2 Check data types using class()",
+    "text": "4.2 Check data types using class()\nWe can use class() to check the type of an object in R.\n\na &lt;- '1+1'\nclass(a)\n\n[1] \"character\"\n\n\n\nb &lt;- 1+1\nclass(b)\n\n[1] \"numeric\"\n\n\nThis is very useful when we first load data from external databases, we need to make sure variables are of the correct data types."
   },
   {
     "objectID": "R-InductionWeek.html#data-type-conversion",
     "href": "R-InductionWeek.html#data-type-conversion",
-    "title": "html version",
-    "section": "3.9 Data type: conversion",
-    "text": "3.9 Data type: conversion\nSometimes, data types of variables from raw data may not be what we want; we need to change the data type of a variable to the appropriate one.\nSee the following example:\n\na is a string, and we cannot use mathematical operations on it, or R will report errors.\n\n\na &lt;- '1'\nclass(a)\n\n[1] \"character\"\n\na + 1\n\nError in a + 1: non-numeric argument to binary operator\n\n\n\nWe can convert a to a numeric value. To convert from character to numeric, we use as.numeric()\n\n\nb &lt;- as.numeric(a)\nclass(b)\n\n[1] \"numeric\""
+    "title": "R Basics",
+    "section": "4.3 Data type: conversion",
+    "text": "4.3 Data type: conversion\nSometimes, data types of variables from raw data may not be what we want; we need to change the data type of a variable to the appropriate one.\nSee the following example:\n\na is a string, and we cannot use mathematical operations on it, or R will report errors.\n\n\na &lt;- '1'\nclass(a)\n\n[1] \"character\"\n\na + 1\n\nError in a + 1: non-numeric argument to binary operator\n\n\n\nWe can convert a to a numeric value. To convert from character to numeric, we use as.numeric()\n\n\nb &lt;- as.numeric(a)\nclass(b)\n\n[1] \"numeric\""
   },
   {
     "objectID": "R-InductionWeek.html#creating-vectors",
     "href": "R-InductionWeek.html#creating-vectors",
-    "title": "html version",
-    "section": "4.1 Creating vectors",
-    "text": "4.1 Creating vectors\n\n4.1.1 Creating vectors: c()\nVector can be created using the function c() by listing all the values in the parenthesis, separated by comma ‘,’.\n\nx &lt;- c(1, 3, 5, 10)\nx\n\n[1]  1  3  5 10\n\nclass(x)\n\n[1] \"numeric\"\n\n\nVectors must contain elements of the same data type. Otherwise, it will implicitly convert elements into the same type.\n\nx &lt;- c(1, \"intro\", TRUE)\n\nclass(x)\n\n[1] \"character\"\n\n\n\n\n4.1.2 Checking the number of elements in a vector: length()\nYou can measure the length of a vector using the command length()\n\nx &lt;- c('R',' is', ' fun')\nlength(x)\n\n[1] 3\n\ny &lt;- c()\nlength(y)\n\n[1] 0\n\n\n\n\n4.1.3 Creating numeric sequences: seq() and rep()\nIt is also possible to easily create sequences with patterns\n\nuse seq() to create sequence with fixed steps\n\n\n# use seq()\nseq(from = 1, to = 2, by = 0.1)\n\n [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0\n\n\n\nIf step is 1, there’s a simpler way using :\n\n\n1:5\n\n[1] 1 2 3 4 5\n\n\n\nuse rep() to create repeated sequences.\n\n\n# replication using rep()\nrep(c(\"A\",\"B\"), times = 5)\n\n [1] \"A\" \"B\" \"A\" \"B\" \"A\" \"B\" \"A\" \"B\" \"A\" \"B\"\n\n\n\n\n4.1.4 Combine vectors\nYou can use c() to combine different vectors; this is very commonly used to concatenate vectors.\n\nx &lt;- 1:3 # from 1 to 3\ny &lt;- c(10, 15) # 10 and 15\nz &lt;- c(x,y) # x first and then y \nz\n\n[1]  1  2  3 10 15\n\n\n\n\n\n\n\n\nExercise\n\n\n\nCreate a sequence of {1,1,2,2,3,3,3} using different methods."
+    "title": "R Basics",
+    "section": "5.1 Creating vectors",
+    "text": "5.1 Creating vectors\n\n5.1.1 Creating vectors: c()\nVector can be created using the function c() by listing all the values in the parenthesis, separated by comma ‘,’.\n\nx &lt;- c(1, 3, 5, 10)\nx\n\n[1]  1  3  5 10\n\nclass(x)\n\n[1] \"numeric\"\n\n\nVectors must contain elements of the same data type. Otherwise, it will automatically convert elements into the same type (usually character type).\n\nx &lt;- c(1, \"intro\", TRUE)\nclass(x)\n\n[1] \"character\"\n\n\n\n\n5.1.2 Checking the number of elements in a vector: length()\nYou can measure the length of a vector using the command length()\n\nx &lt;- c('R',' is', ' fun')\nlength(x)\n\n[1] 3\n\n\n\ny &lt;- c()\nlength(y)\n\n[1] 0\n\n\n\n\n5.1.3 Creating numeric sequences: seq() and rep()\nIt is also possible to easily create sequences with patterns\n\nuse seq() to create sequence with fixed steps\n\n\n# use seq()\nseq(from = 1, to = 2, by = 0.1)\n\n [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0\n\n\n\nIf step is 1, there’s a simpler way using :\n\n\n1:5\n\n[1] 1 2 3 4 5\n\n\n\nuse rep() to create repeated sequences.\n\n\n# replication using rep()\nrep(c(\"A\",\"B\"), times = 5)\n\n [1] \"A\" \"B\" \"A\" \"B\" \"A\" \"B\" \"A\" \"B\" \"A\" \"B\"\n\n\n\n\n5.1.4 Combine vectors\nYou can use c() to combine different vectors; this is very commonly used to concatenate vectors.\n\nx &lt;- 1:3 # from 1 to 3\ny &lt;- c(10, 15) # 10 and 15\nz &lt;- c(x,y) # x first and then y \nz\n\n[1]  1  2  3 10 15\n\n\n\n\n\n\n\n\nExercise\n\n\n\nCreate a sequence of {1,1,2,2,3,3,3} using different methods."
   },
   {
     "objectID": "R-InductionWeek.html#indexing-and-subsetting",
     "href": "R-InductionWeek.html#indexing-and-subsetting",
-    "title": "html version",
-    "section": "4.2 Indexing and subsetting",
-    "text": "4.2 Indexing and subsetting\nWe put the index of elements we would like to extract in a square bracket [ ].5\n\nWhich element is in the second position?\n\n\nx &lt;- c(1,3,8,7) \nx[2]\n\n[1] 3\n\n\n\nWhat are the first 2 elements?\n\n\nx[1:2] \n\n[1] 1 3\n\n\n\nWhat are the 1st, 3rd and 4th elements?\n\n\nx[c(1,3,4)] \n\n[1] 1 8 7"
+    "title": "R Basics",
+    "section": "5.2 Indexing and subsetting",
+    "text": "5.2 Indexing and subsetting\nWe put the index of elements we would like to extract in a square bracket [ ].5\n\nWhich element is in the second position?\n\n\nx &lt;- c(1,3,8,7) \nx[2]\n\n[1] 3\n\n\n\nWhat are the first 2 elements?\n\n\nx[1:2] \n\n[1] 1 3\n\n\n\nWhat are the 1st, 3rd and 4th elements?\n\n\nx[c(1,3,4)] \n\n[1] 1 8 7"
   },
   {
     "objectID": "R-InductionWeek.html#element-wise-operations",
     "href": "R-InductionWeek.html#element-wise-operations",
-    "title": "html version",
-    "section": "4.3 Element-wise operations",
-    "text": "4.3 Element-wise operations\nR is a vectorized language, meaning by default it will do vector operation internally.\n\nIf you operate on a vector with a single number, the operation will be applied to all elements in the vector\n\n\nx &lt;- c(1,3,8,7)\nx+2\n\n[1]  3  5 10  9\n\nx^2\n\n[1]  1  9 64 49\n\n\n\n\n\n\n\n\nCaveats\n\n\n\nWhen the length of vectors do not match, R will still do it for you without reporting error but a warning message. As you can see, even if the length of vectors does not match, R can still return an output but throws a warning message. It’s important to check the warning messages when there is any!\n\n\n\nx &lt;- c(1,3,8,7)\n\ny &lt;- c(1,3,4) # careful!!! does not report error\nx + y\n\nWarning in x + y: longer object length is not a multiple of shorter object\nlength\n\n\n[1]  2  6 12  8\n\n\n\n\n\n\n\n\nExercise\n\n\n\nCreate a geometric sequence {2,4,8,16,32} using seq()."
+    "title": "R Basics",
+    "section": "5.3 Element-wise operations",
+    "text": "5.3 Element-wise operations\nR is a vectorized language, meaning by default it will do vector operation internally.\n\nIf you operate on a vector with a single number, the operation will be applied to all elements in the vector\n\n\nx &lt;- c(1,3,8,7)\nx+2\n\n[1]  3  5 10  9\n\nx^2\n\n[1]  1  9 64 49\n\n\n\n\n\n\n\n\nCaveats\n\n\n\nWhen the length of vectors do not match, R will still do it for you without reporting error but a warning message. As you can see, even if the length of vectors does not match, R can still return an output but throws a warning message. It’s important to check the warning messages when there is any!\n\n\n\nx &lt;- c(1,3,8,7)\n\ny &lt;- c(1,3,4) # careful!!! does not report error\nx + y\n\nWarning in x + y: longer object length is not a multiple of shorter object\nlength\n\n\n[1]  2  6 12  8\n\n\n\n\n\n\n\n\nExercise\n\n\n\nCreate a geometric sequence {2,4,8,16,32} using seq()."
   },
   {
     "objectID": "R-InductionWeek.html#relational-operations",
     "href": "R-InductionWeek.html#relational-operations",
-    "title": "html version",
-    "section": "4.4 Relational operations",
-    "text": "4.4 Relational operations\n\nWe can compare a vector with a vector of the same length, which will do element-wise (element-by-element) comparison\n\n\nx &lt;- c(1,3,8,7) \ny &lt;- c(2,3,7,8)\nx &gt; y\n\n[1] FALSE FALSE  TRUE FALSE\n\nx == y\n\n[1] FALSE  TRUE FALSE FALSE\n\n\n\nWe can also compare a vector with a scalar, because R is vectorized\n\n\nx &lt;- c(1,3,8,7) \nx &lt; 6 # is each element lower than 6?\n\n[1]  TRUE  TRUE FALSE FALSE\n\nx == 10 # is the element equal to 10?\n\n[1] FALSE FALSE FALSE FALSE\n\n\n\nReturn the positions of elements that satisfy certain conditions: which()\n\n\nwhich(x == 8) # which element equals 8 \n\n[1] 3\n\nwhich.max(x) # which is the max element \n\n[1] 3\n\nwhich.min(x)\n\n[1] 1\n\n\n\n\n\n\n\n\nExercise\n\n\n\nFind the minimum value of vector x using which()\n\n\n\nSometimes, we may need to operation on multiple relational operations using and or no\n\nT & F # and\n\n[1] FALSE\n\nT | F # or\n\n[1] TRUE\n\n!T # not\n\n[1] FALSE\n\n\n\nFor instance, we may want to find out elements that are smaller than 8 and larger than 3.\n\n\n\nwhich(x &lt; 8 & x &gt; 3 )\n\n[1] 4"
+    "title": "R Basics",
+    "section": "5.4 Relational operations",
+    "text": "5.4 Relational operations\n\nWe can compare a vector with a vector of the same length, which will do element-wise (element-by-element) comparison\n\n\nx &lt;- c(1,3,8,7) \ny &lt;- c(2,3,7,8)\nx &gt; y\n\n[1] FALSE FALSE  TRUE FALSE\n\nx == y\n\n[1] FALSE  TRUE FALSE FALSE\n\n\n\nWe can also compare a vector with a scalar, because R is vectorized\n\n\nx &lt;- c(1,3,8,7) \nx &lt; 6 # is each element lower than 6?\n\n[1]  TRUE  TRUE FALSE FALSE\n\nx == 10 # is the element equal to 10?\n\n[1] FALSE FALSE FALSE FALSE\n\n\n\nReturn the positions of elements that satisfy certain conditions: which()\n\n\nwhich(x == 8) # which element equals 8 \n\n[1] 3\n\nwhich.max(x) # which is the max element \n\n[1] 3\n\nwhich.min(x)\n\n[1] 1\n\n\n\n\n\n\n\n\nExercise\n\n\n\nFind the minimum value of vector x using which()\n\n\n\nSometimes, we may need to operation on multiple relational operations using and or no\n\nT & F # and\n\n[1] FALSE\n\nT | F # or\n\n[1] TRUE\n\n!T # not\n\n[1] FALSE\n\n\n\nFor instance, we may want to find out elements that are smaller than 8 and larger than 3.\n\n\n\nwhich(x &lt; 8 & x &gt; 3 )\n\n[1] 4"
   },
   {
     "objectID": "R-InductionWeek.html#special-relational-operation-in",
     "href": "R-InductionWeek.html#special-relational-operation-in",
-    "title": "html version",
-    "section": "4.5 Special relational operation: %in%",
-    "text": "4.5 Special relational operation: %in%\n\nA special relational operation is %in% in R, which tests whether an element exists in the object.\n\n\nx &lt;- c(1,3,8,7) \n\n3 %in% x\n\n[1] TRUE\n\n4 %in% x\n\n[1] FALSE"
+    "title": "R Basics",
+    "section": "5.5 Special relational operation: %in%",
+    "text": "5.5 Special relational operation: %in%\n\nA special relational operation is %in% in R, which tests whether an element exists in the object.\n\n\nx &lt;- c(1,3,8,7) \n\n3 %in% x\n\n[1] TRUE\n\n4 %in% x\n\n[1] FALSE"
   },
   {
     "objectID": "R-InductionWeek.html#after-class-exercise",
     "href": "R-InductionWeek.html#after-class-exercise",
-    "title": "html version",
-    "section": "4.6 After-class exercise",
-    "text": "4.6 After-class exercise\n\nDatacamp Introduction to R, finish the following:\n\nIntro to basics\nVectors"
+    "title": "R Basics",
+    "section": "5.6 After-class exercise",
+    "text": "5.6 After-class exercise\n\nDatacamp Introduction to R, finish the following:\n\nIntro to basics\nVectors"
   },
   {
     "objectID": "R-InductionWeek.html#matrices-creating-matrices",
     "href": "R-InductionWeek.html#matrices-creating-matrices",
-    "title": "html version",
-    "section": "5.1 Matrices: creating matrices",
-    "text": "5.1 Matrices: creating matrices\n\n5.1.1 Creating matrices: matrix()\n\nA matrix can be created using the command matrix()\n\nthe first argument is the vector to be converted into matrix\nthe second argument is the number of rows\nthe last argument is the number of cols (optional)\n\n\n\nmatrix(1:9, nrow = 3, ncol = 3)\n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\n\n\n\n\n\n\n\nImportant\n\n\n\nR by default inserts elements vertically by columns\n\n\n\nR will fill in the matrix by order and discard the remaining elements once fully filled\n\n\nmatrix(1:9, nrow = 3, ncol = 2)\n\nWarning in matrix(1:9, nrow = 3, ncol = 2): data length [9] is not a\nsub-multiple or multiple of the number of columns [2]\n\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\n\nR will fill in the matrix by order and recycle to fill in the remaining elements\n\n\nmatrix(1:9, nrow = 3, ncol = 4)\n\nWarning in matrix(1:9, nrow = 3, ncol = 4): data length [9] is not a\nsub-multiple or multiple of the number of columns [4]\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    4    7    1\n[2,]    2    5    8    2\n[3,]    3    6    9    3\n\n\n\n\n5.1.2 Creating matrices: inserting by row\nHowever, we can ask R to insert by rows by setting the byrow argument.\n\nmatrix(1:9, nrow = 3, ncol = 3, byrow = TRUE)\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9\n\n\n\n\n5.1.3 Creating matrices: concatenation of matrices cbind() and rbind()\nWe can use cbind() and rbind() to concatenate vectors and matrices into new matrices.\n\ncbind() does the column binding\n\n\nx &lt;- cbind(1:3, 4:6) # column bind\nx\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\n\ncbind() can also operate on matrices.\n\n\ncbind(x,x)\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    4    1    4\n[2,]    2    5    2    5\n[3,]    3    6    3    6\n\n\n\nrbind() does the row binding\n\n\nrbind(7:9, 10:12) # row bind\n\n     [,1] [,2] [,3]\n[1,]    7    8    9\n[2,]   10   11   12"
+    "title": "R Basics",
+    "section": "6.1 Matrices: creating matrices",
+    "text": "6.1 Matrices: creating matrices\n\n6.1.1 Creating matrices: matrix()\n\nA matrix can be created using the command matrix()\n\nthe first argument is the vector to be converted into matrix\nthe second argument is the number of rows\nthe last argument is the number of cols (optional)\n\n\n\nmatrix(1:9, nrow = 3, ncol = 3)\n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\n\n\n\n\n\n\n\nImportant\n\n\n\nR by default inserts elements vertically by columns\n\n\n\nR will fill in the matrix by order and discard the remaining elements once fully filled\n\n\nmatrix(1:9, nrow = 3, ncol = 2)\n\nWarning in matrix(1:9, nrow = 3, ncol = 2): data length [9] is not a\nsub-multiple or multiple of the number of columns [2]\n\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\n\nR will fill in the matrix by order and recycle to fill in the remaining elements\n\n\nmatrix(1:9, nrow = 3, ncol = 4)\n\nWarning in matrix(1:9, nrow = 3, ncol = 4): data length [9] is not a\nsub-multiple or multiple of the number of columns [4]\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    4    7    1\n[2,]    2    5    8    2\n[3,]    3    6    9    3\n\n\n\n\n6.1.2 Creating matrices: inserting by row\nHowever, we can ask R to insert by rows by setting the byrow argument.\n\nmatrix(1:9, nrow = 3, ncol = 3, byrow = TRUE)\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9\n\n\n\n\n6.1.3 Creating matrices: concatenation of matrices cbind() and rbind()\nWe can use cbind() and rbind() to concatenate vectors and matrices into new matrices.\n\ncbind() does the column binding\n\n\nx &lt;- cbind(1:3, 4:6) # column bind\nx\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\n\ncbind() can also operate on matrices.\n\n\ncbind(x,x)\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    4    1    4\n[2,]    2    5    2    5\n[3,]    3    6    3    6\n\n\n\nrbind() does the row binding\n\n\nrbind(7:9, 10:12) # row bind\n\n     [,1] [,2] [,3]\n[1,]    7    8    9\n[2,]   10   11   12"
   },
   {
     "objectID": "R-InductionWeek.html#matrices-indexing-and-subsetting",
     "href": "R-InductionWeek.html#matrices-indexing-and-subsetting",
-    "title": "html version",
-    "section": "5.2 Matrices: indexing and subsetting",
-    "text": "5.2 Matrices: indexing and subsetting\nMatrices have two dimensions: rows and columns. Therefore, to extract elements from a matrix, we just need to specify which row(s) and which column(s) we want.\n\nx\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\n\nExtract an element\n\n1 is specified for row index, so we will extract elements from the first row\n1 is specified for column index, so we will extract elements from the the second column\nAltogether, we extract the single element in row 1, column 2.\n\n\n\nx[1,2] # the element in the 1st row, 2nd column\n\n[1] 4\n\n\n\nIf we leave blank for a dimension, we extract all elements of that dimension.\n\n1 is specified for row index, so we will extract elements from the first row\nNothing is specified for column index, so we will extract all elements from all columns\nAltogether, we extract all elements in the first row\n\n\n\nx[1,] # all elements in the first row\n\n[1] 1 4\n\n\n\n\n\n\n\n\nExercise\n\n\n\n\nExtract all elements in the second column\nExtract all elements in the first and third rows"
+    "title": "R Basics",
+    "section": "6.2 Matrices: indexing and subsetting",
+    "text": "6.2 Matrices: indexing and subsetting\nMatrices have two dimensions: rows and columns. Therefore, to extract elements from a matrix, we just need to specify which row(s) and which column(s) we want.\n\nx\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\n\nExtract an element\n\n1 is specified for row index, so we will extract elements from the first row\n1 is specified for column index, so we will extract elements from the the second column\nAltogether, we extract the single element in row 1, column 2.\n\n\n\nx[1,2] # the element in the 1st row, 2nd column\n\n[1] 4\n\n\n\nIf we leave blank for a dimension, we extract all elements of that dimension.\n\n1 is specified for row index, so we will extract elements from the first row\nNothing is specified for column index, so we will extract all elements from all columns\nAltogether, we extract all elements in the first row\n\n\n\nx[1,] # all elements in the first row\n\n[1] 1 4\n\n\n\n\n\n\n\n\nExercise\n\n\n\n\nExtract all elements in the second column\nExtract all elements in the first and third rows"
   },
   {
     "objectID": "R-InductionWeek.html#matrices-operations",
     "href": "R-InductionWeek.html#matrices-operations",
-    "title": "html version",
-    "section": "5.3 Matrices: operations",
-    "text": "5.3 Matrices: operations\nLet’s use 3 matrices x, y, and z:\n\nx &lt;- matrix(1:6, nrow = 3)\ny &lt;- matrix(1:6, byrow = T, nrow = 2)\n\n\nFunctions will be vectorized over all elements in a matrix\n\n\nx\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\nz&lt;- x^2\nz\n\n     [,1] [,2]\n[1,]    1   16\n[2,]    4   25\n[3,]    9   36\n\n\n\n5.3.1 Matrices’ operations: matrix addition and multiplication\n\nIf the two matrices are of the same dimensions, they can do element-wise operations, including the *\n\n\nx + z   # elementwise addition\n\n     [,1] [,2]\n[1,]    2   20\n[2,]    6   30\n[3,]   12   42\n\nx * z\n\n     [,1] [,2]\n[1,]    1   64\n[2,]    8  125\n[3,]   27  216\n\n\n\nWe can also use %*% to indicate matrix multiplication\n\n\nx%*%y # matrix multiplication\n\n     [,1] [,2] [,3]\n[1,]   17   22   27\n[2,]   22   29   36\n[3,]   27   36   45\n\n\n\n\n5.3.2 Matrices’ operations: inverse and transpose\n\nWe use t() to do matrix transpose\n\n\nt(x) # transpose\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n\n\n\nWe use solve() to get the inverse of an matrix\n\n\nsolve(t(x)%*%x) # inverse; must be on a square matrix\n\n           [,1]       [,2]\n[1,]  1.4259259 -0.5925926\n[2,] -0.5925926  0.2592593"
+    "title": "R Basics",
+    "section": "6.3 Matrices: operations",
+    "text": "6.3 Matrices: operations\nLet’s use 3 matrices x, y, and z:\n\nx &lt;- matrix(1:6, nrow = 3)\ny &lt;- matrix(1:6, byrow = T, nrow = 2)\n\n\nFunctions will be vectorized over all elements in a matrix\n\n\nx\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\nz&lt;- x^2\nz\n\n     [,1] [,2]\n[1,]    1   16\n[2,]    4   25\n[3,]    9   36\n\n\n\n6.3.1 Matrices’ operations: matrix addition and multiplication\n\nIf the two matrices are of the same dimensions, they can do element-wise operations, including the *\n\n\nx + z   # elementwise addition\n\n     [,1] [,2]\n[1,]    2   20\n[2,]    6   30\n[3,]   12   42\n\nx * z\n\n     [,1] [,2]\n[1,]    1   64\n[2,]    8  125\n[3,]   27  216\n\n\n\nWe can also use %*% to indicate matrix multiplication\n\n\nx%*%y # matrix multiplication\n\n     [,1] [,2] [,3]\n[1,]   17   22   27\n[2,]   22   29   36\n[3,]   27   36   45\n\n\n\n\n6.3.2 Matrices’ operations: inverse and transpose\n\nWe use t() to do matrix transpose\n\n\nt(x) # transpose\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n\n\n\nWe use solve() to get the inverse of an matrix\n\n\nsolve(t(x)%*%x) # inverse; must be on a square matrix\n\n           [,1]       [,2]\n[1,]  1.4259259 -0.5925926\n[2,] -0.5925926  0.2592593"
   },
   {
     "objectID": "R-InductionWeek.html#data-frames-creating-dataframe",
     "href": "R-InductionWeek.html#data-frames-creating-dataframe",
-    "title": "html version",
-    "section": "6.1 Data Frames: creating dataframe",
-    "text": "6.1 Data Frames: creating dataframe\n\n6.1.1 Data Frames: create dataframe using data.frame()\n\nData Frame is the R object that we will deal with most of the time in the MSc program. You can think of data.frame as a spreadsheet in excel.\n\n\ndf &lt;-  data.frame(id = 1:4,\n  name = c(\"David\", \"Yongdong\", \"Anil\", \"Wei\"),\n  wage = rnorm(n=4, mean = 10^5, sd = 10^3), \n  male = c(T, T, T, T)\n  )\ndf\n\n\n\n  \n\n\n\n\nData frames can also be created from external sources, e.g., from a csv file or database."
+    "title": "R Basics",
+    "section": "7.1 Data Frames: creating dataframe",
+    "text": "7.1 Data Frames: creating dataframe\n\n7.1.1 Data Frames: create dataframe using data.frame()\n\nData Frame is the R object that we will deal with most of the time in the MSc program. You can think of data.frame as a spreadsheet in excel.\n\n\ndf &lt;-  data.frame(id = 1:4,\n  name = c(\"David\", \"Yongdong\", \"Anil\", \"Wei\"),\n  wage = rnorm(n=4, mean = 10^5, sd = 10^3), \n  male = c(T, T, T, T)\n  )\ndf\n\n\n\n  \n\n\n\n\nData frames can also be created from external sources, e.g., from a csv file or database."
   },
   {
     "objectID": "R-InductionWeek.html#data-frames-basics",
     "href": "R-InductionWeek.html#data-frames-basics",
-    "title": "html version",
-    "section": "6.2 Data Frames: Basics",
-    "text": "6.2 Data Frames: Basics\n\nEach row stands for an observation; each column stands for a variable.\nEach column should have a unique name.\nEach column must contain the same data type, but the different columns can store different data types.\n\ncompare with matrix?\n\nEach column must be of same length, because rows have the same length across variables."
+    "title": "R Basics",
+    "section": "7.2 Data Frames: Basics",
+    "text": "7.2 Data Frames: Basics\n\nEach row stands for an observation; each column stands for a variable.\nEach column should have a unique name.\nEach column must contain the same data type, but the different columns can store different data types.\n\ncompare with matrix?\n\nEach column must be of same length, because rows have the same length across variables."
   },
   {
     "objectID": "R-InductionWeek.html#data-frames-check-dimensions-and-variable-types",
     "href": "R-InductionWeek.html#data-frames-check-dimensions-and-variable-types",
-    "title": "html version",
-    "section": "6.3 Data Frames: check dimensions and variable types",
-    "text": "6.3 Data Frames: check dimensions and variable types\n\nYou can verify the size of the data.frame using the command dim(); or nrow() and ncol()\n\n\ndim(df)\n\n[1] 4 4\n\nnrow(df)\n\n[1] 4\n\nncol(df)\n\n[1] 4\n\n\n\nYou can get the data type info using the command str()\n\n\nclass(df)\n\n[1] \"data.frame\"\n\nstr(df)\n\n'data.frame':   4 obs. of  4 variables:\n $ id  : int  1 2 3 4\n $ name: chr  \"David\" \"Yongdong\" \"Anil\" \"Wei\"\n $ wage: num  99991 99914 101066 100597\n $ male: logi  TRUE TRUE TRUE TRUE\n\n\n\nGet the variables names\n\n\nnames(df)\n\n[1] \"id\"   \"name\" \"wage\" \"male\""
+    "title": "R Basics",
+    "section": "7.3 Data Frames: check dimensions and variable types",
+    "text": "7.3 Data Frames: check dimensions and variable types\n\nYou can verify the size of the data.frame using the command dim(); or nrow() and ncol()\n\n\ndim(df)\n\n[1] 4 4\n\nnrow(df)\n\n[1] 4\n\nncol(df)\n\n[1] 4\n\n\n\nYou can get the data type info using the command str()\n\n\nclass(df)\n\n[1] \"data.frame\"\n\nstr(df)\n\n'data.frame':   4 obs. of  4 variables:\n $ id  : int  1 2 3 4\n $ name: chr  \"David\" \"Yongdong\" \"Anil\" \"Wei\"\n $ wage: num  99769 100362 100745 100384\n $ male: logi  TRUE TRUE TRUE TRUE\n\n\n\nGet the variables names\n\n\nnames(df)\n\n[1] \"id\"   \"name\" \"wage\" \"male\""
   },
   {
     "objectID": "R-InductionWeek.html#data-frames-summary",
     "href": "R-InductionWeek.html#data-frames-summary",
-    "title": "html version",
-    "section": "6.4 Data Frames: summary",
-    "text": "6.4 Data Frames: summary\n\nSummarize the data frame\n\n\nsummary(df)\n\n       id           name                wage          male        \n Min.   :1.00   Length:4           Min.   : 99914   Mode:logical  \n 1st Qu.:1.75   Class :character   1st Qu.: 99971   TRUE:4        \n Median :2.50   Mode  :character   Median :100294                 \n Mean   :2.50                      Mean   :100392                 \n 3rd Qu.:3.25                      3rd Qu.:100714                 \n Max.   :4.00                      Max.   :101066"
+    "title": "R Basics",
+    "section": "7.4 Data Frames: summary",
+    "text": "7.4 Data Frames: summary\n\nSummarize the data frame\n\n\nsummary(df)\n\n       id           name                wage          male        \n Min.   :1.00   Length:4           Min.   : 99769   Mode:logical  \n 1st Qu.:1.75   Class :character   1st Qu.:100214   TRUE:4        \n Median :2.50   Mode  :character   Median :100373                 \n Mean   :2.50                      Mean   :100315                 \n 3rd Qu.:3.25                      3rd Qu.:100474                 \n Max.   :4.00                      Max.   :100745"
   },
   {
     "objectID": "R-InductionWeek.html#data-frames-subsetting",
     "href": "R-InductionWeek.html#data-frames-subsetting",
-    "title": "html version",
-    "section": "6.5 Data Frames: subsetting",
-    "text": "6.5 Data Frames: subsetting\nSince a dataframe is essentially a matrix, all the subsetting syntax with matrices can be applied here.\n\ndf$name # subset a column\n\n[1] \"David\"    \"Yongdong\" \"Anil\"     \"Wei\"     \n\ndf[,c(2,3)] # can also subset like a matrix\n\n\n\n  \n\n\n\nWe are interesting in the cylinders and the weights of inefficient cars (lower than 15 miles per gallon).\n\npoll_cars &lt;- mtcars[mtcars$mpg&lt;15, c(\"cyl\", \"wt\")] # remember to assign the generated dataframe to a new name\npoll_cars"
+    "title": "R Basics",
+    "section": "7.5 Data Frames: subsetting",
+    "text": "7.5 Data Frames: subsetting\nSince a dataframe is essentially a matrix, all the subsetting syntax with matrices can be applied here.\n\ndf$name # subset a column\n\n[1] \"David\"    \"Yongdong\" \"Anil\"     \"Wei\"     \n\ndf[,c(2,3)] # can also subset like a matrix\n\n\n\n  \n\n\n\nWe are interesting in the cylinders and the weights of inefficient cars (lower than 15 miles per gallon).\n\npoll_cars &lt;- mtcars[mtcars$mpg&lt;15, c(\"cyl\", \"wt\")] # remember to assign the generated dataframe to a new name\npoll_cars"
   },
   {
     "objectID": "R-InductionWeek.html#arrays",
     "href": "R-InductionWeek.html#arrays",
-    "title": "html version",
-    "section": "7.1 Arrays",
-    "text": "7.1 Arrays\n\nWe can use array() to generate a high-dimensional array\nJust like vectors and matrices, arrays can include only data types of the same kind.\nA 3D array is basically a combination of matrices each laid on top of other\n\n\nx &lt;- 1:4\nx &lt;- array(data = x, dim = c(2,3,2))\nx\n\n, , 1\n\n     [,1] [,2] [,3]\n[1,]    1    3    1\n[2,]    2    4    2\n\n, , 2\n\n     [,1] [,2] [,3]\n[1,]    3    1    3\n[2,]    4    2    4"
+    "title": "R Basics",
+    "section": "8.1 Arrays",
+    "text": "8.1 Arrays\n\nWe can use array() to generate a high-dimensional array\nJust like vectors and matrices, arrays can include only data types of the same kind.\nA 3D array is basically a combination of matrices each laid on top of other\n\n\nx &lt;- 1:4\nx &lt;- array(data = x, dim = c(2,3,2))\nx\n\n, , 1\n\n     [,1] [,2] [,3]\n[1,]    1    3    1\n[2,]    2    4    2\n\n, , 2\n\n     [,1] [,2] [,3]\n[1,]    3    1    3\n[2,]    4    2    4"
   },
   {
     "objectID": "R-InductionWeek.html#lists",
     "href": "R-InductionWeek.html#lists",
-    "title": "html version",
-    "section": "7.2 Lists",
-    "text": "7.2 Lists\nA list is an R object that can contain anything. List is pretty useful when you need to store objects for latter use.\n\nx &lt;- 1:2\ny &lt;- c(\"a\", \"b\")\nL &lt;- list( numbers = x, letters = y)"
+    "title": "R Basics",
+    "section": "8.2 Lists",
+    "text": "8.2 Lists\nA list is an R object that can contain anything. List is pretty useful when you need to store objects for latter use.\n\nx &lt;- 1:2\ny &lt;- c(\"a\", \"b\")\nL &lt;- list( numbers = x, letters = y)"
   },
   {
     "objectID": "R-InductionWeek.html#lists-indexing-and-subsetting",
     "href": "R-InductionWeek.html#lists-indexing-and-subsetting",
-    "title": "html version",
-    "section": "7.3 Lists: indexing and subsetting",
-    "text": "7.3 Lists: indexing and subsetting\nThere are many ways to extract a certain element from a list.\n\nby index\nby the name of the element\nby dollar sign $\n\n\nL[[1]] # extract the first element\n\n[1] 1 2\n\nL[['numbers']] # based on element name\n\n[1] 1 2\n\nL$numbers # extract the element called numbers\n\n[1] 1 2\n\n\nAfter extracting the element, we can work on the element further:\n\nL$numbers[1:3] &gt; 2\n\n[1] FALSE FALSE    NA"
+    "title": "R Basics",
+    "section": "8.3 Lists: indexing and subsetting",
+    "text": "8.3 Lists: indexing and subsetting\nThere are many ways to extract a certain element from a list.\n\nby index\nby the name of the element\nby dollar sign $\n\n\nL[[1]] # extract the first element\n\n[1] 1 2\n\nL[['numbers']] # based on element name\n\n[1] 1 2\n\nL$numbers # extract the element called numbers\n\n[1] 1 2\n\n\nAfter extracting the element, we can work on the element further:\n\nL$numbers[1:3] &gt; 2\n\n[1] FALSE FALSE    NA"
   },
   {
     "objectID": "R-InductionWeek.html#ifelse",
     "href": "R-InductionWeek.html#ifelse",
-    "title": "html version",
-    "section": "8.1 if/else",
-    "text": "8.1 if/else\nSometimes, you want to run your code based on different conditions. For instance, if the observation is a missing value, then use the population average to impute the missing value. This is where if/else kicks in.\nif (condition == TRUE) {\n  action 1\n} else if (condition == TRUE ){\n  action 2\n} else {\n  action 3\n}\nExample 1:\n\na &lt;- 15\n\nif (a &gt; 10) {\nlarger_than_10 &lt;- TRUE  \n} else {\n  larger_than_10 &lt;- FALSE\n}\n\nlarger_than_10  \n\n[1] TRUE\n\n\nExample 2:\n\nx &lt;- -5\nif(x &gt; 0){\n  print(\"x is a non-negative number\")\n} else {\n  print(\"x is a negative number\")\n}\n\n[1] \"x is a negative number\""
+    "title": "R Basics",
+    "section": "9.1 if/else",
+    "text": "9.1 if/else\nSometimes, you want to run your code based on different conditions. For instance, if the observation is a missing value, then use the population average to impute the missing value. This is where if/else kicks in.\nif (condition == TRUE) {\n  action 1\n} else if (condition == TRUE ){\n  action 2\n} else {\n  action 3\n}\nExample 1:\n\na &lt;- 15\n\nif (a &gt; 10) {\nlarger_than_10 &lt;- TRUE  \n} else {\n  larger_than_10 &lt;- FALSE\n}\n\nlarger_than_10  \n\n[1] TRUE\n\n\nExample 2:\n\nx &lt;- -5\nif(x &gt; 0){\n  print(\"x is a non-negative number\")\n} else {\n  print(\"x is a negative number\")\n}\n\n[1] \"x is a negative number\""
   },
   {
     "objectID": "R-InductionWeek.html#loops",
     "href": "R-InductionWeek.html#loops",
-    "title": "html version",
-    "section": "8.2 Loops",
-    "text": "8.2 Loops\nAs the name suggests, in a loop the program repeats a set of instructions many times, until the stopping criteria is met.\nLoop is very useful for repetitive jobs.\n\nfor (i in 1:10){ # i is the iterator\n  # loop body: gets executed each time\n  # the value of i changes with each iteration\n}"
+    "title": "R Basics",
+    "section": "9.2 Loops",
+    "text": "9.2 Loops\nAs the name suggests, in a loop the program repeats a set of instructions many times, until the stopping criteria is met.\nLoop is very useful for repetitive jobs.\n\nfor (i in 1:10){ # i is the iterator\n  # loop body: gets executed each time\n  # the value of i changes with each iteration\n}"
   },
   {
     "objectID": "R-InductionWeek.html#nested-loops",
     "href": "R-InductionWeek.html#nested-loops",
-    "title": "html version",
-    "section": "8.3 Nested loops",
-    "text": "8.3 Nested loops\nWe can also nest loops into other loops.\n\nx &lt;- cbind(1:3, 4:6) # column bind\nx\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\ny &lt;- cbind(7:9, 10:12) # row bind\ny\n\n     [,1] [,2]\n[1,]    7   10\n[2,]    8   11\n[3,]    9   12\n\nz &lt;- x\n\nfor (i in 1:nrow(x)) {\n  for (j in 1:ncol(x)){\n    z[i,j] &lt;- x[i,j] + y[i,j]\n  }\n}\n\nz\n\n     [,1] [,2]\n[1,]    8   14\n[2,]   10   16\n[3,]   12   18"
+    "title": "R Basics",
+    "section": "9.3 Nested loops",
+    "text": "9.3 Nested loops\nWe can also nest loops into other loops.\n\nx &lt;- cbind(1:3, 4:6) # column bind\nx\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\ny &lt;- cbind(7:9, 10:12) # row bind\ny\n\n     [,1] [,2]\n[1,]    7   10\n[2,]    8   11\n[3,]    9   12\n\nz &lt;- x\n\nfor (i in 1:nrow(x)) {\n  for (j in 1:ncol(x)){\n    z[i,j] &lt;- x[i,j] + y[i,j]\n  }\n}\n\nz\n\n     [,1] [,2]\n[1,]    8   14\n[2,]   10   16\n[3,]   12   18"
   },
   {
     "objectID": "R-InductionWeek.html#functions-1",
     "href": "R-InductionWeek.html#functions-1",
-    "title": "html version",
-    "section": "8.4 Functions",
-    "text": "8.4 Functions\nA function takes the argument as input, run some specified actions, and then return the result to us.\nFunctions are very useful. When we would like to test different ideas, we can combine functions with loops: We can write a function which takes different parameters as input, and we can use a loop to go through all the possible combinations of parameters.\n\n8.4.1 User-defined function syntax\nHere is how to define a function in general:\n\nfunction_name &lt;- function(arg1 ,arg2 = default_value){\n  # write the actions to be done with arg1 and arg2\n  # you can have any number of arguments, with or without defaults\n  return() # the last line is to return some value \n}\n\nExample:\n\nmagic &lt;- function( x, y){\n  return(x^2 + y)\n}\n\nmagic(1,3)\n\n[1] 4"
+    "title": "R Basics",
+    "section": "9.4 Functions",
+    "text": "9.4 Functions\nA function takes the argument as input, run some specified actions, and then return the result to us.\nFunctions are very useful. When we would like to test different ideas, we can combine functions with loops: We can write a function which takes different parameters as input, and we can use a loop to go through all the possible combinations of parameters.\n\n9.4.1 User-defined function syntax\nHere is how to define a function in general:\n\nfunction_name &lt;- function(arg1 ,arg2 = default_value){\n  # write the actions to be done with arg1 and arg2\n  # you can have any number of arguments, with or without defaults\n  return() # the last line is to return some value \n}\n\nExample:\n\nmagic &lt;- function( x, y){\n  return(x^2 + y)\n}\n\nmagic(1,3)\n\n[1] 4"
   },
   {
     "objectID": "R-InductionWeek.html#a-comprehensive-example",
     "href": "R-InductionWeek.html#a-comprehensive-example",
-    "title": "html version",
-    "section": "8.5 A comprehensive example",
-    "text": "8.5 A comprehensive example\nTask: write a function, which takes a vector as input, and returns the max value of the vector\n\nget_max &lt;- function(input){\n  max_value &lt;- input[1]\n  for (i in 2:length(input) ) {\n    if (input[i] &gt; max_value) {\n      max &lt;- input[i]\n    }\n  }\n  \n  return(max)\n}\n\nget_max(c(-1,3,2))\n\n[1] 2\n\n\n\n\n\n\n\n\nExercise\n\n\n\nWrite your own version of which.max() function"
+    "title": "R Basics",
+    "section": "9.5 A comprehensive example",
+    "text": "9.5 A comprehensive example\nTask: write a function, which takes a vector as input, and returns the max value of the vector\n\nget_max &lt;- function(input){\n  max_value &lt;- input[1]\n  for (i in 2:length(input) ) {\n    if (input[i] &gt; max_value) {\n      max &lt;- input[i]\n    }\n  }\n  \n  return(max)\n}\n\nget_max(c(-1,3,2))\n\n[1] 2\n\n\n\n\n\n\n\n\nExercise\n\n\n\nWrite your own version of which.max() function"
   },
   {
     "objectID": "R-InductionWeek.html#footnotes",
     "href": "R-InductionWeek.html#footnotes",
-    "title": "html version",
+    "title": "R Basics",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nA measure of programming language popularity↩︎\nThere are many R-exclusive packages, such as the state-of-the-art causal machine learning library grf , which we will learn in the final week.↩︎\nWhy the name Quarto? “We wanted to use a name that had meaning in the history of publishing and landed on Quarto, which is the format of a book or pamphlet produced from full sheets printed with eight pages of text, four to a side, then folded twice to produce four leaves. The earliest known European printed book is a Quarto, the Sibyllenbuch, believed to have been printed by Johannes Gutenberg in 1452–53.”↩︎\nYou can also use equal sign =, but it’s recommended to stick with R’s tradition.↩︎\nNote that Python uses different ways to index and subset vectors and matrices.↩︎"
   },
