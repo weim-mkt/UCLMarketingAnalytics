@@ -123,14 +123,14 @@
     "href": "R-InductionWeek.html#collection-of-functions-packages",
     "title": "R Basics",
     "section": "3.4 Collection of functions: Packages",
-    "text": "3.4 Collection of functions: Packages\nThe base R already has many useful built-in functions to perform basic tasks, but as data scientists, we need more.\nTo perform certain tasks (such as a machine learning model), we can definitely write our own code from scratch, but it takes lots of (unnecessary) effort.\nFortunately, many packages have been written by others for us to directly use.\n\nInstall the package using the built-in function install.packages(). R will download the package to your computer. Installation of a package is only needed for the first time.\n\n\ninstall.packages('praise')\n\nError in contrib.url(repos, \"source\"): trying to use CRAN without setting a mirror\n\n\n\nLoad the packages using library(). Every time you restart the RStudio, packages need to be reloaded.\n\n\nlibrary(praise)\n\n\nNow that the package is loaded, you can use the functions in it. praise() is a function in the praise package.\n\n\npraise()\n\n[1] \"You are striking!\"\n\n\n\n\n\n\n\n\nTips\n\n\n\nAfter installation, just need to reload the packages using library() every time your restart RStudio."
+    "text": "3.4 Collection of functions: Packages\nThe base R already has many useful built-in functions to perform basic tasks, but as data scientists, we need more.\nTo perform certain tasks (such as a machine learning model), we can definitely write our own code from scratch, but it takes lots of (unnecessary) effort.\nFortunately, many packages have been written by others for us to directly use.\n\nInstall the package using the built-in function install.packages(). R will download the package to your computer. Installation of a package is only needed for the first time.\n\n\ninstall.packages('praise')\n\nError in contrib.url(repos, \"source\"): trying to use CRAN without setting a mirror\n\n\n\nLoad the packages using library(). Every time you restart the RStudio, packages need to be reloaded.\n\n\nlibrary(praise)\n\n\nNow that the package is loaded, you can use the functions in it. praise() is a function in the praise package.\n\n\npraise()\n\n[1] \"You are majestic!\"\n\n\n\n\n\n\n\n\nTips\n\n\n\nAfter installation, just need to reload the packages using library() every time your restart RStudio."
   },
   {
     "objectID": "R-InductionWeek.html#comment-codes",
     "href": "R-InductionWeek.html#comment-codes",
     "title": "R Basics",
     "section": "3.5 Comment codes",
-    "text": "3.5 Comment codes\nYou can put a # before any code, to indicate that any codes after the # on the same line are your comments, and will not be run by R.\nIt’s a good practice to often comment your codes, so that you can help the future you to remember what you were trying to achieve.\n\n# print(\"Support Wei for an iPhone 14 Pro!\")\n\n# Below, x will be 1 rather than 1+1\nx &lt;- 1 # +1"
+    "text": "3.5 Comment codes\nYou can put a # before any code, to indicate that any codes after the # on the same line are your comments, and will not be run by R.\nIt’s a good practice to often comment your codes, so that you can help the future you to remember what you were trying to achieve.\n\n# print(\"Support Wei for an iPhone 15 Pro Max!\")\n\n# Below, x will be 1 rather than 1+1\nx &lt;- 1 # +1"
   },
   {
     "objectID": "R-InductionWeek.html#data-types",
@@ -235,14 +235,14 @@
     "href": "R-InductionWeek.html#data-frames-check-dimensions-and-variable-types",
     "title": "R Basics",
     "section": "7.3 Data Frames: check dimensions and variable types",
-    "text": "7.3 Data Frames: check dimensions and variable types\n\nYou can verify the size of the data.frame using the command dim(); or nrow() and ncol()\n\n\ndim(df)\n\n[1] 4 4\n\nnrow(df)\n\n[1] 4\n\nncol(df)\n\n[1] 4\n\n\n\nYou can get the data type info using the command str()\n\n\nclass(df)\n\n[1] \"data.frame\"\n\nstr(df)\n\n'data.frame':   4 obs. of  4 variables:\n $ id  : int  1 2 3 4\n $ name: chr  \"David\" \"Yongdong\" \"Anil\" \"Wei\"\n $ wage: num  99769 100362 100745 100384\n $ male: logi  TRUE TRUE TRUE TRUE\n\n\n\nGet the variables names\n\n\nnames(df)\n\n[1] \"id\"   \"name\" \"wage\" \"male\""
+    "text": "7.3 Data Frames: check dimensions and variable types\n\nYou can verify the size of the data.frame using the command dim(); or nrow() and ncol()\n\n\ndim(df)\n\n[1] 4 4\n\nnrow(df)\n\n[1] 4\n\nncol(df)\n\n[1] 4\n\n\n\nYou can get the data type info using the command str()\n\n\nclass(df)\n\n[1] \"data.frame\"\n\nstr(df)\n\n'data.frame':   4 obs. of  4 variables:\n $ id  : int  1 2 3 4\n $ name: chr  \"David\" \"Yongdong\" \"Anil\" \"Wei\"\n $ wage: num  99265 98085 101198 100730\n $ male: logi  TRUE TRUE TRUE TRUE\n\n\n\nGet the variables names\n\n\nnames(df)\n\n[1] \"id\"   \"name\" \"wage\" \"male\""
   },
   {
     "objectID": "R-InductionWeek.html#data-frames-summary",
     "href": "R-InductionWeek.html#data-frames-summary",
     "title": "R Basics",
     "section": "7.4 Data Frames: summary",
-    "text": "7.4 Data Frames: summary\n\nSummarize the data frame\n\n\nsummary(df)\n\n       id           name                wage          male        \n Min.   :1.00   Length:4           Min.   : 99769   Mode:logical  \n 1st Qu.:1.75   Class :character   1st Qu.:100214   TRUE:4        \n Median :2.50   Mode  :character   Median :100373                 \n Mean   :2.50                      Mean   :100315                 \n 3rd Qu.:3.25                      3rd Qu.:100474                 \n Max.   :4.00                      Max.   :100745"
+    "text": "7.4 Data Frames: summary\n\nSummarize the data frame\n\n\nsummary(df)\n\n       id           name                wage          male        \n Min.   :1.00   Length:4           Min.   : 98085   Mode:logical  \n 1st Qu.:1.75   Class :character   1st Qu.: 98970   TRUE:4        \n Median :2.50   Mode  :character   Median : 99997                 \n Mean   :2.50                      Mean   : 99819                 \n 3rd Qu.:3.25                      3rd Qu.:100847                 \n Max.   :4.00                      Max.   :101198"
   },
   {
     "objectID": "R-InductionWeek.html#data-frames-subsetting",
