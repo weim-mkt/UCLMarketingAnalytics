@@ -49,8 +49,8 @@
     "text": "You can write codes interactively in the R console. See an example: Type the following code into your console and see what happens.\n\nprint('Hello World')\n\n[1] \"Hello World\"\n\n\nUsed for simple exploratory, unstructured tasks, where you don’t need to keep a record of codes.\n\ne.g., summary statistics; check variable values, etc."
   },
   {
-    "objectID": "R-InductionWeek.html#where-to-write-r-codes-ii-.r-script-v",
-    "href": "R-InductionWeek.html#where-to-write-r-codes-ii-.r-script-v",
+    "objectID": "R-InductionWeek.html#where-to-write-r-codes-ii-.r-script",
+    "href": "R-InductionWeek.html#where-to-write-r-codes-ii-.r-script",
     "title": "R Basics",
     "section": "",
     "text": "R script is a text-readable file ending with .R suffix. See an example.\n\ncodes can be run line-by-line or sourced altogether\n\n\n\n\n\n\nImportant\n\n\n\nAll texts in the script will be treated as R codes\n\n\n\nOften used for project development and deployment, where you don’t need to communicate results to others"
@@ -123,7 +123,7 @@
     "href": "R-InductionWeek.html#collection-of-functions-packages",
     "title": "R Basics",
     "section": "3.4 Collection of functions: Packages",
-    "text": "3.4 Collection of functions: Packages\nThe base R already has many useful built-in functions to perform basic tasks, but as data scientists, we need more.\nTo perform certain tasks (such as a machine learning model), we can definitely write our own code from scratch, but it takes lots of (unnecessary) effort.\nFortunately, many packages have been written by others for us to directly use.\n\nInstall the package using the built-in function install.packages(). R will download the package to your computer. Installation of a package is only needed for the first time.\n\n\ninstall.packages('praise')\n\nError in contrib.url(repos, \"source\"): trying to use CRAN without setting a mirror\n\n\n\nLoad the packages using library(). Every time you restart the RStudio, packages need to be reloaded.\n\n\nlibrary(praise)\n\n\nNow that the package is loaded, you can use the functions in it. praise() is a function in the praise package.\n\n\npraise()\n\n[1] \"You are majestic!\"\n\n\n\n\n\n\n\n\nTips\n\n\n\nAfter installation, just need to reload the packages using library() every time your restart RStudio."
+    "text": "3.4 Collection of functions: Packages\nThe base R already has many useful built-in functions to perform basic tasks, but as data scientists, we need more.\nTo perform certain tasks (such as a machine learning model), we can definitely write our own code from scratch, but it takes lots of (unnecessary) effort.\nFortunately, many packages have been written by others for us to directly use.\n\nInstall the package using the built-in function install.packages(). R will download the package to your computer. Installation of a package is only needed for the first time.\n\n\ninstall.packages('praise')\n\nError in contrib.url(repos, \"source\"): trying to use CRAN without setting a mirror\n\n\n\nLoad the packages using library(). Every time you restart the RStudio, packages need to be reloaded.\n\n\nlibrary(praise)\n\n\nNow that the package is loaded, you can use the functions in it. praise() is a function in the praise package.\n\n\npraise()\n\n[1] \"You are peachy!\"\n\n\n\n\n\n\n\n\nTips\n\n\n\nAfter installation, just need to reload the packages using library() every time your restart RStudio."
   },
   {
     "objectID": "R-InductionWeek.html#comment-codes",
@@ -235,14 +235,14 @@
     "href": "R-InductionWeek.html#data-frames-check-dimensions-and-variable-types",
     "title": "R Basics",
     "section": "7.3 Data Frames: check dimensions and variable types",
-    "text": "7.3 Data Frames: check dimensions and variable types\n\nYou can verify the size of the data.frame using the command dim(); or nrow() and ncol()\n\n\ndim(df)\n\n[1] 4 4\n\nnrow(df)\n\n[1] 4\n\nncol(df)\n\n[1] 4\n\n\n\nYou can get the data type info using the command str()\n\n\nclass(df)\n\n[1] \"data.frame\"\n\nstr(df)\n\n'data.frame':   4 obs. of  4 variables:\n $ id  : int  1 2 3 4\n $ name: chr  \"David\" \"Yongdong\" \"Anil\" \"Wei\"\n $ wage: num  99265 98085 101198 100730\n $ male: logi  TRUE TRUE TRUE TRUE\n\n\n\nGet the variables names\n\n\nnames(df)\n\n[1] \"id\"   \"name\" \"wage\" \"male\""
+    "text": "7.3 Data Frames: check dimensions and variable types\n\nYou can verify the size of the data.frame using the command dim(); or nrow() and ncol()\n\n\ndim(df)\n\n[1] 4 4\n\nnrow(df)\n\n[1] 4\n\nncol(df)\n\n[1] 4\n\n\n\nYou can get the data type info using the command str()\n\n\nclass(df)\n\n[1] \"data.frame\"\n\nstr(df)\n\n'data.frame':   4 obs. of  4 variables:\n $ id  : int  1 2 3 4\n $ name: chr  \"David\" \"Yongdong\" \"Anil\" \"Wei\"\n $ wage: num  98369 99010 102689 100550\n $ male: logi  TRUE TRUE TRUE TRUE\n\n\n\nGet the variables names\n\n\nnames(df)\n\n[1] \"id\"   \"name\" \"wage\" \"male\""
   },
   {
     "objectID": "R-InductionWeek.html#data-frames-summary",
     "href": "R-InductionWeek.html#data-frames-summary",
     "title": "R Basics",
     "section": "7.4 Data Frames: summary",
-    "text": "7.4 Data Frames: summary\n\nSummarize the data frame\n\n\nsummary(df)\n\n       id           name                wage          male        \n Min.   :1.00   Length:4           Min.   : 98085   Mode:logical  \n 1st Qu.:1.75   Class :character   1st Qu.: 98970   TRUE:4        \n Median :2.50   Mode  :character   Median : 99997                 \n Mean   :2.50                      Mean   : 99819                 \n 3rd Qu.:3.25                      3rd Qu.:100847                 \n Max.   :4.00                      Max.   :101198"
+    "text": "7.4 Data Frames: summary\n\nSummarize the data frame\n\n\nsummary(df)\n\n       id           name                wage          male        \n Min.   :1.00   Length:4           Min.   : 98369   Mode:logical  \n 1st Qu.:1.75   Class :character   1st Qu.: 98850   TRUE:4        \n Median :2.50   Mode  :character   Median : 99780                 \n Mean   :2.50                      Mean   :100155                 \n 3rd Qu.:3.25                      3rd Qu.:101085                 \n Max.   :4.00                      Max.   :102689"
   },
   {
     "objectID": "R-InductionWeek.html#data-frames-subsetting",
@@ -1698,42 +1698,42 @@
     "href": "Week1-Lecture2.html#decisions-for-marketing-managers",
     "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
     "section": "2.1 Decisions for Marketing Managers",
-    "text": "2.1 Decisions for Marketing Managers\n\nUltimate goal in the marketing process: create value and improve profitability for firms\nAs any marketing activity comes with a cost, marketers need to correctly evaluate whether a campaign creates or destroys value to the company. Such analyses are called break-even analyses (BEA).\nIn this class, we will learn how to conduct BEA from the following points of view\n\nCampaign-centric or customer-centric\nStatic or dynamic\n\n\n\n\n\n\nStatic View\nDynamic View\n\n\nCampaign-centric\nBreak-Even Quantity\nNet Present Value\n\n\nCustomer-centric\n-\nCustomer Lifetime Value"
+    "text": "2.1 Decisions for Marketing Managers\n\nUltimate goal in the marketing process: create value and improve profitability for firms\nAs any marketing activity comes with a cost, marketers need to correctly evaluate whether a campaign creates or destroys value to the company. Such analyses are called break-even analyses (BEA).\nIn this class, we will learn how to conduct BEA from the following 2-by-2 perspectives:\n\nCampaign-centric or customer-centric\nStatic or dynamic\n\n\n\n\n\n\nStatic View\nDynamic View\n\n\nCampaign-centric\nBreak-Even Quantity\nNet Present Value\n\n\nCustomer-centric\n-\nCustomer Lifetime Value"
   },
   {
     "objectID": "Week1-Lecture2.html#break-even-quantity",
     "href": "Week1-Lecture2.html#break-even-quantity",
     "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
     "section": "2.2 Break-Even Quantity",
-    "text": "2.2 Break-Even Quantity\n\nMarketing managers often use break-even analyses to evaluate the financial feasibility of marketing investments. One commonly used way is to compute the break-even quantity.\n\n\n\n\n\n\n\nDefinition\n\n\n\nThe break-even quantity (BEQ) calculates the number of incremental units the firm needs to sell to cover the cost of the marketing campaign."
+    "text": "2.2 Break-Even Quantity\n\nWe often use break-even analyses to evaluate the financial feasibility of marketing investments. One commonly used way is to compute the break-even quantity.\n\n\n\n\n\n\n\nDefinition\n\n\n\nThe break-even quantity (BEQ) calculates the number of incremental units the firm needs to sell to cover the cost of the marketing campaign."
   },
   {
     "objectID": "Week1-Lecture2.html#break-even-quantity-steps-and-decision-rule",
     "href": "Week1-Lecture2.html#break-even-quantity-steps-and-decision-rule",
     "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
     "section": "2.3 Break-Even Quantity: Steps and Decision Rule",
-    "text": "2.3 Break-Even Quantity: Steps and Decision Rule\n\nSteps to conduct break-even analysis\n\nStep 1: Compute the BEQ based on the company’s product demand and production cost structure\nStep 2: Evaluate whether the campaign can guarantee incremental sales to that quantity\n\nThe decision rule\n\nif incremental sales &gt; BEQ, the company makes money so accept the campaign; otherwise, reject the campaign"
+    "text": "2.3 Break-Even Quantity: Steps and Decision Rule\n\nSteps to conduct break-even analysis\n\nStep 1: Compute the BEQ based on the company’s product demand and production cost structure\nStep 2: Evaluate whether the campaign can guarantee incremental sales to that quantity\n\nThe decision rule\n\nif incremental quantity sales &gt; BEQ, the company makes money, so accept the campaign; otherwise, reject the campaign"
   },
   {
     "objectID": "Week1-Lecture2.html#compute-beq",
     "href": "Week1-Lecture2.html#compute-beq",
     "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
     "section": "2.4 Compute BEQ",
-    "text": "2.4 Compute BEQ\nMarketers often refer to the difference between the price per unit and variable costs per unit as the contribution margin per unit. That is,\n\\[\nContribution Margin Per Unit = Price Per Unit - Variable Costs Per Unit\n\\]\n\nPrice per unit: retail price or transaction price\nVariable costs per unit: Costs of goods sold (COGS)1 + any other variable costs\nMarketing expenditure: total costs of marketing investment\n\nThis gives the second formula for computing BEQ:\n\\[\nBEQ = Marketing Expenditure / Contribution Margin Per Unit\n\\]"
+    "text": "2.4 Compute BEQ\nMarketers often refer to the difference between the price per unit and variable costs per unit as the contribution margin per unit. That is,\n\\[\nContribution Margin Per Unit = Price Per Unit - Variable Costs Per Unit\n\\]\n\nPrice per unit: retail price\nVariable costs per unit: Costs of goods sold (COGS)1 + any other variable costs\nMarketing expenditure: total costs of marketing investment\n\nThis gives the second formula for computing BEQ:\n\\[\nBEQ = Marketing Expenditure / Contribution Margin Per Unit\n\\]"
   },
   {
     "objectID": "Week1-Lecture2.html#pineapple-inc-background",
     "href": "Week1-Lecture2.html#pineapple-inc-background",
     "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
     "section": "2.5 Pineapple Inc: Background",
-    "text": "2.5 Pineapple Inc: Background\n\n\n\n\n\n\n\n\n\nTom Cooper, is looking to launch a series of marketing campaigns to promote its new product PinePhone 14 against its competitor iPhone 14. Tom was a proud graduate from UCL MSc BA program in 2020, and he remembered learning from Marketing Analytics module that, marketers often use break-even analysis to help evaluate different types of marketing decisions.\n\nprice &lt;- 600 # retail price\nquantity &lt;- 10 # sales \nCOGS &lt;- 0.6 # cost of goods sold\nRD_costs &lt;- 100 # operating and marketing costs\nendorsement_fee &lt;- 50 # endorsement\n\nCase objectives:\n\nPractice how to conduct BEA and compute BEQ\nPractice R basic computations and vector operations"
+    "text": "2.5 Pineapple Inc: Background\n\n\n\n\n\n\n\n\nTom Cooper, is looking to launch a series of marketing campaigns to promote its new product PinePhone 15 Pro against its competitor iPhone 15 Pro. Tom was a proud graduate from UCL MSc BA program in 2020, and he remembered learning from Marketing Analytics module that, marketers often use break-even analysis to help evaluate different types of marketing decisions.\n\n\n\nprice &lt;- 600 # retail price\nquantity &lt;- 10 # sales \nCOGS &lt;- 0.6 # cost of goods sold\nRD_costs &lt;- 100 # operating and marketing costs\nendorsement_fee &lt;- 50 # endorsement\n\nCase objectives:\n\nLearn an example of situation analysis for the 1st assignment\nPractice how to compute BEQ for break-even analyses\nPractice R basic computations and vector operations"
   },
   {
     "objectID": "Week1-Lecture2.html#pineapple-inc-key-information",
     "href": "Week1-Lecture2.html#pineapple-inc-key-information",
     "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
     "section": "2.6 Pineapple Inc: Key Information",
-    "text": "2.6 Pineapple Inc: Key Information\nFrom the case: The marketing analytics team at Pinapple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach 10 million units at the retail price of £600, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of Pineapple 14, which is 60%. The Research and Development (R&D) costs for PinePhone 14 is 100 million pounds.\n\nOpen the .qmd answer sheet downloaded from Moodle. And let’s solve this case using the R basics we learned last week!"
+    "text": "2.6 Pineapple Inc: Key Information\nFrom the case: The marketing analytics team at Pinapple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach 10 million units at the retail price of £600, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of Pineapple 15, which is 60%. The Research and Development (R&D) costs for PinePhone 15 is 100 million pounds.\n\nOpen the .qmd answer sheet downloaded from Moodle. And let’s solve this case using the R basics we learned last week!"
   },
   {
     "objectID": "Week1-Lecture2.html#pineapple-inc-bea",
@@ -1852,42 +1852,42 @@
     "href": "Week1-Lecture2.html#after-class",
     "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
     "section": "4.11 After-class",
-    "text": "4.11 After-class\n\nReview the coding practice in today’s class.\nWe will solve Harvard Business Case: Customer Lifetime Social Value. Remember to read the case background before next week’s class.\nYou can try to solve the case on your own using what we’ve covered today.\nOptional readings are for alternative ways to compute CLV in the industry."
+    "text": "4.11 After-class\n\nReview the coding practice in today’s class.\nWe will solve Harvard Business Case: Customer Lifetime Social Value. Remember to read the case background before next week’s class.\n\nYou can try to solve the case on your own using what we’ve covered today.\n\nOptional readings are for alternative ways to compute CLV in the industry."
   },
   {
     "objectID": "Week1-Lecture2.html#footnotes",
     "href": "Week1-Lecture2.html#footnotes",
     "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nMaterial and production labor costs for producing a unit of product↩︎"
+    "text": "Footnotes\n\n\nMaterial and production labor costs for producing a unit of product; often represented in percentage terms, e.g., COGS of 60% means the costs are 60% of retail prices.↩︎"
   },
   {
     "objectID": "Week1-Lecture1.html",
     "href": "Week1-Lecture1.html",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "",
-    "text": "Hi there, I’m Wei!\nI did my PhD in quant Marketing at NUS Sinagpore\nI love messing with musical instruments, video games, travelling, and food (bubble tea is my fav)!\nMy research focuses on digital marketing, sharing economy, and platform design.\n\n\n\n\n\nDetailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Thursday, usually divided into two sessions\n\nA methodology session, in which we cover a new marketing analytics model/tool\nA case study workshop session, to practice the tools learned in the previous week\n\nClass recordings are available on Moodle “LectureCast Recordings” section.\n\n\n\n\n\nNo exams; 3 individual assignments, which are similar to case studies, and you will need to use what you learned in class to solve real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 27, Friday\n2nd assignment, 30% weight, 1500 words, due on Nov 24, Friday\n3rd assignment, 40% weight, 2000 words, due on Dec 15\n\nHow to submit?\n\nOnly submit PDF report rendered from R Quarto with codes printed; don’t submit any other file format or your submission won’t be marked.\nThe quarto-based answer sheets (qmd file) will be given to you\n\nWord count and late submission penalties will be applied by admin. For related queries and EC applications, please directly contact BA admin.\nYour marks will be released in due time (no later than 4 weeks) after the submission date per school requirement.\nWe have random second marking in place to mitigate marking errors. So please refrain from emailing teaching assistants for any re-marking as this is not allowed by school."
+    "text": "Hi there, I’m Wei Miao!\nI did my PhD in quant Marketing at NUS Singapore and a undergrad in Finance from Fudan\nI love musical instruments, video games, travelling, and food (bubble tea is my fav)!\nMy research focuses on digital marketing, sharing economy, and platform design.\n\n\n\n\n\nDetailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Wednesday, divided into two sessions\n\nA case study workshop session, to practice the tools learned in the previous week\nA methodology session, in which we learn a new analytics tool\n\nClass recordings are available on Moodle “LectureCast Recordings” section.\n\n\n\n\n\nNo exams; 3 individual assignments, which are similar to case studies in class, and you will need to use what you learned in class to solve these real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 27\n2nd assignment, 30% weight, 1500 words, due on Nov 24\n3rd assignment, 40% weight, 2000 words, due on Dec 15\n\nHow to submit?\n\nOnly submit PDF rendered from R Quarto with codes printed; don’t submit any other file format or your submission won’t be marked.\nThe quarto-based answer sheets (qmd files) will be given to you.\n\nWord count and late submission penalties will be applied by BA admin. For related queries and EC applications, please directly contact BA admin.\nYour marks will be released in due time (no later than 4 weeks).\nWe have random second marking in place to mitigate marking errors. Please refrain from emailing teaching assistants for re-marking as this is not allowed by school policy."
   },
   {
     "objectID": "Week1-Lecture1.html#about-me",
     "href": "Week1-Lecture1.html#about-me",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "",
-    "text": "Hi there, I’m Wei!\nI did my PhD in quant Marketing at NUS Sinagpore\nI love messing with musical instruments, video games, travelling, and food (bubble tea is my fav)!\nMy research focuses on digital marketing, sharing economy, and platform design."
+    "text": "Hi there, I’m Wei Miao!\nI did my PhD in quant Marketing at NUS Singapore and a undergrad in Finance from Fudan\nI love musical instruments, video games, travelling, and food (bubble tea is my fav)!\nMy research focuses on digital marketing, sharing economy, and platform design."
   },
   {
     "objectID": "Week1-Lecture1.html#weekly-arrangements",
     "href": "Week1-Lecture1.html#weekly-arrangements",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "",
-    "text": "Detailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Thursday, usually divided into two sessions\n\nA methodology session, in which we cover a new marketing analytics model/tool\nA case study workshop session, to practice the tools learned in the previous week\n\nClass recordings are available on Moodle “LectureCast Recordings” section."
+    "text": "Detailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Wednesday, divided into two sessions\n\nA case study workshop session, to practice the tools learned in the previous week\nA methodology session, in which we learn a new analytics tool\n\nClass recordings are available on Moodle “LectureCast Recordings” section."
   },
   {
     "objectID": "Week1-Lecture1.html#assignments",
     "href": "Week1-Lecture1.html#assignments",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "",
-    "text": "No exams; 3 individual assignments, which are similar to case studies, and you will need to use what you learned in class to solve real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 27, Friday\n2nd assignment, 30% weight, 1500 words, due on Nov 24, Friday\n3rd assignment, 40% weight, 2000 words, due on Dec 15\n\nHow to submit?\n\nOnly submit PDF report rendered from R Quarto with codes printed; don’t submit any other file format or your submission won’t be marked.\nThe quarto-based answer sheets (qmd file) will be given to you\n\nWord count and late submission penalties will be applied by admin. For related queries and EC applications, please directly contact BA admin.\nYour marks will be released in due time (no later than 4 weeks) after the submission date per school requirement.\nWe have random second marking in place to mitigate marking errors. So please refrain from emailing teaching assistants for any re-marking as this is not allowed by school."
+    "text": "No exams; 3 individual assignments, which are similar to case studies in class, and you will need to use what you learned in class to solve these real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 27\n2nd assignment, 30% weight, 1500 words, due on Nov 24\n3rd assignment, 40% weight, 2000 words, due on Dec 15\n\nHow to submit?\n\nOnly submit PDF rendered from R Quarto with codes printed; don’t submit any other file format or your submission won’t be marked.\nThe quarto-based answer sheets (qmd files) will be given to you.\n\nWord count and late submission penalties will be applied by BA admin. For related queries and EC applications, please directly contact BA admin.\nYour marks will be released in due time (no later than 4 weeks).\nWe have random second marking in place to mitigate marking errors. Please refrain from emailing teaching assistants for re-marking as this is not allowed by school policy."
   },
   {
     "objectID": "Week1-Lecture1.html#role-of-marketing",
@@ -1908,14 +1908,14 @@
     "href": "Week1-Lecture1.html#what-is-marketing-a-word-cloud-approach",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "2.3 What is Marketing? A Word Cloud Approach",
-    "text": "2.3 What is Marketing? A Word Cloud Approach\n[link to code]\n\n\n\n\n\n\n\n\n\n\ninstall.packages('pacman')\npacman::p_load(tm, wordcloud, RColorBrewer,\n               wordcloud2, data.table)\n# generate text corpus\ndf_mkt &lt;- 'Marketing is a social and \nmanagerial process by which individuals and groups \nobtain what they  want and need through creating, \noffering and exchanging products of value with others.\nMarketing is the management process responsible for \nidentifying, anticipating and satisfying customers \nrequirements profitably.\nMarketing is the activity, set of institutions, \nand processes for creating, communicating, delivering, \nand exchanging offerings that have value for customers, \nclients, partners, and society at large.'\ndf_mkt_corpus &lt;- Corpus(VectorSource(df_mkt))\ndf_mkt_corpus &lt;- df_mkt_corpus |&gt; \n  tm_map(removePunctuation) |&gt;\n  tm_map(stripWhitespace) |&gt;\n  tm_map(content_transformer(tolower)) |&gt;\n  tm_map(removeWords, stopwords(\"english\"))\n# Create a document-term-matrix\ndf_mkt_dtm &lt;- TermDocumentMatrix(df_mkt_corpus)\ndf_mkt_matrix &lt;-  as.matrix(df_mkt_dtm)\ndf &lt;- data.table(words = rownames(df_mkt_matrix),\n                 freq = df_mkt_matrix[,1])\n# draw wordcloud\nset.seed(888)\nwordcloud(words = df$words, freq = df$freq, \n          min.freq = 1, max.words=200, random.order=FALSE, \n          colors=brewer.pal(8, \"Dark2\"))\n\n\nMarketing is a management process that creates and exchanges value for the company by selling the right product to the right customer. - Wei, 2023"
+    "text": "2.3 What is Marketing? A Word Cloud Approach\n[link to code]\n\n\n\n\n\n\n\n\n\n\ninstall.packages('pacman')\npacman::p_load(tm, wordcloud, RColorBrewer,\n               wordcloud2, data.table)\n# generate text corpus\ndf_mkt &lt;- 'Marketing is a social and \nmanagerial process by which individuals and groups \nobtain what they  want and need through creating, \noffering and exchanging products of value with others.\nMarketing is the management process responsible for \nidentifying, anticipating and satisfying customers \nrequirements profitably.\nMarketing is the activity, set of institutions, \nand processes for creating, communicating, delivering, \nand exchanging offerings that have value for customers, \nclients, partners, and society at large.'\ndf_mkt_corpus &lt;- Corpus(VectorSource(df_mkt))\ndf_mkt_corpus &lt;- df_mkt_corpus |&gt; \n  tm_map(removePunctuation) |&gt;\n  tm_map(stripWhitespace) |&gt;\n  tm_map(content_transformer(tolower)) |&gt;\n  tm_map(removeWords, stopwords(\"english\"))\n# Create a document-term-matrix\ndf_mkt_dtm &lt;- TermDocumentMatrix(df_mkt_corpus)\ndf_mkt_matrix &lt;-  as.matrix(df_mkt_dtm)\ndf &lt;- data.table(words = rownames(df_mkt_matrix),\n                 freq = df_mkt_matrix[,1])\n# draw wordcloud\nset.seed(888)\nwordcloud(words = df$words, freq = df$freq, \n          min.freq = 1, max.words=200, random.order=FALSE, \n          colors=brewer.pal(8, \"Dark2\"))\n\n\nMarketing is a management process that creates and exchanges values for the company by selling the right products to the right customers. - Wei, 2023"
   },
   {
     "objectID": "Week1-Lecture1.html#marketing-process",
     "href": "Week1-Lecture1.html#marketing-process",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "2.4 Marketing Process",
-    "text": "2.4 Marketing Process\n\n\n\nMarketing Process\n\n\n\nWe will go through the above concepts quickly in the case of Apple Inc."
+    "text": "2.4 Marketing Process\n\n\n\nMarketing Process\n\n\n\nWe will go through the above concepts quickly in the case of Uber."
   },
   {
     "objectID": "Week1-Lecture1.html#situation-analysis-5-cs",
@@ -1929,7 +1929,7 @@
     "href": "Week1-Lecture1.html#situation-analysis-competitors",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "2.6 Situation Analysis: Competitors",
-    "text": "2.6 Situation Analysis: Competitors\n\nManagers tend to exhibit a supply-side bias, largely paying attention towards more salient direct (industry) competitors.\n\nIndirect competitors are defined by who your customers consider to satisfy the same goals.\nPotential competitors are those who might pose a competitive threat in the future; who possess equivalent resources that would allow them to enter the market\n\n\n\n\n\nSiutation Analysis: Competitors"
+    "text": "2.6 Situation Analysis: Competitors\n\nManagers tend to exhibit a supply-side bias, largely paying attention towards more salient direct (industry) competitors.\n\nIndirect competitors are defined by who your customers consider to satisfy the same goals.\nPotential competitors are those who might pose a competitive threat in the future; who possess equivalent resources that would allow them to enter the market\n\n\n\n\n\nSituation Analysis: Competitors"
   },
   {
     "objectID": "Week1-Lecture1.html#situation-analysis-contextclimate",
@@ -1943,7 +1943,7 @@
     "href": "Week1-Lecture1.html#strategy-stp",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "2.8 Strategy: STP",
-    "text": "2.8 Strategy: STP\n\nSituation analysis is a critical input into marketing strategy design, the sequential application of the processes of segmentation, targeting, and positioning. Marketing strategy is inherently related to the concepts of the business model and business strategy—who you are serving, with what value proposition, and how you do so.\n\n\n\n\nSegmentation, Targetting, and Positioning"
+    "text": "2.8 Strategy: STP\n\nSituation analysis is a critical input into marketing strategy design, the sequential application of the processes of segmentation, targeting, and positioning. Marketing strategy is inherently related to the concepts of the business model and business strategy—who you are serving, with what value proposition, and how you do so.\n\n\n\n\nSegmentation, Targeting, and Positioning"
   },
   {
     "objectID": "Week1-Lecture1.html#tactics-4ps",
@@ -2751,25 +2751,25 @@
     "text": "2.8 Main Takeaway\n\nCommon threats to causal inference from secondary data include\n\nOmitted Variable Bias\nReverse Causality\n\nWe can overcome the endogeneity problem using instrumental variable method."
   },
   {
-    "objectID": "Case-BreakEvenAnalysis.html",
-    "href": "Case-BreakEvenAnalysis.html",
-    "title": "Beak-Even Analysis for PineApple Inc",
-    "section": "",
-    "text": "4th October 2023: Tom Cooper, the suave Senior Marketing Manager of PineApple Inc, felt a rush of nostalgia as he stepped into the lecture halls of the UCL School of Management. Having graduated from UCL’s esteemed MSc Business Analytics programme, coming back felt like reuniting with an old friend. But, between us, the actual magnet pulling him back wasn’t just academic—it was the allure of the T4 Bubble Tea in Jubilee Place. A man’s got his priorities, right?\nThe Stage Is Set: Tom was looking to launch a series of marketing campaigns to further promote Pineapple’s new product, PinePhone 15, against its direct competitor, Apple Inc, who just launched its brand new iPhone 15 product line earlier this year.\nDiving Into The Figures: The marketing analytics team at PineApple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach 10 million units at the retail price of £600, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of PinePhone 15, which is 60%. The Research and Development (R&D) costs for PinePhone 15 is 100 million pounds.\nIn the class Tom sat in, the module leader, Dr Wayne Meow, was introducing the concepts of break-even analysis and the methods to evaluate the feasibility of a marketing campaign, which was just handy for the task. Tom would like to use the concept of break-even analysis to help guide PineApple Inc’s marketing decisions.\nCalculating the break-even quantity is one way to determine the feasibility of a marketing campaign. The break-even quantity determines how many additional units the company must sell to cover the expense of the campaign. If the business sells fewer than the break-even quantity, it loses money since it does not sell enough to recover its investment. If the company sells more than the break-even quantity, the marketing campaign can be approved as it is profitable to the company.\nAfter a few months of researching and brainstorming, the marketing analytics team under Tom’s lead has come up with several proposals for Tom to decide. Tom, taking another sip of the delicious QQ Style Milk Tea (30% sugar, less ice) from T4, started to review the proposals."
-  },
-  {
     "objectID": "Case-BreakEvenAnalysis.html#marketing-decision-a-static-view",
     "href": "Case-BreakEvenAnalysis.html#marketing-decision-a-static-view",
     "title": "Beak-Even Analysis for PineApple Inc",
-    "section": "1 Marketing Decision: A Static View",
-    "text": "1 Marketing Decision: A Static View\nThe marketing analytics team has proposed a plan of an influencer marketing campaign. Influencer marketing is a type of social media marketing that entails endorsements and product placement by influencers, individuals and organizations with a reputed expert degree of knowledge or social influence in their industry. Influencers are individuals who have the ability to influence others’ purchasing habits other quantifiable activities by uploading original—often sponsored—content to social media platforms such as TikTok, Instagram, YouTube, Snapchat, or other social media platforms.\nThe team proposes to collaborate with the top tech influencers on Tiktok and Youtube to promote the new PinePhone 15. The one-off endorsement fee is estimated to be £50 million in total. And from historical data, the team estimates that such an influencer campaign can increase the total sales within the next financial year by 2.5%.\n\nQuestion 2:\n\nBased on the information at hand, should Tom approve the influencer marketing plan?"
+    "section": "2.1 Marketing Decision: A Static View",
+    "text": "2.1 Marketing Decision: A Static View\nThe marketing analytics team has proposed a plan of an influencer marketing campaign. Influencer marketing is a type of social media marketing that entails endorsements and product placement by influencers, individuals and organizations with a reputed expert degree of knowledge or social influence in their industry. Influencers are individuals who have the ability to influence others’ purchasing habits other quantifiable activities by uploading original—often sponsored—content to social media platforms such as TikTok, Instagram, YouTube, Snapchat, or other social media platforms.\nThe team proposes to collaborate with the top tech influencers on Tiktok and Youtube to promote the new PinePhone 15. The one-off endorsement fee is estimated to be £50 million in total. And from historical data, the team estimates that such an influencer campaign can increase the total sales within the next financial year by 2.5%.\n\nQuestion 2:\n\nBased on the information at hand, should Tom approve the influencer marketing plan?"
   },
   {
     "objectID": "Case-BreakEvenAnalysis.html#marketing-decision-a-dynamic-view",
     "href": "Case-BreakEvenAnalysis.html#marketing-decision-a-dynamic-view",
     "title": "Beak-Even Analysis for PineApple Inc",
-    "section": "2 Marketing Decision: A Dynamic View",
-    "text": "2 Marketing Decision: A Dynamic View\nIn the afternoon, during a monthly board meeting, the CFO reported that the company was facing increased uncertainty regarding future cash flows due to the recent plunge of British Pounds and surge in interest rate. The current cost of financing, weighted average cost of capital (WACC), increased to 10% annually. Therefore, any marketing event is recommended to take time value of money into consideration.\nRight after the meeting, Tom asked his team for a decomposition of the predicted annual incremental sales, 2.5%, into a more granular monthly level analysis.\nThe team came back with the predicted monthly incremental sales: with influencer marketing, the first month sales will increase by 0.3% and 0.2% in the following 11 months.\n\nQuestion 3:\n\nBased on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?"
+    "section": "2.2 Marketing Decision: A Dynamic View",
+    "text": "2.2 Marketing Decision: A Dynamic View\nIn the afternoon, during a board meeting, the CFO reported that the company was facing increasing uncertainty regarding future cash flows due to the recent surge in interest rate. The current cost of financing, weighted average cost of capital (WACC), increased to 10% annually. Therefore, any marketing event is recommended to take time value of money into consideration.\nRight after the meeting, Tom asked his team for a decomposition of the predicted annual incremental sales, 2.5%, into a more granular monthly level analysis.\nThe team came back with the predicted monthly incremental sales: with influencer marketing, the first month sales will increase by 0.3% and 0.2% in the following 11 months.\n\nQuestion 3:\n\nBased on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?"
+  },
+  {
+    "objectID": "Case-BreakEvenAnalysis.html#footnotes",
+    "href": "Case-BreakEvenAnalysis.html#footnotes",
+    "title": "Beak-Even Analysis for PineApple Inc",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module based on . This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. Copyrights reserved.↩︎\nDr Meow’s personal favoriate! Highly recommended after a long tiring day of studies :D↩︎"
   },
   {
     "objectID": "Week2-Lecture2.html",
@@ -2930,133 +2930,14 @@
     "href": "Week2-Lecture1.html",
     "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
     "section": "",
-    "text": "Marketing activities need to create value for the company\n\n\n\n\n\nAny marketing activity (in fact, any business activity)\n\nincurs some marketing expense/investment costs\ngenerates benefits for the company (e.g., incremental sales; higher customer retention rate)\n\nThe core idea of a break-even analysis is to compare the benefit with the cost\n\nBEA is sometimes called cost-benefit analysis.\n\n\n\n\n\n\nFor a marketing campaign with fixed marketing expenditure with short-term impacts, we can compute BEQ to evaluate its feasibility\nBEQ calculates the number of incremental units the firm needs to sell to cover the cost of the marketing campaign.\n\nIncremental because we are comparing with status quo\n\n\n\n\n\n\nContribution Margin Per Unit = Price Per Unit - Variable Costs Per Unit\n\nMeasures how much money each additional sale “contributes” to the company’s total profits.\ncontribution margin rate1 = contribution margin per unit / price per unit\n\n\n\n\nBreak-Even Quantity = Marketing Expenditure / Contribution Margin Per Unit\nCompare BEQ with estimated incremental sales to finish break-even analyses\n\nMarketing costs are usually easy to obtain through budgeting\nIncremental sales will need to be estimated through causal inference tools (i.e., the causal impact of influencer marketing on sales)\n\nIf the estimated incremental sales can exceed BEQ, approve the marketing campaign\n\n\n\n\n\nAssign values to R objects based on case background information\n\n\nprice &lt;- 600 # retail price\nquantity &lt;- 10 # sales; it's 10 million, bear this unit in mind\nCOGS &lt;- 0.6 # cost of goods sold in percentage terms\nRD_costs &lt;- 100 # R&D Costs\nendorsement_fee &lt;- 50 # fixed marketing expenditure\n\n\nquantity is 10 million; we use 10 for brevity\n\nSales refers to quantity sales by industry practice\nRevenue or revenue sales refers to monetary sales\n\nCOGS is the variable costs per unit in the BEQ formula\n\nUsed in both percentage or value terms interchangeably.\n\nR&D costs are sunk costs\n\nShould sunk costs be considered in a BEA for a marketing campaign?\n\n\n\n\n\n\nCompute the contribution margin per unit\n\n\n# Following the definition\n# contribution margin per unit = price - variable cost\ncontribution_margin_per_unit &lt;- price - price * COGS\ncontribution_margin_per_unit\n\n[1] 240\n\n# equivalently, contribution margin rate = 1 - COGS\n# contribution margin per unit = price * contribution margin rate  \ncontribution_margin_per_unit &lt;- price * (1 - COGS) \ncontribution_margin_per_unit\n\n[1] 240\n\n\n\n\n\n\nCompute the break-even quantity\n\n\n# numerator is the marketing expense\n# denominator is the the contribution margin per unit\n\nBEQ &lt;- endorsement_fee / contribution_margin_per_unit\nBEQ\n\n[1] 0.2083333\n\n\n\nThe marketing costs, i.e., the endorsement fee, is 50 million pounds\nEach incremental sale makes profit by 240 pounds\n=&gt; This means, the influencer marketing campaign needs to increase sales by at least BEQ (0.2083333 million) units, in order for the company not to lose any money\n\n\n\n\n\nCompare BEQ with estimated incremental sales to finish break-even analyses\nIn the case study, “the team estimates that such an influencer campaign can increase the total sales within the next financial year by 2.5%.”\n\nThe comparison base is the original estimated sales without any marketing campaign, so the incremental units of sales would be quantity * 0.025\n\n\n\nquantity * 0.025 \n\n[1] 0.25\n\n\n\nWe need to sell 0.2083333 million units to break-even (not earn or lose money), but we can in fact sell 0.25 million, which is more than the BEQ.\nThe influencer marketing campaign is profitable and should be approved.\n\n\n\n\n\nIf the benefits of the marketing campaign come in longer periods, we need to consider the time value of money and use NPV to evaluate the profitability\n\n\\[\nN P V=-I_{0}+\\frac{CF_{1}}{(1+k)}+\\frac{C F_{2}}{(1+k)^{2}}+\\cdots+\\frac{C F_{n}}{(1+k)^{n}}\n\\]\n\n\n\n\n\\(k\\) is called discount rate, which reflects the time value of money\n\nThe same £1 today is more valuable than £1 tomorrow\ne.g., if interest rate is 10% annually, then £1 today is worth £1.1 a year later\n\n\\(\\frac{1}{1+k}\\) is called discount factor, which is a factor to discount the future CFs to today\n\nIn each period, we discount the future CF by multiplying it with the discount factor\nCF received 1 month later \\(CF_1\\) is worth \\(\\frac{1}{1+k} * CF_1\\) today\nCF received 2 months later \\(CF_2\\) is worth \\(\\frac{1}{(1+k)^2} * CF_2\\) today\n\nFor a company, \\(k\\) is often estimated by the finance department, which is usually the Weighted Average Cost of Capital, or WACC\n\n\n\n\n\nCompute the sequence of monthly cash flows\n\n\nFirst, we compute the incremental sales percentage for each month, relative to the 10 million.\nThis is a 12-element vector, each element representing the incremental sales percentage.\n\n\nincremental.sales.percentage_1stmonth &lt;- 0.003\nincremental.sales.percentage_next11months &lt;- rep(0.002,11)\n\n# incremental profit each month\nvector_incremental.sales.percentage_12months &lt;- \n  c(incremental.sales.percentage_1stmonth,\n    incremental.sales.percentage_next11months)\n\nvector_incremental.sales.percentage_12months\n\n [1] 0.003 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002\n\n\n\nInterpretation: 0.003 means that, the first month incremental sales units would be 0.3% of the baseline quantity.\n\n\n\n\n\nNext, we multiply the incremental sales percentage with quantity, to get the incremental sales in terms of units for each month.\n\n\nvector_incremental.sales.units_12months &lt;- \n  vector_incremental.sales.percentage_12months * \n  quantity\n\nvector_incremental.sales.units_12months\n\n [1] 0.03 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02\n\n\n\nInterpretation: 0.03 means that, the first month incremental sales units would be 0.03 million units.\n\n\n\n\n\nLastly, we multiply the incremental quantity sales with the contribution margin per unit, to get the total contribution margins (incremental profits) for each month, i.e., the CF\n\n\nvector_CF &lt;- vector_incremental.sales.units_12months * \n  contribution_margin_per_unit\n\nvector_CF\n\n [1] 7.2 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8\n\n\n\nInterpretation: 7.2 means that, the first month incremental net profits would be 7.2 million pounds.\n\n\n\n\n\nCompute the sequence of discount factors\n\n\n# divide annual wacc to get monthly wacc\nmonthly_WACC &lt;- 0.1/12 \n# monthly wacc is the k in the NPV formula\nk &lt;- monthly_WACC\nk\n\n[1] 0.008333333\n\n# discount factor is 1/(1+k)\ndiscount_factor &lt;- 1/ (1+k)\ndiscount_factor\n\n[1] 0.9917355\n\n# Generate a geometric sequence vector of discounted CFs for 12 months\nvector_discount_factor &lt;- discount_factor^c(1:12)\nvector_discount_factor\n\n [1] 0.9917355 0.9835394 0.9754110 0.9673497 0.9593551 0.9514265 0.9435635\n [8] 0.9357654 0.9280319 0.9203622 0.9127559 0.9052124\n\n\n\nInterpretation: 0.9917355 means that, £1 1 month later is worth £0.992 today; 0.9052124 means that, £1 12 month later is worth £0.905 today.\n\n\n\n\n\nCompute the NPV\n\n\nMultiply CF vector with discount factor vector, to get the discounted CF vector\n\n\n# this will do element-by-element multiplication\nvector_discounted.CF &lt;- vector_CF * vector_discount_factor \nvector_discounted.CF\n\n [1] 7.140496 4.720989 4.681973 4.643279 4.604904 4.566847 4.529105 4.491674\n [9] 4.454553 4.417738 4.381228 4.345020\n\n\n\n\n\n\nuse function sum() to get the sum of all elements in a vector. That is, the sum of discounted cash flows in all 12 months.\n\n\nsum(vector_CF * vector_discount_factor)\n\n[1] 56.97781\n\n\n\nWe need to subtract the endorsement fee, which is the marketing expense, to get the net present value\n\n\nNPV &lt;- sum(vector_CF * vector_discount_factor) - endorsement_fee\nNPV\n\n[1] 6.977806\n\n\n\n\n\n\nCLV is a break-even analysis from the perspective of a single customer, which considers a customer as an asset to the company that generates future cashflows\n\nincurs customer acquisition costs (CAC)\ncustomer generates profits for the company in each period\ncustomer churns at some point in time\n\n\n\n\n\n\n\n\n\n\n\nThe total marketing costs to acquire a new customer\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\mathrm{CLV} = - CAC + \\sum_{t=1}^{N} \\frac{CF_t * r^{(t-1)}}{(1+k)^{t}}\n\\]\nwhere \\(CF_t = M_t - c_t\\)\n\n\\(r\\) is the average annual retention rate; \\(r^{(t-1)}\\) is the cumulative retention rate in year \\(t\\)\n\\(N\\) is the number of years over which the relationship is calculated\n\\(M_{t}\\) is the margin the customer generates in year \\(t\\)\n\\(c_{t}\\) is the expected cost of marketing communications or promotions targeted to the customer in year \\(t\\)\n\\(k\\) is the rate for discounting future cash flows"
+    "text": "CLV is a break-even analysis from the perspective of a single customer, which considers a customer as an asset to the company that generates future cashflows\n\nincurs customer acquisition costs (CAC)\ncustomer generates profits for the company in each period\ncustomer churns at some point in time\n\n\n\n\n\n\n\n\n\n\n\\[\n\\mathrm{CLV} = - CAC + \\sum_{t=1}^{N} \\frac{CF_t * r^{(t-1)}}{(1+k)^{t}}\n\\]\nwhere \\(CF_t = M_t - c_t\\)\n\n\\(r\\) is the average annual retention rate; \\(r^{(t-1)}\\) is the cumulative retention rate in year \\(t\\)\n\\(N\\) is the number of years over which the relationship is calculated\n\\(M_{t}\\) is the margin the customer generates in year \\(t\\)\n\\(c_{t}\\) is the expected cost of marketing communications or promotions targeted to the customer in year \\(t\\)\n\\(k\\) is the rate for discounting future cash flows"
   },
   {
-    "objectID": "Week2-Lecture1.html#objective-of-marketing-process",
-    "href": "Week2-Lecture1.html#objective-of-marketing-process",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "Marketing activities need to create value for the company"
-  },
-  {
-    "objectID": "Week2-Lecture1.html#break-even-analyses",
-    "href": "Week2-Lecture1.html#break-even-analyses",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "Any marketing activity (in fact, any business activity)\n\nincurs some marketing expense/investment costs\ngenerates benefits for the company (e.g., incremental sales; higher customer retention rate)\n\nThe core idea of a break-even analysis is to compare the benefit with the cost\n\nBEA is sometimes called cost-benefit analysis."
-  },
-  {
-    "objectID": "Week2-Lecture1.html#break-even-quantity",
-    "href": "Week2-Lecture1.html#break-even-quantity",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "For a marketing campaign with fixed marketing expenditure with short-term impacts, we can compute BEQ to evaluate its feasibility\nBEQ calculates the number of incremental units the firm needs to sell to cover the cost of the marketing campaign.\n\nIncremental because we are comparing with status quo"
-  },
-  {
-    "objectID": "Week2-Lecture1.html#break-even-quantity-formula",
-    "href": "Week2-Lecture1.html#break-even-quantity-formula",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "Contribution Margin Per Unit = Price Per Unit - Variable Costs Per Unit\n\nMeasures how much money each additional sale “contributes” to the company’s total profits.\ncontribution margin rate1 = contribution margin per unit / price per unit\n\n\n\n\nBreak-Even Quantity = Marketing Expenditure / Contribution Margin Per Unit\nCompare BEQ with estimated incremental sales to finish break-even analyses\n\nMarketing costs are usually easy to obtain through budgeting\nIncremental sales will need to be estimated through causal inference tools (i.e., the causal impact of influencer marketing on sales)\n\nIf the estimated incremental sales can exceed BEQ, approve the marketing campaign"
-  },
-  {
-    "objectID": "Week2-Lecture1.html#pineapple-beq",
-    "href": "Week2-Lecture1.html#pineapple-beq",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "Assign values to R objects based on case background information\n\n\nprice &lt;- 600 # retail price\nquantity &lt;- 10 # sales; it's 10 million, bear this unit in mind\nCOGS &lt;- 0.6 # cost of goods sold in percentage terms\nRD_costs &lt;- 100 # R&D Costs\nendorsement_fee &lt;- 50 # fixed marketing expenditure\n\n\nquantity is 10 million; we use 10 for brevity\n\nSales refers to quantity sales by industry practice\nRevenue or revenue sales refers to monetary sales\n\nCOGS is the variable costs per unit in the BEQ formula\n\nUsed in both percentage or value terms interchangeably.\n\nR&D costs are sunk costs\n\nShould sunk costs be considered in a BEA for a marketing campaign?"
-  },
-  {
-    "objectID": "Week2-Lecture1.html#pineapple-beq-step-1",
-    "href": "Week2-Lecture1.html#pineapple-beq-step-1",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "Compute the contribution margin per unit\n\n\n# Following the definition\n# contribution margin per unit = price - variable cost\ncontribution_margin_per_unit &lt;- price - price * COGS\ncontribution_margin_per_unit\n\n[1] 240\n\n# equivalently, contribution margin rate = 1 - COGS\n# contribution margin per unit = price * contribution margin rate  \ncontribution_margin_per_unit &lt;- price * (1 - COGS) \ncontribution_margin_per_unit\n\n[1] 240"
-  },
-  {
-    "objectID": "Week2-Lecture1.html#pineapple-beq-step-2",
-    "href": "Week2-Lecture1.html#pineapple-beq-step-2",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "Compute the break-even quantity\n\n\n# numerator is the marketing expense\n# denominator is the the contribution margin per unit\n\nBEQ &lt;- endorsement_fee / contribution_margin_per_unit\nBEQ\n\n[1] 0.2083333\n\n\n\nThe marketing costs, i.e., the endorsement fee, is 50 million pounds\nEach incremental sale makes profit by 240 pounds\n=&gt; This means, the influencer marketing campaign needs to increase sales by at least BEQ (0.2083333 million) units, in order for the company not to lose any money"
-  },
-  {
-    "objectID": "Week2-Lecture1.html#pineapple-beq-step-3",
-    "href": "Week2-Lecture1.html#pineapple-beq-step-3",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "Compare BEQ with estimated incremental sales to finish break-even analyses\nIn the case study, “the team estimates that such an influencer campaign can increase the total sales within the next financial year by 2.5%.”\n\nThe comparison base is the original estimated sales without any marketing campaign, so the incremental units of sales would be quantity * 0.025\n\n\n\nquantity * 0.025 \n\n[1] 0.25\n\n\n\nWe need to sell 0.2083333 million units to break-even (not earn or lose money), but we can in fact sell 0.25 million, which is more than the BEQ.\nThe influencer marketing campaign is profitable and should be approved."
-  },
-  {
-    "objectID": "Week2-Lecture1.html#npv",
-    "href": "Week2-Lecture1.html#npv",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "If the benefits of the marketing campaign come in longer periods, we need to consider the time value of money and use NPV to evaluate the profitability\n\n\\[\nN P V=-I_{0}+\\frac{CF_{1}}{(1+k)}+\\frac{C F_{2}}{(1+k)^{2}}+\\cdots+\\frac{C F_{n}}{(1+k)^{n}}\n\\]"
-  },
-  {
-    "objectID": "Week2-Lecture1.html#discount-rate-and-discount-factor",
-    "href": "Week2-Lecture1.html#discount-rate-and-discount-factor",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "\\(k\\) is called discount rate, which reflects the time value of money\n\nThe same £1 today is more valuable than £1 tomorrow\ne.g., if interest rate is 10% annually, then £1 today is worth £1.1 a year later\n\n\\(\\frac{1}{1+k}\\) is called discount factor, which is a factor to discount the future CFs to today\n\nIn each period, we discount the future CF by multiplying it with the discount factor\nCF received 1 month later \\(CF_1\\) is worth \\(\\frac{1}{1+k} * CF_1\\) today\nCF received 2 months later \\(CF_2\\) is worth \\(\\frac{1}{(1+k)^2} * CF_2\\) today\n\nFor a company, \\(k\\) is often estimated by the finance department, which is usually the Weighted Average Cost of Capital, or WACC"
-  },
-  {
-    "objectID": "Week2-Lecture1.html#pineapple-npv-step-1",
-    "href": "Week2-Lecture1.html#pineapple-npv-step-1",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "Compute the sequence of monthly cash flows\n\n\nFirst, we compute the incremental sales percentage for each month, relative to the 10 million.\nThis is a 12-element vector, each element representing the incremental sales percentage.\n\n\nincremental.sales.percentage_1stmonth &lt;- 0.003\nincremental.sales.percentage_next11months &lt;- rep(0.002,11)\n\n# incremental profit each month\nvector_incremental.sales.percentage_12months &lt;- \n  c(incremental.sales.percentage_1stmonth,\n    incremental.sales.percentage_next11months)\n\nvector_incremental.sales.percentage_12months\n\n [1] 0.003 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002\n\n\n\nInterpretation: 0.003 means that, the first month incremental sales units would be 0.3% of the baseline quantity."
-  },
-  {
-    "objectID": "Week2-Lecture1.html#pineapple-npv-step-1-1",
-    "href": "Week2-Lecture1.html#pineapple-npv-step-1-1",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "Next, we multiply the incremental sales percentage with quantity, to get the incremental sales in terms of units for each month.\n\n\nvector_incremental.sales.units_12months &lt;- \n  vector_incremental.sales.percentage_12months * \n  quantity\n\nvector_incremental.sales.units_12months\n\n [1] 0.03 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02\n\n\n\nInterpretation: 0.03 means that, the first month incremental sales units would be 0.03 million units."
-  },
-  {
-    "objectID": "Week2-Lecture1.html#pineapple-npv-step-1-2",
-    "href": "Week2-Lecture1.html#pineapple-npv-step-1-2",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "Lastly, we multiply the incremental quantity sales with the contribution margin per unit, to get the total contribution margins (incremental profits) for each month, i.e., the CF\n\n\nvector_CF &lt;- vector_incremental.sales.units_12months * \n  contribution_margin_per_unit\n\nvector_CF\n\n [1] 7.2 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8\n\n\n\nInterpretation: 7.2 means that, the first month incremental net profits would be 7.2 million pounds."
-  },
-  {
-    "objectID": "Week2-Lecture1.html#pineapple-npv-step-2",
-    "href": "Week2-Lecture1.html#pineapple-npv-step-2",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "Compute the sequence of discount factors\n\n\n# divide annual wacc to get monthly wacc\nmonthly_WACC &lt;- 0.1/12 \n# monthly wacc is the k in the NPV formula\nk &lt;- monthly_WACC\nk\n\n[1] 0.008333333\n\n# discount factor is 1/(1+k)\ndiscount_factor &lt;- 1/ (1+k)\ndiscount_factor\n\n[1] 0.9917355\n\n# Generate a geometric sequence vector of discounted CFs for 12 months\nvector_discount_factor &lt;- discount_factor^c(1:12)\nvector_discount_factor\n\n [1] 0.9917355 0.9835394 0.9754110 0.9673497 0.9593551 0.9514265 0.9435635\n [8] 0.9357654 0.9280319 0.9203622 0.9127559 0.9052124\n\n\n\nInterpretation: 0.9917355 means that, £1 1 month later is worth £0.992 today; 0.9052124 means that, £1 12 month later is worth £0.905 today."
-  },
-  {
-    "objectID": "Week2-Lecture1.html#pineapple-npv-step-3",
-    "href": "Week2-Lecture1.html#pineapple-npv-step-3",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "Compute the NPV\n\n\nMultiply CF vector with discount factor vector, to get the discounted CF vector\n\n\n# this will do element-by-element multiplication\nvector_discounted.CF &lt;- vector_CF * vector_discount_factor \nvector_discounted.CF\n\n [1] 7.140496 4.720989 4.681973 4.643279 4.604904 4.566847 4.529105 4.491674\n [9] 4.454553 4.417738 4.381228 4.345020"
-  },
-  {
-    "objectID": "Week2-Lecture1.html#pineapple-npv-step-3-1",
-    "href": "Week2-Lecture1.html#pineapple-npv-step-3-1",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "use function sum() to get the sum of all elements in a vector. That is, the sum of discounted cash flows in all 12 months.\n\n\nsum(vector_CF * vector_discount_factor)\n\n[1] 56.97781\n\n\n\nWe need to subtract the endorsement fee, which is the marketing expense, to get the net present value\n\n\nNPV &lt;- sum(vector_CF * vector_discount_factor) - endorsement_fee\nNPV\n\n[1] 6.977806"
-  },
-  {
-    "objectID": "Week2-Lecture1.html#customer-lifetime-value",
-    "href": "Week2-Lecture1.html#customer-lifetime-value",
+    "objectID": "Week2-Lecture1.html#customer-life-cycle",
+    "href": "Week2-Lecture1.html#customer-life-cycle",
     "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
     "section": "",
     "text": "CLV is a break-even analysis from the perspective of a single customer, which considers a customer as an asset to the company that generates future cashflows\n\nincurs customer acquisition costs (CAC)\ncustomer generates profits for the company in each period\ncustomer churns at some point in time"
-  },
-  {
-    "objectID": "Week2-Lecture1.html#customer-acquisition-costs",
-    "href": "Week2-Lecture1.html#customer-acquisition-costs",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "The total marketing costs to acquire a new customer"
   },
   {
     "objectID": "Week2-Lecture1.html#clv-formula",
@@ -3183,13 +3064,6 @@
     "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
     "section": "3.3 Exercise",
     "text": "3.3 Exercise\n\nHow much annual membership fee should the company charge to break even?\nThe company is looking to develop a personalized recommendation system that can increase the average shopping basket to $150. Compute the upper bound for the company’s investment in developing the algorithm in order to break even? Assume the company has 10,000 customers at this moment."
-  },
-  {
-    "objectID": "Week2-Lecture1.html#footnotes",
-    "href": "Week2-Lecture1.html#footnotes",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nIt’s important to infer percentage/absolute terms from the context.↩︎"
   },
   {
     "objectID": "Week4-Lecture2.html",
@@ -3414,13 +3288,6 @@
     "title": "Class 5 Data Wrangling with R (Part II)",
     "section": "2.2 Missing Values",
     "text": "2.2 Missing Values\n\nIn R, missing values are represented by the symbol NA (i.e., not available).\nMost statistical models cannot handle missing values, so we need to deal with them in R.\n\nFew missing values: remove them from analysis.\nMany missing values: need to replace them with appropriate values: mean/median/imputation"
-  },
-  {
-    "objectID": "Week3-Lecture1.html#outliers",
-    "href": "Week3-Lecture1.html#outliers",
-    "title": "Class 5 Data Wrangling with R (Part II)",
-    "section": "2.3 Outliers",
-    "text": "2.3 Outliers\n\nIn statistics, an outlier is a data point that differs significantly from other observations.\n\nFew outliers: remove them from analysis\nMany outliers: winsorize data\nIf the distribution of a variable is not normal distribution, we often log transform variables to mitigate outlier issues"
   },
   {
     "objectID": "Week3-Lecture1.html#two-major-tasks-of-descriptive-analytics",
