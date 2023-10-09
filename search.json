@@ -1306,7 +1306,7 @@
     "href": "ClassPreparation.html",
     "title": "Weekly Arrangements",
     "section": "",
-    "text": "We will have a 3-hour session each week and I will aim to cover a new marketing analytics model. Whenever we learn a new technique (e.g., a new statistical model or a new analytics tool), the subsequent week will often start with some warm-up exercise and a seminar workshop (with a case study) for you to review and practice the new technique learned in the previous week. This way, you would have time to digest what you’ve learned and can further reflect on your understanding of the technique by practicing your skills with a real-life application.\nFor instance, in week 1, I will first introduce the concepts of marketing and marketing process, and then will cover the concept of customer lifetime value (CLV) and how to compute CLV with R. In week 2, we will therefore begin with a case study that helps you practice your knowledge of CLV, so you can understand how to use CLV for better marketing decisions in your future projects/jobs.\nIn the remaining time of week 2, I will then introduce a new technique: the dplyr package in R, which helps us clean and manipulate datasets in R. Following a similar logic, then in week 3, we will start with a case study for you to practice the dplyr package. So on and so forth.\n\n\n\n\nEssential: contents core to this week’s materials. All pre-class preparations should be completed before class.\nOptional: supplemental readings for those interested in learning more\n\nAll materials, including the lecture slides and before-class readings will be released a few days before each Thursday’s class.\n\n\n\n\nModule Outline\n\n\n\n\n\n\n\n\n\nWeek\nAnalytics/Methodology Topic\nSubstantive Topic\nCase Study1\nImportant dates\n\n\n\n\nInduction\nIntroduction to R\n\n\n\n\n\n1\nComputation with R\nCustomer lifetime value\nCustomer Lifetime Value\n\n\n\n2\nData wrangling with R\nPreliminary customer analysis\nPreliminary Customer Analysis\n\n\n\n3\nUnsupervised learning\nSegmentation\nImproving Marketing Efficiency with Predictive Analytics I\n\n\n\n4\nSupervised learning\nTargeting\nImproving Marketing Efficiency with Predictive Analytics II\nFriday, 27 October 2023\n1st assignment due\n\n\n5\nRubin Causal Model and Potential Outcome Framework\nCausal Inference\n\n\n\n\n6\nRCT\nPromotion Analytics\nImprove User Engagement on Social Media Platforms using A/B Testings\n\n\n\n7\nLinear regression\nPricing analytics\nOptimizing Marketing Mixes Using Regression Models\n\n\n\n8\nInstrumental variable\nPlatform Design\nEvaluating the Impact of COVID-19 on Ride-sharing Market\nFriday, 24 November 2023\n2nd assignment due\n\n\n9\nQuasi-experiments\nDifference-in-Differences\nRegression Discontinuity Design\n\n\n\n\n10\nCausal forest\nCausal machine learning\n\n\n\n\n\n\n\n\nFriday, 15 December 2023\n3rd assignment due"
+    "text": "We will have a 3-hour session each week and I will aim to cover a new marketing analytics model. Whenever we learn a new technique (e.g., a new statistical model or a new analytics tool), the subsequent week will often start with some warm-up exercise and a seminar workshop (with a case study) for you to review and practice the new technique learned in the previous week. This way, you would have time to digest what you’ve learned and can further reflect on your understanding of the technique by practicing your skills with a real-life application.\nFor instance, in week 1, I will first introduce the concepts of marketing and marketing process, and then will cover the concept of customer lifetime value (CLV) and how to compute CLV with R. In week 2, we will therefore begin with a case study that helps you practice your knowledge of CLV, so you can understand how to use CLV for better marketing decisions in your future projects/jobs.\nIn the remaining time of week 2, I will then introduce a new technique: the dplyr package in R, which helps us clean and manipulate datasets in R. Following a similar logic, then in week 3, we will start with a case study for you to practice the dplyr package. So on and so forth.\n\n\n\n\nEssential: contents core to this week’s materials. All pre-class preparations should be completed before class.\nOptional: supplemental readings for those interested in learning more\n\nAll materials, including the lecture slides and before-class readings will be released a few days before each Thursday’s class.\n\n\n\n\nModule Outline\n\n\n\n\n\n\n\n\n\nWeek\nAnalytics/Methodology Topic\nSubstantive Topic\nCase Study1\nImportant dates\n\n\n\n\nInduction\nIntroduction to R\n\n\n\n\n\n1\nComputation with R\nCustomer lifetime value\nCustomer Lifetime Value\n\n\n\n2\nData wrangling with R\nPreliminary customer analysis\nPreliminary Customer Analysis\n\n\n\n3\nUnsupervised learning\nSegmentation\nImproving Marketing Efficiency with Predictive Analytics I\n\n\n\n4\nSupervised learning\nTargeting\nImproving Marketing Efficiency with Predictive Analytics II\nFriday, 30 October 2023\n1st assignment due\n\n\n5\nRubin Causal Model and Potential Outcome Framework\nCausal Inference\n\n\n\n\n6\nRCT\nPromotion Analytics\nImprove User Engagement on Social Media Platforms using A/B Testings\n\n\n\n7\nLinear regression\nPricing analytics\nOptimizing Marketing Mixes Using Regression Models\n\n\n\n8\nInstrumental variable\nPlatform Design\nEvaluating the Impact of COVID-19 on Ride-sharing Market\nFriday, 24 November 2023\n2nd assignment due\n\n\n9\nQuasi-experiments\nDifference-in-Differences\nRegression Discontinuity Design\n\n\n\n\n10\nCausal forest\nCausal machine learning\n\n\n\n\n\n\n\n\nFriday, 15 December 2023\n3rd assignment due"
   },
   {
     "objectID": "ClassPreparation.html#arrangements-each-week",
@@ -1327,7 +1327,7 @@
     "href": "ClassPreparation.html#module-outline",
     "title": "Weekly Arrangements",
     "section": "",
-    "text": "Module Outline\n\n\n\n\n\n\n\n\n\nWeek\nAnalytics/Methodology Topic\nSubstantive Topic\nCase Study1\nImportant dates\n\n\n\n\nInduction\nIntroduction to R\n\n\n\n\n\n1\nComputation with R\nCustomer lifetime value\nCustomer Lifetime Value\n\n\n\n2\nData wrangling with R\nPreliminary customer analysis\nPreliminary Customer Analysis\n\n\n\n3\nUnsupervised learning\nSegmentation\nImproving Marketing Efficiency with Predictive Analytics I\n\n\n\n4\nSupervised learning\nTargeting\nImproving Marketing Efficiency with Predictive Analytics II\nFriday, 27 October 2023\n1st assignment due\n\n\n5\nRubin Causal Model and Potential Outcome Framework\nCausal Inference\n\n\n\n\n6\nRCT\nPromotion Analytics\nImprove User Engagement on Social Media Platforms using A/B Testings\n\n\n\n7\nLinear regression\nPricing analytics\nOptimizing Marketing Mixes Using Regression Models\n\n\n\n8\nInstrumental variable\nPlatform Design\nEvaluating the Impact of COVID-19 on Ride-sharing Market\nFriday, 24 November 2023\n2nd assignment due\n\n\n9\nQuasi-experiments\nDifference-in-Differences\nRegression Discontinuity Design\n\n\n\n\n10\nCausal forest\nCausal machine learning\n\n\n\n\n\n\n\n\nFriday, 15 December 2023\n3rd assignment due"
+    "text": "Module Outline\n\n\n\n\n\n\n\n\n\nWeek\nAnalytics/Methodology Topic\nSubstantive Topic\nCase Study1\nImportant dates\n\n\n\n\nInduction\nIntroduction to R\n\n\n\n\n\n1\nComputation with R\nCustomer lifetime value\nCustomer Lifetime Value\n\n\n\n2\nData wrangling with R\nPreliminary customer analysis\nPreliminary Customer Analysis\n\n\n\n3\nUnsupervised learning\nSegmentation\nImproving Marketing Efficiency with Predictive Analytics I\n\n\n\n4\nSupervised learning\nTargeting\nImproving Marketing Efficiency with Predictive Analytics II\nFriday, 30 October 2023\n1st assignment due\n\n\n5\nRubin Causal Model and Potential Outcome Framework\nCausal Inference\n\n\n\n\n6\nRCT\nPromotion Analytics\nImprove User Engagement on Social Media Platforms using A/B Testings\n\n\n\n7\nLinear regression\nPricing analytics\nOptimizing Marketing Mixes Using Regression Models\n\n\n\n8\nInstrumental variable\nPlatform Design\nEvaluating the Impact of COVID-19 on Ride-sharing Market\nFriday, 24 November 2023\n2nd assignment due\n\n\n9\nQuasi-experiments\nDifference-in-Differences\nRegression Discontinuity Design\n\n\n\n\n10\nCausal forest\nCausal machine learning\n\n\n\n\n\n\n\n\nFriday, 15 December 2023\n3rd assignment due"
   },
   {
     "objectID": "ClassPreparation.html#module-introduction",
@@ -1344,18 +1344,18 @@
     "text": "Customer Profitability and Lifetime Value\n\nWhat you will learn\n\nHow to conduct break-even analyses (static and dynamic)\nThe concept of customer life cycle\nHow to compute customer acquisition cost (CAC)\nHow to compute customer lifetime value (CLV)\n\nAfter-class reading\n\n(optional) “Hubspot: How to compute CLV”. This article introduces alternative ways to compute CLV, which are used in many companies.\n(optional) “Important lessons for embracing customer lifetime value”\n(essential) “Common R Programming Errors Faced by Beginners”. This guide will be updated constantly and summarizes the common R errors you may encounter as beginners. For any questions, come here first for solutions."
   },
   {
-    "objectID": "ClassPreparation.html#workshop-customer-lifetime-social-value",
-    "href": "ClassPreparation.html#workshop-customer-lifetime-social-value",
+    "objectID": "ClassPreparation.html#case-study-customer-lifetime-social-value",
+    "href": "ClassPreparation.html#case-study-customer-lifetime-social-value",
     "title": "Weekly Arrangements",
-    "section": "Workshop: Customer Lifetime Social Value",
-    "text": "Workshop: Customer Lifetime Social Value\n\n\n\n\n\n\nPre-class preparation\n\n\n\n\nHBS 9-518-077: Customer Lifetime Social Value (CLSV).\n\nIn the first class this week, we will go through how to compute the customer lifetime value for i-basket in this case study. We will only discuss the CLV calculation part and you can finish the CLSV as an after-class exercise. Please read pages 1 - 8, focusing on pages 5 - 8.\nWhen reading the case, please fill in the table at the beginning of the quarto document to find out all key information, including the variable, the value, and the page where it shows up. This can help you quickly find that information in class.\nPrepare for the following questions, which we will discuss in class.\n\nWhat would be the time unit of analyses? monthly or yearly? How many years of customer lifetime to consider for CLV calculation?\nWhat is the information needed to calculate the net cashflow of a customer in each period? Where can you find the M and c in the CLV formula? Highlight these key numbers so that we can create them in R directly. \nHow do we incorporate customer churn in CLV calculation?\nWhat are the costs i-basket needs to incur to acquire a customer? Based on this information, how to compute the customer acquisition costs (CAC)?\nCan you figure out how to compute CLV with R before class? You can try your best to use what we have learned in Week 1 to compute the CLV for i-basket on your own with R. The exercise qmd file is already given.\n\n\n\n\n\n\nWhat you will learn\n\nHow to apply CLV calculation in a real-life scenario\nHow to extend the concept of CLV to CLSV as needed\nDiscuss how CLV can be used by marketers to guide marketing decisions\n\nAfter-class reading\n\n(optional) The Dangerous Seduction of the Lifetime Value (LTV) Formula"
+    "section": "Case Study: Customer Lifetime Social Value",
+    "text": "Case Study: Customer Lifetime Social Value\n\n\n\n\n\n\nPre-class preparation\n\n\n\n\nHBS 9-518-077: Customer Lifetime Social Value (CLSV).\n\nIn the first class this week, we will go through how to compute the customer lifetime value for i-basket, a US grocery supermarket, in this case study. We will only focus on the CLV calculation part while leaving CLSV as after-class optional learning contents. Please read pages 1-8. Pages 1-5 introduce the case background; pages 5-8 introduce key information to compute CLV for the company.\nWhen reading the case, please fill in the table at the beginning of the quarto document to find out all key information, including the variable, the value, and the page where it shows up. This can help you quickly find that information in class.\nPrepare for the following questions, which we will discuss in class.\n\nWhat would be the time unit of analyses? monthly or yearly? How many years of customer lifetime to consider for CLV calculation?\nWhat is the information needed to calculate the net cash flows of a customer in each period? Where can you find the M and c in the CLV formula? Highlight these key numbers so that we can create them in R directly. \nHow do we incorporate customer churn in CLV calculation?\nWhat are the costs i-basket needs to incur to acquire a customer? Based on this information, how to compute the customer acquisition costs (CAC)?\nCan you figure out how to compute CLV with R before class? You can try your best to use what we have learned in Week 1 to compute the CLV for i-basket on your own with R. The exercise qmd file is already given.\n\n\n\n\n\n\n\n\nMindmap for Computing the CLV for i-basket\n\n\n\nWhat you will learn\n\nHow to apply CLV calculation in a real-life case study\nDiscuss how CLV can be used by marketers to guide marketing decisions\n\nAfter-class reading\n\n(optional) The Dangerous Seduction of the Lifetime Value (LTV) Formula"
   },
   {
     "objectID": "ClassPreparation.html#data-wrangling-with-r-part-i",
     "href": "ClassPreparation.html#data-wrangling-with-r-part-i",
     "title": "Weekly Arrangements",
     "section": "Data Wrangling with R: Part I",
-    "text": "Data Wrangling with R: Part I\n\nWhat you will learn\n\nProcess of a typical data analytics task\nHow to use filter, mutate, and arrange for data manipulation with dplyr package in R\n\nAfter-class reading\n\n(essential) Finish the practice exercise on data camp: Data Manipulation with dplyr: 1.Transforming Data with dplyr\n(essential) Cheatsheet for dplyr\n(optional) Python Pandas vs. R Dplyr. In David’s class, you will learn how to use Python Pandas for data wrangling. This cheat sheet provides a one-to-one comparison of the two libraries for your reference."
+    "text": "Data Wrangling with R: Part I\n\nWhat you will learn\n\nProcess of a typical data analytics task\nHow to use filter, mutate, and arrange for data manipulation with dplyr package in R\n\nAfter-class reading\n\n(essential) Finish the practice exercise on data camp: Data Manipulation with dplyr: 1.Transforming Data with dplyr\n(essential) Cheatsheet for dplyr\n(optional) Python Pandas vs. R Dplyr. In David’s class, you will learn how to use Python Pandas for data wrangling in the last two weeks. This cheat sheet provides a one-to-one comparison of the two libraries for your reference."
   },
   {
     "objectID": "ClassPreparation.html#data-wrangling-with-r-part-ii",
@@ -1474,7 +1474,70 @@
     "href": "Case-CLSV.html",
     "title": "CLV Case Study",
     "section": "",
-    "text": "1 Step 1: Determine time unit of analysis\n\nTime unit of analysis\n\n[…] Because the typical customer contract is renewed annually, all relevant variables will be measured on a yearly basis.\n\nWhen should we use monthly analysis? When there is strong within-year seasonality of customer purchases\n\n\n\n\n\n2 Step 2: Determine number of years\n\n\\(N\\): the number of years over which the customer relationship is assessed\n\n[…] i-basket typically used a five-year horizon for revenue and profitability calculations\n\n\n\nN &lt;- 5\n\n\n\n3 Step 3: Compute profit margin for each period\n\\(CF = M - c\\): gross profit each year\n\nmost customers paid the $99 annual membership fee\n\n\nmembership &lt;- 99\n\n\n40 times each year; each time $100\n\n\nn_visit &lt;- 40\nrevenue_each_visit &lt;- 100\n\n\nprofit margin 7% (COGS 93%)\n\n\nprofit_margin &lt;- 0.07\nM &lt;- membership + revenue_each_visit * n_visit * profit_margin\n\n\nvariable delivery costs each order\n\n\ndeliverycost_each_visit &lt;- 5 + 100 * 0.035\nc &lt;- deliverycost_each_visit * n_visit\n\n\nthe annual CF from customers CF\n\n\nCF &lt;- M - c\nprofit_seq &lt;- rep(CF,N)\nprofit_seq\n\n[1] 39 39 39 39 39\n\n\n\n\n4 Step 4: Compute sequence of retention rate\n\n\\(r\\): retention rate\n\n\n[…] i-basket examined the proportion of customers who renewed their membership from one year to the next (using an average across three years). This proportion was 0.7\n\n\nretention_rate &lt;- 0.7\nretention_seq &lt;- retention_rate ^ (seq(1,N) - 1)\n\n\n\n5 Step 5: Compute sequence of discount factors\n\n\\(k\\): the discount rate\n\n\n[…] A yearly discount rate of 10%\n\n\ndiscount_rate &lt;- 0.1\ndiscount_factor_seq &lt;- (1 / (1+discount_rate)) ^ (seq(1,N))\ndiscount_factor_seq\n\n[1] 0.9090909 0.8264463 0.7513148 0.6830135 0.6209213\n\n\n\n[…] The team decided to take a conservative approach whereby all profits are booked at the end of year.\n\nAll profits earned per customer in year 1 need to be discounted once, the profits earned in year 2 need to be discounted twice, and so on\n\n\n\n\n6 Step 6: Compute customer acquisition costs\n\nCAC = total costs for customer ad clicks + total costs of $15 promo + total costs of free deliveries\nTotal costs for customer clicks\n\n\n[…] 20% of those that signed up for the free trial ended up becoming members\n[…] a fifth of those who clicked on an ad were willing to give the service a try\n\n\nconversion_rate &lt;- 0.2\nclick_through_rate &lt;- 0.2\n\n\nHow many customers need to click the ad to get 1 new customer?\n\n\nn_clicks_1newcustomer &lt;- 1/click_through_rate/conversion_rate\n\n\nTotal costs for customer clicks\n\n\ntotal_cost_clicks &lt;- 0.4 * n_clicks_1newcustomer\ntotal_cost_clicks\n\n[1] 10\n\n\n\ntotal costs of $15 promo for first order each trier customer\n\n\nHow many customers need to try the service to get 1 new customer?\n\n\nn_triers &lt;- 1/conversion_rate\n\n\nWhat is the total promo cost for these trier customers’ first order?\n\n\npromo_first_order_each_trier &lt;- 15\n\ntotal_cost_promo &lt;- promo_first_order_each_trier * (1 - profit_margin) * n_triers\ntotal_cost_promo\n\n[1] 69.75\n\n\n\ntotal costs from free deliveries\n\n\nAssume two visits, the delivery costs for each visit\n\n\ndeliverycost_1st &lt;- 5 + 115 * 0.035\ndeliverycost_2nd &lt;- 5 + 100 * 0.035\ndeliverycost_each_trier &lt;- deliverycost_1st + deliverycost_2nd\n\n\nWe also make a profit each trier\n\n\nprofit_each_trier &lt;-  revenue_each_visit * profit_margin * 2\n\n\nNet delivery costs each trier\n\n\nNetDeliveryCost_each_trier&lt;- deliverycost_each_trier - profit_each_trier\n\ntotal_cost_delivery &lt;- NetDeliveryCost_each_trier * n_triers\n\ntotal_cost_delivery\n\n[1] 17.625\n\n\n\nCAC\n\n\nCAC &lt;- total_cost_clicks + total_cost_promo + total_cost_delivery\nCAC\n\n[1] 97.375\n\n\n\n\n7 Step 7: Compute CLV\n\nCompute the CLV based on the CLV formula (Table A)\n\n\n\nRevenues, variables costs, and profit for the next 5 years\n\n\nprofit_seq\n\n[1] 39 39 39 39 39\n\n\n\nApply retention rate\n\n\nprofit_seq_after_churn &lt;- profit_seq * retention_seq\nprofit_seq_after_churn\n\n[1] 39.0000 27.3000 19.1100 13.3770  9.3639\n\n\n\nApply discount factor\n\n\nprofit_seq_after_churn_discount&lt;- profit_seq_after_churn * discount_factor_seq\n\nprofit_seq_after_churn_discount\n\n[1] 35.454545 22.561983 14.357626  9.136671  5.814245\n\n\n\nCompute CLV by summing up future expected profits\n\n\nsum(profit_seq_after_churn_discount)\n\n[1] 87.32507\n\nsum(profit_seq_after_churn_discount) - CAC\n\n[1] -10.04993"
+    "text": "Since i-basket is a US company. Let’s use Marks and Spencer as a UK example for conducting 5C analysis for a grocery retailer. You can follow similar templates to conduct situation analysis for the first assignment.\n\n\n\nProducts: M&S provides a wide range of products, including groceries, clothing, cafe, and home products.\nValue Proposition: Offers high-quality, sustainable products and is known for its strong ethical standards.\nMarket Position: Holds a steady market share, but faces challenges in some segments such as clothing and home segments.\n\n\n\n\n\nDemographics: Appeals to a broad demographic but is notably popular among middle to upper-middle-class consumers.\nCustomer Needs: Customers seek quality groceries, fashionable clothing, and home goods.\nCustomer Journey: Engaging through both online and offline channels, M&S appeals to both in-store and e-commerce shoppers.\n\n\n\n\n\nDirect Competitors: Tesco, Sainsbury’s, and other UK retail giants.\nIndirect Competitors: Online retailers and fast-fashion brands.\nUnique Selling Propositions (USPs): Competitors may offer lower prices (Lidl, Aldi) or broader product ranges (Tesco).\n\n\n\n\n\nSuppliers: Partnerships with farmers and manufacturers.\nDistributors: Works through its own retail network and an online platform.\nJoint Ventures: Various collaborations, like with Ocado for online grocery retailing.\n\n\n\n\n\nEconomic Factors: Influenced by economic health and consumer spending patterns.\nLegal & Political Factors: Brexit and changing trade and labor laws impact operations.\nSocial & Cultural Trends: Growing preference for online shopping and sustainable practices.\nTechnological Innovations: The integration of technology in retail experience and e-commerce. Lack direct online channel, may need to develop it’s own grocery shopping online and mobile channels to keep up with competitors.\nEnvironmental Factors: Adopting and promoting sustainable and ethical practices."
+  },
+  {
+    "objectID": "Case-CLSV.html#step-1-determine-time-unit-of-analysis",
+    "href": "Case-CLSV.html#step-1-determine-time-unit-of-analysis",
+    "title": "CLV Case Study",
+    "section": "2.1 Step 1: Determine time unit of analysis",
+    "text": "2.1 Step 1: Determine time unit of analysis\n\nTime unit of analysis\n\n[…] Because the typical customer contract is renewed annually, all relevant variables will be measured on a yearly basis.\n\nWhen should we use monthly analysis? When there is strong within-year seasonality of customer purchases"
+  },
+  {
+    "objectID": "Case-CLSV.html#step-2-determine-number-of-years",
+    "href": "Case-CLSV.html#step-2-determine-number-of-years",
+    "title": "CLV Case Study",
+    "section": "2.2 Step 2: Determine number of years",
+    "text": "2.2 Step 2: Determine number of years\n\n\\(N\\): the number of years over which the customer relationship is assessed\n\n[…] i-basket typically used a five-year horizon for revenue and profitability calculations\n\n\n\nN &lt;- 5"
+  },
+  {
+    "objectID": "Case-CLSV.html#step-3-compute-profit-margin-for-each-period",
+    "href": "Case-CLSV.html#step-3-compute-profit-margin-for-each-period",
+    "title": "CLV Case Study",
+    "section": "2.3 Step 3: Compute profit margin for each period",
+    "text": "2.3 Step 3: Compute profit margin for each period\n\\(CF = M - c\\): gross profit each year, which is the profit from sales M minus marketing costs c\n\nmost customers paid the $99 annual membership fee\n\n\nmembership &lt;- 99\n\n\n40 times each year; each time $100; with profit margin 7% (COGS 93%)\n\n\nn_visit &lt;- 40\nrevenue_each_visit &lt;- 100\n\n\nprofit margin 7% (COGS 93%)\n\n\nprofit_margin &lt;- 0.07\nM &lt;- membership + revenue_each_visit * n_visit * profit_margin\n\n\nvariable delivery costs each order\n\n\ndeliverycost_each_visit &lt;- 5 + revenue_each_visit * 0.035\nc &lt;- deliverycost_each_visit * n_visit\n\n\nthe annual CF from customers CF\n\n\nCF &lt;- M - c\nprofit_seq &lt;- rep(CF,N)\nprofit_seq\n\n[1] 39 39 39 39 39"
+  },
+  {
+    "objectID": "Case-CLSV.html#step-4-compute-sequence-of-retention-rate",
+    "href": "Case-CLSV.html#step-4-compute-sequence-of-retention-rate",
+    "title": "CLV Case Study",
+    "section": "2.4 Step 4: Compute sequence of retention rate",
+    "text": "2.4 Step 4: Compute sequence of retention rate\n\n\\(r\\): retention rate\n\n\n[…] i-basket examined the proportion of customers who renewed their membership from one year to the next (using an average across three years). This proportion was 0.7\n\n\n# retention_rate is the probability of customer staying with us after 1 year\nretention_rate &lt;- 0.7\n\n# create a geometric sequence of accumulative retention rate for N years  \nretention_seq &lt;- retention_rate ^ (seq(1,N) - 1)"
+  },
+  {
+    "objectID": "Case-CLSV.html#step-5-compute-sequence-of-discount-factors",
+    "href": "Case-CLSV.html#step-5-compute-sequence-of-discount-factors",
+    "title": "CLV Case Study",
+    "section": "2.5 Step 5: Compute sequence of discount factors",
+    "text": "2.5 Step 5: Compute sequence of discount factors\n\n\\(k\\): the interest rate\n\n\n[…] A yearly discount rate of 10%\n\n\ndiscount_rate &lt;- 0.1\ndiscount_factor &lt;- 1/(1+discount_rate)\ndiscount_factor_seq &lt;- discount_factor ^ (seq(1,N))\ndiscount_factor_seq\n\n[1] 0.9090909 0.8264463 0.7513148 0.6830135 0.6209213\n\n\n\n[…] The team decided to take a conservative approach whereby all profits are booked at the end of year.\n\nAll profits earned per customer in year 1 need to be discounted once, the profits earned in year 2 need to be discounted twice, and so on"
+  },
+  {
+    "objectID": "Case-CLSV.html#step-6-compute-customer-acquisition-costs",
+    "href": "Case-CLSV.html#step-6-compute-customer-acquisition-costs",
+    "title": "CLV Case Study",
+    "section": "2.6 Step 6: Compute customer acquisition costs",
+    "text": "2.6 Step 6: Compute customer acquisition costs\n\nCAC = total costs for customer ad clicks + total costs of $15 promo + total costs of free deliveries\nCAC Part I: Costs of paid search ads to get 1 new member.\n\n\n[…] 20% of those that signed up for the free trial ended up becoming members\n[…] a fifth of those who clicked on an ad were willing to give the service a try\n\n\n# clicker_to_trier_rate is the % of trier customers from clickers\nclicker_to_trier_rate &lt;- 0.2\n\n# trier_to_member_rate is the % of a new member from triers\ntrier_to_member_rate &lt;-  0.2\n\n\nHow many customers need to click the ad to get 1 new customer?\n\n\nn_clickers_for_1newmember &lt;- (1/clicker_to_trier_rate) * (1/trier_to_member_rate)\n\nn_clickers_for_1newmember\n\n[1] 25\n\n\n\nTotal costs for customer clicks\n\n\ntotal_cost_clicks &lt;- 0.4 * n_clickers_for_1newmember\ntotal_cost_clicks\n\n[1] 10\n\n\nCAC Part II: total costs of $15 promo for first order each trier customer\n\nWhat is the total promo cost for these trier customers’ first order?\n\n\npromo_first_order_each_trier &lt;- 15\n\ntotal_cost_promo &lt;- promo_first_order_each_trier * # promotion amount\n  (1 - profit_margin) *    # profit rate\n  (1/trier_to_member_rate) # num of triers\n\ntotal_cost_promo\n\n[1] 69.75\n\n\nCAC Part III: total costs from selling groceries for each trier\n\n2 visits for each trier, the profits from the 2 visits are\n\n\nprofit_each_trier &lt;-  revenue_each_visit * profit_margin * 2\n\nprofit_each_trier\n\n[1] 14\n\n\n\nThe 2 visits are free of delivery charges, which are costs to i-basket\n\n\ndeliverycost_1st &lt;- 5 + (revenue_each_visit + promo_first_order_each_trier) * 0.035\ndeliverycost_2nd &lt;- 5 + revenue_each_visit * 0.035\ndeliverycost_each_trier &lt;- deliverycost_1st + deliverycost_2nd\ndeliverycost_each_trier\n\n[1] 17.525\n\n\n\nNet costs for each trier from the 2 visits\n\n\nnetcost_each_trier &lt;- deliverycost_each_trier - profit_each_trier\n\nnetcost_each_trier\n\n[1] 3.525\n\n\n\nTotal net profits from all 25 triers\n\n\ntotalcosts_from_all_triers &lt;- netcost_each_trier * (1/trier_to_member_rate)\n\ntotalcosts_from_all_triers\n\n[1] 17.625\n\n\n\nCAC = total costs for customer ad clicks + total costs of $15 promo + total costs of free deliveries\n\n\nCAC &lt;- total_cost_clicks + total_cost_promo + totalcosts_from_all_triers\n\nCAC\n\n[1] 97.375"
+  },
+  {
+    "objectID": "Case-CLSV.html#step-7-compute-clv",
+    "href": "Case-CLSV.html#step-7-compute-clv",
+    "title": "CLV Case Study",
+    "section": "2.7 Step 7: Compute CLV",
+    "text": "2.7 Step 7: Compute CLV\n\nCompute the CLV based on the CLV formula (Table A)\n\n\nRevenues, variables costs, and profit for the next 5 years\n\n\nprofit_seq\n\n[1] 39 39 39 39 39\n\n\n\nApply retention rate\n\n\nprofit_seq_after_churn &lt;- profit_seq * retention_seq\nprofit_seq_after_churn\n\n[1] 39.0000 27.3000 19.1100 13.3770  9.3639\n\n\n\nApply discount factor\n\n\nprofit_seq_after_churn_discount&lt;- profit_seq_after_churn * discount_factor_seq\n\nprofit_seq_after_churn_discount\n\n[1] 35.454545 22.561983 14.357626  9.136671  5.814245\n\n\n\nCompute CLV by summing up future expected profits\n\n\nsum(profit_seq_after_churn_discount)\n\n[1] 87.32507\n\nsum(profit_seq_after_churn_discount) - CAC\n\n[1] -10.04993"
+  },
+  {
+    "objectID": "Case-CLSV.html#user-defined-function",
+    "href": "Case-CLSV.html#user-defined-function",
+    "title": "CLV Case Study",
+    "section": "3.1 User Defined Function",
+    "text": "3.1 User Defined Function\nTo facilitate the process, let’s first see how to use a user defined function to compute CLV for any new scenario with ease.\n\ncomputeCLV &lt;- function(N = 5,\n                       membership = 99,\n                       n_visit = 40,\n                       revenue_each_visit = 100,\n                       profit_margin = 0.07,\n                       retention_rate = 0.7,\n                       discount_rate = 0.1,\n                       clicker_to_trier_rate = 0.2,\n                       trier_to_member_rate = 0.2,\n                       promo_first_order_each_trier = 15) {\n  \n  # Step 3\n  \n  ## compute M\n  M &lt;- membership + revenue_each_visit * n_visit * profit_margin\n  \n  ## compute c\n  deliverycost_each_visit &lt;- 5 + revenue_each_visit * 0.035\n  \n  c &lt;- deliverycost_each_visit * n_visit\n  \n  ## compute CF = M - c\n  CF &lt;- M - c\n  \n  ## compute profit sequence\n  profit_seq &lt;- rep(CF,N)\n  \n  # Step 4: compute sequence of retention\n  retention_seq &lt;- retention_rate ^ (seq(1,N) - 1)\n  \n  # Step 5: compute sequence of discount factors\n  discount_factor &lt;- 1/(1+discount_rate)\n  \n  discount_factor_seq &lt;- discount_factor ^ (seq(1,N))\n  \n  # Step 6: Compute CAC\n  \n  ## Part I\n  n_clickers_for_1newmember &lt;- (1/clicker_to_trier_rate) * (1/trier_to_member_rate)\n  \n  total_cost_clicks &lt;- 0.4 * n_clickers_for_1newmember\n  \n  ## Part II\n  total_cost_promo &lt;- promo_first_order_each_trier * # promotion amount\n    (1 - profit_margin) *    # profit rate\n    (1/trier_to_member_rate) # num of triers\n  \n  ## Part III\n  profit_each_trier &lt;-  revenue_each_visit * profit_margin * 2\n  \n  deliverycost_1st &lt;- 5 + (revenue_each_visit + promo_first_order_each_trier) * 0.035\n  deliverycost_2nd &lt;- 5 + revenue_each_visit * 0.035\n  deliverycost_each_trier &lt;- deliverycost_1st + deliverycost_2nd\n  \n  netcost_each_trier &lt;- deliverycost_each_trier - profit_each_trier\n  \n  totalcosts_from_all_triers &lt;- netcost_each_trier * (1/trier_to_member_rate)\n  \n  ## Compute CAC\n  CAC &lt;- total_cost_clicks + total_cost_promo + totalcosts_from_all_triers\n  \n  \n  # Step 7: Compute CLV\n  \n  ## apply churn rate to profit sequence\n  profit_seq_after_churn &lt;- profit_seq * retention_seq\n  \n  ## apply discount factor to profit sequence\n  profit_seq_after_churn_discount&lt;- profit_seq_after_churn * discount_factor_seq\n  \n  ## take sum and deduct the CAC\n  CLV &lt;- sum(profit_seq_after_churn_discount) - CAC\n\n  return(CLV)\n}\n\n\ncomputeCLV()\n\n[1] -10.04993"
+  },
+  {
+    "objectID": "Case-CLSV.html#use-clv-to-guide-marketing-decisions-1",
+    "href": "Case-CLSV.html#use-clv-to-guide-marketing-decisions-1",
+    "title": "CLV Case Study",
+    "section": "3.2 Use CLV to Guide Marketing Decisions",
+    "text": "3.2 Use CLV to Guide Marketing Decisions\n\n(To guide customer acquisition) What if the company only offers $5 for first time purchase? This will save some CAC but the cliker-to-trier rate will decrease to 10%. Please compute the new CLV. Should you go ahead with the proposed change?\n\n\ncomputeCLV(promo_first_order_each_trier = 5,\n           clicker_to_trier_rate = 0.1)\n\n[1] 28.20007\n\n\n\n(To guide customer retention) What if the company increases the annual membership fee to $119? This will increase revenue from memberships but will also make some customers unhappy so their retention rate reduce to 60%. Please compute the new CLV. Should you go ahead with the proposed change? What if the retention rate reduces to 50%?\n\n\ncomputeCLV(membership = 119 ,\n           retention_rate = 0.6)\n\n[1] 14.92762\n\n\n\ncomputeCLV(membership = 119 ,\n           retention_rate = 0.5)\n\n[1] -0.9497061"
   },
   {
     "objectID": "Week6-Lecture1.html",
@@ -2118,7 +2181,7 @@
     "href": "Case-BreakEvenAnalysis-Solutions.html",
     "title": "PineApple Case Study",
     "section": "",
-    "text": "The marketing analytics team at PineApple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach 10 million unit at the retail price of £600, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of PinePhone 15, which is 60%. The Research and Development (R&D) costs for PinePhone 15 is 100 million pounds.\nBased on the above information, we first translate the necessary background information into the following R objects.\n\n\n\n\n\n\nAssigning Operations\n\n\n\n\nWhen assigning values to variables, the operation will not print the values of the new variable\nIf you would like to check the variable is created with the correct value, you can\n\ncheck its value in the RStudio Environment on the right hand side\nin a new line, type the variable name: this is to ask R to print out the value of the object\n\n\n\n\n\n# translate the above information into R variables\nprice &lt;- 600 # retail price\nquantity &lt;- 10 # sales \nCOGS &lt;- 0.6 # cost of goods sold\nRD_costs &lt;- 100 # Research and Development costs\nendorsement_fee &lt;- 50 # endorsement\nendorsement_sales_increase &lt;- 0.025\n\n\nQuestion 1\nCompute the contribution margin per unit\n\n# Create a variable called contribution_margin from price and COGS\n# Use variables but not the raw numbers. --- Why?\n\n# Following the definition of contribution margin per unit: price - cost\ncontribution_margin &lt;- price - price * COGS\ncontribution_margin\n\n[1] 240\n\n\n\n# equivalently, contribution margin per unit = price * contribution margin rate  \ncontribution_margin &lt;- price * (1 - COGS) \ncontribution_margin\n\n[1] 240\n\n\n\n\nQuestion 2\nBased on the information at hand, should Tom approve the influencer marketing plan?\nTo decide whether Tom should approve the marketing plan, we need to conduct break-even analyses.\nThe first step is to compute the break-even quantity, as shown in the following code.\n\n# numerator is the marketing expense\n# denominator is the \"extra profit\", or the contribution margin, from selling one more unit\nBEQ &lt;- endorsement_fee / contribution_margin\nBEQ\n\n[1] 0.2083333\n\n\nBreak even quantity is the incremental quantity sales needed in order to neither lose money nor make money from the marketing campaign, hence the name “break-even”. This is like the safe line the campaign must reach.\n\n\n\n\n\n\nSales\n\n\n\nIn this module (and in practice), when we talk about sales, we mean the quantity sales, the number of units sold. For instance, in the case study, the original sales without influencer marketing is 10 million units.\nThe total money made is often called revenue or revenue sales. For instance, in the case study, the original revenue is 6000 million pounds.\n\n\nThe next step is to compare BEQ with the estimated incremental sales from the campaign.\nBEQ is 0.208 million units, which is smaller than incremental sales is 10 * 0.025 million units. It means, to not lose any money, the influencer marketing compaign needs to bring in additional 0.208 million units, but in reality, the company can actually sell better at 0.25 million, so it’s profitable to continue with the influencer marketing campaign.\nTherefore, based on the above reasoning, Tom should approve the influencer marketing campaign.\n\n\nQuestion 3\n(Please follow the above example to finish both authoring and R codes for the NPV question)\n\nCompute the sequence of monthly cash flows\n\n\nFirst, we compute the incremental sales percentage for each month, relative to the 10 million. This is a 12-element vector, each element representing the incremental sales percentage.\n\n\nincremental.sales.percentage_1stmonth &lt;- 0.003\nincremental.sales.percentage_next11months &lt;- rep(0.002,11)\n\n# incremental profit each month\nvector_incremental.sales.percentage_12months &lt;- c(incremental.sales.percentage_1stmonth,incremental.sales.percentage_next11months)\n\nvector_incremental.sales.percentage_12months\n\n [1] 0.003 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002\n\n\n\nNext, we time the incremental sales percentage with quantity, to get the incremental sales in terms of units each month.\n\n\nvector_incremental.sales.units_12months &lt;- vector_incremental.sales.percentage_12months * quantity\n\nvector_incremental.sales.units_12months\n\n [1] 0.03 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02\n\n\n\nLastly, we multiply the incremental quantity sales with the contribution margin per unit, to get the total contribution margins (incremental profits) for each month, i.e., the CF\n\n\nvector_CF &lt;- vector_incremental.sales.units_12months * contribution_margin\n\nvector_CF\n\n [1] 7.2 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8\n\n\n\nCompute the sequence of discount factors\n\n\n# divide annual wacc to get monthly wacc\nmonthly_WACC &lt;- 0.1/12 \n\n# discount factor for 1 month is 1/(1+k)\ndiscount_factor &lt;- 1/ (1+monthly_WACC)\n\n# Generate a geometric sequence vector of discounted CFs for 12 months\n\nvector_discount_factor &lt;- discount_factor ^ c(1:12)\n\nvector_discount_factor\n\n [1] 0.9917355 0.9835394 0.9754110 0.9673497 0.9593551 0.9514265 0.9435635\n [8] 0.9357654 0.9280319 0.9203622 0.9127559 0.9052124\n\n\n\nCompute the NPV\n\n\nMultiply CF vector with discount factor vector, to get the discounted CF vector\n\n\nvector_discounted.CF &lt;- vector_CF * vector_discount_factor \n  \nvector_discounted.CF\n\n [1] 7.140496 4.720989 4.681973 4.643279 4.604904 4.566847 4.529105 4.491674\n [9] 4.454553 4.417738 4.381228 4.345020\n\n\n\nuse function sum() to get the sum of all elements in a vector. That is, the sum of discounted cash flows in all 12 months.\n\n\nsum(vector_discounted.CF)\n\n[1] 56.97781\n\n\n\nWe need to subtract the endorsement fee, which is the marketing expense, to get the next present value\n\n\nNPV &lt;- sum(vector_discounted.CF) - endorsement_fee\nNPV\n\n[1] 6.977806"
+    "text": "The marketing analytics team at PineApple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach 10 million unit at the retail price of £600, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of PinePhone 15, which is 60%. The Research and Development (R&D) costs for PinePhone 15 is 100 million pounds.\nBased on the above information, we first translate the necessary background information into the following R objects.\n\n\n\n\n\n\nAssigning Operations\n\n\n\n\nWhen assigning values to variables, the operation will not print the values of the new variable\nIf you would like to check the variable is created with the correct value, you can\n\ncheck its value in the RStudio Environment on the right hand side\nin a new line, type the variable name: this is to ask R to print out the value of the object\n\n\n\n\n\n# translate the above information into R variables\nprice &lt;- 600 # retail price\nquantity &lt;- 10 # sales \nCOGS &lt;- 0.6 # cost of goods sold\nRD_costs &lt;- 100 # Research and Development costs\nendorsement_fee &lt;- 50 # endorsement\nendorsement_sales_increase &lt;- 0.025\n\n\nQuestion 1\nCompute the contribution margin per unit\n\n# Create a variable called contribution_margin from price and COGS\n# Use variables but not the raw numbers. --- Why?\n\n# Following the definition of contribution margin per unit: price - cost\ncontribution_margin &lt;- price - price * COGS\ncontribution_margin\n\n[1] 240\n\n\n\n# equivalently, contribution margin per unit = price * contribution margin rate  \ncontribution_margin &lt;- price * (1 - COGS) \ncontribution_margin\n\n[1] 240\n\n\n\n\nQuestion 2\nBased on the information at hand, should Tom approve the influencer marketing plan?\nTo decide whether Tom should approve the marketing plan, we need to conduct break-even analyses.\nThe first step is to compute the break-even quantity, as shown in the following code.\n\n# numerator is the marketing expense\n# denominator is the \"extra profit\", or the contribution margin, from selling one more unit\nBEQ &lt;- endorsement_fee / contribution_margin\nBEQ\n\n[1] 0.2083333\n\n\nBreak even quantity is the incremental quantity sales needed in order to neither lose money nor make money from the marketing campaign, hence the name “break-even”. This is like the safe line the campaign must reach.\n\n\n\n\n\n\nSales\n\n\n\nIn this module (and in practice), when we talk about sales, we mean the quantity sales, the number of units sold. For instance, in the case study, the original sales without influencer marketing is 10 million units.\nThe total money made is often called revenue or revenue sales. For instance, in the case study, the original revenue is 6000 million pounds.\n\n\nThe next step is to compare BEQ with the estimated incremental sales from the campaign.\nBEQ is 0.208 million units, which is smaller than incremental sales is 10 * 0.025 million units. It means, to not lose any money, the influencer marketing compaign needs to bring in additional 0.208 million units, but in reality, the company can actually sell better at 0.25 million, so it’s profitable to continue with the influencer marketing campaign.\nTherefore, based on the above reasoning, Tom should approve the influencer marketing campaign.\n\n\nQuestion 3\n(Please follow the above example to finish both authoring and R codes for the NPV question)\n\nCompute the sequence of monthly cash flows\n\n\nFirst, we compute the incremental sales percentage for each month, relative to the 10 million. This is a 12-element vector, each element representing the incremental sales percentage.\n\n\nincremental.sales.percentage_1stmonth &lt;- 0.003\nincremental.sales.percentage_next11months &lt;- rep(0.002,11)\n\n# incremental profit each month\nvector_incremental.sales.percentage_12months &lt;- c(incremental.sales.percentage_1stmonth,incremental.sales.percentage_next11months)\n\nvector_incremental.sales.percentage_12months\n\n [1] 0.003 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002\n\n\n\nNext, we time the incremental sales percentage with quantity, to get the incremental sales in terms of units each month.\n\n\nvector_incremental.sales.units_12months &lt;- vector_incremental.sales.percentage_12months * quantity\n\nvector_incremental.sales.units_12months\n\n [1] 0.03 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02\n\n\n\nLastly, we multiply the incremental quantity sales with the contribution margin per unit, to get the total contribution margins (incremental profits) for each month, i.e., the CF\n\n\nvector_CF &lt;- vector_incremental.sales.units_12months * contribution_margin\n\nvector_CF\n\n [1] 7.2 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8\n\n\n\nCompute the sequence of discount factors\n\n\n# divide annual wacc to get monthly wacc\nmonthly_WACC &lt;- 0.1/12 \n\n# discount factor for 1 month is 1/(1+k)\ndiscount_factor &lt;- 1/ (1+monthly_WACC)\n\n# Generate a geometric sequence vector of discounted CFs for 12 months\n\nvector_discount_factor &lt;- discount_factor ^ c(1:12)\n\nvector_discount_factor\n\n [1] 0.9917355 0.9835394 0.9754110 0.9673497 0.9593551 0.9514265 0.9435635\n [8] 0.9357654 0.9280319 0.9203622 0.9127559 0.9052124\n\n\n\nCompute the NPV\n\n\nMultiply CF vector with discount factor vector, to get the discounted CF vector\n\n\nvector_discounted.CF &lt;- vector_CF * vector_discount_factor \n  \nvector_discounted.CF\n\n [1] 7.140496 4.720989 4.681973 4.643279 4.604904 4.566847 4.529105 4.491674\n [9] 4.454553 4.417738 4.381228 4.345020\n\n\n\nuse function sum() to get the sum of all elements in a vector. That is, the sum of discounted cash flows in all 12 months.\n\n\nsum(vector_discounted.CF)\n\n[1] 56.97781\n\n\n\nWe need to subtract the endorsement fee, which is the marketing expense, to get the net present value\n\n\nNPV &lt;- sum(vector_discounted.CF) - endorsement_fee\nNPV\n\n[1] 6.977806"
   },
   {
     "objectID": "Week7-Lecture1.html",
@@ -2804,63 +2867,98 @@
     "href": "Week2-Lecture2.html#collect-data-marketing-surveys",
     "title": "Class 4 Data Wrangling with R Part I",
     "section": "2.3 Collect Data: Marketing Surveys",
-    "text": "2.3 Collect Data: Marketing Surveys\n\nIn a marketing survey, we typically would like to solicit the following\n\npurchase intention\nwillingness to pay (WTP)\nshopping basket\nshare of wallet (SoW)\ndemographics\n\nLet’s see an example of how to design a simple marketing survey!\nUseful supplementary readings if you need to design marketing surveys\n\nThe quick start guide on how to conduct market research"
+    "text": "2.3 Collect Data: Marketing Surveys\n\nIn a marketing survey, we typically would like to collect the following information from customers:\n\npurchase intention\nwillingness to pay (WTP)\nshopping basket\nshare of wallet (SoW)\ndemographics\n\nLet’s see a quick example of how to design a marketing survey!\nUseful supplementary readings if you need to design marketing surveys for your term 3 dissertation.\n\nThe quick start guide on how to conduct market research"
   },
   {
-    "objectID": "Week2-Lecture2.html#data-frames",
-    "href": "Week2-Lecture2.html#data-frames",
+    "objectID": "Week2-Lecture2.html#data-frame-basics",
+    "href": "Week2-Lecture2.html#data-frame-basics",
     "title": "Class 4 Data Wrangling with R Part I",
-    "section": "3.1 Data Frames",
-    "text": "3.1 Data Frames\n\nData Frame is the R object that we will deal with most of the time in the MSc program. You can think of data.frame as a spreadsheet in excel\nEach row stands for an observation\nEach column stands for a variable; each column should have a unique name.\n\nEach column must contain the same data type, but the different columns can store different data types.\n\ncompare with matrix?\n\n\nEach column must be of same length, because rows have the same length across variables."
+    "section": "3.1 Data Frame Basics",
+    "text": "3.1 Data Frame Basics\n\nData Frame is the R object that we will deal with most of the time in the MSc program. You can think of data.frame as a spreadsheet in excel\nEach row stands for an observation\nEach column stands for a variable; each column should have a unique name.\nEach column must contain the same data type, but the different columns can store different data types.1"
   },
   {
     "objectID": "Week2-Lecture2.html#install-and-load-the-dplyr-package",
     "href": "Week2-Lecture2.html#install-and-load-the-dplyr-package",
     "title": "Class 4 Data Wrangling with R Part I",
     "section": "3.2 Install and Load the dplyr package",
-    "text": "3.2 Install and Load the dplyr package\n\nIn R, we will be using the dplyr package for data cleaning and manipulation.\n\n\ninstall.packages(\"dplyr\")\n\n\nLoad the package\n\n\nlibrary(dplyr)\n\n\nLoad a built-in dataset called mtcars using data()\n\n\ndata(\"mtcars\")\n\n\nTo browse the whole dataset, we can simply click the dataset in the environment\n\nIt may takes time to view a huge dataset"
+    "text": "3.2 Install and Load the dplyr package\n\nIn R, we will be using the dplyr package for data cleaning and manipulation.\n\n\ninstall.packages(\"dplyr\")\n\n\nLoad the package\n\n\nlibrary(dplyr)\n\n\nLoad a csv format dataset called data_demo using read.csv()\n\n\ndata_demo &lt;- read.csv(\"https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1\")\n\n\nTo browse the whole dataset, we can simply click the dataset in the environment"
+  },
+  {
+    "objectID": "Week2-Lecture2.html#first-look-at-the-dataset",
+    "href": "Week2-Lecture2.html#first-look-at-the-dataset",
+    "title": "Class 4 Data Wrangling with R Part I",
+    "section": "3.3 First Look at the Dataset",
+    "text": "3.3 First Look at the Dataset\n\nWhat variables do the data have?\n\n\nnames(data_demo)\n\n[1] \"ID\"             \"Year_Birth\"     \"Education\"      \"Marital_Status\"\n[5] \"Income\"         \"Kidhome\"        \"Teenhome\"       \"Dt_Customer\"   \n[9] \"Recency\"       \n\n\n\nWhat are the types of each variable?\n\n\nsapply(data_demo,\n       class)\n\n            ID     Year_Birth      Education Marital_Status         Income \n     \"integer\"      \"integer\"    \"character\"    \"character\"      \"integer\" \n       Kidhome       Teenhome    Dt_Customer        Recency \n     \"integer\"      \"integer\"    \"character\"      \"integer\" \n\n\n\nTip: We can use a function called str() short for structure.\n\n\nstr(data_demo)\n\n'data.frame':   2000 obs. of  9 variables:\n $ ID            : int  5524 2174 4141 6182 5324 7446 965 6177 4855 5899 ...\n $ Year_Birth    : int  1957 1954 1965 1984 1981 1967 1971 1985 1974 1950 ...\n $ Education     : chr  \"Graduation\" \"Graduation\" \"Graduation\" \"Graduation\" ...\n $ Marital_Status: chr  \"Single\" \"Single\" \"Together\" \"Together\" ...\n $ Income        : int  58138 46344 71613 26646 58293 62513 55635 33454 30351 5648 ...\n $ Kidhome       : int  0 1 0 1 1 0 0 1 1 1 ...\n $ Teenhome      : int  0 1 0 0 0 1 1 0 0 1 ...\n $ Dt_Customer   : chr  \"04/09/2012\" \"08/03/2014\" \"21/08/2013\" \"10/02/2014\" ...\n $ Recency       : int  58 38 26 26 94 16 34 32 19 68 ..."
+  },
+  {
+    "objectID": "Week2-Lecture2.html#common-data-wrangling-operations",
+    "href": "Week2-Lecture2.html#common-data-wrangling-operations",
+    "title": "Class 4 Data Wrangling with R Part I",
+    "section": "3.4 Common Data Wrangling Operations",
+    "text": "3.4 Common Data Wrangling Operations\n\nSelect rows (filter)\nSort rows (arrange)\nSelect columns (select)\nGenerate new columns (mutate)\nGroup aggregation (group_by)\nMerge datasets (join)"
   },
   {
     "objectID": "Week2-Lecture2.html#subset-rows-based-on-conditions-filter",
     "href": "Week2-Lecture2.html#subset-rows-based-on-conditions-filter",
     "title": "Class 4 Data Wrangling with R Part I",
-    "section": "3.3 Subset Rows Based on Conditions: filter",
-    "text": "3.3 Subset Rows Based on Conditions: filter\n\nWe can use filter() to extract rows that meet logical criteria.\n\nWe can also add multiple criteria separated by comma\n\n\n\n# show all cars with more than 4 gears\nfilter(mtcars, gear == 4 )"
+    "section": "3.5 Subset Rows Based on Conditions: filter",
+    "text": "3.5 Subset Rows Based on Conditions: filter\n\nWe can use filter() to select rows that meet certain logical criteria.\n\nThe filter operation results in a new dataset, which is a subset of the original dataset after filtering\nThe number of variables remains the same\n\n\n\n\n\n\n\n\nImportant: To store the generated new subset of data in RStudio, we need to assign it to a new object.\n\nExample: From data_demo, find customers who are single\n\n# keep only single customers\ndata_demo_single &lt;- filter(data_demo, Marital_Status == \"Single\" )"
   },
   {
     "objectID": "Week2-Lecture2.html#the-pipe-operator",
     "href": "Week2-Lecture2.html#the-pipe-operator",
     "title": "Class 4 Data Wrangling with R Part I",
-    "section": "3.4 The Pipe Operator %>%",
-    "text": "3.4 The Pipe Operator %&gt;%\n\n3.4.1 Pipe Operator\n%&gt;%, or pipe operator, will forward a value, or the result of an expression, into the next function call/expression.\n\n\nmtcars %&gt;% filter(gear == 4) %&gt;% head()"
+    "section": "3.6 The Pipe Operator %>%",
+    "text": "3.6 The Pipe Operator %&gt;%\n\n3.6.1 Pipe Operator\n%&gt;% passes the object in front as the first argument of the subsequent function."
+  },
+  {
+    "objectID": "Week2-Lecture2.html#example-of-the-pipe-operator",
+    "href": "Week2-Lecture2.html#example-of-the-pipe-operator",
+    "title": "Class 4 Data Wrangling with R Part I",
+    "section": "3.7 Example of the Pipe Operator %>%",
+    "text": "3.7 Example of the Pipe Operator %&gt;%\n\n# without using pipe\nfilter(data_demo, Marital_Status == 'Single')\n\n# with pipe \ndata_demo %&gt;% filter(Marital_Status == 'Single')"
+  },
+  {
+    "objectID": "Week2-Lecture2.html#why-do-we-need-pipe-operator-for-data-wrangling",
+    "href": "Week2-Lecture2.html#why-do-we-need-pipe-operator-for-data-wrangling",
+    "title": "Class 4 Data Wrangling with R Part I",
+    "section": "3.8 Why Do We Need Pipe Operator for Data Wrangling?",
+    "text": "3.8 Why Do We Need Pipe Operator for Data Wrangling?\n\nExercise: find out single customers who have a PhD without using pipe.\n\n\n# based on data_demo, find out customers who are single\ndata_demo_single &lt;- filter(data_demo, Marital_Status == 'Single')\n\n# based on data_demo_single, find out customers who are single and have PhD\ndata_demo_single_PhD &lt;- filter(data_demo_single, Education == \"PhD\")\n\n\nExercise: find out single customers who have a PhD using pipe.\n\n\ndata_demo_single_PhD &lt;- data_demo %&gt;%\n  filter(Marital_Status == 'Single') %&gt;%\n  filter(Education == 'PhD') %&gt;%\n  head() ## You can even continue with more filter steps\n\n\nThe pipe works like a conveyor belt in a factory, passing the intermediate outputs from the previous data wrangling step to the next step for further processing until you finish your data wrangling task."
+  },
+  {
+    "objectID": "Week2-Lecture2.html#subset-rows-based-on-multiple-conditions-filter",
+    "href": "Week2-Lecture2.html#subset-rows-based-on-multiple-conditions-filter",
+    "title": "Class 4 Data Wrangling with R Part I",
+    "section": "3.9 Subset Rows Based on Multiple Conditions: filter",
+    "text": "3.9 Subset Rows Based on Multiple Conditions: filter\n\nWe can also add multiple criteria using &, |, and ! to represent and, or, and not (induction week)\n\n\ndata_demo %&gt;%\n  filter(Marital_Status == 'Single' & \n           Education == 'PhD') %&gt;%\n  head()"
   },
   {
     "objectID": "Week2-Lecture2.html#sort-rows-arrange",
     "href": "Week2-Lecture2.html#sort-rows-arrange",
     "title": "Class 4 Data Wrangling with R Part I",
-    "section": "3.5 Sort Rows: arrange",
-    "text": "3.5 Sort Rows: arrange\narrange() orders the rows of a data frame by the values of selected columns.\n\nThe default is by ascending order; for descending order, put a minus sign before the variable.\n\n\n# reorder mtcar based on hp\nmtcars %&gt;% \n  arrange(hp) %&gt;%\n  head()"
+    "section": "3.10 Sort Rows: arrange",
+    "text": "3.10 Sort Rows: arrange\n\narrange() orders the rows by the values of selected columns.\n\nascending order by default; for descending order, put a minus sign.\nallows multiple sorting variables separated by comma.\n\nExample: sort customers based on marital status in ascending order and number of teens in descending order.\n\n\ndata_demo %&gt;% \n  arrange(Marital_Status, -Teenhome) %&gt;%\n  head(10)\n\n\n\n  \n\n\n\n\nExercise: sort customers based on income in descending order.\n\n\ndata_demo %&gt;% \n  arrange(-Income) %&gt;%\n  head(10)"
   },
   {
     "objectID": "Week2-Lecture2.html#generate-new-variables-mutate",
     "href": "Week2-Lecture2.html#generate-new-variables-mutate",
     "title": "Class 4 Data Wrangling with R Part I",
-    "section": "3.6 Generate New Variables: mutate",
-    "text": "3.6 Generate New Variables: mutate\nmutate() adds new variables and preserves existing ones\n\nmtcars %&gt;%\n  mutate(sqrt_mpg = sqrt(mpg))%&gt;%\n  head()"
-  },
-  {
-    "objectID": "Week2-Lecture2.html#important-tips",
-    "href": "Week2-Lecture2.html#important-tips",
-    "title": "Class 4 Data Wrangling with R Part I",
-    "section": "3.7 Important Tips",
-    "text": "3.7 Important Tips\n\nEach dplyr operation does not overwrite the original data frame, therefore, we must assign the object back if we wish to overwrite the previous data frame.\nExercises:\n\nfind car models with gear equal to 4 and mpg larger than 15\nreorder the above dataset by wt from large to small.\ngenerate a new column which computes the ratio of mpg to wt"
+    "section": "3.11 Generate New Variables: mutate",
+    "text": "3.11 Generate New Variables: mutate\n\nmutate() generates new variables in the dataset while preserving existing variables\nExample: create a new variable named Age from Year_Birth.\n\n\ndata_demo %&gt;%\n  mutate(Age = 2023 - Year_Birth) %&gt;%\n  head(10)\n\n\n\n  \n\n\n\n\nExercise: create a new variable named totalkids, which is the sum of Kidhome and Teenhome.\n\n\ndata_demo %&gt;%\n  mutate(totalkids = Kidhome + Teenhome) %&gt;%\n  head(10)"
   },
   {
     "objectID": "Week2-Lecture2.html#after-class-exercise",
     "href": "Week2-Lecture2.html#after-class-exercise",
     "title": "Class 4 Data Wrangling with R Part I",
-    "section": "3.8 After-Class Exercise",
-    "text": "3.8 After-Class Exercise\n\nData camp dplyr exercise\nRead “Preliminary Customer Analyses” dataset, and try to solve the case questions using the techniques learned today"
+    "section": "3.12 After-Class Exercise",
+    "text": "3.12 After-Class Exercise\n\nData camp dplyr exercise\nRead “Preliminary Customer Analyses” dataset, and try to solve the case questions using the techniques learned today"
+  },
+  {
+    "objectID": "Week2-Lecture2.html#footnotes",
+    "href": "Week2-Lecture2.html#footnotes",
+    "title": "Class 4 Data Wrangling with R Part I",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nCompared with matrix, is there any difference despite both being two-dimensional?↩︎"
   },
   {
     "objectID": "Case-Zalora.html",
@@ -2928,142 +3026,184 @@
   {
     "objectID": "Week2-Lecture1.html",
     "href": "Week2-Lecture1.html",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
     "section": "",
-    "text": "CLV is a break-even analysis from the perspective of a single customer, which considers a customer as an asset to the company that generates future cashflows\n\nincurs customer acquisition costs (CAC)\ncustomer generates profits for the company in each period\ncustomer churns at some point in time\n\n\n\n\n\n\n\n\n\n\n\\[\n\\mathrm{CLV} = - CAC + \\sum_{t=1}^{N} \\frac{CF_t * r^{(t-1)}}{(1+k)^{t}}\n\\]\nwhere \\(CF_t = M_t - c_t\\)\n\n\\(r\\) is the average annual retention rate; \\(r^{(t-1)}\\) is the cumulative retention rate in year \\(t\\)\n\\(N\\) is the number of years over which the relationship is calculated\n\\(M_{t}\\) is the margin the customer generates in year \\(t\\)\n\\(c_{t}\\) is the expected cost of marketing communications or promotions targeted to the customer in year \\(t\\)\n\\(k\\) is the rate for discounting future cash flows"
+    "text": "How to apply CLV calculation in a real-life case study for i-basket grocery chain\nDiscuss and see examples of how CLV can be used by marketers to guide marketing decisions"
+  },
+  {
+    "objectID": "Week2-Lecture1.html#class-objectives",
+    "href": "Week2-Lecture1.html#class-objectives",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "",
+    "text": "How to apply CLV calculation in a real-life case study for i-basket grocery chain\nDiscuss and see examples of how CLV can be used by marketers to guide marketing decisions"
   },
   {
     "objectID": "Week2-Lecture1.html#customer-life-cycle",
     "href": "Week2-Lecture1.html#customer-life-cycle",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "CLV is a break-even analysis from the perspective of a single customer, which considers a customer as an asset to the company that generates future cashflows\n\nincurs customer acquisition costs (CAC)\ncustomer generates profits for the company in each period\ncustomer churns at some point in time"
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "1.1 Customer Life Cycle",
+    "text": "1.1 Customer Life Cycle\n\nWe learned campaign-centric break-even analysis tools, such as break-even quantity and net present value. BEA is also referred to as cost-benefit analysis.\n\nCosts of business activities\nBenefits of business activities\n\nCLV is a customer-centric break-even analysis, which considers a customer as an asset to the company that generates future cashflows\n\nCosts: customer acquisition costs (CAC)\nBenefits: customer generates profits for the company in each period"
+  },
+  {
+    "objectID": "Week2-Lecture1.html#customer-acquisition-cost",
+    "href": "Week2-Lecture1.html#customer-acquisition-cost",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "1.2 Customer Acquisition Cost",
+    "text": "1.2 Customer Acquisition Cost\n\nA new Bubble Tea shop in Canary Wharf is contemplating whether or not to attract new customers by sending ads leaflets to nearby residents.\n\nrandomly sending out leaflets: expected response rate of 1%\nusing names purchased from a marketing agency: expected response rate of 4%\n\nA intuitive way of computing CAC: think about to obtain 1 new customer, how many offers to make; then multiply it with cost per offer"
   },
   {
     "objectID": "Week2-Lecture1.html#clv-formula",
     "href": "Week2-Lecture1.html#clv-formula",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "",
-    "text": "\\[\n\\mathrm{CLV} = - CAC + \\sum_{t=1}^{N} \\frac{CF_t * r^{(t-1)}}{(1+k)^{t}}\n\\]\nwhere \\(CF_t = M_t - c_t\\)\n\n\\(r\\) is the average annual retention rate; \\(r^{(t-1)}\\) is the cumulative retention rate in year \\(t\\)\n\\(N\\) is the number of years over which the relationship is calculated\n\\(M_{t}\\) is the margin the customer generates in year \\(t\\)\n\\(c_{t}\\) is the expected cost of marketing communications or promotions targeted to the customer in year \\(t\\)\n\\(k\\) is the rate for discounting future cash flows"
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "1.3 CLV: Formula",
+    "text": "1.3 CLV: Formula\n\\[\n\\mathrm{CLV} = - CAC + \\sum_{t=1}^{N} \\frac{CF_t * r^{(t-1)}}{(1+k)^{t}}\n\\]\nwhere \\(CF_t = M_t - c_t\\)\n\n\\(r\\) is the average per period retention rate; \\(r^{(t-1)}\\) is the cumulative retention rate in period \\(t\\)\n\\(N\\) is the number of periods over which the relationship is calculated\n\\(M_{t}\\) is the profit margin the customer generates in period \\(t\\), which is typically \\(M_t = revenue * (1 - COGS)\\)\n\\(c_{t}\\) is the marketing costs per period to maintain customer relationship in each period \\(t\\)\n\\(k\\) is the interest (discount) rate for discounting future cash flows; \\(d= \\frac{1}{1+k}\\) is the discount factor"
   },
   {
-    "objectID": "Week2-Lecture1.html#situation-analyses-i-basket",
-    "href": "Week2-Lecture1.html#situation-analyses-i-basket",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.1 Situation Analyses: i-basket",
-    "text": "2.1 Situation Analyses: i-basket\n\nCompany\nCustomer\nCollaborators\nCompetitors\nContext/Climate"
+    "objectID": "Week2-Lecture1.html#situation-analyses-for-a-grocery-company",
+    "href": "Week2-Lecture1.html#situation-analyses-for-a-grocery-company",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.1 Situation Analyses for a Grocery Company",
+    "text": "2.1 Situation Analyses for a Grocery Company\nLet’s use a UK grocery retailer Marks and Spencer as an example\n\nCompany\nCustomer\nCollaborators\nCompetitors\nContext/Climate"
+  },
+  {
+    "objectID": "Week2-Lecture1.html#overview-for-computing-clv",
+    "href": "Week2-Lecture1.html#overview-for-computing-clv",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.2 Overview for Computing CLV",
+    "text": "2.2 Overview for Computing CLV"
   },
   {
     "objectID": "Week2-Lecture1.html#step-1-determine-time-unit-of-analysis",
     "href": "Week2-Lecture1.html#step-1-determine-time-unit-of-analysis",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.2 Step 1: Determine time unit of analysis",
-    "text": "2.2 Step 1: Determine time unit of analysis\n\nTime unit of analysis\n\n[…] (find info in the case study)\n\nWhen should we use monthly analysis?"
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.3 Step 1: Determine time unit of analysis",
+    "text": "2.3 Step 1: Determine time unit of analysis\n\nTime unit of analysis\n\n[…] (find info in the case study)\n\nWhen should we use monthly analysis or other units of time?"
   },
   {
     "objectID": "Week2-Lecture1.html#step-2-determine-number-of-years",
     "href": "Week2-Lecture1.html#step-2-determine-number-of-years",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.3 Step 2: Determine number of years",
-    "text": "2.3 Step 2: Determine number of years\n\n\\(N\\): the number of years over which the customer relationship is assessed\n\n[…] (find info in the case study)\n\n\n\nN &lt;-"
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.4 Step 2: Determine number of years",
+    "text": "2.4 Step 2: Determine number of years\n\n\\(N\\): the number of years over which the customer relationship is assessed\n\n[…] (find info in the case study)\nHow can you do better here?\n\n\n\nN &lt;-"
   },
   {
-    "objectID": "Week2-Lecture1.html#step-3-compute-profit-margin-for-each-period",
-    "href": "Week2-Lecture1.html#step-3-compute-profit-margin-for-each-period",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.4 Step 3: Compute profit margin for each period",
-    "text": "2.4 Step 3: Compute profit margin for each period\n\\(CF = M - c\\): gross profit each year\n\nmost customers paid the $99 annual membership fee\n\n\nmembership &lt;- \n\n\n40 times each year; each time $100\n\n\nn_visit &lt;- \nrevenue_each_visit &lt;-"
+    "objectID": "Week2-Lecture1.html#step-3-compute-cf-for-each-period",
+    "href": "Week2-Lecture1.html#step-3-compute-cf-for-each-period",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.5 Step 3: Compute CF for each period",
+    "text": "2.5 Step 3: Compute CF for each period\n\\(CF = M - c\\): gross profit each year, which is the profit from sales M minus marketing costs c\n\nmost customers paid the $99 annual membership fee\n\n\nmembership &lt;-"
   },
   {
-    "objectID": "Week2-Lecture1.html#step-3-compute-profit-margin-for-each-period-1",
-    "href": "Week2-Lecture1.html#step-3-compute-profit-margin-for-each-period-1",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.5 Step 3: Compute profit margin for each period",
-    "text": "2.5 Step 3: Compute profit margin for each period\n\nprofit margin 7% (COGS 93%)\n\n\nprofit_margin &lt;- 0.07\n## think carefully about how M is calculated, it's tricky ~~~~\nM &lt;- \n\n\nvariable delivery costs each order\n\n\ndeliverycost_each_visit &lt;- 5 + 100 * 0.035\nc &lt;- deliverycost_each_visit * n_visit"
+    "objectID": "Week2-Lecture1.html#step-3-compute-cf-for-each-period-1",
+    "href": "Week2-Lecture1.html#step-3-compute-cf-for-each-period-1",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.6 Step 3: Compute CF for each period",
+    "text": "2.6 Step 3: Compute CF for each period\n\n40 times each year; each time $100; with profit margin 7% (COGS 93%)\n\n\nn_visit &lt;- \nrevenue_each_visit &lt;- \nprofit_margin &lt;- \n## think carefully about how M is calculated, it's tricky ~~~~\nM &lt;- \n\n\nvariable delivery costs each order:\n\n[…] find info in the case study about delivery costs\nWhy classified as variable marketing costs? Does it make a difference?\n\n\n\ndeliverycost_each_visit &lt;- \nc &lt;- deliverycost_each_visit * n_visit"
   },
   {
-    "objectID": "Week2-Lecture1.html#step-3-compute-profit-margin-for-each-period-2",
-    "href": "Week2-Lecture1.html#step-3-compute-profit-margin-for-each-period-2",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.6 Step 3: Compute profit margin for each period",
-    "text": "2.6 Step 3: Compute profit margin for each period\n\nthe annual CF from customers CF\n\n\n# CF is the cash flow for one year\nCF &lt;- \n\n# create a sequence of CF for N years \nprofit_seq &lt;- rep(CF,N)"
+    "objectID": "Week2-Lecture1.html#step-3-compute-cf-for-each-period-2",
+    "href": "Week2-Lecture1.html#step-3-compute-cf-for-each-period-2",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.7 Step 3: Compute CF for each period",
+    "text": "2.7 Step 3: Compute CF for each period\n\nThe annual CF from customers CF\n\n\n# CF is the cash flow for one year\nCF &lt;- \n\n# create a sequence of CF for N years \nprofit_seq &lt;- rep(CF,N)"
   },
   {
     "objectID": "Week2-Lecture1.html#step-4-compute-sequence-of-retention-rate",
     "href": "Week2-Lecture1.html#step-4-compute-sequence-of-retention-rate",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.7 Step 4: Compute sequence of retention rate",
-    "text": "2.7 Step 4: Compute sequence of retention rate\n\n\\(r\\): retention rate\n\n\n[…] (find info in the case study)\n\n\n# retention_rate is the probability of customer staying with us after 1 year\nretention_rate &lt;- \n  \n# create a geometric sequence of accumulative retention rate for N years  \nretention_seq &lt;-"
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.8 Step 4: Compute sequence of retention rate",
+    "text": "2.8 Step 4: Compute sequence of retention rate\n\n\\(r\\): retention rate\n\n\n[…] (find info in the case study)\n\n\n# retention_rate is the probability of customer staying with us after 1 year\nretention_rate &lt;- \n  \n# create a geometric sequence of accumulative retention rate for N years  \nretention_seq &lt;-"
   },
   {
     "objectID": "Week2-Lecture1.html#step-5-compute-sequence-of-discount-factors",
     "href": "Week2-Lecture1.html#step-5-compute-sequence-of-discount-factors",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.8 Step 5: Compute sequence of discount factors",
-    "text": "2.8 Step 5: Compute sequence of discount factors\n\n\\(k\\): the discount rate\n\n\n[…] A yearly discount rate of 10%\n\n\ndiscount_rate &lt;- 0.1\ndiscount_factor_seq &lt;- \n\n\n[…] The team decided to take a conservative approach whereby all profits are booked at the end of year.\n\nAll profits earned per customer in year 1 need to be discounted once, the profits earned in year 2 need to be discounted twice, and so on"
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.9 Step 5: Compute sequence of discount factors",
+    "text": "2.9 Step 5: Compute sequence of discount factors\n\n\\(k\\): the discount rate\n\n\n[…] A yearly discount rate of 10%\n\n\ndiscount_rate &lt;- 0.1\ndiscount_factor_seq &lt;- \n\n\n[…] The team decided to take a conservative approach whereby all profits are booked at the end of year.\n\nAll profits earned per customer in year 1 need to be discounted once, the profits earned in year 2 need to be discounted twice, and so on"
   },
   {
     "objectID": "Week2-Lecture1.html#step-6-compute-customer-acquisition-costs",
     "href": "Week2-Lecture1.html#step-6-compute-customer-acquisition-costs",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.9 Step 6: Compute customer acquisition costs",
-    "text": "2.9 Step 6: Compute customer acquisition costs\n\nCAC = total costs for customer ad clicks + total costs of $15 promo + total costs of free deliveries\n\n\nHow the Marketing Funnel Works From Top to Bottom"
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.10 Step 6: Compute customer acquisition costs",
+    "text": "2.10 Step 6: Compute customer acquisition costs\n\nWhat does the CAC include in the case study?\n\n[…] (find info in the case study)\n\ntotal costs for customer ad clicks\ntotal costs of $15 promo\ntotal costs of free deliveries"
+  },
+  {
+    "objectID": "Week2-Lecture1.html#paid-search-advertising-search-engine-marketing-sem",
+    "href": "Week2-Lecture1.html#paid-search-advertising-search-engine-marketing-sem",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.11 Paid Search Advertising (Search Engine Marketing, SEM)",
+    "text": "2.11 Paid Search Advertising (Search Engine Marketing, SEM)\n\n\n\n\n\n\n\n\n\nBrands/companies (Uni)\n\nbid on keywords\n\nAdvertisers (Google)\n\ndecides listings\n\nCustomers\n\npaid search (bids-based)\norganic (quality-based)"
+  },
+  {
+    "objectID": "Week2-Lecture1.html#marketing-funnel-for-paid-search-ads",
+    "href": "Week2-Lecture1.html#marketing-funnel-for-paid-search-ads",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.12 Marketing Funnel for Paid Search Ads",
+    "text": "2.12 Marketing Funnel for Paid Search Ads\n\n\n\n\n\n\nMarketing Funnels\n\n\n\nA marketing funnel is a model that represents the customer’s journey from the initial awareness of a product or service to the ultimate action, often a purchase. This journey is depicted as a funnel to illustrate the decrease in the number of potential customers at each stage–Awareness, Interest, Consideration, Intent, Evaluation, and Purchase - each representing a different stage in the customer’s journey toward transaction."
   },
   {
     "objectID": "Week2-Lecture1.html#step-6-compute-customer-acquisition-costs-1",
     "href": "Week2-Lecture1.html#step-6-compute-customer-acquisition-costs-1",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.10 Step 6: Compute customer acquisition costs",
-    "text": "2.10 Step 6: Compute customer acquisition costs\n6.1 Total costs for customer clicks\n\n[…] a fifth of those who clicked on an ad were willing to give the service a try\n[…] 20% of those that signed up for the free trial ended up becoming members\n\n\n# click_to_trier_rate is the % of trier customers from clickers\nclick_to_trier_rate &lt;- 0.2\n\n# trier_to_buyer_rate is the % of final customer from trier customers\ntrier_to_buyer_rate &lt;- 0.2\n\n\nHow many customers need to click the ad to get 1 new customer?\n\n\nn_clicks_1newcustomer &lt;- 1/click_to_trier_rate/trier_to_buyer_rate\n\n\nTotal costs for customer clicks\n\n\ntotal_cost_clicks &lt;- 0.4 * n_clicks_1newcustomer"
-  },
-  {
-    "objectID": "Week2-Lecture1.html#step-6-compute-customer-acquisition-costs-2",
-    "href": "Week2-Lecture1.html#step-6-compute-customer-acquisition-costs-2",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.11 Step 6: Compute customer acquisition costs",
-    "text": "2.11 Step 6: Compute customer acquisition costs\n\nCAC = total costs for customer ad clicks + total costs of $15 promo + total costs of free deliveries\n\n6.2 total costs of $15 promo for first order each trier customer\n\nHow many customers need to try the service to get 1 new customer?\n\n\nn_triers &lt;- 1/conversion_rate\n\n\nWhat is the total promo cost for these “trier” customers’ first order?\n\n\npromo_first_order_each_trier &lt;- 15\n\ntotal_cost_promo &lt;- promo_first_order_each_trier * (1 - profit_margin) * n_triers\ntotal_cost_promo"
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.13 Step 6: Compute customer acquisition costs",
+    "text": "2.13 Step 6: Compute customer acquisition costs\nCAC Part I: Costs of paid search ads to get 1 new member.\n\n[…] The click-through rates varied across these digital platforms, but hovered around 1-2%.\n\nHow to incorporate this information?\n\n\n\n\n[…] a fifth of those who clicked on an ad were willing to give the service a try\n\nHow many clickers do we need for 1 new “trier”?\n\n\n\n# clicker_to_trier_rate is the % of trier customers from clickers\nclicker_to_trier_rate &lt;- \n\n\n[…] 20% of those that signed up for the free trial ended up becoming members\n\nHow many triers do we need for1 new member?\n\n\n\n# trier_to_member_rate is the % of a new member from triers\ntrier_to_member_rate &lt;- \n\n\nHow many clickers do we need for 1 new member?\n\n\nn_clickers_for_1newmember &lt;- (1/clicker_to_trier_rate) * (1/trier_to_member_rate) # 5 * 5 = 25\n\n\nFinally, based on the the cost per click information, we can compute the total click costs to get 1 member.\n\n\ntotal_cost_clicks &lt;- 0.4 * n_clickers_for_1newmember # 0.4 * 25"
   },
   {
     "objectID": "Week2-Lecture1.html#step-6-compute-customer-acquisition-costs-3",
     "href": "Week2-Lecture1.html#step-6-compute-customer-acquisition-costs-3",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.12 Step 6: Compute customer acquisition costs",
-    "text": "2.12 Step 6: Compute customer acquisition costs\n\nCAC = total costs for customer ad clicks + total costs of $15 promo + total costs of free deliveries\n\n6.3 total costs from free deliveries\n\nAssume two visits, the delivery costs for each visit\n\n\ndeliverycost_1st &lt;- 5 + 115 * 0.035\ndeliverycost_2nd &lt;- 5 + 100 * 0.035\ndeliverycost_each_trier &lt;- deliverycost_1st + deliverycost_2nd\n\n\nWe also make a profit from each trier\n\n\nprofit_each_trier &lt;-  revenue_each_visit * profit_margin * 2\n\n\nNet delivery costs for each trier\n\n\nNetDeliveryCost_each_trier&lt;- deliverycost_each_trier - profit_each_trier\ntotal_cost_delivery &lt;- NetDeliveryCost_each_trier * n_triers"
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.14 Step 6: Compute customer acquisition costs",
+    "text": "2.14 Step 6: Compute customer acquisition costs\nCAC Part II: total costs of $15 promo for first order each trier customer\n\nWhat is the total promo cost for these “trier” customers’ first order?\n\n\npromo_first_order_each_trier &lt;- 15\n\ntotal_cost_promo &lt;- promo_first_order_each_trier * # promotion amount = $15\n  (1 - profit_margin) *    # 7% profit margin\n  (1/trier_to_member_rate) # num of triers = 5"
   },
   {
     "objectID": "Week2-Lecture1.html#step-6-compute-customer-acquisition-costs-4",
     "href": "Week2-Lecture1.html#step-6-compute-customer-acquisition-costs-4",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.13 Step 6: Compute customer acquisition costs",
-    "text": "2.13 Step 6: Compute customer acquisition costs\n\nCAC = total costs for customer ad clicks + total costs of $15 promo + total costs of free deliveries\n\n\nCAC &lt;- total_cost_clicks + total_cost_promo + total_cost_delivery\nCAC"
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.15 Step 6: Compute customer acquisition costs",
+    "text": "2.15 Step 6: Compute customer acquisition costs\nCAC Part III: total costs from selling groceries\n\nFor each trier, 2 visits , the profits from the 2 visits are:\n\n\nprofit_each_trier &lt;-  revenue_each_visit * #$100 per visit\n  profit_margin * # 7% profit margin\n  2 # a trier shops twice\n\n\nFor each trier, the 2 visits are free of delivery charges, which are marketing costs to i-basket\n\n\ndeliverycost_1st &lt;- 5 + (revenue_each_visit + promo_first_order_each_trier) * 0.035\ndeliverycost_2nd &lt;- 5 + revenue_each_visit * 0.035\ndeliverycost_each_trier &lt;- deliverycost_1st + deliverycost_2nd\n\n\nFor each trier, compute net marketing costs from the 2 visits (marketing costs - earned profits)\n\n\nnetcost_each_trier &lt;- deliverycost_each_trier - profit_each_trier\n\n\nTotal net profits from all 25 triers\n\n\ntotalcosts_from_all_triers &lt;- netcost_each_trier * (1/trier_to_member_rate)"
+  },
+  {
+    "objectID": "Week2-Lecture1.html#step-6-compute-customer-acquisition-costs-5",
+    "href": "Week2-Lecture1.html#step-6-compute-customer-acquisition-costs-5",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.16 Step 6: Compute customer acquisition costs",
+    "text": "2.16 Step 6: Compute customer acquisition costs\n\nCAC = total costs for customer ad clicks (for all clickers) + total costs of $15 promo (for all triers) + total costs of selling groceries (for all triers)\n\n\nCAC &lt;- total_cost_clicks + total_cost_promo + totalcosts_from_all_triers"
   },
   {
     "objectID": "Week2-Lecture1.html#step-7-compute-clv",
     "href": "Week2-Lecture1.html#step-7-compute-clv",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "2.14 Step 7: Compute CLV",
-    "text": "2.14 Step 7: Compute CLV\n\nCompute the CLV based on the CLV formula (Table A)\n\n\n\n7.1 Revenues, variables costs, and profit for the next 5 years\n\n\nprofit_seq\n\n\n7.2 Apply retention rate\n\n\nprofit_seq_after_churn &lt;- profit_seq * retention_seq\n\n\n7.3 Apply discount factor\n\n\nprofit_seq_after_churn_discount&lt;- profit_seq_after_churn * discount_factor_seq\n\n\n7.4 Compute CLV by summing up future expected profits\n\n\nCLV &lt;- sum(profit_seq_after_churn_discount) - CAC"
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "2.17 Step 7: Compute CLV",
+    "text": "2.17 Step 7: Compute CLV\n\nCompute the CLV based on the CLV formula (Table A)\n\n\n\n7.1 Revenues, variables costs, and profit for the next 5 years\n\n\nprofit_seq\n\n\n7.2 Apply retention rate\n\n\nprofit_seq_after_churn &lt;- profit_seq * \n\n\n7.3 Apply discount factor\n\n\nprofit_seq_after_churn_discount&lt;- profit_seq_after_churn * \n\n\n7.4 Compute CLV by summing up future expected profits\n\n\nCLV &lt;- sum(profit_seq_after_churn_discount) - CAC"
   },
   {
     "objectID": "Week2-Lecture1.html#clv-as-a-key-management-tool",
     "href": "Week2-Lecture1.html#clv-as-a-key-management-tool",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
     "section": "3.1 CLV as a Key Management Tool",
     "text": "3.1 CLV as a Key Management Tool\n\n\n\n\n\n\n\n\n\nWe can use CLV as the key managerial tool for evaluating different marketing initiatives!"
   },
   {
-    "objectID": "Week2-Lecture1.html#discussion",
-    "href": "Week2-Lecture1.html#discussion",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "3.2 Discussion",
-    "text": "3.2 Discussion\n\nHow important is it for i-basket to measure CLV? Can you think of other companies or industries where CLV is particularly relevant?\nConduct sensitivity analyses\n\nwhat assumptions have we made here? Are these assumptions sensitive to different values?\n\nFrom our analyses, what suggestions would you offer to i-basket in order to improve its customer profitability? How are you going to evaluate the feasibility of your proposal?\n\nacquisition/development/retention"
+    "objectID": "Week2-Lecture1.html#user-defined-functions-in-r",
+    "href": "Week2-Lecture1.html#user-defined-functions-in-r",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "3.2 User Defined Functions in R",
+    "text": "3.2 User Defined Functions in R\nA User Defined Function (UDF) in R refers to a function created by the user, as opposed to built-in functions, to perform specific operations or actions. UDFs are useful for automating and coding specific tasks that aren’t covered by R’s rich set of built-in functions, allowing the user to specify exactly what the function should do.\n\nFunction Name: The user decides the name of the function.\nFunction Body: Contains the code that performs the operation.\nArguments: (Optional) Values that can be passed into the function to influence its behavior.\nReturn Value: What the function outputs after it is called and executed."
   },
   {
-    "objectID": "Week2-Lecture1.html#exercise",
-    "href": "Week2-Lecture1.html#exercise",
-    "title": "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value",
-    "section": "3.3 Exercise",
-    "text": "3.3 Exercise\n\nHow much annual membership fee should the company charge to break even?\nThe company is looking to develop a personalized recommendation system that can increase the average shopping basket to $150. Compute the upper bound for the company’s investment in developing the algorithm in order to break even? Assume the company has 10,000 customers at this moment."
+    "objectID": "Week2-Lecture1.html#syntax-of-udf",
+    "href": "Week2-Lecture1.html#syntax-of-udf",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "3.3 Syntax of UDF",
+    "text": "3.3 Syntax of UDF\n\nfunction_name &lt;- function(arg1, arg2, ...){\n    # Code to perform operations\n    \n    return(output)\n}"
+  },
+  {
+    "objectID": "Week2-Lecture1.html#use-udf-to-compute-clv-and-guide-marketing-decisions",
+    "href": "Week2-Lecture1.html#use-udf-to-compute-clv-and-guide-marketing-decisions",
+    "title": "Class 3 Case Study: Customer Lifetime Value",
+    "section": "3.4 Use UDF to Compute CLV and Guide Marketing Decisions",
+    "text": "3.4 Use UDF to Compute CLV and Guide Marketing Decisions\n\n(To guide customer acquisition) What if the company only offers $5 for first time purchase? This will save some CAC but the cliker-to-trier rate will decrease to 10%. Please compute the new CLV. Should you go ahead with the proposed change?\n(To guide customer retention) What if the company increases the annual membership fee to $119? This will increase revenue from memberships but will also make some customers unhappy so their retention rate reduce to 60%. Please compute the new CLV. Should you go ahead with the proposed change? What if the retention rate reduces to 50%?\n(To conduct sensitivity analysis; after-class) Due to post-COVID economic recession, new members’ spending is uncertain: there is a 60% chance of $30 revenue per visit, 30% chance of $40 revenue per visit, and 10% chance of $50 revenue per visit. What would be the expected CLV for a new member customer?"
   },
   {
     "objectID": "Week4-Lecture2.html",
@@ -3168,39 +3308,18 @@
     "href": "Week3-Lecture1.html",
     "title": "Class 5 Data Wrangling with R (Part II)",
     "section": "",
-    "text": "pacman::p_load(dplyr,ggplot2)\n\n\nPlease install pacman on your RStudio\npacman’s functionality\n\nLoad all packages stated in the parantheses, seperated by commas\nIf the package is not downloaded yet, download it, and then load it\n\nR tip: if you want to use a function without loading the whole package, you can use two colons to call the function: package::function\n\n\n\n\n\nBest practice is to not save any objects once you close your RStudio session\n\n\n\n\n\n\n\nrm(list = ls()) is the command to remove everything in the current environment\n\nls() is a function that returns the list of all objects in the current environment\nrm(list = ) removes any objects passed to list argument\n\n\n\n\n\n\nfilter(dataset, criteria): pick observations by their values\n\n\n\n\n\n\n\narrange(dataset,variable): reorder the rows\nmutate(dataset, newvariable = ): create new variables with functions of existing variables\n\n\n\n\n\n\n\n\n\n\nImagine a factory with different machines placed along a belt. Each machine is a dplyr function that performs a data cleaning step, like filtering or arranging data.\n\n\n\nThe pipe therefore works like a conveyor belt, passing the output of one machine to another for further processing.\n\n\n\n\n\n\n\n\n\n\nThe pipe has a huge advantage over any other method of processing data in R or Python: It makes data wrangling processes easy to read. If we read %&gt;% as “then”, the code will be very easy to interpret as a set of instructions in plain English:\n\n\n\n\nmtcars %&gt;%\n  filter(cyl&gt;=5) %&gt;%\n  mutate(sqrt_wt=sqrt(wt)) %&gt;%\n  filter(sqrt_wt&gt;1.5) %&gt;%\n  arrange(hp)\n## can go on and on\n\n\n\ntake the mtcars data, THEN\nfind cars cyl &gt;= 5, THEN\nmutate a new variable sqrt_wt, THEN\nfind cars sqrt_wt &gt; 1.5 THEN\nreorder all cars based on hp\nchain more operations …\n\n\n\n\n\n\n\nAs a comparison, without using pipe operators, the previous data cleaning steps need to be done as follows. Overwriting our output dataframe new_data in every line is problematic.\n\nFirst, doing this for a procedure with lots of steps isn’t efficient and creates unnecessary repetition in the code.\nSecond, this repetition also makes it harder to identify exactly what is changing on each line in some cases.\n\n\n\nnew_data &lt;- filter(mtcars, cyl &gt;=5)\nnew_data &lt;- mutate(new_data, sqrt_wt=sqrt(wt))\nnew_data &lt;- filter(new_data,sqrt_wt&gt;1.5)\nnew_data &lt;- arrange(new_data,hp)\n\n\n\n\n\nselect() can select variables into a smaller dataset.\n\n\n# Select two columns: hp and cyl\nmtcars%&gt;%\n  select(hp, cyl) %&gt;%\n  head()\n\n\n\n\n\n\nhp\ncyl\n\n\n\n\nMazda RX4\n110\n6\n\n\nMazda RX4 Wag\n110\n6\n\n\nDatsun 710\n93\n4\n\n\nHornet 4 Drive\n110\n6\n\n\nHornet Sportabout\n175\n8\n\n\nValiant\n105\n6\n\n\n\n\n\n\n\n\n\n\ngroup_by() allows us to aggregate data by group and compute statistics for each group\n\n\n# group by cyl\nmtcars %&gt;%\n  group_by(cyl) \n\n\nAlthough nothing seemingly happens to the dataset, internally, the dataset is already grouped based on the specified variable(s).\n\n\n\n\n\n\n\n\n\n\nsummarise() creates a new data frame after aggregating data. The final dataset\n\nhas one row for each pair of grouping variables (for each cyl value)\ncontains one column for each grouping variable (cyl)\ncontains one column for each new summarised variable (avg_mp)\n\n\n\n# compute the average mpg for each cyl group\nmtcars %&gt;%\n  group_by(cyl) %&gt;% # group by cyl\n  summarise(avg_mp = mean(mpg)) %&gt;% # compute the average mpg\n  ungroup()\n\n\n\n\n\ncyl\navg_mp\n\n\n\n\n4\n26.66364\n\n\n6\n19.74286\n\n\n8\n15.10000\n\n\n\n\n\n\n\n\n\n\nWe can have multiple group variables for group_by\n\n\n# compute the average mpg for each cyl,vs group\nmtcars %&gt;%\n  group_by(cyl,vs) %&gt;% # group by cyl\n  summarise(avg_mp = mean(mpg)) %&gt;% # compute the average mpg\n  ungroup()\n\n\n\n\n\nTry the following code by replacing summarise() with mutate(), what do you get now?\n\n\n# compute the average mpg for each cyl,vs group\nmtcars %&gt;%\n  group_by(cyl,vs) %&gt;% # group by cyl\n  mutate(avg_mp = mean(mpg)) %&gt;% # compute the average mpg\n  ungroup()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\navg_mp\n\n\n\n\n21.0\n6\n160.0\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n20.56667\n\n\n21.0\n6\n160.0\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n20.56667\n\n\n22.8\n4\n108.0\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n26.73000\n\n\n21.4\n6\n258.0\n110\n3.08\n3.215\n19.44\n1\n0\n3\n1\n19.12500\n\n\n18.7\n8\n360.0\n175\n3.15\n3.440\n17.02\n0\n0\n3\n2\n15.10000\n\n\n18.1\n6\n225.0\n105\n2.76\n3.460\n20.22\n1\n0\n3\n1\n19.12500\n\n\n14.3\n8\n360.0\n245\n3.21\n3.570\n15.84\n0\n0\n3\n4\n15.10000\n\n\n24.4\n4\n146.7\n62\n3.69\n3.190\n20.00\n1\n0\n4\n2\n26.73000\n\n\n22.8\n4\n140.8\n95\n3.92\n3.150\n22.90\n1\n0\n4\n2\n26.73000\n\n\n19.2\n6\n167.6\n123\n3.92\n3.440\n18.30\n1\n0\n4\n4\n19.12500\n\n\n17.8\n6\n167.6\n123\n3.92\n3.440\n18.90\n1\n0\n4\n4\n19.12500\n\n\n16.4\n8\n275.8\n180\n3.07\n4.070\n17.40\n0\n0\n3\n3\n15.10000\n\n\n17.3\n8\n275.8\n180\n3.07\n3.730\n17.60\n0\n0\n3\n3\n15.10000\n\n\n15.2\n8\n275.8\n180\n3.07\n3.780\n18.00\n0\n0\n3\n3\n15.10000\n\n\n10.4\n8\n472.0\n205\n2.93\n5.250\n17.98\n0\n0\n3\n4\n15.10000\n\n\n10.4\n8\n460.0\n215\n3.00\n5.424\n17.82\n0\n0\n3\n4\n15.10000\n\n\n14.7\n8\n440.0\n230\n3.23\n5.345\n17.42\n0\n0\n3\n4\n15.10000\n\n\n32.4\n4\n78.7\n66\n4.08\n2.200\n19.47\n1\n1\n4\n1\n26.73000\n\n\n30.4\n4\n75.7\n52\n4.93\n1.615\n18.52\n1\n1\n4\n2\n26.73000\n\n\n33.9\n4\n71.1\n65\n4.22\n1.835\n19.90\n1\n1\n4\n1\n26.73000\n\n\n21.5\n4\n120.1\n97\n3.70\n2.465\n20.01\n1\n0\n3\n1\n26.73000\n\n\n15.5\n8\n318.0\n150\n2.76\n3.520\n16.87\n0\n0\n3\n2\n15.10000\n\n\n15.2\n8\n304.0\n150\n3.15\n3.435\n17.30\n0\n0\n3\n2\n15.10000\n\n\n13.3\n8\n350.0\n245\n3.73\n3.840\n15.41\n0\n0\n3\n4\n15.10000\n\n\n19.2\n8\n400.0\n175\n3.08\n3.845\n17.05\n0\n0\n3\n2\n15.10000\n\n\n27.3\n4\n79.0\n66\n4.08\n1.935\n18.90\n1\n1\n4\n1\n26.73000\n\n\n26.0\n4\n120.3\n91\n4.43\n2.140\n16.70\n0\n1\n5\n2\n26.00000\n\n\n30.4\n4\n95.1\n113\n3.77\n1.513\n16.90\n1\n1\n5\n2\n26.73000\n\n\n15.8\n8\n351.0\n264\n4.22\n3.170\n14.50\n0\n1\n5\n4\n15.10000\n\n\n19.7\n6\n145.0\n175\n3.62\n2.770\n15.50\n0\n1\n5\n6\n20.56667\n\n\n15.0\n8\n301.0\n335\n3.54\n3.570\n14.60\n0\n1\n5\n8\n15.10000\n\n\n21.4\n4\n121.0\n109\n4.11\n2.780\n18.60\n1\n1\n4\n2\n26.73000\n\n\n\n\n\n\n\nA new column is added to the original dataset, the value of which is from the group-by aggregation.\n\n\n\n\n\nWhen consolidating multiple data frames, we usually have 4 types of joining methods\n\n\n\n\n\n\n\n\n\n\nleft_join keeps everything from the left data frame and matches as much as it can from the right data frame.\n\nAll IDs in the left data frame will be retained\nIf a match can be found, value from the right data frame will be filled in\nIf a match cannot be found, a missing value will be filled in\n\n\n\n# Method 1 without pipe operator\nleft_join(df_left, df_right, by = 'ID')\n# Method 2 with pipe operator\ndf_left %&gt;%\n  left_join(df_right, by = 'ID')\n\n\n\n\n\n\n\n\n\n\ninner_join only keeps the observations that appear in both data frames\n\nOnly common IDs in both data frames will be retained\nIf a match can be found, values will be filled in from both data frames\n\n\n\n# Method 1 without pipe operator\ninner_join(df_left, df_right, by = 'ID')\n# Method 2 with pipe operator\ndf_left %&gt;%\n  inner_join(df_right, by = 'ID')\n# Method 3: order of data frames should not matter. Why?\ndf_right %&gt;%\n  inner_join(df_left, by = 'ID')\n\n\n\n\n\n\n\n\n\n\nfull_join keeps all observations from both data frames\n\nAll IDs in either data frames will be retained\nIf a match can be found, values will be filled in from both data frames\n\n\n\n# Method 1 without pipe operator\nfull_join(df_left, df_right, by = 'ID')\n# Method 2 with pipe operator\ndf_left %&gt;%\n  full_join(df_right, by = 'ID')\n# Method 3: order of data frames should not matter. Why?\ndf_right %&gt;%\n  full_join(df_left, by = 'ID')"
-  },
-  {
-    "objectID": "Week3-Lecture1.html#r-tips-more-convenient-package-management-using-pacman",
-    "href": "Week3-Lecture1.html#r-tips-more-convenient-package-management-using-pacman",
-    "title": "Class 5 Data Wrangling with R (Part II)",
-    "section": "",
-    "text": "pacman::p_load(dplyr,ggplot2)\n\n\nPlease install pacman on your RStudio\npacman’s functionality\n\nLoad all packages stated in the parantheses, seperated by commas\nIf the package is not downloaded yet, download it, and then load it\n\nR tip: if you want to use a function without loading the whole package, you can use two colons to call the function: package::function"
-  },
-  {
-    "objectID": "Week3-Lecture1.html#r-tips-managing-objects-in-the-rstudio-environment",
-    "href": "Week3-Lecture1.html#r-tips-managing-objects-in-the-rstudio-environment",
-    "title": "Class 5 Data Wrangling with R (Part II)",
-    "section": "",
-    "text": "Best practice is to not save any objects once you close your RStudio session\n\n\n\n\n\n\n\nrm(list = ls()) is the command to remove everything in the current environment\n\nls() is a function that returns the list of all objects in the current environment\nrm(list = ) removes any objects passed to list argument"
+    "text": "dataset %&gt;%``filter(criteria): pick observations by their values\n\n\n\n\n\n\n\ndataset %&gt;%``arrange(variable): reorder the rows\ndataset %&gt;%``mutate(newvariable = ... ): create new variables with functions of existing variables\n\n\n\n\n\n\n\n\n\n\nThe pipe has a huge advantage over any other method of processing data in R or Python: It makes data wrangling processes easy to read. If we read %&gt;% as “then”, the code will be very easy to interpret as a set of instructions in plain English:\n\n\n\n\nmtcars %&gt;%\n  filter(cyl&gt;=5) %&gt;%\n  mutate(sqrt_wt=sqrt(wt)) %&gt;%\n  filter(sqrt_wt&gt;1.5) %&gt;%\n  arrange(hp)\n## can go on and on\n\n\n\ntake the mtcars data, THEN\nfind cars cyl &gt;= 5, THEN\nmutate a new variable sqrt_wt, THEN\nfind cars sqrt_wt &gt; 1.5 THEN\nreorder all cars based on hp\nchain more operations …\n\n\n\n\n\n\n\nAs a comparison, without using pipe operators, the previous data cleaning steps need to be done as follows. Overwriting our output dataframe new_data in every line is problematic.\n\nFirst, doing this for a procedure with lots of steps isn’t efficient and creates unnecessary repetition in the code.\nSecond, this repetition also makes it harder to identify exactly what is changing on each line in some cases.\n\n\n\nnew_data &lt;- filter(mtcars, cyl &gt;=5)\nnew_data &lt;- mutate(new_data, sqrt_wt=sqrt(wt))\nnew_data &lt;- filter(new_data,sqrt_wt&gt;1.5)\nnew_data &lt;- arrange(new_data,hp)\n\n\n\n\n\nselect() can select variables into a smaller dataset.\n\n\n# Select two columns: hp and cyl\nmtcars%&gt;%\n  select(hp, cyl) %&gt;%\n  head()\n\nError in mtcars %&gt;% select(hp, cyl) %&gt;% head(): could not find function \"%&gt;%\"\n\n\n\n\n\n\ngroup_by() allows us to aggregate data by group and compute statistics for each group\n\n\n# group by cyl\nmtcars %&gt;%\n  group_by(cyl) \n\n\nAlthough nothing seemingly happens to the dataset, internally, the dataset is already grouped based on the specified variable(s).\n\n\n\n\n\n\n\n\n\n\nsummarise() creates a new data frame after aggregating data. The final dataset\n\nhas one row for each pair of grouping variables (for each cyl value)\ncontains one column for each grouping variable (cyl)\ncontains one column for each new summarised variable (avg_mp)\n\n\n\n# compute the average mpg for each cyl group\nmtcars %&gt;%\n  group_by(cyl) %&gt;% # group by cyl\n  summarise(avg_mp = mean(mpg)) %&gt;% # compute the average mpg\n  ungroup()\n\nError in mtcars %&gt;% group_by(cyl) %&gt;% summarise(avg_mp = mean(mpg)) %&gt;% : could not find function \"%&gt;%\"\n\n\n\n\n\n\nWe can have multiple group variables for group_by\n\n\n# compute the average mpg for each cyl,vs group\nmtcars %&gt;%\n  group_by(cyl,vs) %&gt;% # group by cyl\n  summarise(avg_mp = mean(mpg)) %&gt;% # compute the average mpg\n  ungroup()\n\n\n\n\n\nTry the following code by replacing summarise() with mutate(), what do you get now?\n\n\n# compute the average mpg for each cyl,vs group\nmtcars %&gt;%\n  group_by(cyl,vs) %&gt;% # group by cyl\n  mutate(avg_mp = mean(mpg)) %&gt;% # compute the average mpg\n  ungroup()\n\nError in mtcars %&gt;% group_by(cyl, vs) %&gt;% mutate(avg_mp = mean(mpg)) %&gt;% : could not find function \"%&gt;%\"\n\n\n\nA new column is added to the original dataset, the value of which is from the group-by aggregation.\n\n\n\n\n\nWhen consolidating multiple data frames, we usually have 4 types of joining methods\n\n\n\n\n\n\n\n\n\n\nleft_join keeps everything from the left data frame and matches as much as it can from the right data frame.\n\nAll IDs in the left data frame will be retained\nIf a match can be found, value from the right data frame will be filled in\nIf a match cannot be found, a missing value will be filled in\n\n\n\n# Method 1 without pipe operator\nleft_join(df_left, df_right, by = 'ID')\n# Method 2 with pipe operator\ndf_left %&gt;%\n  left_join(df_right, by = 'ID')\n\n\n\n\n\n\n\n\n\n\ninner_join only keeps the observations that appear in both data frames\n\nOnly common IDs in both data frames will be retained\nIf a match can be found, values will be filled in from both data frames\n\n\n\n# Method 1 without pipe operator\ninner_join(df_left, df_right, by = 'ID')\n# Method 2 with pipe operator\ndf_left %&gt;%\n  inner_join(df_right, by = 'ID')\n# Method 3: order of data frames should not matter. Why?\ndf_right %&gt;%\n  inner_join(df_left, by = 'ID')\n\n\n\n\n\n\n\n\n\n\nfull_join keeps all observations from both data frames\n\nAll IDs in either data frames will be retained\nIf a match can be found, values will be filled in from both data frames\n\n\n\n# Method 1 without pipe operator\nfull_join(df_left, df_right, by = 'ID')\n# Method 2 with pipe operator\ndf_left %&gt;%\n  full_join(df_right, by = 'ID')\n# Method 3: order of data frames should not matter. Why?\ndf_right %&gt;%\n  full_join(df_left, by = 'ID')"
   },
   {
     "objectID": "Week3-Lecture1.html#recap-filter-arrange-and-mutate",
     "href": "Week3-Lecture1.html#recap-filter-arrange-and-mutate",
     "title": "Class 5 Data Wrangling with R (Part II)",
     "section": "",
-    "text": "filter(dataset, criteria): pick observations by their values\n\n\n\n\n\n\n\narrange(dataset,variable): reorder the rows\nmutate(dataset, newvariable = ): create new variables with functions of existing variables"
+    "text": "dataset %&gt;%``filter(criteria): pick observations by their values\n\n\n\n\n\n\n\ndataset %&gt;%``arrange(variable): reorder the rows\ndataset %&gt;%``mutate(newvariable = ... ): create new variables with functions of existing variables"
   },
   {
     "objectID": "Week3-Lecture1.html#pipe-operator",
     "href": "Week3-Lecture1.html#pipe-operator",
-    "title": "Class 5 Data Wrangling with R (Part II)",
-    "section": "",
-    "text": "Imagine a factory with different machines placed along a belt. Each machine is a dplyr function that performs a data cleaning step, like filtering or arranging data.\n\n\n\nThe pipe therefore works like a conveyor belt, passing the output of one machine to another for further processing."
-  },
-  {
-    "objectID": "Week3-Lecture1.html#pipe-operator-1",
-    "href": "Week3-Lecture1.html#pipe-operator-1",
     "title": "Class 5 Data Wrangling with R (Part II)",
     "section": "",
     "text": "The pipe has a huge advantage over any other method of processing data in R or Python: It makes data wrangling processes easy to read. If we read %&gt;% as “then”, the code will be very easy to interpret as a set of instructions in plain English:\n\n\n\n\nmtcars %&gt;%\n  filter(cyl&gt;=5) %&gt;%\n  mutate(sqrt_wt=sqrt(wt)) %&gt;%\n  filter(sqrt_wt&gt;1.5) %&gt;%\n  arrange(hp)\n## can go on and on\n\n\n\ntake the mtcars data, THEN\nfind cars cyl &gt;= 5, THEN\nmutate a new variable sqrt_wt, THEN\nfind cars sqrt_wt &gt; 1.5 THEN\nreorder all cars based on hp\nchain more operations …"
@@ -3217,7 +3336,7 @@
     "href": "Week3-Lecture1.html#select-variables-select",
     "title": "Class 5 Data Wrangling with R (Part II)",
     "section": "",
-    "text": "select() can select variables into a smaller dataset.\n\n\n# Select two columns: hp and cyl\nmtcars%&gt;%\n  select(hp, cyl) %&gt;%\n  head()\n\n\n\n\n\n\nhp\ncyl\n\n\n\n\nMazda RX4\n110\n6\n\n\nMazda RX4 Wag\n110\n6\n\n\nDatsun 710\n93\n4\n\n\nHornet 4 Drive\n110\n6\n\n\nHornet Sportabout\n175\n8\n\n\nValiant\n105\n6"
+    "text": "select() can select variables into a smaller dataset.\n\n\n# Select two columns: hp and cyl\nmtcars%&gt;%\n  select(hp, cyl) %&gt;%\n  head()\n\nError in mtcars %&gt;% select(hp, cyl) %&gt;% head(): could not find function \"%&gt;%\""
   },
   {
     "objectID": "Week3-Lecture1.html#aggregation-by-groups-group_by",
@@ -3231,7 +3350,7 @@
     "href": "Week3-Lecture1.html#aggregation-by-groups-group_by-summarise",
     "title": "Class 5 Data Wrangling with R (Part II)",
     "section": "",
-    "text": "summarise() creates a new data frame after aggregating data. The final dataset\n\nhas one row for each pair of grouping variables (for each cyl value)\ncontains one column for each grouping variable (cyl)\ncontains one column for each new summarised variable (avg_mp)\n\n\n\n# compute the average mpg for each cyl group\nmtcars %&gt;%\n  group_by(cyl) %&gt;% # group by cyl\n  summarise(avg_mp = mean(mpg)) %&gt;% # compute the average mpg\n  ungroup()\n\n\n\n\n\ncyl\navg_mp\n\n\n\n\n4\n26.66364\n\n\n6\n19.74286\n\n\n8\n15.10000"
+    "text": "summarise() creates a new data frame after aggregating data. The final dataset\n\nhas one row for each pair of grouping variables (for each cyl value)\ncontains one column for each grouping variable (cyl)\ncontains one column for each new summarised variable (avg_mp)\n\n\n\n# compute the average mpg for each cyl group\nmtcars %&gt;%\n  group_by(cyl) %&gt;% # group by cyl\n  summarise(avg_mp = mean(mpg)) %&gt;% # compute the average mpg\n  ungroup()\n\nError in mtcars %&gt;% group_by(cyl) %&gt;% summarise(avg_mp = mean(mpg)) %&gt;% : could not find function \"%&gt;%\""
   },
   {
     "objectID": "Week3-Lecture1.html#aggregation-by-groups-group_by-summarise-1",
@@ -3245,7 +3364,7 @@
     "href": "Week3-Lecture1.html#aggregation-by-groups-group_by-mutate",
     "title": "Class 5 Data Wrangling with R (Part II)",
     "section": "",
-    "text": "Try the following code by replacing summarise() with mutate(), what do you get now?\n\n\n# compute the average mpg for each cyl,vs group\nmtcars %&gt;%\n  group_by(cyl,vs) %&gt;% # group by cyl\n  mutate(avg_mp = mean(mpg)) %&gt;% # compute the average mpg\n  ungroup()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\navg_mp\n\n\n\n\n21.0\n6\n160.0\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n20.56667\n\n\n21.0\n6\n160.0\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n20.56667\n\n\n22.8\n4\n108.0\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n26.73000\n\n\n21.4\n6\n258.0\n110\n3.08\n3.215\n19.44\n1\n0\n3\n1\n19.12500\n\n\n18.7\n8\n360.0\n175\n3.15\n3.440\n17.02\n0\n0\n3\n2\n15.10000\n\n\n18.1\n6\n225.0\n105\n2.76\n3.460\n20.22\n1\n0\n3\n1\n19.12500\n\n\n14.3\n8\n360.0\n245\n3.21\n3.570\n15.84\n0\n0\n3\n4\n15.10000\n\n\n24.4\n4\n146.7\n62\n3.69\n3.190\n20.00\n1\n0\n4\n2\n26.73000\n\n\n22.8\n4\n140.8\n95\n3.92\n3.150\n22.90\n1\n0\n4\n2\n26.73000\n\n\n19.2\n6\n167.6\n123\n3.92\n3.440\n18.30\n1\n0\n4\n4\n19.12500\n\n\n17.8\n6\n167.6\n123\n3.92\n3.440\n18.90\n1\n0\n4\n4\n19.12500\n\n\n16.4\n8\n275.8\n180\n3.07\n4.070\n17.40\n0\n0\n3\n3\n15.10000\n\n\n17.3\n8\n275.8\n180\n3.07\n3.730\n17.60\n0\n0\n3\n3\n15.10000\n\n\n15.2\n8\n275.8\n180\n3.07\n3.780\n18.00\n0\n0\n3\n3\n15.10000\n\n\n10.4\n8\n472.0\n205\n2.93\n5.250\n17.98\n0\n0\n3\n4\n15.10000\n\n\n10.4\n8\n460.0\n215\n3.00\n5.424\n17.82\n0\n0\n3\n4\n15.10000\n\n\n14.7\n8\n440.0\n230\n3.23\n5.345\n17.42\n0\n0\n3\n4\n15.10000\n\n\n32.4\n4\n78.7\n66\n4.08\n2.200\n19.47\n1\n1\n4\n1\n26.73000\n\n\n30.4\n4\n75.7\n52\n4.93\n1.615\n18.52\n1\n1\n4\n2\n26.73000\n\n\n33.9\n4\n71.1\n65\n4.22\n1.835\n19.90\n1\n1\n4\n1\n26.73000\n\n\n21.5\n4\n120.1\n97\n3.70\n2.465\n20.01\n1\n0\n3\n1\n26.73000\n\n\n15.5\n8\n318.0\n150\n2.76\n3.520\n16.87\n0\n0\n3\n2\n15.10000\n\n\n15.2\n8\n304.0\n150\n3.15\n3.435\n17.30\n0\n0\n3\n2\n15.10000\n\n\n13.3\n8\n350.0\n245\n3.73\n3.840\n15.41\n0\n0\n3\n4\n15.10000\n\n\n19.2\n8\n400.0\n175\n3.08\n3.845\n17.05\n0\n0\n3\n2\n15.10000\n\n\n27.3\n4\n79.0\n66\n4.08\n1.935\n18.90\n1\n1\n4\n1\n26.73000\n\n\n26.0\n4\n120.3\n91\n4.43\n2.140\n16.70\n0\n1\n5\n2\n26.00000\n\n\n30.4\n4\n95.1\n113\n3.77\n1.513\n16.90\n1\n1\n5\n2\n26.73000\n\n\n15.8\n8\n351.0\n264\n4.22\n3.170\n14.50\n0\n1\n5\n4\n15.10000\n\n\n19.7\n6\n145.0\n175\n3.62\n2.770\n15.50\n0\n1\n5\n6\n20.56667\n\n\n15.0\n8\n301.0\n335\n3.54\n3.570\n14.60\n0\n1\n5\n8\n15.10000\n\n\n21.4\n4\n121.0\n109\n4.11\n2.780\n18.60\n1\n1\n4\n2\n26.73000\n\n\n\n\n\n\n\nA new column is added to the original dataset, the value of which is from the group-by aggregation."
+    "text": "Try the following code by replacing summarise() with mutate(), what do you get now?\n\n\n# compute the average mpg for each cyl,vs group\nmtcars %&gt;%\n  group_by(cyl,vs) %&gt;% # group by cyl\n  mutate(avg_mp = mean(mpg)) %&gt;% # compute the average mpg\n  ungroup()\n\nError in mtcars %&gt;% group_by(cyl, vs) %&gt;% mutate(avg_mp = mean(mpg)) %&gt;% : could not find function \"%&gt;%\"\n\n\n\nA new column is added to the original dataset, the value of which is from the group-by aggregation."
   },
   {
     "objectID": "Week3-Lecture1.html#consolidate-multiple-data-frames",
