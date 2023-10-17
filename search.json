@@ -445,14 +445,14 @@
     "href": "Week3-Lecture2.html",
     "title": "Class 6 Customer Segmentation using Unsupervised Machine Learning",
     "section": "",
-    "text": "The core of any business decision is break-even analysis (cost-benefit analysis)\n\nBEQ; NPV; CLV (Week 1 and Week 2)\n\nOne effective way to increase firm profitability is to reduce marketing costs\n\n\n\nIn Weeks 3 and 4, we will learn how to utilize predictive analytics (i.e., machine learning models) to reduce marketing costs and improve marketing efficiency\n\n\n\n\n\n\n\n\n\n\nUnsupervised Learning\n\nOnly observe X =&gt; Want to uncover unknown subgroups\n\nSupervised Learning\n\nObserve both X and Y =&gt; Want to predict Y for new data\n\nReinforcement Learning\n\nRewards and punishments =&gt; Learn the best decision rules\nDynamic Coupon Targeting Using Batch Deep Reinforcement Learning: An Application to Livestream Shopping\n\n\nIn Term 2, you will learn predictive analytics models systematically. By then, think about how those techniques can be applied back to these case studies.\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstand the concept of unsupervised learning and how to apply clustering analyses for customer segmentation"
+    "text": "The core of any business decision is break-even analysis (BEQ; NPV; CLV. Weeks 1 and 2)\nOne effective way to increase firm profitability is to reduce marketing costs\nIn Weeks 3 and 4, we will learn how to utilize predictive analytics (i.e., machine learning models) to reduce marketing costs and improve marketing efficiency\n\n\n\n\n\n\n\n\n\n\nUnsupervised Learning\n\nOnly observe X =&gt; Want to uncover unknown subgroups\n\nSupervised Learning\n\nObserve both X and Y =&gt; Want to predict Y for new data\n\nReinforcement Learning\n\nRewards and punishments =&gt; Learn the best decision rules\nDynamic Coupon Targeting Using Batch Deep Reinforcement Learning: An Application to Livestream Shopping\n\n\nIn Term 2, you will learn predictive analytics models systematically. By then, think about how those techniques can be applied back to these case studies.\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstand the concept of unsupervised learning and how to apply clustering analyses for customer segmentation"
   },
   {
     "objectID": "Week3-Lecture2.html#roadmap-of-predictive-analytics",
     "href": "Week3-Lecture2.html#roadmap-of-predictive-analytics",
     "title": "Class 6 Customer Segmentation using Unsupervised Machine Learning",
     "section": "",
-    "text": "The core of any business decision is break-even analysis (cost-benefit analysis)\n\nBEQ; NPV; CLV (Week 1 and Week 2)\n\nOne effective way to increase firm profitability is to reduce marketing costs\n\n\n\nIn Weeks 3 and 4, we will learn how to utilize predictive analytics (i.e., machine learning models) to reduce marketing costs and improve marketing efficiency"
+    "text": "The core of any business decision is break-even analysis (BEQ; NPV; CLV. Weeks 1 and 2)\nOne effective way to increase firm profitability is to reduce marketing costs\nIn Weeks 3 and 4, we will learn how to utilize predictive analytics (i.e., machine learning models) to reduce marketing costs and improve marketing efficiency"
   },
   {
     "objectID": "Week3-Lecture2.html#types-of-predictive-analytics",
