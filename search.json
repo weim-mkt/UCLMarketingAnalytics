@@ -317,128 +317,72 @@
   {
     "objectID": "Week4-Lecture1.html",
     "href": "Week4-Lecture1.html",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
+    "title": "Class 7 Supervised Learning Basics",
     "section": "",
-    "text": "\\[\nY = f(X;\\theta) + \\epsilon\n\\]\n\n\\(f\\) is the function that characterizes the true relationship between \\(X\\) and \\(Y\\)\n\n\\(f\\) is often called Data Generating Process (DGP), which is NEVER known to us\n\n\\(Y\\) the response/outcome/explained variable to be predicted\n\ne.g., whether customer responds to our offer (1/0)\n\n\\(X = (X_1,X_2,...,X_p)\\) are a set of predictors/features/explanatory variables\n\ncustomers’ past purchase history (e.g., spending in each category)\ndemographic variables (e.g., income, age, kids, etc.)\n\n\\(\\theta\\) represents the set of function parameters of the DGP \\(f\\)\n\\(\\epsilon\\) is the random error term, with mean zero.\n\n\n\n\n\nA supervised learning model is used when we have one or more explanatory variables and a response variable and we would like to find some function that describes the DGP between the explanatory variables and the response variable as accurately as possible.\n\n\n\n\n\n\n\nSince we never know the true DGP: All models are wrong, but some are useful1\n\n\n\n\nDepending on the type of the response variable, supervised learning tasks can be divided into two major groups\n\nClassification tasks: outcome is a categorical variable\n\nWhether a customer responds to marketing offers (acquisition)\nWhether a customer churns (retention)\n\nRegression tasks: outcome is a continuous variable\n\nProbability of customers responding to marketing offers (acquisition)\nCustomer total spending in each period (development)\nProbability of customer churn (retention)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLinear regression class models (easy to interpret, low accuracy)\n\nOLS, Lasso, Ridge regressions\n\nTree-based Models (good balance between interpretability and accuracy)\n\nDecision tree, random forest\n\nNeural-network based models (hard to interpret, high accuracy)\n\nDeep learning models\n\n\n\n\n\n\nOverfitting means a predictive model corresponds too closely to historical data, and therefore fails to predict new data reliably.\n\nOverfitting leads to high variance error, which is the error from being unable to predict for new data points\n\nUnderfitting occurs when a predictive model cannot adequately capture the underlying structure of historical data.\n\nUnderfitting leads to high bias error, which means high prediction error on the historical data, as the model fails to sufficiently capture the relations between \\(X\\) and \\(Y\\)\nAn underfitting model also tends to have poor predictive performance for future data points.\n\n\n\n\n\n\n\n\n\n\n\nTo mitigate the underfitting problem, select better models and tune the parameters.\nTo mitigate the overfitting problem, when building predictive models, we need to divide the full labelled historical data into different sets. The percentage of split depends on the context.\n\nTraining set (70% - 80% of labelled data): train the model parameters\nTest set (20% - 30% of labelled data): evaluate the prediction accuracy\n\n\n\n\n\n\n\n\nFor more complicated models with hyper-parameters such as deep learning models, we may even need to split our data into 3 sets (training, validation, and test sets). You will learn more details in term 2 from ML specialization modules."
-  },
-  {
-    "objectID": "Week4-Lecture1.html#data-generating-process",
-    "href": "Week4-Lecture1.html#data-generating-process",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
-    "section": "",
-    "text": "\\[\nY = f(X;\\theta) + \\epsilon\n\\]\n\n\\(f\\) is the function that characterizes the true relationship between \\(X\\) and \\(Y\\)\n\n\\(f\\) is often called Data Generating Process (DGP), which is NEVER known to us\n\n\\(Y\\) the response/outcome/explained variable to be predicted\n\ne.g., whether customer responds to our offer (1/0)\n\n\\(X = (X_1,X_2,...,X_p)\\) are a set of predictors/features/explanatory variables\n\ncustomers’ past purchase history (e.g., spending in each category)\ndemographic variables (e.g., income, age, kids, etc.)\n\n\\(\\theta\\) represents the set of function parameters of the DGP \\(f\\)\n\\(\\epsilon\\) is the random error term, with mean zero."
+    "text": "A supervised learning model is used when we have one or more explanatory variables AND a response variable and we would like to learn the relationship (data generating process, or DGP) between the explanatory variables and the response variable as accurately as possible.\n\n\n\n\n\n\n\n\n\n\\[\nY = f(X;\\theta) + \\epsilon\n\\]\n\n\\(f\\) is the function that characterizes the true relationship between \\(X\\) and \\(Y\\), or DGP, which is never known to us1\n\\(Y\\) the response or outcome variable to be predicted, e.g., if a customer responded to our marketing offer.\n\\(X = (X_1,X_2,...,X_p)\\) are a set of explanatory variables, sometimes called features or predictors, e.g.,\n\n(1) customers’ past purchase history (e.g., spending in each category, frequency of purchase, recency of purchase)\n(2) demographic variables (e.g., gender, income, age, kids, etc.)\n\n\\(\\theta\\) represents the set of function parameters to be trained\n\\(\\epsilon\\) is the error term\n\n\n\n\nDepending on the type of the response variable, supervised learning tasks can be divided into two groups:\n\nClassification tasks if the outcome is categorical\n\nWhether a customer responds to marketing offers\nWhether a customer churns\nWhich product a customer purchases\n\nRegression tasks if the outcome is continuous\n\nCustomer total spending in each period\nDemand forecasting such as the daily sales of a product"
   },
   {
     "objectID": "Week4-Lecture1.html#supervised-learning-1",
     "href": "Week4-Lecture1.html#supervised-learning-1",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
+    "title": "Class 7 Supervised Learning Basics",
     "section": "",
-    "text": "A supervised learning model is used when we have one or more explanatory variables and a response variable and we would like to find some function that describes the DGP between the explanatory variables and the response variable as accurately as possible.\n\n\n\n\n\n\n\nSince we never know the true DGP: All models are wrong, but some are useful1"
+    "text": "A supervised learning model is used when we have one or more explanatory variables AND a response variable and we would like to learn the relationship (data generating process, or DGP) between the explanatory variables and the response variable as accurately as possible."
   },
   {
-    "objectID": "Week4-Lecture1.html#types-of-supervised-learning-tasks-for-customer-relationship-management",
-    "href": "Week4-Lecture1.html#types-of-supervised-learning-tasks-for-customer-relationship-management",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
+    "objectID": "Week4-Lecture1.html#data-generating-process",
+    "href": "Week4-Lecture1.html#data-generating-process",
+    "title": "Class 7 Supervised Learning Basics",
     "section": "",
-    "text": "Depending on the type of the response variable, supervised learning tasks can be divided into two major groups\n\nClassification tasks: outcome is a categorical variable\n\nWhether a customer responds to marketing offers (acquisition)\nWhether a customer churns (retention)\n\nRegression tasks: outcome is a continuous variable\n\nProbability of customers responding to marketing offers (acquisition)\nCustomer total spending in each period (development)\nProbability of customer churn (retention)"
+    "text": "\\[\nY = f(X;\\theta) + \\epsilon\n\\]\n\n\\(f\\) is the function that characterizes the true relationship between \\(X\\) and \\(Y\\), or DGP, which is never known to us1\n\\(Y\\) the response or outcome variable to be predicted, e.g., if a customer responded to our marketing offer.\n\\(X = (X_1,X_2,...,X_p)\\) are a set of explanatory variables, sometimes called features or predictors, e.g.,\n\n(1) customers’ past purchase history (e.g., spending in each category, frequency of purchase, recency of purchase)\n(2) demographic variables (e.g., gender, income, age, kids, etc.)\n\n\\(\\theta\\) represents the set of function parameters to be trained\n\\(\\epsilon\\) is the error term"
   },
   {
-    "objectID": "Week4-Lecture1.html#commonly-used-supervised-learning-models",
-    "href": "Week4-Lecture1.html#commonly-used-supervised-learning-models",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
+    "objectID": "Week4-Lecture1.html#types-of-supervised-learning-algorithms",
+    "href": "Week4-Lecture1.html#types-of-supervised-learning-algorithms",
+    "title": "Class 7 Supervised Learning Basics",
     "section": "",
-    "text": "Linear regression class models (easy to interpret, low accuracy)\n\nOLS, Lasso, Ridge regressions\n\nTree-based Models (good balance between interpretability and accuracy)\n\nDecision tree, random forest\n\nNeural-network based models (hard to interpret, high accuracy)\n\nDeep learning models"
+    "text": "Depending on the type of the response variable, supervised learning tasks can be divided into two groups:\n\nClassification tasks if the outcome is categorical\n\nWhether a customer responds to marketing offers\nWhether a customer churns\nWhich product a customer purchases\n\nRegression tasks if the outcome is continuous\n\nCustomer total spending in each period\nDemand forecasting such as the daily sales of a product"
   },
   {
-    "objectID": "Week4-Lecture1.html#overfitting-and-underfitting",
-    "href": "Week4-Lecture1.html#overfitting-and-underfitting",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
-    "section": "",
-    "text": "Overfitting means a predictive model corresponds too closely to historical data, and therefore fails to predict new data reliably.\n\nOverfitting leads to high variance error, which is the error from being unable to predict for new data points\n\nUnderfitting occurs when a predictive model cannot adequately capture the underlying structure of historical data.\n\nUnderfitting leads to high bias error, which means high prediction error on the historical data, as the model fails to sufficiently capture the relations between \\(X\\) and \\(Y\\)\nAn underfitting model also tends to have poor predictive performance for future data points."
+    "objectID": "Week4-Lecture1.html#accuracy-interpretability-tradeoff",
+    "href": "Week4-Lecture1.html#accuracy-interpretability-tradeoff",
+    "title": "Class 7 Supervised Learning Basics",
+    "section": "2.1 Accuracy-Interpretability Tradeoff",
+    "text": "2.1 Accuracy-Interpretability Tradeoff\n\nSimpler models are easier to interpret but gives lower accuracy\nComplicated models can give better prediction accuracy but results are hard to interpret"
   },
   {
-    "objectID": "Week4-Lecture1.html#mitigate-the-underfitting-and-overfitting-problems",
-    "href": "Week4-Lecture1.html#mitigate-the-underfitting-and-overfitting-problems",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
-    "section": "",
-    "text": "To mitigate the underfitting problem, select better models and tune the parameters.\nTo mitigate the overfitting problem, when building predictive models, we need to divide the full labelled historical data into different sets. The percentage of split depends on the context.\n\nTraining set (70% - 80% of labelled data): train the model parameters\nTest set (20% - 30% of labelled data): evaluate the prediction accuracy\n\n\n\n\n\n\n\n\nFor more complicated models with hyper-parameters such as deep learning models, we may even need to split our data into 3 sets (training, validation, and test sets). You will learn more details in term 2 from ML specialization modules."
+    "objectID": "Week4-Lecture1.html#comparision-of-classic-supervised-learning-models",
+    "href": "Week4-Lecture1.html#comparision-of-classic-supervised-learning-models",
+    "title": "Class 7 Supervised Learning Basics",
+    "section": "2.2 Comparision of Classic Supervised Learning Models",
+    "text": "2.2 Comparision of Classic Supervised Learning Models\n\nLinear regression class models (easy to interpret, low accuracy)\n\nLinear regression coefficients have economic interpretations but prediction accuracy is low\n\nTree-based Models (balance between interpretability and accuracy)\n\nDecision tree, random forest\n\nNeural-network based models (hard to interpret, high accuracy)\n\nDeep learning only give estimated weights that have no direct business interpretations"
   },
   {
-    "objectID": "Week4-Lecture1.html#introduction-to-decision-tree",
-    "href": "Week4-Lecture1.html#introduction-to-decision-tree",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
-    "section": "2.1 Introduction to Decision Tree",
-    "text": "2.1 Introduction to Decision Tree\n\nThere are many methodologies for constructing regression trees but one of the oldest and most commonly used is known as the classification and regression tree (CART) approach developed by Breiman et al. (1984)."
+    "objectID": "Week4-Lecture1.html#bias-variance-tradeoff",
+    "href": "Week4-Lecture1.html#bias-variance-tradeoff",
+    "title": "Class 7 Supervised Learning Basics",
+    "section": "2.3 Bias-Variance Tradeoff",
+    "text": "2.3 Bias-Variance Tradeoff\n\nAfter we have trained a machine learning model, bias is the prediction error of the model on the historical data; variance is the prediction error of the model on unseen, new data.\nIf a predictive model fits historical data too well, then it may not be flexible enough to accommodate future data and thus have a higher chance of failing to make predictions for new data accurately. This problem is called overfitting.\nOverfitting leads to low bias but high variance. Hence the name bias-variance tradeoff or bias-variance dilemma."
   },
   {
-    "objectID": "Week4-Lecture1.html#motivation-example-predicting-mpg-from-mtcars",
-    "href": "Week4-Lecture1.html#motivation-example-predicting-mpg-from-mtcars",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
-    "section": "2.2 Motivation Example: Predicting mpg from mtcars",
-    "text": "2.2 Motivation Example: Predicting mpg from mtcars\n\nFrom mtcars, we want to predict the outcome variable mpg based on cyl and hp\n\nPredictors \\(X\\) include cyl and hp\nOutcome variable \\(Y\\) is mpg\n\n\n\npacman::p_load(dplyr,modelsummary)\ndata(\"mtcars\")\n# Generate a new data for the task\ndata_decision_tree &lt;- mtcars %&gt;%\n  select(mpg,cyl,hp)\n# check first 4 rows\ndata_decision_tree %&gt;%\n  head(n = 4) \n\n\n\n\n\n\n\n\n\nmpg\n\n\ncyl\n\n\nhp\n\n\n\n\n\n\nMazda RX4\n\n\n21.0\n\n\n6\n\n\n110\n\n\n\n\nMazda RX4 Wag\n\n\n21.0\n\n\n6\n\n\n110\n\n\n\n\nDatsun 710\n\n\n22.8\n\n\n4\n\n\n93\n\n\n\n\nHornet 4 Drive\n\n\n21.4\n\n\n6\n\n\n110"
+    "objectID": "Week4-Lecture1.html#how-to-mitigate-overfitting",
+    "href": "Week4-Lecture1.html#how-to-mitigate-overfitting",
+    "title": "Class 7 Supervised Learning Basics",
+    "section": "3.1 How to Mitigate Overfitting",
+    "text": "3.1 How to Mitigate Overfitting\n\nTo mitigate the overfitting problem, when training predictive models, we need to use the cross-validation technique by splitting the full historical data into a training set and a test set.\n\nA training set (70% - 80% of labelled data): we train the predictive model based on the training set.\nA test set (20% - 30% of labelled data): we pretend that we don’t know the outcomes for the test set and make predictions from the predictive model. However, in fact, we do observe the actual outcomes for the test set, so that we can evaluate the prediction accuracy by comparing the predicted outcomes versus the actual outcomes.\n\n\n\n\n\n\n\n\nFor more complicated models with hyper-parameters such as deep learning models, we may even need to split our data into 3 sets (training, validation, and test sets)."
   },
   {
-    "objectID": "Week4-Lecture1.html#implementation-of-decision-tree-in-r",
-    "href": "Week4-Lecture1.html#implementation-of-decision-tree-in-r",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
-    "section": "2.3 Implementation of Decision Tree in R",
-    "text": "2.3 Implementation of Decision Tree in R\n\nPackage rpart provides implementation of decision trees in R\n\nrpart() is the function in the package to train a decision tree; refer to its help function for more details.\n\nPackage rpart.plot provides nice visualizations of decision trees\n\n\n# Load the necessary packages\npacman::p_load(rpart,rpart.plot)\n# Below example shows how to train a decisin tree\ntree1 &lt;- rpart(\n  formula = mpg ~ cyl + hp,\n  data    = data_decision_tree,\n  method  = \"anova\" \n  )"
-  },
-  {
-    "objectID": "Week4-Lecture1.html#intuition-behind-decision-trees",
-    "href": "Week4-Lecture1.html#intuition-behind-decision-trees",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
-    "section": "2.4 Intuition behind Decision Trees",
-    "text": "2.4 Intuition behind Decision Trees\n\n\n\n\n\n\n\n\n\n\nFirst, we find that cyl matters more than hp in terms of predicting mpg, so we split two branches according to cyl. We find that {4} and {6,8} split can best differentiate car models.\n\ncyl = 4, go to the right branch\ncyl = 6 or 8, go to the left branch\n\n\n\nFor car models with 4 cylinders, we try all possible splits based on hp, and find that 193 can best differentiate car models.\n\nhp &gt;= 193, use the average mpg in that terminal node, 13, as the predicted mpg\nhp &lt; 193, use the average mpg in that terminal node, 18, as the predicted mpg\n\n\n\nFor car models with less than 5 cylinders (the right branch), we find that hp does not differentiate car models, so we do not further split.\n\nUse the average mpg in that terminal node, 27, as the predicted mpg"
-  },
-  {
-    "objectID": "Week4-Lecture1.html#pros-and-cons-of-decision-trees",
-    "href": "Week4-Lecture1.html#pros-and-cons-of-decision-trees",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
-    "section": "2.5 Pros and Cons of Decision Trees",
-    "text": "2.5 Pros and Cons of Decision Trees\nAdvantages of Decision Trees\n\nThey are very interpretable.\nMaking predictions is fast.\nIt’s easy to understand what variables are important in making the prediction. The internal nodes (splits) are those variables that most largely reduce the SSE (criteria for split).\n\nDisadvantages of Decision Trees\n\nSingle regression trees have high variance (overfitting), resulting in unstable predictions.\nDue to the high variance, single regression trees tend to have poor predictive accuracy."
-  },
-  {
-    "objectID": "Week4-Lecture1.html#random-forest",
-    "href": "Week4-Lecture1.html#random-forest",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
-    "section": "2.6 Random Forest",
-    "text": "2.6 Random Forest\nTo overcome the overfitting tendency of a single decision tree, random forest has been developed by (Breiman 2001).\n\nBootstrap subsampling\n\nEach tree is grown to a bootstrapped subsample\n\nSplit-variable randomization\n\neach time a split is to be performed, the search for the split variable is limited to a random subset of m out of the p variables. For regression trees, typical default values are \\(m=p/3\\)."
-  },
-  {
-    "objectID": "Week4-Lecture1.html#visualization-of-random-forest",
-    "href": "Week4-Lecture1.html#visualization-of-random-forest",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
-    "section": "2.7 Visualization of Random Forest",
-    "text": "2.7 Visualization of Random Forest\n\n\n\n\n\n\nEach tree gives a prediction\nRandom forest takes the majority of voting as the final prediction"
-  },
-  {
-    "objectID": "Week4-Lecture1.html#implementation-of-random-forest-in-r",
-    "href": "Week4-Lecture1.html#implementation-of-random-forest-in-r",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
-    "section": "2.8 Implementation of Random Forest in R",
-    "text": "2.8 Implementation of Random Forest in R\n\nPackage ranger provides implementation of random forest in R.\nranger() is the function in the package to train a random forest; refer to its help function for more details.\nThe following code shows how to train a random forest consisting of 500 decision trees, where the outcome variable is mpg, and the predictors are 5 car attribute variables.\n\n\npacman::p_load(ranger)\nrandomforest1 &lt;- ranger(\n    formula   = mpg ~ hp + cyl + disp + wt + gear, \n    data      = mtcars, # dataset to train the model\n    num.trees = 500, # 500 decision trees\n    seed = 888 # make sure of replication\n  )"
-  },
-  {
-    "objectID": "Week4-Lecture1.html#make-predictions-from-random-forest",
-    "href": "Week4-Lecture1.html#make-predictions-from-random-forest",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
-    "section": "2.9 Make Predictions from Random Forest",
-    "text": "2.9 Make Predictions from Random Forest\n\nAfter we train the predictive model, we can use predict() function to make predictions\n\nThe 1st argument is the trained model object\nThe 2nd argument is the dataset to make predictions on\n\n\n\n# Make predictions on the mtcars\nprediction_rf &lt;- predict(randomforest1,\n                         data = mtcars)\n\n# Because prediction_rf is a list object\n# Need to use $ to extract the predicted value as a numeric vector\nprediction_rf$predictions\n\n [1] 20.80814 20.80526 24.13373 20.14718 17.50231 18.98494 14.73153 24.16436\n [9] 22.84680 18.73638 18.73638 16.26754 16.26130 16.17000 11.96695 11.57377\n[17] 13.35940 29.91299 30.71855 31.04063 22.58045 16.30967 16.48256 14.42590\n[25] 17.42216 29.60584 26.18860 28.29520 15.87313 20.14866 14.97831 22.12769"
-  },
-  {
-    "objectID": "Week4-Lecture1.html#after-class-reading",
-    "href": "Week4-Lecture1.html#after-class-reading",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
-    "section": "2.10 After-Class Reading",
-    "text": "2.10 After-Class Reading\n\n(optional) Varian, Hal R. “Big data: New tricks for econometrics.” Journal of Economic Perspectives 28, no. 2 (2014): 3-28\n(recommended) Decision tree in R\n(recommended) Random forest in R"
+    "objectID": "Week4-Lecture1.html#underfitting",
+    "href": "Week4-Lecture1.html#underfitting",
+    "title": "Class 7 Supervised Learning Basics",
+    "section": "3.2 Underfitting",
+    "text": "3.2 Underfitting\n\nUnderfitting occurs when a predictive model cannot sufficiently capture the DGP on both historical data and new data.\nUnderfitting leads to high bias as well as high variance. Thus, underfitting is the worst case, which should be avoided by all means.\nTo mitigate the underfitting problem, we need to select more suitable models."
   },
   {
     "objectID": "Week4-Lecture1.html#footnotes",
     "href": "Week4-Lecture1.html#footnotes",
-    "title": "Class 7 Predictive Analytics for STP (II): Supervised Learning",
+    "title": "Class 7 Supervised Learning Basics",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nA famous quote by statistician George Box.↩︎"
+    "text": "Footnotes\n\n\n“All model are wrong, but some are useful” – George Box. As business analysts, we need to use the “wrong models” correctly.↩︎"
   },
   {
     "objectID": "Week3-Lecture2.html",
@@ -1652,32 +1596,32 @@
     "text": "Predictive Analytics: Unsupervised Learning\n\nWhat you will learn\n\nImportant concepts in predictive analytics\nConcept of unsupervised learning\nHow to run K-means clustering in R\n\nAfter-class reading\n\n(recommended) K-means Cluster Analysis, which provides more details on the maths behind the K-means clustering"
   },
   {
-    "objectID": "ClassPreparation.html#supervised-learning-with-tree-based-models",
-    "href": "ClassPreparation.html#supervised-learning-with-tree-based-models",
+    "objectID": "ClassPreparation.html#supervised-learning-basics",
+    "href": "ClassPreparation.html#supervised-learning-basics",
     "title": "Weekly Arrangements",
-    "section": "Supervised Learning with Tree-based Models",
-    "text": "Supervised Learning with Tree-based Models\n\nWhat you will learn\n\nImportant concepts of supervised learning\nIntuition behind decision tree and random forest models\nHow to build random forest models in R\n\nAfter-class reading\n\n(optional) Varian, Hal R. “Big data: New tricks for econometrics.” Journal of Economic Perspectives 28, no. 2 (2014): 3-28\n(recommended) Decision tree in R and Random forest in R. Both tutorials introduce the detailed maths behind the two models if you would like to learn more\n(optional) Available machine learning model packages in R. In class, we have learned how to use R packages to run random forest models. This link lists all other machine learning packages that can be used in R. You can learn how to use these models following their manuals."
+    "section": "Supervised Learning Basics",
+    "text": "Supervised Learning Basics\n\nWhat you will learn\n\nDefinition of supervised learning\nTypes of supervised learning\nFundamental tradeoffs in supervised learning\nOverfitting and underfitting issues and how to overcome them\n\nAfter-class reading\n\n(optional) Varian, Hal R. “Big data: New tricks for econometrics.” Journal of Economic Perspectives 28, no. 2 (2014): 3-28"
   },
   {
-    "objectID": "ClassPreparation.html#workshop-targeted-marketing-with-predictive-analytics",
-    "href": "ClassPreparation.html#workshop-targeted-marketing-with-predictive-analytics",
+    "objectID": "ClassPreparation.html#tree-based-models-and-their-application-to-targeted-marketing",
+    "href": "ClassPreparation.html#tree-based-models-and-their-application-to-targeted-marketing",
     "title": "Weekly Arrangements",
-    "section": "Workshop: Targeted Marketing with Predictive Analytics",
-    "text": "Workshop: Targeted Marketing with Predictive Analytics\n\n\n\n\n\n\nPre-class preparation\n\n\n\n\nCase Study: Improving Marketing Efficiency Using Targeted Marketing\n\nPlease carefully read the case background before class\n\n\n\n\n\nWhat you will learn\n\nThe application predictive analytics (supervised learning) in targeted marketing\nHow targeted marketing improves ROI of marketing campaigns"
+    "section": "Tree-based Models and Their Application to Targeted Marketing",
+    "text": "Tree-based Models and Their Application to Targeted Marketing\n\nWhat you will learn\n\nIntuition behind decision tree and random forest models\nHow to build random forest models in R\nThe application predictive analytics (supervised learning) in targeted marketing\n\nAfter-class reading\n\n(recommended) Decision tree in R and Random forest in R. Both tutorials introduce the detailed maths behind the two models if you would like to learn more\n(optional) Available machine learning model packages in R. In class, we have learned how to use R packages to run random forest models. This link lists all other machine learning packages that can be used in R. You can learn how to use these models following their manuals."
   },
   {
-    "objectID": "ClassPreparation.html#causal-inference",
-    "href": "ClassPreparation.html#causal-inference",
+    "objectID": "ClassPreparation.html#case-study-improve-marketing-efficiency-for-tesco-using-supervised-learning",
+    "href": "ClassPreparation.html#case-study-improve-marketing-efficiency-for-tesco-using-supervised-learning",
     "title": "Weekly Arrangements",
-    "section": "Causal Inference",
-    "text": "Causal Inference\n\nWhat you will learn\n\nConcept of causal inference\nConcept of Rubin’s potential outcome framework and various treatment effects\nConcept of fundamental problem of causal inference and basic identity of causal inference\n\nAfter-class reading\n\n(optional) Varian, Hal R. ‘Causal Inference in Economics and Marketing’. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310–15.\n(optional) Angrist, Joshua & Pischke, Jörn-Steffen. (2009). Mostly Harmless Econometrics: An Empiricist’s Companion."
+    "section": "Case Study: Improve Marketing Efficiency for Tesco Using Supervised Learning",
+    "text": "Case Study: Improve Marketing Efficiency for Tesco Using Supervised Learning\n\n\n\n\n\n\nPre-class preparation\n\n\n\n\nCase Study: Improving Marketing Efficiency Using Targeted Marketing\n\nPlease carefully read the case background before class\n\n\n\n\n\nWhat you will learn\n\nHow to apply predictive analytics (supervised learning models) to help Tesco improve its marketing efficiency"
   },
   {
-    "objectID": "ClassPreparation.html#randomized-experiments",
-    "href": "ClassPreparation.html#randomized-experiments",
+    "objectID": "ClassPreparation.html#causal-inference-and-ab-testing",
+    "href": "ClassPreparation.html#causal-inference-and-ab-testing",
     "title": "Weekly Arrangements",
-    "section": "Randomized Experiments",
-    "text": "Randomized Experiments\n\n\n\n\n\n\nPre-class preparation\n\n\n\n\nThis and next week, we will be conducting t-tests with R in class to estimate treatment effects from randomized experiments. If you’re unfamiliar with t-tests, please go through this Review of Statistics with R before the next week’s class.\n\n\n\n\nWhat you will learn\n\nWhy RCT is the gold standard of causal inference\nSteps to design and conduct an RCT\n\nAfter-class reading\n\n(optional) Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing. Cambridge University Press, 2020., by Ronny Kohavi (Airbnb, formerly Microsoft and Amazon), Diane Tang (Google), and Ya Xu (LinkedIn). This is a very practically oriented guide to experimentation, with many examples relevant to marketing and product management."
+    "section": "Causal Inference and A/B Testing",
+    "text": "Causal Inference and A/B Testing\n\n\n\n\n\n\nPre-class preparation\n\n\n\n\nThis and next week, we will be conducting t-tests with R in class to estimate treatment effects from randomized experiments. If you’re unfamiliar with t-tests, please go through this Review of Statistics with R before the next week’s class.\n\n\n\n\nWhat you will learn\n\nConcept of causal inference\nConcept of Rubin’s potential outcome framework and treatment effects\nWhy RCT is the gold standard of causal inference\nSteps to design and conduct an RCT\n\nAfter-class reading\n\n(optional) Varian, Hal R. ‘Causal Inference in Economics and Marketing’. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310–15."
   },
   {
     "objectID": "ClassPreparation.html#workshop-improve-user-engagement-on-social-media-platforms-using-ab-testings",
@@ -3180,44 +3124,121 @@
   {
     "objectID": "Week4-Lecture2.html",
     "href": "Week4-Lecture2.html",
-    "title": "Class 8: Workshop: Improving Marketing Efficiency Using Predictive Analytics",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
     "section": "",
-    "text": "Tesco is looking to promote its new private-label products to existing customers. The marketing analytics team decides to use the conventional mailing marketing strategy so that customer would receive color-printed leaflets via Royal Mails to their doorsteps.\n\n\n\n\nEach mail costs £1.5 to produce and another £0.5 to mail to the customers. If customer responds to the offer, the management expects customers to spend £20 on trying the new products, where the COGS is 60%.\nThe cost is the marketing offer we send, cost_per_offer\n\n\n# cost of sending an offer\ncost_per_offer &lt;- 1.5 + 0.5\ncost_per_offer\n\n[1] 2\n\n\n\nThe benefit is the profit margin if a customer responds, profit_per_customer\n\n\n# profit from a responding customer\nCOGS &lt;- 0.6\nprofit_per_customer &lt;- 20 * (1 - COGS)\nprofit_per_customer\n\n[1] 8\n\n\n\n\n\n\nIn order to break-even, we can calculate the break-even response rate from customers:\n\n\nbreak_even_response &lt;- cost_per_offer/profit_per_customer\nbreak_even_response\n\n[1] 0.25\n\n\n\nOnly if a customer responds to us with at least 25% response rate can we recover the costs of making an marketing offer.\nIf we send offers to customers whose expected response rate is lower than 25%, we make a loss by expectation.\n\n\n\n\n\nPrepare data for ML model (data wrangling)\n\na training set and a test set\n\nTrain predictive models on the training set (decision tree and random forest)\nPredict customer response rate on the test set\nTarget customers based on predicted response rate\nCompute ROI for each scenario\n\nBlanket marketing\nDecision tree\nRandom forest\n\n\nLet’s work on the remaining case study questions together!"
+    "text": "A decision tree is a flowchart-like tree structure.\nUsed in classification and regression.\nConsists of nodes representing decisions and leaves representing outcomes.\n\n\n\n\n\n\n\n\n\n\nIn Tesco’s case, we made marketing offers to customers, and the variable Response represents whether or not customers responded to our offer.\nBusiness objective: From data_full, we want to train a decision tree model to predict the outcome variable Response based on Recency and totalspending.\nData collection and cleaning:\n\n\npacman::p_load(dplyr,modelsummary)\ndata_demo &lt;- read.csv(file = \"https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1\",\n                      header = T)\n\nWarning in file(file, \"rt\"): URL\n'https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1': status was\n'Couldn't resolve host name'\n\n\nError in file(file, \"rt\"): cannot open the connection to 'https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1'\n\ndata_purchase &lt;- read.csv(file = \"https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1\" , header = T)\n\nWarning in file(file, \"rt\"): URL\n'https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1': Timeout of 60\nseconds was reached\n\n\nError in file(file, \"rt\"): cannot open the connection to 'https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1'\n\ndata_full &lt;- data_purchase %&gt;%\n  left_join(data_demo, by = c('ID' = 'ID')) %&gt;%\n  mutate(totalspending = MntWines + MntFruits + \n           MntMeatProducts + MntFishProducts + \n           MntSweetProducts + MntGoldProds)\n\nError in eval(expr, envir, enclos): object 'data_purchase' not found\n\n\n\n\n\n\nPackage rpart provides efficient implementation of decision trees in R\nPackage rpart.plot provides nice visualizations of decision trees\n\n\n# Load the necessary packages\npacman::p_load(rpart,rpart.plot)\n\n# Below example shows how to train a decision tree\ntree1 &lt;- rpart(\n  formula = Response ~ Recency + totalspending,\n  data    = data_full,\n  method  = \"class\" # classification task\n  )\n\n# visualize the tree\nrpart.plot(tree1)\n\n\n\n\n\n\n\n\n\n\nDecision tree (DT) will try to split customers into 2 groups based on each unique value of each variable, and see which split can lead to customers being most differentiated in terms of Response.\n\nAfter this step, DT finds total spending is the best variable and 1396 is the best cutoff.\nDT therefore splits customers into 2 groups.1\n\n\n\n\n\n\n\n\n\n\n\nFor customers in the left branch (totalspending &lt; 1396), DT will continue to split based on each unique value of each variable, and see which split can result in the customers to be most different in terms of Response.\n\nHowever, DT couldn’t find a cutoff that sufficiently differentiate customers, so DT stops in the left branch.\n\n\n\n\n\n\n\n\n\n\n\nFor customers in the right branch (totalspending &gt;= 1396), DT will continue to split based on each unique value of each variable, and see which split can result in the customers to be most different in terms of Response.\n\nAfter this step, DT finds Recency is the best variable and 72 is the best cutoff. DT further splits customers into 2 groups.\n\nThis process continues until DT determines that there is no need to further split customers.\n\n\n\n\n\nThey are very interpretable.\nMaking predictions is fast.\nIt’s easy to understand what variables are important in making the prediction. The internal nodes (splits) are those variables that most largely reduce the SSE (criteria for split)."
   },
   {
-    "objectID": "Week4-Lecture2.html#background",
-    "href": "Week4-Lecture2.html#background",
-    "title": "Class 8: Workshop: Improving Marketing Efficiency Using Predictive Analytics",
+    "objectID": "Week4-Lecture2.html#introduction-to-decision-tree",
+    "href": "Week4-Lecture2.html#introduction-to-decision-tree",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
     "section": "",
-    "text": "Tesco is looking to promote its new private-label products to existing customers. The marketing analytics team decides to use the conventional mailing marketing strategy so that customer would receive color-printed leaflets via Royal Mails to their doorsteps."
+    "text": "A decision tree is a flowchart-like tree structure.\nUsed in classification and regression.\nConsists of nodes representing decisions and leaves representing outcomes."
   },
   {
-    "objectID": "Week4-Lecture2.html#cost-benefit-analyses",
-    "href": "Week4-Lecture2.html#cost-benefit-analyses",
-    "title": "Class 8: Workshop: Improving Marketing Efficiency Using Predictive Analytics",
+    "objectID": "Week4-Lecture2.html#predict-customer-response-to-marketing-offers",
+    "href": "Week4-Lecture2.html#predict-customer-response-to-marketing-offers",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
     "section": "",
-    "text": "Each mail costs £1.5 to produce and another £0.5 to mail to the customers. If customer responds to the offer, the management expects customers to spend £20 on trying the new products, where the COGS is 60%.\nThe cost is the marketing offer we send, cost_per_offer\n\n\n# cost of sending an offer\ncost_per_offer &lt;- 1.5 + 0.5\ncost_per_offer\n\n[1] 2\n\n\n\nThe benefit is the profit margin if a customer responds, profit_per_customer\n\n\n# profit from a responding customer\nCOGS &lt;- 0.6\nprofit_per_customer &lt;- 20 * (1 - COGS)\nprofit_per_customer\n\n[1] 8"
+    "text": "In Tesco’s case, we made marketing offers to customers, and the variable Response represents whether or not customers responded to our offer.\nBusiness objective: From data_full, we want to train a decision tree model to predict the outcome variable Response based on Recency and totalspending.\nData collection and cleaning:\n\n\npacman::p_load(dplyr,modelsummary)\ndata_demo &lt;- read.csv(file = \"https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1\",\n                      header = T)\n\nWarning in file(file, \"rt\"): URL\n'https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1': status was\n'Couldn't resolve host name'\n\n\nError in file(file, \"rt\"): cannot open the connection to 'https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1'\n\ndata_purchase &lt;- read.csv(file = \"https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1\" , header = T)\n\nWarning in file(file, \"rt\"): URL\n'https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1': Timeout of 60\nseconds was reached\n\n\nError in file(file, \"rt\"): cannot open the connection to 'https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1'\n\ndata_full &lt;- data_purchase %&gt;%\n  left_join(data_demo, by = c('ID' = 'ID')) %&gt;%\n  mutate(totalspending = MntWines + MntFruits + \n           MntMeatProducts + MntFishProducts + \n           MntSweetProducts + MntGoldProds)\n\nError in eval(expr, envir, enclos): object 'data_purchase' not found"
   },
   {
-    "objectID": "Week4-Lecture2.html#break-even-response-rate",
-    "href": "Week4-Lecture2.html#break-even-response-rate",
-    "title": "Class 8: Workshop: Improving Marketing Efficiency Using Predictive Analytics",
+    "objectID": "Week4-Lecture2.html#implementation-of-decision-tree-in-r",
+    "href": "Week4-Lecture2.html#implementation-of-decision-tree-in-r",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
     "section": "",
-    "text": "In order to break-even, we can calculate the break-even response rate from customers:\n\n\nbreak_even_response &lt;- cost_per_offer/profit_per_customer\nbreak_even_response\n\n[1] 0.25\n\n\n\nOnly if a customer responds to us with at least 25% response rate can we recover the costs of making an marketing offer.\nIf we send offers to customers whose expected response rate is lower than 25%, we make a loss by expectation."
+    "text": "Package rpart provides efficient implementation of decision trees in R\nPackage rpart.plot provides nice visualizations of decision trees\n\n\n# Load the necessary packages\npacman::p_load(rpart,rpart.plot)\n\n# Below example shows how to train a decision tree\ntree1 &lt;- rpart(\n  formula = Response ~ Recency + totalspending,\n  data    = data_full,\n  method  = \"class\" # classification task\n  )\n\n# visualize the tree\nrpart.plot(tree1)"
   },
   {
-    "objectID": "Week4-Lecture2.html#improving-marketing-efficiency-using-predictive-analytics",
-    "href": "Week4-Lecture2.html#improving-marketing-efficiency-using-predictive-analytics",
-    "title": "Class 8: Workshop: Improving Marketing Efficiency Using Predictive Analytics",
+    "objectID": "Week4-Lecture2.html#how-decision-tree-works-step-1",
+    "href": "Week4-Lecture2.html#how-decision-tree-works-step-1",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
     "section": "",
-    "text": "Prepare data for ML model (data wrangling)\n\na training set and a test set\n\nTrain predictive models on the training set (decision tree and random forest)\nPredict customer response rate on the test set\nTarget customers based on predicted response rate\nCompute ROI for each scenario\n\nBlanket marketing\nDecision tree\nRandom forest\n\n\nLet’s work on the remaining case study questions together!"
+    "text": "Decision tree (DT) will try to split customers into 2 groups based on each unique value of each variable, and see which split can lead to customers being most differentiated in terms of Response.\n\nAfter this step, DT finds total spending is the best variable and 1396 is the best cutoff.\nDT therefore splits customers into 2 groups.1"
   },
   {
-    "objectID": "Week4-Lecture2.html#predictive-analytics-and-customer-life-cycle",
-    "href": "Week4-Lecture2.html#predictive-analytics-and-customer-life-cycle",
-    "title": "Class 8: Workshop: Improving Marketing Efficiency Using Predictive Analytics",
-    "section": "2.1 Predictive Analytics and Customer Life Cycle",
-    "text": "2.1 Predictive Analytics and Customer Life Cycle\n\nAcquisition (Tesco Case Study)\n\nUse predictive analytics to target responsive customers to reduce marketing costs\n\nDevelopment\n\nUse predictive analytics to recommend products to customers (personalized recommendation system)\n\nRetention (Week 5 Case Study)\n\nUse predictive analytics to find risky customers and conduct churn management"
+    "objectID": "Week4-Lecture2.html#how-decision-tree-works-step-2",
+    "href": "Week4-Lecture2.html#how-decision-tree-works-step-2",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "section": "",
+    "text": "For customers in the left branch (totalspending &lt; 1396), DT will continue to split based on each unique value of each variable, and see which split can result in the customers to be most different in terms of Response.\n\nHowever, DT couldn’t find a cutoff that sufficiently differentiate customers, so DT stops in the left branch."
+  },
+  {
+    "objectID": "Week4-Lecture2.html#how-decision-tree-works-step-3",
+    "href": "Week4-Lecture2.html#how-decision-tree-works-step-3",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "section": "",
+    "text": "For customers in the right branch (totalspending &gt;= 1396), DT will continue to split based on each unique value of each variable, and see which split can result in the customers to be most different in terms of Response.\n\nAfter this step, DT finds Recency is the best variable and 72 is the best cutoff. DT further splits customers into 2 groups.\n\nThis process continues until DT determines that there is no need to further split customers."
+  },
+  {
+    "objectID": "Week4-Lecture2.html#advantages-of-decision-trees",
+    "href": "Week4-Lecture2.html#advantages-of-decision-trees",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "section": "",
+    "text": "They are very interpretable.\nMaking predictions is fast.\nIt’s easy to understand what variables are important in making the prediction. The internal nodes (splits) are those variables that most largely reduce the SSE (criteria for split)."
+  },
+  {
+    "objectID": "Week4-Lecture2.html#disadvantages-of-decision-trees",
+    "href": "Week4-Lecture2.html#disadvantages-of-decision-trees",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "section": "2.1 Disadvantages of Decision Trees",
+    "text": "2.1 Disadvantages of Decision Trees\n\nSingle regression trees have high variance (overfitting), resulting in unstable predictions.\nDue to the high variance, single regression trees tend to have poor predictive accuracy."
+  },
+  {
+    "objectID": "Week4-Lecture2.html#random-forest-1",
+    "href": "Week4-Lecture2.html#random-forest-1",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "section": "2.2 Random Forest",
+    "text": "2.2 Random Forest\n\nTo overcome the overfitting tendency of a single decision tree, random forest has been developed by (Breiman 2001).\n\nInstead of using all customers, each tree is grown to a random subsample of customers\nInstead of using all features for splitting, each treen is grown to a random subset of features"
+  },
+  {
+    "objectID": "Week4-Lecture2.html#visualization-of-random-forest",
+    "href": "Week4-Lecture2.html#visualization-of-random-forest",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "section": "2.3 Visualization of Random Forest",
+    "text": "2.3 Visualization of Random Forest\n\n\n\n\n\nFor a new customer,\n\nEach tree gives a prediction of the outcome\nRandom forest takes the average of all trees’ predictions as the final prediction"
+  },
+  {
+    "objectID": "Week4-Lecture2.html#implementation-of-random-forest-in-r",
+    "href": "Week4-Lecture2.html#implementation-of-random-forest-in-r",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "section": "2.4 Implementation of Random Forest in R",
+    "text": "2.4 Implementation of Random Forest in R\n\nPackage ranger provides implementation of random forest in R.\nranger() is the function in the package to train a random forest; refer to its help function for more details.\nThe following code shows how to train a random forest consisting of 500 decision trees, where the outcome variable is mpg, and the predictors are 5 car attribute variables.\n\n\npacman::p_load(ranger)\nrandomforest1 &lt;- ranger(\n    formula   = Response ~ totalspending + Recency, \n    data      = data_full, # dataset to train the model\n    num.trees = 500, # 500 decision trees\n    seed = 888, # make sure of replication\n    probability  = TRUE\n  )\n\nError in eval(expr, envir, enclos): object 'data_full' not found"
+  },
+  {
+    "objectID": "Week4-Lecture2.html#make-predictions-from-random-forest",
+    "href": "Week4-Lecture2.html#make-predictions-from-random-forest",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "section": "2.5 Make Predictions from Random Forest",
+    "text": "2.5 Make Predictions from Random Forest\n\nAfter we train the predictive model, we can use predict() function to make predictions\n\nThe 1st argument is the trained model object\nThe 2nd argument is the dataset to make predictions on\n\n\n\n# Make predictions on the mtcars\nprediction_rf &lt;- predict(randomforest1,\n                         data = data_full)\n\n# Because prediction_rf is a list object\n# Need to use $ to extract the predicted value as a numeric vector\nprediction_rf$predictions"
+  },
+  {
+    "objectID": "Week4-Lecture2.html#customer-life-cycle",
+    "href": "Week4-Lecture2.html#customer-life-cycle",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "section": "3.1 Customer Life Cycle",
+    "text": "3.1 Customer Life Cycle\n\nAcquisition (Tesco Case Study)\n\nUse predictive analytics to target responsive customers to reduce marketing costs\n\nDevelopment\n\nUse predictive analytics to recommend products to customers (personalized recommendation system); for each customer, promote the item with the highest purchase probability\n\nRetention\n\nUse predictive analytics to find valuable customers who are likely to churn and conduct targeted churn management"
+  },
+  {
+    "objectID": "Week4-Lecture2.html#workflow",
+    "href": "Week4-Lecture2.html#workflow",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "section": "3.2 Workflow",
+    "text": "3.2 Workflow\n\n\n\n\n\n\nDefine a business objective: target responsive customers in acquisition stage to reduce customer acquisition costs\nCollect data\nClean and prepare data\nAnalyze data using predictive analytics\nConduct break-even analyses to show the profitability of the proposed marketing compaign"
+  },
+  {
+    "objectID": "Week4-Lecture2.html#after-class-reading",
+    "href": "Week4-Lecture2.html#after-class-reading",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "section": "3.3 After-Class Reading",
+    "text": "3.3 After-Class Reading\n\n(optional) Varian, Hal R. “Big data: New tricks for econometrics.” Journal of Economic Perspectives 28, no. 2 (2014): 3-28\n(next week) Predictive Analytics for Tesco\n(recommended) Decision tree in R\n(recommended) Random forest in R\nReferences"
+  },
+  {
+    "objectID": "Week4-Lecture2.html#footnotes",
+    "href": "Week4-Lecture2.html#footnotes",
+    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nIn each node, the 3 numbers are (1) predicted outcome (2) predicted probability of outcome being 1, and (3) percentage of customers in the node↩︎"
   },
   {
     "objectID": "Module-introduction.html",
