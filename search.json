@@ -3124,119 +3124,119 @@
   {
     "objectID": "Week4-Lecture2.html",
     "href": "Week4-Lecture2.html",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "",
-    "text": "A decision tree is a flowchart-like tree structure.\nUsed in classification and regression.\nConsists of nodes representing decisions and leaves representing outcomes.\n\n\n\n\n\n\n\n\n\n\nIn Tesco’s case, we made marketing offers to customers, and the variable Response represents whether or not customers responded to our offer.\nBusiness objective: From data_full, we want to train a decision tree model to predict the outcome variable Response based on Recency and totalspending.\nData collection and cleaning:\n\n\npacman::p_load(dplyr,modelsummary)\ndata_demo &lt;- read.csv(file = \"https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1\",\n                      header = T)\n\nWarning in file(file, \"rt\"): URL\n'https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1': status was\n'Couldn't resolve host name'\n\n\nError in file(file, \"rt\"): cannot open the connection to 'https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1'\n\ndata_purchase &lt;- read.csv(file = \"https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1\" , header = T)\n\nWarning in file(file, \"rt\"): URL\n'https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1': Timeout of 60\nseconds was reached\n\n\nError in file(file, \"rt\"): cannot open the connection to 'https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1'\n\ndata_full &lt;- data_purchase %&gt;%\n  left_join(data_demo, by = c('ID' = 'ID')) %&gt;%\n  mutate(totalspending = MntWines + MntFruits + \n           MntMeatProducts + MntFishProducts + \n           MntSweetProducts + MntGoldProds)\n\nError in eval(expr, envir, enclos): object 'data_purchase' not found\n\n\n\n\n\n\nPackage rpart provides efficient implementation of decision trees in R\nPackage rpart.plot provides nice visualizations of decision trees\n\n\n# Load the necessary packages\npacman::p_load(rpart,rpart.plot)\n\n# Below example shows how to train a decision tree\ntree1 &lt;- rpart(\n  formula = Response ~ Recency + totalspending,\n  data    = data_full,\n  method  = \"class\" # classification task\n  )\n\n# visualize the tree\nrpart.plot(tree1)\n\n\n\n\n\n\n\n\n\n\nDecision tree (DT) will try to split customers into 2 groups based on each unique value of each variable, and see which split can lead to customers being most differentiated in terms of Response.\n\nAfter this step, DT finds total spending is the best variable and 1396 is the best cutoff.\nDT therefore splits customers into 2 groups.1\n\n\n\n\n\n\n\n\n\n\n\nFor customers in the left branch (totalspending &lt; 1396), DT will continue to split based on each unique value of each variable, and see which split can result in the customers to be most different in terms of Response.\n\nHowever, DT couldn’t find a cutoff that sufficiently differentiate customers, so DT stops in the left branch.\n\n\n\n\n\n\n\n\n\n\n\nFor customers in the right branch (totalspending &gt;= 1396), DT will continue to split based on each unique value of each variable, and see which split can result in the customers to be most different in terms of Response.\n\nAfter this step, DT finds Recency is the best variable and 72 is the best cutoff. DT further splits customers into 2 groups.\n\nThis process continues until DT determines that there is no need to further split customers.\n\n\n\n\n\nThey are very interpretable.\nMaking predictions is fast.\nIt’s easy to understand what variables are important in making the prediction. The internal nodes (splits) are those variables that most largely reduce the SSE (criteria for split)."
+    "text": "A decision tree is a flowchart-like tree structure.\nUsed in classification and regression.\nConsists of nodes representing decisions and leaves representing outcomes.\n\n\n\n\nHow a decision tree looks like. Source: Medium\n\n\n\n\n\n\nTesco made marketing offers to customers in the data, and the variable Response represents whether or not customers responded to our offer.\nBusiness objective: From data_full, we want to train a decision tree model to predict the outcome variable Response based on Recency and totalspending (for simplicity).\nData collection and cleaning:\n\n\npacman::p_load(dplyr,modelsummary)\ndata_demo &lt;- read.csv(file = \"https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1\",\n                      header = T)\ndata_purchase &lt;- read.csv(file = \"https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1\" , header = T)\n\ndata_full &lt;- data_purchase %&gt;%\n  left_join(data_demo, by = c('ID' = 'ID')) %&gt;%\n  mutate(totalspending = MntWines + MntFruits + \n           MntMeatProducts + MntFishProducts + \n           MntSweetProducts + MntGoldProds)\n\n\n\n\n\nPackage rpart provides efficient implementation of decision trees in R\nPackage rpart.plot provides nice visualizations of decision trees\n\n\n# Load the necessary packages\npacman::p_load(rpart,rpart.plot)\n\n# Below example shows how to train a decision tree\ntree1 &lt;- rpart(\n  formula = Response ~ Recency + totalspending,\n  data    = data_full,\n  method  = \"class\" # classification task; or 'anova' for regression\n  )\n\n# visualize the tree\nrpart.plot(tree1)\n\n\n\n\n\n\n\n\n\n\n\n\n\nDecision tree (DT) will try to split customers into 2 groups based on each unique value of each variable, and see which split can lead to customers being most differentiated in terms of Response.\n\nAfter this step, DT finds that total spending is the best variable and 1396 is the best cutoff.\nDT therefore splits customers into 2 groups based on 1396.1\n\n\n\n\n\n\n\n\n\n\n\nFor customers in the left branch (totalspending &lt; 1396), DT will continue to split based on each unique value of each variable, and see which split can result in the customers to be most different in terms of Response.\n\nHowever, DT couldn’t find a cutoff that sufficiently differentiate customers, so DT stops in the left branch.\n\n\n\n\n\n\n\n\n\n\n\nFor customers in the right branch (totalspending &gt;= 1396), DT will continue to split based on each unique value of each variable, and see which split can result in the customers to be most different in terms of Response.\n\nAfter this step, DT finds Recency is the best variable and 72 is the best cutoff. DT further splits customers into 2 groups.\n\nThis process continues until DT determines that there is no need to further split customers.\n\n\n\n\n\nThey are very interpretable.\nMaking predictions is fast.\nIt’s easy to understand what variables are important in making the prediction. The internal nodes (splits) are those variables that most largely reduce the SSE (criteria for split)."
   },
   {
     "objectID": "Week4-Lecture2.html#introduction-to-decision-tree",
     "href": "Week4-Lecture2.html#introduction-to-decision-tree",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "",
-    "text": "A decision tree is a flowchart-like tree structure.\nUsed in classification and regression.\nConsists of nodes representing decisions and leaves representing outcomes."
+    "text": "A decision tree is a flowchart-like tree structure.\nUsed in classification and regression.\nConsists of nodes representing decisions and leaves representing outcomes.\n\n\n\n\nHow a decision tree looks like. Source: Medium"
   },
   {
-    "objectID": "Week4-Lecture2.html#predict-customer-response-to-marketing-offers",
-    "href": "Week4-Lecture2.html#predict-customer-response-to-marketing-offers",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "objectID": "Week4-Lecture2.html#example-predict-customer-response-to-marketing-offers",
+    "href": "Week4-Lecture2.html#example-predict-customer-response-to-marketing-offers",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "",
-    "text": "In Tesco’s case, we made marketing offers to customers, and the variable Response represents whether or not customers responded to our offer.\nBusiness objective: From data_full, we want to train a decision tree model to predict the outcome variable Response based on Recency and totalspending.\nData collection and cleaning:\n\n\npacman::p_load(dplyr,modelsummary)\ndata_demo &lt;- read.csv(file = \"https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1\",\n                      header = T)\n\nWarning in file(file, \"rt\"): URL\n'https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1': status was\n'Couldn't resolve host name'\n\n\nError in file(file, \"rt\"): cannot open the connection to 'https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1'\n\ndata_purchase &lt;- read.csv(file = \"https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1\" , header = T)\n\nWarning in file(file, \"rt\"): URL\n'https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1': Timeout of 60\nseconds was reached\n\n\nError in file(file, \"rt\"): cannot open the connection to 'https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1'\n\ndata_full &lt;- data_purchase %&gt;%\n  left_join(data_demo, by = c('ID' = 'ID')) %&gt;%\n  mutate(totalspending = MntWines + MntFruits + \n           MntMeatProducts + MntFishProducts + \n           MntSweetProducts + MntGoldProds)\n\nError in eval(expr, envir, enclos): object 'data_purchase' not found"
+    "text": "Tesco made marketing offers to customers in the data, and the variable Response represents whether or not customers responded to our offer.\nBusiness objective: From data_full, we want to train a decision tree model to predict the outcome variable Response based on Recency and totalspending (for simplicity).\nData collection and cleaning:\n\n\npacman::p_load(dplyr,modelsummary)\ndata_demo &lt;- read.csv(file = \"https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1\",\n                      header = T)\ndata_purchase &lt;- read.csv(file = \"https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1\" , header = T)\n\ndata_full &lt;- data_purchase %&gt;%\n  left_join(data_demo, by = c('ID' = 'ID')) %&gt;%\n  mutate(totalspending = MntWines + MntFruits + \n           MntMeatProducts + MntFishProducts + \n           MntSweetProducts + MntGoldProds)"
   },
   {
     "objectID": "Week4-Lecture2.html#implementation-of-decision-tree-in-r",
     "href": "Week4-Lecture2.html#implementation-of-decision-tree-in-r",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "",
-    "text": "Package rpart provides efficient implementation of decision trees in R\nPackage rpart.plot provides nice visualizations of decision trees\n\n\n# Load the necessary packages\npacman::p_load(rpart,rpart.plot)\n\n# Below example shows how to train a decision tree\ntree1 &lt;- rpart(\n  formula = Response ~ Recency + totalspending,\n  data    = data_full,\n  method  = \"class\" # classification task\n  )\n\n# visualize the tree\nrpart.plot(tree1)"
+    "text": "Package rpart provides efficient implementation of decision trees in R\nPackage rpart.plot provides nice visualizations of decision trees\n\n\n# Load the necessary packages\npacman::p_load(rpart,rpart.plot)\n\n# Below example shows how to train a decision tree\ntree1 &lt;- rpart(\n  formula = Response ~ Recency + totalspending,\n  data    = data_full,\n  method  = \"class\" # classification task; or 'anova' for regression\n  )\n\n# visualize the tree\nrpart.plot(tree1)"
   },
   {
     "objectID": "Week4-Lecture2.html#how-decision-tree-works-step-1",
     "href": "Week4-Lecture2.html#how-decision-tree-works-step-1",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "",
-    "text": "Decision tree (DT) will try to split customers into 2 groups based on each unique value of each variable, and see which split can lead to customers being most differentiated in terms of Response.\n\nAfter this step, DT finds total spending is the best variable and 1396 is the best cutoff.\nDT therefore splits customers into 2 groups.1"
+    "text": "Decision tree (DT) will try to split customers into 2 groups based on each unique value of each variable, and see which split can lead to customers being most differentiated in terms of Response.\n\nAfter this step, DT finds that total spending is the best variable and 1396 is the best cutoff.\nDT therefore splits customers into 2 groups based on 1396.1"
   },
   {
     "objectID": "Week4-Lecture2.html#how-decision-tree-works-step-2",
     "href": "Week4-Lecture2.html#how-decision-tree-works-step-2",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "",
     "text": "For customers in the left branch (totalspending &lt; 1396), DT will continue to split based on each unique value of each variable, and see which split can result in the customers to be most different in terms of Response.\n\nHowever, DT couldn’t find a cutoff that sufficiently differentiate customers, so DT stops in the left branch."
   },
   {
     "objectID": "Week4-Lecture2.html#how-decision-tree-works-step-3",
     "href": "Week4-Lecture2.html#how-decision-tree-works-step-3",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "",
     "text": "For customers in the right branch (totalspending &gt;= 1396), DT will continue to split based on each unique value of each variable, and see which split can result in the customers to be most different in terms of Response.\n\nAfter this step, DT finds Recency is the best variable and 72 is the best cutoff. DT further splits customers into 2 groups.\n\nThis process continues until DT determines that there is no need to further split customers."
   },
   {
     "objectID": "Week4-Lecture2.html#advantages-of-decision-trees",
     "href": "Week4-Lecture2.html#advantages-of-decision-trees",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "",
     "text": "They are very interpretable.\nMaking predictions is fast.\nIt’s easy to understand what variables are important in making the prediction. The internal nodes (splits) are those variables that most largely reduce the SSE (criteria for split)."
   },
   {
     "objectID": "Week4-Lecture2.html#disadvantages-of-decision-trees",
     "href": "Week4-Lecture2.html#disadvantages-of-decision-trees",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "2.1 Disadvantages of Decision Trees",
-    "text": "2.1 Disadvantages of Decision Trees\n\nSingle regression trees have high variance (overfitting), resulting in unstable predictions.\nDue to the high variance, single regression trees tend to have poor predictive accuracy."
+    "text": "2.1 Disadvantages of Decision Trees\n\nSingle regression trees tend to have high variance (overfitting), resulting in unstable predictions.\nDue to the high variance, single regression trees tend to have poor predictive accuracy."
   },
   {
     "objectID": "Week4-Lecture2.html#random-forest-1",
     "href": "Week4-Lecture2.html#random-forest-1",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "2.2 Random Forest",
     "text": "2.2 Random Forest\n\nTo overcome the overfitting tendency of a single decision tree, random forest has been developed by (Breiman 2001).\n\nInstead of using all customers, each tree is grown to a random subsample of customers\nInstead of using all features for splitting, each treen is grown to a random subset of features"
   },
   {
     "objectID": "Week4-Lecture2.html#visualization-of-random-forest",
     "href": "Week4-Lecture2.html#visualization-of-random-forest",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "2.3 Visualization of Random Forest",
     "text": "2.3 Visualization of Random Forest\n\n\n\n\n\nFor a new customer,\n\nEach tree gives a prediction of the outcome\nRandom forest takes the average of all trees’ predictions as the final prediction"
   },
   {
     "objectID": "Week4-Lecture2.html#implementation-of-random-forest-in-r",
     "href": "Week4-Lecture2.html#implementation-of-random-forest-in-r",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "2.4 Implementation of Random Forest in R",
-    "text": "2.4 Implementation of Random Forest in R\n\nPackage ranger provides implementation of random forest in R.\nranger() is the function in the package to train a random forest; refer to its help function for more details.\nThe following code shows how to train a random forest consisting of 500 decision trees, where the outcome variable is mpg, and the predictors are 5 car attribute variables.\n\n\npacman::p_load(ranger)\nrandomforest1 &lt;- ranger(\n    formula   = Response ~ totalspending + Recency, \n    data      = data_full, # dataset to train the model\n    num.trees = 500, # 500 decision trees\n    seed = 888, # make sure of replication\n    probability  = TRUE\n  )\n\nError in eval(expr, envir, enclos): object 'data_full' not found"
+    "text": "2.4 Implementation of Random Forest in R\n\nPackage ranger provides implementation of random forest in R.\nranger() is the function in the package to train a random forest; refer to its help function for more details.\nThe following code shows how to train a random forest consisting of 500 decision trees, where the outcome variable is mpg, and the predictors are 5 car attribute variables.\n\n\npacman::p_load(ranger)\nrandomforest1 &lt;- ranger(\n    formula   = Response ~ totalspending + Recency, \n    data      = data_full, # dataset to train the model\n    num.trees = 500, # 500 decision trees\n    seed = 888, # make sure of replication\n    probability  = TRUE\n  )"
   },
   {
     "objectID": "Week4-Lecture2.html#make-predictions-from-random-forest",
     "href": "Week4-Lecture2.html#make-predictions-from-random-forest",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "2.5 Make Predictions from Random Forest",
     "text": "2.5 Make Predictions from Random Forest\n\nAfter we train the predictive model, we can use predict() function to make predictions\n\nThe 1st argument is the trained model object\nThe 2nd argument is the dataset to make predictions on\n\n\n\n# Make predictions on the mtcars\nprediction_rf &lt;- predict(randomforest1,\n                         data = data_full)\n\n# Because prediction_rf is a list object\n# Need to use $ to extract the predicted value as a numeric vector\nprediction_rf$predictions"
   },
   {
     "objectID": "Week4-Lecture2.html#customer-life-cycle",
     "href": "Week4-Lecture2.html#customer-life-cycle",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "3.1 Customer Life Cycle",
     "text": "3.1 Customer Life Cycle\n\nAcquisition (Tesco Case Study)\n\nUse predictive analytics to target responsive customers to reduce marketing costs\n\nDevelopment\n\nUse predictive analytics to recommend products to customers (personalized recommendation system); for each customer, promote the item with the highest purchase probability\n\nRetention\n\nUse predictive analytics to find valuable customers who are likely to churn and conduct targeted churn management"
   },
   {
     "objectID": "Week4-Lecture2.html#workflow",
     "href": "Week4-Lecture2.html#workflow",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "3.2 Workflow",
     "text": "3.2 Workflow\n\n\n\n\n\n\nDefine a business objective: target responsive customers in acquisition stage to reduce customer acquisition costs\nCollect data\nClean and prepare data\nAnalyze data using predictive analytics\nConduct break-even analyses to show the profitability of the proposed marketing compaign"
   },
   {
     "objectID": "Week4-Lecture2.html#after-class-reading",
     "href": "Week4-Lecture2.html#after-class-reading",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "3.3 After-Class Reading",
-    "text": "3.3 After-Class Reading\n\n(optional) Varian, Hal R. “Big data: New tricks for econometrics.” Journal of Economic Perspectives 28, no. 2 (2014): 3-28\n(next week) Predictive Analytics for Tesco\n(recommended) Decision tree in R\n(recommended) Random forest in R\nReferences"
+    "text": "3.3 After-Class Reading\n\n(optional) Varian, Hal R. “Big data: New tricks for econometrics.” Journal of Economic Perspectives 28, no. 2 (2014): 3-28\n(next week) Predictive Analytics for Tesco\n(recommended) Decision tree in R\n(recommended) Random forest in R"
   },
   {
     "objectID": "Week4-Lecture2.html#footnotes",
     "href": "Week4-Lecture2.html#footnotes",
-    "title": "Class 8: Tree-based Models and their Application to Targeted Marketing",
+    "title": "Class 8: Tree-based Models and Their Application to Targeted Marketing",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nIn each node, the 3 numbers are (1) predicted outcome (2) predicted probability of outcome being 1, and (3) percentage of customers in the node↩︎"
   },
