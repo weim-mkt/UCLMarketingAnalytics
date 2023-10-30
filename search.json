@@ -548,163 +548,37 @@
   {
     "objectID": "Week5-Lecture1.html",
     "href": "Week5-Lecture1.html",
-    "title": "Class 9 Causal Inference",
+    "title": "Class 9 Case study: Improve Marketing Efficiency for Tesco Using Supervised Learning",
     "section": "",
-    "text": "To make business decisions, we need two pieces of information for cost-benefit analyses (e.g., NPV and CLV)\n\nCost of the business activity\n\nEasy to estimate ex ante via budgeting\nWe can use predictive analytics to conduct targeted marketing to reduce costs\n\nExpected benefit of the business activity\n\nWe’re given this information in the case studies so far\n\n(PineApple) incremental sales from influencer marketing: 2.5% additional sales\n(1st assignment) loyalty program increases retention rate\n\n\n\nIn reality, this “benefit” information is not readily available, and will be for us to estimate. We need to use causal inference tools to obtain this information scientifically.\n\n\n\n\nUnderstand key concepts of causal inference and Rubin’s potential outcome framework\nLearn the steps to conduct randomized controlled trials (RCTs)\nAble to design appropriate RCTs to solve real-life marketing problems\n\n\n\n\nCar manufacturer BMW partnered with a car dealership (“the retailer”) for an online advertising campaign. Ads are targeted to individuals who are predicted to have a higher likelihood of being in the market to buy a car. In the end, a customer either saw no ads, saw only the dealership (retailer) ads, saw only the BMW (manufacturer) ads, or saw both the dealership and BMW ads. The conversion rates for each group are shown below.\n\n\n\n\n\nQuestion: What can you conclude from this chart? Are you confident to recommend to your manager that the ads are effective in acquiring customers?\n\n\n\nA bubble tea business owner Tom bought a marketing survey dataset from a consulting agency. The survey collected customers’ purchase intention for different bubble shops in Canary Wharf. After running a correlation test between item price and purchase intention for all bubble tea shops, he finds that there is a positive correlation. That is, pricy items tend to have higher purchase intention. Tom concluded that he should increase the bubble tea price in his shop so that the sales will increase accordingly.\nQuestion: What is your favoriate bubble tea flavor?\n\n\n\nThis is a plane that just returned from the battlefield. Red dots are bullet holes.\nWhich part of A, B, and C would you reinforce to increase the pilot’s survival rate?\n\n\n\n\n\n\n\n\nTo test the effectiveness of a new COVID vaccine, the government sent invites to the general public to seek volunteers for the clinical trial. The voluntarily recruited subjects then received the vaccination.\nAfter 3 months, the government ran a t-test on the infection rate between general public who didn’t receive the vaccine versus volunteers who received the vaccine, and found that the infection rate was statistically indifferent.\nThe scientists concluded that the new vaccine is ineffective and should not be adopted.\nWhat is your take?\n\n\n\n\n\n\n\n\n\n\n\n[…] the other half jointly to Joshua D. Angrist and Guido W. Imbens “for their methodological contributions to the analysis of causal relationships.”\n\n\n\n\nCausal inference is the process of determining the unbiased, actual, causal effect of a particular intervention on the outcome.\nCorrelation != Causation !!!\n\nOn rainy days, we observe more umbrellas on the street\n\ncorrect correlational statement: number of umbrellas is positively correlated with rainfall\ncorrect causal statement: more rainfall causes more umbrellas\nincorrect causal statement: more umbrellas cause more rainfall\n\nCausality becomes less straightforward in the business world, and managers can easily make mistakes if not understanding how to infer causal relations. It’s extremely important for you to train a “causal mindset”\n\n\n\n\n\n\n\n\n\nEssentially, we need to show\n\nIf we run the initiative, the desired outcome occurs\n\nThis proves: The desired outcome occurs when we run the initiative\n\nIf we do not run the initiative, the desired outcome does not occur\n\nThis proves: The outcome was not caused by other factors\nThis step is to rule out alternative explanations\n\n\n\n\n\n\n\n\n\n\n\nIf we show the ads to the targeted customers, will the sales be higher compared with customers who didn’t see the ads?\nIf we do not show the ads to the targeted customers, will the sales be higher compared with customers who didn’t see the ads?\n\nTherefore, the BMW ads campaign can NOT reveal the causal effect of the ads."
+    "text": "Tesco is looking to promote its new private-label products to existing customers. The marketing analytics team decides to use the conventional mailing marketing strategy so that customer would receive color-printed leaflets via Royal Mails to their doorsteps.\n\n\n\n\nCost: Each mail costs £1.5 to produce and another £0.5 to mail to the customers.\nThe cost is the marketing offer we send, cost_per_offer\n\n\n# cost of sending an offer\ncost_per_offer &lt;- 1.5 + 0.5\ncost_per_offer\n\n[1] 2\n\n\n\nBenefit: If customer responds to the offer, the management expects customers to spend £20 on trying the new products, where the COGS is 60%.\nThe benefit is the profit margin if a customer responds, profit_per_customer\n\n\n# profit from a responding customer\nCOGS &lt;- 0.6\nprofit_per_customer &lt;- 20 * (1 - COGS)\nprofit_per_customer\n\n[1] 8\n\n\n\n\n\n\nIn order to break-even, we can calculate the break-even response rate from customers, which is the minimum response rate we need of a customer in order not to lose money from sending the marketing offer1\n\n\nbreak_even_response &lt;- cost_per_offer/profit_per_customer\nbreak_even_response\n\n[1] 0.25\n\n\n\nOnly if a customer responds to us with at least 25% response rate can we recover the costs of making an marketing offer.\nIf we send offers to customers whose expected response rate is lower than 25%, we make a loss by expectation."
   },
   {
-    "objectID": "Week5-Lecture1.html#our-journey-so-far",
-    "href": "Week5-Lecture1.html#our-journey-so-far",
-    "title": "Class 9 Causal Inference",
+    "objectID": "Week5-Lecture1.html#background",
+    "href": "Week5-Lecture1.html#background",
+    "title": "Class 9 Case study: Improve Marketing Efficiency for Tesco Using Supervised Learning",
     "section": "",
-    "text": "To make business decisions, we need two pieces of information for cost-benefit analyses (e.g., NPV and CLV)\n\nCost of the business activity\n\nEasy to estimate ex ante via budgeting\nWe can use predictive analytics to conduct targeted marketing to reduce costs\n\nExpected benefit of the business activity\n\nWe’re given this information in the case studies so far\n\n(PineApple) incremental sales from influencer marketing: 2.5% additional sales\n(1st assignment) loyalty program increases retention rate\n\n\n\nIn reality, this “benefit” information is not readily available, and will be for us to estimate. We need to use causal inference tools to obtain this information scientifically."
+    "text": "Tesco is looking to promote its new private-label products to existing customers. The marketing analytics team decides to use the conventional mailing marketing strategy so that customer would receive color-printed leaflets via Royal Mails to their doorsteps."
   },
   {
-    "objectID": "Week5-Lecture1.html#learning-objectives",
-    "href": "Week5-Lecture1.html#learning-objectives",
-    "title": "Class 9 Causal Inference",
+    "objectID": "Week5-Lecture1.html#cost-benefit-analyses",
+    "href": "Week5-Lecture1.html#cost-benefit-analyses",
+    "title": "Class 9 Case study: Improve Marketing Efficiency for Tesco Using Supervised Learning",
     "section": "",
-    "text": "Understand key concepts of causal inference and Rubin’s potential outcome framework\nLearn the steps to conduct randomized controlled trials (RCTs)\nAble to design appropriate RCTs to solve real-life marketing problems"
+    "text": "Cost: Each mail costs £1.5 to produce and another £0.5 to mail to the customers.\nThe cost is the marketing offer we send, cost_per_offer\n\n\n# cost of sending an offer\ncost_per_offer &lt;- 1.5 + 0.5\ncost_per_offer\n\n[1] 2\n\n\n\nBenefit: If customer responds to the offer, the management expects customers to spend £20 on trying the new products, where the COGS is 60%.\nThe benefit is the profit margin if a customer responds, profit_per_customer\n\n\n# profit from a responding customer\nCOGS &lt;- 0.6\nprofit_per_customer &lt;- 20 * (1 - COGS)\nprofit_per_customer\n\n[1] 8"
   },
   {
-    "objectID": "Week5-Lecture1.html#why-causal-inference-matters-example-1",
-    "href": "Week5-Lecture1.html#why-causal-inference-matters-example-1",
-    "title": "Class 9 Causal Inference",
+    "objectID": "Week5-Lecture1.html#break-even-analysis-break-even-response-rate",
+    "href": "Week5-Lecture1.html#break-even-analysis-break-even-response-rate",
+    "title": "Class 9 Case study: Improve Marketing Efficiency for Tesco Using Supervised Learning",
     "section": "",
-    "text": "Car manufacturer BMW partnered with a car dealership (“the retailer”) for an online advertising campaign. Ads are targeted to individuals who are predicted to have a higher likelihood of being in the market to buy a car. In the end, a customer either saw no ads, saw only the dealership (retailer) ads, saw only the BMW (manufacturer) ads, or saw both the dealership and BMW ads. The conversion rates for each group are shown below.\n\n\n\n\n\nQuestion: What can you conclude from this chart? Are you confident to recommend to your manager that the ads are effective in acquiring customers?"
+    "text": "In order to break-even, we can calculate the break-even response rate from customers, which is the minimum response rate we need of a customer in order not to lose money from sending the marketing offer1\n\n\nbreak_even_response &lt;- cost_per_offer/profit_per_customer\nbreak_even_response\n\n[1] 0.25\n\n\n\nOnly if a customer responds to us with at least 25% response rate can we recover the costs of making an marketing offer.\nIf we send offers to customers whose expected response rate is lower than 25%, we make a loss by expectation."
   },
   {
-    "objectID": "Week5-Lecture1.html#why-causal-inference-matters-example-2",
-    "href": "Week5-Lecture1.html#why-causal-inference-matters-example-2",
-    "title": "Class 9 Causal Inference",
-    "section": "",
-    "text": "A bubble tea business owner Tom bought a marketing survey dataset from a consulting agency. The survey collected customers’ purchase intention for different bubble shops in Canary Wharf. After running a correlation test between item price and purchase intention for all bubble tea shops, he finds that there is a positive correlation. That is, pricy items tend to have higher purchase intention. Tom concluded that he should increase the bubble tea price in his shop so that the sales will increase accordingly.\nQuestion: What is your favoriate bubble tea flavor?"
-  },
-  {
-    "objectID": "Week5-Lecture1.html#why-causal-inference-matters-example-3",
-    "href": "Week5-Lecture1.html#why-causal-inference-matters-example-3",
-    "title": "Class 9 Causal Inference",
-    "section": "",
-    "text": "This is a plane that just returned from the battlefield. Red dots are bullet holes.\nWhich part of A, B, and C would you reinforce to increase the pilot’s survival rate?"
-  },
-  {
-    "objectID": "Week5-Lecture1.html#why-causal-inference-matters-example-4",
-    "href": "Week5-Lecture1.html#why-causal-inference-matters-example-4",
-    "title": "Class 9 Causal Inference",
-    "section": "",
-    "text": "To test the effectiveness of a new COVID vaccine, the government sent invites to the general public to seek volunteers for the clinical trial. The voluntarily recruited subjects then received the vaccination.\nAfter 3 months, the government ran a t-test on the infection rate between general public who didn’t receive the vaccine versus volunteers who received the vaccine, and found that the infection rate was statistically indifferent.\nThe scientists concluded that the new vaccine is ineffective and should not be adopted.\nWhat is your take?"
-  },
-  {
-    "objectID": "Week5-Lecture1.html#nobel-prize-in-economics-of-year-2021",
-    "href": "Week5-Lecture1.html#nobel-prize-in-economics-of-year-2021",
-    "title": "Class 9 Causal Inference",
-    "section": "",
-    "text": "[…] the other half jointly to Joshua D. Angrist and Guido W. Imbens “for their methodological contributions to the analysis of causal relationships.”"
-  },
-  {
-    "objectID": "Week5-Lecture1.html#causal-inference-1",
-    "href": "Week5-Lecture1.html#causal-inference-1",
-    "title": "Class 9 Causal Inference",
-    "section": "",
-    "text": "Causal inference is the process of determining the unbiased, actual, causal effect of a particular intervention on the outcome.\nCorrelation != Causation !!!\n\nOn rainy days, we observe more umbrellas on the street\n\ncorrect correlational statement: number of umbrellas is positively correlated with rainfall\ncorrect causal statement: more rainfall causes more umbrellas\nincorrect causal statement: more umbrellas cause more rainfall\n\nCausality becomes less straightforward in the business world, and managers can easily make mistakes if not understanding how to infer causal relations. It’s extremely important for you to train a “causal mindset”"
-  },
-  {
-    "objectID": "Week5-Lecture1.html#rule-of-thumb-for-checking-causal-inference-for-business-managers",
-    "href": "Week5-Lecture1.html#rule-of-thumb-for-checking-causal-inference-for-business-managers",
-    "title": "Class 9 Causal Inference",
-    "section": "",
-    "text": "Essentially, we need to show\n\nIf we run the initiative, the desired outcome occurs\n\nThis proves: The desired outcome occurs when we run the initiative\n\nIf we do not run the initiative, the desired outcome does not occur\n\nThis proves: The outcome was not caused by other factors\nThis step is to rule out alternative explanations"
-  },
-  {
-    "objectID": "Week5-Lecture1.html#revisit-of-bmw-example",
-    "href": "Week5-Lecture1.html#revisit-of-bmw-example",
-    "title": "Class 9 Causal Inference",
-    "section": "",
-    "text": "If we show the ads to the targeted customers, will the sales be higher compared with customers who didn’t see the ads?\nIf we do not show the ads to the targeted customers, will the sales be higher compared with customers who didn’t see the ads?\n\nTherefore, the BMW ads campaign can NOT reveal the causal effect of the ads."
-  },
-  {
-    "objectID": "Week5-Lecture1.html#rubin-causal-model-1",
-    "href": "Week5-Lecture1.html#rubin-causal-model-1",
-    "title": "Class 9 Causal Inference",
-    "section": "2.1 Rubin Causal Model",
-    "text": "2.1 Rubin Causal Model\n\nThe Rubin causal model (RCM), also known as the Neyman–Rubin causal model, is an approach to the statistical analysis of cause and effect based on the framework of potential outcomes."
-  },
-  {
-    "objectID": "Week5-Lecture1.html#treatment-allocation-rule",
-    "href": "Week5-Lecture1.html#treatment-allocation-rule",
-    "title": "Class 9 Causal Inference",
-    "section": "2.2 Treatment Allocation Rule",
-    "text": "2.2 Treatment Allocation Rule\n\nIn RCM, treatment assignment is often denoted by the variable \\(D_i\\)\nWe will focus on A-B testing this week, where there are 2 groups, a treatment group and a control group\n\n\\(D_i = 1\\) if customer \\(i\\) receives the treatment and thus is in the treatment group\n\\(D_i = 0\\) if customer \\(i\\) does not receive the treatment and thus is in the control condition\n\nTreatment allocation rule determines how treatment is assigned to individuals\n\nLet customer make their own choices into treatment/control\nLet customers be randomized into treatment/control"
-  },
-  {
-    "objectID": "Week5-Lecture1.html#potential-outcome-and-individual-level-treatment-effect",
-    "href": "Week5-Lecture1.html#potential-outcome-and-individual-level-treatment-effect",
-    "title": "Class 9 Causal Inference",
-    "section": "2.3 Potential Outcome and Individual-Level Treatment Effect",
-    "text": "2.3 Potential Outcome and Individual-Level Treatment Effect\n\nFor each unit \\(i\\), we define two potential outcomes:\n\n\\(Y^1_i\\): the outcome that unit \\(i\\) is going to have if it receives the treatment\n\\(Y^0_i\\): the outcome that unit \\(i\\) is going to have if it does not receive the treatment\n\nThe causal effect of our training program is the difference between \\(Y^1_i\\) and \\(Y^0_i\\). Define the individual treatment effect as\n\n\\[\n    \\delta_i = Y^1_i - Y^0_i\n\\]\n\nThe treatment effect is at the individual level, so it can vary across the population."
-  },
-  {
-    "objectID": "Week5-Lecture1.html#an-illustration-of-individual-treatment-effect",
-    "href": "Week5-Lecture1.html#an-illustration-of-individual-treatment-effect",
-    "title": "Class 9 Causal Inference",
-    "section": "2.4 An Illustration of Individual Treatment Effect",
-    "text": "2.4 An Illustration of Individual Treatment Effect\nTom would like to measure the causal effect of introducing a loyalty program (LP) on customer retention.\nLet’s say we have retrieved all infinity stones from Thanos, and have created 2 parallel universes, where everything else is equal, except that only in universe 1 Tom has adopted the LP.\nFor a random customer Dr Strange,\n\nIn universe 1, Tom adopts the LP, and Dr Strange has a retention rate of 70%\nIn universe 2, Tom does not adopt the LP, and Dr Strange has a retention rate of 60%.\n\n\n\n\n\n\nSubject\n$Y^1$\n$Y^0$\n$Y^1 - Y^0$\n\n\n\n\nDr Strange\n0.7\n0.6\n0.1\n\n\n\n\n\n\n\n\nConclusion: The treatment effect of LP on Dr Strange is +10%."
-  },
-  {
-    "objectID": "Week5-Lecture1.html#a-motivating-example-a-group-of-customers",
-    "href": "Week5-Lecture1.html#a-motivating-example-a-group-of-customers",
-    "title": "Class 9 Causal Inference",
-    "section": "2.5 A Motivating Example: A Group of Customers",
-    "text": "2.5 A Motivating Example: A Group of Customers\n\nWe can collect a sample of customers, and estimate individual treatment effect for each of them\n\n\n\n\n\n\nSubject\n$Y^1$\n$Y^0$\n$Y^1 - Y^0$\n\n\n\n\nDr Strange\n0.70\n0.60\n0.10\n\n\nIron Man\n0.55\n0.50\n0.05\n\n\nThor\n0.80\n0.72\n0.08\n\n\nHulk\n0.60\n0.62\n-0.02"
-  },
-  {
-    "objectID": "Week5-Lecture1.html#fundamental-problem-of-causal-inference",
-    "href": "Week5-Lecture1.html#fundamental-problem-of-causal-inference",
-    "title": "Class 9 Causal Inference",
-    "section": "2.6 Fundamental Problem of Causal Inference",
-    "text": "2.6 Fundamental Problem of Causal Inference\nIn reality, to measure the treatment effect of LP on a customer’s retention rate\n\nWe need to compare the outcome for the same individual customer in alternative universes, with and without the treatment.\nHowever, in reality, we only observe one of these two outcomes, the realized outcome. The missing outcome is often called counterfactual outcome.\n\n\n\n\n\n\nSubject\n$Y_1$\n$Y_0$\n$Y_1 - Y_0$\n\n\n\n\nDr Strange\n0.7\n?\n?\n\n\nIron Man\n?\n0.5\n?\n\n\nThor\n?\n0.72\n?\n\n\nHulk\n0.6\n?\n?\n\n\n\n\n\n\n\n\nSince it is impossible to see both potential outcomes at once, one of the potential outcomes is always missing. This dilemma is called the Fundamental Problem of Causal Inference."
-  },
-  {
-    "objectID": "Week5-Lecture1.html#average-treatment-effect-ate",
-    "href": "Week5-Lecture1.html#average-treatment-effect-ate",
-    "title": "Class 9 Causal Inference",
-    "section": "2.7 Average Treatment Effect (ATE)",
-    "text": "2.7 Average Treatment Effect (ATE)\n\nIndividual treatment is never observed, and individual treatment effects are likely to vary with individual customers. Therefore, estimating individual treatment effects is infeasible and not policy interesting.\nAs data scientists/policymakers, we often care more about the treatment effects on the population, which is often referred to as the average treatment effects (ATE).\n\n\\[\nATE = E[\\delta_i] = E[Y^1_i - Y^0_i]\n\\]"
-  },
-  {
-    "objectID": "Week5-Lecture1.html#att-and-atu",
-    "href": "Week5-Lecture1.html#att-and-atu",
-    "title": "Class 9 Causal Inference",
-    "section": "2.8 ATT and ATU",
-    "text": "2.8 ATT and ATU\n\nSometimes, we may also care about the treatment effects on the treated (ATT).\n\ne.g., NHS only gives booster jabs to vulnerable groups\n\n\n\\[\nATT = E[\\delta_i|D_i = 1] = E[Y^1_i - Y^0_i|D_i = 1]\n\\]\n\nSimilarly, we can also define the Treatment Effect on the Untreated (ATU), but ATU is often of less interest to policymakers.\n\n\\[\nATU = E[\\delta_i|D_i = 0] = E[Y^1_i - Y^0_i|D_i = 0]\n\\]\n\nIf treatment is randomly assigned among the whole population, then we have the following equality:\n\n\\[\nATE = ATT = ATU\n\\]"
-  },
-  {
-    "objectID": "Week5-Lecture1.html#basic-identity-of-causal-inference",
-    "href": "Week5-Lecture1.html#basic-identity-of-causal-inference",
-    "title": "Class 9 Causal Inference",
-    "section": "2.9 Basic Identity of Causal Inference",
-    "text": "2.9 Basic Identity of Causal Inference\n\nLet’s say, in a dataset, based on some treatment assignment scheme, some individuals receive the treatment while others do not.\nWe can compare the average outcome of the treated with the average outcome of the untreated. But can this simple difference give us the average treatment effect?\n\n\n\n\n\n\n\nBasic Identity of Causal Inference\n\n\n\nAverage outcome for treated - Average outcome for untreated\n= [Average outcome for treated - Average counterfactual outcome for treated] + [Average counterfactual outcome for treated - Avereage outcome for untreated]\n= ATT + Selection Bias"
-  },
-  {
-    "objectID": "Week5-Lecture1.html#basic-identity-of-causal-inference-bmw-case",
-    "href": "Week5-Lecture1.html#basic-identity-of-causal-inference-bmw-case",
-    "title": "Class 9 Causal Inference",
-    "section": "2.10 Basic Identity of Causal Inference: BMW Case",
-    "text": "2.10 Basic Identity of Causal Inference: BMW Case\n\nIf BMW only shows ads to customers who have shown a strong interest in buying from BMW through targeted marketing\n\n\n\n\n\n\n\nATT != ATE, because those who saw the ads are different from those who didn’t.\nSelection bias is not equal to 0, because those who saw the ads alreayd have a higher purchase intention than those who didn’t."
-  },
-  {
-    "objectID": "Week5-Lecture1.html#basic-identity-of-causal-inference-random-assignment",
-    "href": "Week5-Lecture1.html#basic-identity-of-causal-inference-random-assignment",
-    "title": "Class 9 Causal Inference",
-    "section": "2.11 Basic Identity of Causal Inference: Random Assignment",
-    "text": "2.11 Basic Identity of Causal Inference: Random Assignment\n\nIf BMW randomly decides which customers see the ads rather than through targeted marketing\n\n\n\n\n\n\n\nIf the treatment (i.e., seeing the ads) is randomly assigned among customers, the above figure gives causal effects, because\n\nThe first term is an estimate of the ATT; but because customers are randomly selected, the treatment group and control group should be similar; therefore, we have ATT = ATU = ATE.\nThe second term selection bias has an expected value of zero, because customers are randomly selected."
-  },
-  {
-    "objectID": "Week5-Lecture1.html#concluding-remarks",
-    "href": "Week5-Lecture1.html#concluding-remarks",
-    "title": "Class 9 Causal Inference",
-    "section": "2.12 Concluding Remarks",
-    "text": "2.12 Concluding Remarks\n\nRandomized Treatment not only makes sure ATE = ATT = ATU, but also fully removes selection bias.\nThis is why randomized experiments are considered the gold standard of causal inference."
+    "objectID": "Week5-Lecture1.html#footnotes",
+    "href": "Week5-Lecture1.html#footnotes",
+    "title": "Class 9 Case study: Improve Marketing Efficiency for Tesco Using Supervised Learning",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe idea break-even is similar to the break-even quantity we learned in Week 1, the minimum incremental quantity we need to sell in order not to lose any money↩︎"
   },
   {
     "objectID": "Case-Zalora.html",
@@ -1768,112 +1642,182 @@
     "href": "Week6-Lecture1.html",
     "title": "Class 11 Application of RCT",
     "section": "",
-    "text": "Andrew and Hammond, 2 recently graduated MBA students, were tasked with developing an ad-serving learning algorithm for Vungle, a mobile ad-serving company.\nZain Jaffer, the firm’s CEO, planned to test the developed method in parallel with the existing Vungle algorithm.\nThe hope was that the new algorithm would increase conversion rates and, more specifically, profits (as measured by eRPM).\nTo test this, two conditions (A, Vungle’s existing algorithm, and B, the data science approach) were evaluated in parallel on randomly assigned users.\n\n\n\nThe case examines the results of an A/B test of the two algorithms during the month of June 2014. You will need to determine whether B outperformed A.\n\nHow might Jaffer conclude that B is better than A?\nIf it is, what would the financial benefits be?\nFinally, how long would Jaffer need to wait before declaring a winning algorithm?"
+    "text": "Tom is considering whether or not to introduce a loyalty program for his bubble tea business. This decision is essentially a cost-benefit analysis\n\nCost: it takes money and time to develop the loyalty program\nBenefit: it may increase spending and retention rate, and hence future CLV\n\nCost can be estimated through budgeting, but how to estimate the benefit from introducing LP?\nHow you design the experiment is more an art than a science.\n\n\n\n\nIn the first step, we decide the level of granularity random assignment should occur at.\n\nindividual/household/store/city level\n\n\n\n\nProposal 1: It decides at random to test ‘No’ in West London and ‘Yes’ in East London.\n\nDo you expect the “at random” to be true randomization?\n\n\n\n\nProposal 2: It randomizes each individual customer to either the ‘No’ condition or ‘Yes’ pricing condition.\n\nIs this true randomization?\nWhat problems can we still have?\n\n\n\n\nDisadvantages of granularity:\n\nCosts and logistics\nSpillovers and crossovers\n\nAdvantages of granularity:\n\nReduces the chance that the unobserved factors matter ex ante\nReduces the chance that there might be a systematic error/unbalance of covariates\n\nAdditional Questions:\n\nHow can we randomize individualized price discounts to customers?\n\n\n\n\n\nCrossover Effects: A crossover occurs when an individual who was supposed to be assigned to one treatment is accidentally exposed to another treatment.\n\nSolution: Make sure that the same unit receives the same treatment throughout the experiment\n\nSpillover effects: The behavior of the treatment group can affect control group as well\n\nSolution: Randomize at the level of plausibly isolated social networks such as a community, rather than individual level.\n\n\n\n\n\nProposal: How should Tom mitigate spillover and crossover effects\n\n\n\n\nIndividuals (or the relevant unit of randomization) are simply allocated at random into a treatment.\nIn R, we can use the random number generator to determine the randomization\n\nProposal: We can use complete randomization as customer purchase history data may not be available.\n\n\n\n\nAny field experiment should be aware of the potential need for a large sample size\n\nThe larger sample size, the higher statistical power for the experiment\nrun a power calculation [link for tutorial] if there is a budget\n\nCollect both data on the outcome variables of interest and consumer characteristics data\n\nProposal: We need to collect customers’ retention rate data and link the retention data with their treatment assignment.\n\n\n\nStep 5.1: Randomization check\n\nWe need to check if the treatment group and control group are indifferent and well-balanced in terms of their pre-treatment characteristics.\n\nStep 5.2: Analyze the data and estimate the ATE\n\nt-test to examine the difference in the average outcome between the treatment group and control group. In R, we can use t.test()\nRegression analysis (next week)"
   },
   {
-    "objectID": "Week6-Lecture1.html#case-background",
-    "href": "Week6-Lecture1.html#case-background",
+    "objectID": "Week6-Lecture1.html#motivating-example",
+    "href": "Week6-Lecture1.html#motivating-example",
     "title": "Class 11 Application of RCT",
     "section": "",
-    "text": "Andrew and Hammond, 2 recently graduated MBA students, were tasked with developing an ad-serving learning algorithm for Vungle, a mobile ad-serving company.\nZain Jaffer, the firm’s CEO, planned to test the developed method in parallel with the existing Vungle algorithm.\nThe hope was that the new algorithm would increase conversion rates and, more specifically, profits (as measured by eRPM).\nTo test this, two conditions (A, Vungle’s existing algorithm, and B, the data science approach) were evaluated in parallel on randomly assigned users."
-  },
-  {
-    "objectID": "Week6-Lecture1.html#case-core-question",
-    "href": "Week6-Lecture1.html#case-core-question",
-    "title": "Class 11 Application of RCT",
-    "section": "",
-    "text": "The case examines the results of an A/B test of the two algorithms during the month of June 2014. You will need to determine whether B outperformed A.\n\nHow might Jaffer conclude that B is better than A?\nIf it is, what would the financial benefits be?\nFinally, how long would Jaffer need to wait before declaring a winning algorithm?"
-  },
-  {
-    "objectID": "Week6-Lecture1.html#company",
-    "href": "Week6-Lecture1.html#company",
-    "title": "Class 11 Application of RCT",
-    "section": "2.1 Company",
-    "text": "2.1 Company\n\nBusiness model of Vungle?\n\nPlatform model\n\nWhat are the key players in this mobile video ads market (i.e., Vungle)? Find the info in the case.\n\nAs a comparison, what are the key players in website ads case?\n\n\n\n\n\n\n\n\n“Four parties participated in the in-app mobile advertisement channel. The user of the mobile device (user), the owner of the app being used (publisher), the sponsor of the video ad the user was exposed to (advertiser), and the platform that matched the choice of ad to a specific user (e.g., Vungle).”"
-  },
-  {
-    "objectID": "Week6-Lecture1.html#company-1",
-    "href": "Week6-Lecture1.html#company-1",
-    "title": "Class 11 Application of RCT",
-    "section": "2.2 Company",
-    "text": "2.2 Company\n\nHow does Vungle make money? Find the info in the case.\n\n\n\n\n\n\n\n“In most cases, payment was made by the advertiser upon installation. Publishers typically received 60% of the revenues and the ad provider the remaining 40%. See Figure 1 for the conversion funnel depicting how an install is achieved. Of all ad requests, most were served and became impressions. When at least 80% of a video ad was watched, it was considered complete. When the user clicked on the ad to get more information, it was counted as a click. The process could then result in an install.”\n\n\nHow can Vungle improve its revenue using what we’ve learned in Marketing Analytics so far?\n\n\nVungle should use predictive analytics to fill the ads that a customer is most likely to click and install. This is essentially a supervised learning problem."
-  },
-  {
-    "objectID": "Week6-Lecture1.html#customer",
-    "href": "Week6-Lecture1.html#customer",
-    "title": "Class 11 Application of RCT",
-    "section": "2.3 Customer",
-    "text": "2.3 Customer\n\nDue to the nature of business model (multi-sided market), who are Vungle’s customers? Find the info in the case.\n\n\n“In the mobile advertising domain, supply was considered to be the slots available for showing ads, and demand consisted of the advertisers willing to buy the supply by placing ads.”"
-  },
-  {
-    "objectID": "Week6-Lecture1.html#collaborators",
-    "href": "Week6-Lecture1.html#collaborators",
-    "title": "Class 11 Application of RCT",
-    "section": "2.4 Collaborators",
-    "text": "2.4 Collaborators\n\nWho are the collaborators of Vungle?"
-  },
-  {
-    "objectID": "Week6-Lecture1.html#competitors",
-    "href": "Week6-Lecture1.html#competitors",
-    "title": "Class 11 Application of RCT",
-    "section": "2.5 Competitors",
-    "text": "2.5 Competitors\n\n\n\n\n\n\nDirect competitors\nIndirect competitors\nPotential competitors"
-  },
-  {
-    "objectID": "Week6-Lecture1.html#context",
-    "href": "Week6-Lecture1.html#context",
-    "title": "Class 11 Application of RCT",
-    "section": "2.6 Context",
-    "text": "2.6 Context\n\n\n\n\n\n\nLegal: GDPR\nTechnological: penetration of mobile phones\n…"
+    "text": "Tom is considering whether or not to introduce a loyalty program for his bubble tea business. This decision is essentially a cost-benefit analysis\n\nCost: it takes money and time to develop the loyalty program\nBenefit: it may increase spending and retention rate, and hence future CLV\n\nCost can be estimated through budgeting, but how to estimate the benefit from introducing LP?\nHow you design the experiment is more an art than a science."
   },
   {
     "objectID": "Week6-Lecture1.html#step-1-decide-on-the-unit-of-randomization",
     "href": "Week6-Lecture1.html#step-1-decide-on-the-unit-of-randomization",
     "title": "Class 11 Application of RCT",
-    "section": "3.1 Step 1: Decide on the Unit of Randomization",
-    "text": "3.1 Step 1: Decide on the Unit of Randomization\n\nWhat would be the best unit of randomization?\n\n\nThe best level would be user level. User-device level would be too granular and can easily cause crossover effects.\n\n\nHow about website-based online ads, say Google ads?"
+    "section": "",
+    "text": "In the first step, we decide the level of granularity random assignment should occur at.\n\nindividual/household/store/city level"
+  },
+  {
+    "objectID": "Week6-Lecture1.html#step-1-proposal-i",
+    "href": "Week6-Lecture1.html#step-1-proposal-i",
+    "title": "Class 11 Application of RCT",
+    "section": "",
+    "text": "Proposal 1: It decides at random to test ‘No’ in West London and ‘Yes’ in East London.\n\nDo you expect the “at random” to be true randomization?"
+  },
+  {
+    "objectID": "Week6-Lecture1.html#step-1-proposal-ii",
+    "href": "Week6-Lecture1.html#step-1-proposal-ii",
+    "title": "Class 11 Application of RCT",
+    "section": "",
+    "text": "Proposal 2: It randomizes each individual customer to either the ‘No’ condition or ‘Yes’ pricing condition.\n\nIs this true randomization?\nWhat problems can we still have?"
+  },
+  {
+    "objectID": "Week6-Lecture1.html#step-1-pros-and-cons-of-granularity",
+    "href": "Week6-Lecture1.html#step-1-pros-and-cons-of-granularity",
+    "title": "Class 11 Application of RCT",
+    "section": "",
+    "text": "Disadvantages of granularity:\n\nCosts and logistics\nSpillovers and crossovers\n\nAdvantages of granularity:\n\nReduces the chance that the unobserved factors matter ex ante\nReduces the chance that there might be a systematic error/unbalance of covariates\n\nAdditional Questions:\n\nHow can we randomize individualized price discounts to customers?"
   },
   {
     "objectID": "Week6-Lecture1.html#step-2-ensure-no-spillover-and-crossover-effects",
     "href": "Week6-Lecture1.html#step-2-ensure-no-spillover-and-crossover-effects",
     "title": "Class 11 Application of RCT",
-    "section": "3.2 Step 2: Ensure No Spillover and Crossover Effects",
-    "text": "3.2 Step 2: Ensure No Spillover and Crossover Effects\n\nWhat are the potential problems for spillover and crossover?\n\n\n\nA user may use multiple devices, causing crossover effects\nA user may talk to family members/friends, causing spillover effects.\n\n\n\nHow about website-based online ads, say Google ads?"
+    "section": "",
+    "text": "Crossover Effects: A crossover occurs when an individual who was supposed to be assigned to one treatment is accidentally exposed to another treatment.\n\nSolution: Make sure that the same unit receives the same treatment throughout the experiment\n\nSpillover effects: The behavior of the treatment group can affect control group as well\n\nSolution: Randomize at the level of plausibly isolated social networks such as a community, rather than individual level."
+  },
+  {
+    "objectID": "Week6-Lecture1.html#step-2-ensure-no-spillover-and-crossover-effects-1",
+    "href": "Week6-Lecture1.html#step-2-ensure-no-spillover-and-crossover-effects-1",
+    "title": "Class 11 Application of RCT",
+    "section": "",
+    "text": "Proposal: How should Tom mitigate spillover and crossover effects"
   },
   {
     "objectID": "Week6-Lecture1.html#step-3-decide-on-randomization-allocation-scheme",
     "href": "Week6-Lecture1.html#step-3-decide-on-randomization-allocation-scheme",
     "title": "Class 11 Application of RCT",
-    "section": "3.3 Step 3: Decide on Randomization Allocation Scheme",
-    "text": "3.3 Step 3: Decide on Randomization Allocation Scheme\n\nHow did Vungle implement the randomization scheme? Is it sensible?\n\n\nChan’s team thought it would make sense to direct only 1/16th of the users to the B condition. The other randomly assigned 15/16ths of users would receive an ad based on the existing algorithm (i.e., the A condition)."
+    "section": "",
+    "text": "Individuals (or the relevant unit of randomization) are simply allocated at random into a treatment.\nIn R, we can use the random number generator to determine the randomization\n\nProposal: We can use complete randomization as customer purchase history data may not be available."
   },
   {
     "objectID": "Week6-Lecture1.html#step-4-collect-data",
     "href": "Week6-Lecture1.html#step-4-collect-data",
     "title": "Class 11 Application of RCT",
-    "section": "3.4 Step 4: Collect Data",
-    "text": "3.4 Step 4: Collect Data\n\nWhat data did Vungle collect?\n\n\nAfter two weeks, B was looking pretty good. Its daily eRPM was on average $0.131 higher than A’s. Would this translate into annual revenues worthy of the necessary data science investment? Exhibits 2 and 3 provide the daily results of the A/B test.\n\n\nCan you do better?\n\n\nUser-level data rather than day-level data would be more granular and can provide higher statistical power."
+    "section": "",
+    "text": "Any field experiment should be aware of the potential need for a large sample size\n\nThe larger sample size, the higher statistical power for the experiment\nrun a power calculation [link for tutorial] if there is a budget\n\nCollect both data on the outcome variables of interest and consumer characteristics data\n\nProposal: We need to collect customers’ retention rate data and link the retention data with their treatment assignment."
   },
   {
     "objectID": "Week6-Lecture1.html#step-5-interpreting-results-from-a-field-experiment",
     "href": "Week6-Lecture1.html#step-5-interpreting-results-from-a-field-experiment",
     "title": "Class 11 Application of RCT",
-    "section": "3.5 Step 5: Interpreting Results from a Field Experiment",
-    "text": "3.5 Step 5: Interpreting Results from a Field Experiment\n\nWhich step is missing in Vungle A-B testing?\n\n\nVungle didn’t do randomization check.\n\n\nHow to draw statistical conclusions from the Exhibits A and B?\n\n\nWe can conduct a paired t-test to statistically test the effectiveness of B."
+    "section": "",
+    "text": "Step 5.1: Randomization check\n\nWe need to check if the treatment group and control group are indifferent and well-balanced in terms of their pre-treatment characteristics.\n\nStep 5.2: Analyze the data and estimate the ATE\n\nt-test to examine the difference in the average outcome between the treatment group and control group. In R, we can use t.test()\nRegression analysis (next week)"
+  },
+  {
+    "objectID": "Week6-Lecture1.html#case-background",
+    "href": "Week6-Lecture1.html#case-background",
+    "title": "Class 11 Application of RCT",
+    "section": "2.1 Case Background",
+    "text": "2.1 Case Background\nAndrew and Hammond, 2 recently graduated MBA students, were tasked with developing an ad-serving learning algorithm for Vungle, a mobile ad-serving company.\nZain Jaffer, the firm’s CEO, planned to test the developed method in parallel with the existing Vungle algorithm.\nThe hope was that the new algorithm would increase conversion rates and, more specifically, profits (as measured by eRPM).\nTo test this, two conditions (A, Vungle’s existing algorithm, and B, the data science approach) were evaluated in parallel on randomly assigned users."
+  },
+  {
+    "objectID": "Week6-Lecture1.html#case-core-question",
+    "href": "Week6-Lecture1.html#case-core-question",
+    "title": "Class 11 Application of RCT",
+    "section": "2.2 Case Core Question",
+    "text": "2.2 Case Core Question\nThe case examines the results of an A/B test of the two algorithms during the month of June 2014. You will need to determine whether B outperformed A.\n\nHow might Jaffer conclude that B is better than A?\nIf it is, what would the financial benefits be?\nFinally, how long would Jaffer need to wait before declaring a winning algorithm?"
+  },
+  {
+    "objectID": "Week6-Lecture1.html#company",
+    "href": "Week6-Lecture1.html#company",
+    "title": "Class 11 Application of RCT",
+    "section": "3.1 Company",
+    "text": "3.1 Company\n\nBusiness model of Vungle?\n\nPlatform model\n\nWhat are the key players in this mobile video ads market (i.e., Vungle)? Find the info in the case.\n\nAs a comparison, what are the key players in website ads case?\n\n\n\n\n\n\n\n\n“Four parties participated in the in-app mobile advertisement channel. The user of the mobile device (user), the owner of the app being used (publisher), the sponsor of the video ad the user was exposed to (advertiser), and the platform that matched the choice of ad to a specific user (e.g., Vungle).”"
+  },
+  {
+    "objectID": "Week6-Lecture1.html#company-1",
+    "href": "Week6-Lecture1.html#company-1",
+    "title": "Class 11 Application of RCT",
+    "section": "3.2 Company",
+    "text": "3.2 Company\n\nHow does Vungle make money? Find the info in the case.\n\n\n\n\n\n\n\n“In most cases, payment was made by the advertiser upon installation. Publishers typically received 60% of the revenues and the ad provider the remaining 40%. See Figure 1 for the conversion funnel depicting how an install is achieved. Of all ad requests, most were served and became impressions. When at least 80% of a video ad was watched, it was considered complete. When the user clicked on the ad to get more information, it was counted as a click. The process could then result in an install.”\n\n\nHow can Vungle improve its revenue using what we’ve learned in Marketing Analytics so far?\n\n\nVungle should use predictive analytics to fill the ads that a customer is most likely to click and install. This is essentially a supervised learning problem."
+  },
+  {
+    "objectID": "Week6-Lecture1.html#customer",
+    "href": "Week6-Lecture1.html#customer",
+    "title": "Class 11 Application of RCT",
+    "section": "3.3 Customer",
+    "text": "3.3 Customer\n\nDue to the nature of business model (multi-sided market), who are Vungle’s customers? Find the info in the case.\n\n\n“In the mobile advertising domain, supply was considered to be the slots available for showing ads, and demand consisted of the advertisers willing to buy the supply by placing ads.”"
+  },
+  {
+    "objectID": "Week6-Lecture1.html#collaborators",
+    "href": "Week6-Lecture1.html#collaborators",
+    "title": "Class 11 Application of RCT",
+    "section": "3.4 Collaborators",
+    "text": "3.4 Collaborators\n\nWho are the collaborators of Vungle?"
+  },
+  {
+    "objectID": "Week6-Lecture1.html#competitors",
+    "href": "Week6-Lecture1.html#competitors",
+    "title": "Class 11 Application of RCT",
+    "section": "3.5 Competitors",
+    "text": "3.5 Competitors\n\n\n\n\n\n\nDirect competitors\nIndirect competitors\nPotential competitors"
+  },
+  {
+    "objectID": "Week6-Lecture1.html#context",
+    "href": "Week6-Lecture1.html#context",
+    "title": "Class 11 Application of RCT",
+    "section": "3.6 Context",
+    "text": "3.6 Context\n\n\n\n\n\n\nLegal: GDPR\nTechnological: penetration of mobile phones\n…"
+  },
+  {
+    "objectID": "Week6-Lecture1.html#step-1-decide-on-the-unit-of-randomization-1",
+    "href": "Week6-Lecture1.html#step-1-decide-on-the-unit-of-randomization-1",
+    "title": "Class 11 Application of RCT",
+    "section": "4.1 Step 1: Decide on the Unit of Randomization",
+    "text": "4.1 Step 1: Decide on the Unit of Randomization\n\nWhat would be the best unit of randomization?\n\n\nThe best level would be user level. User-device level would be too granular and can easily cause crossover effects.\n\n\nHow about website-based online ads, say Google ads?"
+  },
+  {
+    "objectID": "Week6-Lecture1.html#step-2-ensure-no-spillover-and-crossover-effects-2",
+    "href": "Week6-Lecture1.html#step-2-ensure-no-spillover-and-crossover-effects-2",
+    "title": "Class 11 Application of RCT",
+    "section": "4.2 Step 2: Ensure No Spillover and Crossover Effects",
+    "text": "4.2 Step 2: Ensure No Spillover and Crossover Effects\n\nWhat are the potential problems for spillover and crossover?\n\n\n\nA user may use multiple devices, causing crossover effects\nA user may talk to family members/friends, causing spillover effects.\n\n\n\nHow about website-based online ads, say Google ads?"
+  },
+  {
+    "objectID": "Week6-Lecture1.html#step-3-decide-on-randomization-allocation-scheme-1",
+    "href": "Week6-Lecture1.html#step-3-decide-on-randomization-allocation-scheme-1",
+    "title": "Class 11 Application of RCT",
+    "section": "4.3 Step 3: Decide on Randomization Allocation Scheme",
+    "text": "4.3 Step 3: Decide on Randomization Allocation Scheme\n\nHow did Vungle implement the randomization scheme? Is it sensible?\n\n\nChan’s team thought it would make sense to direct only 1/16th of the users to the B condition. The other randomly assigned 15/16ths of users would receive an ad based on the existing algorithm (i.e., the A condition)."
+  },
+  {
+    "objectID": "Week6-Lecture1.html#step-4-collect-data-1",
+    "href": "Week6-Lecture1.html#step-4-collect-data-1",
+    "title": "Class 11 Application of RCT",
+    "section": "4.4 Step 4: Collect Data",
+    "text": "4.4 Step 4: Collect Data\n\nWhat data did Vungle collect?\n\n\nAfter two weeks, B was looking pretty good. Its daily eRPM was on average $0.131 higher than A’s. Would this translate into annual revenues worthy of the necessary data science investment? Exhibits 2 and 3 provide the daily results of the A/B test.\n\n\nCan you do better?\n\n\nUser-level data rather than day-level data would be more granular and can provide higher statistical power."
+  },
+  {
+    "objectID": "Week6-Lecture1.html#step-5-interpreting-results-from-a-field-experiment-1",
+    "href": "Week6-Lecture1.html#step-5-interpreting-results-from-a-field-experiment-1",
+    "title": "Class 11 Application of RCT",
+    "section": "4.5 Step 5: Interpreting Results from a Field Experiment",
+    "text": "4.5 Step 5: Interpreting Results from a Field Experiment\n\nWhich step is missing in Vungle A-B testing?\n\n\nVungle didn’t do randomization check.\n\n\nHow to draw statistical conclusions from the Exhibits A and B?\n\n\nWe can conduct a paired t-test to statistically test the effectiveness of B."
   },
   {
     "objectID": "Week6-Lecture1.html#step-5-paired-t-test",
     "href": "Week6-Lecture1.html#step-5-paired-t-test",
     "title": "Class 11 Application of RCT",
-    "section": "3.6 Step 5: Paired t-test",
-    "text": "3.6 Step 5: Paired t-test\n\npacman::p_load(dplyr)\n\n\ndata_vungle &lt;- read.csv(\"https://www.dropbox.com/s/nsxnworjggreh4s/UV6968-XLS-ENG.csv?dl=1\")\n\nt.test((data_vungle%&gt;%filter(Strategy == \"Vungle A\"))$eRPM,\n       (data_vungle%&gt;%filter(Strategy == \"Vungle B\"))$eRPM,\n       paired = TRUE) \n\n\n    Paired t-test\n\ndata:  (data_vungle %&gt;% filter(Strategy == \"Vungle A\"))$eRPM and (data_vungle %&gt;% filter(Strategy == \"Vungle B\"))$eRPM\nt = -3.2837, df = 29, p-value = 0.002677\nalternative hypothesis: true mean difference is not equal to 0\n95 percent confidence interval:\n -0.17959566 -0.04173767\nsample estimates:\nmean difference \n     -0.1106667"
+    "section": "4.6 Step 5: Paired t-test",
+    "text": "4.6 Step 5: Paired t-test\n\npacman::p_load(dplyr)\n\n\ndata_vungle &lt;- read.csv(\"https://www.dropbox.com/s/nsxnworjggreh4s/UV6968-XLS-ENG.csv?dl=1\")\n\nt.test((data_vungle%&gt;%filter(Strategy == \"Vungle A\"))$eRPM,\n       (data_vungle%&gt;%filter(Strategy == \"Vungle B\"))$eRPM,\n       paired = TRUE) \n\n\n    Paired t-test\n\ndata:  (data_vungle %&gt;% filter(Strategy == \"Vungle A\"))$eRPM and (data_vungle %&gt;% filter(Strategy == \"Vungle B\"))$eRPM\nt = -3.2837, df = 29, p-value = 0.002677\nalternative hypothesis: true mean difference is not equal to 0\n95 percent confidence interval:\n -0.17959566 -0.04173767\nsample estimates:\nmean difference \n     -0.1106667"
   },
   {
     "objectID": "Week6-Lecture1.html#conclusion",
     "href": "Week6-Lecture1.html#conclusion",
     "title": "Class 11 Application of RCT",
-    "section": "3.7 Conclusion",
-    "text": "3.7 Conclusion\nGuerin was curious to see how the superior condition would be chosen. How would one conclude that B was better than A?"
+    "section": "4.7 Conclusion",
+    "text": "4.7 Conclusion\nGuerin was curious to see how the superior condition would be chosen. How would one conclude that B was better than A?"
   },
   {
     "objectID": "Week6-Lecture2.html",
@@ -2545,14 +2489,14 @@
     "href": "Case-PredictiveAnalytics.html#data-analytics",
     "title": "Improving Marketing Efficiency Using Predictive Analytics",
     "section": "2.4 Data Analytics",
-    "text": "2.4 Data Analytics\n\nRun the K-means clustering algorithm using kmeans()\n\n\nset.seed(888)\nresult_kmeans &lt;- kmeans(data_kmeans,\n                        centers = 2,\n                        nstart = 10)\n\n\nWe can examine the structure of the result_kmeans using str()\n\n\nstr(result_kmeans)\n\nList of 9\n $ cluster     : int [1:2000] 1 2 1 2 2 1 2 2 2 2 ...\n $ centers     : num [1:2, 1:2] 0.95 -0.663 1.022 -0.713\n  ..- attr(*, \"dimnames\")=List of 2\n  .. ..$ : chr [1:2] \"1\" \"2\"\n  .. ..$ : chr [1:2] \"Income\" \"total_spending\"\n $ totss       : num 3998\n $ withinss    : num [1:2] 726 553\n $ tot.withinss: num 1280\n $ betweenss   : num 2718\n $ size        : int [1:2] 822 1178\n $ iter        : int 1\n $ ifault      : int 0\n - attr(*, \"class\")= chr \"kmeans\"\n\n\n\nVisualize the clustering\n\n\npacman::p_load(cluster,factoextra)\nset.seed(888)\nfviz_cluster(result_kmeans,\n             data = data_kmeans)\n\n\n\n\n\nDetermine the optimal number of clusters using statistical criteria\n\nGap Method\n\nset.seed(888)\ngap_stat &lt;- clusGap(data_kmeans, \n                    FUN = kmeans,\n                    K.max = 10,\n                    B = 50)\nfviz_gap_stat(gap_stat)\n\n\n\n\nSilhouette method\n\nset.seed(888)\nfviz_nbclust(data_kmeans, kmeans, method = \"silhouette\")\n\n\n\n\nFrom both methods, it seems K = 2 is the best choice."
+    "text": "2.4 Data Analytics\n\nRun the K-means clustering algorithm using kmeans()\n\n\nset.seed(888)\nresult_kmeans &lt;- kmeans(data_kmeans,\n                        centers = 2,\n                        nstart = 10)\n\n\nWe can examine the structure of the result_kmeans using str()\n\n\nstr(result_kmeans)\n\nList of 9\n $ cluster     : int [1:2000] 1 2 1 2 2 1 2 2 2 2 ...\n $ centers     : num [1:2, 1:2] 0.95 -0.663 1.022 -0.713\n  ..- attr(*, \"dimnames\")=List of 2\n  .. ..$ : chr [1:2] \"1\" \"2\"\n  .. ..$ : chr [1:2] \"Income\" \"total_spending\"\n $ totss       : num 3998\n $ withinss    : num [1:2] 726 553\n $ tot.withinss: num 1280\n $ betweenss   : num 2718\n $ size        : int [1:2] 822 1178\n $ iter        : int 1\n $ ifault      : int 0\n - attr(*, \"class\")= chr \"kmeans\"\n\n\n\nSummarize the model object by printing it\n\n\nresult_kmeans\n\nK-means clustering with 2 clusters of sizes 822, 1178\n\nCluster means:\n      Income total_spending\n1  0.9501963      1.0222565\n2 -0.6630402     -0.7133233\n\nClustering vector:\n   [1] 1 2 1 2 2 1 2 2 2 2 2 2 1 2 2 1 2 2 1 2 2 2 1 1 2 2 2 2 2 1 2 2 2 2 1 2 1\n  [38] 2 2 1 1 2 2 2 2 1 2 2 2 1 1 1 2 1 1 1 1 2 2 2 1 1 1 1 1 2 2 1 1 1 1 2 1 1\n  [75] 2 2 1 1 2 1 2 2 2 2 1 2 2 2 1 2 2 2 1 2 2 2 2 2 1 2 2 2 1 1 1 2 2 1 2 1 1\n [112] 1 2 1 2 2 1 2 2 2 2 2 2 2 1 1 1 2 2 1 2 1 1 2 2 1 2 2 2 2 1 1 1 1 2 1 2 2\n [149] 2 2 2 1 2 2 1 1 2 2 2 1 2 1 2 1 1 2 2 2 1 2 2 2 2 2 2 1 1 2 2 1 2 2 1 2 2\n [186] 2 2 1 1 2 2 1 2 2 2 2 1 1 1 2 1 1 1 1 2 2 2 2 2 1 2 1 2 2 1 2 2 1 2 1 2 1\n [223] 1 2 1 2 2 1 1 2 2 1 2 2 1 2 2 1 2 2 1 1 2 1 1 2 1 1 1 1 2 2 1 2 1 2 1 2 2\n [260] 2 2 1 2 2 2 2 1 2 1 2 1 2 2 2 2 1 1 1 1 1 2 2 2 1 2 2 1 1 1 2 2 2 1 2 2 1\n [297] 2 2 1 1 2 1 2 2 2 1 2 1 1 2 2 2 1 1 2 2 2 2 2 1 1 2 2 1 2 1 2 2 2 2 2 2 1\n [334] 2 2 1 1 2 1 1 1 2 1 2 2 1 2 1 2 2 1 1 1 1 1 2 2 1 1 2 1 1 2 2 2 2 1 2 1 1\n [371] 2 2 2 1 2 2 2 2 1 2 2 2 2 2 2 2 2 1 2 1 1 2 1 2 1 1 2 2 2 2 2 1 2 2 2 2 2\n [408] 2 2 2 2 1 1 2 1 1 2 1 1 2 2 2 2 1 1 2 1 1 2 1 1 2 1 1 2 2 1 2 2 2 2 2 2 2\n [445] 2 2 2 1 2 2 1 1 2 1 1 2 1 2 2 1 1 1 2 1 2 1 1 2 2 1 1 2 1 2 2 1 2 2 1 2 2\n [482] 2 2 2 1 1 1 1 2 2 1 2 1 1 2 1 2 1 1 1 2 2 2 1 2 1 1 1 2 1 2 1 2 1 2 1 2 2\n [519] 1 1 2 1 2 1 2 2 1 2 1 2 2 1 2 2 2 2 2 1 2 2 2 2 2 1 2 2 1 2 2 2 2 2 2 2 1\n [556] 2 1 1 2 1 2 1 1 1 2 2 1 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 1 1 2 2 2 1\n [593] 1 2 2 2 2 2 2 2 2 1 1 1 2 2 2 2 2 1 2 2 2 2 2 2 2 1 2 2 2 2 1 2 1 2 1 1 2\n [630] 2 1 1 1 2 1 2 1 2 1 1 1 1 1 2 1 2 1 2 1 1 1 2 1 2 2 1 2 2 1 2 2 2 1 2 2 2\n [667] 2 2 2 2 1 2 1 1 1 2 1 1 2 1 1 1 2 2 1 1 1 1 1 1 2 1 2 2 2 2 2 2 2 1 1 1 1\n [704] 1 2 1 2 2 1 2 2 1 2 2 2 1 1 2 1 2 1 1 2 1 2 2 1 1 2 1 2 2 1 2 1 1 1 1 2 1\n [741] 1 2 2 2 1 1 2 1 2 1 1 2 1 1 1 1 1 1 2 2 2 1 1 2 1 2 1 1 2 2 1 1 2 2 2 2 2\n [778] 1 2 1 1 2 2 2 2 2 2 2 2 2 1 1 2 2 2 2 1 1 1 2 1 2 2 1 1 2 2 2 1 1 2 2 1 1\n [815] 1 1 2 2 1 2 1 2 2 2 1 1 1 2 1 2 2 2 2 2 2 1 2 1 2 1 2 2 2 2 1 1 1 1 2 2 2\n [852] 1 1 2 2 1 2 1 2 1 2 2 2 2 2 2 2 2 2 2 1 1 2 2 1 1 2 2 1 2 2 2 2 2 1 1 2 2\n [889] 2 1 2 2 1 2 1 1 1 1 2 2 1 2 1 2 2 1 1 2 2 2 1 1 1 2 1 1 1 1 2 1 2 1 2 2 1\n [926] 2 1 1 1 1 1 2 1 2 1 2 1 1 1 1 1 1 1 1 2 1 1 2 2 1 2 2 2 2 2 2 2 2 2 2 1 2\n [963] 2 2 2 1 1 2 2 2 1 2 2 2 1 1 1 2 2 1 2 2 2 1 1 2 1 1 1 2 1 2 2 1 2 2 1 2 1\n[1000] 2 1 1 1 2 2 2 1 1 2 2 1 2 2 2 2 2 1 2 2 2 2 2 1 2 2 1 2 2 2 1 1 1 1 2 1 2\n[1037] 2 2 2 2 1 2 2 1 2 2 2 1 2 2 1 2 1 2 2 1 2 2 1 1 1 1 2 2 1 2 1 1 2 1 2 1 1\n[1074] 2 2 1 1 2 2 2 1 2 1 2 1 1 2 1 2 1 1 2 1 2 2 2 1 1 2 1 1 2 2 2 2 1 2 2 1 2\n[1111] 1 1 2 1 2 1 2 2 2 2 1 2 2 2 2 2 1 2 2 1 1 2 2 1 1 2 2 1 2 2 2 2 2 2 1 2 2\n[1148] 2 2 2 1 1 2 1 2 2 2 1 1 1 2 2 2 1 2 1 2 2 1 1 2 2 1 1 2 2 2 2 2 1 2 2 1 2\n[1185] 2 2 2 1 2 2 1 1 2 2 2 1 2 1 1 1 2 1 2 2 1 2 1 2 2 2 2 1 1 1 2 2 2 2 1 2 2\n[1222] 2 1 2 2 1 1 2 2 2 2 2 2 2 2 1 2 1 2 2 2 2 1 1 2 2 2 2 2 1 1 1 1 1 1 2 1 1\n[1259] 2 1 2 1 1 2 2 1 1 2 2 1 1 1 2 2 2 1 2 2 1 2 1 1 2 2 2 2 2 2 1 1 2 2 2 2 2\n[1296] 2 2 1 1 2 1 1 2 2 1 1 2 1 1 1 1 1 2 1 2 2 2 2 2 2 1 2 1 2 2 1 2 2 2 1 2 2\n[1333] 1 1 1 2 1 2 2 2 2 2 1 2 2 2 2 2 1 1 1 1 2 2 1 1 2 1 1 2 2 2 2 1 1 1 2 2 2\n[1370] 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 1 2 2 2 1 2 2 2 2 2 1 2 2 1 2 2 1 2 2 2 2\n[1407] 2 1 2 2 1 1 2 1 2 2 2 2 2 2 2 1 1 2 2 2 2 2 2 2 2 2 1 2 1 2 2 2 2 2 2 2 2\n[1444] 1 1 2 1 1 1 1 2 1 1 2 2 1 2 2 1 2 1 1 2 2 2 2 2 1 2 1 2 2 2 1 1 2 1 2 2 1\n[1481] 1 1 2 2 1 1 1 2 1 2 1 2 1 2 2 1 2 1 1 1 2 2 2 1 1 1 2 1 1 1 1 2 1 1 2 2 1\n[1518] 2 2 2 1 1 2 2 2 1 1 2 1 2 1 2 1 2 2 2 2 1 1 1 2 1 1 2 1 2 2 2 1 2 2 1 1 1\n[1555] 1 2 2 2 2 1 2 2 2 1 2 2 1 1 2 1 1 2 1 2 2 2 2 1 2 2 2 1 1 2 1 2 2 2 2 1 2\n[1592] 1 2 2 2 2 2 2 1 2 2 1 1 2 2 2 1 2 2 1 1 2 1 2 2 1 2 2 2 1 2 2 1 2 2 2 1 2\n[1629] 2 2 1 2 2 2 2 1 2 1 2 2 2 1 2 2 1 2 2 1 1 2 2 1 2 1 2 2 2 1 2 1 2 2 1 2 2\n[1666] 2 1 2 1 1 2 1 1 1 1 2 2 2 2 2 1 2 2 2 2 2 1 1 1 1 2 1 2 2 2 1 2 1 2 1 1 2\n[1703] 2 2 2 2 1 2 1 2 1 1 2 1 2 2 1 2 2 1 2 1 1 1 2 2 2 2 1 1 2 2 2 1 1 1 1 1 2\n[1740] 2 2 2 2 1 1 1 2 1 1 1 1 2 2 2 2 2 2 2 2 1 1 2 2 1 2 1 2 1 2 2 2 2 1 1 2 2\n[1777] 2 2 2 1 2 2 1 1 2 2 2 2 1 1 2 2 1 2 2 2 2 2 1 1 1 1 2 2 2 1 2 2 1 1 2 1 1\n[1814] 1 1 2 1 1 2 2 1 2 2 1 1 2 2 1 1 2 2 2 1 2 2 2 1 2 1 1 2 1 2 1 2 1 2 2 2 2\n[1851] 1 2 1 1 1 1 2 2 1 2 1 2 2 1 1 1 2 2 2 1 2 1 2 1 2 2 2 1 1 1 1 2 2 1 2 2 2\n[1888] 1 1 2 1 1 2 1 1 2 2 1 1 2 2 2 1 2 2 1 1 2 2 2 1 1 1 1 1 2 2 2 2 2 2 1 1 1\n[1925] 1 2 1 1 1 1 2 1 2 2 1 2 2 1 2 2 1 2 2 1 2 1 1 1 2 2 2 2 1 1 2 1 2 2 1 2 1\n[1962] 1 2 2 2 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 1 2 1 1 2 1 1 2\n[1999] 2 2\n\nWithin cluster sum of squares by cluster:\n[1] 726.2859 553.2786\n (between_SS / total_SS =  68.0 %)\n\nAvailable components:\n\n[1] \"cluster\"      \"centers\"      \"totss\"        \"withinss\"     \"tot.withinss\"\n[6] \"betweenss\"    \"size\"         \"iter\"         \"ifault\"      \n\n\n\nVisualize the clustering\n\n\npacman::p_load(cluster,factoextra)\nset.seed(888)\nfviz_cluster(result_kmeans,\n             data = data_kmeans)\n\n\n\n\n\nDetermine the optimal number of clusters using statistical criteria\n\nGap Method\n\nset.seed(888)\ngap_stat &lt;- clusGap(data_kmeans, \n                    FUN = kmeans,\n                    K.max = 10,\n                    B = 50)\nfviz_gap_stat(gap_stat)\n\n\n\n\nSilhouette method\n\nset.seed(888)\nfviz_nbclust(data_kmeans, kmeans, method = \"silhouette\")\n\n\n\n\nFrom both methods, it seems K = 2 is the best choice."
   },
   {
     "objectID": "Case-PredictiveAnalytics.html#business-recommendations",
     "href": "Case-PredictiveAnalytics.html#business-recommendations",
     "title": "Improving Marketing Efficiency Using Predictive Analytics",
     "section": "2.5 Business Recommendations",
-    "text": "2.5 Business Recommendations\nCompare the CLV in the two segments, and decide which segment to serve."
+    "text": "2.5 Business Recommendations\nCompare the CLV in the two segments, and decide which segment to serve.\nAs we would like to save marketing costs by sending marketing offers to responsive customers, we need to compute the average response rate for each segment generated by the K-means algorithm\n\nGenerate the customer segment in data_full\n\n\ndata_full &lt;- data_full %&gt;%\n  mutate(segment = result_kmeans$cluster)\n\n\nCompute the average response rate for each segment\n\n\ndata_full %&gt;%\n  group_by(segment) %&gt;%\n  summarise(avg_response_rate = mean(Response, na.rm = T)) %&gt;%\n  ungroup()\n\n\n\n\n\n\n\nsegment\n\n\navg_response_rate\n\n\n\n\n\n\n1\n\n\n0.2165450\n\n\n\n\n2\n\n\n0.1044143\n\n\n\n\n\n\n\n\nWe observe that Segment 1 has a much higher average response rate of more than 20%, so we should send marketing offers to Segment 1 customers."
   },
   {
     "objectID": "Case-PredictiveAnalytics.html#marketing-objective-1",
@@ -2809,135 +2753,142 @@
   {
     "objectID": "Week5-Lecture2.html",
     "href": "Week5-Lecture2.html",
-    "title": "Class 10 Randomized Controlled Trials",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
     "section": "",
-    "text": "If BMW ads are not randomized to consumers but targeted at interested consumers\n\n\n\n\n\n\n\n\n\nObserved outcomes in data\n\n\\(E[Y^1 | D = 1] = 14\\%\\)\n\\(E[Y^0 | D = 0] = 0.7\\%\\)\n\nCounterfactual outcomes in parallel universe\n\n\\(E[Y^0 | D = 1] = 5\\%\\)\n\\(E[Y^1 | D = 0] = 2.7\\%\\)\n\n\n\n\n\nAverage outcome for treated - Average outcome for untreated\n\n= \\(E[Y^1| D = 1] - E[Y^0| D = 0]\\) = 13.3%\n= \\((E[Y^1| D = 1] - E[Y^0 | D = 1]) + (E[Y^0 | D = 1] - E[Y^0| D = 0])\\)\n= ATT + Selection Bias\n\nATT = \\(E[Y^1| D = 1] - E[Y^0| D = 1]\\) = 14% - 5% = 9%\nATU = \\(E[Y^1| D = 0] - E[Y^0| D = 0]\\) = 2.7% - 0.7% = 2%\nSelection Bias = \\(E[Y^0 | D = 1] - E[Y^0 | D = 0]\\) = 5% - 0.7% = 4.3%\nATE = 0.5 * ATT + 0.5 * ATU = 5.5%\n\n\n\n\nIf BMW ads are randomized to consumers\n\n\n\n\n\n\n\n\n\nObserved outcomes in data\n\n\\(E[Y^1 | D = 1] = 14\\%\\)\n\\(E[Y^0 | D = 0] = 0.7\\%\\)\n\nCounterfactual outcomes in parallel universe\n\n\\(E[Y^0 | D = 1] = 0.7\\%\\)\n\\(E[Y^1 | D = 0] = 14\\%\\)\n\n\n\n\n\nAverage outcome for treated - Average outcome for untreated\n\n= \\(E[Y^1| D = 1] - E[Y^0| D = 0]\\) = 13.3%\n= \\((E[Y^1| D = 1] - E[Y^0 | D = 1]) + (E[Y^0 | D = 1] - E[Y^0| D = 0])\\)\n= ATT + Selection Bias\n\nATT = \\(E[Y^1| D = 1] - E[Y^0| D = 1]\\) = 14% - 0.7% = 13.3%\nATU = \\(E[Y^1| D = 0] - E[Y^0| D = 0]\\) = 14% - 0.7% = 13.3%\nSelection Bias = \\(E[Y^0 | D = 1] - E[Y^0 | D = 0]\\) = 0.7% - 0.7% = 0%\nATE = 0.5 * ATT + 0.5 * ATU = 13.3%\n\n\n\n\n\nAfter assigning individuals into the treatment group and control group, we also observe the outcome for each individual in both groups.\nWe can decompose the observed outcome of a treatment into two effects\n\n\n\n\n\n\n\nBasic Identity of Causal Inference\n\n\n\nAverage outcome for treated - Average outcome for untreated\n= [Average outcome for treated - Average counterfactual outcome for treated] + [Average counterfactual outcome for treated - Avereage outcome for untreated]\n= ATT + Selection Bias\n\n\n\n\n\n\nBasic Identity of Causal Inference shows why randomized controlled trials are the gold standard for causal inference: If the treated group is a random sample of the population,\n\nthe first term is an estimate of the causal impact of the treatment on the population\nthe second term has an expected value of zero.\n\nThen by computing the average difference between the treatment group and control group, we obtain the average treatment effect!\n\n\n\n\n\n\nA randomized controlled trial (RCT) is an experimental form of impact evaluation in which the population receiving the program or policy intervention is chosen at random from the eligible population, and a control group is also chosen at random from the same eligible population.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe only vary the level of a single treatment variable (e.g., loyalty program)\n\nA/B testing (treatment group + control group)\n\nLoyalty program\nNo loyalty program\n\nA/B/N testing (multiple treatment groups + control group)\n\nPoint-based loyalty program; points can be redeemd for price vouchers\nPoint-based loyalty program; points can be redeemd for gifts\nPoint-based loyalty program; points can be redeemd for free top ups\nNo loyalty program\n\n\n\n\n\nWe are interested in multiple treatment variables and their interaction effects.\n\n2-by-2 factorial design\n\ntreatment group 1: LP Yes + Promo Yes\ntreatment group 2: LP Yes + Promo No\ntreatment group 3: LP No + Promo Yes\ncontrol group: LP No + Promo No"
+    "text": "Any business activity brings benefits and costs. We’re given the benefit information in all the case studies so far\n\nPineApple (Week 1): influencer marketing increases sales by 2.5%\n1st assignment (Week 4): loyalty program increases retention rate to 96%\n\nIn reality, this benefit information is often not readily available, and we need to estimate them using causal inference tools.\n\n\n\n\n\nUnderstand key concepts of causal inference and Rubin’s potential outcome framework\nLearn the steps to conduct randomized controlled trials (RCTs)\n\n\n\n\nTom purchases Google banner ads to advertise his new bubble tea shop. Google ads are targeted to individuals who are predicted to have a higher likelihood of being bubble lovers. In the end, some Google users saw no ads (causal bubble users) and some saw the ads (bubble lovers). The purchase rates for each group are shown below.\n\n\n\n\n\nQuestion: Can Tom be confident to conclude the Google ads are effective in converting new customers?\n\n\n\nTom bought a marketing survey data from a consulting agency. The survey collected prices and store visits (sales) for different bubble shops in Canary Wharf. Tom finds that there is a positive correlation between prices and store visits.\n\n\n\n\n\nQuestion: Can Tom conclude that he should also increase the prices for his bubble tea shop to increase the store visits?\n\n\n\nThis is a plane that just returned from the battlefield. Red dots are bullet holes.\nWhich part of A, B, and C would you reinforce to increase the pilot’s survival rate?\n\n\n\n\n\n\n\n\nI have held a secret from you for a long time….\n\n\n\n\n\n\n\n\n\n[…] the other half jointly to Joshua D. Angrist and Guido W. Imbens “for their methodological contributions to the analysis of causal relationships.”\n\n\n\n\n\nCausal inference is the process of estimating the unbiased causal effects of a particular policy intervention on the outcome variable.\nCorrelation != Causation: On rainy days, we observe more umbrellas on the street\n\ncorrect correlation statement: number of umbrellas is positively correlated with rainfall\ncorrect causal statement: heavier rain leads to more umbrellas\nincorrect causal statement: more umbrellas lead to heavier rain\n\nCausality becomes more complex in the business world. Managers can easily make mistakes without causal inference training.\n\nImagine if the the actual causal effect of Google ads on incremental profit per customer is £1 for Tom, and Tom pays £1.5 for each click"
   },
   {
-    "objectID": "Week5-Lecture2.html#revisit-of-ate-att-and-atu-in-bmw-case-targeted-ads",
-    "href": "Week5-Lecture2.html#revisit-of-ate-att-and-atu-in-bmw-case-targeted-ads",
-    "title": "Class 10 Randomized Controlled Trials",
+    "objectID": "Week5-Lecture2.html#our-journey-so-far",
+    "href": "Week5-Lecture2.html#our-journey-so-far",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
     "section": "",
-    "text": "If BMW ads are not randomized to consumers but targeted at interested consumers\n\n\n\n\n\n\n\n\n\nObserved outcomes in data\n\n\\(E[Y^1 | D = 1] = 14\\%\\)\n\\(E[Y^0 | D = 0] = 0.7\\%\\)\n\nCounterfactual outcomes in parallel universe\n\n\\(E[Y^0 | D = 1] = 5\\%\\)\n\\(E[Y^1 | D = 0] = 2.7\\%\\)\n\n\n\n\n\nAverage outcome for treated - Average outcome for untreated\n\n= \\(E[Y^1| D = 1] - E[Y^0| D = 0]\\) = 13.3%\n= \\((E[Y^1| D = 1] - E[Y^0 | D = 1]) + (E[Y^0 | D = 1] - E[Y^0| D = 0])\\)\n= ATT + Selection Bias\n\nATT = \\(E[Y^1| D = 1] - E[Y^0| D = 1]\\) = 14% - 5% = 9%\nATU = \\(E[Y^1| D = 0] - E[Y^0| D = 0]\\) = 2.7% - 0.7% = 2%\nSelection Bias = \\(E[Y^0 | D = 1] - E[Y^0 | D = 0]\\) = 5% - 0.7% = 4.3%\nATE = 0.5 * ATT + 0.5 * ATU = 5.5%"
+    "text": "Any business activity brings benefits and costs. We’re given the benefit information in all the case studies so far\n\nPineApple (Week 1): influencer marketing increases sales by 2.5%\n1st assignment (Week 4): loyalty program increases retention rate to 96%\n\nIn reality, this benefit information is often not readily available, and we need to estimate them using causal inference tools."
   },
   {
-    "objectID": "Week5-Lecture2.html#revisit-of-ate-att-and-atu-in-bmw-case-randomized-ads",
-    "href": "Week5-Lecture2.html#revisit-of-ate-att-and-atu-in-bmw-case-randomized-ads",
-    "title": "Class 10 Randomized Controlled Trials",
+    "objectID": "Week5-Lecture2.html#learning-objectives",
+    "href": "Week5-Lecture2.html#learning-objectives",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
     "section": "",
-    "text": "If BMW ads are randomized to consumers\n\n\n\n\n\n\n\n\n\nObserved outcomes in data\n\n\\(E[Y^1 | D = 1] = 14\\%\\)\n\\(E[Y^0 | D = 0] = 0.7\\%\\)\n\nCounterfactual outcomes in parallel universe\n\n\\(E[Y^0 | D = 1] = 0.7\\%\\)\n\\(E[Y^1 | D = 0] = 14\\%\\)\n\n\n\n\n\nAverage outcome for treated - Average outcome for untreated\n\n= \\(E[Y^1| D = 1] - E[Y^0| D = 0]\\) = 13.3%\n= \\((E[Y^1| D = 1] - E[Y^0 | D = 1]) + (E[Y^0 | D = 1] - E[Y^0| D = 0])\\)\n= ATT + Selection Bias\n\nATT = \\(E[Y^1| D = 1] - E[Y^0| D = 1]\\) = 14% - 0.7% = 13.3%\nATU = \\(E[Y^1| D = 0] - E[Y^0| D = 0]\\) = 14% - 0.7% = 13.3%\nSelection Bias = \\(E[Y^0 | D = 1] - E[Y^0 | D = 0]\\) = 0.7% - 0.7% = 0%\nATE = 0.5 * ATT + 0.5 * ATU = 13.3%"
+    "text": "Understand key concepts of causal inference and Rubin’s potential outcome framework\nLearn the steps to conduct randomized controlled trials (RCTs)"
   },
   {
-    "objectID": "Week5-Lecture2.html#revisit-of-basic-identity-of-causal-inference",
-    "href": "Week5-Lecture2.html#revisit-of-basic-identity-of-causal-inference",
-    "title": "Class 10 Randomized Controlled Trials",
+    "objectID": "Week5-Lecture2.html#why-causal-inference-matters-example-1",
+    "href": "Week5-Lecture2.html#why-causal-inference-matters-example-1",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
     "section": "",
-    "text": "After assigning individuals into the treatment group and control group, we also observe the outcome for each individual in both groups.\nWe can decompose the observed outcome of a treatment into two effects\n\n\n\n\n\n\n\nBasic Identity of Causal Inference\n\n\n\nAverage outcome for treated - Average outcome for untreated\n= [Average outcome for treated - Average counterfactual outcome for treated] + [Average counterfactual outcome for treated - Avereage outcome for untreated]\n= ATT + Selection Bias"
+    "text": "Tom purchases Google banner ads to advertise his new bubble tea shop. Google ads are targeted to individuals who are predicted to have a higher likelihood of being bubble lovers. In the end, some Google users saw no ads (causal bubble users) and some saw the ads (bubble lovers). The purchase rates for each group are shown below.\n\n\n\n\n\nQuestion: Can Tom be confident to conclude the Google ads are effective in converting new customers?"
   },
   {
-    "objectID": "Week5-Lecture2.html#random-assignment-of-individuals",
-    "href": "Week5-Lecture2.html#random-assignment-of-individuals",
-    "title": "Class 10 Randomized Controlled Trials",
+    "objectID": "Week5-Lecture2.html#why-causal-inference-matters-example-2",
+    "href": "Week5-Lecture2.html#why-causal-inference-matters-example-2",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
     "section": "",
-    "text": "Basic Identity of Causal Inference shows why randomized controlled trials are the gold standard for causal inference: If the treated group is a random sample of the population,\n\nthe first term is an estimate of the causal impact of the treatment on the population\nthe second term has an expected value of zero.\n\nThen by computing the average difference between the treatment group and control group, we obtain the average treatment effect!"
+    "text": "Tom bought a marketing survey data from a consulting agency. The survey collected prices and store visits (sales) for different bubble shops in Canary Wharf. Tom finds that there is a positive correlation between prices and store visits.\n\n\n\n\n\nQuestion: Can Tom conclude that he should also increase the prices for his bubble tea shop to increase the store visits?"
   },
   {
-    "objectID": "Week5-Lecture2.html#randomized-controlled-trials",
-    "href": "Week5-Lecture2.html#randomized-controlled-trials",
-    "title": "Class 10 Randomized Controlled Trials",
+    "objectID": "Week5-Lecture2.html#why-causal-inference-matters-example-3",
+    "href": "Week5-Lecture2.html#why-causal-inference-matters-example-3",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
     "section": "",
-    "text": "A randomized controlled trial (RCT) is an experimental form of impact evaluation in which the population receiving the program or policy intervention is chosen at random from the eligible population, and a control group is also chosen at random from the same eligible population."
+    "text": "This is a plane that just returned from the battlefield. Red dots are bullet holes.\nWhich part of A, B, and C would you reinforce to increase the pilot’s survival rate?"
   },
   {
-    "objectID": "Week5-Lecture2.html#types-of-rcts-in-marketing-univariate-testing",
-    "href": "Week5-Lecture2.html#types-of-rcts-in-marketing-univariate-testing",
-    "title": "Class 10 Randomized Controlled Trials",
+    "objectID": "Week5-Lecture2.html#why-causal-inference-matters-example-4",
+    "href": "Week5-Lecture2.html#why-causal-inference-matters-example-4",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
     "section": "",
-    "text": "We only vary the level of a single treatment variable (e.g., loyalty program)\n\nA/B testing (treatment group + control group)\n\nLoyalty program\nNo loyalty program\n\nA/B/N testing (multiple treatment groups + control group)\n\nPoint-based loyalty program; points can be redeemd for price vouchers\nPoint-based loyalty program; points can be redeemd for gifts\nPoint-based loyalty program; points can be redeemd for free top ups\nNo loyalty program"
+    "text": "I have held a secret from you for a long time…."
   },
   {
-    "objectID": "Week5-Lecture2.html#types-of-rcts-in-marketing-multivariate-testing",
-    "href": "Week5-Lecture2.html#types-of-rcts-in-marketing-multivariate-testing",
-    "title": "Class 10 Randomized Controlled Trials",
+    "objectID": "Week5-Lecture2.html#nobel-prize-in-economics-2021",
+    "href": "Week5-Lecture2.html#nobel-prize-in-economics-2021",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
     "section": "",
-    "text": "We are interested in multiple treatment variables and their interaction effects.\n\n2-by-2 factorial design\n\ntreatment group 1: LP Yes + Promo Yes\ntreatment group 2: LP Yes + Promo No\ntreatment group 3: LP No + Promo Yes\ncontrol group: LP No + Promo No"
+    "text": "[…] the other half jointly to Joshua D. Angrist and Guido W. Imbens “for their methodological contributions to the analysis of causal relationships.”"
   },
   {
-    "objectID": "Week5-Lecture2.html#motivating-example",
-    "href": "Week5-Lecture2.html#motivating-example",
-    "title": "Class 10 Randomized Controlled Trials",
-    "section": "2.1 Motivating Example",
-    "text": "2.1 Motivating Example\n\nTom is considering whether or not to introduce a loyalty program for his bubble tea business. This decision is essentially a cost-benefit analysis\n\nCost: it takes money and time to develop the loyalty program\nBenefit: it may increase spending and retention rate, and hence future CLV\n\nCost can be estimated through budgeting, but how to estimate the benefit from introducing LP?\nHow you design the experiment is more an art than a science."
+    "objectID": "Week5-Lecture2.html#causal-inference-1",
+    "href": "Week5-Lecture2.html#causal-inference-1",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
+    "section": "",
+    "text": "Causal inference is the process of estimating the unbiased causal effects of a particular policy intervention on the outcome variable.\nCorrelation != Causation: On rainy days, we observe more umbrellas on the street\n\ncorrect correlation statement: number of umbrellas is positively correlated with rainfall\ncorrect causal statement: heavier rain leads to more umbrellas\nincorrect causal statement: more umbrellas lead to heavier rain\n\nCausality becomes more complex in the business world. Managers can easily make mistakes without causal inference training.\n\nImagine if the the actual causal effect of Google ads on incremental profit per customer is £1 for Tom, and Tom pays £1.5 for each click"
   },
   {
-    "objectID": "Week5-Lecture2.html#step-1-decide-on-the-unit-of-randomization",
-    "href": "Week5-Lecture2.html#step-1-decide-on-the-unit-of-randomization",
-    "title": "Class 10 Randomized Controlled Trials",
-    "section": "2.2 Step 1: Decide on the Unit of Randomization",
-    "text": "2.2 Step 1: Decide on the Unit of Randomization\nIn the first step, we decide the level of granularity random assignment should occur at.\n\nindividual/household/store/city level"
+    "objectID": "Week5-Lecture2.html#rubin-causal-model-and-the-potential-outcome-framework",
+    "href": "Week5-Lecture2.html#rubin-causal-model-and-the-potential-outcome-framework",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
+    "section": "2.1 Rubin Causal Model and the Potential Outcome Framework",
+    "text": "2.1 Rubin Causal Model and the Potential Outcome Framework\n\nThe Rubin causal model (RCM) or the Potential Outcome Framework is the well accepted framework for estimating causal effects.\nFor each customer \\(i\\), we can define two potential outcomes to evaluate the causal effect of Google ads on their outcomes:\n\n\\(Y^1_i\\): the outcome if the customer sees the ads\n\\(Y^0_i\\): the outcome if the customer does not see the ads\nThe causal effect of ads is the difference between the two\n\nWe can define the individual treatment effect \\(\\delta_i\\) as follows.\n\n\\[\n        \\delta_i = Y^1_i - Y^0_i\n\\]"
   },
   {
-    "objectID": "Week5-Lecture2.html#step-1-proposal-i",
-    "href": "Week5-Lecture2.html#step-1-proposal-i",
-    "title": "Class 10 Randomized Controlled Trials",
-    "section": "2.3 Step 1: Proposal I",
-    "text": "2.3 Step 1: Proposal I\nProposal 1: It decides at random to test ‘No’ in West London and ‘Yes’ in East London.\n\nDo you expect the “at random” to be true randomization?"
+    "objectID": "Week5-Lecture2.html#examples-of-individual-treatment-effects",
+    "href": "Week5-Lecture2.html#examples-of-individual-treatment-effects",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
+    "section": "2.2 Examples of Individual Treatment Effects",
+    "text": "2.2 Examples of Individual Treatment Effects\nTom would like to measure the causal effect of introducing a loyalty program on customer retention. Let’s say we have retrieved all infinity stones from Thanos, and have created 2 parallel universes\n\nIn Universe 1, with loyalty program\n\nDr Strange has a retention rate of 70%\n\nIn Universe 2, without loyalty program\n\nDr Strange has a retention rate of 60%\n\n\n\n\n\n\n\nCustomer\nY1\nY0\nTreatmentEffect\n\n\n\n\nDr Strange\n0.7\n0.6\n0.1"
   },
   {
-    "objectID": "Week5-Lecture2.html#step-1-proposal-ii",
-    "href": "Week5-Lecture2.html#step-1-proposal-ii",
-    "title": "Class 10 Randomized Controlled Trials",
-    "section": "2.4 Step 1: Proposal II",
-    "text": "2.4 Step 1: Proposal II\nProposal 2: It randomizes each individual customer to either the ‘No’ condition or ‘Yes’ pricing condition.\n\nIs this true randomization?\nWhat problems can we still have?"
+    "objectID": "Week5-Lecture2.html#a-motivating-example-a-group-of-customers",
+    "href": "Week5-Lecture2.html#a-motivating-example-a-group-of-customers",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
+    "section": "2.3 A Motivating Example: A Group of Customers",
+    "text": "2.3 A Motivating Example: A Group of Customers\n\nWe can collect a sample of customers, and estimate individual treatment effect for each of them\n\n\n\n\n\n\nCustomer\nY1\nY0\nTreatmentEffect\n\n\n\n\nDr Strange\n0.70\n0.60\n0.10\n\n\nIron Man\n0.55\n0.50\n0.05\n\n\nThor\n0.80\n0.72\n0.08\n\n\nHulk\n0.60\n0.62\n-0.02"
   },
   {
-    "objectID": "Week5-Lecture2.html#step-1-pros-and-cons-of-granularity",
-    "href": "Week5-Lecture2.html#step-1-pros-and-cons-of-granularity",
-    "title": "Class 10 Randomized Controlled Trials",
-    "section": "2.5 Step 1: Pros and Cons of Granularity",
-    "text": "2.5 Step 1: Pros and Cons of Granularity\nDisadvantages of granularity:\n\nCosts and logistics\nSpillovers and crossovers\n\nAdvantages of granularity:\n\nReduces the chance that the unobserved factors matter ex ante\nReduces the chance that there might be a systematic error/unbalance of covariates\n\nAdditional Questions:\n\nHow can we randomize individualized price discounts to customers?"
+    "objectID": "Week5-Lecture2.html#fundamental-problem-of-causal-inference",
+    "href": "Week5-Lecture2.html#fundamental-problem-of-causal-inference",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
+    "section": "2.4 Fundamental Problem of Causal Inference",
+    "text": "2.4 Fundamental Problem of Causal Inference\nIn reality, to measure the treatment effect of loyalty program on a customer’s retention rate\n\nWe need to compare the outcome of the same customer in parallel universes, with and without the treatment.\nHowever, in reality, we only observe one of these two outcomes, but never both.\n\nRealized actual outcome, including \\(Y^1_i|D_i = 1\\) and \\(Y^0_i|D_i = 0\\)\nCounterfactual outcome, including \\(Y^0_i|D_i = 1\\) and \\(Y^1_i|D_i = 0\\)"
   },
   {
-    "objectID": "Week5-Lecture2.html#step-2-ensure-no-spillover-and-crossover-effects",
-    "href": "Week5-Lecture2.html#step-2-ensure-no-spillover-and-crossover-effects",
-    "title": "Class 10 Randomized Controlled Trials",
-    "section": "2.6 Step 2: Ensure No Spillover and Crossover Effects",
-    "text": "2.6 Step 2: Ensure No Spillover and Crossover Effects\n\nCrossover Effects: A crossover occurs when an individual who was supposed to be assigned to one treatment is accidentally exposed to another treatment.\n\nSolution: Make sure that the same unit receives the same treatment throughout the experiment\n\nSpillover effects: The behavior of the treatment group can affect control group as well\n\nSolution: Randomize at the level of plausibly isolated social networks such as a community, rather than individual level."
+    "objectID": "Week5-Lecture2.html#fundamental-problem-of-causal-inference-1",
+    "href": "Week5-Lecture2.html#fundamental-problem-of-causal-inference-1",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
+    "section": "2.5 Fundamental Problem of Causal Inference",
+    "text": "2.5 Fundamental Problem of Causal Inference\n\nExample:\n\n\n\n\n\n\nsubject\nTreated\nY1\nY0\nY1-Y0\n\n\n\n\nDr Strange\nYes\n0.7\n?\n?\n\n\nIron Man\nNo\n?\n0.5\n?\n\n\nThor\nNo\n?\n0.72\n?\n\n\nHulk\nYes\n0.6\n?\n?\n\n\n\n\n\n\n\n\nSince it is impossible to see both potential outcomes at once, one of the potential outcomes is always missing, so we can never observe the individual treatment effects. This dilemma is called the Fundamental Problem of Causal Inference."
   },
   {
-    "objectID": "Week5-Lecture2.html#step-2-ensure-no-spillover-and-crossover-effects-1",
-    "href": "Week5-Lecture2.html#step-2-ensure-no-spillover-and-crossover-effects-1",
-    "title": "Class 10 Randomized Controlled Trials",
-    "section": "2.7 Step 2: Ensure No Spillover and Crossover Effects",
-    "text": "2.7 Step 2: Ensure No Spillover and Crossover Effects\nProposal: How should Tom mitigate spillover and crossover effects"
+    "objectID": "Week5-Lecture2.html#average-treatment-effect-ate-and-randomization",
+    "href": "Week5-Lecture2.html#average-treatment-effect-ate-and-randomization",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
+    "section": "2.6 Average Treatment Effect (ATE) and Randomization",
+    "text": "2.6 Average Treatment Effect (ATE) and Randomization\n\nAs data scientists, we often care more about the average effects on the population, which is often referred to as the average treatment effects (ATE).\n\n\\[\nATE = \\frac{\\sum (Y^1_i - Y^0_i)}{N}\n\\]\n\nTo estimate the ATE, we must randomize who receives the treatment, instead of letting the individuals choose the treatment.\nAfter randomization, we can obtain ATE by comparing the difference in the average outcomes across the treatment group and control group. Because randomization ensures that\n\nSelection bias is fully removed1\nThe treatment effects on the treatment group individuals and the control group individuals should be equal. The former is called the average treatment effects on the treated (ATT), and the latter is called the average treatment effects on the untreated (ATU).\n\nRandomized experiments are the gold standard of causal inference."
   },
   {
-    "objectID": "Week5-Lecture2.html#step-3-decide-on-randomization-allocation-scheme",
-    "href": "Week5-Lecture2.html#step-3-decide-on-randomization-allocation-scheme",
-    "title": "Class 10 Randomized Controlled Trials",
-    "section": "2.8 Step 3: Decide on Randomization Allocation Scheme",
-    "text": "2.8 Step 3: Decide on Randomization Allocation Scheme\n\nComplete Randomization: individuals (or the relevant unit of randomization) are simply allocated at random into a treatment.\n\nMost commonly used; easy to implement; no data required ex ante\n\nStratified Randomization: individuals are first divided into subsamples based on certain characteristics, and then randomization is conducted in each subsample\n\nThis stratified technique is useful if a covariate is strongly correlated with an outcome.\nLimitations: reliable data that would allow such stratification may not be present\n\n\nProposal: We can use complete randomization as customer purchase history data may not be available."
+    "objectID": "Week5-Lecture2.html#randomized-controlled-trials-1",
+    "href": "Week5-Lecture2.html#randomized-controlled-trials-1",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
+    "section": "3.1 Randomized Controlled Trials",
+    "text": "3.1 Randomized Controlled Trials\n\nRandomized Controlled Trials\nA randomized controlled trial (RCT) is an experimental form of impact evaluation in which the population receiving the program or policy intervention is chosen at random from the eligible population, and a control group is also chosen at random from the same eligible population."
   },
   {
-    "objectID": "Week5-Lecture2.html#step-4-collect-data",
-    "href": "Week5-Lecture2.html#step-4-collect-data",
-    "title": "Class 10 Randomized Controlled Trials",
-    "section": "2.9 Step 4: Collect Data",
-    "text": "2.9 Step 4: Collect Data\n\nAny field experiment should be aware of the potential need for a large sample size\n\nThe larger sample size, the higher statistical power for the experiment\nrun a power calculation [link for tutorial] if there is a budget\n\nCollect both data on the outcome variables of interest and consumer characteristics data\n\nProposal: We need to collect customers’ retention rate data and link the retention data with their treatment assignment."
+    "objectID": "Week5-Lecture2.html#types-of-rcts-based-on-location",
+    "href": "Week5-Lecture2.html#types-of-rcts-based-on-location",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
+    "section": "3.2 Types of RCTs: Based on Location",
+    "text": "3.2 Types of RCTs: Based on Location"
   },
   {
-    "objectID": "Week5-Lecture2.html#step-5-interpreting-results-from-a-field-experiment",
-    "href": "Week5-Lecture2.html#step-5-interpreting-results-from-a-field-experiment",
-    "title": "Class 10 Randomized Controlled Trials",
-    "section": "2.10 Step 5: Interpreting Results from a Field Experiment",
-    "text": "2.10 Step 5: Interpreting Results from a Field Experiment\nStep 5.1: Randomization check\n\nWe need to check if the treatment group and control group are indifferent and well-balanced in terms of their pre-treatment characteristics.\n\nStep 5.2: Analyze the data and estimate the ATE\n\nt-test to examine the difference in the average outcome between the treatment group and control group. In R, we can use t.test()\nRegression analysis (next week)"
+    "objectID": "Week5-Lecture2.html#types-of-rcts-based-on-treatment-design",
+    "href": "Week5-Lecture2.html#types-of-rcts-based-on-treatment-design",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
+    "section": "3.3 Types of RCTs: Based on Treatment Design",
+    "text": "3.3 Types of RCTs: Based on Treatment Design\n\nA/B testing (treatment group + control group)\n\nLoyalty program\nNo loyalty program\n\nA/B/N testing (multiple treatment groups + control group)\n\nPoint-based loyalty program; points can be redeemd for price vouchers\nPoint-based loyalty program; points can be redeemd for gifts\nPoint-based loyalty program; points can be redeemd for free top ups\nNo loyalty program\n\nFactorial design\n\nmore than 2 dimensions of treatments, used if we care about the interaction effects2"
   },
   {
     "objectID": "Week5-Lecture2.html#after-class-readings",
     "href": "Week5-Lecture2.html#after-class-readings",
-    "title": "Class 10 Randomized Controlled Trials",
-    "section": "2.11 After-Class Readings",
-    "text": "2.11 After-Class Readings\n\n(optional) Varian, Hal R. ‘Causal Inference in Economics and Marketing’. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310–15.\n(optional) Angrist, Joshua & Pischke, Jörn-Steffen. (2009). Mostly Harmless Econometrics: An Empiricist’s Companion."
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
+    "section": "3.4 After-Class Readings",
+    "text": "3.4 After-Class Readings\n\n(optional) Varian, Hal R. ‘Causal Inference in Economics and Marketing’. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310–15.\n(optional) Angrist, Joshua & Pischke, Jörn-Steffen. (2009). Mostly Harmless Econometrics: An Empiricist’s Companion."
+  },
+  {
+    "objectID": "Week5-Lecture2.html#footnotes",
+    "href": "Week5-Lecture2.html#footnotes",
+    "title": "Class 10 Causal Inference and Randomized Controlled Trials",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSelection bias refers to the pre-existing difference between the treatment group and control group even without the treatment↩︎\nChintagunta, Pradeep K. and Huang, Liqiang and Miao, Wei and Zhang, Wanqing, Measuring Seller Response to Buyer-initiated Disintermediation: Evidence from a Field Experiment on a Service Platform (April 19, 2023). Available at SSRN: https://ssrn.com/abstract=4423917 or http://dx.doi.org/10.2139/ssrn.4423917↩︎"
   },
   {
     "objectID": "Week2-Lecture1.html",
