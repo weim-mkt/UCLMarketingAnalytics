@@ -3,7 +3,8 @@ title: "Improving Marketing Efficiency Using Predictive Analytics"
 author: Dr Wei Miao
 subtitle: "MSIN0094 Case Study"
 institute: UCL School of Management
-date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(3))|> format('%a, %d %b')`"
+date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(3))`"
+date-format: long
 df-print: kable
 colorlinks: true
 code-line-numbers: true
@@ -15,20 +16,25 @@ format:
     toc-depth: 2
     code-line-numbers: true
     code-copy: hover
+    knitr:
+      opts_chunk:
+        echo: true
+        warning: false
+        message: false
+        error: false
   pdf: 
     number-sections: true
     toc: false
     number-depth: 2
     fontsize: 9pt
     linestretch: 1.25
-knitr:
-  opts_chunk:
-    echo: true
-    warning: false
-    message: false
-    error: false
-execute: 
-  cache: false
+    knitr:
+      opts_chunk:
+        echo: false
+        include: false
+        warning: false
+        message: false
+        error: true
 bibliography: references.bib
 editor_options: 
   chunk_output_type: inline
@@ -46,7 +52,7 @@ Predictive analytics models can be divided into two groups: supervised learning 
 
 On the other hand, unsupervised learning does not identify a target (dependent) variable, but rather treats all of the variables equally. In this case, the goal is not to predict the value of a variable, but rather to look for patterns, groupings, or other ways to characterize the data that may lead to an understanding of the way the data interrelate. Cluster analysis is an example of unsupervised learning, which helps data analysts find customer segments based on provided characteristics.
 
-In this case study, we are going to analyze the same dataset as in Week 2 Preliminary Customer Analysis. Our task is to use predictive analytics tools to help Tesco conduct more effective targeted marketing.
+In this case study, we are going to analyze the same dataset as in "Preliminary Customer Analysis". Our task is to use predictive analytics tools to help Tesco conduct more effective targeted marketing.
 
 As a quick recap, the variable definitions are as follows:
 
@@ -78,12 +84,16 @@ As a quick recap, the variable definitions are as follows:
 -   **Response: 1 if customer accepted the offer in the last campaign, 0 otherwise**
 -   Recency: Number of days since customer's last purchase
 
-# Uncover Customer Segments Using Unsupervised Learning
+# Customer Segmentation Using Unsupervised Learning
 
-1.  We aim to do customer segmentation based on *total spending* and *income.*
+## **Marketing Objective**
+
+We aim to do customer segmentation based on *total spending* and *income.*
+
+## **Data Collection**
 
 ```{r}
-pacman::p_load(dplyr)
+pacman::p_load(dplyr,modelsummary)
 # Load both datasets
 data_purchase <- read.csv(file = "https://www.dropbox.com/s/126e9vkq80y9ti9/purchase.csv?dl=1", 
                       header = T)
@@ -93,14 +103,27 @@ data_demo <- read.csv("https://www.dropbox.com/s/hbrgktcz98y0igs/demographics.cs
 
 # Left join demographic data into purchase data
 data_full <- data_purchase %>%
-  left_join(data_demo, by = "ID")
+  left_join(data_demo, by = c("ID" = "ID") )
 
-# Handle Missing Values of Income
-data_full <- data_full %>%
-  mutate(Income = replace(Income, is.na(Income), mean(Income,na.rm =T))) 
 ```
 
-First of all, we need to re-scale the two variables using `scale()`, because the two variables are of very different scales
+## **Data Cleaning**
+
+First, we need to check missing values and resolve them as the k-means algorithm cannot handle missing values directly.
+
+```{r}
+# check missing values for each variable
+datasummary_skim(data_full)
+```
+
+```{r}
+data_full <- data_full %>%
+  mutate(Income = ifelse(is.na(Income), # True of false
+                         mean(Income,na.rm = T), # if true, then use mean income
+                         Income)) # if false, still the same value
+```
+
+Second, we need to re-scale the two variables using `scale()`, because the two variables are of very different scales.
 
 ```{r}
 
@@ -113,7 +136,9 @@ data_kmeans <- data_full%>%
 
 ```
 
-2.  Run the K-means clustering algorithm using `kmeans()`
+## Data Analytics
+
+-   Run the K-means clustering algorithm using `kmeans()`
 
 ```{r}
 set.seed(888)
@@ -122,13 +147,19 @@ result_kmeans <- kmeans(data_kmeans,
                         nstart = 10)
 ```
 
-We can examine the structure of the `result_kmeans` using `str()`
+-   We can examine the structure of the `result_kmeans` using `str()`
 
 ```{r}
 str(result_kmeans)
 ```
 
-3.  Visualize the clustering
+-   Summarize the model object by printing it
+
+```{r}
+result_kmeans
+```
+
+-   Visualize the clustering
 
 ```{r}
 pacman::p_load(cluster,factoextra)
@@ -137,9 +168,9 @@ fviz_cluster(result_kmeans,
              data = data_kmeans)
 ```
 
-4.  Determine the optimal number of clusters using statistical criteria
+-   Determine the optimal number of clusters using statistical criteria
 
--   Gap Method
+**Gap Method**
 
 ```{r}
 set.seed(888)
@@ -150,7 +181,7 @@ gap_stat <- clusGap(data_kmeans,
 fviz_gap_stat(gap_stat)
 ```
 
--   Silhouette method
+**Silhouette method**
 
 ```{r}
 set.seed(888)
@@ -159,10 +190,34 @@ fviz_nbclust(data_kmeans, kmeans, method = "silhouette")
 
 From both methods, it seems K = 2 is the best choice.
 
-5.  Compare the CLV in the two segments, and decide which segment to serve.
+## Business Recommendations
 
+Compare the CLV in the two segments, and decide which segment to serve.
 
-# Tesco's Task: Acquire Customers to Try New Products
+As we would like to save marketing costs by sending marketing offers to responsive customers, we need to compute the average response rate for each segment generated by the K-means algorithm
+
+-   Generate the customer segment in `data_full`
+
+```{r}
+
+data_full <- data_full %>%
+  mutate(segment = result_kmeans$cluster)
+```
+
+-   Compute the average response rate for each segment
+
+```{r}
+data_full %>%
+  group_by(segment) %>%
+  summarise(avg_response_rate = mean(Response, na.rm = T)) %>%
+  ungroup()
+```
+
+We observe that Segment 1 has a much higher average response rate of more than 20%, so we should send marketing offers to Segment 1 customers.
+
+# Customer Targeting using Supervised Learning Tasks
+
+## Marketing objective
 
 Tesco is looking to promote its new [private-label](https://en.wikipedia.org/wiki/Private_label) products to existing customers. The marketing analytics team decides to use the conventional mailing marketing strategy so that customers would receive color-printed leaflets via Royal Mails to their doorsteps.
 
@@ -196,9 +251,7 @@ break_even_response
 
 Which means, only if a customer responds to us with at least `r break_even_response*100`% response rate can we recover the costs of making an marketing offer.
 
-# Data Preparation and Model Training
-
-## Data wrangling and cleaning
+## Data collection and cleaning
 
 *Tasks*: Merge the demographic information into purchase history data.
 
@@ -217,13 +270,16 @@ data_full <- data_purchase %>%
 
 # Handle Missing Values of Income
 data_full <- data_full %>%
-  mutate(Income = replace(Income, is.na(Income), mean(Income,na.rm =T))) 
+  mutate(Income = ifelse(is.na(Income), 
+                         mean(Income,na.rm =T),
+                         Income)) %>%
+  mutate(totalspending = MntFishProducts + MntFruits + MntGoldProds + MntMeatProducts + MntSweetProducts + MntWines)
 
 ```
 
-## Select features/predictors
+## Data Analytics Using Supervised Machine Learning
 
-*Tasks*: select meaningful features/predictors from `data_full`, named `data_full_small`
+### Select meaningful features/predictors from `data_full`, named `data_full_small`
 
 -   Since `ID` is customer ID only, so should be removed from final data
 
@@ -238,7 +294,7 @@ data_full_smaller <- data_full %>%
   select(-Dt_Customer)
 ```
 
-## Construct a training set and a test set
+### Construct a training set and a test set
 
 *Tasks*: randomly divide `data_full` into a training set and a test set
 
@@ -261,7 +317,7 @@ data_training <- data_full_smaller[training_index,]
 data_test <- data_full_smaller[-training_index,]
 ```
 
-## Train a decision tree
+### Train a decision tree
 
 *Tasks*: load the `rpart` and `rpart.plot` packages. Follow the code examples in the lecture notes and try to train a decision tree on `data_training`
 
@@ -276,7 +332,7 @@ decision_tree <- rpart(
     NumStorePurchases + NumWebVisitsMonth + Complain + Year_Birth + Education + 
     Marital_Status + Income + Kidhome + Teenhome + Recency,
   data =  data_training,
-  method  = "anova" )
+  method  = "anova" ) # because we need probabilities (a continuous variable) later on to decide targeting, here we sepcify "anova" rather than "class"
 
 ```
 
@@ -285,7 +341,7 @@ decision_tree <- rpart(
 rpart.plot(decision_tree)
 ```
 
-## Train a random forest
+### Train a random forest
 
 *Tasks*: load the `ranger` packages. Follow the code examples in the lecture notes and try to train a random forest on `data_training`
 
@@ -302,21 +358,24 @@ randomforest <- ranger(
     NumStorePurchases + NumWebVisitsMonth + Complain + Year_Birth + Education + 
     Marital_Status + Income + Kidhome + Teenhome + Recency,
   data = data_training,
+  probability = TRUE,
   num.trees = 500
 )
 
-# make prediction on the test set
-prediction_from_randomforest <- predict(randomforest, data_test)
+# make prediction on the test set, which returns a model prediction object
+prediction_from_randomforest <- predict(randomforest, data_test) 
 
 # mutate a new column in data_test for the predicted probability from random forest
+# the prediction_from_randomforest$predictions gives a matrix
+# so we need to the take the second column using [,2]
 data_test <- data_test %>%
-  mutate(predicted_prob_randomforest = prediction_from_randomforest$predictions)
+  mutate(predicted_prob_randomforest = prediction_from_randomforest$predictions[,2]) 
 
 ```
 
-# Improving Marketing Efficiency Using Predictive Analytics
+## Business Recommendations
 
-## Blanket marketing
+### Blanket marketing
 
 If Tesco does blanket marketing and sends marketing offers to all 600 customers in the test set, the total marketing costs would be
 
@@ -358,8 +417,6 @@ ROI_blanket
 
 A negative ROI from blanket marketing means, the company makes a loss from sending offers to all customers in the test set. The reason is that, not all customers are responsive to our marketing offers. It does Tesco no good from sending offers to those customers who would not respond anyway.
 
-## Targeted marketing using predictive analytics
-
 However, if Tesco uses the trained decision tree model to conduct targeted marketing, and **only target those customers who are predicted to be more responsive than the break-even response rate by decision trees**, what would happen to the ROI?
 
 ### Predict response rate from decision tree model
@@ -373,32 +430,37 @@ First, we have already trained the decision tree model, named `decision_tree`, f
 prediction_from_decision_tree <- predict(decision_tree, data_test)
 
 # mutate a new column in data_test for the predicted probability
+# note that from decision tree, predict() can directly give a vector rather than matrix
+# so we no longer need to extract the second column (as we did with random forest)
 data_test <- data_test %>%
   mutate(predicted_prob_decisiontree = prediction_from_decision_tree)
 
 ```
-
-### Select customers to target
 
 *Tasks*: We should only send marketing offers to consumers whose expected or predicted response rate is larger than the break-even response rate. This is called targeted marketing.
 
 ```{r}
 # mutate a new binary indicator for whether to target a customer based on predicted prob from decision tree model
 data_test <- data_test %>%
-  mutate(is_target_decisiontree = ifelse(predicted_prob_decisiontree > break_even_response,1L,0L))
+  mutate(is_target_decisiontree = ifelse(predicted_prob_decisiontree > break_even_response,1,0))
 ```
-
-### Compute ROI for decision tree targeted marketing
 
 Finally, we have decided to send marketing offers to selected responsive customers. We can then compute the ROI for targeted marketing as in the blanket marketing case.
 
 ```{r}
 
 # total marketing costs
-total_costs_of_mailing_decisiontree <- cost_per_offer * sum(data_test$is_target_decisiontree)
+total_costs_of_mailing_decisiontree <- cost_per_offer *  # cost per offer
+  sum(data_test$is_target_decisiontree)  # the sum of is_target is the total number of customers who receive the offer
+
+# filter out customers who receive the marketing offer
+data_test_targeted_customers <- data_test%>%
+     filter(is_target_decisiontree==1)
 
 # total profits from responding customers
-total_profit_decisiontree <- sum((data_test%>%filter(is_target_decisiontree==1))$Response) * profit_per_customer
+
+total_profit_decisiontree <- sum(data_test_targeted_customers$Response) * # sum up to get how many targeted customers actually responded
+  profit_per_customer # the profit per responding customer
 
 # Compute ROI
 ROI_decisiontree<- (total_profit_decisiontree - total_costs_of_mailing_decisiontree)/total_costs_of_mailing_decisiontree
@@ -406,7 +468,7 @@ ROI_decisiontree<- (total_profit_decisiontree - total_costs_of_mailing_decisiont
 ROI_decisiontree
 ```
 
-Finally, if Tesco uses random forest, an arguably better supervised learning model, to conduct targeted marketing, we can follow a similar logic as above, and compute the ROI from using random forest.
+If Tesco uses random forest, an arguably better supervised learning model, to conduct targeted marketing, we can follow a similar logic as above, and compute the ROI from using random forest.
 
 ```{r}
 
@@ -417,8 +479,14 @@ data_test <- data_test %>%
 # total marketing costs
 total_costs_of_mailing_randomforest <- cost_per_offer * sum(data_test$is_target_randomforest)
 
+# get the number of responding customers who are targeted: the second method
+
+data_responding_targeted_customers <- data_test %>%
+  filter(is_target_randomforest == 1) %>%  # who are targeted 
+  filter(Response == 1) # who responding among targeted customers
+
 # total profits from responding customers
-total_profit_randomforest <- sum((data_test%>%filter(is_target_randomforest==1))$Response) * profit_per_customer
+total_profit_randomforest <- nrow(data_responding_targeted_customers) * profit_per_customer
 
 # Compute ROI
 ROI_randomforest<- (total_profit_randomforest - total_costs_of_mailing_randomforest)/total_costs_of_mailing_randomforest

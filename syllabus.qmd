@@ -1,6 +1,6 @@
 ---
 title: "Syllabus"
-date: "2023/09/17"
+date: "2023/10/02"
 date-format: long
 ---
 
@@ -14,18 +14,16 @@ date-format: long
 
 -   Teaching assistants
 
-    -   Rafael Machado Molina, [rafael.molina.21\@ucl.ac.uk](mailto:rafael.molina.21@ucl.ac.uk) (UCL MSc BA 2022)
     -   Kayi Yeung, [ka.yeung.21\@ucl.ac.uk](mailto:ka.yeung.21@ucl.ac.uk) (UCL MSc BA 2022)
-    - Jiafan Lu, [jiafan.lu\@ucl.ac.uk](mailto:jiafan.lu.22@ucl.ac.uk) (UCL PhD Management 2022)
+    -   Jiafan Lu, [jiafan.lu\@ucl.ac.uk](mailto:jiafan.lu.22@ucl.ac.uk) (UCL PhD Management 2022)
 
 -   Office hours: See Moodle for the links to book an office hour session with Wei (for lecture contents) and TAs (for R programming)
 
-
 # Course Objective
 
-Marketing analytics addresses how to utilize the right analytics tools to guide marketing tactics and strategies in a scientific manner. Driven by recent advances in information and communication technologies, the very nature of marketing analytics has evolved. This module provides students with systematic and practical training in causal inference, predictive analytics, and programming tools in solving real-life marketing problems.[^2]
+Marketing analytics addresses how to utilize the right analytics tools to guide marketing tactics and strategies in a scientific manner. Driven by recent advances in information and communication technologies, the very nature of marketing analytics has evolved. This module provides students with systematic and practical training in causal inference, predictive analytics, and programming tools in solving real-life marketing problems.[^1]
 
-[^2]: Just a little heads up -- unlike undergrad marketing modules where you mainly learn marketing strategies and concepts, this module focuses on "analytics" (which comes first) and its application in "marketing" (which comes next).
+[^1]: Just a little heads up -- unlike undergrad marketing modules where you mainly learn marketing strategies and concepts, this module focuses on "analytics" (which comes first) and its application in "marketing" (which comes next).
 
 In week 1, students will learn the concept of marketing process and how to compute customer lifetime value using R. In week 2, students will start building up dataset cleaning and manipulation skills with the dplyr package. In week 3 and week 4, students will learn predictive analytics and how to apply machine learning models for segmentation, targeting, and customer relationship management.
 
@@ -67,7 +65,7 @@ If you have little prior exposure to R before joining MSc Business Analytics, it
 
 There will be no exams in this module. Learning outcomes will be examined through three individual assignments. Your final grade in this module will be a weighted average of the following:
 
--   First assignment, 30% weight, 1500 words, due Friday, 27 October 2023
+-   First assignment, 30% weight, 1500 words, due Monday, 30 October 2023
 -   Second assignment, 30% weight, 1500 words, due Friday, 24 November 2023
 -   Third assignment, 40% weight, 2000 words, due Friday, 15 December 2023
 

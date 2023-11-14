@@ -3,7 +3,8 @@ title: "Descriptive Analytics: Preliminary Customer Analysis"
 author: Dr Wei Miao
 subtitle: "MSIN0094 Case Study"
 institute: UCL School of Management
-date: "`r (lubridate::ymd('20221006')+lubridate::dweeks(2))|> format('%a, %d %b')`"
+date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(2))`"
+date-format: long
 df-print: kable
 colorlinks: true
 code-line-numbers: true
@@ -15,18 +16,24 @@ format:
     toc-depth: 2
     code-line-numbers: true
     code-copy: hover
+    knitr:
+      opts_chunk:
+        echo: true
+        warning: true
+        message: true
+        error: true
   pdf: 
     number-sections: true
     toc: false
     number-depth: 2
     fontsize: 9pt
     linestretch: 1.25
-knitr:
-  opts_chunk:
-    echo: true
-    warning: false
-    message: false
-    error: false
+    knitr:
+      opts_chunk: 
+        echo: false
+        warning: false
+        message: false
+        include: false
 bibliography: references.bib
 editor_options: 
   chunk_output_type: inline
@@ -34,9 +41,9 @@ editor_options:
 
 # The Power of Descriptive Analytics
 
-The amount of data created worldwide has been increasing exponentially over the past decade with some estimates placing the total at 59 zettabytes as of 2020 (Statista 2020). Data without analytics, however, is of little value to business decision-makers aiming to improve performance and increase growth. It is therefore no surprise that top-tier consulting companies, analytics ﬁrms and business schools have been promoting the positive returns to greater usage of analytics technology. It also explains why an increasing number of data analytics enthusiasts are willing to pay up to £40k tuition fee (that is 10,000 bubble teas!) to join the prestigious MSc Business Analytics program at the UCL School of Management (hmm, it's now week 3, too late to ask for a refund!).
+The amount of data created worldwide has been increasing exponentially over the past decade with some estimates placing the total at 59 zettabytes as of 2020 (Statista 2020). Data without analytics, however, is of little value to business decision-makers aiming to improve performance and increase growth. It is therefore no surprise that top-tier consulting companies, analytics ﬁrms and business schools have been promoting the positive returns to greater usage of analytics technology. It also explains why an increasing number of data analytics enthusiasts are willing to pay up to £40k tuition fee (that is 10,000 bubble teas!) to join the prestigious MSc Business Analytics program at the UCL School of Management (hmm, it's now already week 3, too late to ask David for a refund!).
 
-By identifying patterns and trends in massive amounts of data, business analytics enables organizations to make better decisions and improve performance. Descriptive analytics is the simplest and most widely used type of analytics; it is used to generate key performance indicators (KPIs) and metrics for business reports and dashboards. The latest research shows that, even with the adoption of very simple descriptive analytics, businesses can improve their performance by a large extent --- @bermanValueDescriptiveAnalytics2022 use the synthetic difference-in-differences method to analyze the staggered adoption of a retail analytics dashboard by more than 1,500 e-commerce websites,[^1] and find an increase of 4%--10% in average weekly revenues postadoption. The increase in revenue is not explained by price changes or advertising optimization. Instead, it is consistent with the addition of customer relationship management, personalization, and prospecting technologies to retailer websites. The adoption and usage of descriptive analytics also increases the diversity of products sold, the number of transactions, the numbers of website visitors and unique customers, and the revenue from repeat customers. These findings are consistent with a complementary effect of descriptive analytics that serve as a monitoring device that helps retailers control additional martech tools and amplify their value. Without using the descriptive dashboard, retailers are unable to reap the benefits associated with these technologies.
+By identifying patterns and trends in massive amounts of data, business analytics enables organizations to make better decisions and improve performance. Descriptive analytics is the simplest and most widely used type of analytics; it is used to generate key performance indicators (KPIs) and metrics for business reports and dashboards. The latest research shows that, even with the adoption of very simple descriptive analytics, businesses can improve their performance by a large extent --- @bermanValueDescriptiveAnalytics2022 use the synthetic difference-in-differences method to analyze the staggered adoption of a retail analytics dashboard by more than 1,500 e-commerce websites,[^1] and find an increase of 4%--10% in average weekly revenues post-adoption. The increase in revenue is not explained by price changes or advertising optimization. Instead, it is consistent with the addition of customer relationship management, personalization, and prospecting technologies to retailer websites. The adoption and usage of descriptive analytics also increases the diversity of products sold, the number of transactions, the numbers of website visitors and unique customers, and the revenue from repeat customers. These findings are consistent with a complementary effect of descriptive analytics that serve as a monitoring device that helps retailers control additional martech tools and amplify their value. Without using the descriptive dashboard, retailers are unable to reap the benefits associated with these technologies.
 
 [^1]: We will cover the difference-in-differences technique to establish causal inference later in the module.
 
@@ -131,35 +138,13 @@ In reality, to accomplish a data analytics task, data scientists often need to c
 
 Now we have two Tesco datasets at hand, and we should assemble them into a larger data frame.
 
--   Merge the demographic information into purchase history data. Name the joined data as "data_full"
-
-    -   try left_join(), right_join(), inner_join(), and full_join().
-
-    -   Do they give you the same results? Why? When would you get different results?
+-   Join the demographic information `data_demo` into purchase history data `data_purchase`. Name the joined data as "data_full"
 
 ```{r}
-pacman::p_load(dplyr)
-# left join
+pacman::p_load(dplyr,modelsummary)
+# left join, which must be M:1
 data_full <- data_purchase %>%
-  left_join(data_demo, by = "ID")
-```
-
-```{r}
-# right join
-data_full_right_join <- data_purchase %>%
-  right_join(data_demo, by = "ID")
-```
-
-```{r}
-# inner_join 
-data_full_inner_join <- data_purchase %>%
-  inner_join(data_demo, by = "ID")
-```
-
-```{r}
-# full_join 
-data_full_full_join <- data_purchase %>%
-  full_join(data_demo, by = "ID")
+  left_join(data_demo, by = c("ID" = "ID") )
 ```
 
 ## Data Types
@@ -172,51 +157,7 @@ data_full_full_join <- data_purchase %>%
 str(data_full)
 ```
 
--   *Discussion*: If the variables types are incorrect, think about how would you make it right using `dplyr`?
-    -   For instance, we can observe that `Dt_Customer` is of `character` type, we need to convert it to `date` type in R.
-
-```{r}
-# use mutate to overwrite the previous Dt_Customer
-# use as.Date() to make the conversion from character to date type
-data_full <- data_full %>%
-  mutate(Dt_Customer = as.Date(Dt_Customer, format = "%d/%m/%Y" ))
-```
-
-Now, if we check the data type of `Dt_Customer` using `class()`, it is `date` type now!
-
-```{r}
-class(data_full$Dt_Customer)
-```
-
-## Missing Values
-
--   *Tasks*: Are there any missing values in the data?
-
-    -   tip: use `datasummary_skim()`, which reports the number of missing values
-
-```{r}
-pacman::p_load(modelsummary)
-datasummary_skim(data_full)
-```
-
--   *Tasks*: Clean missing values in the dataset.
-
-    -   tip: use `mean(var, na.rm = T)` to get the average income; and then replace missing values in `data_full` with the average income using `replace()` function. See below an example or check `replace()` help file to find out its syntax.
-
-```{r}
-# the below code generates a vector a with 2 NAs (not relevant to case study)
-# the 2nd and 4th elements are missing values
-# the last line of code replaces any missing value with 2
-a <- c(1,NA,3,NA)
-replace(a, is.na(a), 2)
-```
-
-```{r}
-data_full <- data_full %>%
-  mutate(Income = replace(Income, is.na(Income), mean(Income,na.rm = T)))
-```
-
-# Preliminary Customer Analysis (Descriptive Analytics)
+# Preliminary Customer Analysis
 
 Next, once the final dataset is ready, we can proceed to use descriptive analytics to conduct preliminary customer analysis using `dplyr`.
 
@@ -233,22 +174,8 @@ Your task is to 'get to know' the data by conducting some statistical analysis u
 datasummary_skim(data_full)
 ```
 
-2.  Report the percent of customers in each Marital Status group and compare the average spendings in each group. What insights can you draw? Tips: at least two methods to do this task
+2.  Group customers by Marital Status and compare the average spending in each group. What insights can you draw?
     -   Tips: use `group_by()` + `summarise()`
-
-To compute the percentage of customers in each marital status group
-
-```{r}
-# The below code computes the percentage of customers in each marital status group
-data_full %>%
-  group_by(Marital_Status)%>%
-  summarise(n_customer_each_group = n())%>% #n() counts the # of customer in each group
-  ungroup() %>%
-  mutate(total_customers = sum(n_customer_each_group))%>% # total number of customers is the sum of number of customers in each marital status group
-  mutate(percentage_customers = n_customer_each_group/total_customers)
-```
-
-To compare the average spendings of customers in each marital status group
 
 ```{r}
 data_full %>%
@@ -256,19 +183,6 @@ data_full %>%
   group_by(Marital_Status)%>% # group by 
   summarise(avg_spending = mean(total_spending))%>% # compute the mean of spending for each group
   ungroup() 
-```
-
-In fact, the two questions can be answers in one code block, due to the utmost elegance of R dplyr!
-
-```{r}
-data_full %>%
-  mutate(total_spending = MntWines + MntFruits + MntMeatProducts + MntFishProducts + MntSweetProducts + MntGoldProds) %>% # mutate total spending 
-  group_by(Marital_Status)%>%
-  summarise(n_customer_each_group = n(),#n() counts the # of customer in each group
-            avg_spending = mean(total_spending))%>% # compute the mean of spending for each group
-  ungroup() %>%
-  mutate(total_customers = sum(n_customer_each_group))%>% # total number of customers is the sum of number of customers in each marital status group
-  mutate(percentage_customers = n_customer_each_group/total_customers)
 ```
 
 3.  Which education group accounts for the largest percentage of customers? Answering this question using `dplyr` only.
@@ -289,7 +203,7 @@ data_demo%>% # Think about why data_demo? what if we use data_full?
 ```{r}
 
 data_full %>% 
-  mutate(has_kid = ifelse(Kidhome>0,1,0)) %>% # generate a new variable indicating if there is kid
+  mutate(has_kid = ifelse(Kidhome>0,1,0)) %>%
   group_by(has_kid) %>%
   summarise(avg_spending_wine = mean(MntWines, na.rm = T),
             avg_spending_fruit = mean(MntFruits, na.rm = T)) %>%
@@ -297,79 +211,17 @@ data_full %>%
 
 ```
 
-5.  Which product categories have the most sales? Which have sold the least? Use `dplyr` only.
+5.  For complainers and non-complainers who have Master's degrees, find the total number and also the percent of customers who responded to the offer.
 
 ```{r}
 
 data_full %>%
-  select(starts_with("Mnt")) %>% # this is a shortcut `select` function by dplyr; check its help manual
-  sapply( sum) %>%
-  sort()
-
-```
-
-6.  For both complainers and non-complainers, find the total number and also the percent of customers who responded to the offer.
-
-```{r}
-
-data_full %>%
+  filter(Education == 'Master') %>%
   group_by(Complain) %>%
   summarise(n_responder = sum(Response, na.rm = T),
-            percent_responder = n_responder / n(),
-            n_non_responder = n() - n_responder,
-            percent_non_responder = n_non_responder / n()
-            ) %>%
-  ungroup()
-
-```
-
-7.  Compute the individual CLV and identify the top 50% customers, assuming the following:
-
--   the annual retention rate is 60% for complainers and 80% for non-complainers (generate a new column called retention rate, based on complainer or non-complainer)
--   consider 5 years for customer life
--   average COGS 60% - Variable marketing cost: 15% of total spending
--   10% annual discount rate
-
-::: callout-note
-## User Defined Function
-
-UDF is covered in the induction week Friday session (by Lina). You can also refer to the following tutorials to learn more about UDF.
-
--   [simple](https://campus.datacamp.com/courses/data-science-r-basics/programming-basics-3c77f83c-b970-4d34-a0af-ceaf3cdd6868?ex=4)
-
--   [advanced](https://www.datacamp.com/tutorial/functions-in-r-a-tutorial)
-:::
-
-```{r}
-# define a function that can compute CLV for each customer.
-compute_CLV <- function(retention,N,spending,discount,COGS, marketing_cost){
-  # revenue sequence
-  revenue_seq <- rep(spending,N)
-  
-  # profit sequence g = M-c
-  profit_seq <- revenue_seq * (1 - COGS - marketing_cost)
-  
-  # apply retention rate
-  
-  profit_after_churn <- profit_seq * (retention ^ (seq(1,N) - 1) )
-  
-  # discount the future profits 
-  
-  profit_after_churn_discount <- profit_after_churn * ( 1/ (1+discount)) ^ seq(1:N)
-  
-  # CLV; note that CAC is not available in this case, so the CLV here does not include CAC. If CAC information is available, CLV should consider them.
-  
-  CLV <- sum(profit_after_churn_discount)
-  
-  return(CLV)
-  
-}
-
-data_full <- data_full %>%
-  mutate(retention_rate = ifelse(Complain == 1, 0.6, 0.8),# generate individual specific churn rate
-         total_spending = MntFishProducts + MntFruits + MntGoldProds + MntMeatProducts + MntSweetProducts + MntWines)%>% 
-  rowwise()%>% # row-wise operation for each row to compute the CLV
-  mutate(CLV = compute_CLV(retention_rate,5,total_spending/2,0.1,0.6,0.15))%>%
+            n_customer = n()) %>%
   ungroup() %>%
-  arrange(-CLV) 
+  mutate(percent_of_responder = n_responder / n_customer )
 ```
+
+# References {.unnumbered}

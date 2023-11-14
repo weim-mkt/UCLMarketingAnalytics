@@ -5,11 +5,14 @@ website:
   google-analytics: "G-FTK61TBF7L"
   title: "Marketing Analytics"
   page-navigation: true
-  reader-mode: true
+  reader-mode: false
   sidebar:
     style: "docked"
     search: true
     background: primary
+    tools: 
+      - icon: youtube
+        href: https://youtube.com/@MeowMeowAnalytics?si=mBVfkYi4u95f6uxp
     contents:
       - section: "Lectures"
         contents:
@@ -39,40 +42,36 @@ website:
                 text: "Class 5 Data Wrangling with R II "
               - href: Week3-Lecture2.html
                 text: "Class 6 Unsupervised Learning"
-              - href: Case-PreliminaryCustomerAnalysis-stu.pdf
-                text: "Preliminary Customer Analyses"  
               - href: Case-PreliminaryCustomerAnalysis.html
-                text: "Case Solution: Descriptive Analytics"  
+                text: "Preliminary Customer Analyses (Solutions)"
           - section: "[Week 4] Supervised Learning and Customer Targeting"
             contents: 
               - href: Week4-Lecture1.html
-                text: "Class 7 Supervised Learning"
+                text: "Class 7 Supervised Learning Basics"
               - href: Week4-Lecture2.html
-                text: "Class 8: Improve Marketing Efficiency Using Predictive Analytics"
-              - href: Case-PredictiveAnalytics-stu.pdf
-                text: "Improving Marketing Efficiency Using Predictive Analytics"  
-              - href: Case-PredictiveAnalytics.html
-                text: "Case Solution: Predictive Analytics"
+                text: "Class 8: Tree-based Models"
           - section: "[Week 5] Causal Inference and RCT"
             contents: 
               - href: Week5-Lecture1.html
-                text: "Class 9 Causal Inference"
+                text: "Class 9 Case Study: Improve Marketing Efficiency for Tesco Using Supervised Learning"
               - href: Week5-Lecture2.html
-                text: "Class 10 Randomized Controlled Trials"
+                text: "Class 10 Causal Inference and A/B Testing"
+              - href: Case-PredictiveAnalytics.html
+                text: "Improve Tesco's Marketing Efficiency Using Predictive Analytics (Solutions)"
           - section: "[Week 6] Linear Regression Models"
             contents: 
               - href: Week6-Lecture1.html
-                text: "Class 11 Application of A-B Testing at Vungle"
+                text: "Class 11 Application of A/B Testing"
               - href: Week6-Lecture2.html
                 text: "Class 12 Linear Regression Basics"
+              - href: Case-SocialMedia.html
+                text: "Improve User Engagement on Social Media Platforms Using A/B Testing (Solutions)"
           - section: "[Week 7] Marketing Mix Modeling"
             contents: 
               - href: Week7-Lecture1.html
                 text: "Class 13 Linear Regression Advanced"
               - href: Week7-Lecture2.html
                 text: "Class 14 Marketing Mix Modeling"
-              - href: Case-Zalora.html
-                text: "Case Solution: Zalora"
           - section: "[Week 8] Endogeneity and Instrumental Variable"
             contents: 
               - href: Week8-Lecture1.html

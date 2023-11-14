@@ -48,20 +48,8 @@ bibliography: references.bib
 #| echo: false
 pacman::p_load(dplyr,ggplot2,ggthemes)
 # Load both datasets
-data_purchase <- read.csv(file = "https://www.dropbox.com/s/126e9vkq80y9ti9/purchase.csv?dl=1", 
+data_full <- read.csv(file = "https://www.dropbox.com/scl/fi/hhweiqsuwgcwgd1jiuyte/data_full.csv?rlkey=jwyd9z409b5wpwz41ow8d1otj&dl=1", 
                       header = T)
-
-data_demo <- read.csv("https://www.dropbox.com/s/hbrgktcz98y0igs/demographics.csv?dl=1",
-                      header = T)
-
-# Left join demographic data into purchase data
-data_full <- data_purchase %>%
-  left_join(data_demo, by = "ID")
-
-# Handle Missing Values of Income
-data_full <- data_full %>%
-  mutate(Income = replace(Income, is.na(Income), mean(Income,na.rm =T))) %>%
-  mutate(total_spending = MntFishProducts + MntFruits + MntGoldProds + MntMeatProducts + MntSweetProducts + MntWines)
 ```
 :::
 
@@ -70,20 +58,8 @@ data_full <- data_full %>%
 #| echo: true
 pacman::p_load(dplyr,ggplot2,ggthemes)
 # Load both datasets
-data_purchase <- read.csv(file = "https://www.dropbox.com/s/126e9vkq80y9ti9/purchase.csv?dl=1", 
+data_full <- read.csv(file = "https://www.dropbox.com/scl/fi/hhweiqsuwgcwgd1jiuyte/data_full.csv?rlkey=jwyd9z409b5wpwz41ow8d1otj&dl=1", 
                       header = T)
-
-data_demo <- read.csv("https://www.dropbox.com/s/hbrgktcz98y0igs/demographics.csv?dl=1",
-                      header = T)
-
-# Left join demographic data into purchase data
-data_full <- data_purchase %>%
-  left_join(data_demo, by = "ID")
-
-# Handle Missing Values of Income
-data_full <- data_full %>%
-  mutate(Income = replace(Income, is.na(Income), mean(Income,na.rm =T))) %>%
-  mutate(total_spending = MntFishProducts + MntFruits + MntGoldProds + MntMeatProducts + MntSweetProducts + MntWines)
 ```
 :::
 
@@ -93,18 +69,18 @@ data_full <- data_full %>%
 
     -   e.g., gender, education group, city.
 
-## Handling Categorical Variables using `factor()`
+## Handling Categorical Variables in R using `factor()`
 
--   In R, we need to use a function `factor()` to inform R that this variable is a categorical variable, such that statistical models will treat them differently from continuous variables.
-    -   Refer to this [link](https://www.datacamp.com/tutorial/factors-in-r) for more examples in datacamp.
--   We can use `factor(Education)` to indicate that, `Education` is a categorical variable.
+-   In R, we need to use a function `factor()` to explicitly inform R that this variable is a categorical variable, such that statistical models will treat them differently from continuous variables.
+    -   e.g., we can use `factor(Education)` to indicate that, `Education` is a categorical variable.
 
 ```{r}
 data_full <- data_full %>%
   mutate(Education_factor = factor(Education))
 ```
 
--   We can use `levels()` to check how many categories are there in the factor variable.
+-   We can use `levels()` to check how many categories there are in the factor variable.
+    -   e.g., `Education` has 5 different levels.
 
 ```{r}
 # check levels of a factor
@@ -114,9 +90,11 @@ levels(data_full$Education_factor)
 ::: {.content-visible when-format="beamer"}
 ## Handling Categorical Variables using `factor()`
 
--   We can also change the baseline group to another group using `relevel()`.
+-   `factor()` will check all levels of the categorical variables, and then choose the default level based on alphabetic order.
+-   If needed, we can revise the baseline group to another group using `relevel()` function.
 
 ```{r}
+# Create a new factor variable, with Basic as the baseline.
 data_full <- data_full %>%
   mutate(Education_factor_2 = relevel(Education_factor, 
                                       ref = "Basic") )
@@ -127,6 +105,7 @@ levels(data_full$Education_factor_2)
 
 ::: {.content-visible when-format="html"}
 ```{r}
+# Create a new factor variable, with Basic as the baseline.
 data_full <- data_full %>%
   mutate(Education_factor_2 = relevel(Education_factor, ref = "Basic") )
 
@@ -143,21 +122,42 @@ pacman::p_load(fixest,modelsummary)
 feols_categorical <- feols(data = data_full,
   fml = total_spending ~ Income + Kidhome + Education_factor_2)
 modelsummary(feols_categorical,
-             stars = T)
+             stars = T,
+             gof_map = c('nobs','r.squared'))
 ```
+
+## One-Hot Encoding of `factor()`
+
+-   In the raw data, Education is label-encoded with 5 levels.
+
+![](images/onehot_encoding1.png){fig-align="center" width="76"}
+
+-   After factorizing education with "*Basic"* as the baseline group, internally, we have 4 binary indicators as follows. Because we have the intercept,"*Basic*" is omitted as the baseline group. Other groups represent the comparison relative to the baseline group.
+
+![](images/onehot_encoding2.png){fig-align="center" width="201"}
 
 ## Interpretation of Coefficients for Categorical Variables
 
--   Internally, R uses **one-hot encoding** to encode factor variables with **K** levels into **K-1** binary variables.
-    -   Because we have the intercept, we can only have K-1 binary variables.
-    -   The intercept stands for the effects of the baseline group.
-    -   In the regression result table, `Basic` group is suppressed if we use `Education_factor_2`, because this group is chosen as the **baseline group**.
--   The interpretation template of coefficients for factor variables: Ceteris paribus, compared with the \[baseline group\], the \[outcome variable\] of \[group XXX\] is higher/lower by \[coefficient\], and the coefficient is statistically \[significant/insignificant\].
+-   In general, R uses **one-hot encoding** to encode factor variables with **K** levels into **K-1** binary variables.
+    -   As we have the intercept term, we can only have **K-1** binary variables.
+-   The interpretation of coefficients for factor variables: Ceteris paribus, compared with the ***\[baseline group\]***, the ***\[outcome variable\]*** of ***\[group X\]*** is higher/lower by ***\[coefficient\]***, and the coefficient is statistically ***\[significant/insignificant\]***.
     -   Ceteris paribus, compared with the basic education group, the total spending of PhD group is lower by 153.190 dollars. The coefficient is statistically significant at the 1% level.
+-   Now please rerun the regression using `Education_factor` and interpret the coefficients. What's your finding?
+    -   Conclusion: factor variables can only measure the relative difference in outcome variable across different groups rather than the absolute levels.
 
-\
+## Application of Categorical Variables in Marketing
 
-> After-class exercise: change the baseline group to Master, rerun the regression, and interpret the coefficients.
+-   Analyze the treatment effects in A/B/N testing, where $Treatment_i$ is a categorical variable that specifies the treatment group customer $i$ is in:
+
+$$
+Outcome_i = \beta_0 + \delta Treatment_i + \epsilon
+$$
+
+-   Analyze the brand premiums or country-of-origin effects:
+
+$$
+Sales_i = \beta_0 + \beta_1 Brand_i + \beta_2 Country_i + X\beta +\epsilon
+$$
 
 # Non-linear Effects
 
@@ -166,7 +166,7 @@ modelsummary(feols_categorical,
 -   If we believe the relationship between the outcome variable and explanatory variable is a quadratic function, we can include **an additional quadratic term** in the regression to model such non-linear relationship.
 
 $$
-Spending = \beta_0 + \beta_1Income + \beta_2Income^2  + \epsilon
+totalspending = \beta_0 + \beta_1Income + \beta_2Income^2  + \epsilon
 $$
 
 ::: {.content-visible when-format="beamer"}
@@ -193,35 +193,35 @@ ggplot(data = data_full,
 
 ## Quadratic Terms
 
--   If after estimation, the coefficient for $Income^2$, $\beta_2$, is negative, then we have an down open parabola.
+-   If the coefficient for $Income^2$ is negative, then we have an downward open parabola. That is, as income increases, total spending first increases and then decreases, i.e., a non-linear, non-monotonic effect.
+    -   As income first increases, customers increase their spending with Tesco due to the **income effect**; however, as customers get even richer, they may switch to more premium brands such as Waitrose, so their spending may decrease due to the **substitution effect**.
 
 ![](images/parabola.jpeg){fig-align="center" width="300"}
 
--   That is, as income increases, total spending first increases and then decreases, i.e., a non-linear effect.
-
 ## Quadratic Terms in Linear Regression
 
--   Let's run two regressions, with and without the quadratic term.
+-   Let's run two regressions in the Quarto document, with and without the quadratic term.
 
 ```{r}
-
-data_full <- data_full %>%
-  mutate(Income_quadartic = Income^2 )
 
 # model 1: without quadratic term
 feols_noquadratic <- feols(data = data_full,
   fml = total_spending ~ Income )
 
 # model 2: with quadratic term
-feols_quadratic <- feols(data = data_full,
-  fml = total_spending ~ Income  + Income_quadartic )
+feols_quadratic <- feols(data = data_full%>%
+                           mutate(Income_squared = Income^2 ),
+  fml = total_spending ~ Income  + Income_squared )
 
 ```
 
 ::: {.content-visible when-format="html"}
 ```{r}
-modelsummary(list(feols_noquadratic,feols_quadratic), 
-             stars = T)
+modelsummary(list(feols_noquadratic,
+       feols_quadratic),
+       stars = T,
+       fmt = fmt_sprintf("%.2e"),
+       gof_map = c('nobs','r.squared'))
 ```
 :::
 
@@ -229,8 +229,11 @@ modelsummary(list(feols_noquadratic,feols_quadratic),
 ## Quadratic Terms in Linear Regression
 
 ```{r}
-modelsummary(list(feols_noquadratic,feols_quadratic), 
-             stars = T)
+modelsummary(list(feols_noquadratic,
+       feols_quadratic),
+       stars = T,
+       fmt = fmt_sprintf("%.2e"),
+       gof_map = c('nobs','r.squared'))
 ```
 :::
 
@@ -239,7 +242,7 @@ modelsummary(list(feols_noquadratic,feols_quadratic),
 -   We can compute the vertex point where total spending is maximized by income
 
 ```{r}
-# extract the coeffcient vector
+# extract the coeffcient vector using $ sign
 feols_coefficient <- feols_quadratic$coefficients
 feols_coefficient
 
@@ -253,37 +256,34 @@ feols_coefficient
 
 ## Linear Probability Model
 
--   In Predictive Analytics, we learned how to use decision tree and random forest to make predictions. In fact, linear regression can also be used as another supervised learning model.
+-   In Predictive Analytics, we learned how to use decision tree and random forest to make predictions for binary outcome variables.
 
--   On the one hand, regression predicts the expectation of response $Y$ conditional on $X$; that is
-$$
-    E[Y|X]= X\beta
-$$
+-   In fact, linear regression can also be used as another supervised learning model to predict binary outcomes. When the outcome variable is a binary variable, the linear regression model is also called linear probability model.
 
--   On the other hand, for a binary outcome variable, if the probability of outcome occurring is $p$, then we can write the expectation of $Y$ is
-$$
-E[Y|X] = 1 * p + 0 * (1 - p) = p
-$$
+    -   On the one hand, regression predicts the expectation of response $Y$ conditional on $X$; that is $$
+        E[Y]= E[X\beta+\epsilon]=X\beta
+        $$
 
--   As a result, we have the following equation
-$$
-   \operatorname{Probability}[Y=1|X] = E[Y|X] = X \beta
-$$
+    -   On the other hand, for a binary outcome variable, if the probability of outcome occurring is $p$, then we can write the expectation of $Y$ is $$
+        E[Y] = 1 * p + 0 * (1 - p) = p
+        $$
 
--   Interpretation of LPM: Everything else equal, a unit change in $x$ will change the probability of the outcome occurring by $\beta$ units.
+    -   As a result, we have the following equation $$
+           p = X \beta
+        $$
+
+-   Interpretation of LPM coefficients: Everything else equal, a unit change in $x$ will change the **probability of the outcome occurring** by $\beta$.
 
 ## Pros and Cons of LPM
 
-- The procedures of training LPM is similar to training a decision tree `rpart()`/random forest `ranger()`: we use linear regression function `feols()` to train the LPM on the **training data** and make predictions on the **test data**.
+-   We use linear regression function `feols()` to train the LPM on the **training data** and make predictions using `predict(LPM, data_test)` to make predictions on the **test data**.
 
-- Advantages
-    - Easy and fast to run 
-    - High interpretability: coefficients have clear economic meanings
-    
-- Disadvantages
-    - Predicted probabilities of occurring may fall out of the [0,1] range
-    - Accuracy tends to be low
+-   Advantages
 
+    -   Fast to run, even with a large number of fixed effects and features
+    -   High interpretability: coefficients have clear economic meanings
 
+-   Disadvantages
 
-
+    -   Predicted probabilities of occurring may fall out of the \[0,1\] range
+    -   Accuracy tends to be low

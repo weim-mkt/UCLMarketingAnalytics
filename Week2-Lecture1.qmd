@@ -3,7 +3,7 @@ author: Dr Wei Miao
 date: "`r (lubridate::ymd('20231004') + lubridate::dweeks(1))`"
 date-format: long
 institute: UCL School of Management
-title: "Class 3 Workshop: Break-Even Analyses and Customer Lifetime Value"
+title: "Class 3 Case Study: Customer Lifetime Value"
 df-print: kable
 colorlinks: true
 code-line-numbers: true
@@ -36,317 +36,34 @@ execute:
   freeze: auto
 ---
 
-# Recap of BEA
+## Class objectives {.unnumbered}
 
-## Objective of Marketing Process
+-   How to apply CLV calculation in a real-life case study for i-basket grocery chain
+-   Discuss and see examples of how CLV can be used by marketers to guide marketing decisions
 
-```{r}
-#| echo: false
+# Recap: Customer Lifetime Value
 
-library(knitr)
-```
+## Customer Life Cycle
 
-![](images/marketingprocess.png){fig-align="center" width="433"}
+-   We learned campaign-centric break-even analysis tools, such as **break-even quantity** and **net present value**. BEA is also referred to as cost-benefit analysis.
+    -   Costs of business activities
+    -   Benefits of business activities
+-   CLV is a customer-centric break-even analysis, which considers a customer as an asset to the company that generates future cashflows
+    -   Costs: customer acquisition costs (CAC)
 
--   Marketing activities need to create value for the company
-
-## Break-Even Analyses
-
--   Any marketing activity (in fact, any business activity)
-
-    -   incurs some marketing expense/investment costs
-
-    -   generates benefits for the company (e.g., incremental sales; higher customer retention rate)
-
--   The core idea of a break-even analysis is to compare the benefit with the cost
-
-    -   BEA is sometimes called cost-benefit analysis.
-
-## Break-Even Quantity
-
--   For a marketing campaign with **fixed marketing expenditure** with **short-term impacts**, we can compute **BEQ** to evaluate its feasibility
--   **BEQ** calculates the number of **incremental** units the firm needs to sell to cover the cost of the marketing campaign.
-    -   Incremental because we are comparing with status quo
-
-## Break-Even Quantity Formula
-
--   [Contribution Margin Per Unit](https://www.investopedia.com/terms/c/contributionmargin.asp) = Price Per Unit - Variable Costs Per Unit
-
-    -   Measures how much money each additional sale "contributes" to the company's total profits.
-
-    -   **contribution margin rate**[^1] = contribution margin per unit / price per unit
-
-[^1]: It's important to **infer** percentage/absolute terms from the context.
-
-<!-- -->
-
--   Break-Even Quantity = Marketing Expenditure / Contribution Margin Per Unit
-
--   Compare BEQ with estimated **incremental** sales to finish break-even analyses
-
-    -   Marketing costs are usually easy to obtain through budgeting
-    -   Incremental sales will need to be estimated through causal inference tools (i.e., the causal impact of influencer marketing on sales)
-
--   If the estimated incremental sales can exceed BEQ, approve the marketing campaign
-
-## PineApple BEQ
-
--   Assign values to R objects based on case background information
-
-\footnotesize
-
-```{r}
-price <- 600 # retail price
-quantity <- 10 # sales; it's 10 million, bear this unit in mind
-COGS <- 0.6 # cost of goods sold in percentage terms
-RD_costs <- 100 # R&D Costs
-endorsement_fee <- 50 # fixed marketing expenditure
-```
-
-\normalsize
-
--   `quantity` is 10 million; we use 10 for brevity
-    -   **Sales** refers to **quantity sales** by industry practice
-    -   **Revenue** or **revenue sales** refers to monetary sales
--   [`COGS`](https://www.investopedia.com/terms/c/cogs.asp) is the variable costs per unit in the BEQ formula
-    -   Used in both percentage or value terms interchangeably.
--   R&D costs are [sunk costs](https://www.investopedia.com/terms/s/sunkcost.asp)
-    -   Should sunk costs be considered in a BEA for a marketing campaign?
-
-## PineApple BEQ Step 1
-
--   Compute the contribution margin per unit
-
-\footnotesize
-
-```{r}
-# Following the definition
-# contribution margin per unit = price - variable cost
-contribution_margin_per_unit <- price - price * COGS
-contribution_margin_per_unit
-
-# equivalently, contribution margin rate = 1 - COGS
-# contribution margin per unit = price * contribution margin rate  
-contribution_margin_per_unit <- price * (1 - COGS) 
-contribution_margin_per_unit
-```
-
-## PineApple BEQ Step 2
-
--   Compute the break-even quantity
-
-\footnotesize
-
-```{r}
-# numerator is the marketing expense
-# denominator is the the contribution margin per unit
-
-BEQ <- endorsement_fee / contribution_margin_per_unit
-BEQ
-```
-
-\normalsize
-
--   The marketing costs, i.e., the endorsement fee, is `r endorsement_fee` million pounds
-
--   Each incremental sale makes profit by `r contribution_margin_per_unit` pounds
-
-    =\> This means, the influencer marketing campaign needs to increase sales by at least BEQ (`r BEQ` million) units, in order for the company not to lose any money
-
-## PineApple BEQ Step 3
-
--   Compare BEQ with estimated **incremental** sales to finish break-even analyses
--   In the case study, "the team estimates that such an influencer campaign can increase the total sales within the next financial year by 2.5%."
-    -   The comparison base is the original estimated sales without any marketing campaign, so the incremental units of sales would be `quantity * 0.025`
-
-\footnotesize
-
-```{r}
-quantity * 0.025 
-```
-
-\normalsize
-
--   We need to sell `` `r BEQ` `` million units to break-even (not earn or lose money), but we can in fact sell `r quantity * 0.025` million, which is more than the BEQ.
-
--   The influencer marketing campaign is profitable and should be approved.
-
-## NPV
-
--   If the benefits of the marketing campaign come in longer periods, we need to consider the **time value of money** and **use NPV** to evaluate the profitability
-
-$$
-N P V=-I_{0}+\frac{CF_{1}}{(1+k)}+\frac{C F_{2}}{(1+k)^{2}}+\cdots+\frac{C F_{n}}{(1+k)^{n}}
-$$
-
-## Discount Rate and Discount Factor
-
--   $k$ is called **discount rate**, which reflects the time value of money
-
-    -   The same £1 today is more valuable than £1 tomorrow
-
-    -   e.g., if interest rate is 10% annually, then £1 today is worth £1.1 a year later
-
--   $\frac{1}{1+k}$ is called **discount factor,** which is a factor to discount the future CFs to **today**
-
-    -   In each period, we discount the future CF by multiplying it with the discount factor
-
-    -   CF received 1 month later $CF_1$ is worth $\frac{1}{1+k} * CF_1$ today
-
-    -   CF received 2 months later $CF_2$ is worth $\frac{1}{(1+k)^2} * CF_2$ today
-
--   For a company, $k$ is often estimated by the finance department, which is usually the Weighted Average Cost of Capital, or [WACC](https://www.investopedia.com/terms/w/wacc.asp)
-
-## PineApple NPV: Step 1
-
-1.  Compute the sequence of monthly cash flows
-
--   First, we compute the incremental sales percentage for each month, relative to the `r quantity` million.
-
--   This is a 12-element vector, each element representing the incremental sales percentage.
-
-\footnotesize
-
-```{r}
-incremental.sales.percentage_1stmonth <- 0.003
-incremental.sales.percentage_next11months <- rep(0.002,11)
-
-# incremental profit each month
-vector_incremental.sales.percentage_12months <- 
-  c(incremental.sales.percentage_1stmonth,
-    incremental.sales.percentage_next11months)
-
-vector_incremental.sales.percentage_12months
-
-```
-
-\normalsize
-
--   **Interpretation**: 0.003 means that, the first month incremental sales units would be 0.3% of the baseline quantity.
-
-## PineApple NPV: Step 1
-
--   Next, we multiply the incremental sales **percentage** with **quantity**, to get the **incremental sales in terms of units** for each month.
-
-\footnotesize
-
-```{r}
-vector_incremental.sales.units_12months <- 
-  vector_incremental.sales.percentage_12months * 
-  quantity
-
-vector_incremental.sales.units_12months
-```
-
-\normalsize
-
--   **Interpretation**: 0.03 means that, the first month incremental sales units would be 0.03 million units.
-
-## PineApple NPV: Step 1
-
--   Lastly, we multiply the **incremental quantity sales** with the **contribution margin per unit**, to get the total contribution margins (incremental profits) for each month, i.e., the CF
-
-\footnotesize
-
-```{r}
-vector_CF <- vector_incremental.sales.units_12months * 
-  contribution_margin_per_unit
-
-vector_CF
-```
-
-\normalsize
-
--   **Interpretation**: 7.2 means that, the first month incremental net profits would be 7.2 million pounds.
-
-## PineApple NPV: Step 2
-
-2.  Compute the sequence of discount factors
-
-\footnotesize
-
-```{r}
-# divide annual wacc to get monthly wacc
-monthly_WACC <- 0.1/12 
-# monthly wacc is the k in the NPV formula
-k <- monthly_WACC
-k
-# discount factor is 1/(1+k)
-discount_factor <- 1/ (1+k)
-discount_factor
-# Generate a geometric sequence vector of discounted CFs for 12 months
-vector_discount_factor <- discount_factor^c(1:12)
-vector_discount_factor
-```
-
-\normalsize
-
--   **Interpretation**: `r vector_discount_factor[1]` means that, £1 1 month later is worth £0.992 today; `r vector_discount_factor[12]` means that, £1 12 month later is worth £0.905 today.
-
-## PineApple NPV: Step 3
-
-3.  Compute the NPV
-
--   Multiply CF vector with discount factor vector, to get the discounted CF vector
-
-```{r}
-# this will do element-by-element multiplication
-vector_discounted.CF <- vector_CF * vector_discount_factor 
-vector_discounted.CF
-```
-
-## PineApple NPV: Step 3
-
--   use function sum() to get the sum of all elements in a vector. That is, the sum of discounted cash flows in all 12 months.
-
-\footnotesize
-
-```{r}
-sum(vector_CF * vector_discount_factor)
-```
-
-\normalsize
-
--   We need to subtract the endorsement fee, which is the marketing expense, to get the net present value
-
-\footnotesize
-
-```{r}
-NPV <- sum(vector_CF * vector_discount_factor) - endorsement_fee
-NPV
-```
-
-\normalsize
-
-## Customer Lifetime Value
-
--   CLV is a break-even analysis from the perspective of **a single customer**, which considers a customer as an asset to the company that generates future cashflows
-
-    -   incurs customer acquisition costs (CAC)
-
-    -   customer generates profits for the company in each period
-
-    -   customer churns at some point in time
+    -   Benefits: customer generates profits for the company in each period
 
 ![](images/CustomerLifeCycle.png){fig-align="center" width="300"}
 
-## Customer Acquisition Costs
+## Customer Acquisition Cost
 
--   The total marketing costs to acquire a new customer
+-   A new Bubble Tea shop in Canary Wharf is contemplating whether or not to attract new customers by sending ads leaflets to nearby residents.
 
-::: columns
-::: {.column width="50%"}
-```{r, echo=FALSE,out.width="80%",fig.align = 'center'}
-include_graphics(path = "images/UberEatReferral.png")
-```
-:::
+    -   randomly sending out leaflets: expected response rate of **1%**
 
-::: {.column width="50%"}
-```{r, echo=FALSE,out.width="80%",fig.align = 'center'}
-include_graphics(path = "images/DeliverooReferral.jpeg")
-```
-:::
-:::
+    -   using names purchased from a marketing agency: expected response rate of **4%**
+
+-   A intuitive way of computing CAC: think about to obtain **1 new customer**, how many offers to make; then multiply it with cost per offer
 
 ## CLV: Formula
 
@@ -356,15 +73,17 @@ $$
 
 where $CF_t = M_t - c_t$
 
--   $r$ is the average annual retention rate; $r^{(t-1)}$ is the cumulative retention rate in year $t$
--   $N$ is the number of years over which the relationship is calculated
--   $M_{t}$ is the margin the customer generates in year $t$
--   $c_{t}$ is the expected cost of marketing communications or promotions targeted to the customer in year $t$
--   $k$ is the rate for discounting future cash flows
+-   $r$ is the average per period retention rate; $r^{(t-1)}$ is the cumulative retention rate in period $t$
+-   $N$ is the number of periods over which the relationship is calculated
+-   $M_{t}$ is the profit margin the customer generates in period $t$, which is typically $M_t = revenue * (1 - COGS)$
+-   $c_{t}$ is the marketing costs per period to maintain customer relationship in each period $t$
+-   $k$ is the interest (discount) rate for discounting future cash flows; $d= \frac{1}{1+k}$ is the discount factor
 
 # Case Study: i-basket CLV
 
-## Situation Analyses: i-basket
+## Situation Analyses for a Grocery Company
+
+Let's use a UK grocery retailer Marks and Spencer as an example
 
 -   Company
 
@@ -376,17 +95,22 @@ where $CF_t = M_t - c_t$
 
 -   Context/Climate
 
+## Overview for Computing CLV
+
+![](images/CLV%20i-basket.png){fig-align="left" width="400"}
+
 ## Step 1: Determine time unit of analysis
 
 -   Time unit of analysis
     -   *\[...\] (find info in the case study)*
 
-        -   When should we use monthly analysis?
+        -   When should we use monthly analysis or other units of time?
 
 ## Step 2: Determine number of years
 
 -   $N$: the number of years over which the customer relationship is assessed
     -   *\[...\] (find info in the case study)*
+    -   How can you do better here?
 
 \footnotesize
 
@@ -395,9 +119,9 @@ where $CF_t = M_t - c_t$
 N <- 
 ```
 
-## Step 3: Compute profit margin for each period
+## Step 3: Compute CF for each period
 
-$CF = M - c$: **gross profit each year**
+$CF = M - c$: **gross profit each year, which is the profit from sales M minus marketing costs c**
 
 -   *most customers paid the \$99 annual membership fee*
 
@@ -408,46 +132,39 @@ $CF = M - c$: **gross profit each year**
 membership <- 
 ```
 
-\normalsize
+## Step 3: Compute CF for each period
 
--   *40 times each year; each time \$100*
+-   *40 times each year; each time \$100; with profit margin 7% (COGS 93%)*
 
 \footnotesize
 
 ```{r}
 #| eval: false
+
 n_visit <- 
 revenue_each_visit <- 
-```
-
-## Step 3: Compute profit margin for each period
-
--   *profit margin 7% (COGS 93%)*
-
-\footnotesize
-
-```{r}
-#| eval: false
-profit_margin <- 0.07
+profit_margin <- 
 ## think carefully about how M is calculated, it's tricky ~~~~
 M <- 
 ```
 
 \normalsize
 
--   *variable delivery costs each order*
+-   *variable delivery costs each order:*
+    -   *\[...\] find info in the case study about delivery costs*
+    -   Why classified as variable marketing costs? Does it make a difference?
 
 \footnotesize
 
 ```{r}
 #| eval: false
-deliverycost_each_visit <- 5 + 100 * 0.035
+deliverycost_each_visit <- 
 c <- deliverycost_each_visit * n_visit
 ```
 
-## Step 3: Compute profit margin for each period
+## Step 3: Compute CF for each period
 
--   the annual CF from customers CF
+-   The annual CF from customers CF
 
 \footnotesize
 
@@ -499,68 +216,112 @@ discount_factor_seq <-
 
 ## Step 6: Compute customer acquisition costs
 
-6.  CAC = **total costs for customer ad clicks** + total costs of \$15 promo + total costs of free deliveries
+6.  What does the CAC include in the case study?
 
--   [How the Marketing Funnel Works From Top to Bottom](https://www.skyword.com/contentstandard/how-the-marketing-funnel-works-from-top-to-bottom/)
+*\[...\] (find info in the case study)*
 
-![](images/funnel.png){fig-align="center"}
+::: {.content-hidden when-format="beamer"}
+-   total costs for customer ad clicks
+
+-   total costs of \$15 promo
+
+-   total costs of free deliveries
+:::
+
+## Paid Search Advertising (Search Engine Marketing, SEM)
+
+::: columns
+::: {.column width="60%"}
+![](images/MScBA.png){fig-align="center" width="250"}
+:::
+
+::: {.column width="40%"}
+\vspace{2cm}
+
+-   Brands/companies (Uni)
+    -   bid on keywords
+-   Advertisers (Google)
+    -   decides listings
+-   Customers
+    -   paid search (bids-based)
+    -   organic (quality-based)
+:::
+:::
+
+## Marketing Funnel for Paid Search Ads
+
+::: {.callout-note icon="false"}
+### Marketing Funnels
+
+A marketing funnel is a model that represents the customer's journey from the initial awareness of a product or service to the ultimate action, often a purchase. This journey is depicted as a funnel to illustrate the decrease in the number of potential customers at each stage--Awareness, Interest, Consideration, Intent, Evaluation, and Purchase - each representing a different stage in the customer's journey toward transaction.
+:::
+
+![](images/funnel%20ibasket.png){fig-align="center" width="200"}
 
 ## Step 6: Compute customer acquisition costs
 
-**6.1 Total costs for customer clicks**
+**CAC Part I: Costs of paid search ads to get 1 new member.**
+
+-   \[...\] *The click-through rates varied across these digital platforms, but hovered around 1-2%.*
+
+    -   How to incorporate this information?
+
+<!-- -->
 
 -   \[...\] *a fifth of those who clicked on an ad were willing to give the service a try*
+    -   How many clickers do we need for 1 new "trier"?
+
+\footnotesize
+
+```{r}
+#| eval: false
+# clicker_to_trier_rate is the % of trier customers from clickers
+clicker_to_trier_rate <- 
+
+```
+
+\normalsize
+
 -   *\[...\] 20% of those that signed up for the free trial ended up becoming members*
+    -   How many triers do we need for1 new member?
 
 \footnotesize
 
 ```{r}
 #| eval: false
-# click_to_trier_rate is the % of trier customers from clickers
-click_to_trier_rate <- 0.2
-
-# trier_to_buyer_rate is the % of final customer from trier customers
-trier_to_buyer_rate <- 0.2
+# trier_to_member_rate is the % of a new member from triers
+trier_to_member_rate <- 
 ```
 
 \normalsize
 
--   How many customers need to click the ad to get 1 new customer?
+::: {.content-visible when-format="beamer"}
+## Step 6: Compute customer acquisition costs
+:::
+
+-   How many clickers do we need for 1 new member?
 
 \footnotesize
 
 ```{r}
 #| eval: false
-n_clicks_1newcustomer <- 1/click_to_trier_rate/trier_to_buyer_rate
+n_clickers_for_1newmember <- (1/clicker_to_trier_rate) * (1/trier_to_member_rate) # 5 * 5 = 25
 ```
 
 \normalsize
 
--   Total costs for customer clicks
+-   Finally, based on the the cost per click information, we can compute the total click costs to get 1 member.
 
 \footnotesize
 
 ```{r}
 #| eval: false
-total_cost_clicks <- 0.4 * n_clicks_1newcustomer
+total_cost_clicks <- 0.4 * n_clickers_for_1newmember # 0.4 * 25
 ```
 
 ## Step 6: Compute customer acquisition costs
 
-6.  CAC = total costs for customer ad clicks + **total costs of \$15 promo** + total costs of free deliveries
-
-**6.2 total costs of \$15 promo for first order each trier customer**
-
--   How many customers need to try the service to get 1 new customer?
-
-\footnotesize
-
-```{r}
-#| eval: false
-n_triers <- 1/conversion_rate
-```
-
-\normalsize
+**CAC Part II: total costs of \$15 promo for first order each trier customer**
 
 -   What is the total promo cost for these "trier" customers' first order?
 
@@ -570,60 +331,71 @@ n_triers <- 1/conversion_rate
 #| eval: false
 promo_first_order_each_trier <- 15
 
-total_cost_promo <- promo_first_order_each_trier * (1 - profit_margin) * n_triers
-total_cost_promo
+total_cost_promo <- promo_first_order_each_trier * # promotion amount = $15
+  (1 - profit_margin) *    # 7% profit margin
+  (1/trier_to_member_rate) # num of triers = 5
+
 ```
 
 ## Step 6: Compute customer acquisition costs
 
-6.  CAC = total costs for customer ad clicks + total costs of \$15 promo + **total costs of free deliveries**
+**CAC Part III: total costs from selling groceries**
 
-**6.3 total costs from free deliveries**
-
--   Assume two visits, the delivery costs for each visit
+-   For each trier, 2 visits , the profits from the 2 visits are:
 
 \footnotesize
 
 ```{r}
 #| eval: false
-deliverycost_1st <- 5 + 115 * 0.035
-deliverycost_2nd <- 5 + 100 * 0.035
+profit_each_trier <-  revenue_each_visit * #$100 per visit
+  profit_margin * # 7% profit margin
+  2 # a trier shops twice
+```
+
+\normalsize
+
+-   For each trier, the 2 visits are free of delivery charges, which are marketing costs to i-basket
+
+\footnotesize
+
+```{r}
+#| eval: false
+deliverycost_1st <- 5 + (revenue_each_visit + promo_first_order_each_trier) * 0.035
+deliverycost_2nd <- 5 + revenue_each_visit * 0.035
 deliverycost_each_trier <- deliverycost_1st + deliverycost_2nd
 ```
 
 \normalsize
 
--   We also make a profit from each trier
+-   For each trier, compute net marketing costs from the 2 visits (marketing costs - earned profits)
 
 \footnotesize
 
 ```{r}
 #| eval: false
-profit_each_trier <-  revenue_each_visit * profit_margin * 2
+netcost_each_trier <- deliverycost_each_trier - profit_each_trier
 ```
 
 \normalsize
 
--   Net delivery costs for each trier
+-   Total net profits from all 25 triers
 
 \footnotesize
 
 ```{r}
 #| eval: false
-NetDeliveryCost_each_trier<- deliverycost_each_trier - profit_each_trier
-total_cost_delivery <- NetDeliveryCost_each_trier * n_triers
+totalcosts_from_all_triers <- netcost_each_trier * (1/trier_to_member_rate)
 ```
 
 ## Step 6: Compute customer acquisition costs
 
-6.  CAC = total costs for customer ad clicks + total costs of \$15 promo + total costs of free deliveries
+6.  CAC = total costs for customer ad clicks (for all clickers) + total costs of \$15 promo (for all triers) + total costs of selling groceries (for all triers)
 
 \footnotesize
 
 ```{r}
 #| eval: false
-CAC <- total_cost_clicks + total_cost_promo + total_cost_delivery
-CAC
+CAC <- total_cost_clicks + total_cost_promo + totalcosts_from_all_triers
 ```
 
 ## Step 7: Compute CLV
@@ -649,7 +421,7 @@ profit_seq
 
 ```{r}
 #| eval: false
-profit_seq_after_churn <- profit_seq * retention_seq
+profit_seq_after_churn <- profit_seq * 
 ```
 
 \normalsize
@@ -660,7 +432,7 @@ profit_seq_after_churn <- profit_seq * retention_seq
 
 ```{r}
 #| eval: false
-profit_seq_after_churn_discount<- profit_seq_after_churn * discount_factor_seq
+profit_seq_after_churn_discount<- profit_seq_after_churn * 
 ```
 
 \normalsize
@@ -684,16 +456,33 @@ knitr::include_graphics(path = "images/class3_CLVAsDecisionTool.png")
 
 **We can use CLV as the key managerial tool for evaluating different marketing initiatives!**
 
-## Discussion
+## User Defined Functions in R
 
-1.  How important is it for i-basket to measure CLV? Can you think of other companies or industries where CLV is particularly relevant?
-2.  Conduct sensitivity analyses
-    -   what assumptions have we made here? Are these assumptions sensitive to different values?
-3.  From our analyses, what suggestions would you offer to i-basket in order to improve its customer profitability? How are you going to evaluate the feasibility of your proposal?
-    -   acquisition/development/retention
+A **User Defined Function** (UDF) in R refers to a function created by the user, as opposed to built-in functions, to perform specific operations or actions. UDFs are useful for automating and coding specific tasks that aren't covered by R's rich set of built-in functions, allowing the user to specify exactly what the function should do.
 
-## Exercise
+1.  **Function Name**: The user decides the name of the function.
 
-1.  How much annual membership fee should the company charge to break even?
+2.  **Function Body**: Contains the code that performs the operation.
 
-2.  The company is looking to develop a personalized recommendation system that can increase the average shopping basket to \$150. Compute the upper bound for the company's investment in developing the algorithm in order to break even? Assume the company has 10,000 customers at this moment.
+3.  **Arguments**: (Optional) Values that can be passed into the function to influence its behavior.
+
+4.  **Return Value**: What the function outputs after it is called and executed.
+
+## Syntax of UDF
+
+```{r}
+#| eval: false
+function_name <- function(arg1, arg2, ...){
+    # Code to perform operations
+    
+    return(output)
+}
+```
+
+## Use UDF to Compute CLV and Guide Marketing Decisions
+
+1.  (To guide customer acquisition) What if the company only offers \$5 for first time purchase? This will save some CAC but the cliker-to-trier rate will decrease to 10%. Please compute the new CLV. Should you go ahead with the proposed change?
+
+2.  (To guide customer retention) What if the company increases the annual membership fee to \$119? This will increase revenue from memberships but will also make some customers unhappy so their retention rate reduce to 60%. Please compute the new CLV. Should you go ahead with the proposed change? What if the retention rate reduces to 50%?
+
+3.  (To conduct sensitivity analysis; after-class) Due to post-COVID economic recession, new members' spending is uncertain: there is a 60% chance of \$30 revenue per visit, 30% chance of \$40 revenue per visit, and 10% chance of \$50 revenue per visit. What would be the expected CLV for a new member customer?

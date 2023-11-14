@@ -60,9 +60,9 @@ pacman::p_load(knitr)
 
 -   Ultimate goal in the marketing process: create value and improve profitability for firms
 
--   As any marketing activity comes with a cost, marketers need to correctly evaluate whether a campaign creates or destroys value to the company. Such analyses are called break-even analyses (BEA).
+-   As any marketing activity comes with a cost, marketers need to correctly evaluate whether a campaign creates or destroys value to the company. Such analyses are called **break-even analyses (BEA)**.
 
--   In this class, we will learn how to conduct BEA from the following points of view
+-   In this class, we will learn how to conduct BEA from the following 2-by-2 perspectives:
 
     1.  Campaign-centric or customer-centric
     2.  Static or dynamic
@@ -75,12 +75,12 @@ pacman::p_load(knitr)
 
 ## Break-Even Quantity
 
--   Marketing managers often use **break-even analyses** to evaluate the financial feasibility of marketing investments. One commonly used way is to compute the **break-even quantity**.
+-   We often use **break-even analyses** to evaluate the financial feasibility of marketing investments. One commonly used way is to compute the **break-even quantity**.
 
 ::: {.callout-note icon="false"}
 ### Definition
 
-**The break-even quantity (BEQ)** calculates the number of *incremental* units the firm needs to sell to cover the cost of the marketing campaign.
+**The break-even quantity (BEQ)** calculates the number of ***incremental*** units the firm needs to sell to cover the cost of the marketing campaign.
 :::
 
 ## Break-Even Quantity: Steps and Decision Rule
@@ -100,11 +100,11 @@ $$
 Contribution Margin Per Unit = Price Per Unit - Variable Costs Per Unit
 $$
 
--   **Price per unit**: retail price or transaction price
+-   **Price per unit**: retail price
 -   **Variable costs per unit:** Costs of goods sold (COGS)[^1] + any other variable costs
 -   **Marketing expenditure:** total costs of marketing investment
 
-[^1]: Material and production labor costs for producing a unit of product
+[^1]: Material and production labor costs for producing a unit of product; often represented in **percentage terms,** e.g., COGS of 60% means the costs are 60% of retail prices.
 
 This gives the second formula for computing BEQ:
 
@@ -114,12 +114,15 @@ $$
 
 ## Pineapple Inc: Background
 
-```{r echo=FALSE,fig.align='center', out.height= "25%"}
+::: columns
+::: {.column width="50%"}
+![](images/PinePhone.png){fig-align="center" width="100"}
+:::
 
-include_graphics("images/class2_pineapple.png")
-```
-
+::: {.column width="50%"}
 Tom Cooper, is looking to launch a series of marketing campaigns to promote its new product PinePhone 15 Pro against its competitor iPhone 15 Pro. Tom was a proud graduate from UCL MSc BA program in 2020, and he remembered learning from Marketing Analytics module that, marketers often use break-even analysis to help evaluate different types of marketing decisions.
+:::
+:::
 
 ::: {.content-hidden when-format="beamer"}
 ```{r}
@@ -133,7 +136,9 @@ endorsement_fee <- 50 # endorsement
 
 **Case objectives:**
 
--   Practice how to conduct BEA and compute BEQ
+-   Learn an example of situation analysis for the 1st assignment
+
+-   Practice how to compute BEQ for break-even analyses
 
 -   Practice R basic computations and vector operations
 
@@ -161,7 +166,7 @@ contribution_margin
 
 ## Definition of NPV
 
--   When the effect of the marketing campaign is expected to have a long-term effect or when time value of money is important to the question at hand, we need to take the future into account.
+-   When the effect of the marketing campaign is expected to have a long-term effect or **when time value of money is important** to the question at hand, we need to take the future into account.
 
 ::: {.callout-note icon="false"}
 ### Definition

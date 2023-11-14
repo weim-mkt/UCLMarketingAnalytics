@@ -172,7 +172,7 @@ vector_discounted.CF
 sum(vector_discounted.CF)
 ```
 
--   We need to subtract the endorsement fee, which is the marketing expense, to get the next present value
+-   We need to subtract the endorsement fee, which is the marketing expense, to get the net present value
 
 ```{r}
 NPV <- sum(vector_discounted.CF) - endorsement_fee

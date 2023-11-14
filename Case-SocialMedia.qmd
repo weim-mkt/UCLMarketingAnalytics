@@ -1,0 +1,323 @@
+---
+title: "Improve User Engagement on Social Media Platforms Using A/B Testing"
+author: Dr Wei Miao
+subtitle: "MSIN0094 Case Study"
+institute: UCL School of Management
+date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(5))`"
+date-format: long
+colorlinks: true
+code-line-numbers: true
+format:
+  html: 
+    toc: true
+    number-sections: true
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+    embed-resources: true
+    self-contained: true
+  pdf: 
+    toc: false
+    number-sections: true
+    fontsize: 9pts
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+knitr:
+  opts_chunk:
+    echo: true
+    warning: false
+    message: false
+    error: false
+execute: 
+  cache: true
+bibliography: references.bib
+editor_options: 
+  chunk_output_type: inline
+---
+
+# Business Objective[^1]
+
+[^1]: This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module. This case was adapted from Wei Miao's research with his coauthors, "FIGHTING FOR MY IDOLS: THE VALUE OF GAMIFIED VOTING SYSTEM". The case study is developed to provide materials for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. All copyrights reserved.
+
+## Company background
+
+Undoubtedly, user activity stands as a crucial objective pursued by platform managers, as it serves as the primary source of value creation. The world's largest social media platform, X (formerly Twitter), has over 450 million monthly active users in 2023 and at least 500 million tweets are sent every day. Heightened user activity leads to increased time spent by users on the platform, thereby contributing to higher user retention rates and more ads revenues. By monitoring user interactions, platforms could gain valuable insights into user preferences, behavior patterns, and content preferences. This information assists platform administrators in making informed decisions regarding feature enhancements, content curation, and overall improvements to the user experience. Additionally, continuous customer participation serves as the foundation for cultivating a sense of belonging and ownership. It is worth noting that platform managers can truly understand their customers only when they obtain rich data from their diverse behaviors. This understanding empowers the implementation of various innovative strategies such as recommendation systems.
+
+In this case study, we are going to draw upon **social comparison theory** and **gamification** to help Twitter further improve its user engagement in its newly introduced feature called "Communities" on the platform. "Communities" is a twitter feature that aims to enrich user engagement by catering to specific interests and subjects. These Communities offer users a dedicated space to convene around shared topics of interest, spanning domains such as celebrity fandoms, movie enthusiasts, and various hobbies. The Communities feature empowers users to delve deeper into their chosen subjects, fostering vibrant interactions and discussions among like-minded individuals within the platform's ecosystem. Once a user joins a Community, he or she will receive up-to-date information, news, and images posted by fellow users within the same Community. @fig-taylorswift presents illustrative instances of Communities for Taylor Swift.
+
+Task: Conduct a situation analysis for Twitter in the UK market. Focus on the following point:
+
+-   What is Twitter's business model?
+
+::: {.content-hidden when-format="pdf"}
+> -   Platform business model. Network effect is the key to success.
+:::
+
+-   How does Twitter make revenues?
+
+::: {.content-hidden when-format="pdf"}
+> -   Ads
+> -   Freemium strategy: though general everyday use is free, for premium features, customers have to pay
+:::
+
+-   Who are Twitter's customers?
+
+::: {.content-hidden when-format="pdf"}
+> -   Users
+> -   Advertisers
+:::
+
+-   What are the major competitors and their relative strengths and weaknesses compared with Twitter?
+
+::: {.content-hidden when-format="pdf"}
+> -   Direct: Other social media platforms like Facebook, Instagram, etc.
+> -   Indirect: News websites, discussion forums like Reddit, and alternative communication platforms that offer different ways for people to obtain information and interact online.
+:::
+
+-   Who are the collaborators of Twitter?
+
+::: {.content-hidden when-format="pdf"}
+> -   Business Partners: Companies that integrate Twitter content into their services, such as news organizations or broadcasters.
+> -   Advertisers and Marketers: Agencies that develop campaigns for the platform.
+> -   Content Creators: Influencers and celebrities who attract and engage large audiences.
+:::
+
+-   PESTLE analysis
+
+::: {.content-hidden when-format="pdf"}
+> -   Legal and Regulatory Issues: Changes in regulations related to data privacy, online speech, and censorship can significantly impact operations.
+:::
+
+![Twitter Community for Taylor Swift](images/TaylorSwift.png){#fig-taylorswift fig-align="center" width="500"}
+
+# Theoretical Motivations
+
+Despite the widely recognized value of boosting user activity on online platforms, only a few strategies have been utilized in both practice and theory. Our business recommendations should be driven by theories that are well proved in the field of psychology, social science, and enonomics.
+
+## Fan Economy
+
+In recent years, practitioners have started to utilize the approach of leveraging internet celebrities or idols as a new business model on online shopping platforms. This strategy aims to create a new battleground to attract users and increase their engagement. Integrating internet celebrities and idols into the online shopping environment presents e-commerce platforms with new opportunities to tap into the vast fan base and social influence of these individuals. Platforms such as TikTok have successfully captured the attention and loyalty of users by incorporating popular influencers into the online shopping experience. Celebrity influencers serve as powerful tools to promote products, provide endorsements, and engage with customers through various interactive methods such as live streaming, product reviews, and personalized recommendations (Reilly 2018; Salge et al. 2022). This trend signifies the evolving landscape of marketing strategies in the digital age, with platforms leveraging this approach to boost user activity.
+
+## Gamification and Social Comparison Theory
+
+Gamification refers to a central strategy that involves designing game-like elements to incentivize users, thereby enhancing engagement, motivation, and overall user experience. By integrating game mechanics into non-gaming contexts, platforms can effectively drive user behavior, increase participation, and achieve specific business objectives. Studies from various perspectives have consistently demonstrated the effectiveness of gamification in platform governance, as it leads to increased user engagement, motivation, attainment, behavioral guidance, social interaction, competition, and skill development.
+
+Social comparison theory (SCT) suggests that individuals determine their own worth and evaluate their abilities and opinions by comparing themselves to others (Festinger 1954). It states that people have an inherent drive to evaluate themselves by comparing their abilities, opinions, and social status to those of others. Social comparisons provide individuals with reference points to assess their own worth, skills, and achievements. In the context of online platforms, social comparison plays a significant role in driving user engagement and activity. Users on online platforms engage in social comparison by observing the activities and achievements of others (Yan 2018). Platforms that facilitate social comparison by providing visibility to user actions, achievements, and rankings can effectively drive user activity. Gamified designs such as leaderboards or progress indicators create a sense of competition and motivate users to increase their engagement to achieve higher rankings or recognition (Spohrer et al. 2021).
+
+The leaderboard is a popular feature that represents social comparison and is also the focus of our study. It is a visual display that ranks and shows the performance or achievements of players on an online platform. It often lists the top players or teams based on their scores, levels, or other relevant metrics such as the points voted. The leaderboard serves as a means of comparison among players, creating a competitive environment and fostering engagement.
+
+In this study, we propose to design **a gamified leaderboard that focuses on voting for celebrities or idols**, **rather than the players themselves**. This means that social comparison occurs not between fans competing with other fans for themselves, but rather in the context of fans fighting for their celebrities or idols. The social comparison theory suggests that individuals have a natural tendency to compare themselves to others to establish their social identity and sense of belongingness. By participating in voting on a leaderboard, fans can align themselves with a particular internet celebrity or fan community, which strengthens their sense of belonging. The act of voting allows fans to show support for their favorite celebrity and solidify their connection to the fan community.
+
+## Proposed Strategy
+
+Based on the social comparison theory and gamification. We propose to introduce a gamified voting system and a leaderboard for Twitter Communities as follows.
+
+First, users need to earn points by completing a series of quests set by the platform, which include (1) daily log-in (up to 8 times a day, each time 1-5 points based on users' level in the Communities); (2) retweeting or comment on a post (up to 8 times a day; each time 2 points); (3) getting comments from more than 5 users (up to 4 times a day; each time 4 points); (4) joining new Communities (with no upper limit; each time 8 points). A screenshot of such tasks is attached in @fig-points .
+
+![How to get points](images/getpoints.png){#fig-points fig-align="center"}
+
+After gathering points from the above channels, users can then contribute their points to a specific Community in order to boost the ranking of that Community on the public leaderboard. @fig-contributepoints shows an example of how users can contribute points: For instance, under the Community of Taylor Swift, a user can choose from a list of options (1, 10, 66, all points) and click the "contribute" button to donate the chosen points to the Community.
+
+![How to contribute points](images/points.jpg){#fig-contributepoints fig-align="center"}
+
+The platform will then compute the accumulative points for each Community and then rank all Communities on a public leaderboard which is updated in real-time. @fig-leaderboard shows a screenshot of the leaderboard. On the leaderboard, users can observe the name of the Community, the corresponding rankings, the points accumulated under the celebrity names, and a button to join the Community. On the other hand, Taylor Swift had the most contributed points (100 million points as in @fig-leaderboard) and ranked first.
+
+![Leaderboard](images/leaderboard.png){#fig-leaderboard fig-align="center"}
+
+# Data collection using A/B testing
+
+To test whether gamified leaderboard can indeed improve user engagement on social media platforms, we need to run a randomized controlled trial, or A/B testing. When designing a A/B testing, we can follow the following 5 steps.
+
+## Step 1: Decide on the Unit of Randomization
+
+-   What would be the best unit of randomization?
+
+::: {.content-visible when-format="html"}
+> The best level would be user level. Device level would be too granular and can easily cause crossover effects.
+:::
+
+## Step 2: Mitigate Spillover and Crossover Effects
+
+-   What are the potential problems for spillover and crossover?
+
+::: {.content-visible when-format="html"}
+> -   A user may use multiple devices, causing crossover effects
+>
+> -   A user may talk to family members/friends, causing spillover effects.
+:::
+
+## Step 3: Decide on Randomization Allocation Scheme
+
+-   How should we determine the randomization scheme?
+
+::: {.content-visible when-format="html"}
+> -   Since A/B testing can be costly and risky, normally we would **not** use all the users.
+>
+>     -   On the first day of A/B testing, we can randomize a small percent of arriving customers (e.g., 1%) into the treatment condition
+>
+>     -   The remaining arriving customers will be in the control group
+>
+> -   After randomization is assigned, the treatment should remain the same for each user.
+:::
+
+::: {.content-visible when-format="html" }
+```{r}
+# load the user characteristics data
+data_user <- read.csv('https://www.dropbox.com/scl/fi/xn8koj0wuwbm0wurfkfi7/data_twitter_small.csv?rlkey=jxzg4aof4eew2l3z8eyny65hp&dl=1')
+
+# how to randomize the treatment?
+
+set.seed(888)
+treatment_probability <- 0.1
+treated_index <- sample(1:nrow(data_user), 
+                  nrow(data_user) * treatment_probability,
+                  replace = F)
+
+data_user <- data_user %>%
+  mutate(treated = ifelse(ID %in% treated_index,
+                          1,
+                          0))
+```
+
+:::
+
+::: {.content-hidden when-format="html" }
+```{r}
+#| eval: false
+# load the user characteristics data
+data_user <- read.csv('https://www.dropbox.com/scl/fi/xn8koj0wuwbm0wurfkfi7/data_twitter_small.csv?rlkey=jxzg4aof4eew2l3z8eyny65hp&dl=1')
+
+# how to randomize the treatment?
+
+set.seed(888)
+treatment_probability <- 0.1
+treated_index <- sample( , 
+                   ,
+                   )
+
+data_user <- data_user %>%
+  mutate(treated = ifelse(,
+                          1,
+                          0))
+```
+:::
+
+
+## Step 4: Collect Data
+
+-   What is the sample size we need?
+
+::: {.content-visable when-format="html"}
+> We can do a power analysis using `pwr` package in R, or simply some websites, e.g., this [link](https://clincalc.com/stats/samplesize.aspx).
+:::
+
+-   What data should we collect?
+
+::: {.content-visible when-format="html"}
+> -   Demographic data, including registration date, age, gender, etc.
+>
+> -   Behavioral data, including logs of tweeting, retweeting, likes, and comments
+>
+> The above data serve 2 purposes: (1) randomization check (2) estimation of treatment effects
+:::
+
+## Step 5: Data analytics
+
+-   First, we need to do a randomization check to ensure that the treatment group and control group users have similar characteristics before the A/B testing takes place.
+
+::: {.content-visible when-format="html" }
+```{r}
+pacman::p_load(dplyr)
+data_twitter <- read.csv("https://www.dropbox.com/scl/fi/f4e4ub0t7cpffty2oo723/data_twitter.csv?rlkey=dbbjtdy7fvmc6jiud3zhbc4ol&dl=1")
+
+
+# examine if there is any difference across the treatment and control groups
+t.test(age~treated,
+       data = data_twitter)
+
+t.test(gender~treated,
+       data = data_twitter)
+
+t.test(pre_n_activity~treated,
+       data = data_twitter)
+```
+:::
+
+::: {.content-hidden when-format="html" }
+```{r}
+#| eval: false
+#| error: true
+pacman::p_load(dplyr)
+data_twitter <- read.csv("https://www.dropbox.com/scl/fi/f4e4ub0t7cpffty2oo723/data_twitter.csv?rlkey=dbbjtdy7fvmc6jiud3zhbc4ol&dl=1")
+
+
+# examine if there is any difference across the treatment and control groups
+t.test(age~treated,
+       data = data_twitter)
+
+t.test(
+       data = data_twitter)
+
+t.test(
+       data = data_twitter)
+```
+:::
+
+
+::: {.content-visible when-format="html"}
+> We should do this on Day 1 right after randomization is done, just to ensure the randomization worked well.
+:::
+
+-   Then, we can aggregate the raw user log data into user-day level panel data, and estimate the treatment effects accordingly.
+
+::: {.content-visible when-format="html"}
+> \(1\) ATE is the difference in the group means across the treatment group and control groups. We can conduct a paired t-test to statistically test the effectiveness of B.
+>
+> \(2\) To ensure the difference is statistically significant, we need to do a hypothesis test using t-test.
+>
+> \(3\) Next week, we will see that, we can also run a linear regression to obtain the average treatment effects.
+:::
+
+::: {.content-visible when-format="html" }
+```{r}
+#| echo: true
+
+data_twitter_avg <- data_twitter %>%
+  group_by(treated) %>%
+  summarise(avg_post_n_activity = mean(post_n_activity)) %>%
+  ungroup()
+
+data_twitter_avg$avg_post_n_activity[2] - data_twitter_avg$avg_post_n_activity[1]
+
+# is the difference statistically significant?
+t.test(post_n_activity ~ treated,
+       data = data_twitter)
+```
+:::
+
+::: {.content-hidden when-format="html" }
+```{r}
+#| echo: true
+#| eval: false
+data_twitter_avg <- data_twitter %>%
+  group_by(treated) %>%
+  summarise() %>%
+  ungroup()
+
+data_twitter_avg$avg_post_n_activity[2] - data_twitter_avg$avg_post_n_activity[1]
+
+# is the difference statistically significant?
+t.test()
+```
+:::
+
+
+
+# Business recommendations
+
+Our A/B testing has explored the strategies for increasing user activity on social media platforms in the case of Twitter, with a particular focus on the effectiveness of gamification and the integration of celebrity influencers. It highlights the significance of user activity in platform governance, as it directly impacts value creation and platform sustainability. By incorporating game-like elements through gamification, platforms can effectively drive user behavior, increase participation, and achieve specific business objectives. The findings show that the gamification design by voting for celebrities or idols significantly increases users' key activity behavior, including the tweets, retweets, and comments, thus potentially helping the platform to achieve greater user engagement and potential monetization.
+
+Moreover, this project has discussed the emergence of celebrity influencers as a new business model in the online shopping environment. Integrating internet celebrities and idols into the platform provides opportunities for platforms to tap into their vast fan base and social influence. By leveraging the popularity of these influencers, platforms can effectively promote products, provide endorsements, and engage with customers through various interactive methods. This approach reflects the evolving landscape of marketing strategies in the digital age, and platforms utilizing this approach have witnessed increased user activity and engagement. As theorized, the findings of our study reveal that gamified voting system has significantly positive effects on users' tweeting, retweeting, and commenting behavior.

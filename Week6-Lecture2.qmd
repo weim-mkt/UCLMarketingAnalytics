@@ -40,9 +40,7 @@ editor_options:
 bibliography: references.bib
 ---
 
-# Background of Regression
-
-## Conditional Mean in Causal Inference
+# Basics of Linear Regression
 
 ```{r}
 #| echo: false
@@ -50,17 +48,9 @@ data_full <- readRDS("/Users/weimiao/Dropbox/UCL/Teaching/MSIN0094 Marketing Ana
 pacman::p_load(dplyr,ggplot2,ggthemes)
 ```
 
--   In causal inference, we often care about the expected mean of the outcome variable ($Y$) conditional on treatment variables ($X$).
-
--   For example, in an RCT, Y is the outcome variable (e.g., purchase rate), X is whether or not customers receive the treatment (e.g., BMW ads), then from the **basic identity of causal inference**, we have $$
-        ATE = E[Y|X=1] - E[Y|X=0]
-    $$
-
--   Question: how can we model the expected mean of outcome variable conditional on $X$, $E[Y|X = x]$?
-
 ## Linear Regression Models
 
--   If we assume a **linear**, **additive** function for $E[Y|X=x]$, we have a simple linear regression model, as follows, $$
+-   A simple linear regression is a model as follows. $$
     Y_i = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k + \epsilon_i
     $$
 
@@ -68,32 +58,29 @@ pacman::p_load(dplyr,ggplot2,ggthemes)
 
 -   $\beta$: Regression coefficients/estimates/parameters; $\beta_0$: intercept
 
--   $x_k$: control variable/independent variable/regressor/explanatory variable/RHS variable
+-   $x_k$: Control variable/independent variable/regressor/explanatory variable/RHS variable
 
-    -   Lower case such as $x_1$ usually indicates a single variable while upper case such as $X_{ik}$ indicates several variables
+    -   Lower case such as $x_1$ usually indicates a single variable while upper case such as $X_{ik}$ indicates a set of several variables
 
--   $\epsilon_i$: error term/disturbance, which has the expected mean of 0, i.e., $E[\epsilon|X] = 0$
+-   $\epsilon_i$: Error term, which captures the deviation of Y from the prediction
 
--   If we take the expectation of $Y$, we have: $$
-    E[Y|X] = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k 
-    $$
+    -   Expected mean should be 0, i.e., $E[\epsilon|X]=0$
+
+    -   If we take the expectation of Y, we should have $$
+        E[Y|X] = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k 
+        $$
 
 ## Why the Name "Regression"?
 
 -   The term "regression" was coined by Francis Galton to describe a biological phenomenon: The heights of descendants of tall ancestors tend to regress down towards a normal average.
 
--   The term "regression" was later extended by Udny Yule and Karl Pearson to a more general statistical context (Pearson, 1903).
+-   The term "regression" was later extended by statisticians Udny Yule and Karl Pearson to a more general statistical context (Pearson, 1903).
 
--   In supervised learning models, "regression" can have different meanings:[^1]
-
-    -   The regression-class models (OLS, Lasso, Ridge, etc.)
-    -   Regression task
-
--   To establish causal inference, **OLS regression model** is all we need.
+-   In supervised learning models, "regression" has a different meaning: when outcome is continuous, the task is called regression task.[^1]
 
 [^1]: ML models are developed by computer science; causal inference models are developed by economists.
 
-# Estimation
+# Estimation of Coefficients
 
 ## How to Run Regression in R
 
@@ -101,8 +88,8 @@ pacman::p_load(dplyr,ggplot2,ggthemes)
 
 -   In this module, we will be using the `fixest` package, because it's able to estimate high-dimensional fixed effects.
 
-```{r echo=TRUE}
-
+```{r}
+#| echo: true
 pacman::p_load(modelsummary,fixest)
 
 OLS_result <- feols( 
@@ -215,13 +202,13 @@ $$
 y_i = b_0 + b_1 x_{1} + ... + b_k x_{k}+\epsilon_i
 $$
 
--   **Objective of estimation**: Search for the set of $b$ that can minimize the **sum of squared residuals**.
+-   **Objective of estimation**: Search for the **unique** set of $b$ that can minimize the **sum of squared residuals**.
 
 $$
     SSR= \sum_{i=1}^{n}\left(y_{i}-b_0 - b_1 x_{1} - ... - b_k x_{k} \right)^{2}
 $$
 
-# Interpretation
+# Interpretation of Coefficients
 
 ## Coefficients Interpretation
 
@@ -238,22 +225,28 @@ feols(data = data_full,
 
 \normalsize
 
--   **Controlling for** Kidhome / everything else being equal / ceteris paribus, one unit increase in Income increases total spending by 0.019 pounds.
+-   **Controlling for** Kidhome, one unit increase in `Income` increases `totalspending` by £0.019.
 
-## Standard Errors and P-values
+## Standard Errors and P-Values
 
--   Due to randomness of the error term, all coefficients estimates follow a $t$ distribution.
+-   Because the regression is estimated on a random sample of the population, so if we rerun the regression on different samples, we would get a different set of regression coefficients each time.
 
--   Therefore, we need **p-values** to check whether the coefficients are statistically different from 0.
+-   In theory, the regression coefficients estimates follows a **t-distribution**: the mean is the true $\beta$. The **standard error** of the estimates is the estimated standard deviation of the error.
+
+-   We can whether the coefficients are statistically different from 0 using **hypothesis testing**.
+
+    -   Null hypothesis: the true regression coefficient $\beta$ is 0
 
 -   `Income`/`Kidhome` is statistically significant at the 1% level.
 
-## R-squared
+## R-Squared
 
--   R-squared (R2) is a statistical measure that represents the proportion of the variance for a dependent variable that's explained by an independent variable or variables in a regression model.
+-   R-squared (R2) is a statistical measure that represents the proportion of the variance for a dependent variable that's explained by all included variables in a regression.
 
--   Interpretation: 65.8% of the variation in `Spending` can be explained by `Income` and `Kidhome`.
+-   Interpretation: 65.8% of the variation in `totalspending` can be explained by `Income` and `Kidhome`.
 
--   As the number of variables increases, the $R^2$ will naturally increase.
+-   As the number of variables increases, the $R^2$ will naturally increase, so sometimes we may need to penalize the number of variables using the so-called **adjusted R-squared**.
 
--   In causal inference tasks, $R^2$ does not mean much.
+    ::: callout-important
+    R-Squared is only important for supervised learning prediction tasks, because it measures the predictive power of the X. However, In causal inference tasks, $R^2$ does not matter much.
+    :::

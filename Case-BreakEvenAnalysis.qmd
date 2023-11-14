@@ -1,5 +1,6 @@
 ---
 title: "Beak-Even Analysis for PineApple Inc"
+author: Dr. Wei Miao
 subtitle: "MSIN0094 Case Study"
 institute: UCL School of Management
 date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(0))`"
@@ -19,7 +20,7 @@ format:
     number-sections: true
     toc: false
     number-depth: 2
-    fontsize: 11pt
+    fontsize: 10pt
     linestretch: 1.25
 knitr:
   opts_chunk:
@@ -44,27 +45,95 @@ WACC <- 0.1
 
 ```
 
-```{r}
-#| fig-align: center
-#| out-width: "10%"
-include_graphics("images/class2_PineApple.png")
-```
+![](images/PinePhone.png){fig-align="center" width="200"}
 
-**4th October 2023**: Tom Cooper, the suave Senior Marketing Manager of PineApple Inc, felt a rush of nostalgia as he stepped into the lecture halls of the UCL School of Management. Having graduated from UCL's esteemed MSc Business Analytics programme, coming back felt like reuniting with an old friend. But, between us, the actual magnet pulling him back wasn't just academic---it was the allure of the T4 Bubble Tea in Jubilee Place. A man's got his priorities, right?
+# Situation Analysis[^1]
 
-**The Stage Is Set**: Tom was looking to launch a series of marketing campaigns to further promote Pineapple's new product, PinePhone 15, against its direct competitor, Apple Inc, who just launched its brand new iPhone 15 product line earlier this year.
+[^1]: This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module based on . This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. Copyrights reserved.
 
-**Diving Into The Figures**: The marketing analytics team at PineApple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach **`r quantity` million** units at the retail price of **£`r price`**, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of PinePhone 15, which is **`r COGS *100`%**. The Research and Development (R&D) costs for PinePhone 15 is **`r RD_costs` million** pounds.
+Today is 4th October 2023. Tom Cooper, the newly promoted Senior Marketing Manager of PineApple Inc, felt a rush of nostalgia as he stepped into the lecture theatre on Level 38 of the UCL School of Management. Having graduated from UCL's esteemed MSc Business Analytics programme, the best BA programme you can ever imagine in the world, coming back felt like reuniting with an old friend. But, between us, the actual magnet pulling him back wasn't just academic---it was the allure of the T4 Bubble Tea in Jubilee Place. A man's got his priorities, right?
+
+Tom was looking to launch a series of marketing campaigns to further promote Pineapple's new product, PinePhone 15, against its direct competitor, Apple Inc, who just launched its brand new iPhone 15 product line earlier this year. As Tom remembered from Marketing Analytics's Week 1 class, the first step of a marketing analytics project is often the situation analysis. So Tom conducted a situation analysis for PineApple as follows:
+
+**Company:**
+
+-   **Products:** PineApple\'s product line includes the PinePhone, PinePad, PineBook, and PineWatch.
+
+-   **Competitive Advantages:** PineApple holds a significant market share in the technology industry, renowned for its high-quality, innovative products and seamless software integration.
+
+-   **Unique Qualities:** PineApple is committed to environmental sustainability, investing in renewable energy and ensuring that its products are as eco-friendly as possible. The company is also known for its exceptional customer service.
+
+-   **Successes:** The launch of the latest PinePhone saw record sales, further solidifying PineApple\'s market position.
+
+-   **Weaknesses:** PineApple\'s products are premium-priced, potentially alienating cost-conscious consumers. Additionally, the company has faced criticism for limited customizability and compatibility issues.
+
+-   **Investment Areas:** Further investment in research and development to stay ahead in innovation and expanding its services division.
+
+-   **One-Year Goal:** Increase the market share for PineVision, a smart wearable mixed reality equipment.
+
+-   **Three-Year Goal:** Establish a stronger foothold in emerging markets.
+
+-   **Five-Year Goal:** Lead the industry in sustainability and environmental efforts.
+
+**Customers:**
+
+-   **Ideal Customers/Target Audience:** Tech-savvy individuals who prioritize design, functionality, and brand image, largely falling within the age group of 18 to 45.
+
+-   **Current Audience:** A diverse range of consumers globally, with a significant percentage being loyal customers.
+
+-   **Website Traffic:** High traffic, with a user-friendly interface and a seamless online shopping experience.
+
+-   **Audience Size:** Extensive global audience.
+
+-   **Communication:** Utilizes social media platforms, email newsletters, and its own website for marketing and communication.
+
+-   **Feedback Tools:** Uses online surveys, product reviews, and social media interactions to garner customer feedback.
+
+**Competitors:**
+
+-   **Direct Competitors:** Apple, Samsung, Xiaomi (well-established), Orange Inc (emerging).
+
+-   **Competitive Analysis:** All competitors offer similar technological products, but PineApple stands out for its design, innovation, and ecosystem.
+
+-   **Comparison:** Competitors like Xiaomi offer more affordable options, but PineApple\'s brand reputation and customer service provide it a distinct edge.
+
+**Collaborators:**
+
+-   **Investors:** High-profile investors with a belief in the company's long-term growth.
+
+-   **Stakeholders:** Employees, investors, customers, and suppliers.
+
+-   **Partnerships:** Collaborations with other tech companies and service providers to enhance its product offerings.
+
+-   **Manufacturing:** In-house and outsourced manufacturing facilities globally.
+
+**Climate:**
+
+-   **Market Trends:** A shift towards remote working and learning is boosting the demand for personal electronic devices.
+
+-   **Economic Factors:** Possible economic downturn post-COVID could lead to reduced consumer spending on premium electronics.
+
+-   **Regulatory Environment:** Facing scrutiny and regulatory challenges in various countries, which could impact operations and sales.
+
+In conclusion, PineApple Inc. is a formidable player in the technology industry, with its strengths lying in innovation, brand reputation, and customer loyalty. The 5C analysis uncovers potential areas for improvement, including price competitiveness and broader market penetration, especially in emerging markets. The changing global economic and regulatory landscape highlights the need for PineApple to remain adaptive, resilient, and forward-looking in its strategies and operations.
+
+# Break-Even Analysis
+
+The marketing analytics team at PineApple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach **`r quantity` million** units at the retail price of **£`r price`**, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of PinePhone 15, which is **`r COGS *100`%**. The Research and Development (R&D) costs for PinePhone 15 is **`r RD_costs` million** pounds.
 
 > **Question `r question_index<-question_index+1; question_index-1`:**
 >
-> -   *Numbers & Nuances: Contribution Margin*: In the world of finance, the contribution margin is a fancy way of expressing how much profit each unit brings in after accounting for variable costs. Can you help Tom and his team at PineApple to crunch these numbers for the PinePhone 15?
+> -   *Contribution Margin*: In the world of business, the **contribution margin** is a fancy way of expressing how much profit each unit brings in after accounting for variable costs. Can you help Tom and his team at PineApple to crunch these numbers for the PinePhone 15?
 
-In the class Tom sat in, the module leader, Dr Wayne Meow, was introducing the concepts of break-even analysis and the methods to evaluate the feasibility of a marketing campaign, which was just handy for the task. Tom would like to use the concept of break-even analysis to help guide PineApple Inc's marketing decisions.
+In the class Tom sat in, the module leader, Dr Meow, was introducing the concepts of break-even analysis and the methods to evaluate the feasibility of a marketing campaign, which was just handy for the task. Tom would like to use the concept of break-even analysis to help guide PineApple Inc's marketing decisions.
 
-Calculating the break-even quantity is one way to determine the feasibility of a marketing campaign. The break-even quantity determines how many additional units the company must sell to cover the expense of the campaign. If the business sells fewer than the break-even quantity, it loses money since it does not sell enough to recover its investment. If the company sells more than the break-even quantity, the marketing campaign can be approved as it is profitable to the company.
+Calculating the **break-even quantity** is one way to determine the feasibility of a marketing campaign. The break-even quantity determines how many additional units the company must sell to cover the expense of the campaign. If the business sells fewer than the break-even quantity, it loses money since it does not sell enough to recover its investment. If the company sells more than the break-even quantity, the marketing campaign can be approved as it is profitable to the company.
 
-After a few months of researching and brainstorming, the marketing analytics team under Tom's lead has come up with several proposals for Tom to decide. Tom, taking another sip of the delicious QQ Style Milk Tea (30% sugar, less ice) from T4, started to review the proposals.
+After a few months of researching and brainstorming, the marketing analytics team under Tom's lead has come up with several marketing compaign proposals for Tom to decide. Tom, taking another sip of the delicious QQ Style Milk Tea (30% sugar, less ice)[^2] from T4, started to review the proposals.
+
+[^2]: Dr Meow's personal favoriate! Highly recommended after a long tiring day of studies :D
+
+![](images/QQStyle.jpeg){fig-align="center" width="100"}
 
 ## Marketing Decision: A Static View
 
@@ -78,7 +147,7 @@ The team proposes to collaborate with the top tech influencers on Tiktok and You
 
 ## Marketing Decision: A Dynamic View
 
-In the afternoon, during a monthly board meeting, the CFO reported that the company was facing increased uncertainty regarding future cash flows due to the recent plunge of British Pounds and surge in interest rate. The current cost of financing, weighted average cost of capital (WACC), increased to **`r WACC*100`%** annually. Therefore, any marketing event is recommended to take time value of money into consideration.
+In the afternoon, during a board meeting, the CFO reported that the company was facing increasing uncertainty regarding future cash flows due to the recent surge in interest rate. The current cost of financing, weighted average cost of capital (WACC), increased to **`r WACC*100`%** annually. Therefore, any marketing event is recommended to take time value of money into consideration.
 
 Right after the meeting, Tom asked his team for a decomposition of the predicted annual incremental sales, **`r endorsement_sales_increase*100`%**, into a more granular monthly level analysis.
 

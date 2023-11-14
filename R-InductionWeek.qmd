@@ -123,7 +123,7 @@ RStudio is THE best R IDE to date. And it's interface consists of the following 
 
     -   e.g., summary statistics; check variable values, etc.
 
-## Where to write R codes (II): `.R` script v
+## Where to write R codes (II): `.R` script
 
 -   `R script` is a text-readable file ending with `.R` suffix. See an example.
 
@@ -275,7 +275,7 @@ Insert a code block in your quarto file, which does the following:
 -   Create an object with name 'x' with value 2 + 2
 :::
 
-## Rules for naming object 
+## Rules for naming object
 
 For a variable to be valid, it should follow these rules
 
@@ -392,7 +392,7 @@ You can put a `#` before any code, to indicate that any codes after the `#` on t
 It's a good practice to often comment your codes, so that you can help the future you to remember what you were trying to achieve.
 
 ```{r}
-# print("Support Wei for an iPhone 14 Pro!")
+# print("Support Wei for an iPhone 15 Pro Max!")
 
 # Below, x will be 1 rather than 1+1
 x <- 1 # +1
@@ -702,7 +702,7 @@ x <- c(1,3,8,7)
     -   the second argument is the number of rows
     -   the last argument is the number of cols (optional)
 
-```{r matrix, include=T, echo=T}
+```{r}
 matrix(1:9, nrow = 3, ncol = 3)
 ```
 

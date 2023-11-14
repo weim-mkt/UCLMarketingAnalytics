@@ -3,7 +3,7 @@ author: Dr Wei Miao
 date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(5))`"
 date-format: long
 institute: UCL School of Management
-title: "Class 11 Application of RCT"
+title: "Class 11 Case Study: Improve User Engagement on Social Media Platforms"
 df-print: kable
 colorlinks: true
 code-line-numbers: true
@@ -40,109 +40,210 @@ editor_options:
 bibliography: references.bib
 ---
 
-# Synopsis
+# Procedures of A/B Testings
 
-## Case Background
+## Motivating Example with Tom's Loyalty Program
 
-Andrew and Hammond, 2 recently graduated MBA students, were tasked with developing an **ad-serving learning algorithm** for Vungle, a **mobile ad-serving** company.
+-   Tom is considering whether or not to introduce a loyalty program for his bubble tea business. This decision is essentially a cost-benefit analysis
 
-Zain Jaffer, the firm's CEO, planned to **test the developed method in parallel with the existing Vungle algorithm**.
+    -   Cost: it takes money and time to develop the loyalty program
 
-The hope was that the new algorithm would increase **conversion rates** and, more specifically, **profits** (as measured by **eRPM**).
+    -   Benefit: it may increase spending and retention rate, and hence future CLV
 
-To test this, two conditions (A, Vungle's existing algorithm, and B, the data science approach) were evaluated in parallel on **randomly assigned users**.
+-   Cost can be estimated through budgeting, but how to estimate the benefit from introducing LP?
 
-## Case Core Question
+## Step 1: Decide on the Unit of Randomization
 
-The case examines the results of an A/B test of the two algorithms during the month of June 2014. You will need to determine whether B outperformed A.
+We decide **the granularity of randomization unit** based on the research question at hand.
 
--   How might Jaffer conclude that B is better than A?
+-   **individual** (often chosen)
 
--   If it is, what would the financial benefits be?
+-   household
 
--   Finally, how long would Jaffer need to wait before declaring a winning algorithm?
+-   store
 
-# Situation Analysis
+-   others even more granular (e.g., device level) or even less granular (e.g., city level)
 
-## Company
+## Step 1: Decide on the Unit of Randomization
 
--   Business model of Vungle?
+**Proposal 1**: Randomize the loyalty program to West London and East London.
 
-    ::: {.content-visible when-format="html"}
-    > Platform model
-    :::
+-   Do you expect the "randomize" to be true randomization?[^1]
 
--   What are the key players in this mobile video ads market (i.e., Vungle)? Find the info in the case.
+[^1]: All answers to questions in the slides are on the webpage version of lecture notes.
 
-    -   As a comparison, what are the key players in website ads case?
-
-![](images/paste-D62FD0DD.png){fig-align="center" width="250"}
-
-::: {.content-visible when-format="html"}
-> "Four parties participated in the in-app mobile advertisement channel. The user of the mobile device (user), the owner of the app being used (publisher), the sponsor of the video ad the user was exposed to (advertiser), and the platform that matched the choice of ad to a specific user (e.g., Vungle)."
+::: {.content-hidden when-format="beamer"}
+> No, because East London and West London are intrinsically different. Randomization can only work well when the number of randomization units are large enough.
 :::
 
-## Company
+**Proposal 2**: Randomize the loyalty program among individual customers.
 
--   How does Vungle make money? Find the info in the case.
+-   Is this true randomization?
 
-![](images/vungle-revenue.png){fig-align="center" width="300"}
-
-::: {.content-visible when-format="html"}
-> "In most cases, payment was made by the advertiser upon **installation**. **Publishers** typically received 60% of the revenues and the **ad provider** the remaining 40%. See Figure 1 for the conversion funnel depicting how an install is achieved. Of all ad requests, most were served and became impressions. When at least 80% of a video ad was watched, it was considered complete. When the user clicked on the ad to get more information, it was counted as a click. The process could then result in an install."
+::: {.content-hidden when-format="beamer"}
+> Yes, as long as we have a large number of individual customers, after randomization, we should see the treatment group and control group customers to have balanced characteristics.
 :::
 
--   How can Vungle improve its revenue using what we've learned in Marketing Analytics so far?
+-   What problems can we still have?
 
-::: {.content-visible when-format="html"}
-> Vungle should use predictive analytics to fill the ads that a customer is most likely to click and install. This is essentially a supervised learning problem.
+> ::: {.content-hidden when-format="beamer"}
+> 1.  Spillover: Customers may talk to each other, so individual customers in the control group (who are not supposed to see the loyalty program) may also become aware of the loyalty program.
+> 2.  Crossover: the same individual may accidentally receive different treatments.
+> :::
+
+## Step 1: Pros and Cons of Granularity
+
+**Disadvantages of granularity:**
+
+-   Costs and logistics
+
+-   Spillovers and crossovers
+
+**Advantages of granularity:**
+
+-   Increase the chance of successful randomization, thereby mitigating any systematic unbalance of covariates before the experiment.
+
+**Exercise:**
+
+-   How can we randomize individualized price discounts to customers?
+
+::: {.content-hidden when-format="beamer"}
+> We can send individually personalized coupons to customers, e.g., Co-op weekly offers, Uber's dynamic pricing.
+
+![](images/coopcoupon.jpeg){fig-align="center" width="300"}
 :::
 
-## Customer
+## Step 2: Mitigate Spillover and Crossover Effects
 
--   Due to the nature of business model (multi-sided market), who are Vungle's customers? Find the info in the case.
+-   **Crossover Effects**: A crossover occurs when an individual who was supposed to be assigned to one treatment is accidentally exposed to another or more treatments.
+    -   e.g., For online A/B testing, a notorious crossover effect is that when browsers reset the cookies, the same individual customer may be treated as a different new customer.
+-   **Spillover effects**: The behavior of the treatment group can affect control group as well
+    -   e.g., customers may share the promotions with family members and friends.
+
+**Question**: How should Tom mitigate spillover and crossover effects?
+
+> ::: {.content-hidden when-format="beamer"}
+> -   Make sure that the same unit receives the same treatment throughout the experiment, e.g., forcing the customers to log into the website using their user accounts. User IDs should be unique.
+>
+> -   Randomize at the level of plausibly isolated social networks such as a community, rather than individual level.
+>
+> -   However, we must acknowledge that, it is really challenging to implement an A/B testing without any crossover or spillover in the field.
+> :::
+
+## Step 3: Decide on Randomization Allocation Scheme
+
+-   Individuals (or the relevant unit of randomization) are allocated at random into a treatment condition based on some decision rules.
+
+-   Due to the high costs and potential risks of A/B testing, we often select a small percentage of customers into the treatment condition, while the remaining customer should do "business-as-usual".
+
+## Step 4: Collect Data
+
+-   Any field experiment should be aware of the need for a sufficiently large sample size, or sufficient statistical power.
+    -   The larger sample size, the higher statistical power for the experiment; meanwhile, larger sample size brings higher costs and risks.
+    -   Run a [power calculation in R](https://cran.r-project.org/web/packages/pwrss/vignettes/examples.html)
+-   Collect both data on the outcome variables of interest and consumer characteristics data
+
+**Proposal:** We need to collect customers' retention rate data and link the retention data with their treatment assignment.
+
+## Step 5: Interpreting Results from a Field Experiment
+
+**Step 5.1: Randomization check**
+
+-   We need to check if the treatment group and control group are well-balanced in terms of their **pre-treatment** characteristics, especially the outcome variables.
+
+**Step 5.2: Analyze the data and estimate the ATE**
+
+-   **t-test** to examine the difference in the average outcome between the treatment group and control group. In R, we can use `t.test()`
+-   **Regression analysis** when analyzing A/B/N testing or multivariate experiments.
+
+# Case Background
+
+## Situation Analysis
+
+-   Business model of Twitter, and other social media platforms in general?
 
 ::: {.content-visible when-format="html"}
-> "In the mobile advertising domain, supply was considered to be the slots available for showing ads, and demand consisted of the advertisers willing to buy the supply by placing ads."
+> Platform business model. Network effect is the key to success.
 :::
 
-## Collaborators
+-   How does Twitter make money?
 
--   Who are the collaborators of Vungle?
+> ::: {.content-visible when-format="html"}
+> -   Ads
+>
+> -   Freemium strategy: though general everyday use is free, for premium features, customers have to pay
+> :::
 
-## Competitors
+-   Who are Twitter's customers?
 
-![](images/competitoranalysis.png){fig-align="center" width="300"}
+> ::: {.content-visible when-format="html"}
+> -   Users
+>
+> -   Advertisers
+> :::
 
--   Direct competitors
+-   Who are the collaborators of Twitter?
 
--   Indirect competitors
+> ::: {.content-hidden when-format="beamer"}
+> -   Business Partners: Companies that integrate Twitter content into their services, such as news organizations or broadcasters.
+> -   Advertisers and Marketers: Agencies that develop campaigns for the platform.
+> -   Content Creators: Influencers and celebrities who attract and engage large audiences.
+> :::
 
--   Potential competitors
+-   Who are Twitter's direct and indirect competitors?
 
-## Context
+> ::: {.content-hidden when-format="beamer"}
+> -   Direct: Other social media platforms like Facebook, Instagram, etc.
+> -   Indirect: News websites, discussion forums like Reddit, and alternative communication platforms that offer different ways for people to obtain information and interact online.
+> :::
 
-![](images/class1_Context.png){fig-align="center" width="200"}
+-   Which PESTLE factors should we focus on?
 
--   Legal: GDPR
+> ::: {.content-hidden when-format="beamer"}
+> -   Legal and Regulatory Issues: Changes in regulations related to data privacy, online speech, and censorship can significantly impact operations.
+> :::
 
--   Technological: penetration of mobile phones
+## Business Objective
 
--   ...
+> \[...\] we are going to draw upon **social comparison theory** and **gamification** to help Twitter further improve its user engagement in its newly introduced feature called "Communities" on the platform. "Communities" is a twitter feature that aims to enrich user engagement by catering to specific interests and subjects. These Communities offer users a dedicated space to convene around shared topics of interest, spanning domains such as celebrity fandoms, movie enthusiasts, and various hobbies.
 
-# Implementation of Experiment
+## Theoretical Motivation
+
+When proposing business ideas, we should base our proposals on scientific, well-established theories from different disciplines such as Psychology and Behavioral Economics:
+
+-   Social comparison theory (Twitter's case study)
+
+-   [Framing effect](https://www.investopedia.com/framing-effect-7371439)
+
+-   [Prospect theory](https://www.investopedia.com/terms/p/prospecttheory.asp)
+
+-   [Bandwagon effect](https://www.investopedia.com/terms/b/bandwagon-effect.asp)
+
+## Business Proposal
+
+-   We propose to implement a leaderboard to rank different communities based on points based on **Gamification Theory** and **Social Comparison Theory**.
+
+::: columns
+::: {.column width="50%"}
+![](images/getpoints.png){fig-align="center" width="150"}
+:::
+
+::: {.column width="50%"}
+![](images/leaderboard.png){fig-align="center" width="150"}
+:::
+:::
+
+# A/B Testing for Twitter
 
 ## Step 1: Decide on the Unit of Randomization
 
 -   What would be the best unit of randomization?
 
 ::: {.content-visible when-format="html"}
-> The best level would be user level. User-device level would be too granular and can easily cause crossover effects.
+> The best level would be user level. Device level would be too granular and can easily cause crossover effects.
 :::
 
--   How about website-based online ads, say Google ads?
-
-## Step 2: Ensure No Spillover and Crossover Effects
+## Step 2: Mitigate Spillover and Crossover Effects
 
 -   What are the potential problems for spillover and crossover?
 
@@ -152,61 +253,52 @@ The case examines the results of an A/B test of the two algorithms during the mo
 > -   A user may talk to family members/friends, causing spillover effects.
 :::
 
--   How about website-based online ads, say Google ads?
-
 ## Step 3: Decide on Randomization Allocation Scheme
 
--   How did Vungle implement the randomization scheme? Is it sensible?
+-   How should we determine the randomization scheme?
 
 ::: {.content-visible when-format="html"}
-> Chan's team thought it would make sense to direct only 1/16th of the users to the B condition. The other randomly assigned 15/16ths of users would receive an ad based on the existing algorithm (i.e., the A condition).
+> -   Since A/B testing can be costly and risky, normally we would **not** use all the users.
+>
+>     -   On the first day of A/B testing, we can randomize a small percent of arriving customers (e.g., 10%) into the treatment condition
+>
+>     -   The remaining arriving customers will be in the control group
+>
+> -   After randomization is assigned, the treatment should remain the same for each user.
 :::
 
 ## Step 4: Collect Data
 
--   What data did Vungle collect?
+-   What is the sample size we need?
 
 ::: {.content-visible when-format="html"}
-> After two weeks, B was looking pretty good. Its daily eRPM was on average \$0.131 higher than A's. Would this translate into annual revenues worthy of the necessary data science investment? Exhibits 2 and 3 provide the daily results of the A/B test.
+> We can do a power analysis using `pwr` package in R, or simply some websites, e.g., this [link](https://clincalc.com/stats/samplesize.aspx).
 :::
 
--   Can you do better?
+-   What data should we collect?
 
 ::: {.content-visible when-format="html"}
-> User-level data rather than day-level data would be more granular and can provide higher statistical power.
+> -   Demographic data, including registration date, age, gender, etc.
+>
+> -   Behavioral data, including logs of tweeting, retweeting, likes, and comments
+>
+> The above data serve 2 purposes: (1) randomization check (2) estimation of treatment effects
 :::
 
-## Step 5: Interpreting Results from a Field Experiment
+## Step 5: Data analytics
 
--   Which step is missing in Vungle A-B testing?
+-   Randomization checks
 
 ::: {.content-visible when-format="html"}
-> Vungle didn't do randomization check.
+> We should do this on Day 1 right after randomization is done, just to ensure the randomization worked well.
 :::
 
--   How to draw statistical conclusions from the Exhibits A and B?
+-   How to estimate the treatment effects?
 
 ::: {.content-visible when-format="html"}
-> We can conduct a paired t-test to statistically test the effectiveness of B.
+> \(1\) ATE is the difference in the group means across the treatment group and control groups. We can conduct a paired t-test to statistically test the effectiveness of B.
+>
+> \(2\) To ensure the difference is statistically significant, we need to do a hypothesis test using t-test.
+>
+> \(3\) Next week, we will see that, we can also run a linear regression to obtain the average treatment effects.
 :::
-
-## Step 5: Paired t-test
-
-```{r}
-pacman::p_load(dplyr)
-```
-
-```{r}
-#| echo: true
-
-data_vungle <- read.csv("https://www.dropbox.com/s/nsxnworjggreh4s/UV6968-XLS-ENG.csv?dl=1")
-
-t.test((data_vungle%>%filter(Strategy == "Vungle A"))$eRPM,
-       (data_vungle%>%filter(Strategy == "Vungle B"))$eRPM,
-       paired = TRUE) 
-
-```
-
-## Conclusion
-
-Guerin was curious to see how the superior condition would be chosen. How would one conclude that B was better than A?

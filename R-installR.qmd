@@ -57,7 +57,7 @@ Check out this [video](https://youtu.be/AP0R88qqmpI?si=1iHY6IRGuMoID4BN) to guid
 
 4.  Click into `download R for Windows` for installation files for Windows computers
 
-![](images/CRANMirrors.png){fig-align="center"}
+![](images/Rdownloadpage.png){fig-align="center"}
 
 5.  Download and install (1) `base` and (2) `Rtools`. It's recommended to use the default options during the installations.
     -   Notes: The former is the R program, and the latter is the tool to compile R packages.
@@ -101,7 +101,7 @@ Check out this [video](https://youtu.be/AP0R88qqmpI?si=1iHY6IRGuMoID4BN) to guid
 
 ![](images/R%20commandline%20tools.png)
 
-7.  Click into this [link](https://quarto.org/docs/get-started/). Download and instsall Quarto CLI plugin.
+7.  Click into this [link](https://quarto.org/docs/get-started/). Download and instsall Quarto CLI plugin for Mac OS.
 
 ![](images/quarto%20CLI.png)
 
@@ -138,8 +138,6 @@ There is a package in R called `tinytex` which provides a light installation of 
 Please follow the following steps to make sure you have successfully installed R and RStudio.
 
 -   Step 1: Launch RStudio from your computer. Check if you see the following screen without any error messages
-
-Then congrats, you have successfully installed R and RStudio!
 
 ![](images/post-installation%20check.png)
 

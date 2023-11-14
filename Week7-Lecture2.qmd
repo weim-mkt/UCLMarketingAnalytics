@@ -3,7 +3,7 @@ author: Dr Wei Miao
 date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(6))`"
 date-format: long
 institute: UCL School of Management
-title: "Class 14 Workshop: Marketing Mix Modeling"
+title: "Class 14 Marketing Mix Modeling"
 df-print: kable
 colorlinks: true
 code-line-numbers: true
@@ -57,72 +57,114 @@ bibliography: references.bib
 ::: block
 ### Marketing Mix Modeling
 
-Marketing Mix Modeling (MMM) is the use of statistical analysis to **estimate the causal impact** of various marketing **mix variables (especially pricing and promotions)** on **sales**.
+Marketing Mix Modeling (MMM) is the use of statistical analysis to **estimate the causal impact** of various **marketing** **mix variables (**especially **pricing** and **promotions)** on **sales**.
 :::
 
--   **Core idea**: find an appropriate statistical model that can characterize the relationship (DGP) between sales and marketing mix variables
-
-## Phase 1: Data Collection (What to Include in a MMM Model?)
-
-![](images/class8_WhatToInclude.png){fig-align="center" width="400"}
-
-## Phase 2: Statistical Modelling
-
--   What functional forms and specifications to use for each variable?
-    -   More of an art than science
-
-    -   quadratic terms when [diminishing returns](https://www.investopedia.com/terms/l/lawofdiminishingmarginalreturn.asp) are expected
--   How to determine the "best" model
-    -   predictive accuracy (error of predicted sales)
-    -   model fit ($R^2$)
-
-## Classic Examples of MMM
-
-**Example 1**: Model the relationship between **sales** and **price** as follows:
+-   **Core idea**: find an appropriate statistical model that can characterize the DGP between sales and various marketing mix variables. After estimating the causal effect of each variable, we are able to do budget optimization.
 
 $$
-sales_t = \beta_0 + \beta_1Price_t + X_t\beta+ \epsilon_t
+sales_t = \beta_0 + \beta_1Price_t + \beta_2Ads_t + \beta_3Channels_t + ... + \epsilon_t
 $$
 
-**Example 2**: Model the relationship between **sales** and **number of influencers** as follows.
+\small
 
--   We would normally consider diminishing marginal return of marketing activities
+-   <div>
+
+    > \[Project scope for Buberry in previous years\] "Marketing Mix Modelling is a holistic modelling technique that helps to estimate the effectiveness of marketing efforts. It enables the measurement of business drivers and provides insights to the stakeholders to make decisions regarding budget allocation. Bayesian Methods are currently regarded as one of the most advanced techniques to build these models. We already have Bayesian MMM models in place for some regions, and as part of this project, we would want to explore Hierarchical Bayesian MMM model for an easier expansion to other regions."
+
+    </div>
+
+# Steps to Build MMM
+
+## Phase 1: Data Collection
+
+We need to think about which marketing mix variables are likely affect your sales?
+
+-   Channels for selling the products (online, offline, different locations)
+
+-   Channels for advertising the product (TV, social media, search engine, influencer marketing, etc.)
+
+-   Promotional activities in each period
+
+::: {.content-visible when-format="beamer"}
+![](images/class8_WhatToInclude.png){fig-align="center" width="254"}
+:::
+
+::: {.content-hidden when-format="beamer"}
+![](images/class8_WhatToInclude.png){fig-align="center" width="635"}
+:::
+
+## Phase 2: Modeling Considerations (Non-linear Effects)
+
+**What functional forms and specifications to use for each variable?**
+
+***Case 1***: Are [diminishing returns](https://www.investopedia.com/terms/l/lawofdiminishingmarginalreturn.asp) or any nonlinear effects expected on the variable?
+
+-   e.g., **advertising saturation**: Increasing the amount of advertising increases the percentage of the audience reached by the advertising, hence increasing demand, but a linear increase in the advertising exposure doesn't have a similar linear effect on demand. Typically each incremental amount of advertising causes a progressively lesser effect on demand increase.
+
+::: {.content-visible when-format="beamer"}
+[![Ads Saturation (source: Wiki)](images/ad-saturation.png){fig-align="center" width="200"}](https://en.wikipedia.org/wiki/Advertising_adstock)
+:::
+
+::: {.content-hidden when-format="beamer"}
+[![Ads Saturation (source: Wiki)](images/ad-saturation.png){fig-align="center"}](https://en.wikipedia.org/wiki/Advertising_adstock)
+:::
+
+## Phase 2: Modelling Considerations (AdStock Analysis)
+
+***Case 2***: Advertising builds up product awareness among consumers. We can model the current awareness level as a stock variable.
+
+-   Without new exposures, the stock of past ads eventually decay to zero
+
+-   New ads increase awareness on top of the current stock level
+
+-   Mathematically, we can model the ads stock as follows:
 
 $$
-sales_t = \beta_0 + \beta_1NumInflu + \beta_2NumInflu^2 + X_t\beta+ \epsilon_t
+Adstock_t=NewAds_t+\lambda Adstock_{t-1}, \quad t=1, \ldots, n
 $$
 
-## Phase 3: Model-Based Optimization
+-   $\lambda$ depends on the industry, with a half-life range of around 7-- 12 weeks.
 
-The outputs from your MMM project -- that is, the data and estimates that come out of your statistical model -- need to address the profit maximization problem.
+```{r}
+#| eval: false
+# for example, in R, we can mutate Adstock as follow:
+data_sales <- data_sales %>%
+  mutate(Adstock = NewAds + lag(Adstock) * 0.5 )
+```
 
--   The MMM model will produce a host of outputs that measure how each tactic (e.g., price) affects sales.
--   We can then use the outputs to guide our marketing decisions.
+## Phase 3: Model-Based Marketing Mix Optimization
 
-## Optimal Pricing to Maximize Profit
+The estimates from the MMM need to eventually address the profit maximization problem.
 
--   We can utilize the outputs to compute the optimal pricing
+-   The MMM model will produce a host of outputs that measure how each marketing mix variable affects sales.
+-   We can then use the outputs to compute optimal levels of marketing mix variables for profit maximization (or other business objectives that align with the company's marketing strategy).
 
-$$
-sales_t = 1000 - 20 Price_t + X_t\beta+ \epsilon_t
-$$
+## Toy Example: Optimal Pricing to Maximize Profit
 
--   Then we know, conditional on $X_t$, the total revenue would be
+-   We can utilize the outputs to compute the optimal pricing[^1] $$
+    sales_t = 1000 - 20 * Price_t + 0.1 * Adstock_t+ \epsilon_t
+    $$
 
-$$
-profit = (Price - COGS) *sales = (Price - COGS)*(1000 + X_t\beta - 20*Price)
-$$
+[^1]: In term 2's Operations Analytics module, you will learn how to find the optimal pricing, given the estimated marketing mix model.
 
--   We can derive the optimal price to maximize profit.
+```{=html}
+<!-- -->
+```
+-   Then we know, conditional on $X_t$, the total revenue would be $$
+    revenue = Price *sales = Price * (1000 - 20 Price_t + 0.1 Adstock_t)
+    $$
 
-$$
-\partial profit/\partial price = (1000 + X_t\beta - 20 Price) - 20 (Price - COGS) = 0
-$$
+-   We can derive the optimal price to maximize revenue. $$
+    \partial revenue/\partial price = (1000 - 20 Price_t + 0.1 Adstock_t) - 20 Price = 0
+    $$
 
--   The optimal price that can maximize the revenue/profit is $\frac{1000 + X_t\beta+20COGS}{40}$
+-   The optimal price that can maximize the revenue/profit is $\frac{1000 + 0.1 Adstock_t}{40}$
 
--   In term 2's Operations Analytics module, you will systematically learn how to find the optimal pricing, given the estimated functional relationship between sales and marketing mix variables.
+    -   There is an optimal price to set at each ads level. The higher ads spending, the higher price we can charge customers.
 
-# Zalora Case
+## After-class
 
--   Please take out the Zalora quarto document. Let's go through how we can build a marketing mix model for Zalora to optimize its profit.
+-   [A complete guide to Marketing Mix Modeling](https://www.latentview.com/marketing-mix-modeling/)
+
+-   [Bayesian Marketing Mix Modeling](https://towardsdatascience.com/understanding-bayesian-marketing-mix-modeling-a-deep-dive-into-prior-specifications-af400adb836e)

@@ -3,7 +3,7 @@ author: Dr Wei Miao
 date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(3))`"
 date-format: long
 institute: UCL School of Management
-title: "Class 8: Workshop: Improving Marketing Efficiency Using Predictive Analytics"
+title: "Class 8: Tree-based Models and Their Application to Targeted Marketing"
 df-print: kable
 colorlinks: true
 code-line-numbers: true
@@ -15,6 +15,7 @@ format:
     toc-depth: 2
     code-line-numbers: true
     code-copy: hover
+    suppress-bibliography: true
   beamer: 
     toc: false
     toc-title: ""
@@ -26,6 +27,7 @@ format:
     navigation: horizontal
     tbl-colwidths: auto
     fontsize: 9pt
+    suppress-bibliography: true
 knitr:
   opts_chunk:
     echo: true
@@ -36,83 +38,208 @@ execute:
   freeze: auto
 editor_options: 
   chunk_output_type: inline
+bibliography: references.bib
 ---
 
-# Tesco Case
+# Decision Tree
 
-## Background
+## Introduction to Decision Tree
 
-Tesco is looking to promote its new [private-label](https://en.wikipedia.org/wiki/Private_label) products to existing customers. The marketing analytics team decides to use the conventional mailing marketing strategy so that customer would receive color-printed leaflets via Royal Mails to their doorsteps.
-
-## Cost-Benefit Analyses
-
--   Each mail costs **£1.5** to produce and another **£0.5** to mail to the customers. If customer responds to the offer, the management expects customers to spend **£20** on trying the new products, where the COGS is **60%**.
-
--   The cost is the marketing offer we send, `cost_per_offer`
-
-```{r}
-# cost of sending an offer
-cost_per_offer <- 1.5 + 0.5
-cost_per_offer
-```
+-   A **decision tree** is a flowchart-like tree structure.
+-   Used in classification and regression.
+-   Consists of nodes representing decisions and leaves representing outcomes.
 
 ::: {.content-visible when-format="beamer"}
-## Cost-Benefit Analyses
+![How a decision tree looks like. Source: [Medium.](https://medium.com/@favourphilic/decision-tree-5c1c7b6db59)](images/decisiontree.png){fig-align="center" width="200"}
+:::
 
--   The benefit is the profit margin if a customer responds, `profit_per_customer`
+::: {.content-hidden when-format="beamer"}
+![How a decision tree looks like. Source: [Medium](https://medium.com/@favourphilic/decision-tree-5c1c7b6db59)](images/decisiontree.png){fig-align="center" width="600"}
+:::
+
+## Example: Predict Customer Response to Marketing Offers
+
+-   Tesco made marketing offers to customers in the data, and the variable `Response` represents whether or not customers responded to our offer.
+-   **Business objective**: From `data_full`, we want to train a decision tree model to predict the outcome variable `Response` based on `Recency` and `totalspending` (for simplicity).
+-   **Data collection and cleaning:**
 
 ```{r}
-# profit from a responding customer
-COGS <- 0.6
-profit_per_customer <- 20 * (1 - COGS)
-profit_per_customer
+pacman::p_load(dplyr,modelsummary)
+data_demo <- read.csv(file = "https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1",
+                      header = T)
+data_purchase <- read.csv(file = "https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1" , header = T)
+
+data_full <- data_purchase %>%
+  left_join(data_demo, by = c('ID' = 'ID')) %>%
+  mutate(totalspending = MntWines + MntFruits + 
+           MntMeatProducts + MntFishProducts + 
+           MntSweetProducts + MntGoldProds)
 ```
 
+## Implementation of Decision Tree in R
+
+-   Package `rpart` provides efficient implementation of decision trees in R
+
+-   Package `rpart.plot` provides nice visualizations of decision trees
+
+::: {.content-visible when-format="beamer"}
+```{r}
+#| eval: false
+# Load the necessary packages
+pacman::p_load(rpart,rpart.plot)
+
+# Below example shows how to train a decision tree
+tree1 <- rpart(
+  formula = Response ~ Recency + totalspending,
+  data    = data_full,
+  method  = "class" # classification task; or 'anova' for regression
+  )
+
+# visualize the tree
+rpart.plot(tree1)
+```
+:::
+
+::: {.content-hidden when-format="beamer"}
+```{r}
+# Load the necessary packages
+pacman::p_load(rpart,rpart.plot)
+
+# Below example shows how to train a decision tree
+tree1 <- rpart(
+  formula = Response ~ Recency + totalspending,
+  data    = data_full,
+  method  = "class" # classification task; or 'anova' for regression
+  )
+
+# visualize the tree
+rpart.plot(tree1)
+```
+:::
+
+## How Decision Tree Works: Step 1
+
+::: {.content-visible when-format="beamer"}
+![](images/decisiontree1.png){fig-align="center" width="300"}
+:::
+
+::: {.content-hidden when-format="beamer"}
+![](images/decisiontree1.png){fig-align="center" width="600"}
+:::
+
+1.  Decision tree (DT) will try to split customers into 2 groups based on each unique value of each variable, and see which split can lead to customers being most differentiated in terms of `Response`.
+    -   After this step, DT finds that total spending is the best variable and 1396 is the best cutoff.
+    -   DT therefore splits customers into 2 groups based on 1396.[^1]
+
+[^1]: In each node, the 3 numbers are (1) predicted outcome (2) predicted probability of outcome being 1, and (3) percentage of customers in the node
+
+## How Decision Tree Works: Step 2
+
+::: {.content-visible when-format="beamer"}
+![](images/decisiontree2.png){fig-align="center" width="300"}
+:::
+
+::: {.content-hidden when-format="beamer"}
+![](images/decisiontree2.png){fig-align="center" width="600"}
+:::
+
+2.  For customers in the left branch (`totalspending` \< 1396), DT will continue to split based on each unique value of each variable, and see which split can result in the customers to be most different in terms of Response.
+    -   However, DT couldn't find a cutoff that sufficiently differentiate customers, so DT stops in the left branch.
+
+## How Decision Tree Works: Step 3 ...
+
+::: {.content-visible when-format="beamer"}
+![](images/decisiontree3.png){fig-align="center" width="300"}
+:::
+
+::: {.content-hidden when-format="beamer"}
+![](images/decisiontree3.png){fig-align="center" width="600"}
+:::
+
+3.  For customers in the right branch (`totalspending` \>= 1396), DT will continue to split based on each unique value of each variable, and see which split can result in the customers to be most different in terms of Response.
+    -   After this step, DT finds `Recency` is the best variable and 72 is the best cutoff. DT further splits customers into 2 groups.
+4.  This process continues until DT determines that there is no need to further split customers.
+
+## **Advantages of Decision Trees**
+
+-   They are very interpretable.
+
+-   Making predictions is fast.
+
+-   It's easy to understand what variables are important in making the prediction. The internal nodes (splits) are those variables that most largely reduce the SSE (criteria for split).
+
+# Random Forest
+
+## **Disadvantages of Decision Trees**
+
+-   Single regression trees tend to have high variance (overfitting), resulting in unstable predictions.
+
+-   Due to the high variance, single regression trees tend to have poor predictive accuracy.
+
+## Random Forest
+
+-   To overcome the overfitting tendency of a single decision tree, random forest has been developed by [@breiman2001].
+
+    -   Instead of using all customers, each tree is grown to a random subsample of customers
+    -   Instead of using all features for splitting, each treen is grown to a random subset of features
+
+## Visualization of Random Forest
+
+::: {.content-visible when-format="beamer"}
+![](images/randomforest.png){fig-align="center" width="350"}
 :::
 
 ::: {.content-visible when-format="html"}
-
-
--   The benefit is the profit margin if a customer responds, `profit_per_customer`
-
-```{r}
-# profit from a responding customer
-COGS <- 0.6
-profit_per_customer <- 20 * (1 - COGS)
-profit_per_customer
-```
-
+![](images/randomforest.png){fig-align="center"}
 :::
 
-## Break-Even Response Rate
+For a new customer,
 
--   In order to break-even, we can calculate the break-even response rate from customers:
+-   Each tree gives a prediction of the outcome
+
+-   Random forest takes the average of all trees' predictions as the final prediction
+
+## Implementation of Random Forest in R
+
+-   Package `ranger` provides implementation of random forest in R.
+
+-   `ranger()` is the function in the package to train a random forest; refer to its help function for more details.
+
+-   The following code shows how to train a random forest consisting of 500 decision trees, where the outcome variable is mpg, and the predictors are 5 car attribute variables.
 
 ```{r}
-break_even_response <- cost_per_offer/profit_per_customer
-break_even_response
+pacman::p_load(ranger)
+randomforest1 <- ranger(
+    formula   = Response ~ totalspending + Recency, 
+    data      = data_full, # dataset to train the model
+    num.trees = 500, # 500 decision trees
+    seed = 888, # make sure of replication
+    probability  = TRUE
+  )
 ```
 
--   Only if a customer responds to us with at least `r break_even_response*100`% response rate can we recover the costs of making an marketing offer.
--   If we send offers to customers whose expected response rate is lower than `r break_even_response*100`%, we make a loss by expectation.
+## Make Predictions from Random Forest
 
-## Improving Marketing Efficiency Using Predictive Analytics
+-   After we train the predictive model, we can use `predict()` function to make predictions
 
-1.  Prepare data for ML model (data wrangling)
-    -   a training set and a test set
-2.  Train predictive models on the training set (decision tree and random forest)
-3.  Predict customer response rate on the test set
-4.  Target customers based on predicted response rate
-5.  Compute ROI for each scenario
-    -   Blanket marketing
-    -   Decision tree
-    -   Random forest
+    -   The 1st argument is the trained model object
 
-**Let's work on the remaining case study questions together!**
+    -   The 2nd argument is the dataset to make predictions on
 
-# Predictive Analytics and Marketing
+```{r}
+#| eval: false
+# Make predictions on the mtcars
+prediction_rf <- predict(randomforest1,
+                         data = data_full)
 
-## Predictive Analytics and Customer Life Cycle
+# Because prediction_rf is a list object
+# Need to use $ to extract the predicted value as a numeric vector
+prediction_rf$predictions 
+```
+
+# Improve Marketing Efficiency Using Supervised Learning
+
+## Customer Life Cycle
 
 -   Acquisition (Tesco Case Study)
 
@@ -120,11 +247,11 @@ break_even_response
 
 -   Development
 
-    -   Use predictive analytics to recommend products to customers (personalized recommendation system)
+    -   Use predictive analytics to recommend products to customers (personalized recommendation system); for each customer, promote the item with the highest purchase probability
 
--   Retention (Week 5 Case Study)
+-   Retention
 
-    -   Use predictive analytics to find risky customers and conduct churn management
+    -   Use predictive analytics to find valuable customers who are likely to churn and conduct targeted churn management
 
 ::: {.content-visible when-format="beamer"}
 ![](images/CustomerLifeCycle.png){fig-align="center" width="250"}
@@ -133,3 +260,20 @@ break_even_response
 ::: {.content-visible when-format="html"}
 ![](images/CustomerLifeCycle.png){fig-align="center"}
 :::
+
+## Workflow
+
+![](images/DataAnalyticsSteps.png){fig-align="center" width="200"}
+
+1.  Define a business objective: target responsive customers in acquisition stage to reduce customer acquisition costs
+2.  Collect data
+3.  Clean and prepare data
+4.  Analyze data using predictive analytics
+5.  Conduct break-even analyses to show the profitability of the proposed marketing compaign
+
+## After-Class Reading
+
+-   (optional) Varian, Hal R. "Big data: New tricks for econometrics." Journal of Economic Perspectives 28, no. 2 (2014): 3-28
+-   (next week) Predictive Analytics for Tesco
+-   (recommended) [Decision tree in R](http://uc-r.github.io/regression_trees)
+-   (recommended) [Random forest in R](http://uc-r.github.io/random_forests)

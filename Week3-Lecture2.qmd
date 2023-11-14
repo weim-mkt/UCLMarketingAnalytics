@@ -3,7 +3,7 @@ author: Dr Wei Miao
 date: "`r (lubridate::ymd('20231004') + lubridate::dweeks(2))`"
 date-format: long
 institute: UCL School of Management
-title: "Class 7 Predictive Analytics for STP (I): Unsupervised Learning"
+title: "Class 6 Customer Segmentation using Unsupervised Machine Learning"
 df-print: kable
 colorlinks: true
 code-line-numbers: true
@@ -40,29 +40,15 @@ editor_options:
 
 # Overview of Predictive Analytics
 
-## Our Journey So Far
-
--   The core of any business decision is **break-even analysis** (cost-benefit analysis)
-
-    -   BEQ; NPV; CLV (Week 1 and Week 2)
-
--   For better profitability management, we can work on either reducing the **cost** or boosting the **benefit**.
-
-![](images/paste-361EFA3E.png){fig-align="center" width="250"}
-
 ## Roadmap of Predictive Analytics
 
--   In Weeks 3 and 4, we will learn how to utilize predictive analytics to reduce marketing costs and improve marketing efficiency
+-   The core of any business decision is **break-even analysis** (BEQ; NPV; CLV. Weeks 1 and 2)
 
-![](images/paste-613B4ABA.png){fig-align="center" width="400"}
+-   One effective way to increase firm profitability is to **reduce marketing costs**
 
-## Learning Objectives
+-   In Weeks 3 and 4, we will learn how to utilize **predictive analytics (i.e., machine learning models)** to reduce marketing costs and improve marketing efficiency
 
--   Understand the concept of statistical learning
-
--   Understand the concept of unsupervised learning and how to apply clustering analyses for customer segmentation
-
-# Predictive Analytics
+![](images/roadmap_predictiveanalytics.png){fig-align="center" width="341"}
 
 ## Types of Predictive Analytics
 
@@ -80,13 +66,19 @@ In Term 2, you will learn predictive analytics models systematically. By then, t
 
 ![](images/PredictiveAnalyticsTypes.png){fig-align="center" width="350"}
 
+## Learning Objectives
+
+-   Understand the concept of unsupervised learning and how to apply clustering analyses for customer segmentation
+
 # Segmentation with Unsupervised Learning
 
 ## Customer Segmentation
 
-Segmentation is the process of dividing customers into meaningful groups based on any characteristics relevant to design and execution of your marketing strategy. It assumes that different customer groups offer different levels of value to the company and/or require different marketing programs to succeed with (e.g., based on different goals and needs).
+Segmentation is the first step in the strategy of marketing (STP), which is the process of dividing customers into meaningful groups based on any characteristics relevant to design and execution of your marketing strategy.
 
-## Conventional Ways for Customer Segmentation
+It assumes that different customer groups offer different levels of value to the company and/or require different marketing programs to succeed with (e.g., based on different goals and needs).
+
+## Conventional Segmentation
 
 -   **Customer value segmentation** is for targeting decisions based on customers' potential long-term financial and strategic value to your company.
 
@@ -96,31 +88,120 @@ Segmentation is the process of dividing customers into meaningful groups based o
 
 -   **Demographic segmentation** uses variables such as age, gender, income, family life cycle, educational qualification, socio-economic status, religion, company size and income, etc. These serve as proxies for goals, preferences or psychographics, as well as to characterize segments for marketing mix decisions.
 
-Conventional segmentation methods require heavy human judgments. A more sensible way is to "let the data speak".
-
-## Commonly Used Clustering Algorithms
-
--   K-means clustering
-    -   The number of clusters need to be pre-speciﬁed
--   Hierarchical clustering
-    -   Observations are clustered in a tree-structured graph or dendrogram. No need to pre-determine the number of clusters.
+Conventional segmentation methods require lots of subjective judgments. A more objective way is to "let the data speak" by using data analytics tools.
 
 ## K-Means Clustering
 
-K-means clustering is one of the most commonly used unsupervised machine learning algorithms for partitioning a given data set into a set of *k* groups (i.e. *k* clusters), where *k* represents the number of groups pre-specified by the analyst.
+-   K-means clustering is one of the most commonly used unsupervised machine learning algorithms for partitioning a given data set into a set of *k* groups (i.e. *k* clusters), where *k* represents the number of groups pre-specified by the analyst.
 
-It can classify customers into multiple segments (i.e., clusters), such that customers within the same cluster are as similar as possible, whereas customers from different clusters are as dissimilar as possible. 
+-   It can classify customers into multiple segments (i.e., clusters), such that customers within the same cluster are as similar as possible, whereas customers from different clusters are as dissimilar as possible. 
 
--   Input: customer data (characteristics of interest) and the number of clusters
--   Output: clusters
-    -   Let $C_1 , C_2 , · · · , C_k$ be the clusters
-    -   Every customer is categorized to only one of the clusters
+<!-- -->
 
-## K-Means Clustering: Intuition
+-   Input: (1) customer characteristics; (2) the number of clusters
+-   Output: cluster membership of each customer
 
-![](images/kmeansViz.png){fig-align="center" width="350"}
+## K-Means Clustering: Step 1
 
-## Implementation of K-Means in R for Tesco
+::: columns
+::: {.column width="40%"}
+![](images/kmeans_1.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   Raw data points; each dot is a customer
+
+-   X and Y axis are customer characteristics
+
+-   Obviously there should be 2 segments
+
+-   Let's see how K-means uses a data-driven way to classify customers into 2 segments
+:::
+:::
+
+## K-Means Clustering: Step 2
+
+::: columns
+::: {.column width="40%"}
+![](images/kmeans_2.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   We specify 2 segments
+
+-   K-means initializes the process by **randomly** selecting 2 centroids[^1]
+:::
+:::
+
+[^1]: Due to this randomness, each different starting points might give different results. We need to reinitialize the process repeatedly to ensure **robustness** of results.
+
+## K-Means Clustering: Step 3
+
+::: columns
+::: {.column width="40%"}
+![](images/kmeans_3.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   K-means computes the distance of each customer to the red and blue centroids
+
+-   K-means assigns each customer to red segment or blue segment based on which centroid is closer
+:::
+:::
+
+## K-Means Clustering: Step 4
+
+::: columns
+::: {.column width="40%"}
+![](images/kmeans_4.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   K-means updates the new centroids of each segment
+
+-   The red cross and blue cross in the picture are the new centroids
+
+-   We still see some "outliers", so need to continue the algorithm
+:::
+:::
+
+## K-Means Clustering: Step 5
+
+::: columns
+::: {.column width="40%"}
+![](images/kmeans_5.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   K-means computes the distance of each customer to the red and blue centroids
+
+-   K-means updates each customer to red segment or blue segment based on which centroid is closer
+
+-   Now the outliers are correctly assigned each segment
+:::
+:::
+
+## K-Means Clustering: Step 6
+
+::: columns
+::: {.column width="50%"}
+![](images/kmeans_6.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   K-means updates the new centroid from the previous segmentation
+
+-   K-means computes the distance of each customer to the new centroids
+
+-   K-means finds that all customers are correctly segmented to nearest centroids, so no need to continue
+
+-   As the algorithm **converges**, the algorithm stops
+:::
+:::
+
+# Customer Segmentation for Tesco
+
+## Syntax of `kmeans()`
 
 1.  Decide to do customer segmentation based on *total spending* and *income*
 
@@ -148,28 +229,33 @@ data_full <- data_purchase %>%
 -   `algorithm`: which algorithm to choose; default often works
 -   `trace`: do you want to trace intermediate steps?
 
-## Implementation of K-Means in R for Tesco
+## Data collection and cleaning
 
 -   Need to re-scale the two variables using `scale()`, because the two variables are of very different scales
 
     -   **This is extremely important!**
-    -   `set.seed()` is to allow replication of results. Refer to this data camp [tutorial](https://campus.datacamp.com/courses/sampling-in-r/introduction-to-sampling-1?ex=10) for more details.
+    -   `set.seed()` is to allow replication of results.
+    -   Refer to this data camp [tutorial](https://campus.datacamp.com/courses/sampling-in-r/introduction-to-sampling-1?ex=10) for more details.
 
 ```{r}
-set.seed(888)
+
 data_kmeans <- data_full%>%
   select(Income,total_spending)%>%
   mutate(Income = scale(Income),
          total_spending = scale(total_spending))
 
+```
+
+## Conduct K-means clustering
+
+```{r}
+set.seed(888)
 result_kmeans <- kmeans(data_kmeans,
                         centers = 2,
                         nstart = 10)
 ```
 
-## Implementation of K-Means in R for Tesco
-
-2.  Examine the returned object, `result_kmeans`
+## Examine the returned object, `result_kmeans`
 
 ::: {.content-visible when-format="html"}
 ```{r}
@@ -185,7 +271,7 @@ str(result_kmeans)
 ```
 :::
 
--   `cluster`: A vector of integers (from 1:k) indicating the cluster to which each point is allocated.
+-   `cluster`: **A vector of integers (from 1:k) indicating the cluster to which each point is allocated.**
 
 -   `centers`: A matrix of cluster centers.
 
@@ -199,12 +285,13 @@ str(result_kmeans)
 
 -   `size`: The number of points in each cluster.
 
-## Implementation of K-Means in R for Tesco
+## Visualize the clusters
 
-3.  Visualize the clusters
-    -   We need 2 packages `cluster` and `factoextra`
+-   We need 2 packages `cluster` and `factoextra`
 
-    -   Use `fviz_cluster()` to generate visualizations
+<!-- -->
+
+-   Use function `fviz_cluster()` to generate visualizations
 
 ```{r}
 #| out-width: "70%"
@@ -215,11 +302,7 @@ fviz_cluster(result_kmeans,
              data = data_kmeans)
 ```
 
-## Implementation of K-Means in R for Tesco
-
-4.  Determine the optimal number of clusters using statistical criteria
-
--   **Gap** Method
+## Determine the optimal number of clusters: GAP Method
 
 ```{r}
 #| message: false
@@ -236,11 +319,7 @@ gap_stat <- clusGap(data_kmeans,
 fviz_gap_stat(gap_stat)
 ```
 
-## Implementation of K-Means in R for Tesco
-
-4.  Determine the optimal number of clusters using statistical criteria
-
--   **Silhouette** method
+## Determine the optimal number of clusters: **Silhouette** Method
 
 ```{r}
 #| out-width: "70%"
@@ -249,25 +328,11 @@ set.seed(888)
 fviz_nbclust(data_kmeans, kmeans, method = "silhouette")
 ```
 
-## Implementation of K-Means in R for Tesco
+## Business Implications
 
-5.  Compare the CLV in the two segments, and decide which segment to serve.
+-   Compare the CLV in the two segments, and decide which segment to serve.
     -   This is a general idea of segmentation and targeting using unsupervised learning
     -   Finish this exercise after class
-
-## Pros and Cons of K-means Clustering
-
-**Advantages**
-
--   Easy to implement and explain
-
--   Computationally eﬃcient
-
-**Drawbacks**
-
--   As the number of variable increases, curse of dimensionality problem occurs
-
--   Sensitive to outliers and initial seeds
 
 ## After-Class Readings
 
