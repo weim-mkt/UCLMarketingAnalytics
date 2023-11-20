@@ -233,7 +233,7 @@ feols(data = data_full,
 
 -   In theory, the regression coefficients estimates follows a **t-distribution**: the mean is the true $\beta$. The **standard error** of the estimates is the estimated standard deviation of the error.
 
--   We can whether the coefficients are statistically different from 0 using **hypothesis testing**.
+-   We can test whether the coefficients are statistically different from 0 using **hypothesis testing**.
 
     -   Null hypothesis: the true regression coefficient $\beta$ is 0
 

@@ -44,31 +44,27 @@ bibliography: references.bib
 
 ## Causal Inference from OLS
 
--   The necessary condition for OLS to reveal causal effect is: all confounding variables (i.e., variables that are correlated with $X$ and affect outcome variable) are controlled in the regression.
+-   From non-experimental secondary data, it is impossible to control all confounding factors, which means we can never obtain causal effects from OLS regressions.
 
--   Otherwise, the OLS estimator will be biased and we can only obtain the **total effect (correlation)** rather than the **direct effect (causal effect)**.
-
--   From secondary data, we will **never** be able to control all confounding factors, which means we can never obtain causation from OLS regressions.
-
--   So, is there still a way for us to obtain causal inference from secondary data?
+-   Is there still a way for us to obtain causal inference from secondary data?
 
 ## What is an Instrumental Variable
 
 ::: block
 ### Instrumental Variable
 
-An instrumental variable is a variable $z$ that satisfies two requirements:
+An instrumental variable is a set of variables $Z$ that satisfies two requirements:
 
-1.  $z$ is uncorrelated with $\epsilon$; that is, $cov(z,\epsilon) = 0$
+1.  $z$ is exogeneous and uncorrelated with $\epsilon$; that is, $cov(Z,\epsilon) = 0$
 
-2.  $z$ is correlated with $x$; that is, $cov(z,x) \neq 0$
+2.  $z$ affects $x$ to some extent, that is, $cov(Z,x) \neq 0$
 :::
 
--   Point 1 is called **exogeneity requirement**: the instrumental variable should be beyond an individual's control, such that the instrumental variable will not be correlated with any individual's choices/omitted variables.
+-   Point 1 is called **exogeneity** requirement (**exclusion restriction** requirement): the instrumental variable should be beyond individual's control, such that the instrumental variables are uncorrelated with any individual's unobserved confounding factors.
 
-    -   The spirit is similar to RCT's randomization
+    -   Potential IVs: government policy; natural disasters; randomized experiment; etc.
 
--   Point 2 is called **relevance requirement**: though beyond an individual's control, the instrumental variable should still affect the individual's $X$, causing some exogenous variations in $X$.
+-   Point 2 is called **relevance requirement**: though beyond an individual's control, the instrumental variable should still affect the individual's $X$, causing some exogenous changes in $X$ that is beyond individual control.
 
 ## Graphical Illustration of IV
 
@@ -76,30 +72,29 @@ An instrumental variable is a variable $z$ that satisfies two requirements:
 
 ## A Classic Example of Instrumental Variable
 
-**Return of Military Service to Lifetime Income**[^1] 
+**Return of Military Service to Lifetime Income**[^1]
+
+[^1]: Angrist, Joshua D., Stacey H. Chen, and Jae Song. "Long-term consequences of Vietnam-era conscription: New estimates using social security data." *American Economic Review* 101, no. 3 (2011): 334-38.
 
 $$
 Income = \beta_0 + \beta_1MilitaryService + \epsilon
 $$
 
-[^1]: Angrist, Joshua D., Stacey H. Chen, and Jae Song. "Long-term consequences of Vietnam-era conscription: New estimates using social security data." *American Economic Review* 101, no. 3 (2011): 334-38.
-
 -   OLS suffers from endogeneity problems, for example
 
-    -   individual ability correlates with military service and affects income
-    -   individual health status correlates with military service and affects income
+    -   Individual ability/health correlates with military service and affects income
 
--   A draft lottery was used to determine if a soldier with a certain birthday goes to the war.
+-   A lottery was used to determine if soldiers with certain birthdays are drafted.
 
 -   The date of birth ($z$) is an **instrumental variable**
 
-    -   is correlated with military service: $cov(z,x) \neq 0$
-    -   but does not directly affect income: $cov(z,\epsilon) = 0$
+    -   Affects years of military service: $cov(z,x) \neq 0$
+    -   Randomly drawn and thus uncorrelated with any confounders: $cov(z,\epsilon) = 0$
 
 ## IV Requirement I: Exogeneity
 
 -   Exogeneity requires that $z$ should only affect $Y$ through $X$, but not directly affect $Y$.
--   The instrumental variable should be beyond an individual's control. Because omitted variable bias is often caused by individual's own selection, instrumental variables are thus not correlated with omitted variable bias.
+-   The instrumental variable should be beyond an individual's control. Because omitted variable bias is often caused by individual's own selection, instrumental variables are thus not correlated with any omitted variables.
 
 ## IV Requirement II: Relevance
 
@@ -109,41 +104,38 @@ $$
 
 ## More Examples of IVs
 
-::: {.content-visible when-format="beamer" }
-**Can you come up with IV candidates for the following causation questions?**^[See html version for answers.]
+::: {.content-visible when-format="beamer"}
+**Can you come up with IV candidates for the following causal questions?**[^2]
 
 -   COVID-19 cases =\> Uber Driver Supply
 
 -   Number of restaurants on UberEat =\> Number of orders on UberEat
 
 -   Retail price =\> Sales
-
 :::
 
-::: {.content-visible when-format="html" }
+[^2]: See html version for answers.
+
+::: {.content-visible when-format="html"}
 **Can you come up with IV candidates for the following causation questions?**
 
--   COVID-19 cases =\> Uber Driver Supply
-    - new cases from neighboring cities
-    - new cases from overseas
-
+-   COVID-19 cases =\> Uber driver supply
+    -   new cases from neighboring cities
+    -   new cases from overseas
 -   Number of restaurants on UberEat =\> Number of orders on UberEat
-    - close down of restaurants due to government inspections
-
+    -   temporary close down of restaurants due to government inspections
 -   Retail price =\> Sales
-    - wholesale price
-    - costs of raw materials
-    - COGS
-    - Hausman instruments: the prices of the same product in other markets
+    -   wholesale price
+    -   costs of raw materials
+    -   COGS
+    -   Hausman instruments: the prices of the same product in other markets
 :::
-
-
 
 # Two-Stage Least Square
 
 ## Solving Endogeneity Using IV
 
--   Given an endogenous OLS regression, 
+-   Given an endogenous OLS regression,
 
 $$
     y_{i}=X_{i} \beta+\varepsilon_{i}, \quad \operatorname{cov}\left(X_{i}, \varepsilon_{i}\right) \neq 0
@@ -153,9 +145,9 @@ $$
 
 ## Two-Stage Least Squares: Stage 1
 
-1.  Run a regression with X \~ Z. The predicted $X$ is predicted by Z, which should be uncorrelated with the error term $\epsilon$.
-    -   $\hat{X}$ (predicted $X$ from $Z$) is exogenous, because $Z$ is exogenous
-    -   All endogenous parts are now left in the error term in the first-stage regression $\epsilon_{i}$
+1.  Run a regression with `X ~ Z`. The predicted $\hat X$ is predicted by Z, which should be uncorrelated with the error term $\epsilon$.
+    -   $\hat{X}$ (the part of changes in $X$ due to $Z$) is exogenous, because $Z$ is exogenous
+    -   All endogenous parts are now left over in the error term in the first-stage regression $\epsilon_{i}$
 
 $$
 X_{i}=Z_{i}\eta+\epsilon_{i}
@@ -175,15 +167,13 @@ $$
 
 -   The COVID-19 pandemic has brought unprecedented disruptions to many industries, and platform businesses, especially sharing economy platforms, are among the most disrupted ones.
 
--   A common data science interview question: how would you evaluate causal impact of COVID-19 on the company's business and profits?
+-   How would you evaluate the causal impact of COVID-19 cases on the company's business and profits?
 
-    -   Can we collect data on the *COVID cases* and *KPI measures*, and run an OLS regression to get the causal effect? $KPI$ \~ $NumCovid$
+    -   Can we collect data on the *COVID cases* and *sales* and run an OLS regression to get the causal effect? What would hinder us from causal inference from the above OLS regressions?
 
-    -   What would hinder us from causal inference from the above OLS regressions?
+## Causal Impact of COVID-19 on Uber Drivers' Labor Supply
 
-## Causal Impact of COVID-19 on UberEat Delivery Drivers' Labor Supply
-
--   In this case workshop, we will see an application of instrumental variable in evaluating the causal impact of COVID-19 on UberEat delivery drivers' labor supply decision.
+-   In this case study, we will see an application of instrumental variable in evaluating the causal impact of COVID-19 on Uber drivers' labor supply decision.
 
 -   Let's take out the Quarto document.
 
@@ -191,14 +181,9 @@ $$
 
 -   You can follow this case study and propose similar topics for your term 3 dissertation project, depending on the company you work with.
 
-    -   The causal impact of COVID-19 on Uber/Bolt drivers' labor supply
-
-    -   The causal impact of COVID-19 on customer demand for offline shopping
-
-    -   etc.
-
 -   For similar causal inference interview questions/data science tasks, when RCTs are difficult to implement, instrumental variable method can be a very powerful solution.
 
 ## After-Class Readings
 
 -   (optional) [Econometrics with R: Instrumental Variables Regression](https://www.econometrics-with-r.org/12-ivr.html)
+-   (highly recommended) [Encouragement Designs and Instrumental Variables for A/B Testing at Spotify](Encouragement Designs and Instrumental Variables for A/B Testing)

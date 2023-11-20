@@ -44,29 +44,19 @@ bibliography: references.bib
 
 ## Causal Effect from Linear Regression Models
 
--   ***Task***: Tesco would like to understand the causal impact of customer $Income$ on customer $Spending$
+-   ***Task***: Tesco wants to understand the causal impact of customer $Income$ on customer $Spending$, i.e., the Marginal Propensity to Consume (MPS).[^1]
+
+[^1]: In economics, MPC refers to the proportion of an additional unit of income that is spent on consumption.
 
 ```{r}
 #| echo: false
 pacman::p_load(dplyr,ggplot2,ggthemes)
 # Load both datasets
-data_purchase <- read.csv(file = "https://www.dropbox.com/s/126e9vkq80y9ti9/purchase.csv?dl=1", 
+data_full <- read.csv(file = "https://www.dropbox.com/scl/fi/hhweiqsuwgcwgd1jiuyte/data_full.csv?rlkey=jwyd9z409b5wpwz41ow8d1otj&dl=1", 
                       header = T)
-
-data_demo <- read.csv("https://www.dropbox.com/s/hbrgktcz98y0igs/demographics.csv?dl=1",
-                      header = T)
-
-# Left join demographic data into purchase data
-data_full <- data_purchase %>%
-  left_join(data_demo, by = "ID")
-
-# Handle Missing Values of Income
-data_full <- data_full %>%
-  mutate(Income = replace(Income, is.na(Income), mean(Income,na.rm =T))) %>%
-  mutate(total_spending = MntFishProducts + MntFruits + MntGoldProds + MntMeatProducts + MntSweetProducts + MntWines)
 ```
 
--   Please run the two regressions on your laptop:
+-   Please run the two regressions on your Quarto document and export the regression table:
 
     -   Regression 1: $Spending$ \~ $Income$
 
@@ -88,7 +78,8 @@ regression2 <- feols(data = data_full,
 
 
 modelsummary(list(regression1,regression2),
-             stars = TRUE)
+             stars = TRUE,
+             gof_map = c('nobs','r.squared'))
 ```
 :::
 
@@ -106,77 +97,100 @@ regression2 <- feols(data = data_full,
 
 
 modelsummary(list(regression1,regression2),
-             stars = TRUE)
+             stars = TRUE,
+             gof_map = c('nobs','r.squared'))
 ```
 :::
 
--   ***Question***: if we want to evaluate income's causal effect on spending, which value (0.022, 0.019) should we use?
+-   ***Question***: if we want to evaluate income's causal effect on spending, which value (0.022\*\*\***,** 0.019\*\*\*) should we use?
 
 ## Direct and Indirect Effects
+
+Using our common sense, let's think about how income can causally affect total spending:
 
 ![](images/directindirecteffect.png){fig-align="center" width="250"}
 
 ::: columns
 ::: {.column width="50%"}
--   Direct Effect (causal effect)
-    -   Keeping other variables ﬁxed (ceteris paribus)
-    -   Direct effect only
+-   Causal effect
+    -   Direct effect keeping other variables ﬁxed
 :::
 
 ::: {.column width="50%"}
 -   Total Effect
-    -   Including side effects through other variables
-    -   Direct + indirect effects
+    -   Direct effect + indirect effects through other variables
 :::
 :::
 
 ## Causal Inference from Regression Models
 
--   To obtain causal inference, we need to obtain the **direct effects** of an $X$ variable on the outcome variable $Y$.
+-   To obtain causal effects from secondary data (i.e., non-experimental data without randomization), we often want to obtain the **direct effects** of a focal $X$ variable on the outcome variable $Y$.
 
--   **Total effects** include both direct effects and indirect effects (i.e., the impacts of other confounding variables).
+-   However, if we do not include `Kidhome` in the regression, the regression coefficient 0.021 measures the **total effects of income,** including
 
--   Therefore, it is important to include **all confounding variables**, which affect income and total spending at the same time, to control for the side effects from other variables.
+    -   **direct effects** of income on total spending, 0.019
 
-## Practical Suggestions for Running Regression Models
+    -   **indirect effects** of income on other intermediate variables, which in turn affect income. These intermediate variables are called **confounding variables** or **confounders**.
 
--   For causal inference tasks, we need to use business senses to decide which confounding variables to control.
+-   Therefore, it is important to **include all other confounding variables**, which affect income and total spending at the same time, to **control for the indirect effects** via other variables, in order to tease out the clean direct effect of income on total spending.
 
-    -   good controls and bad controls
+## Practical Tips for Running Regression Models for Causal Inference
 
--   Sometimes, control variables may be statistically insignificant, they should **NOT** be removed because they still serve the purpose of control variables.
+1.  For causal inference tasks, we need to use business senses to decide which confounding variables to control. We face the **good control and bad control problems**.[^2]
 
--   If some variables are mechanically correlated, then we should not put all of them in the regression, to avoid perfect collinearity problems.
+[^2]: Angrist, Joshua D., and Jörn-Steffen Pischke. *Mostly harmless econometrics: An empiricist's companion*. Princeton university press, 2009.
 
 \
 
-> Question: what is the best you can do with `data_full` to estimate the causal effect of income on spending?
+> "Some variables are bad controls and should not be included in a regression model, even when their inclusion might be expected to change the short regression coefficients. Bad controls are variables that are themselves outcome variables in the notional experiment at hand. That is, bad controls might just as well be dependent variables too. Good controls are variables that we can think of having been fixed at the time the regressor of interest was determined."
+
+::: {.content-visible when-format="beamer"}
+## Practical Tips for Running Regression Models (Cont.)
+:::
+
+2.  Sometimes, control variables may be statistically insignificant, they should **NOT** be removed because they still serve the purpose of control variables.
+3.  A high correlation between independent variables is generally not an issue in practice. However, if some variables are mechanically correlated, then we should not put them altogether in the regression to avoid perfect collinearity problems.
+
+***Question***: what is the best you can do with `data_full` to estimate the causal effect of income on spending?
 
 ## Causal Inference from Regressions
 
-Now we have included `Kidhome` to tease out the effect of kids, what problems do we still have which hinder us from getting causal effect of income on total spending?
+Now we have included `Kidhome` to tease out the effect of kids, what problems do we still have that prevent us from getting causal effect of income on total spending?
 
--   Due to data availability, we are never able to include all confounding variables in the regression.
--   Strictly speaking, we can **never obtain causal effects from simple regression models** based on **non-experiment data**.
--   Mathematically speaking, because we can never control all confounding factors, the error term is very likely to be correlated with income, violating $E[\epsilon|X] = 0$.
+-   Due to data availability, we are never able to include all confounding variables in the regression. Therefore, strictly speaking, we can **never obtain causal effects** from **non-experimental data** by simply controlling confounding variables in a linear regression.
+-   Mathematically speaking, because we can never control all confounding factors, the error term is always correlated with income to some extent, violating the **exogeneity assumption** or the **Conditional Independence Assumption** of a linear regression model $E[\epsilon|X] = 0$.
 
-## RCTs and Causal Inference
+## RCT is the Gold Standard of Causal Inference
 
--   Why RCTs are the gold standard for causal inference?
-    -   If we are able to randomize people into different income groups, we can then collect the `total_spending` for each individual in each `income` group.
+-   Why RCTs are the gold standard for causal inference? Why we can obtain causal inference from primary data collected from RCTs?
+    -   If we randomize people into different income groups, we can then collect the `total_spending` for each individual in each `income` group.
     -   We can run a linear regression to examine the impact of `income` on `total_spending`.
 
 $$
 Spending = \beta_0 + \beta_1Income + \epsilon
 $$
 
--   In the above regression
-    -   Are there still any confounding effects?
-    -   Is $Income$ correlated with any of the confounding effects?
+-   In the above regression, are there still any confounding effects?
 
-## RCTs and Causal Inference (cont.)
+::: {.content-visible when-format="html"}
+No, there are no confounders remaining, because Income is randomized, so Income should be uncorrelated with anything. Thus no confounders remain.
+:::
 
-![](images/RCTDirectEffect.png){fig-align="center" width="250"}
+## Comparison of RCT versus Secondary Data
+
+::: columns
+::: {.column width="50%"}
+![](images/directindirecteffect.png){fig-align="left" width="150"}
+
+-   In non-experiment setting without randomization, Income can be correlated with other unobserved confounding factors
+:::
+
+::: {.column width="50%"}
+![](images/RCTDirectEffect.png){fig-align="right" width="150"}
+
+-   In experiment setting with randomization, Income is randomized so should be uncorrelated with any other unobserved fators.
+:::
+:::
 
 # Endogeneity and Its Causes
 
@@ -185,7 +199,7 @@ $$
 ::: block
 ### Endogeneity
 
-Endogeneity refers to an econometric issue with OLS linear regression, in which an explanatory variable is correlated with the error term, such that the requirement for OLS linear regression $E[\epsilon|X] = 0$ is violated.
+Endogeneity refers to an econometric issue with OLS linear regression, in which a focal explanatory variable is correlated with the error term, such that the **Conditional Independence Assumption (CIA)** for OLS linear regression, $E[\epsilon|X] = 0$, is violated.
 :::
 
 ## Cause I: Omitted Variable Bias
@@ -196,14 +210,17 @@ Endogeneity refers to an econometric issue with OLS linear regression, in which 
 An omitted variable is a determinant of the outcome variable $y_i$ that is correlated with the focal explanatory variable $x_i$, but is not included in the regression, either due to data unavailability or ignorance of data scientists.
 :::
 
-Two conditions for omitted variable bias
+-   Two conditions for omitted variable bias
 
--   The variable affects the dependent variable.
--   The variable is correlated with the focal explanatory variable.
+    -   The omitted variable affects the dependent variable.
 
-## Examples of OVB
+    -   The omitted variable is correlated with the focal explanatory variable.[^3]
 
--   If we would like to understand the causal effect of years in education on a person's salary.
+[^3]: If the omitted variable is uncorrelated with X, then we do not have OVB problem, but the error term will have a larger noise and coefficients will have larger standard errors. Therefore, it's better to control these variables if possible.
+
+## Example I of OVB
+
+-   If we would like to understand the causal effect of `Education` on a person's `salary`.
 
 $$
 Salary_t = \beta_0 + \beta_1 Education_t + \epsilon_t
@@ -211,16 +228,23 @@ $$
 
 -   Can we get causal effect from this regression? What would be the issue here?
 
-## Examples of OVB
+## Example II of OVB
 
--   When building Marketing Mix Modeling, the common practice in the industry is to regress the sales in each period on the price in each period.
+-   When building Marketing Mix Modeling for multiple companies, the common practice in the industry is to regress the sales in each period on the price in each period.
 
 $$
 Sales_t = \beta_0 + \beta_1 Price_t + \epsilon_t
 $$
 
 -   However, is this regression correct?
-    -   Very often, if we regress sales on price, we get a positive coefficient for price.
+
+::: {.content-visible when-format="beamer"}
+## Example II of OVB
+:::
+
+-   Very often, if we regress sales only on price, we get a positive coefficient for price.
+
+![](images/pricesales.png){fig-align="center" width="199"}
 
 ## Cause II: Reverse Causality (Simultaneity)
 
@@ -232,7 +256,7 @@ Reverse causality refers to the phenomenon that the independent variable $X_i$ a
 
 ![](images/class9_ReverseCausality.png){fig-align="center" width="117"}
 
-## Examples of Reverse Causality (Simultaneity)
+## Example I of Reverse Causality (Simultaneity)
 
 -   Besides potential omitted variable biases, there may also exist reverse causality problems with marketing mix modelling.
 
@@ -244,9 +268,9 @@ $$
     -   Higher price leads to lower sales. (X =\> Y)
     -   If sellers expect higher demand, sellers may increase the price to increase profits. (Y =\> X)
 
-## Examples of Reverse Causality (Simultaneity)
+## Example II of Reverse Causality (Simultaneity)
 
--   UberEat interview question: If we have historical data on **number of restaurants on UberEat** in each month, and **the total number of orders in each month**, can we run an OLS regression to get the causal effect?
+-   UberEat interview question: If we have historical data on **number of restaurants on UberEat** in each month, and **the total number of orders in each month**, can we run an OLS regression to get the causal impact of network effect?
 
 $$
 NumOrders_t = \beta_0 + \beta_1 NumRestaurants_t + \epsilon_t
@@ -254,16 +278,20 @@ $$
 
 -   If not, how can we measure the causal effects for UberEat?
 
+::: {.content-hidden when-format="beamer"}
+We need to run A/B testings and randomize how many restaurants a customer can see on their apps.
+:::
+
 -   This question is not just limited to UberEat; it is in fact related to any platform business with network effect!
 
     -   Amazon; Airbnb; Uber Ridesharing; etc.
 
-## Main Takeaway
+## Cause III: Measurement Error (Optional)
 
--   Common threats to causal inference from secondary data include
+Suppose that a perfect measure of an independent variable is impossible. That is, instead of observing $x^{real}$, what is actually observed is $x^{observed} = x^{real} + \nu$ where $\nu$ is the measurement error with random "noise". In this case, a model given by $$ 
+y_i=\alpha+\beta x^{observed}_i+\varepsilon_i
+$$ would not give us the coefficients from the regression we actually want to run $$ 
+y_i=\alpha+\beta x^{real}_i+\varepsilon_i
+$$
 
-    -   Omitted Variable Bias
-
-    -   Reverse Causality
-
--   We can overcome the endogeneity problem using **instrumental variable method**.
+This endogeneity issue is called **measurement error**. However, philosophically speaking, nothing in this world can be perfectly measured, so measurement error is often of lesser concern.

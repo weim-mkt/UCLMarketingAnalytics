@@ -148,9 +148,8 @@ The estimates from the MMM need to eventually address the profit maximization pr
 
 [^1]: In term 2's Operations Analytics module, you will learn how to find the optimal pricing, given the estimated marketing mix model.
 
-```{=html}
 <!-- -->
-```
+
 -   Then we know, conditional on $X_t$, the total revenue would be $$
     revenue = Price *sales = Price * (1000 - 20 Price_t + 0.1 Adstock_t)
     $$

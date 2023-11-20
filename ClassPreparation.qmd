@@ -298,16 +298,15 @@ All materials, including the lecture slides and before-class readings will be re
 ### Pre-class preparation
 
 -   Case Study: The Causal Impact of COVID-19 on Ridesharing
-    -   Please carefully read the case background before class and we will be discussing the case in class. This framework of IV analyses would be very helpful for your dissertation projects. You can work on similar topics such as the causal impact of COVID-19 on offline shopping, etc.
+    -   Please carefully read the case background before class and we will be discussing the case in class.
     -   Finish the coding exercise in the Quarto document before Section 4 IV regression (similar questions will be in the last assignment).
 :::
 
 ## Endogeneity
 
 -   What you will learn
-    -   Endogeneity and its consequence in causal inference
-    -   Omitted variable bias
-    -   Reverse causality
+    -   Endogeneity and its consequences in causal inference
+    -   The causes of endogeneity including omitted variable bias, reverse causality, and measurement error
 
 ## Instrumental Variables
 
@@ -318,6 +317,7 @@ All materials, including the lecture slides and before-class readings will be re
     -   Application of instrumental variables in the marketing and business field
 -   After-class reading
     -   (optional) [Econometrics with R: Instrumental Variables Regression](https://www.econometrics-with-r.org/12-ivr.html)
+    -   (highly recommended) [Encouragement Designs and Instrumental Variables for A/B Testing at Spotify](Encouragement Designs and Instrumental Variables for A/B Testing)
 
 # Week 9: Quasi-Experimental Methods
 
