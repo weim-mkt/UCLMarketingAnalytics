@@ -186,4 +186,4 @@ $$
 ## After-Class Readings
 
 -   (optional) [Econometrics with R: Instrumental Variables Regression](https://www.econometrics-with-r.org/12-ivr.html)
--   (highly recommended) [Encouragement Designs and Instrumental Variables for A/B Testing at Spotify](Encouragement Designs and Instrumental Variables for A/B Testing)
+-   (highly recommended) [Encouragement Designs and Instrumental Variables for A/B Testing at Spotify](Encouragement%20Designs%20and%20Instrumental%20Variables%20for%20A/B%20Testing)

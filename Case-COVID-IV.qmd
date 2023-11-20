@@ -1,9 +1,10 @@
 ---
-title: "The Causal Impact of COVID-19 on Uber Driver Labor Supply"
+title: "The Causal Impact of COVID-19 on Ridesharing Using Instrumental Variables"
 author: Dr Wei Miao
 subtitle: "MSIN0094 Case Study"
 institute: UCL School of Management
 date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(7))`"
+date-format: long
 colorlinks: true
 code-line-numbers: true
 format:
@@ -48,11 +49,13 @@ editor_options:
 
 # Industry Background[^1]
 
-[^1]: This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module. This case study is heavily adapted from his research "The impact of COVID-19 on the ride-sharing industry and its recovery: Causal evidence from China." Transportation Research Part A: Policy and Practice 155 (2022): 128-141. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. Copyrights reserved.
+[^1]: This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module. This case study is heavily adapted from his research [@wangImpactCOVID19Ridesharing2022] "The impact of COVID-19 on the ride-sharing industry and its recovery: Causal evidence from China." Transportation Research Part A: Policy and Practice 155 (2022): 128-141. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. Copyrights reserved.
 
 The sharing economy has been booming in recent years, leading to a rapid increase in jobs in the "gig" economy. According to Hossain (2020), in the US alone, the sharing economy sector has created 6.23 million jobs with 78 million service providers, and 800 million people engage with it. The transportation sector is one of the most salient beneficiaries of the burgeoning sharing economy. For instance, commuting to work by shared bicycle (e.g., Citi Bike) has become an increasingly popular transportation option [@fordRidingWallStreet2019]. The ride-sharing service (e.g., Uber) allows drivers to enjoy more flexibility in work, which is proven valuable to drivers and has improved capacity utilization [@cramerDisruptiveChangeTaxi2016].
 
-However, the COVID-19 pandemic has brought unprecedented disruptions to many industries, and the transportation industry is among the most disrupted ones. Further, the COVID-19 has raised concerns about the survivability of the sharing economy in general. It is reported that gross bookings on Uber rides were down by 75% in the three months through June 2020, and that Lyft's April ridership was down by 75% from April 2019.
+However, the COVID-19 pandemic has brought unprecedented disruptions to many industries, and the transportation industry is among the most disrupted ones. Further, the COVID-19 has raised concerns about the survivability of the sharing economy in general. It is reported that gross bookings on Uber rides were down by 75% in the three months through June 2020, and that Lyft's April ridership was down by 75% from April 2019. @fig-Driver shows that some Uber drivers were extremely cautious about their shift decisions and taking measures to prevent COVID from spreading.
+
+![Uber Drivers during COVID](images/covid19.jpeg){#fig-Driver fig-align="center" width="267"}
 
 Unlike the traditional taxi market, where taxi drivers rent vehicles from taxi companies and then directly provide transportation services to consumers, modern ride-sharing platforms typically serve as the matching intermediary between drivers and passengers. Due to such two-sided market nature, the profitability of modern ride-sharing platforms (and sharing economy in general) highly depends on the interdependence or externality between the two sides of economic agents [@rysmanEconomicsTwosidedMarkets2009]. Therefore, **a ride-sharing platform would benefit from the network effect if more drivers work for them.** It is thus managerially important for the ride-sharing platform to understand whether COVID-19 has affected drivers' labor supply patterns and if yes, the magnitude of the effect across drivers and over time.
 
@@ -66,7 +69,7 @@ The data science team has aggregated the raw trip-level data into a driver-day l
 
 This first data set summarizes drivers' daily shift each day in April 2020, right during the period when the pandemic began in the UK. The data set consists of a random sample of around 4000 drivers in 3 UK cities (anonymized as `g`, `s`, and `c`) in 2020.
 
-::: {.content-hidden when-format="html" }
+::: {.content-hidden when-format="html"}
 ```{r}
 #| echo: false
 pacman::p_load(dplyr)
@@ -75,9 +78,6 @@ data_driver <- read.csv('https://www.dropbox.com/s/9qisr9zau53gix6/data_driver.c
 
 ```
 :::
-
-
-
 
 -   Check the data types of each variable
     -   Identify any variables that need to be converted
@@ -105,9 +105,11 @@ data_driver <- data_driver %>%
 class(data_driver$booking_date)
 ```
 
--   Please report the summary statistics of the trip data
+-   Please report the summary statistics of the trip data. @tbl-summary reports the results.
 
 ```{r}
+#| label: tbl-summary
+#| tbl-cap: Summary Statistics
 pacman::p_load(modelsummary)
 # report the summary statistics below
 datasummary_skim(data_driver)
@@ -117,12 +119,11 @@ datasummary_skim(data_driver)
 
 To measure the severity of COVID-19, the data science team collected daily number of new cases in each city from the government database.
 
-::: {.content-hidden when-format="html" }
+::: {.content-hidden when-format="html"}
 ```{r}
 data_covid <- read.csv("https://www.dropbox.com/s/j5vs1egwl5j51f4/data_covid.csv?dl=1")
 ```
 :::
-
 
 -   Please check the data types and correct the data types as needed
     -   Tips: need to convert the `booking_date` into a date type.
@@ -135,6 +136,24 @@ str(data_covid)
 
 data_covid <- data_covid %>%
   mutate(booking_date = ymd(booking_date))
+
+```
+
+-   We can plot the trend of COVID-19 cases using ggplot2 package. @fig-newcases plots the trend of new COVID cases in each city by date.
+
+```{r}
+#| label: fig-newcases
+#| fig-cap: "Number of New Cases by City Date"
+pacman::p_load(ggplot2, ggthemes)
+
+ggplot() + 
+  geom_line(data = data_covid,
+            aes(x = booking_date,
+                y = new_cases,
+                color = city,
+                linetype = city))+
+  theme_stata() + 
+  xlab('date') + ylab('new cases') 
 
 ```
 
@@ -169,9 +188,11 @@ $$
 Outcome_{ijt}=\beta_0+\alpha NewCases_{ijt}+X\beta+\varepsilon_{ijt}
 $$
 
--   Please run three univariate simple linear regressions, with the outcome being the 3 aforementioned dependent variables and explanatory variable being new cases only. Interpret the results.
+-   Please run three univariate simple linear regressions, with the outcome being the 3 aforementioned dependent variables and explanatory variable being new cases only. The results are reported in @tbl-ols. Interpret the results.
 
 ```{r}
+#| label: tbl-ols
+#| tbl-cap: "OLS Regression Results"
 pacman::p_load(fixest)
 OLS_is_work <- feols(fml = is_work ~ new_cases,
       data = data_driver)
@@ -202,6 +223,8 @@ For instance, less risk-averse drivers may prefer to work on days when there are
 In addition to driver fixed effects that remove cross-sectional confounding effects across drivers, we also include **time fixed effects** in Equation (1) to mitigate the inter-temporal confounding effects. We consider time fixed effects at the day level. Moreover, given that the local government in each city may have enacted different policies on fighting COVID-19 and/or stimulating economy (e.g., subsidizing drivers) during our data period, we further control for **city fixed effects**.
 
 ```{r}
+#| label: tbl-fe
+#| tbl-cap: "Fixed Effects Regression"
 FE_is_work <- feols(fml = is_work ~ new_cases|
                        driver_id + booking_date + city,
                     

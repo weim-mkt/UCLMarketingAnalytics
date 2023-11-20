@@ -78,10 +78,8 @@ website:
                 text: "Class 15 Endogeneity"
               - href: Week8-Lecture2.html
                 text: "Class 16 Instrumental Variable"
-              - href: Case-COVID-IV-stu.pdf
-                text: "Case: COVID-19 and Ridesharing"  
               - href: Case-COVID-IV.html
-                text: "Case Solution: COVID-19 and Ridesharing"
+                text: "The Causal Impact of COVID-19 on Ridesharing Using Instrumental Variables (Solutions)"
           - section: "[Week 9] Natural Experiment"
             contents: 
               - href: Week9-Lecture1.html
