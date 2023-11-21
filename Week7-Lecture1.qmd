@@ -34,6 +34,8 @@ knitr:
     warning: true
     message: true
     error: false
+execute: 
+  freeze: auto
 editor_options: 
   chunk_output_type: inline
 bibliography: references.bib

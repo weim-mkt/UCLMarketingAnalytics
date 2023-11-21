@@ -19,6 +19,8 @@ knitr:
     warning: true
     message: true
     error: true
+execute: 
+  freeze: auto
 ---
 
 # Situation Analysis

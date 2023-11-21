@@ -41,7 +41,7 @@ knitr:
     message: false
     error: false
 execute: 
-  cache: true
+  freeze: auto
 bibliography: references.bib
 editor_options: 
   chunk_output_type: inline
@@ -105,7 +105,11 @@ data_driver <- data_driver %>%
 class(data_driver$booking_date)
 ```
 
--   Please report the summary statistics of the trip data. @tbl-summary reports the results.
+-   Please report the summary statistics of the trip data. 
+
+::: {.content-visible when-format="html" }
+@tbl-summary reports the results.
+:::
 
 ```{r}
 #| label: tbl-summary
@@ -114,6 +118,8 @@ pacman::p_load(modelsummary)
 # report the summary statistics below
 datasummary_skim(data_driver)
 ```
+
+
 
 ## COVID-19 Data
 
@@ -139,7 +145,11 @@ data_covid <- data_covid %>%
 
 ```
 
--   We can plot the trend of COVID-19 cases using ggplot2 package. @fig-newcases plots the trend of new COVID cases in each city by date.
+-   We can plot the trend of COVID-19 cases using ggplot2 package. 
+
+::: {.content-visible when-format="html" }
+@fig-newcases plots the trend of new COVID cases in each city by date.
+:::
 
 ```{r}
 #| label: fig-newcases
@@ -186,9 +196,15 @@ To empirically investigate the causal impact of COVID-19 cases on driver behavio
 
 $$
 Outcome_{ijt}=\beta_0+\alpha NewCases_{ijt}+X\beta+\varepsilon_{ijt}
-$$
+$${#eq-ols}
 
--   Please run three univariate simple linear regressions, with the outcome being the 3 aforementioned dependent variables and explanatory variable being new cases only. The results are reported in @tbl-ols. Interpret the results.
+-   Please run three univariate simple linear regressions, with the outcome being the 3 aforementioned dependent variables and explanatory variable being new cases only. 
+
+::: {.content-visible when-format="html" }
+
+The results are reported in @tbl-ols. Interpret the results.
+
+:::
 
 ```{r}
 #| label: tbl-ols
@@ -261,11 +277,11 @@ To tackle the potential endogeneity issue, we use the instrumental variable (IV)
 
 ## Manual IV Regression
 
-The first-stage regression is specified below in Equation (2), where the definitions of variables are the same as in Equation (1).
+The first-stage regression is specified below in Equation @eq-firststage, where the definitions of variables are the same as in Equation @eq-ols.
 
 $$
 NewCase_{ijt}=\beta_0+\alpha OtherCityNewCase_{ijt}+X\beta+\varepsilon_{ijt}
-$$
+$${#eq-firststage}
 
 ```{r}
 # Run first stage regression: new_cases ~ other_city_new_cases + controls

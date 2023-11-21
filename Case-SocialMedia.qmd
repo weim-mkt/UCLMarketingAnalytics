@@ -33,6 +33,7 @@ knitr:
     error: false
 execute: 
   cache: true
+  freeze: auto
 bibliography: references.bib
 editor_options: 
   chunk_output_type: inline

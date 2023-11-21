@@ -35,6 +35,9 @@ format:
         message: false
         include: false
 bibliography: references.bib
+execute: 
+  freeze: auto
+  cache: true
 editor_options: 
   chunk_output_type: inline
 ---

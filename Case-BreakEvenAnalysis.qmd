@@ -28,6 +28,8 @@ knitr:
     warning: false
     message: false
     error: false
+execute: 
+  freeze: auto
 ---
 
 ```{r}
@@ -57,15 +59,15 @@ Tom was looking to launch a series of marketing campaigns to further promote Pin
 
 **Company:**
 
--   **Products:** PineApple\'s product line includes the PinePhone, PinePad, PineBook, and PineWatch.
+-   **Products:** PineApple's product line includes the PinePhone, PinePad, PineBook, and PineWatch.
 
 -   **Competitive Advantages:** PineApple holds a significant market share in the technology industry, renowned for its high-quality, innovative products and seamless software integration.
 
 -   **Unique Qualities:** PineApple is committed to environmental sustainability, investing in renewable energy and ensuring that its products are as eco-friendly as possible. The company is also known for its exceptional customer service.
 
--   **Successes:** The launch of the latest PinePhone saw record sales, further solidifying PineApple\'s market position.
+-   **Successes:** The launch of the latest PinePhone saw record sales, further solidifying PineApple's market position.
 
--   **Weaknesses:** PineApple\'s products are premium-priced, potentially alienating cost-conscious consumers. Additionally, the company has faced criticism for limited customizability and compatibility issues.
+-   **Weaknesses:** PineApple's products are premium-priced, potentially alienating cost-conscious consumers. Additionally, the company has faced criticism for limited customizability and compatibility issues.
 
 -   **Investment Areas:** Further investment in research and development to stay ahead in innovation and expanding its services division.
 
@@ -95,7 +97,7 @@ Tom was looking to launch a series of marketing campaigns to further promote Pin
 
 -   **Competitive Analysis:** All competitors offer similar technological products, but PineApple stands out for its design, innovation, and ecosystem.
 
--   **Comparison:** Competitors like Xiaomi offer more affordable options, but PineApple\'s brand reputation and customer service provide it a distinct edge.
+-   **Comparison:** Competitors like Xiaomi offer more affordable options, but PineApple's brand reputation and customer service provide it a distinct edge.
 
 **Collaborators:**
 

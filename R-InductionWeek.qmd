@@ -29,6 +29,7 @@ knitr:
     error: true
 execute: 
   freeze: auto
+  cache: true
 editor_options: 
   chunk_output_type: inline
 ---
