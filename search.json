@@ -947,296 +947,205 @@
   {
     "objectID": "Week9-Lecture2.html",
     "href": "Week9-Lecture2.html",
-    "title": "Class 18 Regression Discontinuity Design",
+    "title": "Class 18 Difference-in-Differences Design",
     "section": "",
-    "text": "A regression discontinuity design (RDD) is a quasi-experimental design that aims to determine the causal effects of interventions by assigning a cutoff or threshold above or below which an intervention is assigned.\nIt was invented by educational psychology1 and generalized by economists to economics and business fields.\n\n\n\n\n\n\n\n\n\n\n\n\nQuestion: What is the causal effect of a Distinction honor on a student’s future salary?\n\n\n\n\n\n\n\n\n\nAn RDD arises when treatment is assigned based on whether an underlying continuous score variable crosses a cutoff.\n\nThe characteristic is often referred to as the running variable.\n\nAND the characteristic cannot be perfectly manipulated by individuals\n\nWe should only focus on individuals in the neighborhood of the cutoff point.\nWe can only estimate the local treatment effects from an RDD study.\n\n\n\n\n\n\nBecause the “running variable” cannot be perfectly controlled by the individuals around the cutoff point, it’s as if the treatment was randomly assigned in the neighborhood of cutoff.\nAt the same time, individuals on either side of the cut-off should be very similar to each other, such that there should be no systematic differences across the treatment and control group other than the treatment.\nWith the treatment being the only discontinuity at this threshold, a discontinuous jump in the outcome of interest at the threshold is the treatment effect."
+    "text": "The underlying assumption for RDiT is that, the pre-treatment outcomes before the natural experiment are good counterfactual outcomes for the post-treatment outcomes if the natural experiment had not happened.\n\n\\[\nY_{it}=\\alpha+\\beta_{1} Post_{it}   + \\mu_{i t}\n\\]\n\nHowever, we cannot guarantee that there is no seasonality. Therefore, we need to find alternative methods that require less strict assumptions than RDiT.\n\n\n\n\n\nIf we can find a control group of individuals who are unaffected by the natural experiment, we can then use difference-in-differences design.\nDifference-in-differences design (DiD, DD, Diff-in-Diff) is a statistical technique used in economics that attempts to mimic an experimental research design using observational data, by comparing the changes in the outcomes of the treatment group with the changes in the outcomes of the control group.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe can use a DiD regression to quantify the treatment effects:\n\n\\(Post_{t}\\) controls for the seasonality for all customers\n\\(Treated_{i}\\) controls for the pre-existing difference between the treatment group and control group.\n\n\n\\[\nOutcome_{i, t}=\\beta_0+ \\beta_{1} Post_{t}+\\beta_{2} Treated_{i}+\\beta_{3}  Treated_{i} \\times Post_{t}  + \\mu_{i, t}\n\\]\n\nTherefore, after teasing out (1) seasonality \\(\\beta_1\\) and (2) pre-existing across-group differences \\(\\beta_2\\) , \\(\\beta_3\\) measures the actual treatment effect,\n\n\n\n\n\nThe requirement for a valid DiD analysis is that there is no differential trend between the treatment and control group before the treatment happens, or we must need parallel pre-trend."
   },
   {
-    "objectID": "Week9-Lecture2.html#what-is-an-rdd",
-    "href": "Week9-Lecture2.html#what-is-an-rdd",
-    "title": "Class 18 Regression Discontinuity Design",
+    "objectID": "Week9-Lecture2.html#what-can-go-wrong-with-rdit",
+    "href": "Week9-Lecture2.html#what-can-go-wrong-with-rdit",
+    "title": "Class 18 Difference-in-Differences Design",
     "section": "",
-    "text": "A regression discontinuity design (RDD) is a quasi-experimental design that aims to determine the causal effects of interventions by assigning a cutoff or threshold above or below which an intervention is assigned.\nIt was invented by educational psychology1 and generalized by economists to economics and business fields."
+    "text": "The underlying assumption for RDiT is that, the pre-treatment outcomes before the natural experiment are good counterfactual outcomes for the post-treatment outcomes if the natural experiment had not happened.\n\n\\[\nY_{it}=\\alpha+\\beta_{1} Post_{it}   + \\mu_{i t}\n\\]\n\nHowever, we cannot guarantee that there is no seasonality. Therefore, we need to find alternative methods that require less strict assumptions than RDiT."
   },
   {
-    "objectID": "Week9-Lecture2.html#visual-illustration-of-rdd-an-example-of-distinction-on-salary",
-    "href": "Week9-Lecture2.html#visual-illustration-of-rdd-an-example-of-distinction-on-salary",
-    "title": "Class 18 Regression Discontinuity Design",
+    "objectID": "Week9-Lecture2.html#difference-in-differences-design-1",
+    "href": "Week9-Lecture2.html#difference-in-differences-design-1",
+    "title": "Class 18 Difference-in-Differences Design",
     "section": "",
-    "text": "Question: What is the causal effect of a Distinction honor on a student’s future salary?"
+    "text": "If we can find a control group of individuals who are unaffected by the natural experiment, we can then use difference-in-differences design.\nDifference-in-differences design (DiD, DD, Diff-in-Diff) is a statistical technique used in economics that attempts to mimic an experimental research design using observational data, by comparing the changes in the outcomes of the treatment group with the changes in the outcomes of the control group."
   },
   {
-    "objectID": "Week9-Lecture2.html#when-to-use-an-rdd",
-    "href": "Week9-Lecture2.html#when-to-use-an-rdd",
-    "title": "Class 18 Regression Discontinuity Design",
+    "objectID": "Week9-Lecture2.html#did-estimator-alternative-illustration",
+    "href": "Week9-Lecture2.html#did-estimator-alternative-illustration",
+    "title": "Class 18 Difference-in-Differences Design",
     "section": "",
-    "text": "An RDD arises when treatment is assigned based on whether an underlying continuous score variable crosses a cutoff.\n\nThe characteristic is often referred to as the running variable.\n\nAND the characteristic cannot be perfectly manipulated by individuals\n\nWe should only focus on individuals in the neighborhood of the cutoff point.\nWe can only estimate the local treatment effects from an RDD study."
+    "text": "We can use a DiD regression to quantify the treatment effects:\n\n\\(Post_{t}\\) controls for the seasonality for all customers\n\\(Treated_{i}\\) controls for the pre-existing difference between the treatment group and control group.\n\n\n\\[\nOutcome_{i, t}=\\beta_0+ \\beta_{1} Post_{t}+\\beta_{2} Treated_{i}+\\beta_{3}  Treated_{i} \\times Post_{t}  + \\mu_{i, t}\n\\]\n\nTherefore, after teasing out (1) seasonality \\(\\beta_1\\) and (2) pre-existing across-group differences \\(\\beta_2\\) , \\(\\beta_3\\) measures the actual treatment effect,"
   },
   {
-    "objectID": "Week9-Lecture2.html#why-rdd-gives-causal-effects",
-    "href": "Week9-Lecture2.html#why-rdd-gives-causal-effects",
-    "title": "Class 18 Regression Discontinuity Design",
+    "objectID": "Week9-Lecture2.html#parallel-pre-trend-assumption",
+    "href": "Week9-Lecture2.html#parallel-pre-trend-assumption",
+    "title": "Class 18 Difference-in-Differences Design",
     "section": "",
-    "text": "Because the “running variable” cannot be perfectly controlled by the individuals around the cutoff point, it’s as if the treatment was randomly assigned in the neighborhood of cutoff.\nAt the same time, individuals on either side of the cut-off should be very similar to each other, such that there should be no systematic differences across the treatment and control group other than the treatment.\nWith the treatment being the only discontinuity at this threshold, a discontinuous jump in the outcome of interest at the threshold is the treatment effect."
+    "text": "The requirement for a valid DiD analysis is that there is no differential trend between the treatment and control group before the treatment happens, or we must need parallel pre-trend."
   },
   {
-    "objectID": "Week9-Lecture2.html#step-1-select-sample-of-analysis",
-    "href": "Week9-Lecture2.html#step-1-select-sample-of-analysis",
-    "title": "Class 18 Regression Discontinuity Design",
-    "section": "2.1 Step 1: Select Sample of Analysis",
-    "text": "2.1 Step 1: Select Sample of Analysis\n\nDetermine the cutoff-point and select the subset of individuals near the cut-off point\n\ne.g., filter out students with average scores between 69 and 70\n\n\n\nThere is no econometric requirement on the “near”; however, we face a trade-off between external validity and internal validity:\n\nExternal validity: If we have a narrower subset of individuals, we have a smaller subset of subjects which may not be representative of remaining individuals.\nInternal validity: If we have a broader subset of individuals, it is more likely the control group and treatment group are less likely to be “as-if randomized”.\n\nIn practice, we may need to run a set of different neighborhood bands as robustness checks."
+    "objectID": "Week9-Lecture2.html#the-causal-effect-of-a-new-loyalty-program",
+    "href": "Week9-Lecture2.html#the-causal-effect-of-a-new-loyalty-program",
+    "title": "Class 18 Difference-in-Differences Design",
+    "section": "2.1 The Causal Effect of a New Loyalty Program",
+    "text": "2.1 The Causal Effect of a New Loyalty Program\n\nTesco introduces a new loyalty program in Manchester in June while customers in London still use the old loyalty program.\n\n\\(y\\): standardized customer spending\n\\(x1\\): standardized customer income.\n\\(id\\): Identifier of the customer.\n\\(period\\): January to October\n\\(post\\): equals 1 for June and onwards.\n\\(treat\\): equals 1 for Manchester customers.\n\n\n\npacman::p_load(fixest,modelsummary,dplyr)\ndata(\"base_did\")\n\n\n\n\n\n\n\nTip\n\n\n\nWhen randomization is difficult, you can use DiD design to replace randomized experiments."
   },
   {
-    "objectID": "Week9-Lecture2.html#step-2-examine-continuity-of-observed-characteristics",
-    "href": "Week9-Lecture2.html#step-2-examine-continuity-of-observed-characteristics",
-    "title": "Class 18 Regression Discontinuity Design",
-    "section": "2.2 Step 2: Examine Continuity of Observed Characteristics",
-    "text": "2.2 Step 2: Examine Continuity of Observed Characteristics\n\nExamine if the observed characteristics of the treatment group and control group are continuous at the cut-off point.\n\nThe idea is similar to “randomization check” in the Step 5 of an RCT."
+    "objectID": "Week9-Lecture2.html#dataset",
+    "href": "Week9-Lecture2.html#dataset",
+    "title": "Class 18 Difference-in-Differences Design",
+    "section": "2.2 Dataset",
+    "text": "2.2 Dataset\n\nhead(base_did,10)\n\n\n\n\n\n\n\ny\n\n\nx1\n\n\nid\n\n\nperiod\n\n\npost\n\n\ntreat\n\n\n\n\n\n\n2.8753063\n\n\n0.5365377\n\n\n1\n\n\n1\n\n\n0\n\n\n1\n\n\n\n\n1.8606527\n\n\n-3.0431894\n\n\n1\n\n\n2\n\n\n0\n\n\n1\n\n\n\n\n0.0941652\n\n\n5.5768439\n\n\n1\n\n\n3\n\n\n0\n\n\n1\n\n\n\n\n3.7814749\n\n\n-2.8300587\n\n\n1\n\n\n4\n\n\n0\n\n\n1\n\n\n\n\n-2.5581996\n\n\n-5.0443544\n\n\n1\n\n\n5\n\n\n0\n\n\n1\n\n\n\n\n1.7287324\n\n\n-0.6363849\n\n\n1\n\n\n6\n\n\n1\n\n\n1\n\n\n\n\n6.2842363\n\n\n-2.1298837\n\n\n1\n\n\n7\n\n\n1\n\n\n1\n\n\n\n\n4.7668878\n\n\n3.4918558\n\n\n1\n\n\n8\n\n\n1\n\n\n1\n\n\n\n\n5.3475339\n\n\n0.8379861\n\n\n1\n\n\n9\n\n\n1\n\n\n1\n\n\n\n\n4.9514693\n\n\n0.6338890\n\n\n1\n\n\n10\n\n\n1\n\n\n1"
   },
   {
-    "objectID": "Week9-Lecture2.html#step-3-analysis",
-    "href": "Week9-Lecture2.html#step-3-analysis",
-    "title": "Class 18 Regression Discontinuity Design",
-    "section": "2.3 Step 3: Analysis",
-    "text": "2.3 Step 3: Analysis\n\nRegress the outcome variable on the treatment indicator to obtain the statistical significance.\n\nIn R, there is also a package rddtools which can help us estimate an RDD model."
+    "objectID": "Week9-Lecture2.html#estimation-of-did",
+    "href": "Week9-Lecture2.html#estimation-of-did",
+    "title": "Class 18 Difference-in-Differences Design",
+    "section": "2.3 Estimation of DiD",
+    "text": "2.3 Estimation of DiD\n\nWe need to run a linear regression with 3 variables: treat, post, and the interaction term\n\n\\[\nOutcome_{i, t}=\\beta_0+ \\beta_{1} Post_{t}+\\beta_{2} Treated_{i}+\\beta_{3}  Treated_{i} \\times Post_{t}  + \\mu_{i, t}\n\\]\n\nest_did = feols(\n  fml = y ~ treat + post + treat:post, \n                data = base_did)"
   },
   {
-    "objectID": "Week9-Lecture2.html#causal-impact-of-distinction-on-salaries",
-    "href": "Week9-Lecture2.html#causal-impact-of-distinction-on-salaries",
-    "title": "Class 18 Regression Discontinuity Design",
-    "section": "3.1 Causal Impact of Distinction on Salaries",
-    "text": "3.1 Causal Impact of Distinction on Salaries\n\nIt is important to understand the causal impact of degree honors on students’ future salaries and other outcomes.\nCan we get causal inference from simple linear regression?2\n\n\\[\nSalary_i = \\beta_0 + \\beta_1 Distinction_i + X\\beta + \\epsilon_i\n\\]\n\nNo, because there is severe omitted variable bias. Confounding factors may include a person’s ability, IQ, persistence, etc. These confounding factors are correlated with \\(Disinction_i\\) and also affects a person’s future salary. Not controlling these factors will cause omitted variable bias."
+    "objectID": "Week9-Lecture2.html#report-the-did-results",
+    "href": "Week9-Lecture2.html#report-the-did-results",
+    "title": "Class 18 Difference-in-Differences Design",
+    "section": "2.4 Report the DiD Results",
+    "text": "2.4 Report the DiD Results\n\n\n\n\n\n\n (1)\n\n\n\n\n(Intercept)\n0.323\n\n\n\n(0.317)\n\n\ntreat\n0.142\n\n\n\n(0.445)\n\n\npost\n0.713\n\n\n\n(0.449)\n\n\ntreat × post\n4.993***\n\n\n\n(0.629)\n\n\nNum.Obs.\n1080\n\n\nR2\n0.183\n\n\n\n + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001\n\n\n\n\n\n\n\n\n\n\nAfter the new loyalty program was introduced, compared with the control group, the treatment group customers increase their total spending by 4.993 units."
   },
   {
-    "objectID": "Week9-Lecture2.html#rct-iv-or-did",
-    "href": "Week9-Lecture2.html#rct-iv-or-did",
-    "title": "Class 18 Regression Discontinuity Design",
-    "section": "3.2 RCT, IV or DID?",
-    "text": "3.2 RCT, IV or DID?\n\nSince omitted variable bias prevents us from obtaining causal inference, we need to find another causal inference tool to overcome the challenge.\nHow about\n\nRCT\nInstrumental Variable\nDifference-in-Differences\n\nFortunately, we can use regression discontinuity design."
+    "objectID": "Week9-Lecture2.html#testing-the-parallel-pre-trend-assumption",
+    "href": "Week9-Lecture2.html#testing-the-parallel-pre-trend-assumption",
+    "title": "Class 18 Difference-in-Differences Design",
+    "section": "2.5 Testing the Parallel Pre-trend Assumption",
+    "text": "2.5 Testing the Parallel Pre-trend Assumption\n\nThe loyalty program was introduced in June, we need to make sure that, the differences across the treatment group and control group are parallel before June. We can visually examine the assumption:\n\nStep 1: use dplyr group aggregation to compute the average outcome for each group in each month\nStep 2: use ggplot2 to visualize the trend.\n\n\n\npacman::p_load(dplyr,ggplot2, ggthemes)\n\ngroup_did &lt;- base_did%&gt;%\n  group_by(treat,period) %&gt;%\n  summarise(avg_y = mean(y, na.rm = T))%&gt;%\n  ungroup()\n\nggplot() + \n  geom_line(data = group_did,\n            aes(x = period,\n                y = avg_y,\n                color = factor(treat))) + \n  theme_stata()"
   },
   {
-    "objectID": "Week9-Lecture2.html#dataset-for-rdd",
-    "href": "Week9-Lecture2.html#dataset-for-rdd",
-    "title": "Class 18 Regression Discontinuity Design",
-    "section": "3.3 Dataset for RDD",
-    "text": "3.3 Dataset for RDD\n\nTo run RDD, we need to select students with very similar scores due to the tradeoff between internal validity and external validity.\n\nIn the selected dataset, scores range from 69.07 to 72.93\n\n\n\npacman::p_load(dplyr)\ndata_rdd &lt;- read.csv('https://www.dropbox.com/s/4f0zaqqkzo0at5o/data_rdd.csv?dl=1')\nhead(data_rdd,5)\n\n\n\n\n\nstudent_id\nsalary\nscore\nexperience\n\n\n\n\n1\n46.41270\n69.06849\n3.872425\n\n\n2\n47.55037\n69.15068\n3.236511\n\n\n3\n46.07215\n69.23288\n3.202071\n\n\n4\n44.21388\n69.31507\n3.280689\n\n\n5\n44.35247\n69.39726\n3.548198"
-  },
-  {
-    "objectID": "Week9-Lecture2.html#data-wrangling",
-    "href": "Week9-Lecture2.html#data-wrangling",
-    "title": "Class 18 Regression Discontinuity Design",
-    "section": "3.4 Data Wrangling",
-    "text": "3.4 Data Wrangling\n\nTo use RDD, we need to generate the treatment variable \\(treated\\), which equals 1 if a student receives the treatment and 0 otherwise.\n\nThe treatment in an RDD is in spirit similar to that of an RCT, only that the treatment is assigned by nature (hence the name “natural experiment”)\n\n\n\ndata_rdd &lt;- data_rdd %&gt;%\n  mutate(treated = ifelse(score&gt;=70,1,0))"
-  },
-  {
-    "objectID": "Week9-Lecture2.html#rdd-analysis-using-r",
-    "href": "Week9-Lecture2.html#rdd-analysis-using-r",
-    "title": "Class 18 Regression Discontinuity Design",
-    "section": "3.5 RDD Analysis Using R",
-    "text": "3.5 RDD Analysis Using R\n\npacman::p_load(modelsummary,fixest)\nrdd_result &lt;- feols(\n  fml = salary ~ treated,\n  data = data_rdd\n)\nmodelsummary(rdd_result,stars = TRUE)\n\n\n\n\n\n (1)\n\n\n\n\n(Intercept)\n46.143***\n\n\n\n(0.479)\n\n\ntreated\n2.257***\n\n\n\n(0.553)\n\n\nNum.Obs.\n48\n\n\nR2\n0.266\n\n\nR2 Adj.\n0.250\n\n\nAIC\n186.8\n\n\nBIC\n190.5\n\n\nRMSE\n1.62\n\n\nStd.Errors\nIID\n\n\n\n + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001"
-  },
-  {
-    "objectID": "Week9-Lecture2.html#variant-1-regression-discontinuity-in-time",
-    "href": "Week9-Lecture2.html#variant-1-regression-discontinuity-in-time",
-    "title": "Class 18 Regression Discontinuity Design",
-    "section": "3.6 Variant 1: Regression Discontinuity in Time",
-    "text": "3.6 Variant 1: Regression Discontinuity in Time\n\nAn event or treatment occurred at a point in time. Meanwhile, the treatment affected all individuals.\n\nBecause all individuals were affected, there were no control group and we could not do DiD analyses.\n\nHowever, if we can justify, seasonality is not strong within certain time window before and after the event, then we can do a regression discontinuity in time design (RDiT), as follows:\n\n\\[\nOutcome_{i, t}=\\alpha+\\beta_{1} Post_{i}+X\\beta + \\mu_{i, t}\n\\]\n\nAs we learned in DiD lecture, \\(\\beta_1\\) includes both (1) the treatment effect, and (2) seasonality\n\nIf the time window is short, say a few weeks before and after, it is likely seasonality effect is null, and we can claim \\(\\beta_1\\) measures the causal effect of the event."
-  },
-  {
-    "objectID": "Week9-Lecture2.html#variant-2-spatial-regression-discontinuity",
-    "href": "Week9-Lecture2.html#variant-2-spatial-regression-discontinuity",
-    "title": "Class 18 Regression Discontinuity Design",
-    "section": "3.7 Variant 2: Spatial Regression Discontinuity",
-    "text": "3.7 Variant 2: Spatial Regression Discontinuity\n\nSome new policies/events may be region specific. For instance, In the US, each state has their independent laws and regulations, so a state’s new policy only affects that state but not other states.\nResidents near the same border should be similar in their characteristics, but only one side of the border receives the treatment.\n\nAs-if a randomized controlled trial"
-  },
-  {
-    "objectID": "Week9-Lecture2.html#variant-2-spatial-regression-discontinuity-1",
-    "href": "Week9-Lecture2.html#variant-2-spatial-regression-discontinuity-1",
-    "title": "Class 18 Regression Discontinuity Design",
-    "section": "3.8 Variant 2: Spatial Regression Discontinuity",
-    "text": "3.8 Variant 2: Spatial Regression Discontinuity\n\nThen we can compare the outcome of the treated residents and control residents near the border. Hence, spatial regression discontinuity is sometimes called border strategy.\n\nRefer to this paper for a comprehensive description of the topic."
-  },
-  {
-    "objectID": "Week9-Lecture2.html#after-class-reading",
-    "href": "Week9-Lecture2.html#after-class-reading",
-    "title": "Class 18 Regression Discontinuity Design",
-    "section": "3.9 After-class Reading",
-    "text": "3.9 After-class Reading\n\n(recommended) Quasi-experiment (Econometrics with R)"
-  },
-  {
-    "objectID": "Week9-Lecture2.html#footnotes",
-    "href": "Week9-Lecture2.html#footnotes",
-    "title": "Class 18 Regression Discontinuity Design",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThistlethwaite, Donald L., and Donald T. Campbell. 1960. “Regression-Discontinuity Analysis: An Alternative to the Ex Post Facto Experiment.” Journal of Educational Psychology 51 (6): 309.↩︎\nRefer to html version for answers.↩︎"
+    "objectID": "Week9-Lecture2.html#when-the-parallel-pre-trend-is-violated",
+    "href": "Week9-Lecture2.html#when-the-parallel-pre-trend-is-violated",
+    "title": "Class 18 Difference-in-Differences Design",
+    "section": "2.6 When the Parallel Pre-Trend is Violated",
+    "text": "2.6 When the Parallel Pre-Trend is Violated\n\nIf the parallel pre-trend assumption is violated, we can use a variety of methods to rectify the issue\n\npropensity score matching\nsynthetic difference-in-differences\ncausal forest (week 10)"
   },
   {
     "objectID": "Week9-Lecture1.html",
     "href": "Week9-Lecture1.html",
-    "title": "Class 17 Difference-in-Differences Design",
+    "title": "Class 17 Regression Discontinuity Design",
     "section": "",
-    "text": "RCTs are the gold standard of causal inference.\n\nIn an RCT, the treatment is randomized and hence not correlated with any confounding factor.\n\nIn practice, however, it’s challenging to implement a perfect RCT.\n\nCrossover and spillover\nCostly in terms of time and money\nPotential moral issues1\n\n\n\n\n\n\nA natural experiment is an empirical study in which individuals are exposed to the experimental and control conditions that are determined by nature or by other factors outside the control of the investigators. The process governing the exposures arguably resembles random assignment.\nNatural experiments are observational studies using secondary data and are not controlled in the sense of an RCT.\n\n\n\n\n\nA new government regulation (say, a local COVID-19 lockdown or GDPR) is implemented in city A but not the neighboring city B\n\nResidents in city A are treated due to uncontrollable forces but residents in city B are untreated\n\nMSc students get Merit honor for getting 69.9 and Disctinction for getting 70 score\n\nStudents can definitely work harder to get higher scores, but the 0.1 score may not be controllable by students\n\n\n\n\n\n\n\nRCT\n\nAssignment of treatment is purely randomized\nTreatment is under control of a researcher\nPrimary data\nWe can proactively design an RCT for the research questions we have\n\n\nNatural Experiment\n\nAssignment of treatment is “as-if” randomized\nTreatment is not controlled by a researcher\nSecondary data\nWe can only look for natural experiments from current data that fit our questions"
+    "text": "RCTs are the gold standard of causal inference: In an RCT, the treatment is randomized and hence uncorrelated with any confounding factors, i.e., \\(cov(X,\\epsilon)=0\\)\nIn practice, however, it can be challenging to implement a perfect RCT.\n\nCrossover and spillover effects;\nCostly in terms of time and money\n\nTherefore, we may want to exploit causal effects from existing secondary data. Besides the instrumental variable method, we can also investigate natural experiments.\n\n\n\n\n\n\n\n\n\n\nNatural Experiment\n\n\n\nA natural experiment is an event in which individuals are exposed to the experimental conditions that are determined by nature or exogenous factors beyond researchers’ control. The process governing the exposures arguably resembles randomized experiments.\n\n\n\n\nRCT\n\nAssignment of treatment is randomized by us\nTreatment is under control by us\nPrimary data\n\n\nNatural Experiment\n\nAssignment of treatment is randomized by nature\nTreatment is not controlled by us\nSecondary data"
   },
   {
-    "objectID": "Week9-Lecture1.html#real-experiments-rcts",
-    "href": "Week9-Lecture1.html#real-experiments-rcts",
-    "title": "Class 17 Difference-in-Differences Design",
+    "objectID": "Week9-Lecture1.html#from-rcts-to-secondary-data",
+    "href": "Week9-Lecture1.html#from-rcts-to-secondary-data",
+    "title": "Class 17 Regression Discontinuity Design",
     "section": "",
-    "text": "RCTs are the gold standard of causal inference.\n\nIn an RCT, the treatment is randomized and hence not correlated with any confounding factor.\n\nIn practice, however, it’s challenging to implement a perfect RCT.\n\nCrossover and spillover\nCostly in terms of time and money\nPotential moral issues1"
-  },
-  {
-    "objectID": "Week9-Lecture1.html#natural-experiments",
-    "href": "Week9-Lecture1.html#natural-experiments",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "",
-    "text": "A natural experiment is an empirical study in which individuals are exposed to the experimental and control conditions that are determined by nature or by other factors outside the control of the investigators. The process governing the exposures arguably resembles random assignment.\nNatural experiments are observational studies using secondary data and are not controlled in the sense of an RCT."
-  },
-  {
-    "objectID": "Week9-Lecture1.html#natural-experiment-examples",
-    "href": "Week9-Lecture1.html#natural-experiment-examples",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "",
-    "text": "A new government regulation (say, a local COVID-19 lockdown or GDPR) is implemented in city A but not the neighboring city B\n\nResidents in city A are treated due to uncontrollable forces but residents in city B are untreated\n\nMSc students get Merit honor for getting 69.9 and Disctinction for getting 70 score\n\nStudents can definitely work harder to get higher scores, but the 0.1 score may not be controllable by students"
+    "text": "RCTs are the gold standard of causal inference: In an RCT, the treatment is randomized and hence uncorrelated with any confounding factors, i.e., \\(cov(X,\\epsilon)=0\\)\nIn practice, however, it can be challenging to implement a perfect RCT.\n\nCrossover and spillover effects;\nCostly in terms of time and money\n\nTherefore, we may want to exploit causal effects from existing secondary data. Besides the instrumental variable method, we can also investigate natural experiments."
   },
   {
     "objectID": "Week9-Lecture1.html#comparison-rct-natural-experiment",
     "href": "Week9-Lecture1.html#comparison-rct-natural-experiment",
-    "title": "Class 17 Difference-in-Differences Design",
+    "title": "Class 17 Regression Discontinuity Design",
     "section": "",
-    "text": "RCT\n\nAssignment of treatment is purely randomized\nTreatment is under control of a researcher\nPrimary data\nWe can proactively design an RCT for the research questions we have\n\n\nNatural Experiment\n\nAssignment of treatment is “as-if” randomized\nTreatment is not controlled by a researcher\nSecondary data\nWe can only look for natural experiments from current data that fit our questions"
+    "text": "Natural Experiment\n\n\n\nA natural experiment is an event in which individuals are exposed to the experimental conditions that are determined by nature or exogenous factors beyond researchers’ control. The process governing the exposures arguably resembles randomized experiments.\n\n\n\n\nRCT\n\nAssignment of treatment is randomized by us\nTreatment is under control by us\nPrimary data\n\n\nNatural Experiment\n\nAssignment of treatment is randomized by nature\nTreatment is not controlled by us\nSecondary data"
   },
   {
-    "objectID": "Week9-Lecture1.html#a-motivating-example",
-    "href": "Week9-Lecture1.html#a-motivating-example",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "2.1 A Motivating Example",
-    "text": "2.1 A Motivating Example\n\nIn the RCT lecture, we learned how to design an A/B testing in 5 steps to help Tom evaluate the causal impact of a loyalty program on customers’ retention rate.\nWe discussed that the unit of randomization should not be at the region level.\n\nEast London versus West London randomization would cause failed randomization checks.\n\nHowever, in reality, individual-level randomization may be too costly or infeasible, and we may need to do a region-level A/B testing.\n\n\n\nIn this case, how can we design the A/B testing to avoid failed randomization?"
+    "objectID": "Week9-Lecture1.html#what-is-an-rdd",
+    "href": "Week9-Lecture1.html#what-is-an-rdd",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "2.1 What is an RDD",
+    "text": "2.1 What is an RDD\n\nA regression discontinuity design (RDD) is a natural-experimental design that aims to determine the causal effects of interventions by identifying a cutoff around which an intervention is as if randomized across individuals.\n\n\n\n\nVisual illustration of RDD"
   },
   {
-    "objectID": "Week9-Lecture1.html#proposal-1-before-after-comparison-on-east-london",
-    "href": "Week9-Lecture1.html#proposal-1-before-after-comparison-on-east-london",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "2.2 Proposal 1: Before-After Comparison on East London",
-    "text": "2.2 Proposal 1: Before-After Comparison on East London\n\nKeep status quo (no loyalty program) in East London for 1 month; collect customer retention data for this month.\nThen Introduce the loyalty program in East London; collect customer retention data for another 1 month.\nCompare the before-after difference in retention rate by a t-test or running the following regression:\n\n\\[\nRetention_{i, t}=\\alpha+\\beta_{1} Post_{i}+\\mu_{i, t}\n\\]\nCan this difference tell us the causal effect of the loyalty program?2\n\nNo, because the variable \\(post\\) is confounded with seasonality. Even without the loyalty program, customers’ retention may already change with time due to seasonality. So this simple before-after difference cannot tease out the causal effect of the loyalty program."
+    "objectID": "Week9-Lecture1.html#motivating-example",
+    "href": "Week9-Lecture1.html#motivating-example",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "2.2 Motivating Example",
+    "text": "2.2 Motivating Example\nBusiness objective: What is the causal effect of receiving a Master’s degree with Distinction versus Merit on students’ future salary?\n\nCan we run the following simple linear regression and obtain the causal effects?\n\nNo, because the regression suffers from endogeneity issue, such as omitted variable bias. Individual’s ability is correlated with their average grades and also affects individual salary, which is omitted from the regression.\n\n\n\\[\nSalary_i = \\alpha + \\beta Distinction_i + \\epsilon_i\n\\]\n\nCan we use RCT?\n\nNo, RCTs would be unethical to run for this research question.\n\nCan we use instrumental variables?\n\nTheoretically yes, but in practice, it is difficult to find valid instrumental variables."
   },
   {
-    "objectID": "Week9-Lecture1.html#proposal-2-east-west-london-comparison",
-    "href": "Week9-Lecture1.html#proposal-2-east-west-london-comparison",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "2.3 Proposal 2: East-West London Comparison",
-    "text": "2.3 Proposal 2: East-West London Comparison\n\nRandomize which region (East London/West London) would receive the loyalty program, and then introduce the loyalty program in the treatment region.\nCollect customer retention data for both regions for a month.\nCompare the treatment-control difference in retention rate by a t-test or running the following regression:\n\n\\[\nRetention_{i, t}=\\alpha+\\beta_{1} Treated_{i}+\\mu_{i, t}\n\\]\nCan this difference tell us the causal effect of the loyalty program?3\n\nNo, because customers in East London and West London are intrinsically different. Even without the loyalty program, we may already see a difference in their retention rate. So the simple treatment-control comparison cannot tease out the causal effect of the loyalty program."
+    "objectID": "Week9-Lecture1.html#a-natural-experiment-in-the-uk",
+    "href": "Week9-Lecture1.html#a-natural-experiment-in-the-uk",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "2.3 A Natural Experiment in the UK",
+    "text": "2.3 A Natural Experiment in the UK\n\nIn the UK Education system, students receiving 70% or above final average grades will receive Distinction while students below 70% will receive Merit.\nThe above setting gives us a nice natural experiment:\n\nStudents may improve their average grades from 60% to 69% by working harder, but they cannot perfectly control their average grades around the cutoff, say from 69.9% to 70%."
   },
   {
-    "objectID": "Week9-Lecture1.html#proposal-3-difference-in-differences",
-    "href": "Week9-Lecture1.html#proposal-3-difference-in-differences",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "2.4 Proposal 3: Difference-in-Differences",
-    "text": "2.4 Proposal 3: Difference-in-Differences\n\nKeep status quo (no loyalty program) in both East and West London for 1 month; collect data on customer retention for this month in both regions.\n\nCompute the difference in retention rate \\(Diff_{pre} = Y_{treated,pre} - Y_{control,pre}\\), which measures the pre-existing difference across the treatment and control group even without the loyalty program.\n\nRandomize which region (East London/West London) would receive the loyalty program, and then introduce the loyalty program in the treatment region; collect customer retention data for both regions for another 1 month\n\nCompute the difference in retention rate across the treatment and control group in this second month: \\(Diff_{post} = Y_{treated,post} - Y_{control,post}\\), which measures the the total difference across the treatment and control group due to (1) pre-existing difference; and (2) treatment effect.\n\nTake the difference in the differences or by running the below regression. \\(DiD\\) can measure the causal effect of loyalty program on retention rate. \\[\nDiD = Diff_{post} - Diff_{pre} = [Y_{treated,post} - Y_{control,post}] - [Y_{treated,pre} - Y_{control,pre}]\n\\] \\[\nRetention_{i, t}=\\beta_0+ \\beta_{1} Post_{i}+\\beta_{2} Treated_{i}+\\beta_{3}  Treated_{i} \\times Post_{i}  + \\mu_{i, t}\n\\]"
+    "objectID": "Week9-Lecture1.html#visual-illustration-of-rdd-an-example-of-distinction-on-salary",
+    "href": "Week9-Lecture1.html#visual-illustration-of-rdd-an-example-of-distinction-on-salary",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "2.4 Visual Illustration of RDD: An Example of Distinction on Salary",
+    "text": "2.4 Visual Illustration of RDD: An Example of Distinction on Salary"
   },
   {
-    "objectID": "Week9-Lecture1.html#difference-in-differences",
-    "href": "Week9-Lecture1.html#difference-in-differences",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "2.5 Difference-in-Differences",
-    "text": "2.5 Difference-in-Differences\n\nDifference-in-differences (DiD or DD) is a statistical technique used in economics and business that attempts to mimic an experimental research design using observational data (secondary data), by studying the differential effect of a treatment on a ‘treatment group’ versus a ‘control group’ in a natural experiment.\nIn practice, DiD can also be combined with an RCT, if true randomization is costly or infeasible."
+    "objectID": "Week9-Lecture1.html#why-rdd-gives-causal-effects",
+    "href": "Week9-Lecture1.html#why-rdd-gives-causal-effects",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "2.5 Why RDD Gives Causal Effects?",
+    "text": "2.5 Why RDD Gives Causal Effects?\n\nFor students just above 70%, to measure the treatment effects of receiving Distinction, we would need their counterfactual salaries if they had not received Distinction.\nAt the same time, because the “running variable” cannot be perfectly controlled by the individuals around the cutoff point, it’s as if the treatment was randomized near the cutoff. Thus, individuals near the cutoff should be very similar, such that there should be no systematic differences across the treatment and control group.\n\nSimilar to RCT, we overcome the fundamental problem of causal inference using students just below 70 as the control group.\n\nAll else being equal, a sudden change in the outcome variable at the cutoff can only be attributed to the treatment effect."
   },
   {
-    "objectID": "Week9-Lecture1.html#did-estimator-graphical-illustration",
-    "href": "Week9-Lecture1.html#did-estimator-graphical-illustration",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "2.6 DiD Estimator: Graphical Illustration",
-    "text": "2.6 DiD Estimator: Graphical Illustration"
+    "objectID": "Week9-Lecture1.html#when-can-we-use-an-rdd",
+    "href": "Week9-Lecture1.html#when-can-we-use-an-rdd",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "2.6 When Can We Use an RDD",
+    "text": "2.6 When Can We Use an RDD\n\nAn RDD design arises when treatment is assigned based on whether an underlying continuous variable crosses a cutoff.\n\nThe continuous variable is often referred to as the running variable.\n\nAND the characteristic cannot be perfectly manipulated by individuals\n\nWe should only focus on individuals close to the cutoff point.\n\n\nExercise: eBay endorses sellers with 10,000 orders as Gold Seller. Can we use RDD to identify the causal effect of receiving Gold Seller endorsement on seller sales?\nNo, because sellers can have perfect control over their sales around the cutoff point."
   },
   {
-    "objectID": "Week9-Lecture1.html#did-estimator-alternative-illustration",
-    "href": "Week9-Lecture1.html#did-estimator-alternative-illustration",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "2.7 DiD Estimator: Alternative Illustration",
-    "text": "2.7 DiD Estimator: Alternative Illustration\n\nWe can also use linear regression to quantify the treatment effects from a Diff-in-Diff experiment:\n\n\\[\nOutcome_{i, t}=\\beta_0+ \\beta_{1} Post_{t}+\\beta_{2} Treated_{i}+\\beta_{3}  Treated_{i} \\times Post_{t}  + \\mu_{i, t}\n\\]\n\nThe idea of running a regression is to control the confounding factors: (1) \\(Post_{t}\\) can control for the seasonality for all customers (2) \\(Treated_{i}\\) can control for the pre-existing difference between the treatment group and control group.\nTherefore, \\(\\beta_3\\) is the actual treatment effect, after teasing out (1) seasonality and (2) pre-existing differences."
+    "objectID": "Week9-Lecture1.html#step-1-select-sample-of-analysis",
+    "href": "Week9-Lecture1.html#step-1-select-sample-of-analysis",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "3.1 Step 1: Select Sample of Analysis",
+    "text": "3.1 Step 1: Select Sample of Analysis\n\nDetermine the bandwidth above and below the cutoff and select the subset of individuals within the bandwidth\n\ne.g., if we choose a bandwidth of 0.5, we need to filter out students with average scores between 69.5 and 70.5\n\n\n\nWe face a trade-off when selecting the bandwidth: If we choose a smaller bandwidth around the cut-off\n\nPros: Individuals should be more similar around the cutoff, thus it is more likely the control group and treatment group are “as-if randomized”, thus higher internal validity.\nCons: We have a smaller subset of subjects which may not be representative of remaining individuals, thus lower external validity; We have a smaller sample size due to fewer individuals selected\n\nIn practice, there is no specific rule how to determine the bandwidth. We need to run a set of different bandwidths as robustness checks."
   },
   {
-    "objectID": "Week9-Lecture1.html#parallel-pre-trend-assumption",
-    "href": "Week9-Lecture1.html#parallel-pre-trend-assumption",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "2.8 Parallel Pre-trend Assumption",
-    "text": "2.8 Parallel Pre-trend Assumption\n\nThe requirement for a valid DiD analysis is that there is no differential trend between the treatment and control group before the treatment happens, or we must need parallel pre-trend."
+    "objectID": "Week9-Lecture1.html#step-2-examine-continuity-of-observed-characteristics",
+    "href": "Week9-Lecture1.html#step-2-examine-continuity-of-observed-characteristics",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "3.2 Step 2: Examine Continuity of Observed Characteristics",
+    "text": "3.2 Step 2: Examine Continuity of Observed Characteristics\n\nExamine if other characteristics of the treatment group and control group are continuous at the cut-off point.\n\nThe idea is similar to “randomization check” in an RCT."
   },
   {
-    "objectID": "Week9-Lecture1.html#sample-data",
-    "href": "Week9-Lecture1.html#sample-data",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "3.1 Sample Data",
-    "text": "3.1 Sample Data\n\nbase_did is a data frame with 1,040 observations and 6 variables named \\(y\\), \\(x1\\), \\(id\\), \\(period\\), \\(post\\) and \\(treat\\).\n\n\\(y\\): The outcome variable (e.g., retention) affected by the treatment (e.g., loyalty program).\n\\(x1\\): standardized customer income.\n\\(id\\): Identifier of the individual.\n\\(period\\): From 1 to 10\n\\(post\\): Indicator taking value 1 if the period is strictly greater than 5, 0 otherwise.\n\\(treat\\): Indicator taking value 1 if the individual is treated, 0 otherwise."
+    "objectID": "Week9-Lecture1.html#step-3-data-analysis",
+    "href": "Week9-Lecture1.html#step-3-data-analysis",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "3.3 Step 3: Data Analysis",
+    "text": "3.3 Step 3: Data Analysis\n\nRegress the outcome variable on the treatment indicator to obtain the causal effect.\n\n\\[\nY_i = \\beta_0 + \\beta_1 Treated + \\epsilon_i\n\\]\n\n\\(Treated\\) is a binary variable for whether or not the running variable is above the cutoff.\nSometimes, we may also want to control the running variable in the regression to mitigate its confounding effects."
   },
   {
-    "objectID": "Week9-Lecture1.html#dataset",
-    "href": "Week9-Lecture1.html#dataset",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "3.2 Dataset",
-    "text": "3.2 Dataset\n\npacman::p_load(fixest,modelsummary)\ndata(\"base_did\")\nhead(base_did,8)\n\n\n\n\n\n\n\ny\n\n\nx1\n\n\nid\n\n\nperiod\n\n\npost\n\n\ntreat\n\n\n\n\n\n\n2.8753063\n\n\n0.5365377\n\n\n1\n\n\n1\n\n\n0\n\n\n1\n\n\n\n\n1.8606527\n\n\n-3.0431894\n\n\n1\n\n\n2\n\n\n0\n\n\n1\n\n\n\n\n0.0941652\n\n\n5.5768439\n\n\n1\n\n\n3\n\n\n0\n\n\n1\n\n\n\n\n3.7814749\n\n\n-2.8300587\n\n\n1\n\n\n4\n\n\n0\n\n\n1\n\n\n\n\n-2.5581996\n\n\n-5.0443544\n\n\n1\n\n\n5\n\n\n0\n\n\n1\n\n\n\n\n1.7287324\n\n\n-0.6363849\n\n\n1\n\n\n6\n\n\n1\n\n\n1\n\n\n\n\n6.2842363\n\n\n-2.1298837\n\n\n1\n\n\n7\n\n\n1\n\n\n1\n\n\n\n\n4.7668878\n\n\n3.4918558\n\n\n1\n\n\n8\n\n\n1\n\n\n1"
+    "objectID": "Week9-Lecture1.html#the-causal-effect-of-distinction-on-salary",
+    "href": "Week9-Lecture1.html#the-causal-effect-of-distinction-on-salary",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "3.4 The Causal Effect of Distinction on Salary",
+    "text": "3.4 The Causal Effect of Distinction on Salary\n\nGenerate a synthetic dataset\n\n\npacman::p_load(dplyr,fixest,modelsummary)\nn &lt;- 1000 # 1000 individuals\nset.seed(888)\nscore&lt;-runif(n,61,75) # generate scores between 61 and 75\nexperience&lt;-runif(n,0,3) # generate work experience between 0 and 3\n\nsalary&lt;-30000+ 2000*(score&gt;=70) + # causal effect is 2000\n  500 * score  + 400*experience + rnorm(n,0,800)\n\ndata_rdd &lt;- data.frame(ID = 1:n,\n                       score = score,\n                       experience = experience,\n                       salary = salary)\n\n\nGenerate the treatment indicator, Distinction, in the dataset using dplyr\n\n\ndata_rdd &lt;- data_rdd %&gt;%\n  mutate(Distinction = ifelse(score &gt;= 70, 1, 0))"
   },
   {
-    "objectID": "Week9-Lecture1.html#estimation-of-did",
-    "href": "Week9-Lecture1.html#estimation-of-did",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "3.3 Estimation of DiD",
-    "text": "3.3 Estimation of DiD\n\n[in help(feols)] … You can interact a numeric variable with a “factor-like” variable by using i(factor_var, continuous_var, ref), where continuous_var will be interacted with each value of factor_var and the argument ref is a value of factor_var taken as a reference (optional).\n\n\n\n\nest_did = feols(\n  fml = y ~ x1 + i(period, treat, 1) | \n                  id + period, \n                data = base_did)"
+    "objectID": "Week9-Lecture1.html#linear-regression-analyses",
+    "href": "Week9-Lecture1.html#linear-regression-analyses",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "3.5 Linear Regression Analyses",
+    "text": "3.5 Linear Regression Analyses\n\nRun a linear regression: salary ~ Distinction\n\n\nfeols(\n  fml  = salary ~ Distinction ,\n  data = data_rdd) %&gt;%\n  modelsummary(stars = T,\n               gof_map = c('nobs','r.squared'))\n\n\n\n\n\n (1)\n\n\n\n\n(Intercept)\n63306.835***\n\n\n\n(57.722)\n\n\nDistinction\n5533.565***\n\n\n\n(94.638)\n\n\nNum.Obs.\n1000\n\n\nR2\n0.774\n\n\n\n + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001\n\n\n\n\n\n\n\n\n\n\nThe result suggests that Distinction can increase the salary by 5.5k, which is far from the true causal effect."
   },
   {
-    "objectID": "Week9-Lecture1.html#report-the-regression-results",
-    "href": "Week9-Lecture1.html#report-the-regression-results",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "3.4 Report the Regression Results",
-    "text": "3.4 Report the Regression Results\n\n\n\n\n\n\n (1)\n\n\n\n\nx1\n0.973***\n\n\n\n(0.046)\n\n\nperiod = 2 × treat\n0.156\n\n\n\n(1.121)\n\n\nperiod = 3 × treat\n1.130\n\n\n\n(1.071)\n\n\nperiod = 4 × treat\n−0.393\n\n\n\n(1.091)\n\n\nperiod = 5 × treat\n1.403\n\n\n\n(1.110)\n\n\nperiod = 6 × treat\n2.187*\n\n\n\n(1.025)\n\n\nperiod = 7 × treat\n5.002***\n\n\n\n(0.998)\n\n\nperiod = 8 × treat\n5.215***\n\n\n\n(1.155)\n\n\nperiod = 9 × treat\n6.134***\n\n\n\n(1.095)\n\n\nperiod = 10 × treat\n8.009***\n\n\n\n(1.072)\n\n\nNum.Obs.\n1080\n\n\nR2\n0.548\n\n\nR2 Adj.\n0.488\n\n\nR2 Within\n0.390\n\n\nR2 Within Adj.\n0.383\n\n\nAIC\n6223.2\n\n\nBIC\n6856.2\n\n\nRMSE\n3.84\n\n\nStd.Errors\nby: id\n\n\nFE: id\nX\n\n\nFE: period\nX\n\n\n\n + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001"
+    "objectID": "Week9-Lecture1.html#rdd-analysis",
+    "href": "Week9-Lecture1.html#rdd-analysis",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "3.6 RDD Analysis",
+    "text": "3.6 RDD Analysis\n\nStep 1: Select a bandwidth around the cutoff, between 68% to 72%\nStep 2: Examine discontinuity of other variables (randomization check).\nStep 3: Run the linear regression on the smaller sample.\n\n\nfeols(\n  fml  = salary ~ Distinction,\n  data = data_rdd %&gt;%\n    filter(score &gt; 68 & score &lt; 72)) %&gt;%\n  modelsummary(stars = T, \n             gof_map = c('nobs','r.squared'))\n\n\n\n\n\n (1)\n\n\n\n\n(Intercept)\n65201.101***\n\n\n\n(81.291)\n\n\nDistinction\n2898.285***\n\n\n\n(110.725)\n\n\nNum.Obs.\n282\n\n\nR2\n0.710\n\n\n\n + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001\n\n\n\n\n\n\n\n\n\n\nLet’s try other bandwidths on the Quarto document. As we tighten the bandwidth, what do you find?\n\nAs we use stricter bandwidths, the coefficient of Distinction is getting closer to the real treatment effects. The reason is that treatment and control group individuals are getting more similar."
   },
   {
-    "objectID": "Week9-Lecture1.html#plot-estimates-of-did",
-    "href": "Week9-Lecture1.html#plot-estimates-of-did",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "3.5 Plot Estimates of DiD",
-    "text": "3.5 Plot Estimates of DiD\n\niplot(est_did)"
+    "objectID": "Week9-Lecture1.html#visualization-of-rdd",
+    "href": "Week9-Lecture1.html#visualization-of-rdd",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "3.7 Visualization of RDD",
+    "text": "3.7 Visualization of RDD\n\nrdrobust package provides a nice visualization tool for RDD.\n\n\npacman::p_load(rdrobust)\nrdplot(y = salary, # outcome variable \n       x = score, # x is the running variable\n      c = 70, # c is the cutoff point\n      p = 2 # polynomial order to fit the trends\n)"
   },
   {
-    "objectID": "Week9-Lecture1.html#pre-trend-test",
-    "href": "Week9-Lecture1.html#pre-trend-test",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "3.6 Pre-trend Test",
-    "text": "3.6 Pre-trend Test\n\nThe treatment happens in period 5, we need to make sure that, the differences across the treatment group and control group are not statistically changing over time.\nIn terms of the regression coefficients, we need to make sure that the interactions between \\(treated\\) and \\(period\\) before the treatment are statistically insignificant."
+    "objectID": "Week9-Lecture1.html#regression-discontinuity-in-time",
+    "href": "Week9-Lecture1.html#regression-discontinuity-in-time",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "3.8 Regression Discontinuity in Time",
+    "text": "3.8 Regression Discontinuity in Time\n\nA natural experiment occurred on a day affecting all customers, we can then implement a Regression Discontinuity in Time design (RDiT) as follows\n\nThe running variable is time; the cutoff is the day on which the natural experiment took place\n\n\n\\[\nY_{it}=\\alpha+\\beta_{1} Post_{it} + \\mu_{i t}\n\\]\n\nThe underlying assumption for RDiT is that, the pre-treatment outcomes before the natural experiment are good counterfactuals for the post-treatment outcomes if the natural experiment had not happened.\n\nFor the underlying assumption to hold, we need to take a short time window before and after the natural experiment, e.g., 7 days, 14 days, or 30 days.\n\nThe coefficient \\(\\beta_1\\) then measures the changes in the outcome variable before and after the natural experiment."
   },
   {
-    "objectID": "Week9-Lecture1.html#did-on-secondary-data-1",
-    "href": "Week9-Lecture1.html#did-on-secondary-data-1",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "4.1 DiD on Secondary Data",
-    "text": "4.1 DiD on Secondary Data\n\nAlthough DiD method can be combined with RCT to collect primary data, DiD is more commonly used on secondary data.\nFor your dissertation project, once you collect data from the companies, you can also work on a causal inference project using the DiD method."
-  },
-  {
-    "objectID": "Week9-Lecture1.html#causal-effect-of-surge-pricing-on-drivers",
-    "href": "Week9-Lecture1.html#causal-effect-of-surge-pricing-on-drivers",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "4.2 Causal Effect of Surge Pricing on Drivers",
-    "text": "4.2 Causal Effect of Surge Pricing on Drivers\n\nMiao et al. (2022) study the causal effects of surge pricing on driver labor supply decisions. The ridesharing company introduced surge pricing in one city but not the other, such that we have a nice DiD setup:\n\nTreatment group: drivers in the city that implemented the surge pricing\nControl group: drivers in the city that did not implement the surge pricing"
-  },
-  {
-    "objectID": "Week9-Lecture1.html#framework-of-analyses",
-    "href": "Week9-Lecture1.html#framework-of-analyses",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "4.3 Framework of Analyses",
-    "text": "4.3 Framework of Analyses\n\n\n\n\n\n\nWeekly income\n\nSurge pricing leads to higher weekly revenues.\n\nIntensive margin of labor supply\n\nSurge pricing leads to decreased daily revenues due to intensified competition.\n\nExtensive margin of labor supply\n\nDrivers have to work more days to make up of the decreased daily revenues."
-  },
-  {
-    "objectID": "Week9-Lecture1.html#clustering-for-heterogeneity-analyses",
-    "href": "Week9-Lecture1.html#clustering-for-heterogeneity-analyses",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "4.4 Clustering for Heterogeneity Analyses",
-    "text": "4.4 Clustering for Heterogeneity Analyses\n\n\n\n\n\n\nWe use K-means clustering to segment out 2 clusters of drivers: full time and part time drivers.\n\nFull-time drivers have decreased weekly revenue due to capacity constraint.\nPart-time drivers flooded into the market and have increased weekly revenues by working more days.\nAlthough surge pricing enlarged the total pie for the company, the benefit was unevenly distributed among drivers."
-  },
-  {
-    "objectID": "Week9-Lecture1.html#footnotes",
-    "href": "Week9-Lecture1.html#footnotes",
-    "title": "Class 17 Difference-in-Differences Design",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nIf you collect any individual data in your dissertation, you need to seek research ethics approval from UCL.↩︎\nSee html version for answers.↩︎\nSee html version for answers.↩︎"
+    "objectID": "Week9-Lecture1.html#after-class-reading",
+    "href": "Week9-Lecture1.html#after-class-reading",
+    "title": "Class 17 Regression Discontinuity Design",
+    "section": "3.9 After-class Reading",
+    "text": "3.9 After-class Reading\n\n(recommended) Quasi-experiment (Econometrics with R)"
   },
   {
     "objectID": "index.html",
@@ -1582,18 +1491,18 @@
     "text": "Instrumental Variables\n\nWhat you will learn\n\nIntuition of why instrumental variables solve endogeneity problems\nThe two requirements of a valid instrumental variable and how to find good instruments\nApply two-stage least square method to estimate the causal effects using instrumental variables\nApplication of instrumental variables in the marketing and business field\n\nAfter-class reading\n\n(optional) Econometrics with R: Instrumental Variables Regression\n(highly recommended) Encouragement Designs and Instrumental Variables for A/B Testing at Spotify"
   },
   {
-    "objectID": "ClassPreparation.html#difference-in-differences-design",
-    "href": "ClassPreparation.html#difference-in-differences-design",
-    "title": "Weekly Arrangements",
-    "section": "Difference-in-Differences Design",
-    "text": "Difference-in-Differences Design\n\nWhat you will learn\n\nConcept of difference-in-differences (DiD) design\nEstimation of causal effects using the DiD design\nApplication of DiD design in the business field"
-  },
-  {
     "objectID": "ClassPreparation.html#regression-discontinuity-design",
     "href": "ClassPreparation.html#regression-discontinuity-design",
     "title": "Weekly Arrangements",
     "section": "Regression Discontinuity Design",
-    "text": "Regression Discontinuity Design\n\nWhat you will learn\n\nConcept of regression discontinuity design (RDD)\nEstimation of causal effects using the RDD design\nApplication of RDD designs in the business field\n\nAfter-class reading\n\n(optional) Econometrics with R: Quasi-experiments"
+    "text": "Regression Discontinuity Design\n\nWhat you will learn\n\nConcept of regression discontinuity design (RDD)\nEstimation of causal effects using the RDD design\nApplication of RDD designs in the business field"
+  },
+  {
+    "objectID": "ClassPreparation.html#difference-in-differences-design",
+    "href": "ClassPreparation.html#difference-in-differences-design",
+    "title": "Weekly Arrangements",
+    "section": "Difference-in-Differences Design",
+    "text": "Difference-in-Differences Design\n\nWhat you will learn\n\nConcept of difference-in-differences (DiD) design\nEstimation of causal effects using the DiD design\nApplication of DiD design in the business field\n\nAfter-class reading\n\n(optional) Econometrics with R: Quasi-experiments"
   },
   {
     "objectID": "ClassPreparation.html#frontiers-of-marketing-analytics",
