@@ -317,16 +317,9 @@ All materials, including the lecture slides and before-class readings will be re
     -   Application of instrumental variables in the marketing and business field
 -   After-class reading
     -   (optional) [Econometrics with R: Instrumental Variables Regression](https://www.econometrics-with-r.org/12-ivr.html)
-    -   (highly recommended) [Encouragement Designs and Instrumental Variables for A/B Testing at Spotify](Encouragement Designs and Instrumental Variables for A/B Testing)
+    -   (highly recommended) [Encouragement Designs and Instrumental Variables for A/B Testing at Spotify](Encouragement%20Designs%20and%20Instrumental%20Variables%20for%20A/B%20Testing)
 
 # Week 9: Quasi-Experimental Methods
-
-## Difference-in-Differences Design
-
--   What you will learn
-    -   Concept of difference-in-differences (DiD) design
-    -   Estimation of causal effects using the DiD design
-    -   Application of DiD design in the business field
 
 ## Regression Discontinuity Design
 
@@ -334,6 +327,13 @@ All materials, including the lecture slides and before-class readings will be re
     -   Concept of regression discontinuity design (RDD)
     -   Estimation of causal effects using the RDD design
     -   Application of RDD designs in the business field
+
+## Difference-in-Differences Design
+
+-   What you will learn
+    -   Concept of difference-in-differences (DiD) design
+    -   Estimation of causal effects using the DiD design
+    -   Application of DiD design in the business field
 -   After-class reading
     -   (optional) [Econometrics with R: Quasi-experiments](https://www.econometrics-with-r.org/13.4-qe.html)
 

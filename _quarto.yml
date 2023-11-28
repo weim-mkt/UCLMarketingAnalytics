@@ -83,9 +83,9 @@ website:
           - section: "[Week 9] Natural Experiment"
             contents: 
               - href: Week9-Lecture1.html
-                text: "Class 17 Difference-in-Differences"
+                text: "Class 17 Regression Discontinuity Design"
               - href: Week9-Lecture2.html
-                text: "Class 18 Regression Discontinuity Design"
+                text: "Class 18 Difference-in-Differences Design"
               
       - section: "R Tutorials"
         contents:
