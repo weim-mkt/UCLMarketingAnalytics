@@ -1,0 +1,266 @@
+---
+author: Dr Wei Miao
+institute: UCL School of Management
+date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(9))`"
+date-format: long
+title: "Class 19 Frontiers of Marketing Analytics"
+df-print: kable
+colorlinks: true
+code-line-numbers: true
+format:
+  html: 
+    toc: true
+    number-sections: true
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+  beamer: 
+    toc: false
+    toc-title: ""
+    slide-level: 2
+    section-titles: true
+    theme: Frankfurt
+    colortheme: beaver
+    fonttheme: structurebold
+    navigation: horizontal
+    tbl-colwidths: auto
+    fontsize: 9pt
+    suppress-bibliography: true
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  freeze: auto
+editor_options: 
+  chunk_output_type: inline
+bibliography: references.bib
+---
+
+# Causal Machine Learning
+
+## When Machine Learning Meets Causal Inference
+
+-   **Causal Machine Learning** represents the state-of-the-art development in the field of data science
+
+    -   While conventional machine learning excels at finding patterns and making predictions, it often falls short in understanding causation.
+
+    -   While conventional causal inference techniques (instrumental variable, DiD, RDD) can estimate average treatment effects, they are not good at estimating heterogeneous treatment effects.
+
+-   This is where CML steps in, aiming to uncover these causal relationships borrowing the predictive power of machine learning tools.
+
+## Causal Forest
+
+-   Causal Forest, a part of the CML toolkit, is particularly noteworthy. It is an extension of the Random Forest. The core idea of Causal Forest is to estimate the causal effect of a treatment using recursive binary splitting similar to decision trees in random forest.
+
+-   It does so by building a large number of *causal trees*, each based on a subset of data and features.
+
+## Visual Illustration of Causal Forest
+
+![](images/decisiontree1.png){fig-align="center" width="342"}
+
+-   Unlike standard decision trees which aim at predicting outcomes, trees in a Causal Forest predict the *effect* of the intervention on each leaf.
+
+-   Each causal tree uses binary splitting at each possible value of all features $X$, and try to make the predicted treatment effects as differentiated as possible.
+
+## Implementation and Additional Reading Materials
+
+-   [`grf`](https://grf-labs.github.io/grf/) is the R package that can implement causal forest.
+
+    -   Microsoft Research team has developed Python version of `grf`, named [`EconML`](https://www.microsoft.com/en-us/research/project/econml/overview/).
+
+    -   Stanford YT channel also provides comprehensive [tutorial videos](https://youtube.com/playlist?list=PLxq_lXOUlvQAoWZEqhRqHNezS30lI49G-&si=evF_BJyNkymdvhow) by Prof Susan Athey et al.
+
+-   Data cleaning: each row stands for an individual
+
+\tiny
+
+```{r}
+#| message: false
+#| warning: false
+pacman::p_load(grf,fixest,dplyr,ggplot2,ggthemes)
+data("base_did")
+data_Y <- base_did %>%
+  mutate(Post = ifelse(period >=6,1,0))%>%
+  group_by(id,Post)%>%
+  summarise(avg_outcome = mean(y)) %>%
+  group_by(id) %>%
+  summarise(first_diff = avg_outcome[2] - avg_outcome[1] )%>%
+  ungroup()
+
+data_W <- base_did %>%
+  select(id, treat) %>%
+  unique()
+
+data_X <- base_did %>%
+  filter(period <6) %>%
+  group_by(id) %>%
+  summarise(avg_x = mean(x1)) %>%
+  ungroup()
+```
+
+## Run Causal Forest
+
+-   We can use causal forest to estimate the treatment effects for each individual and plot the histogram.
+
+\tiny
+
+```{r}
+#| message: false
+#| warning: false
+#| out-width: 50%
+#| fig-align: center
+cf <- causal_forest(X = data.matrix(data_X$avg_x),
+              Y = data.matrix(data_Y$first_diff),
+              W = data_W$treat)
+
+predicted_CATE <- predict(cf)
+
+ggplot()+
+  geom_histogram(data = predicted_CATE,
+                        aes(x = predictions),
+                 color = 'black',fill = 'white')+
+  theme_stata()
+```
+
+## Application: Heterogeneous Causal Effect of Surge Pricing on Uber Drivers
+
+-   @miaoEffectsSurgePricing2022 study the causal effects of surge pricing on driver labor supply decisions. The ridesharing company introduced surge pricing in one city but not the other, such that we have a nice difference-in-differences setup:
+
+-   Using causal forest method, we are able to compute the treatment effect of surge pricing for each individual driver, and plot the distribution.
+
+![](images/surgepricing_causalforest.png){fig-align="center" width="188"}
+
+## Clustering for Heterogeneity Analyses
+
+![](images/SurgePricingClustering.png){fig-align="center" width="300"}
+
+-   We use K-means clustering to segment out 2 clusters of drivers: full-time and part-time drivers.
+
+    -   Full-time drivers have decreased weekly revenue due to capacity constraint.
+
+    -   Part-time drivers flooded into the market and have increased weekly revenues by working more days.
+
+-   Although surge pricing enlarged the total pie for the company, the benefit was unevenly distributed across full-time and part-time drivers.
+
+## Tips for Term 3 Dissertation Using Causal Forest
+
+-   Help the company to analyze
+
+    -   A/B testings they have run; investigate heterogeneous treatment effects
+
+    -   natural experiment: some policies are introduced to some markets first
+
+-   Focus on how treatment effects vary with individuals of different characteristics
+
+# Unstructured Data
+
+![](images/unstructureddata.png){fig-align="center" width="355"}
+
+## Sentiment Analysis
+
+-   Sentiment Analysis leverages the power of natural language processing (NLP) and machine learning to understand customer emotions and opinions.
+
+-   This analytical technique processes vast amounts of unstructured text data from sources like social media posts, reviews, forum discussions, and customer feedback. By evaluating the tone and context of these texts, sentiment analysis classifies them into categories such as positive, negative, or neutral. This classification helps businesses gauge overall customer sentiment, monitor brand reputation, and understand consumer needs and preferences.
+
+## Implementation of Sentiment Analysis
+
+-   Implementation: [Sentiment Analysis in R](https://www.tidytextmining.com/sentiment)
+
+![](images/sentiment.png){fig-align="center" width="333"}
+
+## Topic Modeling
+
+-   Topic Modeling is a natural language processing (NLP) technique used to automatically identify and extract underlying topics from large volumes of text data.
+
+![](images/topicmodeling.png){fig-align="center" width="338"}
+
+## Implementation of Topic Modeling
+
+-   The intuition behind topic modeling is that documents comprise mixtures of topics, where a topic is characterized by a cluster of words with high probability of appearing together. Algorithms like Latent Dirichlet Allocation (LDA) are commonly used; they assume each document is a mixture of a small number of topics and that each word's presence is attributable to one of the document's topics. This probabilistic approach enables the algorithm to categorize and group words into topics without any prior labeling or training, making it an unsupervised machine learning technique.
+
+-   Implementation: [Topic modeling in R](https://www.tidytextmining.com/topicmodeling)
+
+## Application in Marketing
+
+-   Topic modeling enables marketers to uncover prevailing subjects in customer feedback or online discussions, thus providing insights into consumer behavior and preferences. This can inform targeted marketing strategies, product development, and content creation.
+
+-   For instance, by analyzing customer reviews, a company can identify common themes in customer satisfaction or dissatisfaction, guiding product improvements or highlighting areas for enhanced customer service.
+
+## Example of NLP: Guess the Book Name
+
+::: {.content-hidden when-format="beamer"}
+```{r}
+#| message: false
+#| warning: false
+pacman::p_load(tidyverse,tidytext,topicmodels,tm,SnowballC)
+data_review <- read.csv("https://www.dropbox.com/scl/fi/zi0pt5uuxnxhj2vksx0ga/data_review.csv?rlkey=cfu7ab85qa9z8zo2uutmkssk7&dl=1")
+data_text <- data_review %>%
+  select(review_id,text) %>%
+  rename(document = review_id)%>%
+  unnest_tokens(word, text)%>%
+  anti_join(stop_words) %>%
+  count(document,word,sort = T)%>%
+  cast_dtm(document, word, n)
+
+LDA_result <- data_text%>%
+  LDA(k = 3, control = list(seed = 1234)) 
+
+LDA_result%>%
+  tidy(matrix = 'beta') %>%
+        group_by(topic)%>%
+slice_max(beta, n = 3) %>% 
+  ungroup() %>%
+  arrange(topic, -beta)%>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
+
+```
+:::
+
+::: {.content-visible when-format="beamer"}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+pacman::p_load(tidyverse,tidytext,topicmodels,tm,SnowballC)
+data_review <- read.csv("https://www.dropbox.com/scl/fi/zi0pt5uuxnxhj2vksx0ga/data_review.csv?rlkey=cfu7ab85qa9z8zo2uutmkssk7&dl=1")
+data_text <- data_review %>%
+  select(review_id,text) %>%
+  rename(document = review_id)%>%
+  unnest_tokens(word, text)%>%
+  anti_join(stop_words) %>%
+  count(document,word,sort = T)%>%
+  cast_dtm(document, word, n)
+
+LDA_result <- data_text%>%
+  LDA(k = 3, control = list(seed = 1234)) 
+
+LDA_result%>%
+  tidy(matrix = 'beta') %>%
+        group_by(topic)%>%
+slice_max(beta, n = 5) %>% 
+  ungroup() %>%
+  arrange(topic, -beta)%>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
+
+```
+:::
+
+## Tips for Term 3 Dissertation Projects Using Unstructured Data
+
+-   Collect text data from Google review, online forums, TrustPilot, Twitter using data crawlers.
+
+-   Conduct sentiment analysis and topic modeling for the text data by each month.
+
+-   Investigate the evolving trend of sentiments and topic, and how company strategies dynamically affect customer sentiment/topics.

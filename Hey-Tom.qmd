@@ -1,0 +1,91 @@
+---
+author: Dr Wei Miao
+institute: UCL School of Management
+date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(9))`"
+date-format: long
+title: "Hey Tom"
+df-print: kable
+colorlinks: true
+code-line-numbers: true
+format:
+  html: 
+    toc: true
+    number-sections: true
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: true
+    code-copy: hover
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  freeze: auto
+editor_options: 
+  chunk_output_type: inline
+bibliography: references.bib
+---
+
++------------------------------------------------------------------------------------------------+
+| Hey Jude, by Beatles                                                                           |
++================================================================================================+
+| Hey \[**G**\] Jude don't make it \[**D**\] bad                                                 |
+|                                                                                                |
+| Take a \[**D7**\] sad song and make it \[**G**\] better                                        |
+|                                                                                                |
+| Re\[**C**\]member to let her into your \[**G**\] heart                                         |
+|                                                                                                |
+| Then you can \[**D7**\] start to make it \[**G**\] better                                      |
++------------------------------------------------------------------------------------------------+
+| Hey \[**G**\] Jude don't be a-\[**D**\]fraid                                                   |
+|                                                                                                |
+| You were \[**D7**\] made to go out and \[**G**\] get her                                       |
+|                                                                                                |
+| The \[**C**\] minute you let her under your \[**G**\] skin                                     |
+|                                                                                                |
+| Then you be\[**D7**\]gin to make it \[**G**\] better \[**G**\]                                 |
++------------------------------------------------------------------------------------------------+
+| **\[G7\]**And any time you feel the **\[C\]** pain hey **\[Em\]** Jude re-\[**Am**\]frain      |
+|                                                                                                |
+| Don't **\[Am7\]** carry the **\[D\]** world u**\[D7\]**pon your **\[G\]** shoulder **\[G\]**   |
+|                                                                                                |
+| **\[G7\]**For well you know that it's a **\[C\]** fool who **\[Em\]** plays it **\[Am\]** cool |
+|                                                                                                |
+| By **\[Am7\]** making his **\[D\]** world a **\[D7\]** little **\[G\]** colder                 |
+|                                                                                                |
+| **\[G\]** Na na na **\[G7\]**na na na na **\[D7\]** na na **\[G\]** **\[D7\]**                 |
++------------------------------------------------------------------------------------------------+
+
+![](images/class19_Tom.png){fig-align="center" width="258"}
+
++----------------------------------------------------------------------------------------------------------------------------------+
+| Hey Tom, by Wei                                                                                                                  |
++==================================================================================================================================+
+| Hey \[**G**\] Tom don't make it \[**D**\] bad                                                                                    |
+|                                                                                                                                  |
+| Take a \[**D7**\] T4 Bubble Tea and smash the final \[**G**\] assignment                                                         |
+|                                                                                                                                  |
+| Re\[**C**\]member to let R into your \[**G**\] heart                                                                             |
+|                                                                                                                                  |
+| Then you can \[**D7**\] start to make Wei \[**G**\] proud                                                                        |
++----------------------------------------------------------------------------------------------------------------------------------+
+| Hey \[**G**\] Tom don't skip my \[**D**\] class                                                                                  |
+|                                                                                                                                  |
+| I saw you tapped your card and left \[**D7**\], making my heart \[**G**\] so broken                                              |
+|                                                                                                                                  |
+| The \[**C**\] minute you use Python \[**G**\] in front of me                                                                     |
+|                                                                                                                                  |
+| Then I will \[**D7**\] use \[**G**\] Avada Kedavra                                                                               |
++----------------------------------------------------------------------------------------------------------------------------------+
+| **\[G7\]**And any time you feel the pain **\[C\]** hey **\[Em\]** Tom come to \[**Am**\] Wei                                     |
+|                                                                                                                                  |
+| Don't **\[Am7\]** carry the **\[D\]** world u**\[D7\]**pon your **\[G\]** shoulder **\[G\]**                                     |
+|                                                                                                                                  |
+| **\[G7\]**No matter it's a **\[C\]** stats question **\[Em\]** no problem **\[Am\]** just come to Wei                            |
+|                                                                                                                                  |
+| All **\[Am7\]** he needs in return **\[D\]** is a **\[D7\]** T4 bubble **\[G\]** tea                                             |
+|                                                                                                                                  |
+| **\[G\]** Na Na Na **\[G7\]** R is the best language in the world **\[D7\]** Marketing is the best subject! **\[G\]** **\[D7\]** |
++----------------------------------------------------------------------------------------------------------------------------------+

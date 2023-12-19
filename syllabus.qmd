@@ -21,17 +21,17 @@ date-format: long
 
 # Course Objective
 
-Marketing analytics addresses how to utilize the right analytics tools to guide marketing tactics and strategies in a scientific manner. Driven by recent advances in information and communication technologies, the very nature of marketing analytics has evolved. This module provides students with systematic and practical training in causal inference, predictive analytics, and programming tools in solving real-life marketing problems.[^1]
+Marketing analytics addresses how to utilize the right analytics tools to guide marketing tactics and strategies in a scientific manner. Driven by recent advances in information and communication technologies, the very nature of marketing analytics has evolved. This module provides students with systematic and practical training in R programming, machine learning, and causal inference tools to solve real-life marketing problems[^1].
 
-[^1]: Just a little heads up -- unlike undergrad marketing modules where you mainly learn marketing strategies and concepts, this module focuses on "analytics" (which comes first) and its application in "marketing" (which comes next).
+[^1]: Just a little heads up \-- unlike undergrad marketing modules where you mainly learn marketing strategies and concepts, this module focuses on "analytics" (which comes first) and its application in "marketing" (which comes next)
 
-In week 1, students will learn the concept of marketing process and how to compute customer lifetime value using R. In week 2, students will start building up dataset cleaning and manipulation skills with the dplyr package. In week 3 and week 4, students will learn predictive analytics and how to apply machine learning models for segmentation, targeting, and customer relationship management.
+In the first week, students will learn the principles of marketing and how to conduct cost-benefit analyses for marketing activities. Starting in week 2, students will gradually acquire data wrangling skills in R and learn how to apply these skills in descriptive analytics.
 
-From week 5 to week 9, students will learn causal inference tools, which help marketers correctly measure the causal effects of marketing initiatives on marketing outcomes. Students will get hands-on training of A-B testing (randomized controlled trials), instrumental variable, difference-in-differences, and regression discontinuity designs. Through a series of case studies each week, students will learn how to apply these causal inference techniques in optimizing marketing mix such as promotion and pricing.
+In week 3 and week 4, students will learn predictive analytics and how to apply machine learning models for segmentation, targeting, and customer relationship management.
 
-In the final week, students will be introduced to the state-of-the-art causal machine learning (causal forest), which combines causal inference with machine learning.
+In the remaining weeks, students will learn causal inference tools, which help marketers correctly measure the causal effects of marketing initiatives on marketing outcomes. Students will get hands-on training in A/B testing, linear regression, instrumental variable method, difference-in-differences design, regression discontinuity design, and causal machine learning.
 
-At the end of the module, students will be able to carry out independent marketing research for their dissertation projects and their future jobs.
+The course uses a combination of lectures, cases, and exercises to achieve the best learning outcomes. This course takes a very hands-on approach with real-world databases and equips students with tools that can be used immediately on the job. At the end of the module, students will be able to carry out independent marketing research for their dissertation projects and their future jobs.
 
 # Course Structure (tentative)
 
