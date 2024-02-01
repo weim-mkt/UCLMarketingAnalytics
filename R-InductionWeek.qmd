@@ -696,12 +696,12 @@ x <- c(1,3,8,7)
 
 ## Matrices: creating matrices
 
-### Creating matrices: matrix()
+### Creating matrices: `matrix()`
 
 -   A matrix can be created using the command `matrix()`
     -   the first argument is the vector to be converted into matrix
     -   the second argument is the number of rows
-    -   the last argument is the number of cols (optional)
+    -   the last argument is the number of cols
 
 ```{r}
 matrix(1:9, nrow = 3, ncol = 3)
@@ -711,13 +711,13 @@ matrix(1:9, nrow = 3, ncol = 3)
 R by default inserts elements **vertically** by **columns**
 :::
 
--   R will fill in the matrix by order and discard the remaining elements once fully filled
+-   R will fill in the matrix by column and discard the remaining extra elements once fully filled, with a warning message
 
 ```{r}
 matrix(1:9, nrow = 3, ncol = 2)
 ```
 
--   R will fill in the matrix by order and recycle to fill in the remaining elements
+-   R will fill in the matrix by order and recycle from the beginning of the vector to fill in the remaining elements, with a warning message.
 
 ```{r}
 matrix(1:9, nrow = 3, ncol = 4)
@@ -727,31 +727,29 @@ matrix(1:9, nrow = 3, ncol = 4)
 
 However, we can ask R to insert by rows by setting the `byrow` argument.
 
-```{r matrix_byrow, include=T, echo=T}
+```{r}
 matrix(1:9, nrow = 3, ncol = 3, byrow = TRUE)
 ```
 
-### Creating matrices: concatenation of matrices cbind() and rbind()
+### Creating matrices: combine matrices `cbind()` and `rbind()`
 
 We can use `cbind()` and `rbind()` to concatenate vectors and matrices into new matrices.
 
 -   `cbind()` does the column binding
 
-```{r, include=T, echo=T}
-x <- cbind(1:3, 4:6) # column bind
-x
-```
-
--   `cbind()` can also operate on matrices.
-
 ```{r}
-cbind(x,x)
+a <- matrix(1:6, nrow = 2, ncol = 3)
+
+a
+
+cbind(a, a) # column bind
+
 ```
 
 -   `rbind()` does the row binding
 
 ```{r}
-rbind(7:9, 10:12) # row bind
+rbind(a, a) # row bind
 ```
 
 ## Matrices: indexing and subsetting
@@ -759,23 +757,25 @@ rbind(7:9, 10:12) # row bind
 Matrices have two dimensions: rows and columns. Therefore, to extract elements from a matrix, we just need to specify which row(s) and which column(s) we want.
 
 ```{r}
+x <- matrix(1:9, nrow = 3, ncol = 3)
 x
 ```
 
--   Extract an element
-    -   1 is specified for row index, so we will extract elements from the first row
-    -   1 is specified for column index, so we will extract elements from the the second column
-    -   Altogether, we extract the single element in row 1, column 2.
+-   Extract the element in the 2nd row, 3rd column.
+    -   use **square bracket** with a coma inside `[ , ]` to indicate subsetting; the argument before coma is the row index, and the argument after the coma is the column index.
+        -   2 is specified for row index, so we will extract elements from the first row
+        -   3 is specified for column index, so we will extract elements from the the second column
+        -   Altogether, we extract a single element in row 2, column 3.
 
-```{r matrix_subset, include=T, echo=T}
-x[1,2] # the element in the 1st row, 2nd column
+```{r}
+x[2,3] # the element in the 2nd row, 3rd column
 
 ```
 
--   If we leave blank for a dimension, we extract all elements of that dimension.
-    -   1 is specified for row index, so we will extract elements from the first row
-    -   Nothing is specified for column index, so we will extract all elements from all columns
-    -   Altogether, we extract all elements in the first row
+-   If we leave blank for a dimension, we extract all elements along that dimension.
+    -   if we want to take out the entire first row
+        -   1 is specified for the row index
+        -   column index is blank
 
 ```{r}
 x[1,] # all elements in the first row
@@ -791,60 +791,71 @@ x[1,] # all elements in the first row
 
 ## Matrices: operations
 
+### Apply a math function to a matrix
+
 Let's use 3 matrices `x`, `y`, and `z`:
 
 ```{r}
 x <- matrix(1:6, nrow = 3)
 y <- matrix(1:6, byrow = T, nrow = 2)
+x
+y
 ```
 
 -   Functions will be vectorized over all elements in a matrix
 
-```{r matrix_operations1, include=T, echo=T}
-x
-z<- x^2
+```{r}
+z <- x^2
 z
 ```
 
 ### Matrices' operations: matrix addition and multiplication
 
--   If the two matrices are of the same dimensions, they can do element-wise operations, including the `*`
+-   If the two matrices are of the same dimensions, they can do element-wise operations, including element-wise addition and element-wise multiplication
 
-```{r matrix_operations2, include=T, echo=T}
+```{r}
 x + z   # elementwise addition
-x * z
 
 ```
 
--   We can also use `%*%` to indicate matrix multiplication
+```{r}
+x * x 
+```
+
+-   If we want to perform the matrix multiplication as in linear algebra, we need to use `%*%`
+    -   x and y must have conforming dimensions
 
 ```{r}
-x%*%y # matrix multiplication
+x
+y
+x %*% y # matrix multiplication
 ```
 
 ### Matrices' operations: inverse and transpose
 
 -   We use `t()` to do matrix transpose
 
-```{r matrix_operations3, include=T, echo=T}
+```{r}
+x
 t(x) # transpose
 ```
 
 -   We use `solve()` to get the inverse of an matrix
 
 ```{r}
+x
 solve(t(x)%*%x) # inverse; must be on a square matrix
 ```
 
 # Data Frames
 
-## Data Frames: creating dataframe
+## Data Frames: creating data.frame
 
-### Data Frames: create dataframe using data.frame()
+### Data Frames: create dataframe using `data.frame()`
 
--   Data Frame is the R object that we will deal with most of the time in the MSc program. You can think of `data.frame` as a spreadsheet in excel.
+-   Data Frame is the R object that we will deal with most of the time. You can think of `data.frame` as a spreadsheet in excel.
 
-```{r dataframe, include=T, echo=T}
+```{r}
 df <-  data.frame(id = 1:4,
   name = c("David", "Yongdong", "Anil", "Wei"),
   wage = rnorm(n=4, mean = 10^5, sd = 10^3), 
@@ -871,7 +882,7 @@ df
 
 -   You can verify the size of the `data.frame` using the command `dim()`; or `nrow()` and `ncol()`
 
-```{r, include=T, echo=T}
+```{r}
 dim(df)
 nrow(df)
 ncol(df)
@@ -879,7 +890,7 @@ ncol(df)
 
 -   You can get the data type info using the command `str()`
 
-```{r, include=T, echo=T}
+```{r}
 class(df)
 str(df)
 ```
@@ -934,7 +945,7 @@ x
 
 A list is an R object that can contain anything. List is pretty useful when you need to store objects for latter use.
 
-```{r list, include=T, echo=T}
+```{r}
 x <- 1:2
 y <- c("a", "b")
 L <- list( numbers = x, letters = y)
@@ -948,7 +959,7 @@ There are many ways to extract a certain element from a list.
 -   by the name of the element
 -   by dollar sign `$`
 
-```{r list_subsetting, include=T, echo=T}
+```{r}
 L[[1]] # extract the first element
 L[['numbers']] # based on element name
 L$numbers # extract the element called numbers
@@ -956,11 +967,11 @@ L$numbers # extract the element called numbers
 
 After extracting the element, we can work on the element further:
 
-```{r list_subsetting2, include=T, echo=T}
+```{r}
 L$numbers[1:3] > 2
 ```
 
-# Programming Basics
+# Programming Basics: Flow Control
 
 ## if/else
 
@@ -978,7 +989,7 @@ if (condition == TRUE) {
 
 Example 1:
 
-```{r controlflow, include=T, echo=T}
+```{r}
 
 a <- 15
 
@@ -993,7 +1004,7 @@ larger_than_10
 
 Example 2:
 
-```{r, include=T, echo=T}
+```{r}
 x <- -5
 if(x > 0){
   print("x is a non-negative number")
@@ -1008,7 +1019,7 @@ As the name suggests, in a loop the program repeats a set of instructions many t
 
 Loop is very useful for repetitive jobs.
 
-```{r loops, include=T, echo=T}
+```{r}
 for (i in 1:10){ # i is the iterator
   # loop body: gets executed each time
   # the value of i changes with each iteration
@@ -1019,7 +1030,7 @@ for (i in 1:10){ # i is the iterator
 
 We can also nest loops into other loops.
 
-```{r loops3, include=T, echo=T}
+```{r}
 x <- cbind(1:3, 4:6) # column bind
 x
 y <- cbind(7:9, 10:12) # row bind

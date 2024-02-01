@@ -1,0 +1,25 @@
+---
+title: "Difference-in-differences and recent developement"
+author: Wei Miao
+affiliation: UCL School of Management
+date: "2023/12/30"
+date-format: long
+format:
+    html:
+      number-sections: true
+      df-print: paged
+      page-layout: full
+      toc-depth: 2
+      code-line-numbers: false
+      code-copy: hover
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  freeze: auto
+---
+
+# Conditional Independence Assumption
