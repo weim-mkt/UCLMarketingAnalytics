@@ -84,7 +84,7 @@
     "text": "Primary language is Python\n\nProgramming (MSIN00143), Business Strategy (MSIN0093), Machine Learning electives\n\nSecondary language is R\n\nMarketing Analytics (MSIN0094), Statistical Foundations (MSIN0096)\n\n\n\n\n\n\nR project was initiated by Robert Gentleman and Ross Ihaka (Univ of Auckland) in 1991; both are statisticians, who later made the language open-source.\nSince 1997, R has been developed by the R Core Team on CRAN.\nAs of January 2022, it has almost 20k contributed packages.\nAs of 2024, R is ranked 18th in the TIOBE index1.\n\n\n\n\n\nSuper powerful data analytics and visualizations, including2\n\nData wrangling (dplyr) and data visualization (ggplot)\nStatistics and Econometrics (major advantage of R over Python)\nPredictive analytics such as machine learning\n\nWrite beautiful reports/dissertations/presentations using Quarto\n\nWrite your MSc dissertation\nEffortlessly build websites. I built and maintain my personal website and the marketing course website all in R.\n\n\n\n\n\n\nR versus Python\n\n\n\n\n\n\n\n\nR\nPython\n\n\n\n\nLanguage purpose\nR is a statistical language specialized in the data analytics and visualization.\nBest for data science, may not be robust for production environment.\nPython is a general-purpose language that is used for the deployment and development of various projects.\nBest for production environment.\n\n\nData analytics\nR is better at statistical models and econometrics.\nPython is better at machine learning due to support from PyTorch and TensorFlow.\n\n\nIDEs (Intergrated Development Environment)\nRStudio\nMany options such as Jupyter Notebook, Spyder, Pycharm, etc.\n\n\nTargeted users\nPrimary users of R include data scientists and researchers in academia, who heavily rely on data analyses and visualization.\nPrimary users of python include developers and programmers.\n\n\n\n\n\n\nR is the programming language, and we need a “place” to write codes. This place is called an Integrated development environment (IDE).\nRStudio is so far the best R IDE. And it’s interface consists of the following major panels (clockwise from top left):\n\nscript: (top left) where you do the coding\nenvironment: (top right) a list of named objects that we have generated\nhistory: (top right) the list of past commands that we have used\nhelp: (bottom right) user manuals of functions available in R\npackage: (bottom right) a collection of ready-to-use packages written by others\nconsole: (bottom left) where you can run commands interactively with R and see code outputs\n\n\n\n\n\n\nYou can write codes interactively in the R console. See an example: Type the following code into your console and see what happens.\n\nprint('Hello World')\n\n[1] \"Hello World\"\n\n\nUsed for simple exploratory, unstructured tasks, where you don’t need to keep a record of codes.\n\ne.g., summary statistics; check variable values, etc.\n\n\n\n\n\n\nQuarto3 files have a .qmd suffix. You can think of Quarto as Microsoft Word that can run R codes.\nIf you have experience with Jupyter Notebook, Quarto is the R equivalent of Jupyter Notebook, but just much more powerful.\nQuarto can create dynamic contents with R, conveniently combining data analytics work with beautiful reporting.\nNow, let’s create a new quarto file together! Name it “MyFavoriateShow.qmd” and save it to your download folder.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -95,7 +95,7 @@
     "text": "Primary language is Python\n\nProgramming (MSIN00143), Business Strategy (MSIN0093), Machine Learning electives\n\nSecondary language is R\n\nMarketing Analytics (MSIN0094), Statistical Foundations (MSIN0096)",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -106,7 +106,7 @@
     "text": "R project was initiated by Robert Gentleman and Ross Ihaka (Univ of Auckland) in 1991; both are statisticians, who later made the language open-source.\nSince 1997, R has been developed by the R Core Team on CRAN.\nAs of January 2022, it has almost 20k contributed packages.\nAs of 2024, R is ranked 18th in the TIOBE index1.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -117,7 +117,7 @@
     "text": "Super powerful data analytics and visualizations, including2\n\nData wrangling (dplyr) and data visualization (ggplot)\nStatistics and Econometrics (major advantage of R over Python)\nPredictive analytics such as machine learning\n\nWrite beautiful reports/dissertations/presentations using Quarto\n\nWrite your MSc dissertation\nEffortlessly build websites. I built and maintain my personal website and the marketing course website all in R.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -128,7 +128,7 @@
     "text": "R versus Python\n\n\n\n\n\n\n\n\nR\nPython\n\n\n\n\nLanguage purpose\nR is a statistical language specialized in the data analytics and visualization.\nBest for data science, may not be robust for production environment.\nPython is a general-purpose language that is used for the deployment and development of various projects.\nBest for production environment.\n\n\nData analytics\nR is better at statistical models and econometrics.\nPython is better at machine learning due to support from PyTorch and TensorFlow.\n\n\nIDEs (Intergrated Development Environment)\nRStudio\nMany options such as Jupyter Notebook, Spyder, Pycharm, etc.\n\n\nTargeted users\nPrimary users of R include data scientists and researchers in academia, who heavily rely on data analyses and visualization.\nPrimary users of python include developers and programmers.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -139,7 +139,7 @@
     "text": "R is the programming language, and we need a “place” to write codes. This place is called an Integrated development environment (IDE).\nRStudio is so far the best R IDE. And it’s interface consists of the following major panels (clockwise from top left):\n\nscript: (top left) where you do the coding\nenvironment: (top right) a list of named objects that we have generated\nhistory: (top right) the list of past commands that we have used\nhelp: (bottom right) user manuals of functions available in R\npackage: (bottom right) a collection of ready-to-use packages written by others\nconsole: (bottom left) where you can run commands interactively with R and see code outputs",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -150,7 +150,7 @@
     "text": "You can write codes interactively in the R console. See an example: Type the following code into your console and see what happens.\n\nprint('Hello World')\n\n[1] \"Hello World\"\n\n\nUsed for simple exploratory, unstructured tasks, where you don’t need to keep a record of codes.\n\ne.g., summary statistics; check variable values, etc.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -161,7 +161,7 @@
     "text": "Quarto3 files have a .qmd suffix. You can think of Quarto as Microsoft Word that can run R codes.\nIf you have experience with Jupyter Notebook, Quarto is the R equivalent of Jupyter Notebook, but just much more powerful.\nQuarto can create dynamic contents with R, conveniently combining data analytics work with beautiful reporting.\nNow, let’s create a new quarto file together! Name it “MyFavoriateShow.qmd” and save it to your download folder.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -172,7 +172,7 @@
     "text": "2.1 YAML header\n\nYou can think of YAML header as a MS Word template, which determines how your final report looks like (font, font size, color, margins, etc.).\nThe YAML header is always at the beginning of a document, separated from the main text by three dashes (---). YAML does not appear in the final report.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -183,7 +183,7 @@
     "text": "2.2 Authoring with normal texts\nRStudio provides two ways to edit a quarto file (1) visual mode and (2) source mode.\n\nRStudio’s visual editor offers a Microsoft-Word like experience for you to write R codes.\n\nCheck the rich formatting tools we can use for authoring a report\n\nIf you are familiar with markdown syntax, you can use the source mode to write the report (optional; for advanced users only).\n\n\n\n\nVisual Mode versus Source Mode\n\n\n\n\n\n\n\n\nExercise\n\n\n\nCreate a new quarto file from RStudio with the following level-1 and level-2 headers\nLevel 1: Slowhorse Season 4\nLevel 2: Episode 1: Identity Theft\nBody: A London bombing puts Taverner under pressure. When River grows concerned for his grandfather, Louisa encourages him to go for a visit.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -194,7 +194,7 @@
     "text": "2.3 Coding with code blocks\n\nIn qmd files, we write R codes in so-called code chunks (sometimes referred to as code cells or code blocks) identified with {r}.\nTo insert a code chunk, click Insert -&gt;Code Chunk -&gt; R. You can also use the shortcut Ctrl + Alt + I or Cmd + Option + I.\n\n\n\n\n\n\n\nCaveat\n\n\n\nLeave the first line as {r} only, do not write anything else on the first line!\n\n\n\nYou can run each code chunk interactively by clicking the green solid triangle (run current code chunk). RStudio executes the codes in the code chunk and displays the results.\nSee an example and try on your computer!\n\n\nprint('R is the Best Language! Way better than Python! The battle is on!')\n\n[1] \"R is the Best Language! Way better than Python! The battle is on!\"\n\n\n\n\n\n\n\n\nExercise\n\n\n\nInsert the above R code block in your quarto file under any section.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -205,7 +205,7 @@
     "text": "2.4 Rendering a report\nAt the end, when the Quarto document (including codes and main texts) are ready, use the Render button in the RStudio IDE to render the file.\nThe rendered report will be in the same folder with your qmd file.\n\n\n\n\n\n\n\nExercise\n\n\n\nRender your quarto file into a document and see how it looks like.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -216,7 +216,7 @@
     "text": "2.5 More learning resources for Quarto (Optional)\n\nThe available YAML fields vary based on document format\n\nHere for YAML fields for PDF documents\nHere for MS Word\nHere for HTML documents\n\nMarkdown syntax\n\nMarkdown basics\nMarkdown practice\n\nQuarto (recommended to be reviewed after-class)\n\nGet started",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -227,7 +227,7 @@
     "text": "3.1 Named objects\n\nR is an object-oriented language, so we will be working on named objects.\nWe use the left arrow &lt;- to create a named object, the keyboard shortcut for &lt;- for windows users is Alt + -, or for mac users, Option + -.\nThe &lt;- is an assignment operator, which assigns the R objects on the RHS to the name on the LHS.4\nThe below code creates a new object called ‘x’ in R; x is a numeric object; its value is 3.\n\n\n# create an object x with value 3\nx &lt;- 3\n\n\nAfter an object is created, we can refer to the object by its name\n\n\n# print out x\nx\n\n[1] 3\n\n\n\nWe can also perform operations on the object\n\n\n# Question: hmmm, why does Wei chooses these two numbers?\nx^2\n\n[1] 9\n\nx^3\n\n[1] 27\n\n\n\n\n\n\n\n\nExercise\n\n\n\nInsert a code block in your quarto file, which does the following:\n\nCreate an object with name ‘x’ with the formula of 2 + 2",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -238,7 +238,7 @@
     "text": "3.2 Rules for naming object\nFor a variable to be valid, it should follow these rules\n\nIt should contain letters, numbers, and only dot or underscore characters.\nIt cannot start with a number (eg: 2iota), or a dot, or an underscore.\n\n\n# 2iota &lt;- 2\n# .iota &lt;- 2\n# _iota &lt;- 2\n\n\nIt should not be a reserved word in R (eg: mean, sum, etc.).\n\n\n# mean &lt;- 2\n\n\n\n\n\n\n\nTips\n\n\n\nIn the future, it’s good practice to use memorable names to name an object\n\nFor instance, use prefix “df_” or “data_” to name datasets.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -249,7 +249,7 @@
     "text": "3.3 Functions\n\nA function usually takes (one or several) objects as input, run specific operations on the object(s) defined by the function, and then return an output.\nFor instance, an R’s built-in function sqrt() takes a number as input, and returns the square root of the number. Let’s use it on object x.\n\n\nsqrt(x) \n\n[1] 1.732051\n\n\n\nWe will heavily rely on functions to conduct data analyses. For how to use a new function, search the function in RStudio’s help panel.\n\n\n\n\n\n\n\nExercise\n\n\n\n\nSearch and learn the usage of function “log()”.\nInsert a code block in your quarto file to compute the logarithm of x.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -260,7 +260,7 @@
     "text": "3.4 Collection of functions: Packages\nThe base R already comes with many useful built-in functions to perform basic tasks, but as data scientists, we need more.\nTo perform certain tasks (such as a machine learning model), we can definitely write our own code from scratch, but it takes lots of (unnecessary) effort. Fortunately, many packages have been written by others for us to directly use.\n\nTo download a package, hit Tools -&gt; Install Packages in RStudio, and type the package name in the pop-up window. Now, download the package praise.\nTo load the packages, we need to type library().\n\n\nlibrary(praise)\n\n\nNow that the package is loaded, you can use the functions in it. praise() is a function in the praise package.\n\n\npraise()\n\n[1] \"You are dazzling!\"\n\n\n\n\n\n\n\n\nTips\n\n\n\n\nPackages need to be downloaded only once, but need to be loaded every time you restart the RStudio.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -271,7 +271,7 @@
     "text": "3.5 Comment codes\nYou can put a # before any code, to indicate that any codes after the # on the same line are your comments, and will not be run by R.\nIt’s a good practice to often comment your codes, so that you can help the future you to remember what you were trying to achieve.\n\n# print(\"Let's fund Wei for an iPhone 16 Pro Max as a birthday gift!\")\n\n\n# Is x 1 or 2 below?\nx &lt;- 1 # +1",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -282,7 +282,7 @@
     "text": "4.1 Data types\n\n4.1.1 Numeric\n\nWe can use R as a calculator for numeric objects\n\n\n# Numeric Vector \nnum2 &lt;- 2.5\nlog(num2)\n\n[1] 0.9162907\n\nnum2^2\n\n[1] 6.25\n\nexp(num2)\n\n[1] 12.18249\n\n\n\n\n4.1.2 Logical (TRUE, FALSE):\n\nLogical objects are used to store logical values, such as TRUE and FALSE.\n\n\nnum2 &lt;- 2.5\n\n# larger than 2?\nnum2 &gt; 2\n\n[1] TRUE\n\n# smaller than 2?\nnum2 &lt; 2\n\n[1] FALSE\n\n# equal to 2?\nnum2 == 2\n\n[1] FALSE\n\n# not equal to 2?\nnum2 != 2\n\n[1] TRUE\n\n\n\nSometimes, we may need to operation on multiple relational operations. We can use logical operators to combine multiple relational operations.\n\n\nT & F # and\n\n[1] FALSE\n\nT | F # or\n\n[1] TRUE\n\n!T # not\n\n[1] FALSE\n\n\n\nFor instance, we may want to know if a number is between 3 and 8.\n\n\nnum2 &gt;= 3 & num2 &lt;= 8  \n\n[1] FALSE\n\n\n\n\n4.1.3 Character:\n\nCharacters are enclosed within a pair of quotation marks.\nSingle or double quotation marks can both work.\nIf even a character may contain numbers, it will be treated as a character, and R will not perform any mathematical operations on it.\n\n\nstr1 &lt;- \"1 + 1 = 2\"",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -293,7 +293,7 @@
     "text": "4.2 Check data types using class()\nWe can use class() to check the type of an object in R.\n\na &lt;- '1+1'\nclass(a)\n\n[1] \"character\"\n\n\n\nb &lt;- 1+1\nclass(b)\n\n[1] \"numeric\"\n\n\nThis is very useful when we first load data from external databases, we need to make sure variables are of the correct data types.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -304,7 +304,7 @@
     "text": "4.3 Data type: conversion\nSometimes, data types of variables from raw data may not be what we want; we need to change the data type of a variable to the appropriate one.\nSee the following example:\n\na is a string, and we cannot use mathematical operations on it, or R will report errors.\n\n\na &lt;- '1'\nclass(a)\n\n[1] \"character\"\n\na + 1\n\nError in a + 1: non-numeric argument to binary operator\n\n\n\nWe can convert a to a numeric value. To convert from character to numeric, we use as.numeric()\n\n\nb &lt;- as.numeric(a)\nclass(b)\n\n[1] \"numeric\"",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -315,7 +315,7 @@
     "text": "5.1 Creating vectors\n\n5.1.1 Creating vectors: c()\n\nIn R, a vector is a collection of elements of the same data type, which is often used to store a variable of a dataset. For instance, a vector can store the income of a group of people, the final grades of students, etc.\nVector can be created using the function c() by listing all the values in the parenthesis, separated by comma ‘,’.\nc() stands for “combine”.\n\n\nIncome &lt;- c(1, 3, 5, 10)\nIncome\n\n[1]  1  3  5 10\n\n\n\nVectors must contain elements of the same data type. If not, it will automatically convert elements into the same type (usually character type).\n\n\nx &lt;- c(1, \"intro\", TRUE)\nclass(x)\n\n[1] \"character\"\n\n\n\n\n5.1.2 Checking the number of elements in a vector: length()\nYou can measure the length of a vector using the command length()\n\nx &lt;- c('R',' is', ' the', ' best', ' language')\nlength(x)\n\n[1] 5\n\n\n\n\n5.1.3 Creating numeric sequences: seq()\nIt is also possible to easily create sequences with patterns\n\nuse seq() to create sequence with fixed steps\n\n\n# use seq()\nseq(from = 1, to = 2, by = 0.1)\n\n [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0\n\n\n\nIf the step is 1, there’s a convenient way using :\n\n\n1:5\n\n[1] 1 2 3 4 5\n\n\n\n\n5.1.4 Combine multiple vectors into one: c()\n\nSometimes, we may want to combine multiple vectors into one. For instance, we may have collected income data from two different sources, and we want to combine them into one vector.\nWe can use c() to combine different vectors; this is very commonly used to concatenate vectors.\n\n\nIncome1 &lt;- 1:3 \nIncome2 &lt;- c(10, 15) \n\n\nc(Income1,Income2)\n\n[1]  1  2  3 10 15\n\n\n\n\n\n\n\n\nExercise\n\n\n\nCreate a sequence of {1,1,2,2,3,3,3}.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -326,7 +326,7 @@
     "text": "5.2 Indexing and subsetting\nWe put the index of elements we would like to extract in a square bracket [ ].\n\n# create a vector of income for 4 lecturers at UCL\n\nincome &lt;- c(5000, 5500, 6000, 9000)\n\n\nExtract a single element: use the index of the element\n\n\n# what is the income of the 3rd lecturer?\nincome[3]\n\n[1] 6000\n\n\n\nExtract multiple elements: use a vector of indices\n\n\n# what are the incomes of the 1st, 3rd, and 4th lecturers?\nincome[c(1,3,4)]\n\n[1] 5000 6000 9000",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -337,7 +337,7 @@
     "text": "5.3 Element-wise arithmetic operations\nR is a vectorized language, which broadcasts operations to all elements in a vector. This behavior is also called element-wise operations, or broadcasting.\n\nIf you operate on a vector with a single number, the operation will be applied to all elements in the vector\n\n\nx &lt;- c(1,3,8,7)\n\n\nx + 2\n\n[1]  3  5 10  9\n\n\n\nx * 2\n\n[1]  2  6 16 14\n\n\n\n\n\n\n\n\nExercise\n\n\n\nCreate a geometric sequence {2,4,8,16,32} using seq().",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -348,7 +348,7 @@
     "text": "5.4 Elementwise relational operations\n\nBesides arithmetic operations, we can also perform relational operations on vectors.\n\n\nx &lt;- c(1,3,8,7) \nx &gt; 2\n\n[1] FALSE  TRUE  TRUE  TRUE\n\n\n\nWe can also compare a vector with a vector, because R is vectorized\n\n\nincomeUCL &lt;-  c(6000, 4600, 7000, 9100,10000)\nincomeImperial &lt;- c(5000, 4500, 6000, 9000,10000)\nincomeUCL &gt; incomeImperial\n\n[1]  TRUE  TRUE  TRUE  TRUE FALSE",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -359,7 +359,7 @@
     "text": "5.5 Special relational operation: %in%\n\nA special relational operation is %in% in R, which tests whether an element exists in the object.\n\n\nx &lt;- c(1,3,8,7) \n\n3 %in% x\n\n[1] TRUE\n\n2 %in% x\n\n[1] FALSE",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -370,7 +370,7 @@
     "text": "5.6 After-class exercise\n\nCreate a vector of 10 numbers from 1 to 10, and extract the 2nd, 4th, and 6th elements.\nCreate a vector of 5 numbers from 1 to 5, and check if 3 is in the vector.\nNow the interest rate is 0.1, and you have 1000 pounds in your bank account. Calculate the amount in your bank account after 1 year, 2 years, and 3 years, respectively.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -381,7 +381,7 @@
     "text": "6.1 Matrices: creating matrices\n\n6.1.1 Creating matrices: matrix()\n\nA matrix can be created using the command matrix()\n\nthe first argument is the vector to be converted into matrix\nthe second argument is the number of rows\nthe last argument is the number of cols\n\n\n\nmatrix(1:9, nrow = 3, ncol = 3)\n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\n\n\n\n\n\n\n\nImportant\n\n\n\nR by default inserts elements vertically by columns.\n\n\n\nR will fill in the matrix by column and discard the remaining extra elements once fully filled, with a warning message\n\n\nmatrix(1:9, nrow = 3, ncol = 2)\n\nWarning in matrix(1:9, nrow = 3, ncol = 2): data length [9] is not a\nsub-multiple or multiple of the number of columns [2]\n\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\n\n\n6.1.2 Creating matrices: inserting by row\nHowever, we can ask R to insert by rows by setting the byrow argument.\n\nmatrix(1:9, nrow = 3, ncol = 3, byrow = TRUE)\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9\n\n\n\n\n6.1.3 Creating matrices: combine matrices cbind() and rbind()\nWe can use cbind() and rbind() to concatenate vectors and matrices into new matrices.\n\ncbind() does the column binding\n\n\na &lt;- matrix(1:6, nrow = 2, ncol = 3)\n\na\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\ncbind(a, a) # column bind\n\n     [,1] [,2] [,3] [,4] [,5] [,6]\n[1,]    1    3    5    1    3    5\n[2,]    2    4    6    2    4    6\n\n\n\nrbind() does the row binding\n\n\nrbind(a, a) # row bind\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n[3,]    1    3    5\n[4,]    2    4    6",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -392,7 +392,7 @@
     "text": "6.2 Matrices: indexing and subsetting\nMatrices have two dimensions: rows and columns. Therefore, to extract elements from a matrix, we just need to specify which row(s) and which column(s) we want.\n\nx &lt;- matrix(1:9, nrow = 3, ncol = 3)\nx\n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\n\n\nExtract the element in the 2nd row, 3rd column.\n\nuse square bracket with a coma inside [ , ] to indicate subsetting; the argument before coma is the row index, and the argument after the coma is the column index.\n\n2 is specified for row index, so we will extract elements from the first row\n3 is specified for column index, so we will extract elements from the the second column\nAltogether, we extract a single element in row 2, column 3.\n\n\n\n\nx[2,3] # the element in the 2nd row, 3rd column\n\n[1] 8\n\n\n\nIf we leave blank for a dimension, we extract all elements along that dimension.\n\nif we want to take out the entire first row\n\n1 is specified for the row index\ncolumn index is blank\n\n\n\n\nx[1,] # all elements in the first row\n\n[1] 1 4 7\n\n\n\n\n\n\n\n\nExercise\n\n\n\n\nExtract all elements in the second column\nExtract all elements in the first and third rows",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -403,7 +403,7 @@
     "text": "6.3 Matrices: operations\n\n6.3.1 Apply a math function to a matrix\nLet’s use 3 matrices x, y, and z:\n\nx &lt;- matrix(1:6, nrow = 3)\ny &lt;- matrix(1:6, byrow = T, nrow = 2)\nx\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\ny\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n\n\n\nFunctions will be vectorized over all elements in a matrix\n\n\nz &lt;- x^2\nz\n\n     [,1] [,2]\n[1,]    1   16\n[2,]    4   25\n[3,]    9   36\n\n\n\n\n6.3.2 Matrices’ operations: matrix addition and multiplication\n\nIf the two matrices are of the same dimensions, they can do element-wise operations, including element-wise addition and element-wise multiplication\n\n\nx + z   # elementwise addition\n\n     [,1] [,2]\n[1,]    2   20\n[2,]    6   30\n[3,]   12   42\n\n\n\nx * x \n\n     [,1] [,2]\n[1,]    1   16\n[2,]    4   25\n[3,]    9   36\n\n\n\nIf we want to perform the matrix multiplication as in linear algebra, we need to use %*%\n\nx and y must have conforming dimensions\n\n\n\nx\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\ny\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n\nx %*% y # matrix multiplication\n\n     [,1] [,2] [,3]\n[1,]   17   22   27\n[2,]   22   29   36\n[3,]   27   36   45\n\n\n\n\n6.3.3 Matrices’ operations: inverse and transpose\n\nWe use t() to do matrix transpose\n\n\nx\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\nt(x) # transpose\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n\n\n\nWe use solve() to get the inverse of an matrix\n\n\nx\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\nsolve(t(x)%*%x) # inverse; must be on a square matrix\n\n           [,1]       [,2]\n[1,]  1.4259259 -0.5925926\n[2,] -0.5925926  0.2592593",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -414,7 +414,7 @@
     "text": "7.1 Data Frames: creating data.frame\n\n7.1.1 Data Frames: create dataframe using data.frame()\n\nYou can think of data.frame as a spreadsheet in excel.\n\n\ndf &lt;-  data.frame(id = 1:4,\n  name = c(\"David\", \"Karima\", \"Anil\", \"Wei\"),\n  wage = rnorm(n=4, mean = 10^5, sd = 10^3), \n  male = c(T, T, T, T)\n  )\ndf\n\n\n  \n\n\n\n\nData frames can also be created from external sources, e.g., from a csv file or database.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -425,7 +425,7 @@
     "text": "7.2 Data Frames: Basics\n\nEach row stands for an observation; each column stands for a variable.\nEach variable should have a unique name.\nEach column must contain the same data type, but the different columns can store different data types.\n\ncompare with matrix?\n\nEach column must be of same length, because rows have the same length across variables.",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -436,7 +436,7 @@
     "text": "7.3 Data Frames: check dimensions and variable types\n\nYou can verify the size of the data.frame using the command dim(); or nrow() and ncol()\n\n\ndim(df)\n\n[1] 4 4\n\nnrow(df)\n\n[1] 4\n\nncol(df)\n\n[1] 4\n\n\n\nYou can get the data type info using the command str()\n\n\nstr(df)\n\n'data.frame':   4 obs. of  4 variables:\n $ id  : int  1 2 3 4\n $ name: chr  \"David\" \"Karima\" \"Anil\" \"Wei\"\n $ wage: num  100283 98822 99300 98970\n $ male: logi  TRUE TRUE TRUE TRUE\n\n\n\nGet the variables names of the data frame\n\n\nnames(df)\n\n[1] \"id\"   \"name\" \"wage\" \"male\"",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -447,7 +447,7 @@
     "text": "8.1 Arrays\n\nWe can use array() to generate a high-dimensional array\nJust like vectors and matrices, arrays can include only data types of the same kind.\nA 3D array is basically a combination of matrices each laid on top of other\n\n\nx &lt;- 1:4\nx &lt;- array(data = x, dim = c(2,3,2))\nx\n\n, , 1\n\n     [,1] [,2] [,3]\n[1,]    1    3    1\n[2,]    2    4    2\n\n, , 2\n\n     [,1] [,2] [,3]\n[1,]    3    1    3\n[2,]    4    2    4",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -458,7 +458,7 @@
     "text": "8.2 Lists\nA list is an R object that can contain anything. List is pretty useful when you need to store objects for latter use.\n\nx &lt;- 1:2\ny &lt;- c(\"a\", \"b\")\nL &lt;- list( numbers = x, letters = y)",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -469,7 +469,7 @@
     "text": "8.3 Lists: indexing and subsetting\nThere are many ways to extract a certain element from a list.\n\nby index\nby the name of the element\nby dollar sign $\n\n\nL[[1]] # extract the first element\n\n[1] 1 2\n\nL[['numbers']] # based on element name\n\n[1] 1 2\n\nL$numbers # extract the element called numbers\n\n[1] 1 2\n\n\nAfter extracting the element, we can work on the element further:\n\nL$numbers[1:3] &gt; 2\n\n[1] FALSE FALSE    NA",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -480,7 +480,7 @@
     "text": "9.1 if/else\nSometimes, you want to run your code based on different conditions. For instance, if the observation is a missing value, then use the population average to impute the missing value. This is where if/else kicks in.\nif (condition == TRUE) {\n  action 1\n} else if (condition == TRUE ){\n  action 2\n} else {\n  action 3\n}\nExample 1:\n\na &lt;- 15\n\nif (a &gt; 10) {\nlarger_than_10 &lt;- TRUE  \n} else {\n  larger_than_10 &lt;- FALSE\n}\n\nlarger_than_10  \n\n[1] TRUE\n\n\nExample 2:\n\nx &lt;- -5\nif(x &gt; 0){\n  print(\"x is a non-negative number\")\n} else {\n  print(\"x is a negative number\")\n}\n\n[1] \"x is a negative number\"",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -491,7 +491,7 @@
     "text": "9.2 Loops\nAs the name suggests, in a loop the program repeats a set of instructions many times, until the stopping criteria is met.\nLoop is very useful for repetitive jobs.\n\nfor (i in 1:10){ # i is the iterator\n  # loop body: gets executed each time\n  # the value of i changes with each iteration\n}",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -502,7 +502,7 @@
     "text": "9.3 Nested loops\nWe can also nest loops into other loops.\n\nx &lt;- cbind(1:3, 4:6) # column bind\nx\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\ny &lt;- cbind(7:9, 10:12) # row bind\ny\n\n     [,1] [,2]\n[1,]    7   10\n[2,]    8   11\n[3,]    9   12\n\nz &lt;- x\n\nfor (i in 1:nrow(x)) {\n  for (j in 1:ncol(x)){\n    z[i,j] &lt;- x[i,j] + y[i,j]\n  }\n}\n\nz\n\n     [,1] [,2]\n[1,]    8   14\n[2,]   10   16\n[3,]   12   18",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -513,7 +513,7 @@
     "text": "9.4 User-Defined Functions\nA function takes the argument as input, run some specified actions, and then return the result to us.\nFunctions are very useful. When we would like to test different ideas, we can combine functions with loops: We can write a function which takes different parameters as input, and we can use a loop to go through all the possible combinations of parameters.\n\n9.4.1 User-defined function syntax\nHere is how to define a function in general:\n\nfunction_name &lt;- function(arg1 ,arg2 = default_value){\n  # write the actions to be done with arg1 and arg2\n  # you can have any number of arguments, with or without defaults\n  return() # the last line is to return some value \n}\n\nExample:\n\nmagic &lt;- function( x, y){\n  return(x^2 + y)\n}\n\nmagic(1,3)\n\n[1] 4",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -524,7 +524,7 @@
     "text": "9.5 A comprehensive example\nTask: write a function, which takes a vector as input, and returns the max value of the vector\n\nget_max &lt;- function(input){\n  max_value &lt;- input[1]\n  for (i in 2:length(input) ) {\n    if (input[i] &gt; max_value) {\n      max &lt;- input[i]\n    }\n  }\n  \n  return(max)\n}\n\nget_max(c(-1,3,2))\n\n[1] 2\n\n\n\n\n\n\n\n\nExercise\n\n\n\nWrite your own version of which.max() function",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
@@ -535,194 +535,37 @@
     "text": "Footnotes\n\n\nA measure of programming language popularity↩︎\nThere are many R-exclusive packages, such as the state-of-the-art causal machine learning library grf , which we will learn in the final week.↩︎\nWhy the name Quarto? “We wanted to use a name that had meaning in the history of publishing and landed on Quarto, which is the format of a book or pamphlet produced from full sheets printed with eight pages of text, four to a side, then folded twice to produce four leaves. The earliest known European printed book is a Quarto, the Sibyllenbuch, believed to have been printed by Johannes Gutenberg in 1452–53.”↩︎\nYou can also use equal sign =, but it’s recommended to stick with R’s tradition.↩︎",
     "crumbs": [
       "R Tutorials",
-      "R Basics"
+      "R Basics (Induction Week)"
     ]
   },
   {
-    "objectID": "R-installR.html",
-    "href": "R-installR.html",
-    "title": "Install and Setup R",
+    "objectID": "Syllabus.html",
+    "href": "Syllabus.html",
+    "title": "Syllabus",
     "section": "",
-    "text": "Uninstall Old R and RStudio\n\n\n\nIf you have used R or RStudio before, please uninstall both R and RStudio and follow the guide below to install the latest versions. Otherwise, Quarto may not work properly on older versions."
-  },
-  {
-    "objectID": "R-installR.html#for-windows-computers",
-    "href": "R-installR.html#for-windows-computers",
-    "title": "Install and Setup R",
-    "section": "1.1 For Windows computers",
-    "text": "1.1 For Windows computers\n\nGo to R’s official website in this link\nClick CRAN under Download section\n\n\n\n\n\n\n\nThese are different mirrors for R download. Basically they store the same installation files but on different servers in different places. Simply click into any mirror.\n\n\n\n\n\n\n\nClick into download R for Windows for installation files for Windows computers\n\n\n\n\n\n\n\nDownload and install (1) base and (2) Rtools. It’s recommended to use the default options during the installations.\n\nNotes: The former is the R program, and the latter is the tool to compile R packages.\nIt’s highly recommended to change your system language to English before proceeding, or there could be weird bugs later on.\n\n\n\n\nClick into this link. Download and instsall Quarto CLI plugin."
-  },
-  {
-    "objectID": "R-installR.html#for-mac-computers",
-    "href": "R-installR.html#for-mac-computers",
-    "title": "Install and Setup R",
-    "section": "1.2 For Mac computers",
-    "text": "1.2 For Mac computers\n\nGo to R’s official website in this link\nClick CRAN under download section\n\n\n\n\n\n\n\nThese are different mirrors for R download. Basically they store the same installation files but on different servers in different places. Simply click into any mirror.\n\n\n\n\n\n\n\nClick into download R for macOS for the download file\n\n\n\n\n\n\n\nDownload the correct pkg file to install R\n\nif you use Intel based CPU, download the R-4.X.X-x86_64.pkg under “For older Intel Macs”, where X.X.X is the version number.\nif you use Apple’s silicon chip such as M1, M1 pro, or M2, download the R-4.X.X-arm64.pkg under “For Apple Silicon Macs”, where X.X.X is the version number.\nrefer to this link if you don’t know how to check Intel or Apple CPU\n\n\n\n\n\n\n\n\nInstall Command Line Tools following the steps below. This is essential for R to be able to compile packages so do not skip this step.\n\nOpen terminal app on your mac (the icon is in the screenshot)\n\n\nType the following code xcode-select --install into terminal and hit enter to run the code. Admin passwords may be required to proceed. Note that when you type the password, you won’t see any characters on the screen, but the passwords have been entered.\n The code may run for a few minutes. This step is to install MacOS tools that can help compile R packages.\n\nIf your terminal says “xcode-select: error: command line tools are already installed, use”Software Update” to install updates”. It means the needed tool is already installed on your computer. Then there is nothing needed in this step.\n\n\n\n\n\nClick into this link. Download and install Quarto CLI plugin for Mac OS."
-  },
-  {
-    "objectID": "R-installR.html#check-r-and-rstudio-are-properly-installed",
-    "href": "R-installR.html#check-r-and-rstudio-are-properly-installed",
-    "title": "Install and Setup R",
-    "section": "4.1 Check R and RStudio are properly installed",
-    "text": "4.1 Check R and RStudio are properly installed\nPlease follow the following steps to make sure you have successfully installed R and RStudio.\n\nStep 1: Launch RStudio from your computer. Check if you see the following screen without any error messages\n\n\n\nStep 2: As shown in the picture, type 1+1 behind the &gt; and hit enter, check if you see a 2 output\n\nIf there are no error messages and you see exactly the same output, then congrats, you have successfully installed R and RStudio!"
-  },
-  {
-    "objectID": "R-installR.html#check-quarto-is-properly-installed",
-    "href": "R-installR.html#check-quarto-is-properly-installed",
-    "title": "Install and Setup R",
-    "section": "4.2 Check Quarto is properly installed",
-    "text": "4.2 Check Quarto is properly installed\n\nStep 1: Click the green plus sign circled below, and select Quarto Document\n\n\nStep 2: Select word and click Create.\n\n\nStep 3: Click the Render button. You may be asked to save the qmd file to a location. Save it to your download folder. R will then render the qmd document and generate a docx file, named “untitled.docx” in the same location.\n\n\n\nStep 4: The docx file should look like below. If you can generate the docx file without issues, Quarto has successfully run on your computer!"
-  },
-  {
-    "objectID": "R-installR.html#why-do-we-need-to-install-rtools-and-commandline-tools",
-    "href": "R-installR.html#why-do-we-need-to-install-rtools-and-commandline-tools",
-    "title": "Install and Setup R",
-    "section": "5.1 Why do we need to install Rtools and Commandline tools?",
-    "text": "5.1 Why do we need to install Rtools and Commandline tools?\nMany R packages are written in R. Since R is an interpreted language, source code written in R doesn’t have to be translated into system-specific machine language before running. However, some R packages have significant portions written in compiled languages, such as C/C++ or Fortran. These languages need accessory software tools to translate (“compile”) their source code into machine language that can run on a particular system.\nPackage developers have two choices when distributing code for compiled languages:\n\nThey can prepare compiled, realdy-to-use “binaries” matched against common systems, so that people can simply download the binaries and directly use their packages code without having to know how to compile it.\nThey can distribute source code (i.e., the raw C++ codes) only, and expect the user to have the right compiler software to build system-specific runnable code themselves. Rtools and Commandline tools are the compliers that do the job, therefore needed as an additional installation step.\n\nOn UNIX/Linux, only source code is distributed and all packages are compiled from source during installation (for packages written entirely in R, this is trivial!). For Windows and Mac, CRAN makes pre-compiled binaries available. On Windows, install.packages() will only install precompiled binaries, unless explicitly forced to install from source (you can read a lot more about this in the R Installation and Administration guide)."
-  },
-  {
-    "objectID": "RTip-BLAS.html",
-    "href": "RTip-BLAS.html",
-    "title": "Speed Up Matrix Operations",
-    "section": "",
-    "text": "If your codes include lots of vector/matrix operations, especially those computation intensive tasks such as matrix inverse,1 you will probably feel that the default R is slow. Your intuition is likely correct! The reason is that the default R distributions from CRAN make use of the default BLAS/LAPACK implementation for linear algebra operations. The purpose of using such reference BLAS libraries by the development team is good: These implementations are built to be stable and cross platform compatible. However, the price that comes with stability is the sacrifice of speed. Is there a way to tweak your R settings to significantly boost the running speed? The answer is yes, and the steps are actually quite simple. We will review the steps to install highly optimized libraries and benchmark their performance.",
-    "crumbs": [
-      "Advanced R Tips",
-      "Speed Up Matrix Operations"
-    ]
-  },
-  {
-    "objectID": "RTip-BLAS.html#how-to-switch-to-veclib-blas",
-    "href": "RTip-BLAS.html#how-to-switch-to-veclib-blas",
-    "title": "Speed Up Matrix Operations",
-    "section": "2.1 How to Switch to VecLib BLAS",
-    "text": "2.1 How to Switch to VecLib BLAS\nOn MacOS, the R’s framework path is /Library/Frameworks/R.framework/Resources/lib. To go to the folder, open terminal on your Mac, and enter the following command:\n\ncd /Library/Frameworks/R.framework/Resources/lib\nls -l\n\ntotal 16336\n-rwxrwxr-x  1 root     admin  3988192 24 Jun 11:57 libR.dylib\ndrwxrwxr-x  3 root     admin       96 23 Apr  2022 libR.dylib.dSYM\n-rwxrwxr-x  1 root     admin   193440 24 Jun 11:57 libRblas.0.dylib\ndrwxrwxr-x  3 root     admin       96 23 Apr  2022 libRblas.0.dylib.dSYM\nlrwxr-xr-x  1 weimiao  admin       48 28 Aug 21:10 libRblas.dylib -&gt; /opt/homebrew/opt/openblas/lib/libopenblas.dylib\ndrwxrwxr-x  3 root     admin       96 23 Apr  2022 libRblas.dylib.dSYM\n-rwxrwxr-x  1 root     admin   154464 24 Jun 11:57 libRblas.vecLib.dylib\ndrwxrwxr-x  3 root     admin       96 23 Apr  2022 libRblas.vecLib.dylib.dSYM\n-rwxrwxr-x  1 root     admin  1624976 24 Jun 11:57 libRlapack.0.dylib\nlrwxr-xr-x  1 weimiao  admin       46 28 Aug 21:11 libRlapack.dylib -&gt; /opt/homebrew/opt/openblas/lib/liblapack.dylib\ndrwxrwxr-x  3 root     admin       96 23 Apr  2022 libRlapack.dylib.dSYM\n-rw-rw-r--  1 root     admin   157792 24 Jun 11:57 libgcc_s.1.1.dylib\n-rwxrwxr-x  1 root     admin  1865904 24 Jun 11:57 libgfortran.5.dylib\n-rwxrwxr-x  1 root     admin   367040 24 Jun 11:57 libquadmath.0.dylib\n\n\nwhich will change (c) the directory (d) to R’s framework folder. In this folder, you will see a few files by hitting ls:\n\nlibRblas.0.dylib is the default BLAS library.\nlibRblas.vecLib.dylib is the more efficient vecLib BLAS, which we are going to switch to.\nlibRblas.dylib is of alias file type. This means it’s kind of like a shortcut and points to a another file we set. By default, libRblas.dylib is pointed to libRblas.0.dylib, so R uses the default BLAS library. All we need to do is to relink the libRblas.0.dylib to libRblas.vecLib.dylib, such that R will use the vecLib.\n\nTo do so, type the following command in terminal:\n\nln -sf libRblas.vecLib.dylib libRblas.dylib\n\nIf vecLib has issues on your computer3 and you would like to switch back to the default BLAS/LAPACK, simply link the libRblas.dylib back to libRblas.0.dylib, by entering the following command in terminal:\n\nln -sf libRblas.0.dylib libRblas.dylib",
-    "crumbs": [
-      "Advanced R Tips",
-      "Speed Up Matrix Operations"
-    ]
-  },
-  {
-    "objectID": "RTip-BLAS.html#performance-comparison",
-    "href": "RTip-BLAS.html#performance-comparison",
-    "title": "Speed Up Matrix Operations",
-    "section": "2.2 Performance Comparison",
-    "text": "2.2 Performance Comparison\nWe will compare the performance before and after switching to vecLib using the following R codes. The code generates a 1000 by 1000 matrix, and obtains the inverse of that matrix. I use microbenchmark package to run the inverse operation for 100 times, and capture the performance metrics.\n\nset.seed(888)\nnd = 1000\na &lt;- matrix(rnorm(nd^2), nd, nd)\nlibrary(microbenchmark)\nmb &lt;- microbenchmark(\n  solve(a),\n  times = 100,\n  unit = \"ms\"\n)\n\nWhen I use the default BLAS/LAPACK, the benchmark result is as follows:\n\n\nUnit: milliseconds\n     expr     min      lq     mean   median       uq      max neval\n solve(a) 383.953 388.517 400.0499 392.0261 402.7341 629.8773   100\n\n\nAfter we switch to vecLib, the benchmarks are as follows. As can be seen, the speed has increased dramatically!\n\n\nUnit: milliseconds\n     expr     min       lq     mean   median       uq      max neval\n solve(a) 27.6078 30.08605 31.93745 30.75814 31.26055 53.32608   100",
-    "crumbs": [
-      "Advanced R Tips",
-      "Speed Up Matrix Operations"
-    ]
-  },
-  {
-    "objectID": "RTip-BLAS.html#footnotes",
-    "href": "RTip-BLAS.html#footnotes",
-    "title": "Speed Up Matrix Operations",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nFor instance, in my research projects that involve structural modelling, I often need to write my own codes in matrix form to compute the value functions, policy functions, equlibrium computation, etc.↩︎\nApple’s Accelerate framework provides high-performance, energy-efficient computations on the CPU by leveraging its vector-processing capability. For more details, refer to Apple’s documentation here.↩︎\nAs warned by CRAN, “Although fast, it is not under our control and may possibly deliver inaccurate results.”↩︎",
-    "crumbs": [
-      "Advanced R Tips",
-      "Speed Up Matrix Operations"
-    ]
-  },
-  {
-    "objectID": "R-errors.html",
-    "href": "R-errors.html",
-    "title": "Troubleshooting R",
-    "section": "",
-    "text": "In this page, I summarize the common issues running R and the troubleshooting tips. If you run into any R issues, please refer to this page as the first step for any solution.",
-    "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
-    ]
-  },
-  {
-    "objectID": "R-errors.html#could-not-find-function-error",
-    "href": "R-errors.html#could-not-find-function-error",
-    "title": "Troubleshooting R",
-    "section": "1 ‘could not find function’ Error",
-    "text": "1 ‘could not find function’ Error\nThis error arises when (1) an R package is not loaded properly, or (2) due to misspelling of the functions.\nAs you can see in the screenshot below, when we run the code, we get a could not find function “praise” error in the console. This is because we have not loaded the package “praise” to which the praise() function belongs.\n\nWe need to first load the package that contains the function we want to run using library() as shown below:\n\nlibrary(praise)\n\nand then use the function praise() to run it error-free.\n\npraise()\n\n[1] \"You are fantabulous!\"\n\n\nMeanwhile, if we misspell the praise() function, for instance, to prais(), this will also throw up a could not find function “prais” error.\n\nprais()\n\nError in prais(): could not find function \"prais\"",
-    "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
-    ]
-  },
-  {
-    "objectID": "R-errors.html#object-not-found-error",
-    "href": "R-errors.html#object-not-found-error",
-    "title": "Troubleshooting R",
-    "section": "2 ‘object not found’ error",
-    "text": "2 ‘object not found’ error\nThis error occurs when the particular object used in the code is not yet created or existing in the R environment.\nIn the example below we are trying to compute x plus 4. As you can see, we get an ‘object ’x’ not found’ error as the “x” object is not yet created and missing in our R environment.\n\nx+4\n\nError in eval(expr, envir, enclos): object 'x' not found\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\nBased on the missing object, go back to your previous codes and check why the object is missing. Did you forget to create it? Did you accidentally delete it?",
-    "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
-    ]
-  },
-  {
-    "objectID": "R-errors.html#banner-packages-xxx-required-but-are-not-installed",
-    "href": "R-errors.html#banner-packages-xxx-required-but-are-not-installed",
-    "title": "Troubleshooting R",
-    "section": "3 Banner: “Packages XXX required but are not installed”",
-    "text": "3 Banner: “Packages XXX required but are not installed”\nIf you see this banner in your RStudio in the screenshot, it means RStudio detects some packages mentioned in the R Markdown file or R script but are not yet installed on your computer. So it prompts you for installation.\n\nFor instance, in this case, the error message means, knitr and pacman are found in the .Rmd file, but they are not installed, so RStudio is smart enough to prompt you to install.\n\n\n\n\n\n\nSolution\n\n\n\nJust click install button in the banner. RStudio will install the missing components.",
-    "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
-    ]
-  },
-  {
-    "objectID": "R-errors.html#prompt-window-r-packages-not-up-to-date",
-    "href": "R-errors.html#prompt-window-r-packages-not-up-to-date",
-    "title": "Troubleshooting R",
-    "section": "4 Prompt Window: “R packages not up-to-date”",
-    "text": "4 Prompt Window: “R packages not up-to-date”\nSince the R packages are being updated every day (just like our mobile apps, there could be bugs so that the developers have to update R packages to fix those bugs), sometimes, though we may have installed some packages, they are too old to run the functions. And you may see this prompted message:\n\nIt means, the aforementioned packages, base64enc, digest, etc. are outdated and must be updated to function.\n\n\n\n\n\n\nSolution\n\n\n\nClick Yes and RStudio will update all the packages for you.",
-    "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
-    ]
-  },
-  {
-    "objectID": "R-errors.html#latex-not-found-when-kniting-the-.rmd.qmd-file.",
-    "href": "R-errors.html#latex-not-found-when-kniting-the-.rmd.qmd-file.",
-    "title": "Troubleshooting R",
-    "section": "5 Latex not found when kniting the .rmd/.qmd file.",
-    "text": "5 Latex not found when kniting the .rmd/.qmd file.\nIf this is your first time to knit the PDF document, you may see an error message as below:\n\nThe error message has usually told us everything on how to troubleshoot (that’s what an error message is for!).\nIn this screenshot, if you read along, you will find the cause of problem:\n\n[…] LaTex failed to compile,\n\nbecause\n\n[…] No LaTeX installation detected (LaTeX is required to create PDF output).\n\nand the solution is also consideratebly given in this error message:\n\n[…] You should install a LaTeX distribution for your platform: https://www.latex-project.org/get/\n\n\nIf you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()\n\nSo this error message tells us the solution:\n\n\n\n\n\n\nSolution\n\n\n\n\nAlternative solution 1:\nRun the following command in Console\ntinytex::install_tinytex()\nin order to install tinytex, a simplied version of LaTex, on your laptop.\n\n\nAlternative solution 2:\nInstall LaTex on your computer following the R installation guide\n\n\n\nIf you run the command in R Console, you will see that Latex is being installed\n\nAfter this progress bar finishes, you will be able to knit the PDF document!",
-    "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
-    ]
-  },
-  {
-    "objectID": "R-errors.html#error-connection-not-found",
-    "href": "R-errors.html#error-connection-not-found",
-    "title": "Troubleshooting R",
-    "section": "6 Error: Connection Not Found",
-    "text": "6 Error: Connection Not Found\nConnection Not Found error is usually caused by RStudio being unable to locate your files on your hard disk.\nIf you don’t know how to find the path names for a file on your computer, please refer to\n\nthis link for Windows\n\nthis link for Mac",
-    "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
-    ]
-  },
-  {
-    "objectID": "R-errors.html#more-questions",
-    "href": "R-errors.html#more-questions",
-    "title": "Troubleshooting R",
-    "section": "7 More Questions",
-    "text": "7 More Questions\nPlease leave a screenshot of error message in the MSTeams channel named “R QnA”. I will keep updating this webpage as more questions come in.",
-    "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
-    ]
-  },
-  {
-    "objectID": "LectureSlides.html",
-    "href": "LectureSlides.html",
-    "title": "Lecture Slides",
-    "section": "",
-    "text": "Lecture slides of subsequent weeks will be released on Monday each week. Stay tuned!",
+    "text": "Module leader: Dr. Wei Miao [personal website]\nEmail: wei.miao@ucl.ac.uk\nTeaching assistants\n\nKayi Yeung, ka.yeung.21@ucl.ac.uk (UCL MSc BA 2022)\nJiafan Lu, jiafan.lu@ucl.ac.uk (UCL PhD Management 2022)\n\nOffice hours: See Moodle for the links to book an office hour session with Wei (for lecture contents) and TAs (for R programming)",
     "crumbs": [
       "Lectures",
-      "[Week 2] Customer Lifetime Value and Descriptive Analytics",
-      "Lecture Slides"
+      "Syllabus"
     ]
+  },
+  {
+    "objectID": "Syllabus.html#footnotes",
+    "href": "Syllabus.html#footnotes",
+    "title": "Syllabus",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nJust a little heads up -- unlike undergrad marketing modules where you mainly learn marketing strategies and concepts, this module focuses on “analytics” (which comes first) and its application in “marketing” (which comes next). So, be prepared to learn a lot of data wrangling, machine learning, and causal inference tools in this module.↩︎",
+    "crumbs": [
+      "Lectures",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "This is the online supplement to the MSIN0094 Marketing Analytics Module for the MSc Business Analytics program at UCL School of Management.\nFor more information about me and my research, please refer to my personal website."
   },
   {
     "objectID": "WeeklyArrangements.html",
@@ -989,32 +832,765 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Home",
+    "objectID": "R-errors.html",
+    "href": "R-errors.html",
+    "title": "Troubleshooting R",
     "section": "",
-    "text": "This is the online supplement to the MSIN0094 Marketing Analytics Module for the MSc Business Analytics program at UCL School of Management.\nFor more information about me and my research, please refer to my personal website."
-  },
-  {
-    "objectID": "Syllabus.html",
-    "href": "Syllabus.html",
-    "title": "Syllabus",
-    "section": "",
-    "text": "Module leader: Dr. Wei Miao\nEmail: wei.miao@ucl.ac.uk\nTeaching assistants\n\nKayi Yeung, ka.yeung.21@ucl.ac.uk (UCL MSc BA 2022)\nJiafan Lu, jiafan.lu@ucl.ac.uk (UCL PhD Management 2022)\n\nOffice hours: See Moodle for the links to book an office hour session with Wei (for lecture contents) and TAs (for R programming)",
+    "text": "In this page, I summarize the common issues running R and the troubleshooting tips. If you run into any R issues, please refer to this page as the first step for any solution.",
     "crumbs": [
-      "Lectures",
-      "Syllabus"
+      "R Tutorials",
+      "Troubleshooting R"
     ]
   },
   {
-    "objectID": "Syllabus.html#footnotes",
-    "href": "Syllabus.html#footnotes",
-    "title": "Syllabus",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nJust a little heads up -- unlike undergrad marketing modules where you mainly learn marketing strategies and concepts, this module focuses on “analytics” (which comes first) and its application in “marketing” (which comes next). So, be prepared to learn a lot of data wrangling, machine learning, and causal inference tools in this module.↩︎",
+    "objectID": "R-errors.html#could-not-find-function-error",
+    "href": "R-errors.html#could-not-find-function-error",
+    "title": "Troubleshooting R",
+    "section": "1 ‘could not find function’ Error",
+    "text": "1 ‘could not find function’ Error\nThis error arises when (1) an R package is not loaded properly, or (2) due to misspelling of the functions.\nAs you can see in the screenshot below, when we run the code, we get a could not find function “praise” error in the console. This is because we have not loaded the package “praise” to which the praise() function belongs.\n\nWe need to first load the package that contains the function we want to run using library() as shown below:\n\nlibrary(praise)\n\nand then use the function praise() to run it error-free.\n\npraise()\n\n[1] \"You are fantabulous!\"\n\n\nMeanwhile, if we misspell the praise() function, for instance, to prais(), this will also throw up a could not find function “prais” error.\n\nprais()\n\nError in prais(): could not find function \"prais\"",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "R-errors.html#object-not-found-error",
+    "href": "R-errors.html#object-not-found-error",
+    "title": "Troubleshooting R",
+    "section": "2 ‘object not found’ error",
+    "text": "2 ‘object not found’ error\nThis error occurs when the particular object used in the code is not yet created or existing in the R environment.\nIn the example below we are trying to compute x plus 4. As you can see, we get an ‘object ’x’ not found’ error as the “x” object is not yet created and missing in our R environment.\n\nx+4\n\nError in eval(expr, envir, enclos): object 'x' not found\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\nBased on the missing object, go back to your previous codes and check why the object is missing. Did you forget to create it? Did you accidentally delete it?",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "R-errors.html#banner-packages-xxx-required-but-are-not-installed",
+    "href": "R-errors.html#banner-packages-xxx-required-but-are-not-installed",
+    "title": "Troubleshooting R",
+    "section": "3 Banner: “Packages XXX required but are not installed”",
+    "text": "3 Banner: “Packages XXX required but are not installed”\nIf you see this banner in your RStudio in the screenshot, it means RStudio detects some packages mentioned in the R Markdown file or R script but are not yet installed on your computer. So it prompts you for installation.\n\nFor instance, in this case, the error message means, knitr and pacman are found in the .Rmd file, but they are not installed, so RStudio is smart enough to prompt you to install.\n\n\n\n\n\n\nSolution\n\n\n\nJust click install button in the banner. RStudio will install the missing components.",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "R-errors.html#prompt-window-r-packages-not-up-to-date",
+    "href": "R-errors.html#prompt-window-r-packages-not-up-to-date",
+    "title": "Troubleshooting R",
+    "section": "4 Prompt Window: “R packages not up-to-date”",
+    "text": "4 Prompt Window: “R packages not up-to-date”\nSince the R packages are being updated every day (just like our mobile apps, there could be bugs so that the developers have to update R packages to fix those bugs), sometimes, though we may have installed some packages, they are too old to run the functions. And you may see this prompted message:\n\nIt means, the aforementioned packages, base64enc, digest, etc. are outdated and must be updated to function.\n\n\n\n\n\n\nSolution\n\n\n\nClick Yes and RStudio will update all the packages for you.",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "R-errors.html#latex-not-found-when-kniting-the-.rmd.qmd-file.",
+    "href": "R-errors.html#latex-not-found-when-kniting-the-.rmd.qmd-file.",
+    "title": "Troubleshooting R",
+    "section": "5 Latex not found when kniting the .rmd/.qmd file.",
+    "text": "5 Latex not found when kniting the .rmd/.qmd file.\nIf this is your first time to knit the PDF document, you may see an error message as below:\n\nThe error message has usually told us everything on how to troubleshoot (that’s what an error message is for!).\nIn this screenshot, if you read along, you will find the cause of problem:\n\n[…] LaTex failed to compile,\n\nbecause\n\n[…] No LaTeX installation detected (LaTeX is required to create PDF output).\n\nand the solution is also consideratebly given in this error message:\n\n[…] You should install a LaTeX distribution for your platform: https://www.latex-project.org/get/\n\n\nIf you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()\n\nSo this error message tells us the solution:\n\n\n\n\n\n\nSolution\n\n\n\n\nAlternative solution 1:\nRun the following command in Console\ntinytex::install_tinytex()\nin order to install tinytex, a simplied version of LaTex, on your laptop.\n\n\nAlternative solution 2:\nInstall LaTex on your computer following the R installation guide\n\n\n\nIf you run the command in R Console, you will see that Latex is being installed\n\nAfter this progress bar finishes, you will be able to knit the PDF document!",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "R-errors.html#error-connection-not-found",
+    "href": "R-errors.html#error-connection-not-found",
+    "title": "Troubleshooting R",
+    "section": "6 Error: Connection Not Found",
+    "text": "6 Error: Connection Not Found\nConnection Not Found error is usually caused by RStudio being unable to locate your files on your hard disk.\nIf you don’t know how to find the path names for a file on your computer, please refer to\n\nthis link for Windows\n\nthis link for Mac",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "R-errors.html#more-questions",
+    "href": "R-errors.html#more-questions",
+    "title": "Troubleshooting R",
+    "section": "7 More Questions",
+    "text": "7 More Questions\nPlease leave a screenshot of error message in the MSTeams channel named “R QnA”. I will keep updating this webpage as more questions come in.",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html",
+    "href": "Week1-Lecture1.html",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "",
+    "text": "Hi there, I’m Wei Miao!\nI did my PhD in quant Marketing at NUS Singapore and a undergrad in Finance from Fudan\nI love musical instruments, video games, travelling, and food (bubble tea is my fav)!\nMy research focuses on digital marketing, sharing economy, and platform design.\n\n\n\n\n\nDetailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Wednesday, divided into two sessions\n\nA case study workshop session, to practice the tools learned in the previous week\nA methodology session, in which we learn a new analytics tool\n\nClass recordings are available on Moodle “LectureCast Recordings” section.\n\n\n\n\n\nNo exams; 3 individual assignments, which are similar to case studies in class, and you will need to use what you learned in class to solve these real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 30\n2nd assignment, 30% weight, 1500 words, due on Nov 24\n3rd assignment, 40% weight, 2000 words, due on Dec 15\n\nHow to submit?\n\nOnly submit PDF rendered from R Quarto with codes printed; don’t submit any other file format or your submission won’t be marked.\nThe quarto-based answer sheets (qmd files) will be given to you.\n\nWord count and late submission penalties will be applied by BA admin. For related queries and EC applications, please directly contact BA admin.\nYour marks will be released in due time (no later than 4 weeks).\nWe have random second marking in place to mitigate marking errors. Please refrain from emailing teaching assistants for re-marking as this is not allowed by school policy.",
     "crumbs": [
       "Lectures",
-      "Syllabus"
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#about-me",
+    "href": "Week1-Lecture1.html#about-me",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "",
+    "text": "Hi there, I’m Wei Miao!\nI did my PhD in quant Marketing at NUS Singapore and a undergrad in Finance from Fudan\nI love musical instruments, video games, travelling, and food (bubble tea is my fav)!\nMy research focuses on digital marketing, sharing economy, and platform design.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#weekly-arrangements",
+    "href": "Week1-Lecture1.html#weekly-arrangements",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "",
+    "text": "Detailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Wednesday, divided into two sessions\n\nA case study workshop session, to practice the tools learned in the previous week\nA methodology session, in which we learn a new analytics tool\n\nClass recordings are available on Moodle “LectureCast Recordings” section.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#assignments",
+    "href": "Week1-Lecture1.html#assignments",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "",
+    "text": "No exams; 3 individual assignments, which are similar to case studies in class, and you will need to use what you learned in class to solve these real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 30\n2nd assignment, 30% weight, 1500 words, due on Nov 24\n3rd assignment, 40% weight, 2000 words, due on Dec 15\n\nHow to submit?\n\nOnly submit PDF rendered from R Quarto with codes printed; don’t submit any other file format or your submission won’t be marked.\nThe quarto-based answer sheets (qmd files) will be given to you.\n\nWord count and late submission penalties will be applied by BA admin. For related queries and EC applications, please directly contact BA admin.\nYour marks will be released in due time (no later than 4 weeks).\nWe have random second marking in place to mitigate marking errors. Please refrain from emailing teaching assistants for re-marking as this is not allowed by school policy.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#role-of-marketing",
+    "href": "Week1-Lecture1.html#role-of-marketing",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.1 Role of Marketing",
+    "text": "2.1 Role of Marketing\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinance (finance a company’s business activities)\nAccounting (bookkeeping of transactions)\nOperations (supply chain, manufacturing, inventory management)\nMarketing (directly deal with consumer; value exchange and realization)",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#what-is-marketing-1",
+    "href": "Week1-Lecture1.html#what-is-marketing-1",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.2 What is Marketing?",
+    "text": "2.2 What is Marketing?\n\nKotler (1991): “Marketing is a social and managerial process by which individuals and groups obtain what they want and need through creating, offering and exchanging products of value with others.”\nBritish Chartered Institute of Marketing (2000s): “Marketing is the management process responsible for identifying, anticipating and satisfying customers’ requirements profitably.”\nAmerican Marketing Association (2017): “Marketing is the activity, set of institutions, and processes for creating, communicating, delivering, and exchanging offerings that have value for customers, clients, partners, and society at large.”",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#what-is-marketing-a-word-cloud-approach",
+    "href": "Week1-Lecture1.html#what-is-marketing-a-word-cloud-approach",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.3 What is Marketing? A Word Cloud Approach",
+    "text": "2.3 What is Marketing? A Word Cloud Approach\n[link to code]\n\n\n\n\n\n\n\n\n\n\ninstall.packages('pacman')\npacman::p_load(tm, wordcloud, RColorBrewer,\n               wordcloud2, data.table)\n# generate text corpus\ndf_mkt &lt;- 'Marketing is a social and \nmanagerial process by which individuals and groups \nobtain what they  want and need through creating, \noffering and exchanging products of value with others.\nMarketing is the management process responsible for \nidentifying, anticipating and satisfying customers \nrequirements profitably.\nMarketing is the activity, set of institutions, \nand processes for creating, communicating, delivering, \nand exchanging offerings that have value for customers, \nclients, partners, and society at large.'\ndf_mkt_corpus &lt;- Corpus(VectorSource(df_mkt))\ndf_mkt_corpus &lt;- df_mkt_corpus |&gt; \n  tm_map(removePunctuation) |&gt;\n  tm_map(stripWhitespace) |&gt;\n  tm_map(content_transformer(tolower)) |&gt;\n  tm_map(removeWords, stopwords(\"english\"))\n# Create a document-term-matrix\ndf_mkt_dtm &lt;- TermDocumentMatrix(df_mkt_corpus)\ndf_mkt_matrix &lt;-  as.matrix(df_mkt_dtm)\ndf &lt;- data.table(words = rownames(df_mkt_matrix),\n                 freq = df_mkt_matrix[,1])\n# draw wordcloud\nset.seed(888)\nwordcloud(words = df$words, freq = df$freq, \n          min.freq = 1, max.words=200, random.order=FALSE, \n          colors=brewer.pal(8, \"Dark2\"))\n\n\nMarketing is a management process that creates and exchanges values for the company by selling the right products to the right customers. - Wei, 2023",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#marketing-process",
+    "href": "Week1-Lecture1.html#marketing-process",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.4 Marketing Process",
+    "text": "2.4 Marketing Process\n\n\n\nMarketing Process\n\n\n\nWe will go through the above concepts quickly in the case of Uber.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#situation-analysis-5-cs",
+    "href": "Week1-Lecture1.html#situation-analysis-5-cs",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.5 Situation Analysis: 5 C’s",
+    "text": "2.5 Situation Analysis: 5 C’s\n\nAny marketing decision can benefit from a deep understanding of the players within the market ecosystem—your own company, current and potential customers, collaborators and competitors—and the context they interact within: the 5Cs for short.\n\n\n\n\n5Cs of Marketing",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#situation-analysis-competitors",
+    "href": "Week1-Lecture1.html#situation-analysis-competitors",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.6 Situation Analysis: Competitors",
+    "text": "2.6 Situation Analysis: Competitors\n\nManagers tend to exhibit a supply-side bias, largely paying attention towards more salient direct (industry) competitors.\n\nIndirect competitors are defined by who your customers consider to satisfy the same goals.\nPotential competitors are those who might pose a competitive threat in the future; who possess equivalent resources that would allow them to enter the market\n\n\n\n\n\nSituation Analysis: Competitors",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#situation-analysis-contextclimate",
+    "href": "Week1-Lecture1.html#situation-analysis-contextclimate",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.7 Situation Analysis: Context/Climate",
+    "text": "2.7 Situation Analysis: Context/Climate\n\nContext/Climate analysis is a strategic planning method used to assess major external factors that influence the market ecosystem, and is often referred to as PESTLE analysis.\n\n\n\n\nSituation Analysis: Context",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#strategy-stp",
+    "href": "Week1-Lecture1.html#strategy-stp",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.8 Strategy: STP",
+    "text": "2.8 Strategy: STP\n\nSituation analysis is a critical input into marketing strategy design, the sequential application of the processes of segmentation, targeting, and positioning. Marketing strategy is inherently related to the concepts of the business model and business strategy—who you are serving, with what value proposition, and how you do so.\n\n\n\n\nSegmentation, Targeting, and Positioning",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#tactics-4ps",
+    "href": "Week1-Lecture1.html#tactics-4ps",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.9 Tactics: 4P’s",
+    "text": "2.9 Tactics: 4P’s\n\nThe marketing mix provides an implementation of your positioning. Segmentation is here applied at the tactical level, to optimally design the marketing mix or 4Ps.\n\n\n\n\n4Ps of Marketing",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#big-data-era",
+    "href": "Week1-Lecture1.html#big-data-era",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "3.1 Big Data Era",
+    "text": "3.1 Big Data Era\nWith the advancement in information and communication technologies (ICTs), data scientists nowadays are equipped with data analytics tools powerful than ever!\nFirms now have access to enormously rich information trail of customers\n\nDemographic profiles (DoB, gender, ethnicity, income)\nPurchase history (recency, frequency, monetary value, spending behavior)\nOnline browsing and search history (browsing, click through, add to cart, purchase)\nGPS data from mobile phones for offline store visits\nSocial media (location, consumer preference, social network)",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#what-marketing-analytics-can-do",
+    "href": "Week1-Lecture1.html#what-marketing-analytics-can-do",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "3.2 What Marketing Analytics Can Do?",
+    "text": "3.2 What Marketing Analytics Can Do?",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#unique-position-of-marketing-analytics",
+    "href": "Week1-Lecture1.html#unique-position-of-marketing-analytics",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "3.3 Unique Position of Marketing Analytics",
+    "text": "3.3 Unique Position of Marketing Analytics",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 1 Module Intro"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html",
+    "href": "Week1-Lecture2.html",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "",
+    "text": "How to conduct break-even analyses for marketing campaigns\n\nBreak-even quantity\nNet present value\n\nConcept of customer life cycle\nConcept of and how to compute customer acquisition cost (CAC)\nConcept of and how to compute customer lifetime value (CLV)\nPractice R basic calculations and vector operations in the case study",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#learning-objectives",
+    "href": "Week1-Lecture2.html#learning-objectives",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "",
+    "text": "How to conduct break-even analyses for marketing campaigns\n\nBreak-even quantity\nNet present value\n\nConcept of customer life cycle\nConcept of and how to compute customer acquisition cost (CAC)\nConcept of and how to compute customer lifetime value (CLV)\nPractice R basic calculations and vector operations in the case study",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#decisions-for-marketing-managers",
+    "href": "Week1-Lecture2.html#decisions-for-marketing-managers",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "2.1 Decisions for Marketing Managers",
+    "text": "2.1 Decisions for Marketing Managers\n\nUltimate goal in the marketing process: create value and improve profitability for firms\nAs any marketing activity comes with a cost, marketers need to correctly evaluate whether a campaign creates or destroys value to the company. Such analyses are called break-even analyses (BEA).\nIn this class, we will learn how to conduct BEA from the following 2-by-2 perspectives:\n\nCampaign-centric or customer-centric\nStatic or dynamic\n\n\n\n\n\n\nStatic View\nDynamic View\n\n\nCampaign-centric\nBreak-Even Quantity\nNet Present Value\n\n\nCustomer-centric\n-\nCustomer Lifetime Value",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#break-even-quantity",
+    "href": "Week1-Lecture2.html#break-even-quantity",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "2.2 Break-Even Quantity",
+    "text": "2.2 Break-Even Quantity\n\nWe often use break-even analyses to evaluate the financial feasibility of marketing investments. One commonly used way is to compute the break-even quantity.\n\n\n\n\n\n\n\nDefinition\n\n\n\nThe break-even quantity (BEQ) calculates the number of incremental units the firm needs to sell to cover the cost of the marketing campaign.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#break-even-quantity-steps-and-decision-rule",
+    "href": "Week1-Lecture2.html#break-even-quantity-steps-and-decision-rule",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "2.3 Break-Even Quantity: Steps and Decision Rule",
+    "text": "2.3 Break-Even Quantity: Steps and Decision Rule\n\nSteps to conduct break-even analysis\n\nStep 1: Compute the BEQ based on the company’s product demand and production cost structure\nStep 2: Evaluate whether the campaign can guarantee incremental sales to that quantity\n\nThe decision rule\n\nif incremental quantity sales &gt; BEQ, the company makes money, so accept the campaign; otherwise, reject the campaign",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#compute-beq",
+    "href": "Week1-Lecture2.html#compute-beq",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "2.4 Compute BEQ",
+    "text": "2.4 Compute BEQ\nMarketers often refer to the difference between the price per unit and variable costs per unit as the contribution margin per unit. That is,\n\\[\nContribution Margin Per Unit = Price Per Unit - Variable Costs Per Unit\n\\]\n\nPrice per unit: retail price\nVariable costs per unit: Costs of goods sold (COGS)1 + any other variable costs\nMarketing expenditure: total costs of marketing investment\n\nThis gives the second formula for computing BEQ:\n\\[\nBEQ = Marketing Expenditure / Contribution Margin Per Unit\n\\]",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#pineapple-inc-background",
+    "href": "Week1-Lecture2.html#pineapple-inc-background",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "2.5 Pineapple Inc: Background",
+    "text": "2.5 Pineapple Inc: Background\n\n\n\n\n\n\n\n\nTom Cooper, is looking to launch a series of marketing campaigns to promote its new product PinePhone 15 Pro against its competitor iPhone 15 Pro. Tom was a proud graduate from UCL MSc BA program in 2020, and he remembered learning from Marketing Analytics module that, marketers often use break-even analysis to help evaluate different types of marketing decisions.\n\n\n\nprice &lt;- 600 # retail price\nquantity &lt;- 10 # sales \nCOGS &lt;- 0.6 # cost of goods sold\nRD_costs &lt;- 100 # operating and marketing costs\nendorsement_fee &lt;- 50 # endorsement\n\nCase objectives:\n\nLearn an example of situation analysis for the 1st assignment\nPractice how to compute BEQ for break-even analyses\nPractice R basic computations and vector operations",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#pineapple-inc-key-information",
+    "href": "Week1-Lecture2.html#pineapple-inc-key-information",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "2.6 Pineapple Inc: Key Information",
+    "text": "2.6 Pineapple Inc: Key Information\nFrom the case: The marketing analytics team at Pinapple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach 10 million units at the retail price of £600, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of Pineapple 15, which is 60%. The Research and Development (R&D) costs for PinePhone 15 is 100 million pounds.\n\nOpen the .qmd answer sheet downloaded from Moodle. And let’s solve this case using the R basics we learned last week!",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#pineapple-inc-bea",
+    "href": "Week1-Lecture2.html#pineapple-inc-bea",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "2.7 Pineapple Inc: BEA",
+    "text": "2.7 Pineapple Inc: BEA\n\nQuestion 1: Compute the contribution margin\n\nDo we need to consider R&D costs?\n\n\n\ncontribution_margin &lt;- (1 - COGS) * price\ncontribution_margin\n\n[1] 240\n\n\n\nQuestion 2: Based on the information at hand, should Tom approve the influencer marketing plan?",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#definition-of-npv",
+    "href": "Week1-Lecture2.html#definition-of-npv",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "3.1 Definition of NPV",
+    "text": "3.1 Definition of NPV\n\nWhen the effect of the marketing campaign is expected to have a long-term effect or when time value of money is important to the question at hand, we need to take the future into account.\n\n\n\n\n\n\n\nDefinition\n\n\n\nNet present value (NPV) is the difference between the present value of cash inflows and the present value of cash outflows over a period of time.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#formula-of-npv",
+    "href": "Week1-Lecture2.html#formula-of-npv",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "3.2 Formula of NPV",
+    "text": "3.2 Formula of NPV\n\\[\nN P V=-I_{0}+\\frac{CF_{1}}{(1+k)}+\\frac{C F_{2}}{(1+k)^{2}}+\\cdots+\\frac{C F_{n}}{(1+k)^{n}}\n\\]\n\n\\(I_{0}\\) is the initial marketing expense\n\\(C F_{n}\\) is the incremental sales in period \\(n\\): it must be the additional sales due to the marketing campaign\n\\(k\\) is the discount rate: reflects the value of time: the same £1 today is more valuable than £1 tomorrow\nThe decision rule\n\nif NPV &gt; 0, then the marketing campaign can bring in more values to the company, accept\nif NPV &lt; 0, then the marketing campaign will decrease the company’s value, reject",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#pineapple-inc-npv-influencer-marketing-i",
+    "href": "Week1-Lecture2.html#pineapple-inc-npv-influencer-marketing-i",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "3.3 Pineapple Inc: NPV Influencer Marketing I",
+    "text": "3.3 Pineapple Inc: NPV Influencer Marketing I\nQuestion 3: Based on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?\n\nCompute the sequence of monthly cash flows\n\nGenerate a sequence of incremental sales for 12 months (a vector with 12 elements)\n\nHint: use rep(), c(), and vector element-wise multiplication\n\n\n\n\nmonthly_sales_increase_1stmonth &lt;- 0.003\nmonthly_sales_increase_after &lt;- 0.002\n# incremental profit each month\nmonthly_incremental_sales &lt;- c(monthly_sales_increase_1stmonth,\n                     rep(monthly_sales_increase_after,11))\n\nCF &lt;-  monthly_incremental_sales * \n                    quantity * \n                    contribution_margin \n\nThe resulting monthly CFs are: 7.2, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#pineapple-inc-npv-influencer-marketing-ii",
+    "href": "Week1-Lecture2.html#pineapple-inc-npv-influencer-marketing-ii",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "3.4 Pineapple Inc: NPV Influencer Marketing II",
+    "text": "3.4 Pineapple Inc: NPV Influencer Marketing II\n\nCompute the sequence of discount factors\n\nGenerate a sequence of WACC for 12 months (a vector with 12 elements)\nGenerate a sequence of discount factor for 12 months (a vector with 12 elements)\n\nHint: use seq() to generate geometric sequence with patterns\n\n\n\n\nmonthly_WACC &lt;- 0.1/12 \ndiscount_factor &lt;- (1/(1+monthly_WACC))^c(1:12)\n\nThe resulting monthly discount factors are: 0.9917355, 0.9835394, 0.975411, 0.9673497, 0.9593551, 0.9514265, 0.9435635, 0.9357654, 0.9280319, 0.9203622, 0.9127559, 0.9052124",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#pineapple-inc-npv-influencer-marketing-iii",
+    "href": "Week1-Lecture2.html#pineapple-inc-npv-influencer-marketing-iii",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "3.5 Pineapple Inc: NPV Influencer Marketing III",
+    "text": "3.5 Pineapple Inc: NPV Influencer Marketing III\n\nCompute the NPV\n\nGenerate a sequence of discounted CFs for 12 months\nSum up all discounted CFs across the 12 months using sum()\nSubtract endorsement fee from the sum to get NPV\n\n\n\nNetPresentValue &lt;- sum(CF * discount_factor) - endorsement_fee\n\n\nThe NPV is 6.9778057",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#from-campaign-centric-to-customer-centric-marketing",
+    "href": "Week1-Lecture2.html#from-campaign-centric-to-customer-centric-marketing",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "4.1 From Campaign-Centric to Customer-Centric Marketing",
+    "text": "4.1 From Campaign-Centric to Customer-Centric Marketing\n\n\n\n\n\nCustomer Life Cycle",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#customer-acquisition-cost",
+    "href": "Week1-Lecture2.html#customer-acquisition-cost",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "4.2 Customer Acquisition Cost",
+    "text": "4.2 Customer Acquisition Cost\n\n\n\n\n\n\nDefinition\n\n\n\nCustomer Acquisition Cost (CAC) is the cost of winning a customer to purchase a product or service.\n\n\n\nWhy should we care about CAC? Having a new customer may not always be a good thing. For example, no company would spend £500 to acquire a new customer worth £300",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#how-to-acquire-new-customers",
+    "href": "Week1-Lecture2.html#how-to-acquire-new-customers",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "4.3 How to Acquire New Customers",
+    "text": "4.3 How to Acquire New Customers\n\nFree sampling/trials",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#how-to-acquire-new-customers-1",
+    "href": "Week1-Lecture2.html#how-to-acquire-new-customers-1",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "4.4 How to Acquire New Customers",
+    "text": "4.4 How to Acquire New Customers\n\nReferral Programs: Customer Lifetime Social Value (CLSV, week 2)",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#customer-acquisition-cost-calculation",
+    "href": "Week1-Lecture2.html#customer-acquisition-cost-calculation",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "4.5 Customer Acquisition Cost: Calculation",
+    "text": "4.5 Customer Acquisition Cost: Calculation\n\n\n\n\n\n\nDefinition\n\n\n\nWhen the marketing cost can be attributed to each individual customer\n\nCAC = (# of offers needed to acquire 1 customer) * (cost of making a marketing offer)\nCAC = (cost of making a marketing offer) / (customer response rate)\n\n\n\n\nAfter we study predictive analytics later in this module, we will be able to predict response rate for each individual customer and compute individual-specific CAC.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#customer-acquisition-cost-an-example",
+    "href": "Week1-Lecture2.html#customer-acquisition-cost-an-example",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "4.6 Customer Acquisition Cost: An Example",
+    "text": "4.6 Customer Acquisition Cost: An Example\nA new Bubble Tea shop in Canary Wharf is contemplating whether or not to attract new customers by sending ads leaflets to nearby residents.\nThe cost of sending a leaflet, which includes production and labor costs, is £0.5.\n\nrandomly sending out leaflets\n\nexpected response rate of 1%\n\nusing names purchased from a marketing agency\n\neach name costs £0.2\nexpected response rate of 4% by analyzing the buying behavior and demographics of current customers\n\n\nCompute the CAC for each choice.\n\ncost_per_random_offer &lt;- 0.5\nresponse_rate_random_offer &lt;- 0.01\n# Following the formula in the previous slide\nCAC_random_offer &lt;- cost_per_random_offer / response_rate_random_offer\nCAC_random_offer\n\n[1] 50\n\n\n\ncost_per_targeted_offer &lt;- 0.5 + 0.2 \nresponse_rate_targeted_offer &lt;- 0.04\nCAC_targeted_offer &lt;- cost_per_targeted_offer/response_rate_targeted_offer\nCAC_targeted_offer\n\n[1] 17.5\n\n\n\n\n\n\n\n\nTips for assignment 1\n\n\n\nThe cost structures for sending out offers are different from the simple example here, but the logic of calculation is the same. Think carefully about how to compute the cost per offer (the components) in the assignment.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#customer-lifetime-value-clv",
+    "href": "Week1-Lecture2.html#customer-lifetime-value-clv",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "4.7 Customer Lifetime Value (CLV)",
+    "text": "4.7 Customer Lifetime Value (CLV)\n\n\n\n\n\n\nDefinition\n\n\n\nCustomer lifetime value (CLV or LTV) is the total worth to a business of a customer over the whole period of their relationship.\n\n\n\nThe underlying idea of CLV is essentially NPV, but at the customer level.\n\nThink of acquiring a new customer as an investment in an “asset” that can generate future cash flows",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#clv-calculation",
+    "href": "Week1-Lecture2.html#clv-calculation",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "4.8 CLV: Calculation",
+    "text": "4.8 CLV: Calculation\n\\[\n\\mathrm{CLV} = - CAC + \\sum_{t=1}^{N} \\frac{CF_t * r^{(t-1)}}{(1+k)^{t}},\nwhere \\space CF_t = M_t - c_t\n\\]\n\n\\(r\\) is the average annual retention rate; \\(r^{(t-1)}\\) is the cumulative retention rate in year \\(t\\)\n\\(N\\) is the number of years over which the relationship is calculated\n\\(M_{t}\\) is the margin the customer generates in year \\(t\\)\n\\(c_{t}\\) is the expected cost of marketing communications or promotions targeted to the customer in year \\(t\\)\n\\(k\\) is the rate for discounting future cash flows",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#retention-rate",
+    "href": "Week1-Lecture2.html#retention-rate",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "4.9 Retention Rate",
+    "text": "4.9 Retention Rate\n\n\n\n\n\n\nDefinition\n\n\n\nThe churn rate, also known as the rate of attrition or customer churn, is the rate at which customers stop doing business with an entity.\n\n\n\nretention rate = 1 - churn rate\nHow to compute individual churn rate: machine learning models to predict the churn rate of an individual customer (Week 4)",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#number-of-years-of-customer-relationship",
+    "href": "Week1-Lecture2.html#number-of-years-of-customer-relationship",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "4.10 Number of Years of Customer Relationship",
+    "text": "4.10 Number of Years of Customer Relationship\n\nIf we assume infinite customer economic life, we can simplify the formula into the following using the property of geometric sequence.\n\n\\[\nC L V_{N} = \\sum_{t=1}^{N} \\frac{g r^{(t-1)}}{(1+k)^{t}} =&gt; C L V_{N}=\\mathrm{g} \\cdot \\frac{1-\\left(\\frac{r}{1+k}\\right)^{N}}{1+k-r}  =&gt;\nC L V_{\\infty}=\\frac{g}{(1+k-r)}\n\\]\n\nHowever, most of the time, we are more comfortable to assume finite customer economic life; we need to decide on a cutoff date for CLV calculation\n\nRule 1: until the year when the \\(g = M-c\\) becomes negative\nRule 2: industry’s average customer lifespan",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#after-class",
+    "href": "Week1-Lecture2.html#after-class",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "4.11 After-class",
+    "text": "4.11 After-class\n\nReview the coding practice in today’s class.\nWe will solve Harvard Business Case: Customer Lifetime Social Value. Remember to read the case background before next week’s class.\n\nYou can try to solve the case on your own using what we’ve covered today.\n\nOptional readings are for alternative ways to compute CLV in the industry.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#footnotes",
+    "href": "Week1-Lecture2.html#footnotes",
+    "title": "Class 2 Break-Even Analysis and Customer Lifetime Value",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nMaterial and production labor costs for producing a unit of product; often represented in percentage terms, e.g., COGS of 60% means the costs are 60% of retail prices.↩︎",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Class 2 Profitability Analyses"
+    ]
+  },
+  {
+    "objectID": "LectureSlides.html",
+    "href": "LectureSlides.html",
+    "title": "Lecture Slides",
+    "section": "",
+    "text": "Lecture slides of subsequent weeks will be released on Monday each week. Stay tuned!",
+    "crumbs": [
+      "Lectures",
+      "[Week 2] Customer Lifetime Value and Descriptive Analytics",
+      "Lecture Slides"
+    ]
+  },
+  {
+    "objectID": "Case-ProfitabilityAnalysis-Solutions.html",
+    "href": "Case-ProfitabilityAnalysis-Solutions.html",
+    "title": "PineApple Case Study",
+    "section": "",
+    "text": "The marketing analytics team at PineApple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach 10 million unit at the retail price of £600, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of PinePhone 15, which is 60%. The Research and Development (R&D) costs for PinePhone 15 is 100 million pounds.\nBased on the above information, we first translate the necessary background information into the following R objects.\n\n\n\n\n\n\nAssigning Operations\n\n\n\n\nWhen assigning values to variables, the operation will not print the values of the new variable\nIf you would like to check the variable is created with the correct value, you can\n\ncheck its value in the RStudio Environment on the right hand side\nin a new line, type the variable name: this is to ask R to print out the value of the object\n\n\n\n\n\n# translate the above information into R variables\nprice &lt;- 600 # retail price\nquantity &lt;- 10 # sales \nCOGS &lt;- 0.6 # cost of goods sold\nRD_costs &lt;- 100 # Research and Development costs\nendorsement_fee &lt;- 50 # endorsement\nendorsement_sales_increase &lt;- 0.025\n\n\nQuestion 1\nCompute the contribution margin per unit\n\n# Create a variable called contribution_margin from price and COGS\n# Use variables but not the raw numbers. --- Why?\n\n# Following the definition of contribution margin per unit: price - cost\ncontribution_margin &lt;- price - price * COGS\ncontribution_margin\n\n[1] 240\n\n\n\n# equivalently, contribution margin per unit = price * contribution margin rate  \ncontribution_margin &lt;- price * (1 - COGS) \ncontribution_margin\n\n[1] 240\n\n\n\n\nQuestion 2\nBased on the information at hand, should Tom approve the influencer marketing plan?\nTo decide whether Tom should approve the marketing plan, we need to conduct break-even analyses.\nThe first step is to compute the break-even quantity, as shown in the following code.\n\n# numerator is the marketing expense\n# denominator is the \"extra profit\", or the contribution margin, from selling one more unit\nBEQ &lt;- endorsement_fee / contribution_margin\nBEQ\n\n[1] 0.2083333\n\n\nBreak even quantity is the incremental quantity sales needed in order to neither lose money nor make money from the marketing campaign, hence the name “break-even”. This is like the safe line the campaign must reach.\n\n\n\n\n\n\nSales\n\n\n\nIn this module (and in practice), when we talk about sales, we mean the quantity sales, the number of units sold. For instance, in the case study, the original sales without influencer marketing is 10 million units.\nThe total money made is often called revenue or revenue sales. For instance, in the case study, the original revenue is 6000 million pounds.\n\n\nThe next step is to compare BEQ with the estimated incremental sales from the campaign.\nBEQ is 0.208 million units, which is smaller than incremental sales is 10 * 0.025 million units. It means, to not lose any money, the influencer marketing compaign needs to bring in additional 0.208 million units, but in reality, the company can actually sell better at 0.25 million, so it’s profitable to continue with the influencer marketing campaign.\nTherefore, based on the above reasoning, Tom should approve the influencer marketing campaign.\n\n\nQuestion 3\n(Please follow the above example to finish both authoring and R codes for the NPV question)\n\nCompute the sequence of monthly cash flows\n\n\nFirst, we compute the incremental sales percentage for each month, relative to the 10 million. This is a 12-element vector, each element representing the incremental sales percentage.\n\n\nincremental.sales.percentage_1stmonth &lt;- 0.003\nincremental.sales.percentage_next11months &lt;- rep(0.002,11)\n\n# incremental profit each month\nvector_incremental.sales.percentage_12months &lt;- c(incremental.sales.percentage_1stmonth,incremental.sales.percentage_next11months)\n\nvector_incremental.sales.percentage_12months\n\n [1] 0.003 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002\n\n\n\nNext, we time the incremental sales percentage with quantity, to get the incremental sales in terms of units each month.\n\n\nvector_incremental.sales.units_12months &lt;- vector_incremental.sales.percentage_12months * quantity\n\nvector_incremental.sales.units_12months\n\n [1] 0.03 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02\n\n\n\nLastly, we multiply the incremental quantity sales with the contribution margin per unit, to get the total contribution margins (incremental profits) for each month, i.e., the CF\n\n\nvector_CF &lt;- vector_incremental.sales.units_12months * contribution_margin\n\nvector_CF\n\n [1] 7.2 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8 4.8\n\n\n\nCompute the sequence of discount factors\n\n\n# divide annual wacc to get monthly wacc\nmonthly_WACC &lt;- 0.1/12 \n\n# discount factor for 1 month is 1/(1+k)\ndiscount_factor &lt;- 1/ (1+monthly_WACC)\n\n# Generate a geometric sequence vector of discounted CFs for 12 months\n\nvector_discount_factor &lt;- discount_factor ^ c(1:12)\n\nvector_discount_factor\n\n [1] 0.9917355 0.9835394 0.9754110 0.9673497 0.9593551 0.9514265 0.9435635\n [8] 0.9357654 0.9280319 0.9203622 0.9127559 0.9052124\n\n\n\nCompute the NPV\n\n\nMultiply CF vector with discount factor vector, to get the discounted CF vector\n\n\nvector_discounted.CF &lt;- vector_CF * vector_discount_factor \n  \nvector_discounted.CF\n\n [1] 7.140496 4.720989 4.681973 4.643279 4.604904 4.566847 4.529105 4.491674\n [9] 4.454553 4.417738 4.381228 4.345020\n\n\n\nuse function sum() to get the sum of all elements in a vector. That is, the sum of discounted cash flows in all 12 months.\n\n\nsum(vector_discounted.CF)\n\n[1] 56.97781\n\n\n\nWe need to subtract the endorsement fee, which is the marketing expense, to get the net present value\n\n\nNPV &lt;- sum(vector_discounted.CF) - endorsement_fee\nNPV\n\n[1] 6.977806",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Profitability Analysis for Apple Inc (Solutions)"
+    ]
+  },
+  {
+    "objectID": "RTip-BLAS.html",
+    "href": "RTip-BLAS.html",
+    "title": "Speed Up Matrix Operations",
+    "section": "",
+    "text": "If your codes include lots of vector/matrix operations, especially those computation intensive tasks such as matrix inverse,1 you will probably feel that the default R is slow. Your intuition is likely correct! The reason is that the default R distributions from CRAN make use of the default BLAS/LAPACK implementation for linear algebra operations. The purpose of using such reference BLAS libraries by the development team is good: These implementations are built to be stable and cross platform compatible. However, the price that comes with stability is the sacrifice of speed. Is there a way to tweak your R settings to significantly boost the running speed? The answer is yes, and the steps are actually quite simple. We will review the steps to install highly optimized libraries and benchmark their performance.",
+    "crumbs": [
+      "Advanced R Tips",
+      "Speed Up Matrix Operations"
+    ]
+  },
+  {
+    "objectID": "RTip-BLAS.html#how-to-switch-to-veclib-blas",
+    "href": "RTip-BLAS.html#how-to-switch-to-veclib-blas",
+    "title": "Speed Up Matrix Operations",
+    "section": "2.1 How to Switch to VecLib BLAS",
+    "text": "2.1 How to Switch to VecLib BLAS\nOn MacOS, the R’s framework path is /Library/Frameworks/R.framework/Resources/lib. To go to the folder, open terminal on your Mac, and enter the following command:\n\ncd /Library/Frameworks/R.framework/Resources/lib\nls -l\n\ntotal 16336\n-rwxrwxr-x  1 root     admin  3988192 24 Jun 11:57 libR.dylib\ndrwxrwxr-x  3 root     admin       96 23 Apr  2022 libR.dylib.dSYM\n-rwxrwxr-x  1 root     admin   193440 24 Jun 11:57 libRblas.0.dylib\ndrwxrwxr-x  3 root     admin       96 23 Apr  2022 libRblas.0.dylib.dSYM\nlrwxr-xr-x  1 weimiao  admin       48 28 Aug 21:10 libRblas.dylib -&gt; /opt/homebrew/opt/openblas/lib/libopenblas.dylib\ndrwxrwxr-x  3 root     admin       96 23 Apr  2022 libRblas.dylib.dSYM\n-rwxrwxr-x  1 root     admin   154464 24 Jun 11:57 libRblas.vecLib.dylib\ndrwxrwxr-x  3 root     admin       96 23 Apr  2022 libRblas.vecLib.dylib.dSYM\n-rwxrwxr-x  1 root     admin  1624976 24 Jun 11:57 libRlapack.0.dylib\nlrwxr-xr-x  1 weimiao  admin       46 28 Aug 21:11 libRlapack.dylib -&gt; /opt/homebrew/opt/openblas/lib/liblapack.dylib\ndrwxrwxr-x  3 root     admin       96 23 Apr  2022 libRlapack.dylib.dSYM\n-rw-rw-r--  1 root     admin   157792 24 Jun 11:57 libgcc_s.1.1.dylib\n-rwxrwxr-x  1 root     admin  1865904 24 Jun 11:57 libgfortran.5.dylib\n-rwxrwxr-x  1 root     admin   367040 24 Jun 11:57 libquadmath.0.dylib\n\n\nwhich will change (c) the directory (d) to R’s framework folder. In this folder, you will see a few files by hitting ls:\n\nlibRblas.0.dylib is the default BLAS library.\nlibRblas.vecLib.dylib is the more efficient vecLib BLAS, which we are going to switch to.\nlibRblas.dylib is of alias file type. This means it’s kind of like a shortcut and points to a another file we set. By default, libRblas.dylib is pointed to libRblas.0.dylib, so R uses the default BLAS library. All we need to do is to relink the libRblas.0.dylib to libRblas.vecLib.dylib, such that R will use the vecLib.\n\nTo do so, type the following command in terminal:\n\nln -sf libRblas.vecLib.dylib libRblas.dylib\n\nIf vecLib has issues on your computer3 and you would like to switch back to the default BLAS/LAPACK, simply link the libRblas.dylib back to libRblas.0.dylib, by entering the following command in terminal:\n\nln -sf libRblas.0.dylib libRblas.dylib",
+    "crumbs": [
+      "Advanced R Tips",
+      "Speed Up Matrix Operations"
+    ]
+  },
+  {
+    "objectID": "RTip-BLAS.html#performance-comparison",
+    "href": "RTip-BLAS.html#performance-comparison",
+    "title": "Speed Up Matrix Operations",
+    "section": "2.2 Performance Comparison",
+    "text": "2.2 Performance Comparison\nWe will compare the performance before and after switching to vecLib using the following R codes. The code generates a 1000 by 1000 matrix, and obtains the inverse of that matrix. I use microbenchmark package to run the inverse operation for 100 times, and capture the performance metrics.\n\nset.seed(888)\nnd = 1000\na &lt;- matrix(rnorm(nd^2), nd, nd)\nlibrary(microbenchmark)\nmb &lt;- microbenchmark(\n  solve(a),\n  times = 100,\n  unit = \"ms\"\n)\n\nWhen I use the default BLAS/LAPACK, the benchmark result is as follows:\n\n\nUnit: milliseconds\n     expr     min      lq     mean   median       uq      max neval\n solve(a) 383.953 388.517 400.0499 392.0261 402.7341 629.8773   100\n\n\nAfter we switch to vecLib, the benchmarks are as follows. As can be seen, the speed has increased dramatically!\n\n\nUnit: milliseconds\n     expr     min       lq     mean   median       uq      max neval\n solve(a) 27.6078 30.08605 31.93745 30.75814 31.26055 53.32608   100",
+    "crumbs": [
+      "Advanced R Tips",
+      "Speed Up Matrix Operations"
+    ]
+  },
+  {
+    "objectID": "RTip-BLAS.html#footnotes",
+    "href": "RTip-BLAS.html#footnotes",
+    "title": "Speed Up Matrix Operations",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nFor instance, in my research projects that involve structural modelling, I often need to write my own codes in matrix form to compute the value functions, policy functions, equlibrium computation, etc.↩︎\nApple’s Accelerate framework provides high-performance, energy-efficient computations on the CPU by leveraging its vector-processing capability. For more details, refer to Apple’s documentation here.↩︎\nAs warned by CRAN, “Although fast, it is not under our control and may possibly deliver inaccurate results.”↩︎",
+    "crumbs": [
+      "Advanced R Tips",
+      "Speed Up Matrix Operations"
+    ]
+  },
+  {
+    "objectID": "R-InstallR.html",
+    "href": "R-InstallR.html",
+    "title": "Install and Setup R",
+    "section": "",
+    "text": "Uninstall Old R and RStudio\n\n\n\nIf you have used R or RStudio before, please uninstall both R and RStudio and follow the guide below to install the latest versions. Otherwise, Quarto may not work properly on older versions.\nIf you switch to a new laptop later on, please come back to this tutorial and reinstall R and RStudio following the same procedures.",
+    "crumbs": [
+      "R Tutorials",
+      "Install and Setup R"
+    ]
+  },
+  {
+    "objectID": "R-InstallR.html#for-windows-computers",
+    "href": "R-InstallR.html#for-windows-computers",
+    "title": "Install and Setup R",
+    "section": "1.1 For Windows computers",
+    "text": "1.1 For Windows computers\n\nGo to R’s official website in this link\nClick CRAN under Download section\n\n\n\n\n\n\n\nThese are different mirrors for R download. Basically they store the same installation files but on different servers in different places. Simply click into any mirror.\n\n\n\n\n\n\n\nClick into download R for Windows for installation files for Windows computers\n\n\n\n\n\n\n\nDownload and install (1) base and (2) Rtools. It’s recommended to use the default options during the installations.\n\nNotes: The former is the R program, and the latter is the tool to compile R packages.\nIt’s highly recommended to change your system language to English before proceeding, or there could be weird bugs later on.\n\n\n\n\nClick into this link. Download and instsall Quarto CLI plugin.",
+    "crumbs": [
+      "R Tutorials",
+      "Install and Setup R"
+    ]
+  },
+  {
+    "objectID": "R-InstallR.html#for-mac-computers",
+    "href": "R-InstallR.html#for-mac-computers",
+    "title": "Install and Setup R",
+    "section": "1.2 For Mac computers",
+    "text": "1.2 For Mac computers\n\nGo to R’s official website in this link\nClick CRAN under download section\n\n\n\n\n\n\n\nThese are different mirrors for R download. Basically they store the same installation files but on different servers in different places. Simply click into any mirror.\n\n\n\n\n\n\n\nClick into download R for macOS for the download file\n\n\n\n\n\n\n\nDownload the correct pkg file to install R\n\nif you use Intel based CPU, download the R-4.X.X-x86_64.pkg under “For older Intel Macs”, where X.X.X is the version number.\nif you use Apple’s silicon chip such as M1, M1 pro, or M2, download the R-4.X.X-arm64.pkg under “For Apple Silicon Macs”, where X.X.X is the version number.\nrefer to this link if you don’t know how to check Intel or Apple CPU\n\n\n\n\n\n\n\n\nInstall Command Line Tools following the steps below. This is essential for R to be able to compile packages so do not skip this step.\n\nOpen terminal app on your mac (the icon is in the screenshot)\n\n\nType the following code xcode-select --install into terminal and hit enter to run the code. Admin passwords may be required to proceed. Note that when you type the password, you won’t see any characters on the screen, but the passwords have been entered.\n The code may run for a few minutes. This step is to install MacOS tools that can help compile R packages.\n\nIf your terminal says “xcode-select: error: command line tools are already installed, use”Software Update” to install updates”. It means the needed tool is already installed on your computer. Then there is nothing needed in this step.\n\n\n\n\n\nClick into this link. Download and install Quarto CLI plugin for Mac OS.",
+    "crumbs": [
+      "R Tutorials",
+      "Install and Setup R"
+    ]
+  },
+  {
+    "objectID": "R-InstallR.html#check-r-and-rstudio-are-properly-installed",
+    "href": "R-InstallR.html#check-r-and-rstudio-are-properly-installed",
+    "title": "Install and Setup R",
+    "section": "4.1 Check R and RStudio are properly installed",
+    "text": "4.1 Check R and RStudio are properly installed\nPlease follow the following steps to make sure you have successfully installed R and RStudio.\n\nStep 1: Launch RStudio from your computer. Check if you see the following screen without any error messages\n\n\n\nStep 2: As shown in the picture, type 1+1 behind the &gt; and hit enter, check if you see a 2 output\n\nIf there are no error messages and you see exactly the same output, then congrats, you have successfully installed R and RStudio!",
+    "crumbs": [
+      "R Tutorials",
+      "Install and Setup R"
+    ]
+  },
+  {
+    "objectID": "R-InstallR.html#check-quarto-is-properly-installed",
+    "href": "R-InstallR.html#check-quarto-is-properly-installed",
+    "title": "Install and Setup R",
+    "section": "4.2 Check Quarto is properly installed",
+    "text": "4.2 Check Quarto is properly installed\n\nStep 1: Click the green plus sign circled below, and select Quarto Document\n\n\nStep 2: Select word and click Create.\n\n\nStep 3: Click the Render button. You may be asked to save the qmd file to a location. Save it to your download folder. R will then render the qmd document and generate a docx file, named “untitled.docx” in the same location.\n\n\n\nStep 4: The docx file should look like below. If you can generate the docx file without issues, Quarto has successfully run on your computer!",
+    "crumbs": [
+      "R Tutorials",
+      "Install and Setup R"
+    ]
+  },
+  {
+    "objectID": "R-InstallR.html#why-do-we-need-to-install-rtools-and-commandline-tools",
+    "href": "R-InstallR.html#why-do-we-need-to-install-rtools-and-commandline-tools",
+    "title": "Install and Setup R",
+    "section": "5.1 Why do we need to install Rtools and Commandline tools?",
+    "text": "5.1 Why do we need to install Rtools and Commandline tools?\nMany R packages are written in R. Since R is an interpreted language, source code written in R doesn’t have to be translated into system-specific machine language before running. However, some R packages have significant portions written in compiled languages, such as C/C++ or Fortran. These languages need accessory software tools to translate (“compile”) their source code into machine language that can run on a particular system.\nPackage developers have two choices when distributing code for compiled languages:\n\nThey can prepare compiled, realdy-to-use “binaries” matched against common systems, so that people can simply download the binaries and directly use their packages code without having to know how to compile it.\nThey can distribute source code (i.e., the raw C++ codes) only, and expect the user to have the right compiler software to build system-specific runnable code themselves. Rtools and Commandline tools are the compliers that do the job, therefore needed as an additional installation step.\n\nOn UNIX/Linux, only source code is distributed and all packages are compiled from source during installation (for packages written entirely in R, this is trivial!). For Windows and Mac, CRAN makes pre-compiled binaries available. On Windows, install.packages() will only install precompiled binaries, unless explicitly forced to install from source (you can read a lot more about this in the R Installation and Administration guide).",
+    "crumbs": [
+      "R Tutorials",
+      "Install and Setup R"
+    ]
+  },
+  {
+    "objectID": "Case-ProfitabilityAnalysis.html#marketing-decision-a-static-view",
+    "href": "Case-ProfitabilityAnalysis.html#marketing-decision-a-static-view",
+    "title": "Beak-Even Analysis for Apple Inc",
+    "section": "2.1 Marketing Decision: A Static View",
+    "text": "2.1 Marketing Decision: A Static View\nThe marketing analytics team has proposed a plan of an influencer marketing campaign. Influencer marketing is a type of social media marketing that entails endorsements and product placement by influencers, individuals and organizations with a reputed expert degree of knowledge or social influence in their industry. Influencers are individuals who have the ability to influence others’ purchasing habits other quantifiable activities by uploading original—often sponsored—content to social media platforms such as TikTok, Instagram, YouTube, Snapchat, or other social media platforms.\nThe team proposes to collaborate with the top tech influencers on Tiktok, Instagram, and Youtube to promote the new iPhone 16. The total one-off budget for endorsement fee is £50 million in total.\nAnd from historical data, the team estimates that such an influencer campaign can boost the total sales within the next financial year by 2.5%.\n\nQuestion 2:\n\nBased on the information at hand, should Tom approve the influencer marketing plan?",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Profitability Analysis for Apple Inc"
+    ]
+  },
+  {
+    "objectID": "Case-ProfitabilityAnalysis.html#marketing-decision-a-dynamic-view",
+    "href": "Case-ProfitabilityAnalysis.html#marketing-decision-a-dynamic-view",
+    "title": "Beak-Even Analysis for Apple Inc",
+    "section": "2.2 Marketing Decision: A Dynamic View",
+    "text": "2.2 Marketing Decision: A Dynamic View\nIn the afternoon, during a board meeting, the CFO reported that the company was facing increasing uncertainty regarding future cash flows due to more strict EU regulations on Apple. Specifically, since mid September, alternative app distribution platforms have been allowed on Apple’s devices, which may lead to a significant decrease in Apple’s App Store revenue. Meanwhile, the good news is that the Bank of England has announced a 0.5% decrease in the base interest rate, which will reduce the cost of financing for Apple Inc.\nThe current cost of financing, weighted average cost of capital (WACC), increased to 10% annually. Therefore, any marketing event is recommended to take time value of money into consideration.\nRight after the meeting, Tom asked his team for a decomposition of the predicted annual incremental sales, 2.5%, into a more granular monthly level analysis.\nThe team came back with the predicted monthly incremental sales: with influencer marketing, the first month sales will increase by 0.3% and 0.2% in the following 11 months.\n\nQuestion 3:\n\nBased on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Profitability Analysis for Apple Inc"
+    ]
+  },
+  {
+    "objectID": "Case-ProfitabilityAnalysis.html#footnotes",
+    "href": "Case-ProfitabilityAnalysis.html#footnotes",
+    "title": "Beak-Even Analysis for Apple Inc",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module based on. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. All copyrights reserved.↩︎\nDr Meow’s personal favoriate! Highly recommended after a long tiring day of studies :D↩︎",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Intro and Break-Even Analyses",
+      "Profitability Analysis for Apple Inc"
     ]
   },
   {
