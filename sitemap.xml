@@ -1,151 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/R-InductionWeek.html</loc>
-    <lastmod>2023-12-05T23:34:35.483Z</lastmod>
+    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/R-RStudioSetup.html</loc>
+    <lastmod>2024-09-16T20:52:56.619Z</lastmod>
   </url>
   <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week4-Lecture1.html</loc>
-    <lastmod>2023-12-05T23:33:50.049Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week3-Lecture2.html</loc>
-    <lastmod>2023-12-05T23:33:24.213Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week5-Lecture1.html</loc>
-    <lastmod>2023-12-05T23:32:54.429Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week5-Lecture2.html</loc>
-    <lastmod>2023-12-05T23:32:24.025Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Case-SocialMedia.html</loc>
-    <lastmod>2023-12-05T23:31:54.246Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Case-BreakEvenAnalysis.html</loc>
-    <lastmod>2023-12-05T23:31:17.691Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Hey-Tom.html</loc>
-    <lastmod>2023-12-05T23:30:56.822Z</lastmod>
+    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/R-Basics.html</loc>
+    <lastmod>2024-09-14T21:47:48.104Z</lastmod>
   </url>
   <url>
     <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/R-installR.html</loc>
-    <lastmod>2023-12-05T23:30:42.983Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Case-PreliminaryCustomerAnalysis.html</loc>
-    <lastmod>2023-12-05T23:30:24.185Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Case-PredictiveAnalytics.html</loc>
-    <lastmod>2023-12-05T23:30:00.629Z</lastmod>
+    <lastmod>2024-09-17T12:11:19.110Z</lastmod>
   </url>
   <url>
     <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/RTip-BLAS.html</loc>
-    <lastmod>2023-12-05T23:29:47.741Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week10-Lecture1.html</loc>
-    <lastmod>2023-12-05T23:29:18.935Z</lastmod>
+    <lastmod>2024-09-14T20:02:46.083Z</lastmod>
   </url>
   <url>
     <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/R-errors.html</loc>
-    <lastmod>2023-12-05T23:28:54.477Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/ClassPreparation.html</loc>
-    <lastmod>2023-12-05T23:28:48.712Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Case-CLSV.html</loc>
-    <lastmod>2023-12-05T23:28:34.548Z</lastmod>
+    <lastmod>2024-09-14T20:02:46.082Z</lastmod>
   </url>
   <url>
     <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/LectureSlides.html</loc>
-    <lastmod>2023-12-05T23:28:20.784Z</lastmod>
+    <lastmod>2024-09-14T20:02:46.080Z</lastmod>
   </url>
   <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week1-Lecture1.html</loc>
-    <lastmod>2023-12-05T23:28:06.229Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week1-Lecture2.html</loc>
-    <lastmod>2023-12-05T23:27:31.184Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week6-Lecture2.html</loc>
-    <lastmod>2023-12-05T23:27:43.442Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week6-Lecture1.html</loc>
-    <lastmod>2023-12-05T23:28:18.531Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Case-COVID-IV.html</loc>
-    <lastmod>2023-12-05T23:28:31.588Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week7-Lecture2.html</loc>
-    <lastmod>2023-12-05T23:28:43.376Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Case-BreakEvenAnalysis-Solutions.html</loc>
-    <lastmod>2023-12-05T23:28:51.253Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week7-Lecture1.html</loc>
-    <lastmod>2023-12-05T23:29:06.417Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week10-Lecture2.html</loc>
-    <lastmod>2023-12-05T23:29:43.853Z</lastmod>
+    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/WeeklyArrangements.html</loc>
+    <lastmod>2024-09-17T12:11:11.096Z</lastmod>
   </url>
   <url>
     <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/index.html</loc>
-    <lastmod>2023-12-05T23:29:49.917Z</lastmod>
+    <lastmod>2024-09-15T08:59:21.914Z</lastmod>
   </url>
   <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week9-Lecture1.html</loc>
-    <lastmod>2023-12-05T23:30:15.173Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week9-Lecture2.html</loc>
-    <lastmod>2023-12-05T23:30:37.704Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week8-Lecture1.html</loc>
-    <lastmod>2023-12-05T23:30:54.618Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week8-Lecture2.html</loc>
-    <lastmod>2023-12-05T23:31:08.392Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/syllabus.html</loc>
-    <lastmod>2023-12-05T23:31:22.783Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week2-Lecture2.html</loc>
-    <lastmod>2023-12-05T23:32:07.284Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week2-Lecture1.html</loc>
-    <lastmod>2023-12-05T23:32:43.090Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week4-Lecture2.html</loc>
-    <lastmod>2023-12-05T23:33:10.968Z</lastmod>
+    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Syllabus.html</loc>
+    <lastmod>2024-09-17T12:11:02.033Z</lastmod>
   </url>
   <url>
     <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Module-introduction.html</loc>
-    <lastmod>2023-12-05T23:33:31.262Z</lastmod>
-  </url>
-  <url>
-    <loc>https://weim-mkt.github.io/UCLMarketingAnalytics/Week3-Lecture1.html</loc>
-    <lastmod>2023-12-05T23:34:03.224Z</lastmod>
+    <lastmod>2024-09-14T20:02:46.081Z</lastmod>
   </url>
 </urlset>
