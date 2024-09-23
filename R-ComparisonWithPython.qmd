@@ -1,0 +1,2137 @@
+---
+author: Dr Wei Miao
+date: "`r (lubridate::ymd('20240916'))`"
+date-modified: "20240916"
+date-format: long
+institute: UCL School of Management
+toc: true
+toc-depth: 2
+format:
+  html: 
+    number-sections: true
+    tabsets: true
+    df-print: paged
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: false
+    code-copy: hover
+    title: "Side-to-Side Comparison between R, Python, and Julia"
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  freeze: auto
+  cache: false
+  python: "/opt/homebrew/Caskroom/miniconda/base/bin/python"
+editor_options: 
+  chunk_output_type: inline
+---
+
+::: {.callout-tip}
+This tutorial is designed for those who are familiar with either R, Python or Julia, and would like to learn another language.
+
+In this tutorial, I will compare the basics of R, Python, and Julia side by side. We will cover the basic syntax, data types, and functionalities. 
+
+If you discover any mistakes or outdated content in this tutorial, please let me know. I will be very grateful for your feedback.
+
+:::
+
+```{r}
+library(reticulate)
+use_condaenv("base")
+library(JuliaCall)
+```
+
+# Language Basics
+
+## Assignment of variables
+
+::: {.callout-caution}
+
+In R and Python, assignment operations do not print the assigned object by default.
+
+But Julia does print the assigned object by default. Unless you put a semicolon `;` at the end of the line, Julia will not print the assigned object.
+
+:::
+
+::: {.panel-tabset}
+
+### R
+
+```{r}
+# create an object x with value 3
+x <- 3
+x
+```
+
+
+### Python
+
+```{python}
+# create an object x with value 3
+x = 3
+x
+```
+
+### Julia
+
+```{julia}
+# create an object x with value 3
+x = 3; # the ; suppresses the output
+```
+
+:::
+
+## Comment codes
+
+::: {.panel-tabset}
+
+### R
+
+You can put a `#` before any code, to indicate that any codes after the `#` on the same line are your comments, and will not be run by R.
+
+It's a good practice to often comment your codes, so that you can help the future you to remember what you were trying to achieve.
+
+```{r}
+# Is x 1 or 2 below?
+x <- 1 # +1
+```
+
+### Python
+
+Same as R. You can put a `#` before any code, to indicate that any codes after the `#` on the same line are your comments, and will not be run by Python.
+
+```{python}
+# Is x 1 or 2 below?
+x = 1 # +1
+
+```
+
+### Julia
+
+Same as R and Python. You can put a `#` before any code, to indicate that any codes after the `#` on the same line are your comments, and will not be run by Julia.
+
+```{julia}
+# Is x 1 or 2 below?
+
+x = 1 # +1
+
+```
+
+
+:::
+
+## Rules for naming object
+
+::: {.panel-tabset}
+
+### R
+
+For a variable to be valid, it should follow these rules
+
+-   It should contain **letters**, **numbers**, and only **dot** or **underscore** characters.
+
+-   It *cannot* start with a number (eg: 2iota), or a dot, or an underscore.
+
+```{r}
+# 2iota <- 2
+# .iota <- 2
+# _iota <- 2
+```
+
+-   It should not be a reserved word in R (eg: mean, sum, etc.).
+
+```{r}
+# mean <- 2
+```
+
+### Python
+
+For a variable to be valid, it should follow these rules
+
+-   It should contain **letters**, **numbers**, and only **underscore** characters.
+
+-   It *cannot* start with a number (eg: 2iota), or a dot, or an underscore.
+
+```{python}
+
+# 2iota = 2
+
+# .iota = 2
+
+# _iota = 2
+
+```
+
+-   It should not be a reserved word in Python (eg: mean, sum, etc.).
+
+```{python}
+
+# mean = 2
+
+```
+
+
+
+### Julia
+
+Same as R.
+
+:::
+
+
+
+# Packages and Functions
+
+::: {.panel-tabset}
+
+### R
+
+The base R already comes with many useful built-in functions to perform basic tasks, but as data scientists, we need more.
+
+To perform certain tasks (such as a machine learning model), we can definitely write our own code from scratch, but it takes lots of (unnecessary) effort. Fortunately, many **packages** have been written by others for us to directly use.
+
+-  To download a package, hit `Tools` -\> `Install Packages` in RStudio, and type the package name in the pop-up window. Now, download the package `dplyr`.
+
+-  To load the packages, we need to type `library()`. 
+
+```{r}
+library(dplyr)
+```
+
+-   Now that the package is loaded, you can use the functions in it. `filter()` is a function in the `dplyr` package that can be used to filter data.
+
+```{r}
+data(iris)  # load built in iris
+iris %>%
+  filter(Species == "setosa")
+```
+
+### Python
+
+Python has a similar concept of packages, but they are called **modules**.
+
+-   To install a module, you can use `pip install` in the terminal, or `!pip install` in Jupyter Notebook. You can also install a module in the Anaconda Navigator.
+
+```{python}
+# !pip install pandas 
+```
+
+-   To load a module, you can use `import`. Now that the module is loaded, you can use the functions in it.
+
+```{python}
+import pandas as pd
+iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv') # load iris
+
+iris[iris['species'] == 'setosa']
+
+```
+
+### Julia
+
+Julia has a similar concept of packages.
+
+-   To install a package, you can use `Pkg.add()` in the Julia terminal.
+
+```{julia}
+
+using Pkg
+
+Pkg.add("DataFrames")
+Pkg.add("CSV")
+
+```
+
+-   To load a package, you can use `using`. Now that the package is loaded, you can use the functions in it.
+
+```{julia}
+
+using DataFrames, CSV
+
+iris = CSV.File(download("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv")) |> DataFrame;
+
+# Filter the DataFrame where species is "setosa"
+setosa_data = iris[iris.species .== "setosa", :];
+
+# Display the first few rows of the filtered data
+first(setosa_data, 5)
+
+```
+
+
+
+:::
+
+# Arithmetic, Logical, and Relational Operations
+
+## Arithmetic operations
+
+::: {.panel-tabset}
+
+### R
+
+```{r}
+# arithmatic operations
+x <- 3 
+x + 1 # addition
+x - 1 # subtraction
+x * 2 # multiplication
+x / 2 # division
+x^2 # square
+x %% 2 # remainder
+x %/% 2 # integer division
+
+# math operations
+log(x)  # natural logarithm
+exp(x)  # exponential
+sqrt(x) # square root
+log10(x) # log base 10
+round(x/2) # round
+floor(x/2) # floor
+ceiling(x/2) # ceiling
+
+```
+
+### Python
+
+```{python}
+# arithmatic operations
+x = 3
+x + 1 # addition
+x - 1 # subtraction
+x * 2 # multiplication
+x / 2 # division
+x ** 2 # square
+x % 2 # remainder
+x // 2 # integer division
+
+# math operations
+import math
+math.log(x)  # natural logarithm
+math.exp(x)  # exponential
+math.sqrt(x) # square root
+math.log10(x) # log base 10
+round(x/2) # round
+math.floor(x/2) # floor
+math.ceil(x/2) # ceiling
+
+```
+
+### Julia
+
+```{julia}
+
+# arithmatic operations
+
+x = 3
+
+x + 1 # addition
+
+x - 1 # subtraction
+
+x * 2 # multiplication
+
+x / 2 # division
+
+x ^ 2 # square
+
+x % 2 # remainder
+
+div(x, 2) # integer division
+
+# math operations
+
+log(x)  # natural logarithm
+
+exp(x)  # exponential
+
+sqrt(x) # square root
+
+log10(x) # log base 10
+
+round(x/2) # round
+
+floor(x/2) # floor
+
+ceil(x/2) # ceiling
+
+```
+
+:::
+
+## Logical operations
+
+::: {.panel-tabset}
+
+### R
+
+```{r}
+# logical operations
+x <- 3
+x > 2 # larger than
+x < 2 # smaller than
+x == 2 # equal to
+x != 2 # not equal to
+```
+
+### Python
+
+```{python}
+# logical operations
+x = 3
+x > 2 # larger than
+x < 2 # smaller than
+x == 2 # equal to
+x != 2 # not equal to
+```
+
+### Julia
+
+```{julia}
+
+# logical operations
+
+x = 3
+
+x > 2 # larger than
+
+x < 2 # smaller than
+
+x == 2 # equal to
+
+x != 2 # not equal to
+
+```
+
+
+
+:::
+
+## Relational operations
+
+::: {.callout-caution}
+- R: Boolean values are TRUE and FALSE.
+- Python: Boolean values are True and False (case-sensitive).
+:::
+
+::: {.panel-tabset}
+
+### R
+
+```{r}
+T & F # and
+T | F # or
+!T # not
+```
+
+### Python
+
+```{python}
+True & False # and
+True | False # or
+not True # not
+```
+
+### Julia
+
+```{julia}
+
+true & false # and
+
+true | false # or
+
+!true # not
+
+```
+
+:::
+
+# Vectors
+
+##  Creating vectors
+
+::: {.panel-tabset}
+
+### R
+
+- In R, a **vector** is a collection of elements of the same data type, which is often used to store a variable of a dataset. For instance, a vector can store the income of a group of people, the final grades of students, etc.
+
+- Vector can be created using the function `c()` by listing all the values in the parenthesis, separated by comma ','. 
+
+- c() stands for "combine".
+
+```{r}
+Income <- c(1, 3, 5, 10)
+Income
+```
+
+- Vectors must contain elements **of the same data type**. If not, it will automatically convert elements into the same type (usually character type).
+
+```{r}
+Income <- c(1, 3, 5, "10")
+Income
+```
+
+### Python
+
+- In Python, a **list** is a collection of elements of different data types, which is often used to store a variable of a dataset. For instance, a list can store the income of a group of people, the final grades of students, etc.
+
+- List can be created using the square brackets `[]` by listing all the values in the brackets, separated by comma ','.
+
+```{python}
+Income = [1, 3, 5, 10]
+Income
+```
+
+- List can contain elements of different data types.
+
+```{python}
+Income = [1, 3, 5, "10"]
+Income
+```
+
+- If you want to create a list with elements of the same numeric data type, you can use the `numpy` package.
+
+```{python}
+import numpy as np
+Income = np.array([1, 3, 5, 10])
+Income
+```
+
+### Julia
+
+- In Julia, a **vector** is a collection of elements of the same data type, which is often used to store a variable of a dataset. For instance, a vector can store the income of a group of people, the final grades of students, etc.
+
+- Vector can be created using the square brackets `[]` by listing all the values in the brackets, separated by comma ','.
+
+```{julia}
+
+Income = [1, 3, 5, 10]
+
+
+```
+
+- Vector can contain elements of different data types. However, you will note that the data type is now changed to any rather than Int64.
+
+```{julia}
+
+Income = [1, 3, 5, "10"]
+
+```
+
+:::
+
+
+## Indexing and subsetting
+
+::: {.callout-caution}
+R, Python, and Julia have different indexing rules.
+
+- In R and Julia, the index starts from 1.
+- In Python, the index starts from 0.
+
+:::
+
+::: {.panel-tabset}
+
+### R
+
+-   To extract an element from a vector, we put the **index** of the element in a **square bracket `[ ]`**.
+
+```{r}
+Income <- c(1, 3, 5, 10)
+Income[1] # extract the first element
+```
+
+-   If we want to extract multiple elements, we can use a vector of indices.
+
+```{r}
+Income[c(1,3)] # extract the first and third elements
+```
+
+### Python
+
+-   To extract an element from a list, we put the **index** of the element in a **square bracket `[ ]`**.
+
+```{python}
+Income = [1, 3, 5, 10]
+Income[0] # extract the first element
+```
+
+-   If we want to extract multiple elements, we can use a slice.
+
+```{python}
+Income[0:3] # extract the first and third elements
+```
+
+-  With numpy array, we can use the same syntax as R.
+
+```{python}
+Income = np.array([1, 3, 5, 10])
+Income[0] # extract the first element
+Income[[0,2]] # extract the first and third elements
+```
+
+### Julia
+
+-   To extract an element from a vector, we put the **index** of the element in a **square bracket `[ ]`**.
+
+```{julia}
+
+Income = [1, 3, 5, 10];
+
+Income[1] # extract the first element
+
+```
+
+-   If we want to extract multiple elements, we can use a slice.
+
+```{julia}
+
+Income[1:3] # extract the first and third elements
+
+```
+
+
+:::
+
+## Creating numeric sequences with fixed steps
+::: {.panel-tabset}
+
+### R
+
+It is also possible to easily create sequences with patterns
+
+-   use `seq()` to create sequence with fixed steps
+
+```{r}
+# use seq()
+seq(from = 1, to = 2, by = 0.1)
+```
+
+-   If the step is 1, there's a convenient way using `:`
+
+```{r}
+1:5
+```
+
+### Python
+
+- In base Python, we can use `range()` to create sequence with fixed steps
+
+```{python}
+# from 1 to 6, with step 1
+list(range(1, 6)) # range() returns a range object, we need to convert it to a list
+
+```
+
+-   use `np.arange()` to create sequence with fixed steps
+
+```{python}
+
+np.arange(1, 2, 0.1)
+```
+
+### Julia
+
+- In Julia, we can use `1:5` to create sequence with fixed steps
+
+```{julia}
+
+1:5
+
+```
+
+- However, the julia object is not a integer vector, but a `UnitRange{Int64}` object.
+
+```{julia}
+
+typeof(1:5)
+
+```
+
+:::
+
+
+
+## Combine multiple vectors into one: c()
+
+::: {.panel-tabset}
+
+### R
+
+- Sometimes, we may want to combine multiple vectors into one. For instance, we may have collected income data from two different sources, and we want to combine them into one vector.
+
+- We can use `c()` to combine different vectors; this is very commonly used to concatenate vectors.
+
+```{r}
+Income1 <- 1:3 
+Income2 <- c(10, 15) 
+```
+
+```{r}
+
+c(Income1,Income2)
+```
+
+### Python
+
+- In Python, we can use the `+` operator to concatenate lists.
+
+```{python}
+Income1 = [1, 2, 3]
+Income2 = [10, 15]
+```
+
+```{python}
+Income1 + Income2
+```
+
+- For numpy arrays, we can use `np.concatenate()` to concatenate arrays.
+
+```{python}
+Income1 = np.array([1, 2, 3])
+Income2 = np.array([10, 15])
+```
+
+```{python}
+np.concatenate((Income1, Income2))
+```
+
+### Julia
+
+- In Julia, we can use the `vcat()` function to concatenate vectors.
+
+```{julia}
+
+Income1 = [1, 2, 3];
+
+Income2 = [10, 15]; 
+
+vcat(Income1, Income2)
+
+```
+
+:::
+
+## Replicating elements
+
+::: {.panel-tabset}
+
+### R
+
+-   We can use the `rep()` function to replicate elements in a vector.
+
+```{r}
+
+rep(1:3, times = 2) # replicate 1:3 twice
+```
+
+```{r}
+rep(1:3, each = 2) # replicate each element in 1:3 twice
+```
+
+### Python
+
+-   We can use the `*` operator to replicate elements in a list.
+
+```{python}
+
+[1, 2, 3] * 2 # replicate 1:3 twice
+
+```
+
+-   For numpy arrays, we can use `np.tile()` to replicate elements.
+
+```{python}
+
+np.tile([1, 2, 3], 2) # replicate 1:3 twice
+
+```
+
+```{python}
+
+np.repeat([1, 2, 3], 2) # replicate each element in 1:3 twice 
+
+```
+
+### Julia
+
+-   We can use the `repeat()` function to replicate elements in a vector.
+
+```{julia}
+
+repeat([1, 2, 3], 2) # replicate 1:3 twice
+
+```
+
+```{julia}
+
+repeat([1, 2, 3], inner = 2) # replicate each element in 1:3 twice
+
+```
+
+:::
+
+## Maximum and minimum
+
+::: {.panel-tabset}
+
+### R
+
+-   We can use the `max()` and `min()` functions to find the maximum and minimum values in a vector.
+
+```{r}
+
+Income <- c(1, 3, 5, 10)
+
+max(Income) # maximum
+
+min(Income) # minimum
+
+```
+
+### Python
+
+-   We can use the `max()` and `min()` functions to find the maximum and minimum values in a list.
+
+```{python}
+
+Income = [1, 3, 5, 10]
+
+max(Income) # maximum
+
+min(Income) # minimum
+
+```
+
+-   For numpy arrays, we can use `np.max()` and `np.min()` to find the maximum and minimum values.
+
+```{python}
+
+Income = np.array([1, 3, 5, 10])
+
+np.max(Income) # maximum
+
+np.min(Income) # minimum
+
+```
+
+### Julia
+
+-   We can use the `maximum()` and `minimum()` functions to find the maximum and minimum values in a vector.
+
+```{julia}
+
+Income = [1, 3, 5, 10];
+
+maximum(Income) # maximum
+
+minimum(Income) # minimum
+
+```
+
+
+:::
+
+## Sum and mean
+
+::: {.panel-tabset}
+
+### R
+
+-   We can use the `sum()` and `mean()` functions to find the sum and mean values in a vector.
+
+```{r}
+
+Income <- c(1, 3, 5, 10)
+
+sum(Income, na.rm = T) # sum and remove missing values
+
+mean(Income, na.rm = T) # mean and remove missing values
+
+```
+
+### Python
+
+-   We can use the `sum()` and `mean()` functions to find the sum and mean values in a list.
+
+```{python}
+
+Income = [1, 3, 5, 10]
+
+sum(Income) # sum
+
+np.mean(Income) # mean
+```
+
+-   For numpy arrays, we can use `np.sum()` and `np.mean()` to find the sum and mean values.  
+
+```{python}
+Income = np.array([1, 3, 5, 10])
+
+np.sum(Income) # sum
+
+np.mean(Income) # mean
+
+```
+
+### Julia
+
+-   We can use the `sum()` and `mean()` functions to find the sum and mean values in a vector.
+
+```{julia}
+
+Income = [1, 3, 5, 10];
+
+sum(Income) # sum
+
+mean(Income) # mean
+
+```
+
+
+:::
+
+
+## Missing values
+
+::: {.callout-caution}
+
+-   In R, missing values are represented by `NA`.
+
+-   In Python, missing values are represented by `np.nan`.
+
+-  In Julia, missing values are represented by `missing`.
+
+:::
+
+::: {.panel-tabset}
+
+### R
+
+-   In R, missing values are represented by `NA`.
+
+```{r}
+
+Income <- c(1, 3, 5, NA)
+
+sum(Income, na.rm = T) # sum and remove missing values
+
+mean(Income, na.rm = T) # mean and remove missing values
+
+```
+
+### Python
+
+-   In Python, missing values are represented by `np.nan`.
+
+```{python}
+
+Income = [1, 3, 5, np.nan]
+
+np.nansum(Income) # sum and remove missing values
+
+np.nanmean(Income) # mean and remove missing values
+
+
+```
+
+### Julia
+
+-   In Julia, missing values are represented by `missing`. In order to take the sum or mean by removing missing values, 
+
+```{julia}
+
+Income = [1, 3, 5, missing];
+
+sum(skipmissing(Income)) # sum and remove missing values
+
+```
+
+:::
+
+
+## Element-wise arithmetic operations
+
+::: {.callout-caution}
+
+-   R by default supports element-wise operations on vectors.
+-  Python by default does not support element-wise operations on lists. You need to use numpy arrays to do element-wise operations. 
+-  Julia by default does not support element-wise operations on arrays. You need to use the `.` operator to do element-wise operations.
+
+:::
+
+::: {.panel-tabset}
+
+### R
+
+-   If you operate on a vector with a single number, the operation will be applied to all elements in the vector
+
+```{r}
+
+Income <- c(1, 3, 5, 10)
+
+Income + 2 # element-wise addition
+
+Income * 2 # element-wise multiplication
+
+```
+
+### Python
+
+-   However, the base Python does not support element-wise operations on lists.
+
+```{python}
+
+Income = [1, 3, 5, 10]
+
+Income + 2 # element-wise addition
+
+Income * 2 # element-wise multiplication
+
+```
+
+-   For numpy arrays, the behavior is the same as R.
+
+```{python}
+
+Income = np.array([1, 3, 5, 10])
+
+Income + 2 # element-wise addition
+
+Income * 2 # element-wise multiplication
+
+```
+
+### Julia
+
+-   If you operate on a vector with a single number, the operation will be applied to all elements in the vector. However, the base Julia does not support element-wise operations on arrays. In order to do element-wise operations, you need to use the `.` operator.
+
+```{julia}
+
+Income = [1, 3, 5, 10];
+
+Income .+ 2 # element-wise addition
+
+Income .* 2 # element-wise multiplication
+
+```
+
+:::
+
+## Vector multiplication
+
+::: {.panel-tabset}
+
+### R
+
+-   If the two vectors are of the same length, they can do element-wise operations, including element-wise addition and element-wise multiplication
+
+```{r}
+
+Income1 <- c(1, 3, 5, 10)
+
+Income2 <- c(2, 4, 6, 8)
+
+Income1 + Income2 # element-wise addition
+
+Income1 * Income2 # element-wise multiplication
+
+```
+
+### Python
+
+-   For numpy arrays, we can use `np.multiply()` to do element-wise multiplication.
+
+```{python}
+
+Income1 = np.array([1, 3, 5, 10])
+
+Income2 = np.array([2, 4, 6, 8])
+
+np.add(Income1, Income2) # element-wise addition
+
+np.multiply(Income1, Income2) # element-wise multiplication
+
+```
+
+### Julia
+
+-   If the two vectors are of the same length, they can do element-wise operations, including element-wise addition and element-wise multiplication
+
+```{julia}
+
+Income1 = [1, 3, 5, 10];
+
+Income2 = [2, 4, 6, 8];
+
+Income1 .+ Income2 # element-wise addition
+
+Income1 .* Income2 # element-wise multiplication
+
+```
+
+:::
+
+## Max and min of 2 vectors
+
+::: {.panel-tabset}
+
+### R
+
+-   We can use the `pmax()` and `pmin()` functions to find the element-wise maximum and minimum values of two vectors.
+
+```{r}
+
+Income1 <- c(1, 3, 5, 10)
+
+Income2 <- c(2, 4, 6, 8)
+
+pmax(Income1, Income2) # element-wise maximum
+
+pmin(Income1, Income2) # element-wise minimum
+
+```
+
+### Python
+
+-   We can use the `np.maximum()` and `np.minimum()` functions to find the element-wise maximum and minimum values of two numpy arrays.
+
+```{python}
+
+Income1 = np.array([1, 3, 5, 10])
+
+Income2 = np.array([2, 4, 6, 8])
+
+np.maximum(Income1, Income2) # element-wise maximum
+
+np.minimum(Income1, Income2) # element-wise minimum
+
+```
+
+### Julia
+
+-   We can use the `max()` and `min()` functions to find the element-wise maximum and minimum values of two vectors.
+
+```{julia}
+
+Income1 = [1, 3, 5, 10];
+
+Income2 = [2, 4, 6, 8];
+
+max.(Income1, Income2) # element-wise maximum
+
+min.(Income1, Income2) # element-wise minimum
+
+```
+
+:::
+
+
+# Character and String
+
+## Creating strings
+
+::: {.panel-tabset}
+
+### R
+
+- Characters are enclosed within a pair of quotation marks.
+
+- Single or double quotation marks can both work. 
+
+- If even a character may contain numbers, it will be treated as a character, and R will not perform any mathematical operations on it.
+
+```{r} 
+str1 <- "1 + 1 = 2"
+```
+
+### Python
+
+- Strings are enclosed within a pair of quotation marks.
+
+- Single or double quotation marks can both work.
+
+```{python}
+str1 = "1 + 1 = 2"
+
+```
+
+### Julia
+
+- In Julia, single quotation marks (`'`) are used for defining individual characters.
+Double quotation marks (`"`) are used for defining strings.
+
+```{julia}
+
+character1 = '1'
+str1 = "1 + 1 = 2"
+
+```
+
+:::
+
+## Concatenating strings
+
+::: {.panel-tabset}
+
+### R
+
+- We can use the `paste()` function to concatenate strings.
+
+```{r}
+
+str1 <- "1 + 1 = "
+str2 <- "2"
+
+paste(str1, str2)
+```
+
+### Python
+
+- We can use the `+` operator to concatenate strings.
+
+```{python}
+
+str1 = "1 + 1 = "
+str2 = "2"
+
+str1 + str2
+
+```
+
+### Julia
+
+- We can use the `*` operator to concatenate strings.
+
+```{julia}
+
+str1 = "1 + 1 = "
+
+str2 = "2"
+
+str1 * str2
+
+```
+
+
+:::
+
+
+## Checking the number of elements in a vector: length()
+
+::: {.panel-tabset}
+
+### R
+
+- You can measure the length of a **vector** using the command `length()`
+
+```{r}
+x <- c('R',' is', ' the', ' best', ' language')
+length(x)
+```
+
+### Python
+
+- You can measure the length of a **list** using the command `len()`
+
+```{python}
+
+x = ['R',' is', ' the', ' best', ' language']
+
+len(x)
+
+```
+
+- For numpy arrays, you can use the `shape` attribute to get the shape of the array.
+
+```{python}
+
+x = np.array(['Python',' is', ' the', ' best', ' language'])
+
+x.shape
+
+```
+
+### Julia
+
+- You can measure the length of a **vector** using the command `length()`
+
+```{julia}
+
+x = ["Julia", " is", " the", " best", " language"]
+
+length(x)
+
+```
+
+:::
+
+## Special relational operation: `%in%`
+
+::: {.panel-tabset}
+
+### R
+
+-   A special relational operation is `%in%` in R, which tests whether an element exists in the object.
+
+```{r}
+
+x <- c(1,3,8,7) 
+
+3 %in% x
+
+2 %in% x
+```
+
+### Python
+
+-   In Python, we can use the `in` operator to test whether an element exists in the object.
+
+```{python}
+
+x = [1, 3, 8, 7]
+
+3 in x
+
+2 in x
+
+```
+
+### Julia
+
+-   In Julia, we can use the `in` operator to test whether an element exists in the object.
+
+```{julia}
+
+x = [1, 3, 8, 7];
+
+3 in x
+
+```
+
+:::
+
+
+# Matrices
+
+## Matrices: creating matrices
+
+::: {.callout-caution}
+When creating R matrix using `matrix()`, the sequence of elements is filled by column. This by-column is named as **column-major order**. 
+
+When creating Python matrix using `np.array()`, the sequence of elements is filled by row. This by-row is named as **row-major order**.
+
+:::
+
+::: {.panel-tabset}
+
+### R
+
+-   A matrix can be created using the command `matrix()`
+    -   the first argument is the vector to be converted into matrix
+    -   the second argument is the number of rows
+    -   the last argument is the number of cols
+
+```{r}
+matrix(1:9, nrow = 3, ncol = 3)
+```
+
+### Python
+
+-   A matrix can be created using the `numpy` package, `np.array()` function, where the argument is a list of lists, where each list is a row of the matrix
+
+
+```{python}
+
+import numpy as np
+
+np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+```
+
+### Julia
+
+-  A matrix can be created using the base Julia using square brackets `[]` and semicolon `;` to separate rows. 
+
+```{julia}
+
+[1 2 3; 4 5 6; 7 8 9]
+
+```
+
+
+:::
+
+
+## Creating matrices: combine matrices 
+
+::: {.panel-tabset}
+
+### R
+
+We can use `cbind()` and `rbind()` to concatenate vectors and matrices into new matrices.
+
+-   `cbind()` does the column binding
+
+```{r}
+a <- matrix(1:6, nrow = 2, ncol = 3)
+
+a
+
+cbind(a, a) # column bind
+
+```
+
+-   `rbind()` does the row binding
+
+```{r}
+rbind(a, a) # row bind
+```
+
+### Python
+
+-   We can use `np.concatenate()` to concatenate arrays.
+
+```{python}
+
+a = np.array([[1, 2, 3], [4, 5, 6]])
+
+a
+
+np.concatenate((a, a), axis = 1) # column bind
+
+np.concatenate((a, a), axis = 0) # row bind
+
+```
+
+### Julia
+
+-   We can use the `hcat()` and `vcat()` functions to concatenate matrices.
+
+```{julia}
+
+a = [1 2 3; 4 5 6]
+
+hcat(a, a) # column bind
+
+vcat(a, a) # row bind
+
+```
+
+:::
+
+## Matrices: indexing and subsetting
+
+
+Matrices have two dimensions: rows and columns. Therefore, to extract elements from a matrix, we just need to specify which row(s) and which column(s) we want.
+
+::: {.panel-tabset}
+
+### R
+
+
+```{r}
+x <- matrix(1:9, nrow = 3, ncol = 3)
+x
+```
+
+-   Extract the element in the 2nd row, 3rd column.
+    -   use **square bracket** with a coma inside `[ , ]` to indicate subsetting; the argument before coma is the row index, and the argument after the coma is the column index.
+        -   2 is specified for row index, so we will extract elements from the first row
+        -   3 is specified for column index, so we will extract elements from the the second column
+        -   Altogether, we extract a single element in row 2, column 3.
+
+```{r}
+x[2,3] # the element in the 2nd row, 3rd column
+
+```
+
+-   If we leave blank for a dimension, we extract all elements along that dimension.
+    -   if we want to take out the entire first row
+        -   1 is specified for the row index
+        -   column index is blank
+
+```{r}
+x[1,] # all elements in the first row
+```
+
+### Python
+
+```{python}
+
+x = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+x
+
+```
+
+-   Extract the element in the 2nd row, 3rd column.
+
+```{python}
+
+x[1,2] # the element in the 2nd row, 3rd column
+
+```
+
+-   If we leave blank for a dimension, we extract all elements along that dimension.
+
+```{python}
+
+x[0,:] # all elements in the first row
+
+```
+
+### Julia
+
+```{julia}
+
+x = [1 2 3; 4 5 6; 7 8 9];
+
+```
+
+-   Extract the element in the 2nd row, 3rd column.
+
+```{julia}
+
+x[2,3] # the element in the 2nd row, 3rd column
+
+```
+
+-  Different from R, we need to  use `:` to extract all elements along that dimension.
+
+```{julia}
+
+x[1,:] # all elements in the first row
+
+```
+
+:::
+
+## Matrices: check dimensions and variable types
+
+::: {.panel-tabset}
+
+### R
+
+-   You can verify the size of the matrix using the command `dim()`; or `nrow()` and `ncol()`
+
+```{r}
+
+x <- matrix(1:9, nrow = 3, ncol = 3)
+
+dim(x)
+
+nrow(x)
+
+ncol(x)
+
+```
+
+-   You can get the data type info using the command `str()`
+
+```{r}
+
+str(x)
+
+```
+
+### Python
+
+-   You can verify the size of the matrix using the `shape` attribute
+
+```{python}
+
+x = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+x.shape
+
+```
+
+-   You can get the data type info using the `dtype` attribute
+
+```{python}
+
+x.dtype
+
+```
+
+### Julia
+
+-   You can verify the size of the matrix using the `size()` function
+
+```{julia}
+
+x = [1 2 3; 4 5 6; 7 8 9]
+
+size(x)
+
+```
+
+:::
+
+## Matrices: special operations
+
+### Creating a diagonal matrix
+
+::: {.panel-tabset}
+
+### R
+
+-   We can use the `diag()` function to create a diagonal matrix.
+
+```{r}
+
+diag(1:3)
+
+```
+
+### Python
+
+-   We can use the `np.diag()` function to create a diagonal matrix.
+
+```{python}
+
+np.diag([1, 2, 3])
+
+```
+
+### Julia
+
+-   We can use the `diagm()` function to create a diagonal matrix.
+
+```{julia}
+using LinearAlgebra
+diagm(0 => [1, 2, 3])
+```
+
+:::
+
+### Creating an identity matrix
+
+::: {.panel-tabset}
+
+### R
+
+-   We can use the `diag()` function to create an identity matrix.
+
+```{r}
+
+diag(3)
+
+```
+
+### Python
+
+-   We can use the `np.eye()` function to create an identity matrix.
+
+```{python}
+
+np.eye(3)
+
+```
+
+### Julia
+
+-   We can use the `I()` function to create an identity matrix.
+
+```{julia}
+
+I(3)
+
+```
+
+:::
+
+## Matrices' operations: matrix addition and multiplication
+
+::: {.panel-tabset}
+
+### R
+
+-   If the two matrices are of the same dimensions, they can do element-wise operations, including element-wise addition and element-wise multiplication
+
+```{r}
+set.seed(123)
+
+x = matrix(rnorm(9), nrow = 3, ncol = 3)
+
+z = matrix(rnorm(9), nrow = 3, ncol = 3)
+
+x + z   # elementwise addition
+
+```
+
+```{r}
+x * x 
+```
+
+-   If we want to perform the matrix multiplication as in linear algebra, we need to use `%*%`
+    -   x and y must have conforming dimensions
+
+```{r}
+x
+y = matrix(rnorm(9), nrow = 3, ncol = 3)
+x %*% y # matrix multiplication
+```
+
+### Python
+
+-   If the two matrices are of the same dimensions, they can do element-wise operations, including element-wise addition and element-wise multiplication
+
+```{python}
+
+x = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+y = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+x + y # elementwise addition
+
+```
+
+```{python}
+
+x * y # elementwise multiplication
+
+```
+
+-   If we want to perform the matrix multiplication as in linear algebra, we need to use `@`
+    -   x and y must have conforming dimensions
+
+```{python}
+
+x @ y # matrix multiplication
+
+```
+
+### Julia
+
+-   If the two matrices are of the same dimensions, they can do element-wise operations, including element-wise addition and element-wise multiplication. It's recommended to use `.` to indicate element-wise operations
+
+```{julia}
+
+x = [1 2 3; 4 5 6; 7 8 9]
+
+y = [1 2 3; 4 5 6; 7 8 9]
+
+x .+ y # elementwise addition
+
+```
+
+:::
+
+
+
+## Matrices' operations: inverse and transpose
+
+::: {.panel-tabset}
+
+### R
+
+-   We use `t()` to do matrix transpose
+
+```{r}
+x = matrix(rnorm(9), nrow = 3, ncol = 3)
+x
+t(x) # transpose
+```
+
+-   We use `solve()` to get the inverse of an matrix
+
+```{r}
+x
+solve(t(x)%*%x) # inverse; must be on a square matrix
+```
+
+### Python
+
+-   We use `T` to do matrix transpose
+
+```{python}
+
+x = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+x
+
+x.T # transpose
+
+```
+
+-   We use `np.linalg.inv()` to get the inverse of an matrix
+
+```{python}
+
+np.linalg.inv(x.T @ x) # inverse; must be on a square matrix
+
+```
+
+### Julia
+
+-   We use `transpose()` to do matrix transpose
+
+```{julia}
+
+x = [1 2 3; 4 5 6; 7 8 9]
+
+transpose(x) # transpose
+
+```
+
+-  We use `inv()` to get the inverse of an matrix
+
+```{julia}
+
+inv(transpose(x) * x) # inverse; must be on a square matrix
+
+```
+
+:::
+
+# Programming Basics: Flow Control
+
+::: {.callout-caution}
+## Indentation Difference 
+
+- In R, the code block is enclosed by curly braces `{}`. Indentation is not necessary and does not affect the code execution.
+
+- In Python, the code block is defined by indentation. Indentation is necessary and affects the code execution.
+
+- In Julia, the code block is defined by the beginning of `if` or `for` and `end`. Indentation does not affect the code execution.
+
+:::
+
+
+## if/else
+
+::: {.panel-tabset}
+
+### R
+
+Sometimes, you want to run your code based on different conditions. For instance, if the observation is a missing value, then use the population average to impute the missing value. This is where `if/else` kicks in.
+
+```         
+if (condition == TRUE) {
+  action 1
+} else if (condition == TRUE ){
+  action 2
+} else {
+  action 3
+}
+```
+
+Example 1:
+
+```{r}
+
+a <- 15
+
+if (a > 10) {
+larger_than_10 <- TRUE  
+} else {
+  larger_than_10 <- FALSE
+}
+
+larger_than_10  
+```
+
+Example 2:
+
+```{r}
+x <- -5
+if(x > 0){
+  print("x is a non-negative number")
+} else {
+  print("x is a negative number")
+}
+```
+
+### Python
+
+```{python}
+
+a = 15
+
+if a > 10:
+    larger_than_10 = True
+else:
+    larger_than_10 = False
+
+larger_than_10
+
+```
+
+Example 2:
+
+```{python}
+
+x = -5
+
+if x > 0:
+    print("x is a non-negative number")
+else:
+    print("x is a negative number")
+
+```
+
+### Julia
+
+```{julia}
+
+a = 15
+
+if a > 10
+    larger_than_10 = true
+else
+    larger_than_10 = false
+end
+
+larger_than_10
+
+```
+
+Example 2:
+
+```{julia}
+
+x = -5
+
+if x > 0
+    println("x is a non-negative number")
+else
+    println("x is a negative number")
+end
+
+```
+
+:::
+
+
+
+## Loops
+
+::: {.callout-caution}
+
+Both R and Python are very inefficient in terms of loops. Therefore, codes should be written in matrix form to utlize the vectorization as much as possible.
+
+In constrast, Julia is very efficient at loops. Thus code readability should be prioritized instead of vectorization.
+
+:::
+
+
+::: {.panel-tabset}
+
+### R
+
+As the name suggests, in a loop the program repeats a set of instructions many times, until the stopping criteria is met.
+
+Loop is very useful for repetitive jobs.
+
+```{r}
+for (i in 1:10){ # i is the iterator
+  # loop body: gets executed each time
+  # the value of i changes with each iteration
+}
+```
+
+Example:
+
+```{r}
+
+for (i in 1:5){
+  print(i)
+}
+
+```
+
+### Python
+
+```{python}
+
+for i in range(1, 6):
+    print(i)
+
+```
+
+### Julia
+
+```{julia}
+
+for i in 1:5
+    println(i)
+end
+
+```
+
+:::
+
+## User-Defined Functions
+
+A function takes the argument as input, run some specified actions, and then return the result to us.
+
+Functions are very useful. When we would like to test different ideas, we can combine functions with loops: We can write a function which takes different parameters as input, and we can use a loop to go through all the possible combinations of parameters.
+
+::: {.panel-tabset}
+
+### R
+
+Here is how to define a function in general:
+
+```{r}
+function_name <- function(arg1 ,arg2 = default_value){
+  # write the actions to be done with arg1 and arg2
+  # you can have any number of arguments, with or without defaults
+  return() # the last line is to return some value 
+}
+```
+
+Example:
+
+```{r}
+magic <- function( x, y){
+  return(x^2 + y)
+}
+
+magic(1,3)
+
+```
+
+### Python
+
+Here is how to define a function in general:
+
+```{python}
+
+def function_name(arg1, arg2 = default_value):
+    # write the actions to be done with arg1 and arg2
+    # you can have any number of arguments, with or without defaults
+    return # the last line is to return some value
+
+```
+
+Example:
+
+```{python}
+
+def magic(x, y):
+    return x**2 + y
+
+magic(1, 3)
+
+```
+
+### Julia
+
+Here is how to define a function in general:
+
+```{julia}
+
+function function_name(arg1, arg2 = default_value)
+    # write the actions to be done with arg1 and arg2
+    # you can have any number of arguments, with or without defaults
+    return # the last line is to return some value
+end
+
+```
+
+Example:
+
+```{julia}
+
+function magic(x, y)
+    return x^2 + y
+end
+
+magic(1, 3)
+
+```
+
+:::
+
+
+
+# A comprehensive exercise
+
+Task: write a function, which takes a vector as input, and returns the max value of the vector
+
+::: {.panel-tabset}
+
+### R
+
+
+```{r, include=T, echo=T}
+
+get_max <- function(input){
+  max_value <- input[1]
+  for (i in 2:length(input) ) {
+    if (input[i] > max_value) {
+      max <- input[i]
+    }
+  }
+  
+  return(max)
+}
+
+get_max(c(-1,3,2))
+
+```
+
+### Python
+
+```{python}
+
+def get_max(input):
+    max_value = input[0]
+    for i in range(1, len(input)):
+        if input[i] > max_value:
+            max_value = input[i]
+    return max_value
+
+get_max([-1, 3, 2])
+
+```
+
+### Julia
+
+```{julia}
+
+function get_max(input)
+    max_value = input[1]
+    for i in 2:length(input)
+        if input[i] > max_value
+            max_value = input[i]
+        end
+    end
+    return max_value
+end
+
+get_max([-1, 3, 2])
+
+```
+
+:::
+
+# Conclusion about R and Python
+
+Below are the most easy mistakes to make when you are switching between R and Python:
+
+-   In R, the index starts from 1; in Python, the index starts from 0.
+
+-   In R, missing values are represented by `NA`; in Python, missing values are represented by `np.nan`.
+
+-   In R, the code block is enclosed by curly braces `{}`; in Python, the code block is defined by indentation.
+
+-   In R, the `:` operator is used to create a sequence with a step of 1; in Python, the `range()` function is used to create a sequence with a step of 1.
+
+-   In R, the `c()` function is used to combine vectors; in Python, the `+` operator is used to combine lists.
+
+-   In R, the `rep()` function is used to replicate elements in a vector; in Python, the `*` operator is used to replicate elements in a list.
+
+-   In R, the `%in%` operator is used to test whether an element exists in the object; in Python, the `in` operator is used to test whether an element exists in the object.
+
+-   In R, the `%*%` operator is used to perform matrix multiplication; in Python, the `@` operator is used to perform matrix multiplication.
+
+

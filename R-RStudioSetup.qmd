@@ -1,0 +1,86 @@
+---
+author: Dr Wei Miao
+date: "`r (lubridate::ymd('20240927'))`"
+date-format: long
+institute: UCL School of Management
+toc: true
+toc-depth: 2
+format:
+  html: 
+    number-sections: true
+    df-print: paged
+    page-layout: full
+    toc-depth: 2
+    code-line-numbers: false
+    code-copy: hover
+    title: "RStudio Setup"
+  pdf: 
+    number-sections: true
+    number-depth: 2
+    fontsize: 10pt
+    colorlinks: true
+    code-line-numbers: true
+    title: "RStudio Setup"
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    error: true
+execute: 
+  freeze: auto
+  cache: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+In this guide, I will walk you through the recommended setup for RStudio. Please follow the steps below to configure your RStudio settings. For the settings that are not mentioned here, you can keep the default settings or adjust them according to your preference.
+
+# General
+
+## Basic 
+
+- Untick `Restore most recently opened project at startup`: This will prevent RStudio from opening the last project you worked on when you open RStudio.
+- Untick `Restore previously open source documents at startup`: This will prevent RStudio from opening the last script you worked on when you open RStudio.
+- Untick `Restore .RData into workspace at startup`: This will prevent RStudio from loading the last workspace when you open RStudio.
+
+- Tick `Always save history (even when not saving .RData)`: This will save the history of your R commands even if you do not save the workspace.
+
+![General-Basic](images/RStudio-General-Basic.png)
+
+# Code
+
+## Editing
+- Tick and untick the options here based on the screenshot below.
+
+![Code](images/RStudio-Code-Editing.png)
+
+## Display
+
+- Tick and untick the options here based on the screenshot below. This section controls how your code is displayed in RStudio.
+
+![Code](images/RStudio-Code-Display.png)
+
+## Completion
+
+- Tick and untick the options here based on the screenshot below. This section controls the code completion settings in RStudio.
+
+![Code](images/RStudio-Code-Completion.png)
+
+# Appearance
+
+Feel free to play around with the options here to adjust the appearance of RStudio to your preference. 
+
+# R Markdown
+
+## Basic
+
+- Tick and untick the options here based on the screenshot below. This section controls the R Markdown settings in RStudio.
+
+![Code](images/RStudio-RMarkdown-basic.png)
+
+## Visual
+
+- Tick and untick the options here based on the screenshot below. This section controls the visual settings in RStudio.
+
+![Code](images/RStudio-RMarkdown-Visual.png)

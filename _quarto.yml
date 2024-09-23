@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  google-analytics: "G-FTK61TBF7L"
+  #google-analytics: "G-FTK61TBF7L"
   title: "Marketing Analytics"
   page-navigation: true
   reader-mode: false
@@ -16,100 +16,54 @@ website:
     contents:
       - section: "Lectures"
         contents:
-          - syllabus.qmd
+          - Syllabus.qmd
           - WeeklyArrangements.qmd
-          - section: "[Week 1] Module Intro and Break-Even Analyses"
+          - section: "[Week 1] Module Introduction and Marketing Profitability Analysis"
             contents: 
-              - href: Week1-Lecture1.html
-                text: "Class 1 Module Intro"
-              - href: Week1-Lecture2.html
-                text: "Class 2 Break-Even Analyses"
-              - href: Case-BreakEvenAnalysis.html
-                text: "Break-Even Analyses for PineApple Inc"
-              - href: Case-BreakEvenAnalysis-Solutions.html
-                text: "Break-Even Analyses for PineApple Inc (Solutions)"
-          - section: "[Week 2] Customer Lifetime Value and Data Wrangling with R"
-            contents: 
-              - href: Week2-Lecture1.html
-                text: "Class 3 Customer Lifetime Value Case Study"
-              - href: Week2-Lecture2.html
-                text: "Class 4 Data Wrangling with R I"
-              - href: Case-CLSV.html
-                text: "CLSV Solutions"
-          - section: "[Week 3] Unsupervised Learning and Customer Segmentation"
-            contents: 
-              - href: Week3-Lecture1.html
-                text: "Class 5 Data Wrangling with R II "
-              - href: Week3-Lecture2.html
-                text: "Class 6 Unsupervised Learning"
-              - href: Case-PreliminaryCustomerAnalysis.html
-                text: "Preliminary Customer Analyses (Solutions)"
-          - section: "[Week 4] Supervised Learning and Customer Targeting"
-            contents: 
-              - href: Week4-Lecture1.html
-                text: "Class 7 Supervised Learning Basics"
-              - href: Week4-Lecture2.html
-                text: "Class 8: Tree-based Models"
-          - section: "[Week 5] Causal Inference and RCT"
-            contents: 
-              - href: Week5-Lecture1.html
-                text: "Class 9 Case Study: Improve Marketing Efficiency for Tesco Using Supervised Learning"
-              - href: Week5-Lecture2.html
-                text: "Class 10 Causal Inference and A/B Testing"
-              - href: Case-PredictiveAnalytics.html
-                text: "Improve Tesco's Marketing Efficiency Using Predictive Analytics (Solutions)"
-          - section: "[Week 6] Linear Regression Models"
-            contents: 
-              - href: Week6-Lecture1.html
-                text: "Class 11 Application of A/B Testing"
-              - href: Week6-Lecture2.html
-                text: "Class 12 Linear Regression Basics"
-              - href: Case-SocialMedia.html
-                text: "Improve User Engagement on Social Media Platforms Using A/B Testing (Solutions)"
-          - section: "[Week 7] Marketing Mix Modeling"
-            contents: 
-              - href: Week7-Lecture1.html
-                text: "Class 13 Linear Regression Advanced"
-              - href: Week7-Lecture2.html
-                text: "Class 14 Marketing Mix Modeling"
-          - section: "[Week 8] Endogeneity and Instrumental Variable"
-            contents: 
-              - href: Week8-Lecture1.html
-                text: "Class 15 Endogeneity"
-              - href: Week8-Lecture2.html
-                text: "Class 16 Instrumental Variable"
-              - href: Case-COVID-IV.html
-                text: "The Causal Impact of COVID-19 on Ridesharing Using Instrumental Variables (Solutions)"
-          - section: "[Week 9] Natural Experiment"
-            contents: 
-              - href: Week9-Lecture1.html
-                text: "Class 17 Regression Discontinuity Design"
-              - href: Week9-Lecture2.html
-                text: "Class 18 Difference-in-Differences Design"
-          - section: "[Week 10] Frontiers in Marketing Analytics"
-            contents:
-              - href: Week10-Lecture1.html
-                text: "Class 19 Frontiers in Marketing Analytics"
-              - href: Week10-Lecture2.html
-                text: "Class 20 Module Wrap-up"
+              - LectureSlides.qmd
       - section: "R Tutorials"
         contents:
-          - R-installR.qmd
-          - R-InductionWeek.qmd
+          - R-InstallR.qmd
+          - R-RStudioSetup.qmd
+          - href: R-Basics.qmd
+            text: "R Basics (Induction Week)"
+          - href: R-ComparisonWithPython.qmd
+            text: "Side-by-Side Comparison between R and Python"
           - R-errors.qmd
       - section: "Advanced R Tips"
         contents:
           - RTip-BLAS.qmd
 format:
   html:
-    theme: lumen
+    theme:
+      light: lumen
+      dark: darkly
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    lightbox: true
+    df-print: paged
+    page-layout: full
+    code-line-numbers: true
+    code-copy: hover
+    code-fold: show
+    execute:
+      echo: true
     embed-resources: true
     standalone: true
     css: styles.css
-    toc: true
-    number-sections: true
-    df-print: paged
-    toc-depth: 3
+    fig-align: "center"
+  beamer:
+    toc: false
+    slide-level: 2
+    section-titles: true
+    theme: Frankfurt
+    colortheme: beaver
+    fonttheme: structurebold
+    navigation: horizontal
+    tbl-colwidths: auto
+    fontsize: 9pt 
+    fig-align: "center"
 execute: 
   freeze: auto
 

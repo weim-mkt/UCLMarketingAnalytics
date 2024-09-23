@@ -1,49 +1,56 @@
 ---
 title: "Syllabus"
-date: "2023/10/02"
+date: "2024-09-17"
+date-modified: "2024-09-22"
 date-format: long
 ---
 
 # Instructor Information
 
--   Module leader: Dr. Wei Miao
+-   Module leader: Dr. Wei Miao [[personal website](https://miaowei.netlify.app/)]
 
--   Email: wei.miao\@ucl.ac.uk
-
--   Office: S3, Level 38, One Canada Square
+-   Email: [wei.miao\@ucl.ac.uk](mailto:wei.miao@ucl.ac.uk)
 
 -   Teaching assistants
 
     -   Kayi Yeung, [ka.yeung.21\@ucl.ac.uk](mailto:ka.yeung.21@ucl.ac.uk) (UCL MSc BA 2022)
     -   Jiafan Lu, [jiafan.lu\@ucl.ac.uk](mailto:jiafan.lu.22@ucl.ac.uk) (UCL PhD Management 2022)
 
--   Office hours: See Moodle for the links to book an office hour session with Wei (for lecture contents) and TAs (for R programming)
-
 # Course Objective
 
 Marketing analytics addresses how to utilize the right analytics tools to guide marketing tactics and strategies in a scientific manner. Driven by recent advances in information and communication technologies, the very nature of marketing analytics has evolved. This module provides students with systematic and practical training in R programming, machine learning, and causal inference tools to solve real-life marketing problems[^1].
 
-[^1]: Just a little heads up \-- unlike undergrad marketing modules where you mainly learn marketing strategies and concepts, this module focuses on "analytics" (which comes first) and its application in "marketing" (which comes next)
+[^1]: Just a little heads up \-- unlike undergrad marketing modules where you mainly learn marketing strategies and concepts, this module focuses on "analytics" (which comes first) and its application in "marketing" (which comes next). So, be prepared to learn a lot of data wrangling, machine learning, and causal inference tools in this module.
 
-In the first week, students will learn the principles of marketing and how to conduct cost-benefit analyses for marketing activities. Starting in week 2, students will gradually acquire data wrangling skills in R and learn how to apply these skills in descriptive analytics.
+In the first 2 weeks, students will learn the principles of marketing and how to conduct profitability analyses, including break-even quantity, net present value, and customer lifetime value, for guiding marketing activities. Starting in week 3, students will gradually acquire data wrangling skills with R and learn how to apply these skills in descriptive analytics.
 
-In week 3 and week 4, students will learn predictive analytics and how to apply machine learning models for segmentation, targeting, and customer relationship management.
+In week 4 and week 5, students will learn predictive analytics and how to apply machine learning models for segmentation, targeting, and customer relationship management.
 
-In the remaining weeks, students will learn causal inference tools, which help marketers correctly measure the causal effects of marketing initiatives on marketing outcomes. Students will get hands-on training in A/B testing, linear regression, instrumental variable method, difference-in-differences design, regression discontinuity design, and causal machine learning.
+In the remaining weeks, students will learn causal inference tools, which help marketers correctly measure the causal effects of marketing initiatives on marketing outcomes. Students will get hands-on training in A/B testing, linear regression, instrumental variable method, natural experiments, and causal machine learning.
 
 The course uses a combination of lectures, cases, and exercises to achieve the best learning outcomes. This course takes a very hands-on approach with real-world databases and equips students with tools that can be used immediately on the job. At the end of the module, students will be able to carry out independent marketing research for their dissertation projects and their future jobs.
 
 # Course Structure (tentative)
 
-Please refer to the [weekly arrangements](ClassPreparation.qmd) for the detailed course structure, learning objectives, and preparation required each week. Note that the topics are tentative and are subject to adjustments depending on our learning progress.
+Please refer to the [weekly arrangements](WeeklyArrangements.qmd) for the detailed course structure, learning objectives, and preparation required each week. Note that the topics are tentative and are subject to adjustments depending on our learning progress.
 
 # Office Hours
 
-We will use Microsoft Teams for the module at the beginning of term. Please utilize the Microsoft Teams Q&A channels as an interactive place to promote peer-to-peer learning.
+## If you have questions about the lecture, first check the Teams channel
+
+We will use Microsoft Teams for the module. Please utilize the Microsoft Teams Q&A channels as an interactive place for peer learning.
 
 Since some of your questions may have been asked by your peers, for any questions, please first check the MS Teams channel and see if the questions are already posted and answered there. If not, please post your questions in the Teams channels. The teaching team will monitor the questions posted on Teams and provide answers accordingly.
 
-You can also ask questions during office hours hosted by me or teaching assistants every Friday. To make an appointment, please go to Moodle page, and use the links under "Module Overview" Section.
+## If you have questions about the assignments, make an appointment
+
+You can also ask questions during office hours hosted by me or teaching assistants during term time. 
+
+To make an appointment, use the link below. The links are also available under "Module Overview" Section on Moodle. Note that you need to log in with your UCL email account to make an appointment.
+
+- For lecture-related questions, please make an appointment with Wei [here](https://outlook.office365.com/owa/calendar/MarketingAnalyticsOfficeHoursWei@live.ucl.ac.uk/bookings/s/mfjnYXzzTk6c_1gb5Gx3Sw2).
+
+- For R trouble-shooting, please make an appointment with teaching assistants [here](https://outlook.office365.com/owa/calendar/MarketingAnalyticsOfficeHoursWei@live.ucl.ac.uk/bookings/s/Fr4etO85jEWCU7to5RXDhw2)
 
 # Textbook
 
@@ -59,15 +66,17 @@ Nevertheless, if you would like to further enrich your learning journey and exte
 
 We will use an open-source programming language R throughout the module. R is one of the most commonly used programming languages by data scientists, economists, and statisticians, and is sometimes called the "golden child" of data science. R is cross-platform compatible on Windows, Mac, and Linux, with thousands of packages ready for use. Undoubtedly, it has one of the richest ecosystems to perform data analytics tasks. More importantly, it is free of charge compared with other commercial software!
 
-If you have little prior exposure to R before joining MSc Business Analytics, it is highly advised that you should self-study this tutorial, ["Introduction to R"](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf), before attending the induction week.
+- If you have little prior exposure to R before joining MSc Business Analytics, it is highly advised that you should self-study this tutorial, ["Introduction to R"](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf).
+
+- Make sure you have installed R, RStudio, and Quarto following this [guide](https://weim-mkt.github.io/UCLMarketingAnalytics/R-InstallR.html) before attending the induction week's tutorial on Friday.
 
 # Assignments and Grading policy
 
 There will be no exams in this module. Learning outcomes will be examined through three individual assignments. Your final grade in this module will be a weighted average of the following:
 
--   First assignment, 30% weight, 1500 words, due Monday, 30 October 2023
--   Second assignment, 30% weight, 1500 words, due Friday, 24 November 2023
--   Third assignment, 40% weight, 2000 words, due Friday, 15 December 2023
+-   First assignment: 30% weight, 1500 words, due Friday, 25 October 2024
+-   Second assignment: 30% weight, 1500 words, due Friday, 15 November 2024
+-   Third assignment: 40% weight, 2000 words, due Friday, 13 December 2024
 
 Detailed assignment descriptions will be given in due course.
 

@@ -2,350 +2,450 @@
 title: "Weekly Arrangements"
 format:
   html:
-    theme: lumen
-    css: styles.css
-    toc: true
     number-sections: false
-    df-print: paged
-    toc-depth: 2
-date: "2023/10/03"
+date: "2024/09/22"
+institute: UCL School of Management
+author: Wei Miao
+date-modified: "2024/09/22"
 date-format: long
 ---
 
-# Preface: How to Use This Guide
+# Arrangements each week
 
-## Arrangements each week
+This page provides a detailed weekly arrangement for the module. You can find the pre-class preparation, in-class topics, and after-class exercises for each week here.
 
-We will have a 3-hour session each week and I will aim to cover a new marketing analytics model. Whenever we learn a new technique (e.g., a new statistical model or a new analytics tool), the subsequent week will often start with some warm-up exercise and a seminar workshop (with a case study) for you to review and practice the new technique learned in the previous week. This way, you would have time to digest what you've learned and can further reflect on your understanding of the technique by practicing your skills with a real-life application.
+Since marketing is evolving rapidly, we will cover a wide range of topics in this module. I'm also updating the contents each year to keep up with the latest trends in marketing analytics. Therefore, remember to check this page each week before class to ensure you are well-prepared for the lecture and case study workshop.
 
-For instance, in week 1, I will first introduce the concepts of marketing and marketing process, and then will cover the concept of customer lifetime value (CLV) and how to compute CLV with R. In week 2, we will therefore begin with a case study that helps you practice your knowledge of CLV, so you can understand how to use CLV for better marketing decisions in your future projects/jobs.
+## Before the lecture
 
-In the remaining time of week 2, I will then introduce a new technique: the `dplyr` package in R, which helps us clean and manipulate datasets in R. Following a similar logic, then in week 3, we will start with a case study for you to practice the `dplyr` package. So on and so forth.
+Each week, you are required to complete pre-class preparation tasks.
 
-## About the labels
+The preparation usually includes reading case studies, watching videos, or completing coding exercises.
 
--   Essential: contents core to this week's materials. All pre-class preparations should be completed before class.
--   Optional: supplemental readings for those interested in learning more
+You can find the pre-class preparation under each week's topic in this guide and on Moodle.
 
-All materials, including the lecture slides and before-class readings will be released a few days before each Thursday's class.
+It's mandatory to finish the pre-class preparation for best learning outcomes. Otherwise, you may find it hard to follow the lecture and case study workshop.
 
-## Module Outline
+## During the lecture
 
-+-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------------------------------+--------------------------+
-| Week      | Analytics/Methodology Topic                        | Substantive Topic               | Case Study[^1]                                                                               | Important dates          |
-+===========+====================================================+=================================+==============================================================================================+==========================+
-| Induction | Introduction to R                                  |                                 |                                                                                              |                          |
-+-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------------------------------+--------------------------+
-| 1         | Computation with R                                 | Customer lifetime value         | Customer Lifetime Value                                                                      |                          |
-+-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------------------------------+--------------------------+
-| 2         | Data wrangling with R                              | Preliminary customer analysis   | Preliminary Customer Analysis                                                                |                          |
-+-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------------------------------+--------------------------+
-| 3         | Unsupervised learning                              | Segmentation                    | Improving Marketing Efficiency for Tesco with Predictive Analytics I (Unsupervised Learning) |                          |
-+-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------------------------------+--------------------------+
-| 4         | Supervised learning                                | Targeting                       | Improving Marketing Efficiency with Predictive Analytics II (Supervised Learning)            | Friday, 30 October 2023  |
-|           |                                                    |                                 |                                                                                              |                          |
-|           |                                                    |                                 |                                                                                              | 1st assignment due       |
-+-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------------------------------+--------------------------+
-| 5         | Rubin Causal Model and Potential Outcome Framework | Causal Inference                |                                                                                              |                          |
-+-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------------------------------+--------------------------+
-| 6         | RCT                                                | Promotion Analytics             | Improve User Engagement on Social Media Platforms using A/B Testing                          |                          |
-+-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------------------------------+--------------------------+
-| 7         | Linear regression                                  | Marketing Mix Modeling          |                                                                                              |                          |
-+-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------------------------------+--------------------------+
-| 8         | Instrumental variable                              | Platform Design                 | Evaluating the Impact of COVID-19 on Ride-sharing Market                                     | Friday, 24 November 2023 |
-|           |                                                    |                                 |                                                                                              |                          |
-|           |                                                    |                                 |                                                                                              | 2nd assignment due       |
-+-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------------------------------+--------------------------+
-| 9         | Quasi-experiments                                  | Difference-in-Differences       |                                                                                              |                          |
-|           |                                                    |                                 |                                                                                              |                          |
-|           |                                                    | Regression Discontinuity Design |                                                                                              |                          |
-+-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------------------------------+--------------------------+
-| 10        | Causal forest                                      | Causal machine learning         |                                                                                              |                          |
-+-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------------------------------+--------------------------+
-|           |                                                    |                                 |                                                                                              | Friday, 15 December 2023 |
-|           |                                                    |                                 |                                                                                              |                          |
-|           |                                                    |                                 |                                                                                              | 3rd assignment due       |
-+-----------+----------------------------------------------------+---------------------------------+----------------------------------------------------------------------------------------------+--------------------------+
+We will have a 3-hour session on each Wednesday for 10 weeks.
+
+Each week, I will cover a new analytics tool, followed by a case study workshop for you to practice the new technique. This way, you can further reflect on your understanding of the technique by practicing your skills with a real-life application.
+
+For instance, in week 1 and week 2, I will first introduce the concepts of marketing and marketing process, and then will cover the concept of break-even analysis, net present value, customer lifetime value (CLV) and how to compute CLV with R. We will then solve a case study that helps you practice your knowledge of CLV, so you can understand how to use CLV for better marketing decisions in your future projects/jobs.
+
+Similarly for the rest of the weeks, we will cover a new analytics tool and then practice it with a case study.
+
+## After the lecture
+
+After each week's lecture, you will find a list of After-class reading and exercises. Some are essential, while others are optional.
+
+-   Essential: contents and R exercises core to this week's materials. All pre-class preparations are expected to be completed.
+-   Optional: supplemental readings for those interested in learning more about the topic.
+
+# Module Outline
+
++------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| Week                         | Substantive Topic                                       | Methodology Topic                                                | Case Study                                                                      |
++==============================+=========================================================+==================================================================+=================================================================================+
+| Induction Week               |                                                         | Basics of R                                                      |                                                                                 |
++------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| 1                            | Profitability Analysis                                  | Arithmetic computation with R                                    | Profitability Analysis for Apple Inc.                                           |
++------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| 2                            | Customer Lifetime Value                                 | Arithmetic computation with R                                    | Customer Lifetime Value to Improve Marketing Profitability                      |
++------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| 3                            | Descriptive Analytics for Preliminary Customer Analysis | Data wrangling with R                                            | Preliminary Customer Analysis and RFM Analysis for Marks & Spencer              |
++------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| 4                            | Customer segmentation                                   | Unsupervised learning (K-means clustering)                       | Using Unsupervised Learning to Improve Marketing Efficiency for Marks & Spencer |
+|                              |                                                         |                                                                  |                                                                                 |
+| **1st assignment due**       |                                                         |                                                                  |                                                                                 |
+|                              |                                                         |                                                                  |                                                                                 |
+| **Friday, 25 October 2024**  |                                                         |                                                                  |                                                                                 |
++------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| 5                            | Customer targeting                                      | Supervised learning (Decision tree and random forest)            | Using Supervised Learning to Improve Marketing Efficiency for Marks & Spencer   |
++------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| 6                            | Causal Inference                                        | Rubin Causal Model, Potential Outcome Framework, and A/B Testing |                                                                                 |
++------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| 7                            | A/B Testing                                             | Linear Regression and ordinary least square                      | Testing Marketing Ideas Using A/B Testing (I)                                   |
++------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| 8                            | Platform Design                                         | Instrumental variable and two-stage least square                 | Testing Marketing Ideas Using A/B Testing (II)                                  |
+|                              |                                                         |                                                                  |                                                                                 |
+| **2nd assignment due**       |                                                         |                                                                  |                                                                                 |
+|                              |                                                         |                                                                  |                                                                                 |
+| **Friday, 15 November 2024** |                                                         |                                                                  |                                                                                 |
++------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| 9                            | Privacy Regulations and Its Impact on Marketing         | Difference-in-Differences & Regression Discontinuity Design      | Testing Marketing Ideas Using A/B Testing (III)                                 |
++------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| 10                           | Frontiers in Marketing Analytics                        | Causal machine learning                                          | The Causal Effect of Privacy Regulation                                         |
++------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| **3rd assignment due**       |                                                         |                                                                  |                                                                                 |
+|                              |                                                         |                                                                  |                                                                                 |
+| **Friday, 13 December 2024** |                                                         |                                                                  |                                                                                 |
++------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
 
 : Module Outline
-
-[^1]: Case studies to be discussed in the subsequent week. For example, CLV is introduced in Week 1 and its associated case study "CSLV" will be discussed in Week 2.
 
 # Induction Week: R Basics
 
 ::: callout-important
 ### Pre-class preparation
 
--   Finish reading "An introduction to R" (can be assessed in this [link](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf)) Chapters 1, 2, and 3.
-    -   Please try to practice the codes in R along your reading.
-    -   Take a note of any questions you may have during your self-study. I will cover R basics in greater details in the induction week.
+-   Install R, RStudio, and Quarto following the [guide](https://weim-mkt.github.io/UCLMarketingAnalytics/R-installR.html).
+
+-   Finish reading "An introduction to R" (can be assessed in this [link](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf)) (Chapters 1, 2, and 3 at least). Please try to practice the codes in R along your reading. Take a note of any questions you may have during your self-study. I will cover R basics in greater details in the induction week.
 :::
 
 -   What you will learn
-    -   An introduction to R basics
--   After-class exercise
-    -   (essential) Finish data camp "Introduction to R" tutorial before Week 1 class. We will learn how to use R to compute customer lifetime value next week, so it's very important that you are familiar with R basics before class.
 
-# Week 1: Module Introduction and Customer Lifetime Value
+    -   An introduction to R basics
+
+-   After-class exercise
+
+    -   (essential) Finish the after-class exercise. We will learn how to use R to compute customer lifetime value in Week 1, so it's very important that you are familiar with R basics before class.
+
+    -   As you will be learning both R and Python at the same time, it's a good habit to keep a systematic record of the difference between the 2 languages. For this purpose, I have made this [guide](R-ComparisonWithPython.qmd) for you based on my own experiences.
+
+# Week 1: Module Introduction and Profitability Analysis
 
 ::: callout-important
 ## Pre-class Preparation
 
--   Remember to bring your laptop to class **each week**, as we will be practicing R programming in class every week; make sure you have installed R and RStudio following the [installation guide](https://weim-mkt.github.io/UCLMarketingAnalytics/R-installR.html)
--   Join the Microsoft Teams for the module; all communications will be on this Teams channel
--   Review R basics lecture notes in the induction week, we will compute customer lifetime value using R in class. If your schedule is tight, only focus on the Wednesday tutorial until Vector.
--   Complete the R exercise on the `Case-BreakEvenAnalysis-Stu.qmd`. You can find the file on Moodle.
--   Prepare for Case study: "Break-Even Analyses for PineApple Inc"
-    -   Please carefully read Section 1, Situation Analysis, before class
-    -   Go through the remaining case, highlight the numbers for calculations, and we will be solving the case in class.
+-   Remember to bring your laptop to class **each week**, as we will be practicing R programming in class every week.
+
+-   Make sure you have installed R and RStudio following the [installation guide](https://weim-mkt.github.io/UCLMarketingAnalytics/R-installR.html). If you have missed the R tutorial in the induction week, please watch the recording to catch up before class.
+
+-   Complete the R exercise on the `Case-ProfitabilityAnalysis-Stu.qmd`. You can find the file on Moodle.
 :::
 
-## Module Introduction
+## Class 1: Module Introduction
 
 -   What you will learn
-    -   An overview of the course topics and requirements
-    -   Concept of marketing and marketing process
+
+    -   An overview of the course topics
+
+    -   Concepts of marketing and the marketing process (5Cs, STP, and 4Ps)
+
     -   How marketing analytics can empower marketers in the digital era
--   After-class reading
+
+-   After-class reading and exercise
+
     -   (optional) [The Definitive Guide to Strategic Marketing Planning](https://www.smartsheet.com/strategic-marketing-processes-and-planning). Highly recommended if you didn't take marketing undergrad courses and would like to know more about the conventional marketing process.
 
-## Customer Profitability and Lifetime Value
+## Class 2: Profitability Analysis
 
 -   What you will learn
-    -   How to conduct break-even analyses (static and dynamic)
-    -   The concept of customer life cycle
-    -   How to compute customer acquisition cost (CAC)
+
+    -   How to conduct break-even quantity for a marketing proposal
+
+    -   How to conduct net present value analysis for a marketing proposal
+
+# Week 2: Customer Lifetime Value
+
+::: callout-important
+### Pre-class preparation
+
+Read the case study. Think about the following questions, which we will discuss in class.
+
+1.  What would be the time unit of analyses? monthly or yearly? How many years of customer's lifetime to consider for CLV calculation? Is this reasonable?
+
+2.  What is the information needed to calculate the net cash flows of a customer in each period? Where can you find the M and c in the CLV formula? Highlight these key numbers in the case study so that we can create them in R directly. 
+
+3.  How do we incorporate customer churn in CLV calculation?
+
+4.  What are the costs needed to acquire a customer? Based on this information, how to compute the customer acquisition costs (CAC)?
+
+5.  Can you figure out how to compute CLV with pen and paper before Wednesday class? 
+
+You can try your best to use what we have learned in Week 1 to complete the case on your own. The exercise Quarto file can be downloaded on Moodle.
+:::
+
+## Class 3: Customer Lifetime Value
+
+-   What you will learn
+
+    -   The concept of customer lifecycle and customer lifetime value (CLV)
+
+    -   How to compute customer acquisition costs (CAC)
+
     -   How to compute customer lifetime value (CLV)
--   After-class reading
-    -   (optional) ["Hubspot: How to compute CLV"](https://blog.hubspot.com/service/how-to-calculate-customer-lifetime-value). This article introduces alternative ways to compute CLV, which are used in many companies.
-    -   (optional) ["Important lessons for embracing customer lifetime value"](https://www.thinkwithgoogle.com/intl/en-gb/marketing-strategies/data-and-measurement/marketing-customer-lifetime-value-clv/)
-    -   (essential) ["Common R Programming Errors Faced by Beginners"](https://weim-mkt.github.io/UCLMarketingAnalytics/R-errors.html). This guide will be updated constantly and summarizes the common R errors you may encounter as beginners. For any questions, come here first for solutions.
 
-# Week 2: Data Wrangling with R
-
-## Case Study: Customer Lifetime Social Value
-
-::: callout-important
-### Pre-class preparation
-
--   HBS 9-518-077: Customer Lifetime Social Value (CLSV).
-    -   In the first class this week, we will go through how to compute the customer lifetime value for i-basket, a US grocery supermarket, in this case study. We will only focus on the CLV calculation part while leaving CLSV as after-class optional learning contents. **Please read pages 1-8. Pages 1-5 introduce the case background; pages 5-8 introduce key information to compute CLV for the company.**
-
-    -   When reading the case, please use the mind map below to find out all key information, including the variable, the value, and where it shows up in the case study. Highlight them on the PDF. This can help you quickly find that information in class.
-
-    -   Think about the following questions, which we will discuss in class.
-
-        1.  What would be the time unit of analyses? monthly or yearly? How many years of customer's lifetime to consider for CLV calculation? Is this reasonable?
-
-        2.  What is the information needed to calculate the net cash flows of a customer in each period? Where can you find the M and c in the CLV formula? Highlight these key numbers so that we can create them in R directly. 
-
-        3.  How do we incorporate customer churn in CLV calculation?
-
-        4.  What are the costs i-basket needs to incur to acquire a customer? Based on this information, how to compute the customer acquisition costs (CAC)?
-
-        5.  Can you figure out how to compute CLV with R even before Wednesday class? You can try your best to use what we have learned in Week 1 to compute the CLV for i-basket on your own. The exercise Quarto file is already given below.
-:::
-
-![Mindmap for Computing the CLV for i-basket](images/CLV%20i-basket-01.png){fig-align="center"}
+## Class 4: (Case Study) Customer Lifetime Value for Guiding Marketing Decisions
 
 -   What you will learn
+
     -   How to apply CLV calculation in a real-life case study
+
     -   Discuss how CLV can be used by marketers to guide marketing decisions
--   After-class reading
-    -   (optional) [The Dangerous Seduction of the Lifetime Value (LTV) Formula](https://abovethecrowd.com/2012/09/04/the-dangerous-seduction-of-the-lifetime-value-ltv-formula/)
 
-## Data Wrangling with R: Part I
+-   After-class reading and exercise
 
--   What you will learn
-    -   Process of a typical data analytics task
+    -   After-class exercise for Week 2
 
-    -   How to use `filter`, `mutate`, and `arrange` for data manipulation with `dplyr` package in R
--   After-class reading
-    -   (essential) Finish the practice exercise on data camp: [Data Manipulation with dplyr: 1.Transforming Data with dplyr](https://app.datacamp.com/learn/courses/data-manipulation-with-dplyr)
-    -   (essential) [Cheatsheet for `dplyr`](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
-    -   (optional) [Python Pandas vs. R Dplyr](https://towardsdatascience.com/python-pandas-vs-r-dplyr-5b5081945ccb). In David's class, you will learn how to use Python Pandas for data wrangling in the last two weeks. This cheat sheet provides a one-to-one comparison of the two libraries for your reference.
+    -   (optional) ["Hubspot: How to compute CLV"](https://blog.hubspot.com/service/how-to-calculate-customer-lifetime-value). This article introduces alternative ways to compute CLV, which are used in many companies.
 
-# Week 3: Predictive Analytics for Customer Segmentation
-
-## Data Wrangling with R: Part II
+# Week 3: Data Wrangling for Descriptive Analytics
 
 ::: callout-important
 ### Pre-class preparation
 
--   Before Wednesday class, please finish the following
+-   Read the case study: Preliminary Customer Analysis.
 
-    -   read the 2 case studies; please familiarize yourself with the variable definitions. **This is very important** as we will use the two datasets to learn data wrangling in R using the dplyr package. 
+-   Please familiarize yourself with the variable definitions in the case study. **This is very important** as we will use the two datasets to learn data wrangling in R using the dplyr package. 
 
-    -   open the two datasets (demographics.csv and purchase.csv) in Excel and inspect the data sets, especially the data structure (what each row means and what each column means)
-
--   There is no pre-class coding exercise required for this week. We will be doing data wrangling together in class to solve case questions.
+-   Open the two csv datasets (demographics.csv and purchase.csv) in Excel and inspect the data sets. Focus on the data structure, including what each row means and what each column means
 :::
 
+## Class 5: Data Wrangling with R: Part I
+
 -   What you will learn
-    -   The usage of `group_by` and `join` for data aggregation and merge with `dplyr` package
+
+    -   Process of a typical data analytics project (such as your term 3 dissertation)
+
+    -   How to use `filter`, `mutate`, `arrange`, and `group_by` for data manipulation with `dplyr` package in R
+
+-   After-class reading and exercise
+
+    -   (essential) [Cheatsheet for `dplyr`](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+    -   (optional) [Python Pandas vs. R Dplyr](R-DplyrVersusPandas). In David's class, you will learn how to use Python Pandas for data wrangling later this term. This cheat sheet provides a side-to-side comparison of the two libraries for your reference.
+
+## Class 6: Data Wrangling for Descriptive Analytics
+
+-   What you will learn
+
     -   How to use `dplyr` to conduct preliminary customer analyses
--   After-class reading
-    -   (essential) Finish the practice exercise on data camp: [Data Manipulation with dplyr: 2.Aggregating Data](https://app.datacamp.com/learn/courses/data-manipulation-with-dplyr)
-    -   (optional) Go through the [tutorial](https://vincentarelbundock.github.io/modelsummary/articles/datasummary.html) of `modelsummary` package to learn more features
+    -   How to use `dplyr` to conduct RFM analysis
 
-## Predictive Analytics: Unsupervised Learning
+# Week 4: Unsupervised Learning for Customer Segmentation
+
+::: callout-important
+### Pre-class preparation
+
+-   Read the case study: Improving Marketing Efficiency for Marks & Spencer Using Predictive Analytics.
+:::
+
+## Class 7: Unsupervised Learning for Customer Segmentation
 
 -   What you will learn
+
+    -   The concept of predictive analytics
+
+    -   The difference between supervised and unsupervised learning
+
     -   Important concepts in predictive analytics
+
     -   Concept of unsupervised learning
+
     -   How to run K-means clustering in R
--   After-class reading
-    -   (recommended) [K-means Cluster Analysis](https://uc-r.github.io/kmeans_clustering), which provides more details on the maths behind the K-means clustering
 
-# Week 4: Predictive Analytics for Customer Targeting
+-   After-class reading and exercise
 
-## Supervised Learning Basics
+    -   (optional) [K-means Cluster Analysis](https://uc-r.github.io/kmeans_clustering), which provides more details on the maths behind the K-means clustering
+
+## Class 8: Supervised Learning Basics
 
 -   What you will learn
+
     -   Definition of supervised learning
+
     -   Types of supervised learning
+
     -   Fundamental tradeoffs in supervised learning
+
     -   Overfitting and underfitting issues and how to overcome them
--   After-class reading
+
+-   After-class reading and exercise
+
     -   (optional) [Varian, Hal R. "Big data: New tricks for econometrics." Journal of Economic Perspectives 28, no. 2 (2014): 3-28](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_proquest_miscellaneous_1541646040)
 
-## Tree-based Models and Their Application to Targeted Marketing
-
--   What you will learn
-    -   Intuition behind decision tree and random forest models
-    -   How to build random forest models in R
-    -   The application predictive analytics (supervised learning) in targeted marketing
--   After-class reading
-    -   (recommended) [Decision tree in R](http://uc-r.github.io/regression_trees) and [Random forest in R](http://uc-r.github.io/random_forests). Both tutorials introduce the detailed maths behind the two models if you would like to learn more
-    -   (optional) [Available machine learning model packages in R](https://cran.r-project.org/web/views/MachineLearning.html). In class, we have learned how to use R packages to run random forest models. This link lists all other machine learning packages that can be used in R. You can learn how to use these models following their manuals.
-
-# Week 5: Causal Inference and RCT
-
-## Case Study: Improve Marketing Efficiency for Tesco Using Supervised Learning
+# Week 5: Supervised Learning for Customer Targeting
 
 ::: callout-important
 ### Pre-class preparation
 
 -   Case Study: Improving Marketing Efficiency Using Targeted Marketing
+
     -   Please carefully read the case background before class, especially review the definitions of Response.
 :::
 
--   What you will learn
-    -   How to apply predictive analytics (supervised learning models) to help Tesco improve its marketing efficiency
-
-## Causal Inference and A/B Testing
-
-::: callout-important
-### Pre-class preparation
-
--   This and next week, we will be conducting t-tests with R in class to estimate treatment effects from randomized experiments. If you're unfamiliar with t-tests, please go through this [Review of Statistics with R](https://www.econometrics-with-r.org/3-arosur.html) before the next week's class.
-:::
+## Class 9: Tree-based Machine Learning Models
 
 -   What you will learn
+
+    -   Intuition behind decision tree and random forest models
+
+    -   How to build random forest models in R
+
+-   After-class reading and exercise
+
+    -   (optional) [Decision tree in R](http://uc-r.github.io/regression_trees) and [Random forest in R](http://uc-r.github.io/random_forests). Both tutorials introduce the detailed maths behind the two models if you would like to learn more
+
+    -   (optional) [Available machine learning model packages in R](https://cran.r-project.org/web/views/MachineLearning.html). In class, we have learned how to use R packages to run random forest models. This link lists all other machine learning packages that can be used in R. You can learn how to use these models following their manuals.
+
+## Class 10: (Case Study) Improve Marketing Efficiency for Marks & Spencer Using Supervised Learning
+
+-   What you will learn
+
+    -   How to apply supervised learning models (random forest and others) to help Marks & Spencer improve its marketing efficiency
+
+# Week 6: Causal Inference
+
+## Class 11: Causal Inference and Rubin's Causal Model
+
+-   What you will learn
+
     -   Concept of causal inference
+
     -   Concept of Rubin's potential outcome framework and treatment effects
-    -   Why RCT is the gold standard of causal inference
--   After-class reading
+
+    -   Why randomized experiments (A/B testings) is the gold standard of causal inference
+
+-   After-class reading and exercise
+
     -   (optional) [Varian, Hal R. 'Causal Inference in Economics and Marketing'. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310--15.](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_pubmedcentral_primary_oai_pubmedcentral_nih_gov_4941501)
 
-# Week 6: Linear Regression
+## Class 12: Randomized Experiments and A/B Testing
 
-## Workshop: Improve User Engagement on Social Media Platforms Using A/B Testings
+-   What you will learn
+
+    -   How to design and conduct randomized experiments
+
+    -   How to interpret the results of randomized experiments
+
+    -   How to use randomized experiments to solve real-life marketing problems
+
+# Week 7: Linear Regression
 
 ::: callout-important
 ### Pre-class preparation
 
--   Case study: Improve User Engagement on Social Media Platforms Using A/B Testings. Please carefully read the case background before class; we will be discussing the case in class
-    -   Conduct a 5C situation analysis for Twitter
+-   Case study: Testing Marketing Ideas Using A/B Testings. Please carefully read the case background before class; we will be discussing the case in class
+
+-   Conduct a 5C situation analysis for the case study.
 :::
 
+## Class 13: (Case Study) Testing Marketing Ideas Using A/B Testings
+
 -   What you will learn
-    -   Steps to design and conduct an RCT (A/B testing)
+
+    -   Steps to design and conduct a randomized experiment (A/B testing)
+
     -   The business model of social media platforms
-    -   Design A/B testing to solve real-life marketing problems
--   After-class reading
-    -   (recommended) [Test and learn: How a culture of experimentation can help grow your business](https://www.thinkwithgoogle.com/intl/en-gb/marketing-strategies/data-and-measurement/test-learn-experiment-culture/)
-    -   (optional) [A Comparison of Approaches to Advertising Measurement: Evidence from Big Field Experiments at Facebook](https://www.kellogg.northwestern.edu/faculty/gordon_b/files/kellogg_fb_whitepaper.pdf)
 
-## Linear Regression Models
+    -   Design an A/B testing to solve real-life marketing problems
+
+-   After-class reading and exercise
+
+    -   (optional) [Test and learn: How a culture of experimentation can help grow your business](https://www.thinkwithgoogle.com/intl/en-gb/marketing-strategies/data-and-measurement/test-learn-experiment-culture/)
+
+## Class 14: Linear Regression and Ordinary Least Square
 
 -   What you will learn
+
     -   Review of concept for Data Generating Process (DGP) and a model
+
     -   The intuition behind coefficient estimation of linear regression models
+
     -   How to run linear regression models in R
+
     -   How to interpret the regression coefficients and statistics
--   After-class reading
-    -   (highly recommended) [Introduction to Econometrics with R](https://www.econometrics-with-r.org/index.html), Chapters 4-7. These 4 chapters cover very detailed applied knowledge of linear regressions. Due to limited time, we cannot cover all contents in class, so it would be great if you can take time to go through these chapters thoroughly.
 
-# Week 7: Marketing Mix Modeling
-
-## Linear Regression Model: Advanced Topics
-
--   What you will learn
     -   How to model non-linear relationship using linear regression
+
     -   How to interpret the coefficients of categorical variables
 
-## Marketing Mix Modelling with Linear Regression
+-   After-class reading and exercise
 
--   What you will learn
-    -   How to build linear regression-based marketing mix models to solve pricing and promotion optimization problems
--   After-class reading
-    -   [A complete guide to Marketing Mix Modeling](https://www.latentview.com/marketing-mix-modeling/)
+    -   (optional) [Introduction to Econometrics with R](https://www.econometrics-with-r.org/index.html), Chapters 4-7. These 4 chapters cover very detailed applied knowledge of linear regressions. Due to limited time, we cannot cover all contents in class, so it would be great if you can take time to go through these chapters thoroughly.
 
 # Week 8: Endogeneity and Instrumental Variables
 
-::: callout-important
-### Pre-class preparation
-
--   Case Study: The Causal Impact of COVID-19 on Ridesharing
-    -   Please carefully read the case background before class and we will be discussing the case in class.
-    -   Finish the coding exercise in the Quarto document before Section 4 IV regression (similar questions will be in the last assignment).
-:::
-
-## Endogeneity
+## Class 15: Endogeneity
 
 -   What you will learn
-    -   Endogeneity and its consequences in causal inference
-    -   The causes of endogeneity including omitted variable bias, reverse causality, and measurement error
 
-## Instrumental Variables
+    -   How to build linear regression-based marketing mix models to solve pricing and promotion optimization problems
+
+-   After-class reading and exercise
+
+    -   [A complete guide to Marketing Mix Modeling](https://www.latentview.com/marketing-mix-modeling/)
+
+## Class 16: Instrumental Variables
 
 -   What you will learn
+
     -   Intuition of why instrumental variables solve endogeneity problems
+
     -   The two requirements of a valid instrumental variable and how to find good instruments
+
     -   Apply two-stage least square method to estimate the causal effects using instrumental variables
+
     -   Application of instrumental variables in the marketing and business field
--   After-class reading
+
+-   After-class reading and exercise
+
     -   (optional) [Econometrics with R: Instrumental Variables Regression](https://www.econometrics-with-r.org/12-ivr.html)
-    -   (highly recommended) [Encouragement Designs and Instrumental Variables for A/B Testing at Spotify](Encouragement%20Designs%20and%20Instrumental%20Variables%20for%20A/B%20Testing)
 
 # Week 9: Quasi-Experimental Methods
 
-## Regression Discontinuity Design
+::: callout-important
+### Pre-class preparation
+
+-   Case Study: Estimating the Treatment Effects on the Treated Using Instrumental Variables
+
+    -   Please carefully read the case background before class and we will be discussing the case in class.
+
+    -   Finish the coding exercise in the Quarto document.
+:::
+
+## Class 17: (Case Study) Estimating the Treatment Effects on the Treated Using Instrumental Variables
 
 -   What you will learn
-    -   Concept of regression discontinuity design (RDD)
-    -   Estimation of causal effects using the RDD design
-    -   Application of RDD designs in the business field
 
-## Difference-in-Differences Design
+    -   How to apply instrumental variables to estimate the treatment effects on the treated
+
+    -   How to interpret the results of instrumental variables
+
+    -   How to use instrumental variables to solve real-life marketing problems
+
+-   (highly recommended) [Encouragement Designs and Instrumental Variables for A/B Testing at Spotify](Encouragement%20Designs%20and%20Instrumental%20Variables%20for%20A/B%20Testing)
+
+## Class 18: Difference-in-Differences Design
 
 -   What you will learn
+
     -   Concept of difference-in-differences (DiD) design
+
     -   Estimation of causal effects using the DiD design
+
     -   Application of DiD design in the business field
--   After-class reading
+
+-   After-class reading and exercise
+
     -   (optional) [Econometrics with R: Quasi-experiments](https://www.econometrics-with-r.org/13.4-qe.html)
 
 # Week 10: Frontiers of Marketing Analytics
 
-## Frontiers of Marketing Analytics
+## Class 19: Regression Discontinuity Design
 
 -   What you will learn
-    -   Causal machine learning with causal forest
-    -   Heterogeneous treatment effect estimation with causal forest in R
--   After-class reading
-    -   [Estimate causal effects using ML](https://www.microsoft.com/en-us/research/project/econml/) by Microsoft Research
-    -   Athey, Susan, and Stefan Wager. 'Estimating Treatment Effects with Causal Forests: An Application'. ArXiv:1902.07409 \[Stat\], 20 February 2019. http://arxiv.org/abs/1902.07409.
 
-## Module Wrap-up
+    -   Concept of regression discontinuity design
+
+    -   Estimation of causal effects using regression discontinuity design
+
+    -   Application of regression discontinuity design in the business field
+
+## Class 20: Frontiers of Marketing Analytics
+
+-   What you will learn
+
+    -   Causal machine learning with causal forest
+
+    -   Heterogeneous treatment effect estimation with causal forest in R
+
+-   After-class reading and exercise
+
+    -   [Estimate causal effects using ML](https://www.microsoft.com/en-us/research/project/econml/) by Microsoft Research
+
+    -   Athey, Susan, and Stefan Wager. 'Estimating Treatment Effects with Causal Forests: An Application'. ArXiv:1902.07409 \[Stat\], 20 February 2019. http://arxiv.org/abs/1902.07409.

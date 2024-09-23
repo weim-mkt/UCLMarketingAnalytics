@@ -2,7 +2,7 @@
 title: "Install and Setup R"
 author: Wei Miao
 affiliation: UCL School of Management
-date: "`r (lubridate::today())`"
+date: "2024-09-17"
 date-format: long
 format:
     html:
@@ -27,21 +27,22 @@ execute:
 ## Uninstall Old R and RStudio
 
 If you have used R or RStudio before, please uninstall both R and RStudio and follow the guide below to install the latest versions. Otherwise, Quarto may not work properly on older versions.
-:::
-
-::: callout-important
-## If You Switch to a New Laptop
 
 If you switch to a new laptop later on, please come back to this tutorial and reinstall R and RStudio following the same procedures.
 :::
 
+
 ::: callout-important
 ## Video Guide
 
-Check out this [video](https://youtu.be/AP0R88qqmpI?si=1iHY6IRGuMoID4BN) to guide you through the below installation process.
+I have also prepared this [video](https://youtu.be/AP0R88qqmpI?si=1iHY6IRGuMoID4BN) to guide you through the below installation process.
 :::
 
 # Installation of R
+
+::: {.callout-important}
+Note that the latest version of R is 4.4.1 as of September 2024, which is newer than the version in the guide below, thus you may notice slight differences in the version numbers in the screenshots. However, the installation steps are the same.
+:::
 
 ## For Windows computers
 
@@ -86,8 +87,8 @@ Check out this [video](https://youtu.be/AP0R88qqmpI?si=1iHY6IRGuMoID4BN) to guid
 ![](images/Rdownloadpage.png){fig-align="center"}
 
 5.  Download the correct pkg file to install R
-    -   if you use Intel based CPU, download the `For older Intel Macs`
-    -   if you use Apple's silicon chip such as M1, M1 pro, or M2, download the `For Apple Silicon (M1/M2) Macs`
+    -   if you use Intel based CPU, download the `R-4.X.X-x86_64.pkg` under "For older Intel Macs", where `X.X.X` is the version number.
+    -   if you use Apple's silicon chip such as M1, M1 pro, or M2, download the `R-4.X.X-arm64.pkg` under "For Apple Silicon Macs", where `X.X.X` is the version number.
     -   refer to this [link](https://support.apple.com/en-gb/HT211814) if you don't know how to check Intel or Apple CPU
 
 ![](images/RforMacOS.png){fig-align="center"}
@@ -96,12 +97,14 @@ Check out this [video](https://youtu.be/AP0R88qqmpI?si=1iHY6IRGuMoID4BN) to guid
 
     1.  Open `terminal` app on your mac (the icon is in the screenshot)\
         ![](images/R%20terminal.png)\
-    2.  Type the following code `xcode-select --install` into terminal and hit `enter` to run the code. Admin passwords may be required to proceed. The code may run for a few minutes. This step is to install MacOS tools that can help compile R packages.
-        -   If your terminal says "xcode-select: error: command line tools are already installed, use"Software Update" to install updates". It means the needed tool is already installed on your computer. Then there is nothing needed in this step.
+    2.  Type the following code `xcode-select --install` into terminal and hit `enter` to run the code. Admin passwords may be required to proceed. Note that when you type the password, you won't see any characters on the screen, but the passwords have been entered.\
+
+    The code may run for a few minutes. This step is to install MacOS tools that can help compile R packages.
+        -   If your terminal says "xcode-select: error: command line tools are already installed, use "Software Update" to install updates". It means the needed tool is already installed on your computer. Then there is nothing needed in this step.
 
 ![](images/R%20commandline%20tools.png)
 
-7.  Click into this [link](https://quarto.org/docs/get-started/). Download and instsall Quarto CLI plugin for Mac OS.
+7.  Click into this [link](https://quarto.org/docs/get-started/). Download and install Quarto CLI plugin for Mac OS.
 
 ![](images/quarto%20CLI.png)
 
@@ -151,17 +154,27 @@ If there are no error messages and you see exactly the same output, then congrat
 
 ![](images/insert%20quarto.png)
 
-Step 2: Select `pdf` and click `Create`.
 
-![](images/quarto_new%20pdf.png)
+-   Step 2: Select `word` and click `Create`.
 
--   Step 3: Click the `Render` button. You may be asked to save the `qmd` file to a location. Pick any location on your computer. R will then render the qmd document and generate a PDF file, named "untitled.pdf" in the same location.
+![](images/NewQuartoWord.png)
 
-![](images/quarto_render.png)
+-   Step 3: Click the `Render` button. You may be asked to save the `qmd` file to a location. Save it to your download folder. R will then render the qmd document and generate a docx file, named "untitled.docx" in the same location.
 
--   Step 4: The PDF file should look like below. If you can generate the PDF file without issues, Quarto has successfully run on your computer!
+![](images/QuartoRender.png)
 
-![](images/quarto_pdf%20rendered.png)
+-   Step 4: The docx file should look like below. If you can generate the docx file without issues, Quarto has successfully run on your computer!
+
+![](images/QuartoRenderedWord.png)
+
+
+Note that if you see a banner prompting that `rmarkdown` is not installed, you need click the `Install` button to install it. In the future, if you ever see a similar banner that prompts "Package XXX required but is not installed", you should click the `Install` button to install the missing package, because this package is needed for the current Quarto file to work properly.
+
+![](images/rmarkdown%20not%20installed.png)
+
+# Recommended Setting for RStudio
+
+After you have everything installed, it's highly recommended to set up RStudio based on my next tutorial [here](R-RStudioSetup.qmd).
 
 # Installation Q&As
 
