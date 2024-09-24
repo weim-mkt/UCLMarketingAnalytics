@@ -626,28 +626,28 @@
     "href": "Week1-Lecture1.html",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "",
-    "text": "Hi there, I’m Wei Miao!\nI did my PhD in Quant Marketing at NUS (Singapore) and a undergrad in Finance at Fudan (Shanghai)\nI love musical instruments, video games, and food (bubble tea is my soul mate)!\nMy research focuses on digital marketing, sharing economy, and platform design.\n\n\n\n\n\nDetailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Wednesday, usually with two sessions\n\nA methodology session, in which we learn a new analytics tool\nA case study session, to practice the analytics tools\n\n\n\n\n\n\nNo exams; 3 individual assignments, which are similar to case studies in class, and you will need to use what you learned in class to solve these real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 30\n2nd assignment, 30% weight, 1500 words, due on Nov 24\n3rd assignment, 40% weight, 2000 words, due on Dec 15\n\nHow to submit?\n\nOnly submit PDF rendered from R Quarto with codes printed; don’t submit any other file format or your submission won’t be marked.\nThe quarto-based answer sheets (qmd files) will be given to you.\n\n\n\nWord count and late submission penalties will be applied by BA admin. For related queries and EC applications, please directly contact BA admin at mgmt.ba-admin@ucl.ac.uk.\nWe have random second marking in place to mitigate marking errors. Please refrain from emailing teaching assistants for re-marking as re-marking is not allowed by school policy."
+    "text": "Hi there, I’m Wei Miao!\nI did my PhD in Quant Marketing at NUS (Singapore) and a undergrad in Finance at Fudan (Shanghai)\nI love musical instruments, video games, sports, and food (bubble tea is my soul mate)!\nMy research focuses on digital marketing, sharing economy, and platform design.\n\n\n\n\n\nDetailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Wednesday, usually with two sessions\n\nA methodology session, in which we learn a new analytics tool\nA case study session, to learn how the analytics tools can be applied in real life\n\n\n\n\n\n\nNo exams; 3 individual assignments, which are similar to case studies in class, and you will need to use what you learned in class to solve these real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 30\n2nd assignment, 30% weight, 1500 words, due on Nov 24\n3rd assignment, 40% weight, 2000 words, due on Dec 15\n\nHow to submit?\n\nOnly submit PDF (preferred) or Word file rendered from R Quarto with codes printed; don’t submit any other file format or your submission won’t be marked.\nThe quarto-based answer sheets (qmd files) will be given to you.\n\n\n\nWord count and late submission penalties will be applied by BA admin. For related queries and EC applications, please directly contact BA admin at mgmt.ba-admin@ucl.ac.uk.\nWe have random second marking in place to mitigate marking errors. Please refrain from emailing teaching assistants for re-marking as re-marking is not allowed by school policy."
   },
   {
     "objectID": "Week1-Lecture1.html#about-me",
     "href": "Week1-Lecture1.html#about-me",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "",
-    "text": "Hi there, I’m Wei Miao!\nI did my PhD in Quant Marketing at NUS (Singapore) and a undergrad in Finance at Fudan (Shanghai)\nI love musical instruments, video games, and food (bubble tea is my soul mate)!\nMy research focuses on digital marketing, sharing economy, and platform design."
+    "text": "Hi there, I’m Wei Miao!\nI did my PhD in Quant Marketing at NUS (Singapore) and a undergrad in Finance at Fudan (Shanghai)\nI love musical instruments, video games, sports, and food (bubble tea is my soul mate)!\nMy research focuses on digital marketing, sharing economy, and platform design."
   },
   {
     "objectID": "Week1-Lecture1.html#weekly-arrangements",
     "href": "Week1-Lecture1.html#weekly-arrangements",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "",
-    "text": "Detailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Wednesday, usually with two sessions\n\nA methodology session, in which we learn a new analytics tool\nA case study session, to practice the analytics tools"
+    "text": "Detailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Wednesday, usually with two sessions\n\nA methodology session, in which we learn a new analytics tool\nA case study session, to learn how the analytics tools can be applied in real life"
   },
   {
     "objectID": "Week1-Lecture1.html#assignments",
     "href": "Week1-Lecture1.html#assignments",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "",
-    "text": "No exams; 3 individual assignments, which are similar to case studies in class, and you will need to use what you learned in class to solve these real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 30\n2nd assignment, 30% weight, 1500 words, due on Nov 24\n3rd assignment, 40% weight, 2000 words, due on Dec 15\n\nHow to submit?\n\nOnly submit PDF rendered from R Quarto with codes printed; don’t submit any other file format or your submission won’t be marked.\nThe quarto-based answer sheets (qmd files) will be given to you.\n\n\n\nWord count and late submission penalties will be applied by BA admin. For related queries and EC applications, please directly contact BA admin at mgmt.ba-admin@ucl.ac.uk.\nWe have random second marking in place to mitigate marking errors. Please refrain from emailing teaching assistants for re-marking as re-marking is not allowed by school policy."
+    "text": "No exams; 3 individual assignments, which are similar to case studies in class, and you will need to use what you learned in class to solve these real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 30\n2nd assignment, 30% weight, 1500 words, due on Nov 24\n3rd assignment, 40% weight, 2000 words, due on Dec 15\n\nHow to submit?\n\nOnly submit PDF (preferred) or Word file rendered from R Quarto with codes printed; don’t submit any other file format or your submission won’t be marked.\nThe quarto-based answer sheets (qmd files) will be given to you.\n\n\n\nWord count and late submission penalties will be applied by BA admin. For related queries and EC applications, please directly contact BA admin at mgmt.ba-admin@ucl.ac.uk.\nWe have random second marking in place to mitigate marking errors. Please refrain from emailing teaching assistants for re-marking as re-marking is not allowed by school policy."
   },
   {
     "objectID": "Week1-Lecture1.html#role-of-marketing",
@@ -675,7 +675,7 @@
     "href": "Week1-Lecture1.html#marketing-process",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "2.4 Marketing Process",
-    "text": "2.4 Marketing Process\n\n\n\n\n\n\n\nMarketing Process\n\n\n\nWe will go through the above concepts."
+    "text": "2.4 Marketing Process\n\n\n\n\n\n\n\nMarketing Process\n\n\n\nWe will go through the above concepts using Uber and Apple."
   },
   {
     "objectID": "Week1-Lecture1.html#situation-analysis-5-cs",
@@ -685,60 +685,60 @@
     "text": "2.5 Situation Analysis: 5 C’s\n\nAny marketing decision can benefit from a deep understanding of the players within the market ecosystem—your own company, current and potential customers, collaborators and competitors—and the context they interact within: the 5Cs for short.\n\n\n\n\n\n\n\n\n5Cs of Marketing"
   },
   {
+    "objectID": "Week1-Lecture1.html#situation-analysis-collaborators",
+    "href": "Week1-Lecture1.html#situation-analysis-collaborators",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.6 Situation Analysis: Collaborators",
+    "text": "2.6 Situation Analysis: Collaborators"
+  },
+  {
     "objectID": "Week1-Lecture1.html#situation-analysis-competitors",
     "href": "Week1-Lecture1.html#situation-analysis-competitors",
     "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.6 Situation Analysis: Competitors",
-    "text": "2.6 Situation Analysis: Competitors\n\nManagers tend to pay attention towards more salient direct (industry) competitors, but we should also consider indirect and potential competitors.\n\nIndirect competitors are defined by who your customers consider to satisfy the same goals.\nPotential competitors are those who might pose a competitive threat in the future; who possess equivalent resources that would allow them to enter the market\n\n\n\n\n\n\n\n\n\nSituation Analysis: Competitors"
+    "section": "2.7 Situation Analysis: Competitors",
+    "text": "2.7 Situation Analysis: Competitors\n\nWe tend to pay more attention towards more salient direct competitors, but we should also consider indirect and potential competitors.\n\nIndirect competitors are defined by who your customers consider to satisfy the same goals.\nPotential competitors are those who might pose a competitive threat in the future; who possess equivalent resources that would allow them to enter the market\n\n\n\n\n\n\n\n\n\nSituation Analysis: Competitors"
   },
   {
     "objectID": "Week1-Lecture1.html#situation-analysis-contextclimate",
     "href": "Week1-Lecture1.html#situation-analysis-contextclimate",
     "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.7 Situation Analysis: Context/Climate",
-    "text": "2.7 Situation Analysis: Context/Climate\n\nContext/Climate analysis is a strategic planning method used to assess major external factors that influence the market ecosystem, and is often referred to as PESTLE analysis.\n\n\n\n\n\n\n\n\nSituation Analysis: Context"
+    "section": "2.8 Situation Analysis: Context/Climate",
+    "text": "2.8 Situation Analysis: Context/Climate\n\nContext/Climate analysis is a strategic planning method used to assess major external factors that influence the market ecosystem, and is often referred to as PESTLE analysis.\n\n\n\n\n\n\n\n\nSituation Analysis: Context"
   },
   {
     "objectID": "Week1-Lecture1.html#strategy-stp",
     "href": "Week1-Lecture1.html#strategy-stp",
     "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.8 Strategy: STP",
-    "text": "2.8 Strategy: STP\n\nSituation analysis is a critical input into marketing strategy design, the sequential application of the processes of segmentation, targeting, and positioning. Marketing strategy is inherently related to the concepts of the business model and business strategy—who you are serving, with what value proposition, and how you do so.\n\n\n\n\n\n\n\n\nSegmentation, Targeting, and Positioning"
+    "section": "2.9 Strategy: STP",
+    "text": "2.9 Strategy: STP\n\nSituation analysis is a critical input into marketing strategy, i.e., the sequential application of the processes of segmentation, targeting, and positioning.\n\n\n\n\n\n\n\n\nSegmentation, Targeting, and Positioning"
   },
   {
     "objectID": "Week1-Lecture1.html#tactics-4ps",
     "href": "Week1-Lecture1.html#tactics-4ps",
     "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.9 Tactics: 4P’s",
-    "text": "2.9 Tactics: 4P’s\n\nThe marketing mix provides an implementation of your positioning. Segmentation is here applied at the tactical level, to optimally design the marketing mix or 4Ps.\n\n\n\n\n\n\n\n\n4Ps of Marketing"
+    "section": "2.10 Tactics: 4P’s",
+    "text": "2.10 Tactics: 4P’s\n\nThe marketing mix provides an implementation of your positioning. Segmentation is here applied at the tactical level, to optimally design the marketing mix or 4Ps.\n\n\n\n\n\n\n\n\n4Ps of Marketing"
   },
   {
     "objectID": "Week1-Lecture1.html#big-data-era",
     "href": "Week1-Lecture1.html#big-data-era",
     "title": "Class 1 Intro to Marketing Analytics",
     "section": "3.1 Big Data Era",
-    "text": "3.1 Big Data Era\nWith the advancement in information and communication technologies (ICTs), data scientists nowadays are equipped with data analytics tools powerful than ever!\nFirms now have access to enormously rich information trail of customers\n\nDemographic profiles (DoB, gender, ethnicity, income)\nPurchase history (recency, frequency, monetary value, spending behavior)\nOnline browsing and search history (browsing, click through, add to cart, purchase)\nGPS data from mobile phones for offline store visits\nSocial media (location, consumer preference, social network)"
-  },
-  {
-    "objectID": "Week1-Lecture1.html#what-marketing-analytics-can-do",
-    "href": "Week1-Lecture1.html#what-marketing-analytics-can-do",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "3.2 What Marketing Analytics Can Do",
-    "text": "3.2 What Marketing Analytics Can Do\n\n\nCode\nflowchart TD\n    A[Apple Marketing Analytics Process] --&gt; B[Predictive Analytics (Machine Learning)]\n    A --&gt; C[Causal Inference (Marketing Impact Evaluation)]\n    \n    B --&gt; D[Data Collection]\n    D --&gt; D1[Sales Data]\n    D --&gt; D2[Customer Demographics]\n    D --&gt; D3[Marketing Campaign Data]\n    D --&gt; D4[Website Behavior]\n    \n    D1 --&gt; E[Train Predictive Models]\n    D2 --&gt; E\n    D3 --&gt; E\n    D4 --&gt; E\n    \n    E --&gt; F1[Predict Customer Preferences]\n    E --&gt; F2[Forecast Sales]\n    E --&gt; F3[Personalized Offers]\n    \n    C --&gt; G1[Design Experiments]\n    C --&gt; G2[Conduct A/B Testing]\n    C --&gt; G3[Apply Instrumental Variables]\n    \n    G1 --&gt; H[Evaluate Marketing Effectiveness]\n    G2 --&gt; H\n    G3 --&gt; H\n    \n    H --&gt; I1[Optimize Campaigns]\n    H --&gt; I2[Allocate Budget]\n    F1 --&gt; I3[Increase Customer Lifetime Value]\n    F2 --&gt; I3\n    F3 --&gt; I3\n\n\n\n\n\nflowchart TD\n    A[Apple Marketing Analytics Process] --&gt; B[Predictive Analytics (Machine Learning)]\n    A --&gt; C[Causal Inference (Marketing Impact Evaluation)]\n    \n    B --&gt; D[Data Collection]\n    D --&gt; D1[Sales Data]\n    D --&gt; D2[Customer Demographics]\n    D --&gt; D3[Marketing Campaign Data]\n    D --&gt; D4[Website Behavior]\n    \n    D1 --&gt; E[Train Predictive Models]\n    D2 --&gt; E\n    D3 --&gt; E\n    D4 --&gt; E\n    \n    E --&gt; F1[Predict Customer Preferences]\n    E --&gt; F2[Forecast Sales]\n    E --&gt; F3[Personalized Offers]\n    \n    C --&gt; G1[Design Experiments]\n    C --&gt; G2[Conduct A/B Testing]\n    C --&gt; G3[Apply Instrumental Variables]\n    \n    G1 --&gt; H[Evaluate Marketing Effectiveness]\n    G2 --&gt; H\n    G3 --&gt; H\n    \n    H --&gt; I1[Optimize Campaigns]\n    H --&gt; I2[Allocate Budget]\n    F1 --&gt; I3[Increase Customer Lifetime Value]\n    F2 --&gt; I3\n    F3 --&gt; I3"
+    "text": "3.1 Big Data Era\nWith the advancement in ICTs and computing power, data scientists nowadays are equipped with data analytics tools powerful than ever!\nFirms now have access to enormously rich information trail of customers\n\nDemographic profiles (DoB, gender, ethnicity, income)\nPurchase history (recency, frequency, monetary value, spending behavior)\nOnline browsing and search history (browsing, click through, add to cart, purchase)\nGPS data from mobile phones for offline store visits\nSocial media (location, consumer preference, social network)"
   },
   {
     "objectID": "Week1-Lecture1.html#our-roadmap",
     "href": "Week1-Lecture1.html#our-roadmap",
     "title": "Class 1 Intro to Marketing Analytics",
-    "section": "3.3 Our Roadmap",
-    "text": "3.3 Our Roadmap"
+    "section": "3.2 Our Roadmap",
+    "text": "3.2 Our Roadmap"
   },
   {
     "objectID": "Week1-Lecture1.html#unique-position-of-marketing-analytics",
     "href": "Week1-Lecture1.html#unique-position-of-marketing-analytics",
     "title": "Class 1 Intro to Marketing Analytics",
-    "section": "3.4 Unique Position of Marketing Analytics",
-    "text": "3.4 Unique Position of Marketing Analytics"
+    "section": "3.3 Unique Position of Marketing Analytics",
+    "text": "3.3 Unique Position of Marketing Analytics"
   },
   {
     "objectID": "R-errors.html",
@@ -1236,7 +1236,7 @@
     "href": "Syllabus.html",
     "title": "Syllabus",
     "section": "",
-    "text": "Module leader: Dr. Wei Miao [personal website]\nEmail: wei.miao@ucl.ac.uk\nTeaching assistants\n\nKayi Yeung, ka.yeung.21@ucl.ac.uk (UCL MSc BA 2022)\nJiafan Lu, jiafan.lu@ucl.ac.uk (UCL PhD Management 2022)",
+    "text": "Module leader: Dr. Wei Miao [pronounced as “Way Meow”] [personal website]\nEmail: wei.miao@ucl.ac.uk\nTeaching assistants\n\nKayi Yeung, ka.yeung.21@ucl.ac.uk (UCL MSc BA 2022)\nJiafan Lu, jiafan.lu@ucl.ac.uk (UCL PhD Management 2022)",
     "crumbs": [
       "Lectures",
       "Syllabus"
@@ -1254,11 +1254,11 @@
     ]
   },
   {
-    "objectID": "Syllabus.html#if-you-have-questions-about-the-assignments-make-an-appointment",
-    "href": "Syllabus.html#if-you-have-questions-about-the-assignments-make-an-appointment",
+    "objectID": "Syllabus.html#if-you-have-more-questions-and-would-like-to-use-office-hours-make-an-appointment",
+    "href": "Syllabus.html#if-you-have-more-questions-and-would-like-to-use-office-hours-make-an-appointment",
     "title": "Syllabus",
-    "section": "4.2 If you have questions about the assignments, make an appointment",
-    "text": "4.2 If you have questions about the assignments, make an appointment\nYou can also ask questions during office hours hosted by me or teaching assistants during term time.\nTo make an appointment, use the link below. The links are also available under “Module Overview” Section on Moodle. Note that you need to log in with your UCL email account to make an appointment.\n\nFor lecture-related questions, please make an appointment with Wei here.\nFor R trouble-shooting, please make an appointment with teaching assistants here",
+    "section": "4.2 If you have more questions and would like to use office hours, make an appointment",
+    "text": "4.2 If you have more questions and would like to use office hours, make an appointment\nYou can also ask questions during office hours hosted by me or teaching assistants during term time.\nTo make an appointment, use the link below. The links are also available under “Module Overview” Section on Moodle. Note that you need to log in with your UCL email account to make an appointment.\n\nFor lecture-related questions, please make an appointment with Wei here.\nFor R trouble-shooting, please make an appointment with teaching assistants here",
     "crumbs": [
       "Lectures",
       "Syllabus"
