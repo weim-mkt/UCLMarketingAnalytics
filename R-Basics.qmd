@@ -15,6 +15,8 @@ format:
     code-copy: hover
     title: "R Basics"
   pdf: 
+    toc: true
+    toc-depth: 2
     number-sections: true
     number-depth: 2
     fontsize: 10pt
@@ -122,7 +124,7 @@ RStudio is so far the best R IDE. And it's interface consists of the following m
 -   You can write codes *interactively* in the R console. See an example: Type the following code into your console and see what happens.
 
     ```{r}
-    print('Hello World')
+print("Hello World")
     ```
 
 -   Used **for simple exploratory, unstructured tasks**, where you don't need to keep a record of codes.
@@ -188,7 +190,7 @@ Ensure the first line remains {r} only and do not include any comments or code o
 -   See an example and try on your computer!
 
 ```{r}
-print('R is the Best Language! Way better than Python! The battle is on!')
+print("R is the Best Language! Way better than Python! The battle is on!")
 ```
 
 ::: callout-note
@@ -306,7 +308,7 @@ In the future, it's good practice to use memorable names to name an object
 -   For instance, an R's built-in function `sqrt()` takes a number as input, and returns the square root of the number. Let's use it on object `x`.
 
 ```{r}
-sqrt(x) 
+sqrt(x)
 ```
 
 -   We will heavily rely on functions to conduct data analyses. For how to use a new function, search the function in RStudio's `help` panel.
@@ -369,7 +371,7 @@ x <- 1 # +1
 -   We can use R as a calculator for numeric objects
 
 ```{r}
-# Numeric Vector 
+# Numeric Vector
 num2 <- 2.5
 log(num2)
 num2^2
@@ -411,7 +413,7 @@ T | F # or
 
 ```{r}
 
-num2 >= 3 & num2 <= 8  
+num2 >= 3 & num2 <= 8
 
 ```
 
@@ -421,7 +423,7 @@ num2 >= 3 & num2 <= 8
 
 -   Single or double quotation marks can both work.
 
--   If even a character may contain numbers, it will be treated as a character, and R will not perform any mathematical operations on it.
+-   Even if a character may contain numbers, it will be treated as a character, and R will not perform any mathematical operations on it.
 
 ```{r}
 str1 <- "1 + 1 = 2"
@@ -432,12 +434,12 @@ str1 <- "1 + 1 = 2"
 We can use `class()` to check the type of an object in R.
 
 ```{r}
-a <- '1+1'
+a <- "1+1"
 class(a)
 ```
 
 ```{r}
-b <- 1+1
+b <- 1 + 1
 class(b)
 ```
 
@@ -453,7 +455,7 @@ See the following example:
 
 ```{r}
 #| error: true
-a <- '1'
+a <- "1"
 class(a)
 a + 1
 ```
@@ -500,7 +502,7 @@ class(x)
 You can measure the length of a **vector** using the command `length()`
 
 ```{r}
-x <- c('R',' is', ' the', ' best', ' language')
+x <- c("R", " is", " the", " best", " language")
 length(x)
 ```
 
@@ -528,13 +530,13 @@ seq(from = 1, to = 2, by = 0.1)
 -   We can use `c()` to concatenate different vectors; this is very commonly used to concatenate vectors.
 
 ```{r}
-Income1 <- 1:3 
-Income2 <- c(10, 15) 
+Income1 <- 1:3
+Income2 <- c(10, 15)
 ```
 
 ```{r}
 
-c(Income1,Income2)
+c(Income1, Income2)
 ```
 
 ::: callout-note
@@ -565,7 +567,7 @@ income[3]
 
 ```{r}
 # what are the incomes of the 1st, 3rd, and 4th lecturers?
-income[c(1,3,4)]
+income[c(1, 3, 4)]
 ```
 
 ## Element-wise arithmetic operations
@@ -575,7 +577,7 @@ R is a **vectorized** language, which broadcasts operations to all elements in a
 -   If you operate on a vector with a single number, the operation will be applied to all elements in the vector
 
 ```{r}
-x <- c(1,3,8,7)
+x <- c(1, 3, 8, 7)
 ```
 
 ```{r}
@@ -597,7 +599,7 @@ Create a geometric sequence {2,4,8,16,32} using seq().
 -   Besides arithmetic operations, we can also perform relational operations on vectors.
 
 ```{r}
-x <- c(1,3,8,7) 
+x <- c(1, 3, 8, 7)
 x > 2
 
 ```
@@ -605,8 +607,8 @@ x > 2
 -   We can also compare a vector with a vector, because R is vectorized
 
 ```{r}
-incomeUCL <-  c(6000, 4600, 7000, 9100,10000)
-incomeImperial <- c(5000, 4500, 6000, 9000,10000)
+incomeUCL <- c(6000, 4600, 7000, 9100, 10000)
+incomeImperial <- c(5000, 4500, 6000, 9000, 10000)
 incomeUCL > incomeImperial
 ```
 
@@ -616,7 +618,7 @@ incomeUCL > incomeImperial
 
 ```{r}
 
-x <- c(1,3,8,7) 
+x <- c(1, 3, 8, 7)
 
 3 %in% x
 
@@ -702,7 +704,7 @@ x
         -   Altogether, we extract a single element in row 2, column 3.
 
 ```{r}
-x[2,3] # the element in the 2nd row, 3rd column
+x[2, 3] # the element in the 2nd row, 3rd column
 
 ```
 
@@ -712,7 +714,7 @@ x[2,3] # the element in the 2nd row, 3rd column
         -   column index is blank
 
 ```{r}
-x[1,] # all elements in the first row
+x[1, ] # all elements in the first row
 ```
 
 ::: callout-note
@@ -748,12 +750,12 @@ z
 -   If the two matrices are of the same dimensions, they can do element-wise operations, including element-wise addition and element-wise multiplication
 
 ```{r}
-x + z   # elementwise addition
+x + z # elementwise addition
 
 ```
 
 ```{r}
-x * x 
+x * x
 ```
 
 -   If we want to perform the matrix multiplication as in linear algebra, we need to use `%*%`
@@ -778,7 +780,7 @@ t(x) # transpose
 
 ```{r}
 x
-solve(t(x)%*%x) # inverse; must be on a square matrix
+solve(t(x) %*% x) # inverse; must be on a square matrix
 ```
 
 # Data Frames
@@ -790,11 +792,12 @@ solve(t(x)%*%x) # inverse; must be on a square matrix
 -   You can think of `data.frame` as a spreadsheet in excel.
 
 ```{r}
-df <-  data.frame(id = 1:4,
-  name = c("David", "Karima", "Anil", "Wei"),
-  wage = rnorm(n=4, mean = 10^5, sd = 10^3), 
-  male = c(T, T, T, T)
-  )
+df <- data.frame(
+    id = 1:4,
+    name = c("David", "Karima", "Anil", "Wei"),
+    wage = rnorm(n = 4, mean = 10^5, sd = 10^3),
+    male = c(T, T, T, T)
+)
 df
 ```
 
@@ -846,7 +849,7 @@ names(df)
 
 ```{r arrays, include=T, echo=T}
 x <- 1:4
-x <- array(data = x, dim = c(2,3,2))
+x <- array(data = x, dim = c(2, 3, 2))
 x
 ```
 
@@ -857,7 +860,7 @@ A list is an R object that can contain anything. List is pretty useful when you 
 ```{r}
 x <- 1:2
 y <- c("a", "b")
-L <- list( numbers = x, letters = y)
+L <- list(numbers = x, letters = y)
 ```
 
 ## Lists: indexing and subsetting
@@ -870,7 +873,7 @@ There are many ways to extract a certain element from a list.
 
 ```{r}
 L[[1]] # extract the first element
-L[['numbers']] # based on element name
+L[["numbers"]] # based on element name
 L$numbers # extract the element called numbers
 ```
 
@@ -903,22 +906,22 @@ Example 1:
 a <- 15
 
 if (a > 10) {
-larger_than_10 <- TRUE  
+    larger_than_10 <- TRUE
 } else {
-  larger_than_10 <- FALSE
+    larger_than_10 <- FALSE
 }
 
-larger_than_10  
+larger_than_10
 ```
 
 Example 2:
 
 ```{r}
 x <- -5
-if(x > 0){
-  print("x is a non-negative number")
+if (x > 0) {
+    print("x is a non-negative number")
 } else {
-  print("x is a negative number")
+    print("x is a negative number")
 }
 ```
 
@@ -929,9 +932,9 @@ As the name suggests, in a loop the program repeats a set of instructions many t
 Loop is very useful for repetitive jobs.
 
 ```{r}
-for (i in 1:10){ # i is the iterator
-  # loop body: gets executed each time
-  # the value of i changes with each iteration
+for (i in 1:10) { # i is the iterator
+    # loop body: gets executed each time
+    # the value of i changes with each iteration
 }
 ```
 
@@ -948,9 +951,9 @@ y
 z <- x
 
 for (i in 1:nrow(x)) {
-  for (j in 1:ncol(x)){
-    z[i,j] <- x[i,j] + y[i,j]
-  }
+    for (j in 1:ncol(x)) {
+        z[i, j] <- x[i, j] + y[i, j]
+    }
 }
 
 z
@@ -967,21 +970,21 @@ Functions are very useful. When we would like to test different ideas, we can co
 Here is how to define a function in general:
 
 ```{r}
-function_name <- function(arg1 ,arg2 = default_value){
-  # write the actions to be done with arg1 and arg2
-  # you can have any number of arguments, with or without defaults
-  return() # the last line is to return some value 
+function_name <- function(arg1, arg2 = default_value) {
+    # write the actions to be done with arg1 and arg2
+    # you can have any number of arguments, with or without defaults
+    return() # the last line is to return some value
 }
 ```
 
 Example:
 
 ```{r}
-magic <- function( x, y){
-  return(x^2 + y)
+magic <- function(x, y) {
+    return(x^2 + y)
 }
 
-magic(1,3)
+magic(1, 3)
 
 ```
 
@@ -991,18 +994,18 @@ Task: write a function, which takes a vector as input, and returns the max value
 
 ```{r}
 
-get_max <- function(input){
-  max_value <- input[1]
-  for (i in 2:length(input) ) {
-    if (input[i] > max_value) {
-      max_value <- input[i]
+get_max <- function(input) {
+    max_value <- input[1]
+    for (i in 2:length(input)) {
+        if (input[i] > max_value) {
+            max_value <- input[i]
+        }
     }
-  }
-  
-  return(max_value)
+
+    return(max_value)
 }
 
-get_max(c(-1,3,2))
+get_max(c(-1, 3, 2))
 
 ```
 

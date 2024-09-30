@@ -2,10 +2,10 @@ project:
   type: website
 
 website:
-  #google-analytics: "G-FTK61TBF7L"
+  google-analytics: "G-FTK61TBF7L"
   title: "Marketing Analytics"
   page-navigation: true
-  reader-mode: false
+  reader-mode: true
   sidebar:
     style: "docked"
     search: true
@@ -18,9 +18,18 @@ website:
         contents:
           - Syllabus.qmd
           - WeeklyArrangements.qmd
-          - section: "[Week 1] Module Introduction and Marketing Profitability Analysis"
-            contents: 
+          - section: "[Week 1] Module Introduction and Profitability Analysis"
+            contents:
+              - href: Week1-Lecture1.qmd
+                text: "Lecture 1: Introduction to Marketing Analytics"
+              - href: Week1-Lecture2.qmd
+                text: "Lecture 2: Marketing Profitability Analysis"
+              - href: Case-ProfitabilityAnalysis.qmd
+                text: "Case Study: Profitability Analysisfor Apple Inc."
+          - section: "[Week 2] Customer Lifetime Value"
+            contents:
               - LectureSlides.qmd
+          - R-Exercise.qmd
       - section: "R Tutorials"
         contents:
           - R-InstallR.qmd
@@ -30,6 +39,7 @@ website:
           - href: R-ComparisonWithPython.qmd
             text: "Side-by-Side Comparison between R and Python"
           - R-errors.qmd
+          - R-Exercise.qmd
       - section: "Advanced R Tips"
         contents:
           - RTip-BLAS.qmd
@@ -40,6 +50,7 @@ format:
       dark: darkly
     toc: true
     toc-depth: 2
+    tabsets: true
     number-sections: true
     lightbox: true
     df-print: paged
@@ -53,6 +64,7 @@ format:
     standalone: true
     css: styles.css
     fig-align: "center"
+    colorlinks: true
   beamer:
     toc: false
     slide-level: 2
@@ -64,6 +76,11 @@ format:
     tbl-colwidths: auto
     fontsize: 9pt 
     fig-align: "center"
+    colorlinks: true
+knitr:
+  opts_chunk: 
+    out.width: "5cm"
+    fig.align: "center"
 execute: 
   freeze: auto
-
+  cache: false

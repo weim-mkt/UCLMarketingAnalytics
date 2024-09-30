@@ -3,11 +3,13 @@ title: "Syllabus"
 date: "2024-09-17"
 date-modified: "2024-09-22"
 date-format: long
+format: 
+    html: default
 ---
 
 # Instructor Information
 
--   Module leader: Dr. Wei Miao [[personal website](https://miaowei.netlify.app/)]
+-   Module leader: Dr. Wei Miao [pronounced as "Way Meow"] [[personal website](https://miaowei.netlify.app/)]
 
 -   Email: [wei.miao\@ucl.ac.uk](mailto:wei.miao@ucl.ac.uk)
 
@@ -42,7 +44,7 @@ We will use Microsoft Teams for the module. Please utilize the Microsoft Teams Q
 
 Since some of your questions may have been asked by your peers, for any questions, please first check the MS Teams channel and see if the questions are already posted and answered there. If not, please post your questions in the Teams channels. The teaching team will monitor the questions posted on Teams and provide answers accordingly.
 
-## If you have questions about the assignments, make an appointment
+## If you have more questions and would like to use office hours, make an appointment
 
 You can also ask questions during office hours hosted by me or teaching assistants during term time. 
 

@@ -1,6 +1,7 @@
 ---
 author: Dr Wei Miao
 date: "`r (lubridate::ymd('20240916'))`"
+title: "Side-to-Side Comparison between R, Python, and Julia"
 date-modified: "20240916"
 date-format: long
 institute: UCL School of Management
@@ -15,7 +16,6 @@ format:
     toc-depth: 2
     code-line-numbers: false
     code-copy: hover
-    title: "Side-to-Side Comparison between R, Python, and Julia"
 knitr:
   opts_chunk:
     echo: true
@@ -24,7 +24,7 @@ knitr:
     error: true
 execute: 
   freeze: auto
-  cache: false
+  cache: true
   python: "/opt/homebrew/Caskroom/miniconda/base/bin/python"
 editor_options: 
   chunk_output_type: inline

@@ -14,13 +14,6 @@ format:
     code-line-numbers: false
     code-copy: hover
     title: "RStudio Setup"
-  pdf: 
-    number-sections: true
-    number-depth: 2
-    fontsize: 10pt
-    colorlinks: true
-    code-line-numbers: true
-    title: "RStudio Setup"
 knitr:
   opts_chunk:
     echo: true

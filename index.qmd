@@ -1,5 +1,7 @@
 ---
 title: "Home"
+format: 
+    html: default
 ---
 
 ![](images/wordcloud.png)

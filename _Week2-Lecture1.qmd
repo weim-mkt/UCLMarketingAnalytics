@@ -1,89 +1,180 @@
 ---
 author: Dr Wei Miao
-date: "`r (lubridate::ymd('20231004') + lubridate::dweeks(1))`"
+date: "`r (lubridate::ymd('20241002') + lubridate::dweeks(1))`"
 date-format: long
 institute: UCL School of Management
-title: "Class 3 Case Study: Customer Lifetime Value"
-df-print: kable
-colorlinks: true
-code-line-numbers: true
-format:
-  html: 
-    toc: true
-    number-sections: true
-    page-layout: full
-    toc-depth: 2
-    code-line-numbers: true
-    code-copy: hover
-  beamer: 
-    toc: false
-    toc-title: ""
-    slide-level: 2
-    section-titles: true
-    theme: Frankfurt
-    colortheme: beaver
-    fonttheme: structurebold
-    navigation: horizontal
-    tbl-colwidths: auto
-    fontsize: 9pt
-knitr:
-  opts_chunk:
-    echo: true
-    warning: false
-    message: false
-    error: true
-execute: 
-  freeze: auto
+title: "Class 3 Customer Lifetime Value"
 ---
+
+# Customer Life Cycle
 
 ## Class objectives {.unnumbered}
 
--   How to apply CLV calculation in a real-life case study for i-basket grocery chain
--   Discuss and see examples of how CLV can be used by marketers to guide marketing decisions
+- Understand the concept of customer acquisition cost (CAC) and how to compute it with R
 
-# Recap: Customer Lifetime Value
+-  Understand the concept of Customer Lifetime Value (CLV) and how to compute it with R
 
-## Customer Life Cycle
+-  How to apply CLV calculation in a case study
 
--   We learned campaign-centric break-even analysis tools, such as **break-even quantity** and **net present value**. BEA is also referred to as cost-benefit analysis.
-    -   Costs of business activities
-    -   Benefits of business activities
--   CLV is a customer-centric break-even analysis, which considers a customer as an asset to the company that generates future cashflows
-    -   Costs: customer acquisition costs (CAC)
+-  Understand how CLV can be used by marketers to guide marketing decisions
 
-    -   Benefits: customer generates profits for the company in each period
+## From Campaign-Centric to Customer-Centric Marketing
 
-![](images/CustomerLifeCycle.png){fig-align="center" width="300"}
+```{r}
+#| echo: false
+#| fig-cap: "Customer Life Cycle"
+
+include_graphics(path = "images/CustomerLifeCycle.png")
+```
 
 ## Customer Acquisition Cost
 
--   A new Bubble Tea shop in Canary Wharf is contemplating whether or not to attract new customers by sending ads leaflets to nearby residents.
+::: {.callout-note icon="false"}
+### Definition
 
-    -   randomly sending out leaflets: expected response rate of **1%**
+**Customer Acquisition Cost (CAC)** is the cost of converting a customer to purchase a product/service.
+:::
 
-    -   using names purchased from a marketing agency: expected response rate of **4%**
+-   Why should we care about CAC? Having a new customer may not always be a good thing. For example, no company would spend £500 to acquire a new customer worth £300
 
--   A intuitive way of computing CAC: think about to obtain **1 new customer**, how many offers to make; then multiply it with cost per offer
+## How to Acquire New Customers
 
-## CLV: Formula
+-   Free sampling/trials
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "80%"
+#| fig-align: "center"
+include_graphics(path = "images/FreeSampling 1.jpg")
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "80%"
+#| fig-align: "center"
+include_graphics(path = "images/FreeSampling 2.png")
+```
+:::
+:::
+
+## How to Acquire New Customers
+
+-   Referral Programs: Customer Lifetime Social Value (CLSV, week 2)
+
+::: columns
+::: {.column width="50%"}
+```{r, echo=FALSE,out.width="80%",fig.align = 'center'}
+include_graphics(path = "images/UberEatReferral.png")
+```
+:::
+
+::: {.column width="50%"}
+```{r, echo=FALSE,out.width="80%",fig.align = 'center'}
+include_graphics(path = "images/DeliverooReferral.jpeg")
+```
+:::
+:::
+
+## Customer Acquisition Cost: Calculation
+
+::: {.callout-note icon="false"}
+## Definition
+
+When the marketing cost can be attributed to each individual customer
+
+-   CAC = (# of offers needed to acquire 1 customer) \* (cost of making a marketing offer)
+-   CAC = (cost of making a marketing offer) / (customer response rate)
+:::
+
+-   After we study predictive analytics later in this module, we will be able to predict response rate for each individual customer and compute individual-specific CAC.
+
+## Customer Acquisition Cost: An Example
+
+A new Bubble Tea shop in Canary Wharf is contemplating whether or not to attract new customers by sending ads leaflets to nearby residents.
+
+The cost of sending a leaflet, which includes production and labor costs, is **£0.5**.
+
+1.  randomly sending out leaflets
+    -   expected response rate of **1%**
+2.  using names purchased from a marketing agency
+    -   each name costs **£0.2**
+    -   expected response rate of **4%** by analyzing the buying behavior and demographics of current customers
+
+Compute the CAC for each choice.
+
+::: {.content-hidden when-format="beamer"}
+```{r}
+cost_per_random_offer <- 0.5
+response_rate_random_offer <- 0.01
+# Following the formula in the previous slide
+CAC_random_offer <- cost_per_random_offer / response_rate_random_offer
+CAC_random_offer
+```
+
+```{r}
+cost_per_targeted_offer <- 0.5 + 0.2 
+response_rate_targeted_offer <- 0.04
+CAC_targeted_offer <- cost_per_targeted_offer/response_rate_targeted_offer
+CAC_targeted_offer
+```
+
+:::
+
+# Customer Lifetime Value (CLV)
+
+
+## Customer Lifetime Value (CLV)
+
+::: {.callout-note icon="false"}
+## Definition
+
+Customer lifetime value (CLV or LTV) is the total worth to a business of a customer over the whole period of their relationship.
+:::
+
+-   The underlying idea of CLV is essentially NPV, but at the customer level.
+    -   Think of acquiring a new customer as an investment in an "asset" that can generate future cash flows
+
+## CLV: Calculation
 
 $$
-\mathrm{CLV} = - CAC + \sum_{t=1}^{N} \frac{CF_t * r^{(t-1)}}{(1+k)^{t}}
+\mathrm{CLV} = - CAC + \sum_{t=1}^{N} \frac{CF_t * r^{(t-1)}}{(1+k)^{t}},
+where \space CF_t = M_t - c_t
 $$
 
-where $CF_t = M_t - c_t$
+-   $r$ is the average annual retention rate; $r^{(t-1)}$ is the cumulative retention rate in year $t$
+-   $N$ is the number of years over which the relationship is calculated
+-   $M_{t}$ is the margin the customer generates in year $t$
+-   $c_{t}$ is the expected cost of marketing communications or promotions targeted to the customer in year $t$
+-   $k$ is the rate for discounting future cash flows. The discount factor $d = 1/(1+k)$.
 
--   $r$ is the average per period retention rate; $r^{(t-1)}$ is the cumulative retention rate in period $t$
--   $N$ is the number of periods over which the relationship is calculated
--   $M_{t}$ is the profit margin the customer generates in period $t$, which is typically $M_t = revenue * (1 - COGS)$
--   $c_{t}$ is the marketing costs per period to maintain customer relationship in each period $t$
--   $k$ is the interest (discount) rate for discounting future cash flows; $d= \frac{1}{1+k}$ is the discount factor
+## Retention Rate
+
+-  The churn rate, also known as the rate of attrition or rate of customer churn, is the rate at which customers stop doing business with the company.
+
+        -   retention rate = 1 - churn rate
+
+        -   **How to compute *individual* churn rate**: machine learning models to predict the churn rate of an individual customer (Week 4)
+
+## Number of Years of Customer Relationship
+
+-   If we assume **infinite** customer economic life, we can simplify the formula into the following using the property of geometric sequence.
+
+$$
+C L V_{N} = \sum_{t=1}^{N} \frac{g r^{(t-1)}}{(1+k)^{t}} => C L V_{N}=\mathrm{g} \cdot \frac{1-\left(\frac{r}{1+k}\right)^{N}}{1+k-r}  => 
+C L V_{\infty}=\frac{g}{(1+k-r)}
+$$
+
+-   However, most of the time, we are more comfortable to assume **finite** customer economic life; we need to decide on a cutoff date for CLV calculation
+    -   Rule A: until the year when the $g = M-c$ becomes negative
+    -   Rule B: industry's average customer lifespan
 
 # Case Study: i-basket CLV
 
-## Situation Analyses for a Grocery Company
-
-Let's use a UK grocery retailer Marks and Spencer as an example
+## Situation Analyses for Marks & Spencer
 
 -   Company
 
@@ -93,7 +184,7 @@ Let's use a UK grocery retailer Marks and Spencer as an example
 
 -   Competitors
 
--   Context/Climate
+-   Context
 
 ## Overview for Computing CLV
 
@@ -102,6 +193,7 @@ Let's use a UK grocery retailer Marks and Spencer as an example
 ## Step 1: Determine time unit of analysis
 
 -   Time unit of analysis
+    
     -   *\[...\] (find info in the case study)*
 
         -   When should we use monthly analysis or other units of time?
@@ -116,50 +208,50 @@ Let's use a UK grocery retailer Marks and Spencer as an example
 
 ```{r}
 #| eval: false
-N <- 
+N <-
 ```
-
+    
 ## Step 3: Compute CF for each period
-
+    
 $CF = M - c$: **gross profit each year, which is the profit from sales M minus marketing costs c**
-
+    
 -   *most customers paid the \$99 annual membership fee*
-
+    
 \footnotesize
-
+    
 ```{r}
-#| eval: false
-membership <- 
+    #| eval: false
+    membership <-
 ```
-
+    
 ## Step 3: Compute CF for each period
-
+    
 -   *40 times each year; each time \$100; with profit margin 7% (COGS 93%)*
-
+    
 \footnotesize
-
+    
 ```{r}
 #| eval: false
 
-n_visit <- 
-revenue_each_visit <- 
-profit_margin <- 
-## think carefully about how M is calculated, it's tricky ~~~~
-M <- 
+    n_visit <-
+    revenue_each_visit <-
+    profit_margin <-
+    ## think carefully about how M is calculated, it's tricky ~~~~
+    M <-
 ```
-
+    
 \normalsize
-
+    
 -   *variable delivery costs each order:*
-    -   *\[...\] find info in the case study about delivery costs*
-    -   Why classified as variable marketing costs? Does it make a difference?
-
+        -   *\[...\] find info in the case study about delivery costs*
+        -   Why classified as variable marketing costs? Does it make a difference?
+    
 \footnotesize
-
+    
 ```{r}
-#| eval: false
-deliverycost_each_visit <- 
-c <- deliverycost_each_visit * n_visit
+    #| eval: false
+    deliverycost_each_visit <-
+    c <- deliverycost_each_visit * n_visit
 ```
 
 ## Step 3: Compute CF for each period
@@ -171,10 +263,9 @@ c <- deliverycost_each_visit * n_visit
 ```{r}
 #| eval: false
 # CF is the cash flow for one year
-CF <- 
-
-# create a sequence of CF for N years 
-profit_seq <- rep(CF,N)
+CF <-
+    # create a sequence of CF for N years
+    profit_seq <- rep(CF, N)
 
 ```
 
@@ -189,47 +280,46 @@ profit_seq <- rep(CF,N)
 ```{r}
 #| eval: false
 # retention_rate is the probability of customer staying with us after 1 year
-retention_rate <- 
-  
-# create a geometric sequence of accumulative retention rate for N years  
-retention_seq <- 
+retention_rate <-
+    # create a geometric sequence of accumulative retention rate for N years
+retention_seq <-
 ```
-
+    
 ## Step 5: Compute sequence of discount factors
-
+    
 5.  $k$: the discount rate
-
+    
 -   *\[...\] A yearly discount rate of 10%*
-
+    
 \footnotesize
-
+    
 ```{r}
-#| eval: false
-discount_rate <- 0.1
-discount_factor_seq <- 
+    #| eval: false
+    discount_rate <- 0.1
+discount_factor_seq <-
 ```
-
+    
 \normalsize
-
+    
 -   *\[...\] The team decided to take a conservative approach whereby all profits are booked at the end of year*.
-    -   All profits earned per customer in year 1 need to be discounted once, the profits earned in year 2 need to be discounted twice, and so on
-
+        -   All profits earned per customer in year 1 need to be discounted once, the profits earned in year 2 need to be discounted twice, and so on
+    
 ## Step 6: Compute customer acquisition costs
-
+    
 6.  What does the CAC include in the case study?
-
+    
 *\[...\] (find info in the case study)*
-
+    
 ::: {.content-hidden when-format="beamer"}
--   total costs for customer ad clicks
-
--   total costs of \$15 promo
-
--   total costs of free deliveries
+    -   total costs for customer ad clicks
+    
+    -   total costs of \$15 promo
+    
+    -   total costs of free deliveries
 :::
-
+    
 ## Paid Search Advertising (Search Engine Marketing, SEM)
-
+    
 ::: columns
 ::: {.column width="60%"}
 ![](images/MScBA.png){fig-align="center" width="250"}
@@ -239,12 +329,12 @@ discount_factor_seq <-
 \vspace{2cm}
 
 -   Brands/companies (Uni)
-    -   bid on keywords
+-   bid on keywords
 -   Advertisers (Google)
-    -   decides listings
+-   decides listings
 -   Customers
-    -   paid search (bids-based)
-    -   organic (quality-based)
+-   paid search (bids-based)
+-   organic (quality-based)
 :::
 :::
 
@@ -264,33 +354,31 @@ A marketing funnel is a model that represents the customer's journey from the in
 
 -   \[...\] *The click-through rates varied across these digital platforms, but hovered around 1-2%.*
 
-    -   How to incorporate this information?
-
-<!-- -->
+-   How to incorporate this information?
 
 -   \[...\] *a fifth of those who clicked on an ad were willing to give the service a try*
-    -   How many clickers do we need for 1 new "trier"?
+
+-   How many clickers do we need for 1 new "trier"?
 
 \footnotesize
 
 ```{r}
 #| eval: false
 # clicker_to_trier_rate is the % of trier customers from clickers
-clicker_to_trier_rate <- 
-
+clicker_to_trier_rate <-
 ```
 
 \normalsize
 
 -   *\[...\] 20% of those that signed up for the free trial ended up becoming members*
-    -   How many triers do we need for1 new member?
+-   How many triers do we need for1 new member?
 
 \footnotesize
 
 ```{r}
 #| eval: false
 # trier_to_member_rate is the % of a new member from triers
-trier_to_member_rate <- 
+trier_to_member_rate <-
 ```
 
 \normalsize
@@ -305,7 +393,7 @@ trier_to_member_rate <-
 
 ```{r}
 #| eval: false
-n_clickers_for_1newmember <- (1/clicker_to_trier_rate) * (1/trier_to_member_rate) # 5 * 5 = 25
+n_clickers_for_1newmember <- (1 / clicker_to_trier_rate) * (1 / trier_to_member_rate) # 5 * 5 = 25
 ```
 
 \normalsize
@@ -332,8 +420,8 @@ total_cost_clicks <- 0.4 * n_clickers_for_1newmember # 0.4 * 25
 promo_first_order_each_trier <- 15
 
 total_cost_promo <- promo_first_order_each_trier * # promotion amount = $15
-  (1 - profit_margin) *    # 7% profit margin
-  (1/trier_to_member_rate) # num of triers = 5
+(1 - profit_margin) * # 7% profit margin
+(1 / trier_to_member_rate) # num of triers = 5
 
 ```
 
@@ -347,9 +435,9 @@ total_cost_promo <- promo_first_order_each_trier * # promotion amount = $15
 
 ```{r}
 #| eval: false
-profit_each_trier <-  revenue_each_visit * #$100 per visit
-  profit_margin * # 7% profit margin
-  2 # a trier shops twice
+profit_each_trier <- revenue_each_visit * # $100 per visit
+    profit_margin * # 7% profit margin
+    2 # a trier shops twice
 ```
 
 \normalsize
@@ -384,7 +472,7 @@ netcost_each_trier <- deliverycost_each_trier - profit_each_trier
 
 ```{r}
 #| eval: false
-totalcosts_from_all_triers <- netcost_each_trier * (1/trier_to_member_rate)
+totalcosts_from_all_triers <- netcost_each_trier * (1 / trier_to_member_rate)
 ```
 
 ## Step 6: Compute customer acquisition costs
@@ -401,8 +489,6 @@ CAC <- total_cost_clicks + total_cost_promo + totalcosts_from_all_triers
 ## Step 7: Compute CLV
 
 7.  Compute the CLV based on the CLV formula (Table A)
-
-<!-- -->
 
 -   7.1 Revenues, variables costs, and profit for the next 5 years
 
@@ -421,29 +507,29 @@ profit_seq
 
 ```{r}
 #| eval: false
-profit_seq_after_churn <- profit_seq * 
-```
-
-\normalsize
-
--   7.3 Apply discount factor
-
-\footnotesize
-
-```{r}
-#| eval: false
-profit_seq_after_churn_discount<- profit_seq_after_churn * 
-```
-
-\normalsize
-
--   7.4 Compute CLV by summing up future expected profits
-
-\footnotesize
-
-```{r}
-#| eval: false
-CLV <- sum(profit_seq_after_churn_discount) - CAC
+profit_seq_after_churn <- profit_seq *
+    ```
+    
+    \normalsize
+    
+    -   7.3 Apply discount factor
+    
+    \footnotesize
+    
+    ```{r}
+    #| eval: false
+    profit_seq_after_churn_discount <- profit_seq_after_churn *
+    ```
+    
+    \normalsize
+    
+    -   7.4 Compute CLV by summing up future expected profits
+    
+    \footnotesize
+    
+    ```{r}
+    #| eval: false
+    CLV <- sum(profit_seq_after_churn_discount) - CAC
 ```
 
 # CLV for Marketing Decisions
@@ -472,9 +558,9 @@ A **User Defined Function** (UDF) in R refers to a function created by the user,
 
 ```{r}
 #| eval: false
-function_name <- function(arg1, arg2, ...){
+function_name <- function(arg1, arg2, ...) {
     # Code to perform operations
-    
+
     return(output)
 }
 ```

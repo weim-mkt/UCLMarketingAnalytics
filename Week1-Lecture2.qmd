@@ -1,41 +1,9 @@
 ---
-title: "Class 2 Marketing Profitability and Break-Even Analysis"
+title: "Class 2 Marketing Profitability Analysis"
 author: Dr. Wei Miao
 institute: UCL School of Management
 date: "`r (lubridate::ymd('20241002') + lubridate::dweeks(0))`"
 date-format: long
-df-print: kable
-colorlinks: true
-code-line-numbers: true
-format:
-  html: 
-    toc: true
-    number-sections: true
-    page-layout: full
-    toc-depth: 2
-    code-line-numbers: true
-    code-copy: hover
-    code-fold: show
-  beamer: 
-    toc: false
-    toc-depth: 1
-    toc-title: "Class Overview"
-    slide-level: 2
-    section-titles: true
-    theme: Frankfurt
-    colortheme: beaver
-    fonttheme: structurebold
-    navigation: horizontal
-    tbl-colwidths: auto
-    fontsize: 9pt
-knitr:
-  opts_chunk:
-    echo: true
-    warning: true
-    message: true
-    error: true
-execute: 
-  freeze: true
 ---
 
 # Overview
@@ -57,51 +25,96 @@ pacman::p_load(knitr)
 
 ## Decisions for Marketing Managers
 
--   Ultimate goal of marketing: create value and improve profitability for firms
+-   The ultimate goal of marketing (and other business activities) is to create value and improve profitability for firms.
 
 -   As any marketing activity comes with a cost, data analysts need to correctly evaluate whether a campaign creates or destroys value to the company. 
 
--   Such analyses are called cost-benefit analyses (sometimes referred to as profitability analysis or break-even analysis in different contexts.
+-   Such analyses are called cost-benefit analyses, sometimes referred to as profitability analysis or break-even analysis in different contexts.
 
-## Some Concepts
+## Break-Even Quantity
 
-Marketers often refer to the difference between the **price per unit** and **variable costs per unit** as the **contribution margin per unit**. That is,
+-   We often use break-even analyses to evaluate the financial feasibility of a marketing campaign. In marketing, we often compute the **break-even quantity**.
 
-$$
+::: {.callout-note icon="false"}
+### Definition
+
+**The break-even quantity (BEQ)** calculates the number of ***incremental*** units the firm needs to sell to cover the cost of the marketing campaign.
+
+:::
+
+## Compute BEQ
+
+The difference between the **price per unit** and **variable costs per unit** is defined as the **contribution margin per unit**. That is,
+
+::: {.callout-note icon="false"}
+### Definition
+
 Contribution Margin Per Unit = Price Per Unit - Variable Costs Per Unit
-$$
+:::
 
 -   **Price per unit**: retail price customers pay
-
 -   **Variable costs per unit:** Costs of goods sold (COGS)[^1] + any other variable costs per unit
 
-[^1]: Material and production labor costs for producing a unit of product; often represented in **percentage terms,** e.g., COGS of 60% means the costs are 60% of retail prices. An iPhone with a retail price of £1000 and COGS of 60% means the COGS is £600.
+[^1]: Material and production labor costs for producing a unit of product, often represented in **percentage terms,** e.g., COGS of 60% means the costs are 60% of retail prices. An iPhone with a retail price of £1000 and COGS of 30% means the COGS is £300.
 
-## Apple Inc: Background
+::: {.content-visible when-format="pdf"}
+
+## Compute BEQ: Formula
+:::
+
+This gives the second formula for BEQ:
+
+::: {.callout-note icon="false"}
+### Definition
+
+BEQ = Marketing Expenditure / Contribution Margin Per Unit
+:::
+
+
+
+## Break-Even Quantity: Steps and Decision Rule
+
+-   Steps to conduct break-even analysis
+
+    -   *Step 1*: Compute the BEQ based on the company's product demand and production cost structure. This is the minimum quantity the company needs to sell to cover the costs of the marketing campaign.
+
+    -   *Step 2*: Evaluate whether the campaign can generate an incremental quantity larger than BEQ
+
+-   The decision rule
+
+    -   if incremental quantity sales \> BEQ, the company makes money, so accept the campaign; otherwise, reject the campaign
+
+# Case Study: Profitability Analysis for Apple Inc
+
+## Background
 
 ::: columns
 ::: {.column width="50%"}
-![](images/iPhone.png){fig-align="center" width="100"}
+![](images/iPhone16.png){fig-align="center" width="150"}
 :::
 
 ::: {.column width="50%"}
-Tom, senior marketing manager of Apple UK, is looking to launch a series of marketing campaigns to promote the new products just released. Tom was a proud graduate from UCL MSc BA program in 2020, and he remembered from  the Marketing Analytics module that break-even analysis to help evaluate different types of marketing decisions.
+Tom, senior marketing manager of Apple UK, is looking to launch a series of marketing campaigns to promote the iPhone 16 series that are just released. Tom was a proud graduate from UCL MSc BA program in 2020. He remembered from the Marketing Analytics module that break-even analysis helps evaluate different types of marketing decisions.
 :::
 :::
 
 ::: {.content-hidden when-format="beamer"}
 ```{r}
-price <- 600 # retail price at £600
-quantity <- 10 # sales in million units
-COGS <- 0.6 # cost of goods sold, meaning the cost of producing an iPhone is £600
-RD_costs <- 100 # operating and marketing costs; in million pounds
-endorsement_fee <- 50 # endorsement; in million pounds
+price <- 799  # retail price of iPhone 16 in £
+quantity <- 10  # sales quantity in million units
+endorsement_fee <- 100  # endorsement fee in million pounds
+endorsement_sales_increase <- 0.025 # sales increase percentage due to endorsement
+COGS <- 0.47 # cost of goods sold; 47% of retail price, i.e., 47% of £799
+RD_costs <- 100 # R&D costs in million pounds
+monthly_sales_increase_1stmonth <- 0.003 # sales increase percentage in the first month
+monthly_sales_increase_after <- 0.002 # sales increase percentage in the following months
+WACC <- 0.1 # weighted average cost of capital
 ```
 :::
 
 **Case objectives:**
 
--   Practice situation analysis
+-   Practice situation analysis and compare with Uber's case
 
 -   Practice how to conduct break-even analyses for a marketing compaign
 
@@ -109,13 +122,15 @@ endorsement_fee <- 50 # endorsement; in million pounds
 
 ## Apple Inc: Key Information
 
-**From the case:** The marketing analytics team at Apple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach **`r quantity`** million units at the retail price of **£`r price`**, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of Apple 16, which is **`r COGS *100`%**. The Research and Development (R&D) costs for iPhone 16 is **`r RD_costs`** million pounds.
+**From the case:** The marketing analytics team at Apple Inc had applied sales forecasting models on historical sales data and predicted that the sales this year will reach **`r quantity`** million units at the retail price of **£`r price`**, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of Apple 16, which is **`r COGS *100`%**. The Research and Development (R&D) costs for iPhone 16 is **`r RD_costs`** million pounds.
 
--   Open the .qmd answer sheet downloaded from Moodle. And let's solve this case using the R basics we learned last week!
+-   Open the .qmd answer sheet downloaded from Moodle Week 1. And let's solve this case using the R basics we learned!
 
-## Apple Inc: BEA
+-  **Question 1:** Conduct a 5C analysis for Apple Inc, and compare with Uber's case.
 
--   **Question 1:** Compute the contribution margin
+## Apple Inc: BEA Question 2
+
+-   **Question 2:** Compute the contribution margin
 
     -   Do we need to consider R&D costs?
 
@@ -126,7 +141,17 @@ contribution_margin
 ```
 :::
 
--   **Question 2**: Based on the information at hand, should Tom approve the influencer marketing plan?
+## Sunk Costs and Sunk Costs Fallacy
+
+- **Sunk costs** are costs that have already been incurred in the past and cannot be recovered. They should **not** be considered in decision-making. 
+
+- However, behavioral economics research shows that people often fall into the **sunk costs fallacy**, where they tend to consider sunk costs in decision-making instead of focusing on future costs and benefits.
+
+- When making decisions, you should stand in the present and consider only future costs and benefits. In our case, the R&D costs are sunk costs and should not be considered in the break-even analysis.
+
+## Apple Inc: BEA Question 3
+
+-   **Question 3**: Based on the information at hand, should Tom approve the influencer marketing plan?
 
 # Net Present Value
 
@@ -148,19 +173,19 @@ $$
 
 -   $I_{0}$ is the initial marketing investment/expense
 
--   $C F_{n}$ is the **incremental** sales in period $n$: it must be the additional sales due to the marketing campaign
+-   $C F_{n}$ is the **incremental** profits in period $n$: it must be the additional profits due to the marketing campaign
 
--   $k$ is the discount rate: reflects the value of time: the same £1 today is more valuable than £1 tomorrow
+-   $k$ (sometimes $r$ or $i$) is the discount rate, which reflects the value of time: the same £1 today is worth $£1 * (1+k)$ in the next period.
 
 -   The decision rule
 
-    -   if NPV \> 0, then the marketing campaign can bring in more values to the company, accept
+    -   if NPV \> 0, then the marketing campaign can bring in more values to the company, so it should be accepted.
 
-    -   if NPV \< 0, then the marketing campaign will decrease the company's value, reject
+    -   if NPV \< 0, then the marketing campaign will decrease the company's value, so it should be rejected.
 
 ## Apple Inc: NPV Influencer Marketing I
 
-**Question 3:** Based on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?
+**Question 4:** Based on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?
 
 1.  Compute the sequence of monthly cash flows
     -   Generate a sequence of incremental sales for 12 months (a vector with 12 elements)
@@ -186,13 +211,13 @@ The resulting monthly CFs are: `r CF`
 
 2.  Compute the sequence of discount factors
     -   Generate a sequence of WACC for 12 months (a vector with 12 elements)
-    -   Generate a sequence of discount factor for 12 months (a vector with 12 elements)
+    -   Generate a sequence of discount rate for 12 months (a vector with 12 elements)
         -   Hint: use `seq()` to generate geometric sequence with patterns
 
 ::: {.content-hidden when-format="beamer"}
 ```{r}
-monthly_WACC <- 0.1/12 
-discount_factor <- (1/(1+monthly_WACC))^c(1:12)
+monthly_WACC <- 0.1/12 # this is the discount rate
+discount_factor <- (1/(1+monthly_WACC))^c(1:12) # this is the discount factor
 ```
 :::
 
@@ -213,165 +238,6 @@ NetPresentValue <- sum(CF * discount_factor) - endorsement_fee
 
 -   The NPV is `r NetPresentValue`
 
-# Customer Life Cycle
-
-## From Campaign-Centric to Customer-Centric Marketing
-
-```{r}
-#| echo: false
-#| fig-cap: "Customer Life Cycle"
-
-include_graphics(path = "images/CustomerLifeCycle.png")
-```
-
-## Customer Acquisition Cost
-
-::: {.callout-note icon="false"}
-### Definition
-
-**Customer Acquisition Cost (CAC)** is the cost of winning a customer to purchase a product or service.
-:::
-
--   Why should we care about CAC? Having a new customer may not always be a good thing. For example, no company would spend £500 to acquire a new customer worth £300
-
-## How to Acquire New Customers
-
--   Free sampling/trials
-
-::: columns
-::: {.column width="50%"}
-```{r}
-#| echo: false
-#| out-width: "80%"
-#| fig-align: "center"
-include_graphics(path = "images/FreeSampling 1.jpg")
-```
-:::
-
-::: {.column width="50%"}
-```{r}
-#| echo: false
-#| out-width: "80%"
-#| fig-align: "center"
-include_graphics(path = "images/FreeSampling 2.png")
-```
-:::
-:::
-
-## How to Acquire New Customers
-
--   Referral Programs: Customer Lifetime Social Value (CLSV, week 2)
-
-::: columns
-::: {.column width="50%"}
-```{r, echo=FALSE,out.width="80%",fig.align = 'center'}
-include_graphics(path = "images/UberEatReferral.png")
-```
-:::
-
-::: {.column width="50%"}
-```{r, echo=FALSE,out.width="80%",fig.align = 'center'}
-include_graphics(path = "images/DeliverooReferral.jpeg")
-```
-:::
-:::
-
-## Customer Acquisition Cost: Calculation
-
-::: {.callout-note icon="false"}
-## Definition
-
-When the marketing cost can be attributed to each individual customer
-
--   CAC = (# of offers needed to acquire 1 customer) \* (cost of making a marketing offer)
--   CAC = (cost of making a marketing offer) / (customer response rate)
-:::
-
--   After we study predictive analytics later in this module, we will be able to predict response rate for each individual customer and compute individual-specific CAC.
-
-## Customer Acquisition Cost: An Example
-
-A new Bubble Tea shop in Canary Wharf is contemplating whether or not to attract new customers by sending ads leaflets to nearby residents.
-
-The cost of sending a leaflet, which includes production and labor costs, is **£0.5**.
-
-1.  randomly sending out leaflets
-    -   expected response rate of **1%**
-2.  using names purchased from a marketing agency
-    -   each name costs **£0.2**
-    -   expected response rate of **4%** by analyzing the buying behavior and demographics of current customers
-
-Compute the CAC for each choice.
-
-::: {.content-hidden when-format="beamer"}
-```{r}
-cost_per_random_offer <- 0.5
-response_rate_random_offer <- 0.01
-# Following the formula in the previous slide
-CAC_random_offer <- cost_per_random_offer / response_rate_random_offer
-CAC_random_offer
-```
-
-```{r}
-cost_per_targeted_offer <- 0.5 + 0.2 
-response_rate_targeted_offer <- 0.04
-CAC_targeted_offer <- cost_per_targeted_offer/response_rate_targeted_offer
-CAC_targeted_offer
-```
-
-:::
-
-## Customer Lifetime Value (CLV)
-
-::: {.callout-note icon="false"}
-## Definition
-
-Customer lifetime value (CLV or LTV) is the total worth to a business of a customer over the whole period of their relationship.
-:::
-
--   The underlying idea of CLV is essentially NPV, but at the customer level.
-    -   Think of acquiring a new customer as an investment in an "asset" that can generate future cash flows
-
-## CLV: Calculation
-
-$$
-\mathrm{CLV} = - CAC + \sum_{t=1}^{N} \frac{CF_t * r^{(t-1)}}{(1+k)^{t}},
-where \space CF_t = M_t - c_t
-$$
-
--   $r$ is the average annual retention rate; $r^{(t-1)}$ is the cumulative retention rate in year $t$
--   $N$ is the number of years over which the relationship is calculated
--   $M_{t}$ is the margin the customer generates in year $t$
--   $c_{t}$ is the expected cost of marketing communications or promotions targeted to the customer in year $t$
--   $k$ is the rate for discounting future cash flows
-
-## Retention Rate
-
-::: {.callout-note icon="false"}
-## Definition
-
-The churn rate, also known as the rate of attrition or customer churn, is the rate at which customers stop doing business with an entity.
-:::
-
--   retention rate = 1 - churn rate
-
--   **How to compute *individual* churn rate**: machine learning models to predict the churn rate of an individual customer (Week 4)
-
-## Number of Years of Customer Relationship
-
--   If we assume **infinite** customer economic life, we can simplify the formula into the following using the property of geometric sequence.
-
-$$
-C L V_{N} = \sum_{t=1}^{N} \frac{g r^{(t-1)}}{(1+k)^{t}} => C L V_{N}=\mathrm{g} \cdot \frac{1-\left(\frac{r}{1+k}\right)^{N}}{1+k-r}  => 
-C L V_{\infty}=\frac{g}{(1+k-r)}
-$$
-
--   However, most of the time, we are more comfortable to assume **finite** customer economic life; we need to decide on a cutoff date for CLV calculation
-    -   Rule 1: until the year when the $g = M-c$ becomes negative
-    -   Rule 2: industry's average customer lifespan
-
 ## After-class
 
--   Review the coding practice in today's class.
-
-- Complete the R coding exercise for Week 1.
+-   Review the coding practice from today’s class and ensure you understand how to calculate NPV in R. Complete the R coding exercise for Week 1, and feel free to bring any questions to next week’s class.

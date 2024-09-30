@@ -90,7 +90,7 @@ After each week's lecture, you will find a list of After-class reading and exerc
 ::: callout-important
 ### Pre-class preparation
 
--   Install R, RStudio, and Quarto following the [guide](https://weim-mkt.github.io/UCLMarketingAnalytics/R-installR.html).
+-   Install R, RStudio, and Quarto following the [guide](R-InstallR.qmd).
 
 -   Finish reading "An introduction to R" (can be assessed in this [link](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf)) (Chapters 1, 2, and 3 at least). Please try to practice the codes in R along your reading. Take a note of any questions you may have during your self-study. I will cover R basics in greater details in the induction week.
 :::
@@ -110,11 +110,14 @@ After each week's lecture, you will find a list of After-class reading and exerc
 ::: callout-important
 ## Pre-class Preparation
 
--   Remember to bring your laptop to class **each week**, as we will be practicing R programming in class every week.
+1. Please bring your laptop to class every week. We will be practicing R programming in class. 
 
--   Make sure you have installed R and RStudio following the [installation guide](https://weim-mkt.github.io/UCLMarketingAnalytics/R-installR.html). If you have missed the R tutorial in the induction week, please watch the recording to catch up before class.
+2. Review R basics lecture notes covered by Wei on Friday in the induction week (the recording is under the Induction week section);  If you missed the session, it's very important to catch up by watching the recording.
 
--   Complete the R exercise on the `Case-ProfitabilityAnalysis-Stu.qmd`. You can find the file on Moodle.
+3. Complete the pre-class R exercise on the Case-BreakEvenAnalysis-Stu.qmd. You can find and download the file below.
+
+4. Read the Case study: "Profitability Analyses for Apple Inc". Don't worry about the questions yet, please focus on the case background. information.
+
 :::
 
 ## Class 1: Module Introduction

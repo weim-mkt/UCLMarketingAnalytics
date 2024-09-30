@@ -1,102 +1,493 @@
 ---
-title: "Beak-Even Analysis for Apple Inc"
+title: "Profitability Analysis for Apple Inc"
 author: Dr. Wei Miao
 subtitle: "MSIN0094 Case Study"
 institute: UCL School of Management
+thanks: "This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module based on. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. All copyrights reserved."
 date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(0))`"
 date-format: long
-df-print: kable
-colorlinks: true
-code-line-numbers: true
 format:
-  html: 
-    toc: true
-    number-sections: true
-    page-layout: full
-    toc-depth: 2
-    code-line-numbers: true
-    code-copy: hover
+  html: default
   pdf: 
     number-sections: true
     toc: false
     number-depth: 2
     fontsize: 10pt
     linestretch: 1.25
-knitr:
-  opts_chunk:
-    echo: false
-    warning: false
-    message: false
-    error: false
-execute: 
-  freeze: auto
+    execute: 
+      echo: false
+      error: false
+      warning: false
+      message: false
 ---
 
 ```{r}
+#| echo: false
 pacman::p_load(knitr)
 question_index <- 1
-price <- 600
-quantity <- 10
-endorsement_fee <- 50
-endorsement_sales_increase <- 0.025
-COGS <- 0.6
-RD_costs <- 100
-monthly_sales_increase_1stmonth <- 0.003
-monthly_sales_increase_after <- 0.002
-WACC <- 0.1
-
+price <- 799 # retail price of iPhone 16 in £
+quantity <- 10 # sales quantity in million units
+endorsement_fee <- 100 # endorsement fee in million pounds
+endorsement_sales_increase <- 0.025 # sales increase percentage due to endorsement
+COGS <- 0.47 # cost of goods sold; 47% of retail price, i.e., 47% of £799
+RD_costs <- 100 # R&D costs in million pounds
+monthly_sales_increase_1stmonth <- 0.003 # sales increase percentage in the first month
+monthly_sales_increase_after <- 0.002 # sales increase percentage in the following months
+WACC <- 0.1 # weighted average cost of capital
 ```
 
-![](images/PinePhone.png){fig-align="center" width="200"}
+```{r}
+#| echo: false
+include_graphics("images/iPhone16.png")
+```
 
-# Situation Analysis[^1]
+# Situation Analysis
 
-[^1]: This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module based on. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. All copyrights reserved.
-
-Today is 2th October 2024. Tom Cooper, the newly promoted Senior Marketing Manager of Apple UK, felt a rush of nostalgia as he stepped into the lecture theatre on Level 38 of the UCL School of Management. Having graduated from UCL's esteemed MSc Business Analytics programme, the world's best BA programme, coming back felt like reuniting with an old friend. But, the actual magnet pulling him back wasn't just academic---it was the T4 Bubble Tea in Jubilee Place. A man's got his secret, right?
+Today is 2 October 2024. Tom, the newly promoted Senior Marketing Manager of Apple UK, felt a rush of nostalgia as he stepped into the lecture theatre on Level 38 of the UCL School of Management. Having graduated from UCL's esteemed MSc Business Analytics programme, the world's best BA programme, coming back felt like reuniting with an old friend. But, the actual magnet pulling him back wasn't just academic---it was the T4 Bubble Tea in Jubilee Place. After all, everyone has their little secrets, right?
 
 Tom was looking to launch a series of marketing campaigns to further promote Apple's new product, the iPhone 16 series together with other new products launched earlier this month. As Tom remembered from Marketing Analytics's Week 1 class, the first step of an analytics project is often the situation analysis. So Tom would like to conduct a 5C situation analysis for Apple:
 
+
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+
+Conduct a 5C situation analysis for Apple Inc. Think about the difference when compared with Uber.
+
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+Conduct a 5C situation analysis for Apple Inc. Think about the difference when compared with Uber.
+
+### Answer
+
+- **Company**: Apple Inc is a multinational technology company that designs, manufactures, and markets consumer electronics, computer software, and online services. Apple is one of the Big Tech companies, alongside Amazon, Google, Facebook, and Microsoft. Apple's products include the iPhone, iPad, Mac, Apple Watch, and Apple TV. Apple's services include Apple Music, Apple TV+, Apple Arcade, and Apple News+.
+
+- **Collaborators**: Apple collaborates with a wide range of partners, including suppliers, manufacturers, developers, and retailers. Apple's suppliers include Foxconn, TSMC, and Samsung. Apple's manufacturers include Foxconn, Pegatron, and Wistron. Apple's developers include third-party app developers and content creators. Apple's retailers include Apple Stores, Apple Authorized Resellers, and Apple Premium Resellers.
+
+- **Customers**: Apple's customers are consumers, businesses, and educational institutions. Apple's consumer customers are individuals who purchase Apple products for personal use. Apple's business customers are organizations that purchase Apple products for professional use. Apple's educational customers are schools and universities that purchase Apple products for educational use.
+
+- **Competitors**: Apple's direct competitors are other technology companies that design, manufacture, and market consumer electronics, computer software, and online services. Apple's competitors in terms of smart device making include Samsung, Huawei, Xiaomi, etc. Apple's competitors in terms of software and services include Google, Microsoft, Amazon, etc. 
+
+- **Climate**: Apple operates in a dynamic and competitive environment. Apple's industry is characterized by rapid technological change, changing consumer preferences, and evolving regulatory requirements. Apple's industry is also characterized by intense competition, high barriers to entry, and significant economies of scale. A notetable regulation change is the [EU's new regulation on app distribution platforms](https://www.theguardian.com/technology/article/2024/aug/09/apple-changes-eu-app-store-communication), which may impact Apple's App Store revenue.
+
+:::
+
+:::
+
 # Break-Even Analysis
 
-The marketing analytics team at Apple Inc had applied predictive analytics models on historical sales data and predicted that the sales this year will reach **`r quantity` million** units at the retail price of **£`r price`**, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of iPhone 16, which is **`r COGS *100`%**. The Research and Development (R&D) costs for iPhone 16 is **`r RD_costs` million** pounds.
+The marketing analytics team at Apple Inc had applied predictive analytics models on historical sales data for previous years and predicted that the sales this year will reach **`r quantity` million** units at the retail price of **£`r price`**, with the usual marketing activities. The team had also collected the information on the Cost of Goods Sold of iPhone 16, which is **`r COGS *100`%**. The total Research and Development (R&D) costs for iPhone 16 is **`r RD_costs` million** pounds.
 
-> **Question `r question_index<-question_index+1; question_index-1`:**
->
-> -   *Contribution Margin*: In the world of business, the **contribution margin** is a fancy way of expressing how much profit each unit brings in after accounting for variable costs. Can you help Tom and his team at Apple to crunch these numbers for the iPhone 16?
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+
+ *Contribution Margin*: In the world of business, the **contribution margin** is a fancy way of expressing how much profit each unit brings in after accounting for variable costs. Can you help Tom and his team at Apple to crunch these numbers for the iPhone 16?
+
+ 1. Based on the information at hand, in R, create 2 variables called `price` and `COGS` with the given values. 
+
+ 2. Calculate the contribution margin per unit, `contribution_margin`, using the formula learned in class.
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+ *Contribution Margin*: In the world of business, the **contribution margin** is a fancy way of expressing how much profit each unit brings in after accounting for variable costs. Can you help Tom and his team at Apple to crunch these numbers for the iPhone 16?
+
+ 1. Based on the information at hand, in R, create 2 variables called `price` and `COGS` with the given values. 
+
+ 2. Calculate the contribution margin per unit, `contribution_margin`, using the formula learned in class.
+
+### Answer
+
+
+In this case study, the contribution margin per unit is calculated as follows:
+
+$$
+\text{Contribution Margin Per Unit} = \text{Price Per Unit} - \text{Variable Costs Per Unit}
+$$
+
+where:
+
+- **Price per unit**: retail price customers pay
+
+- **Variable costs per unit**: Costs of goods sold (COGS) in our context
+
+Given the information provided, the contribution margin per unit for the iPhone 16 is:
+
+```{r}
+# compute the contribution margin
+contribution_margin <- price - price * COGS
+contribution_margin
+```
+
+
+:::
+
+:::
+
 
 In the class Tom sat in, the module leader, Dr Meow, was introducing the concepts of break-even analysis and the methods to evaluate the feasibility of a marketing campaign, which was just handy for the task. Tom would like to use the concept of break-even analysis to help guide Apple Inc's marketing decisions.
 
-Calculating the **break-even quantity** is one way to determine the feasibility of a marketing campaign. The break-even quantity determines how many additional units the company must sell to cover the expense of the campaign. If the business sells fewer than the break-even quantity, it loses money since it does not sell enough to recover its investment. If the company sells more than the break-even quantity, the marketing campaign can be approved as it is profitable to the company.
+Calculating the **break-even quantity** is one way to determine the feasibility of a marketing campaign. The break-even quantity determines how many **incremental units** the company must sell to cover the expense of the campaign. If the business sells fewer than the break-even quantity, it loses money since it does not sell enough to recover its investment. If the company sells more than the break-even quantity, the marketing campaign can be approved as it is profitable to the company.
 
-After a few months of researching and brainstorming, the marketing analytics team under Tom's lead has come up with several marketing compaign proposals for Tom to decide. Tom, taking another sip of the delicious QQ Style Milk Tea (30% sugar, less ice)[^2] from T4, started to review the proposals.
+After a few months of researching, the marketing analytics team under Tom's lead has come up with several marketing campaign proposals for Tom to decide. Tom, taking another sip of the delicious QQ Style Milk Tea[^2], started to review the proposals.
 
-[^2]: Dr Meow's personal favoriate! Highly recommended after a long tiring day of studies :D
+[^2]: Dr Meow's personal favorite! Highly recommended after a long day of studies. Go for 30% sugar, less ice—trust me, it’s perfection! 🧋
 
-![](images/QQStyle.jpeg){fig-align="center" width="100"}
+```{r}
+include_graphics("images/QQStyle.jpeg")
+```
 
 ## Marketing Decision: A Static View
 
 The marketing analytics team has proposed a plan of an influencer marketing campaign. Influencer marketing is a type of social media marketing that entails endorsements and product placement by influencers, individuals and organizations with a reputed expert degree of knowledge or social influence in their industry. Influencers are individuals who have the ability to influence others' purchasing habits other quantifiable activities by uploading original---often sponsored---content to social media platforms such as TikTok, Instagram, YouTube, Snapchat, or other social media platforms.
 
-The team proposes to collaborate with the top tech influencers on Tiktok, Instagram, and Youtube to promote the new iPhone 16. The total one-off budget for endorsement fee is **£`r endorsement_fee`** million in total. 
+The team proposes to collaborate with the top tech influencers on Tiktok, Instagram, and Youtube to promote the new iPhone 16. The total one-off budget for endorsement fee is **£`r endorsement_fee`** million. 
 
 And from historical data, the team estimates that such an influencer campaign can boost the total sales within the next financial year by **`r endorsement_sales_increase*100`%**.
 
-> **Question `r question_index<-question_index+1; question_index-1`**:
->
-> -   Based on the information at hand, should Tom approve the influencer marketing plan?
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+
+Based on the information at hand, should Tom approve the influencer marketing plan?
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+Based on the information at hand, should Tom approve the influencer marketing plan?
+
+
+### Answer
+
+To decide whether Tom should approve the marketing plan, we need to conduct break-even analyses.
+
+The first step is to compute the break-even quantity, as shown in the following code.
+
+```{r}
+# numerator is the marketing expense
+# denominator is the "extra profit", or the contribution margin, from selling one more unit
+BEQ <- endorsement_fee / contribution_margin
+BEQ
+```
+
+The next step is to compare BEQ with the estimated incremental sales from the campaign.
+
+```{r}
+# check if incremental sales is greater than BEQ
+incremental_sales <- quantity * endorsement_sales_increase
+
+print(paste("Incremental sales: ", incremental_sales, " million units"))
+
+if (incremental_sales > BEQ) {
+    print("It is profitable to continue with the influencer marketing campaign.")
+} else {
+    print("It is not profitable to continue with the influencer marketing campaign.")
+}
+```
+
+BEQ is `r BEQ` million units, which means in order not to lose any money, the influencer marketing campaign needs to bring in additional `r BEQ` million units; 
+
+In reality, the company can actually sell `r incremental_sales` million units, so it's profitable to continue with the influencer marketing campaign.
+
+Therefore, based on the above reasoning, Tom should approve the influencer marketing campaign.
+
+
+::: callout-tip
+## Sales
+
+In this module (and in practice), when we talk about sales, we mean the **quantity sales**, the number of units sold. For instance, in the case study, the original sales without influencer marketing is 10 million units.
+
+The total **money** made is often called **revenue or revenue sales.** For instance, in the case study, the original revenue is 6000 million pounds.
+:::
+
+:::
+
+:::
 
 ## Marketing Decision: A Dynamic View
 
 In the afternoon, during a board meeting, the CFO reported that the company was facing increasing uncertainty regarding future cash flows due to more strict EU regulations on Apple. Specifically, since mid September, alternative app distribution platforms have been allowed on Apple's devices, which may lead to a significant decrease in Apple's App Store revenue. Meanwhile, the good news is that the Bank of England has announced a 0.5% decrease in the base interest rate, which will reduce the cost of financing for Apple Inc.
 
-The current cost of financing, weighted average cost of capital (WACC), increased to **`r WACC*100`%** annually. Therefore, any marketing event is recommended to take time value of money into consideration.
+The current cost of financing, weighted average cost of capital (WACC),^[WACC is the average rate of return a company expects to compensate all its different investors. It reflects the cost of capital for the company, which is usually a blend of the cost of equity and the cost of debt.] is **`r WACC*100`%** annually. Therefore, any marketing event is recommended to take time value of money into consideration.
 
 Right after the meeting, Tom asked his team for a decomposition of the predicted annual incremental sales, **`r endorsement_sales_increase*100`%**, into a more granular monthly level analysis.
 
 The team came back with the predicted monthly incremental sales: with influencer marketing, the first month sales will increase by **`r monthly_sales_increase_1stmonth*100`%** and **`r monthly_sales_increase_after*100`%** in the following 11 months.
 
-> **Question `r question_index<-question_index+1; question_index-1`**:
->
-> -   Based on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+
+Based on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+
+Based on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?
+
+### Answer
+
+***Step 1: Compute the sequence of monthly cash flows***
+
+-   First, we compute the incremental sales percentage for each month, relative to the `r quantity` million. This is a 12-element vector, each element representing the incremental sales percentage.
+
+```{r}
+# incremental sales percentage for the first month 0.3%
+incremental.sales.percentage_1stmonth <- 0.003
+
+# incremental sales percentage for the next 11 months, which is 0.2% each month
+# We use rep() to repeat the same value 11 times
+incremental.sales.percentage_next11months <- rep(0.002, 11)
+
+# incremental profit for the next 12 months
+# combine the two vectors using c()
+vector_incremental.sales.percentage_12months <- c(incremental.sales.percentage_1stmonth, incremental.sales.percentage_next11months)
+
+# print the vector
+
+print(paste("Incremental sales percentage for 12 months are "))
+print(vector_incremental.sales.percentage_12months)
+
+```
+
+-   Next, we multiply the incremental sales percentage with quantity, to get the incremental sales in terms of units each month.
+
+```{r}
+# multiply the incremental sales percentage with quantity to get the incremental sales in units (million)
+vector_incremental.sales.units_12months <- vector_incremental.sales.percentage_12months * quantity
+
+print(paste("Incremental sales in units for 12 months are "))
+print(vector_incremental.sales.units_12months)
+
+```
+
+-   Lastly, we multiply the incremental quantity sales with the contribution margin per unit, to get the total contribution margins (incremental profits) for each month, i.e., the CFs for each month.
+    - For example, the first month's incremental sales is `r vector_incremental.sales.units_12months[1]` million units, and the contribution margin is `r contribution_margin` pounds per unit. Therefore, the incremental profit for the first month is `r vector_incremental.sales.units_12months[1] * contribution_margin` million pounds.
+
+```{r}
+vector_CF <- vector_incremental.sales.units_12months * contribution_margin
+
+vector_CF
+```
+
+***Step 2. Compute the sequence of discount factors***
+
+```{r}
+# divide annual wacc to get monthly wacc
+monthly_WACC <- 0.1 / 12
+
+# discount factor for 1 month is 1/(1+k)
+discount_factor <- 1 / (1 + monthly_WACC)
+
+# Generate a geometric sequence vector of discounted CFs for 12 months
+
+vector_discount_factor <- discount_factor^c(1:12)
+
+print(paste("Discount factors for 12 months are "))
+vector_discount_factor
+```
+
+***Step 3. Compute the NPV***
+
+-   Multiply CF vector with discount factor vector, to get the discounted CF vector for 12 months.
+
+```{r}
+
+vector_discounted.CF <- vector_CF * vector_discount_factor
+
+vector_discounted.CF
+
+
+```
+
+-   use function `sum()` to get the sum of all elements in a vector. That is, the sum of discounted cash flows in all 12 months.
+
+```{r}
+print(paste("The sum of discounted cash flows for 12 months is "))
+
+sum(vector_discounted.CF)
+```
+
+-   We need to subtract the endorsement fee, which is the marketing expense, to get the net present value
+
+```{r}
+NPV <- sum(vector_discounted.CF) - endorsement_fee
+
+print(paste("The Net Present Value is "))
+NPV
+```
+
+```{r}
+if (NPV > 0) {
+    print("It is profitable to continue with the influencer marketing campaign, because the NPV is positive.")
+} else {
+    print("It is not profitable to continue with the influencer marketing campaign, because the NPV is negative.")
+}
+```
+
+:::
+
+:::
+
+# After-Class Exercise
+
+```{r}
+ads_fee <- 125
+endorsement_sales_increase <- 0.03
+monthly_sales_increase_6month <- 0.003
+monthly_sales_increase_after <- 0.002
+```
+
+Another marketing campaign proposal is to purchase a series of advertisements on the London Underground. The total one-off budget for the advertisement fee is **£`r ads_fee`** million. The team estimates that such an advertisement campaign can boost the total sales within the next financial year by **`r endorsement_sales_increase*100`%**. If we decompose the predicted annual incremental sales, **`r endorsement_sales_increase*100`%**, into a more granular monthly level analysis, the team estimates that the sales will increase by **`r monthly_sales_increase_6month*100`%** in the first 6 months and **`r monthly_sales_increase_after*100`%** in the following 6 months. 
+
+
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Based on the information at hand, should Tom approve the advertisement marketing plan based on Net Present Value method?
+
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+Based on the information at hand, should Tom approve the advertisement marketing plan based on Net Present Value method?
+
+### Answer
+
+```{r}
+
+# incremental sales percentage for the first 6 months 0.3%
+
+incremental.sales.percentage_6months <- rep(0.003, 6)
+
+# incremental sales percentage for the next 6 months, which is 0.2% each month
+
+incremental.sales.percentage_next6months <- rep(0.002, 6)
+
+# incremental profit for the next 12 months
+
+vector_incremental.sales.percentage_12months <- c(incremental.sales.percentage_6months, incremental.sales.percentage_next6months)
+
+print(paste("Incremental sales percentage for 12 months are "))
+
+print(vector_incremental.sales.percentage_12months)
+
+# multiply the incremental sales percentage with quantity to get the incremental sales in units each month
+
+vector_incremental.sales.units_12months <- vector_incremental.sales.percentage_12months * quantity
+
+print(paste("Incremental sales in units for 12 months are "))
+
+print(vector_incremental.sales.units_12months)
+
+# multiply the incremental quantity sales with the contribution margin per unit, to get the total contribution margins (incremental profits) for each month, i.e., the CFs for each month.
+
+vector_CF <- vector_incremental.sales.units_12months * contribution_margin
+
+vector_CF
+
+# divide annual wacc to get monthly wacc
+
+monthly_WACC <- 0.1 / 12
+
+# discount factor for 1 month is 1/(1+k)
+
+discount_factor <- 1 / (1 + monthly_WACC)
+
+# Generate a geometric sequence vector of discounted CFs for 12 months
+
+vector_discount_factor <- discount_factor^c(1:12)
+
+print(paste("Discount factors for 12 months are "))
+
+vector_discount_factor
+
+# Multiply CF vector with discount factor vector, to get the discounted CF vector for 12 months.
+
+vector_discounted.CF <- vector_CF * vector_discount_factor
+
+vector_discounted.CF
+
+# use function sum() to get the sum of all elements in a vector. That is, the sum of discounted cash flows in all 12 months.
+
+print(paste("The sum of discounted cash flows for 12 months is "))
+
+sum(vector_discounted.CF)
+
+# We need to subtract the endorsement fee, which is the marketing expense, to get the net present value
+
+NPV <- sum(vector_discounted.CF) - ads_fee
+
+print(paste("The Net Present Value is "))
+
+NPV
+
+if (NPV > 0) {
+    print("It is profitable to continue with the advertisement marketing campaign.")
+} else {
+    print("It is not profitable to continue with the advertisement marketing campaign.")
+}
+
+```
+
+:::
+
+:::
+
+
+
+

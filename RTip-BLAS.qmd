@@ -2,7 +2,8 @@
 title: "Speed Up Matrix Operations"
 author: Wei Miao
 affiliation: UCL School of Management
-date: "`r (lubridate::ymd(20220827))|> format('%a, %d %b %Y')`"
+date: "20220827"
+date-format: long
 format:
     html:
       number-sections: true
@@ -11,7 +12,6 @@ format:
       toc-depth: 3
       code-line-numbers: false
       code-copy: hover
-      
 knitr:
   opts_chunk:
     echo: true
@@ -80,13 +80,13 @@ We will compare the performance before and after switching to vecLib using the f
 #| eval: false
 #| include: true
 set.seed(888)
-nd = 1000
+nd <- 1000
 a <- matrix(rnorm(nd^2), nd, nd)
 library(microbenchmark)
 mb <- microbenchmark(
-  solve(a),
-  times = 100,
-  unit = "ms"
+    solve(a),
+    times = 100,
+    unit = "ms"
 )
 ```
 
@@ -97,7 +97,7 @@ When I use the default BLAS/LAPACK, the benchmark result is as follows:
 #| echo: false
 #| cache: true
 library(microbenchmark)
-readRDS('data/mb_defaultBLAS.rds')|>print()
+readRDS("data/mb_defaultBLAS.rds") |> print()
 ```
 
 After we switch to vecLib, the benchmarks are as follows. As can be seen, the speed has increased dramatically!
@@ -105,6 +105,6 @@ After we switch to vecLib, the benchmarks are as follows. As can be seen, the sp
 ```{r}
 #| echo: false
 #| cache: true
-readRDS('data/mb_vecLib.rds')|>print()
+readRDS("data/mb_vecLib.rds") |> print()
 
 ```
