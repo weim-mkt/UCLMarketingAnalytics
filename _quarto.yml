@@ -25,8 +25,16 @@ website:
               - href: Week1-Lecture2.qmd
                 text: "Lecture 2: Marketing Profitability Analysis"
               - href: Case-ProfitabilityAnalysis.qmd
-                text: "Case Study: Profitability Analysisfor Apple Inc."
+                text: "Case Study: Profitability Analysis for Apple Inc."
           - section: "[Week 2] Customer Lifetime Value"
+            contents:
+              - href: Week2-Lecture1.qmd
+                text: "Lecture 1: Customer Lifetime Value"
+              - href: Week2-Lecture2.qmd
+                text: "Lecture 2: Case Study: CLV for M&S"
+              - href: Case-CLV.qmd
+                text: "Case Study: CLV Analysis for M&S's Delivery Pass"
+          - section: "[Week 3] Data Wrangling and Descriptive Analytics"
             contents:
               - LectureSlides.qmd
           - R-Exercise.qmd
@@ -45,6 +53,9 @@ website:
           - RTip-BLAS.qmd
 format:
   html:
+    author: "Dr. Wei Miao"
+    institute: "UCL School of Management"
+    date-format: long
     theme:
       light: lumen
       dark: darkly
@@ -65,7 +76,12 @@ format:
     css: styles.css
     fig-align: "center"
     colorlinks: true
+    code-tools: true
+    bibliography: references.bib
   beamer:
+    author: "Dr. Wei Miao"
+    institute: "UCL School of Management"
+    date-format: long
     toc: false
     slide-level: 2
     section-titles: true
@@ -77,6 +93,10 @@ format:
     fontsize: 9pt 
     fig-align: "center"
     colorlinks: true
+    bibliography: references.bib
+    supress-bibliography: true
+    execute:
+      error: true
 knitr:
   opts_chunk: 
     out.width: "5cm"

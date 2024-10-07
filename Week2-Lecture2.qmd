@@ -1,0 +1,486 @@
+---
+date: "`r (lubridate::ymd('20241002') + lubridate::dweeks(1))`"
+title: "Class 4: (Case Study) CLV Analysis for M&S's Delivery Pass"
+---
+
+# Case Overview
+
+## Class Objectives
+
+-   Apply CLV calculation in a real business scenario, where M&S is considering launching an online grocery delivery service
+
+-   Understand how CLV can be used by marketers to guide marketing decisions
+
+## Situation Analyses for M&S
+
+-   Company
+
+::: {.content-visible when-format="html"}
+> M&S is a British multinational groceries and general merchandise retailer. It currently focuses on operating offline stores. The company is considering launching an online grocery delivery service to compete with other direct competitors such as Tesco, Sainsbury's, and Asda.
+:::
+
+-   Customer
+
+::: {.content-visible when-format="html"}
+> M&S serves a diverse customer base, including students, families, young professionals, and retirees.
+:::
+
+-   Competitor
+
+::: {.content-visible when-format="html"}
+> M&S's direct competitors include Sainsbury's, Asda, and Morrisons. M&S also faces competition from discounters such as Aldi and Lidl.
+:::
+
+-   Collaborator
+
+::: {.content-visible when-format="html"}
+> Suppliers, delivery partners
+:::
+
+-   Context
+
+::: {.content-visible when-format="html"}
+> PESTLE example: Brexit, COVID-19, etc.
+:::
+
+## The Sparks Loyalty Program
+
+Are you using any grocery store's loyalty programs? Did you need to pay for the membership?
+
+Why do you think the grocery chains offer these loyalty programs?
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: '3cm'
+knitr::include_graphics('images/Week 2/sparks.jpeg')
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 2/MS Offers.png')
+```
+:::
+:::::
+
+## Overview for Computing CLV
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: '10cm'
+knitr::include_graphics('images/Week 2/CLV case roadmap.png')
+```
+
+# CAC for M&S
+
+## CAC: Roadmap
+
+-   What does the CAC include in the case study? What steps M&S needs to take to acquire **one new customer**?
+
+*\[...\] (find info in the case study)*
+
+::: {.content-hidden when-format="beamer"}
+```         
+-   total costs for customer ad clicks
+
+-   total costs of £10 promotion of free goods
+
+-   total costs of free deliveries
+```
+:::
+
+## Paid Search Advertising
+
+Search Engine Marketing (SEM) is a form of online marketing where businesses pay to display their ads on search engine results pages. This type of advertising is highly targeted and aims to capture users who are actively searching for products related to the advertiser’s offerings.
+
+\vspace{2em}
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: '4cm'
+knitr::include_graphics('images/Week 2/MScBA.png')
+```
+:::
+
+::: {.column width="50%"}
+-   Brands/companies (The universities)
+
+-   bid on keywords (MSc Business Analytics)
+
+-   Advertisers (Google)
+
+-   paid search (bids-based with ads label)
+
+-   organic (quality-based)
+:::
+:::::
+
+## Marketing Funnel for Paid Search Ads
+
+A **marketing funnel** is a model that represents the customer's journey from the initial awareness of a product or service to the ultimate purchase. This journey is depicted as a funnel to illustrate the decrease in the number of potential customers at each stage.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: '4cm'
+knitr::include_graphics('images/Week 2/funnelMS.png')
+```
+
+::: {.content-visible when-format="beamer"}
+## Compute customer acquisition costs: paid search ads
+:::
+
+**CAC Part I: Costs of paid search ads to get 1 new member.**
+
+-   *\[...\] about **10%** of customers who click on an ad on search engine or social media will sign up for a free trial (i.e., triers); triers will on average shop **twice** during the trial period. **20%** of those trial users will eventually become paying customers.*
+
+1.  We think from the bottom up. To get 1 new member, how many triers do we need?
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+# clicker_to_trier_rate is the % of trier customers from clickers
+trier_to_member_rate <-
+
+```
+
+\normalsize
+
+2.  To get 1 trier, how many clickers do we need?
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+# trier_to_member_rate is the % of a new member from triers
+clicker_to_trier_rate <-
+```
+
+\normalsize
+
+::: {.content-visible when-format="beamer"}
+## Compute customer acquisition costs: paid search ads
+:::
+
+3.  How many clickers are needed to get 1 trier and eventually convert 1 new member?
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+n_clickers_for_1newmember <- (1 / clicker_to_trier_rate) * (1 / trier_to_member_rate)
+```
+
+\normalsize
+
+4.  Now, let’s calculate the total cost of acquiring 1 new member by multiplying the number of clickers needed by the cost per click.
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+total_cost_clicks <- 0.4 * n_clickers_for_1newmember
+```
+
+## CAC Part II
+
+**CAC Part II: total costs of £10 promo for first order each trier customer**
+
+-   What is the total promo cost for these "trier" customers' first order? These are free goods offered to customers in addition to their usual £100 shopping.
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+
+profit_margin <- 0.07
+promo_first_order_each_trier <- 10
+
+total_cost_promo <- promo_first_order_each_trier * # promotion amount = £10
+    (1 - profit_margin) * # 7% profit margin
+    (1 / trier_to_member_rate) # num of triers = 5
+
+```
+
+## Compute customer acquisition costs
+
+**CAC Part III: total costs from selling groceries during the trial period**
+
+-   For each trier, compute the net profits and marketing costs from the two free visits.
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+profit_each_trier <- revenue_each_visit * # £100 per visit
+    profit_margin * # 7% profit margin
+    2 # a trier shops twice
+```
+
+\normalsize
+
+-   For each trier, the 2 visits are free of delivery charges, which are marketing costs to M&S
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+deliverycost_each_trier <- 5 * 2
+```
+
+\normalsize
+
+-   For each trier, compute net marketing costs from the 2 visits (marketing costs - earned profits)
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+netcost_each_trier <- deliverycost_each_trier - profit_each_trier
+```
+
+\normalsize
+
+-   Total net profits from all triers
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+totalcosts_from_all_triers <- netcost_each_trier * (1 / trier_to_member_rate)
+```
+
+## Step 6: Compute customer acquisition costs
+
+-   CAC = total costs for customer ad clicks (for all clickers) + total costs of £10 promo (for all triers) + total costs of selling groceries (for all triers)
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+CAC <- total_cost_clicks + total_cost_promo + totalcosts_from_all_triers
+```
+
+# CLV for M&S
+
+## Step 1: Determine time unit of analysis
+
+-   Time unit of analysis
+
+    -   *\[...\] (find info in the case study)*
+
+        -   When should we use monthly analysis or other units of time?
+
+## Step 2: Determine number of years
+
+-   $N$: the number of years over which the customer relationship is assessed
+    -   *\[...\] (find info in the case study)*
+    -   How can you do better here?
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+N <-
+```
+
+## Step 3: Compute g for each period
+
+$g = M - c$: **net profit each year**; Remember, $M$ is the gross profit from membership fees and grocery purchases, and $c$ is the cost of delivering goods to customers.
+
+-   *most customers paid the £89 annual membership fee*
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+
+membership <-
+```
+
+## Step 3: Compute g for each period
+
+-   *40 times each year; each time £100; with profit margin 7% (COGS 93%)*
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+
+n_visit <-
+revenue_each_visit <-
+profit_margin <-
+
+M <-
+```
+
+\normalsize
+
+-   *Variable delivery costs each order. Find info in the case study about delivery costs*
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+
+deliverycost_each_visit <-
+
+c <- deliverycost_each_visit * n_visit
+```
+
+## Step 3: Compute g for each period
+
+-   The annual g from customers regular grocery shopping
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+
+# CF is the cash flow for one year
+
+g <-
+
+# create a sequence of CF for N years
+
+g_seq <- rep(g, N)
+
+```
+
+## Step 4: Compute sequence of retention rate
+
+4.  $r$: retention rate
+
+-   *\[...\] (find info in the case study)*
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+
+
+# retention_rate is the probability of customer staying with us after 1 year
+r <-
+    # create a geometric sequence of accumulative retention rate for N years
+r_seq <-
+```
+
+## Step 5: Compute sequence of discount factors
+
+5.  $k$: the discount rate
+
+-   *\[...\] A yearly discount rate of 10%*
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+
+
+k <- 0.1
+d <- 
+d_seq <-
+```
+
+\normalsize
+
+-   *\[...\] The team decided to take a **conservative approach** whereby all profits are booked at the end of year*. Why is this a conservative approach?
+
+## Step 6: Compute CLV
+
+6.  Compute the CLV based on the CLV formula (Table A)
+
+-   g for the next 5 years
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+g_seq
+```
+
+\normalsize
+
+-   Apply retention rate r
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+g_seq_after_churn <- g_seq *
+```
+
+\normalsize
+
+-   Apply discount factor d
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+g_seq_after_churn_discount <- g_seq_after_churn *
+```
+
+\normalsize
+
+-   Compute CLV by summing up future expected profits
+
+\footnotesize
+
+```{r}
+#| eval: false
+#| echo: true
+CLV <- sum(g_seq_after_churn_discount) - CAC
+```
+
+# CLV for Marketing Decisions
+
+## CLV as a Key Management Tool
+
+```{r}
+#| echo: false
+knitr::include_graphics(path = "images/Week 2/CLVAsDecisionTool.png")
+```
+
+**We can use CLV as the key managerial tool for evaluating different marketing initiatives!**
+
+## Scenario
+
+-   If M&S decides to reduce the pass price to £79 per year, then the retention rate will increase to 75%
+-   We can write down an R user-defined function to solve the question.
+
+## After-class
+
+1.  (To guide customer acquisition) What if the company only offers £5 for first time purchase? This will save some CAC but the clicker-to-trier rate will decrease to 5%. Please compute the new CLV. Should you go ahead with the proposed change?
+
+2.  (To guide customer retention) What if the company increases the annual membership fee to \$119? This will increase revenue from memberships but will also make some customers unhappy so their retention rate reduce to 55%. Please compute the new CLV. Should you go ahead with the proposed change?

@@ -1,0 +1,651 @@
+---
+title: "CLV Analysis for M&S Delivery Pass Program"
+thanks: "This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module based on. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. All copyrights reserved."
+date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(1))`"
+author: Dr. Wei Miao
+subtitle: "MSIN0094 Case Study"
+institute: UCL School of Management
+date-format: long
+format:
+  html: default
+  pdf: 
+    number-sections: true
+    toc: false
+    number-depth: 2
+    fontsize: 10pt
+    linestretch: 1.25
+    execute: 
+      echo: false
+      error: false
+      warning: false
+      message: false  
+bibliography: references.bib
+---
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| fig-cap: "M&S in Jubilee Place, Canary Wharf, London"
+knitr::include_graphics('images/Week 2/MS.jpg')
+```
+
+
+# From Product-Centric to Customer-Centric Marketing
+
+Although the marketing concept has reflected a customer-centered viewpoint since the 1960s (e.g., Kotler 1967), marketing theory and practice have become increasingly customer-centered during the past decades. For example, marketing has decreased its emphasis on short-term transactions and has increased its focus on long-term customer relationships. The customer-centered viewpoint is reflected in the concepts and metrics that drive marketing management, including such metrics as customer satisfaction, market orientation, and customer value. In recent years, customer lifetime value (CLV) and its implications have received increasing attention. For example, brand equity, a fundamentally product-centered concept, has been challenged by the customer-centered concept of customer equity [@kumar2016].
+
+Customer Lifetime Value (CLV) is a measure of the total revenue a company can expect to generate from a single customer over the entire course of their relationship. CLV shifts the focus from short-term gains to long-term customer value. Calculating CLV typically involves considering factors like how often a customer returns, how much they spend on average per transaction, and how long they remain loyal to the brand. This metric is vital for understanding the long-term impact of different marketing initiatives.
+
+CLV also takes into account the cost of acquiring customers (Customer Acquisition Cost or CAC). By comparing the cost of acquiring a customer with their lifetime value, companies can determine how profitable different types of customers are and adjust their marketing strategies accordingly.
+
+The following points provide some ideas why CLV can be used for enhancing a firm’s long-term profitability:
+
+-   Focusing on high-value customers—those who are likely to stay loyal and spend more over time—can significantly impact firm’s bottom line. Retaining loyal customers is often more cost-effective than constantly seeking new ones, and these customers tend to provide better returns over time.
+
+-   CLV helps a firm allocate resources more effectively. By knowing which customers are most profitable in the long run, the firm can focus its marketing efforts on retaining and nurturing these relationships. Rather than spreading resources across the entire customer base, the firm can invest strategically in segments that are most likely to deliver high returns.
+
+-   CLV allows a firm to forecast future revenues based on current customer behavior. This enables better long-term planning and more accurate financial projections.
+
+-   Understanding CLV allows a firm to implement personalized marketing efforts. With a clearer view of which customers are the most valuable, the firm can deliver more targeted and relevant marketing messages, resulting in more effective campaigns and stronger customer relationships.
+
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Are you using any grocery store's loyalty programs? Did you need to pay for the membership? Why do you think the grocery chains offer these loyalty programs?
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
+Are you using any grocery store's loyalty programs in the UK? Why do you think the grocery chains offer these loyalty programs at just nominal prices?
+
+### Answer
+
+M&S’s Sparks program is a prime example of customer-centric marketing in action. By offering customers a free loyalty program that provides access to exclusive discounts and rewards, M&S has successfully positioned itself as a brand that prioritizes its customers’ needs and preferences.
+
+While the Sparks program offers great benefits (regular price promotions) to customers, it is equally valuable for M&S. Every time a customer uses their Sparks card, M&S gains access to a treasure trove of data about their shopping habits. The card allows M&S to track an individual customer’s entire spending history, giving the company deep insights into their preferences, shopping patterns, and frequency of purchases. This data is incredibly valuable because it enables M&S to make data-driven marketing decisions. For example, M&S can personalize promotions, recommend products based on past behavior, and design targeted campaigns that align with customer needs.
+
+By leveraging this data, M&S can also optimize inventory management, ensuring that popular products are always in stock, while reducing overstock on less popular items. Furthermore, the ability to analyze customer behavior at a granular level helps M&S better understand shifts in customer preferences, allowing the company to adapt to changing market conditions quickly. In short, M&S’s Sparks is not just a tool for customer retention—it is a sophisticated data-gathering instrument that empowers M&S to deliver a highly personalized and efficient shopping experience. This, in turn, strengthens the customer relationship and enhances M&S’s ability to make strategic business decisions based on real customer insights.
+:::
+::::
+
+In the next section, we will explore how M&S can apply CLV to its customer data to make strategic marketing decisions that enhance profitability and customer loyalty.
+
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Conduct a 5C analysis for M&S. Based on the analysis
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
+Conduct a 5C analysis for M&S. Based on the analysis, identify key factors that may impact M&S's CLV calculation.
+
+### Answer
+
+**1. Company**
+
+-   **Core Business**: M&S is a multinational grocery and general merchandise retailer.
+
+-   **Culture, mission, and values**: M&S's mission is to provide high-quality products and excellent customer service. The company values sustainability, innovation, and community engagement.
+
+**2. Customers**
+
+-   **Market size and segments**: M&S serves a broad customer base, including families, students, and professionals.
+
+-   **Customer needs and preferences**: Customers value convenience, quality, and affordability. They are increasingly interested in sustainable and ethically sourced products.
+
+-   **Customer behavior**: Customers shop both in-store, with varying frequency and basket sizes.
+
+**3. Competitors**
+
+-   **Direct Competitors**: Sainsbury's, Asda, Morrisons, and Waitrose. However, M&S currently lacks online channel such as a delivery pass program, which is offered by competitors like Tesco and Sainsbury's.
+
+-   **Indirect Competitors**: Discount retailers like Aldi and Lidl, online retailers like Amazon, local convenience stores.
+
+**4. Collaborators**
+
+-   **Suppliers**: Partnerships with farmers, manufacturers, grocery suppliers.
+
+-   **Distributors**: Works through its own retail network and an online platform.
+
+**5. Climate**
+
+-   **Economic Factors**: Influenced by economic health and consumer spending patterns.
+
+-   **Legal & Political Factors**: Brexit and changing trade and labor laws impact operations. Remember the shortage of lorry drivers during the pandemic?
+
+-   **Social & Cultural Trends**: Growing preference for online shopping and sustainable practices.
+
+-   **Technological Innovations**: The integration of technology in retail experience and e-commerce.
+
+-   **Environmental Factors**: Adopting and promoting sustainable and ethical practices.
+:::
+::::
+
+# Evaluating the Value of an Online Delivery Pass Program: A CLV Analysis
+
+## The Business Problem for M&S: A Delivery Pass Program
+
+It was just six months after Tom, our proud (but perhaps overly confident?) graduate from our MSc BA program, made a series of ... let’s say, “bold” decisions at his first job at Apple Inc. The influencer marketing campaign didn’t exactly influence anyone—except maybe the CMO to rethink her hiring decisions. Turns out, Tom hadn’t spent enough time learning R basics (despite countless reminders from Dr. Meow that “R is the best language in the world”), and he completely miscalculated the NPV of the campaign. Tom really regretted not having taken Dr. Meow’s advice on spending more time on the Marketing Analytics module instead of the Business Strategy module during the MSc BA program. Obviously, he had underestimated the importance of marketing analytics for his career as a business analyst.
+
+As you might have guessed, Tom was promptly shown the door, and it wasn’t to Apple’s employee spa. But luck or maybe just a very sympathetic friend from his UCL days, Jerry, landed him a new gig at Marks & Spencer (M&S). Now, with a slightly more humble outlook on life and an unhealthy amount of bubble tea, Tom is trying to redeem himself as a data scientist in M&S’s marketing analytics team. 
+
+M&S is a multinational retailer that sells groceries, clothing, and home products. M&S has been successful in building a loyal customer base through its Sparks loyalty program, which offers customers exclusive discounts, personalized offers, and early access to sales. However, M&S is looking to further enhance its customer relationships and drive long-term profitability. One area to improve is the online sales channel. Other grocery chains such as Tesco and Sainsbury's have been offering online delivery passes, which provide customers with unlimited deliveries for a fixed annual fee. M&S is considering launching a similar program to attract more customers and increase customer loyalty.
+
+Tom’s job is to calculate the Customer Lifetime Value (CLV) of this potential new program—a task that would require him to remember at least some of what he learned in Marketing Analytics Week 2's class (if only he had stayed awake). This time, Tom knows one thing for sure: he better not mess this up. Otherwise, he might end up selling bubble teas at a Canary Wharf stall next to the Rice Guys instead of analyzing data at M&S.
+
+As Tom learned in Week 2's class, customer lifetime value (CLV) can be a powerful metric that can help M&S understand the long-term value of its customers and guide strategic marketing decisions such as the profitability of introducing a delivery pass program. By calculating the CLV of customers who sign up for the delivery pass program, M&S can determine the program's potential and identify the most valuable customer segments. 
+
+In order to conduct the CLV analysis, Tom needs to consider the following key factors:
+
+**Price of the Delivery Pass**: As a starting point, Tom needs to determine the price of the delivery pass and the benefits it offers to customers. The price of the delivery pass will surely influence customer acquisition and retention rates, as well as the overall profitability of the program. At the moment, Tesco's delivery pass is priced at £84 per year, while Sainsbury's delivery pass is priced at £80 per year. Therefore, Tom would like to price M&S's delivery pass at £89 per year, which is competitive with other grocery chains and offers customers a cost-effective option for unlimited deliveries.
+
+**Time Unit of Analysis**: Although customers frequently shop at M&S throughout the year, the **yearly approach** is the most convenient, especially since M&S’s Sparks program offers benefits that often encourage long-term loyalty.
+
+**Number of Years (N)**: M&S will assess the CLV over a **5-year period**. While a longer time horizon could be considered, uncertainty increases with time due to changes in the economy, competition, and customer preferences. Therefore, M&S uses a 5-year horizon for most revenue and profitability projections.
+
+**Gross Profit (g)**: M&S’s analysis starts by calculating the **gross profit** generated by a typical customer each year. From the historical customer transaction data, the marketing analytics team estimates that an average M&S customer shops at M&S **40 times** a year, spending an average of **£100 per visit**.
+
+**Profit Margin**: M&S’s profit margin on each purchase is **7%**, meaning that the cost of goods sold (COGS) is 93% of the purchase price. However, M&S incurs costs to provide these services included in the delivery pass, such as delivery fees for online orders. Each delivery costs M&S a £5 to pay for the delivery driver and other operational expenses.
+
+**Retention Rate (r)**: The retention rate is the probability that a customer continues to shop with M&S year after a year. Based on historical data, M&S’s customer **retention rate** is **70%**, meaning that 70% of customers remain loyal and are likely to renew their delivery pass each year. This retention rate forms the basis for estimating future customer value.
+
+**Discount Rate (k)**: M&S applies a **yearly** discount rate of **10%**, as recommended by its finance department. This discount rate reflects the cost of capital and the opportunity cost of investing elsewhere. All future profits will be discounted to reflect their present value, assuming that the profits from customer purchases are received at the end of each year.
+
+**Customer Acquisition Costs (CAC)**: M&S invests heavily in customer acquisition, using paid search ads on search engines. Such promotion is also called search engine marketing or pay-per-click marketing. M&S decideds to bid £0.4 for each click.[^1] Based on the bid, M&S estimates that about **1%** of Google users will see the the ads; at the £89 annual subscription price, **10%** of exposed customers who click on an ad on search engine or social medias will sign up for a free trial (i.e., triers); triers will on average shop **twice** during the 2-week trial period. **20%** of those triers will eventually become paying customers. In order to increase market penetration, M&S offers a £10 discount on the first purchase on top of a customer's £100 shopping basket. M&S also offers free delivery for triers during the trial period. 
+
+[^1]: Cost per click (CPC) is a pricing model used in online advertising where advertisers pay each time a user clicks on their ad. It is a key metric in digital marketing campaigns and is commonly used in platforms like Google Ads, Facebook Ads, and other search engines or social media networks. <https://www.investopedia.com/terms/c/cpc.asp>
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| fig-cap: 'M&S’s Marketing Funnel'
+#| label: fig-funnelMS
+knitr::include_graphics('images/Week 2/funnelMS.png')
+```
+
+Based on the above information, Tom will conduct a CLV analysis to determine the potential profitability of M&S's delivery pass program and provide recommendations to the senior marketing manager.
+
+## Compute Customer Acquisition Cost
+
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Watch the intro video by Google, [Introduction to Search Engine Marketing](https://youtu.be/Qmm_FRIMeTg?si=O4vHoskZSndYetCB), before class. Understand how SEM works and think about how these concepts apply in M&S's case as in @fig-funnelMS.
+
+Compute the customer acquisition costs (CAC) for M&S's delivery pass program.
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
+Watch the intro video by Google, [Introduction to Search Engine Marketing](https://youtu.be/Qmm_FRIMeTg?si=O4vHoskZSndYetCB), before class. Understand how SEM works and think about how these concepts apply to M&S's case as in @fig-funnelMS.
+
+Compute the customer acquisition costs (CAC) for M&S's delivery pass program
+
+### Answer
+
+CAC = total costs for customer ad clicks + total costs of £10 promo + total costs of free deliveries
+
+**CAC Part I: Costs of paid search ads to get 1 new member.**
+
+-   *\[...\] "about 10% of customers who click on an ad on search engine or social medias will sign up for a free trial, and 20% of those trial users will eventually become paying customers."*
+
+```{r}
+# clicker_to_trier_rate is the % of trier customers from clickers
+clicker_to_trier_rate <- 0.1
+
+# trier_to_member_rate is the % of a new member from triers
+trier_to_member_rate <- 0.2
+```
+
+-   How many customers need to click the ad to get 1 new customer?
+
+```{r}
+n_clickers_for_1newmember <- (1 / clicker_to_trier_rate) * (1 / trier_to_member_rate)
+
+n_clickers_for_1newmember
+```
+
+-   Total costs for customer clicks
+
+```{r}
+total_cost_clicks <- 0.4 * n_clickers_for_1newmember
+total_cost_clicks
+```
+
+**CAC Part II: total costs of £10 promo for first order each trier customer**
+
+-   What is the total promo cost for these trier customers' first order?
+
+```{r}
+promo_first_order_each_trier <- 10
+profit_margin <- 0.07
+
+total_cost_promo <- promo_first_order_each_trier * # promotion amount
+    (1 - profit_margin) * # COGS rate
+    (1 / trier_to_member_rate) # num of triers
+
+total_cost_promo
+```
+
+**CAC Part III: total costs from selling groceries for each trier**
+
+-   2 visits for each trier, the profits from the 2 visits are
+
+```{r}
+
+revenue_each_visit <- 100
+
+profit_each_trier <- revenue_each_visit * profit_margin * 2
+
+profit_each_trier
+```
+
+-   The 2 visits are free of delivery charges, which are costs to M&S
+
+```{r}
+deliverycost_each_trier <- 5 * 2
+deliverycost_each_trier
+```
+
+-   Net costs for each trier from the 2 visits
+
+```{r}
+
+netcost_each_trier <- deliverycost_each_trier - profit_each_trier
+
+netcost_each_trier
+```
+
+-   Total net profits from all triers
+
+```{r}
+totalcosts_from_all_triers <- netcost_each_trier * (1 / trier_to_member_rate)
+
+totalcosts_from_all_triers
+```
+
+-   CAC = total costs for customer ad clicks + total costs of £10 promo + total costs of free deliveries
+
+```{r}
+CAC <- total_cost_clicks + total_cost_promo + totalcosts_from_all_triers
+
+CAC
+```
+:::
+::::
+
+## Compute Customer Lifetime Value
+
+### Step 1: Determine time unit of analysis
+
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Find the time unit of analysis in the case study.
+
+Should we use monthly analysis?
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
+Find the time unit of analysis in the case study.
+
+Should we use monthly analysis?
+
+### Answer
+
+When there is strong within-year seasonality of customer purchases
+:::
+::::
+
+### Step 2: Determine number of years
+
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Find $N$: the number of years over which the customer relationship is assessed
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
+Find $N$: the number of years over which the customer relationship is assessed
+
+### Answer
+
+```{r}
+N <- 5
+```
+:::
+::::
+
+### Step 3: Compute profit margin for each period
+
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+$g = M - c$**: profit each year, which is the profit from sales M minus marketing costs c**
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
+$g = M - c$**: profit each year, which is the profit from sales M minus marketing costs c**
+
+### Answer
+        
+- The annual membership fee is £89
+
+
+```{r}
+
+membership <- 89
+
+```
+
+       
+-   n_visit: 40 visits each year; each time £100; with profit margin 7% (COGS 93%)
+
+
+```{r}
+
+n_visit <- 40
+
+```
+
+       
+-   M: profit margin each period
+
+
+```{r}
+
+M <- membership + revenue_each_visit * n_visit * profit_margin
+M
+```
+
+       
+-   *c:* variable delivery costs each order
+
+```{r}
+deliverycost_each_visit <- 5
+c <- deliverycost_each_visit * n_visit
+c
+```
+
+       
+-   g: the period net profit from customers
+
+
+```{r}
+
+g <- M - c
+g_seq <- rep(g, N)
+g_seq
+
+```
+
+:::
+
+::::
+
+### Step 4: Compute sequence of retention rate
+
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+$r$: retention rate
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
+$r$: retention rate
+
+### Answer
+
+```{r}
+# retention_rate is the probability of customer staying with us after 1 year
+r <- 0.7
+
+# create a geometric sequence of accumulative retention rate for N years
+r_seq <- r^(seq(1, N) - 1)
+r_seq
+```
+:::
+::::
+
+### Step 5: Compute sequence of discount factors
+
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+$k$: the discount rate
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
+$k$: the discount rate
+
+### Answer
+
+```{r}
+k <- 0.1
+d <- 1 / (1 + k)
+d_seq <- d^(seq(1, N))
+d_seq
+```
+:::
+::::
+
+### Step 6: Compute CLV
+
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Compute the CLV based on the CLV formula
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
+Compute the CLV based on the CLV formula
+
+### Answer
+
+-   Revenues, variables costs, and profit for the next 5 years
+
+```{r}
+g_seq
+```
+
+-   Apply retention rate
+
+```{r}
+g_seq_after_churn <- g_seq * r_seq
+g_seq_after_churn
+```
+
+-   Apply discount factor
+
+```{r}
+g_seq_after_churn_discount <- g_seq_after_churn * d_seq
+
+g_seq_after_churn_discount
+```
+
+-   Compute CLV by summing up future expected profits
+
+```{r}
+sum(g_seq_after_churn_discount)
+
+sum(g_seq_after_churn_discount) - CAC
+```
+:::
+::::
+
+# Use CLV to Guide Marketing Decisions
+
+The above provides a comprehensive view of the potential profitability of M&S's delivery pass program. By calculating the CLV of customers who sign up for the delivery pass, M&S can make informed decisions about whether to launch the program and how to optimize its marketing efforts to attract and retain high-value customers.
+
+As we have seen, there are many decision variables that can impact the CLV of the delivery pass program. For example, 
+
+- The price of the delivery pass can affect the final CLV in multiple ways. A lower price may attract more customers during the marketing funnel, but it may also reduce the overall profitability of the program. On the other hand, a higher price boost short-run profitability but may deter some customers from signing up and lead to lower retention rate in the long run. 
+
+- The first-time promotion can also impact the CLV. A higher promotion amount may attract more customers during the marketing funnel, but it may also increase the CAC and reduce the overall profitability of the program.
+
+- The retention rate is another key factor that can impact the CLV. M&S can develop personalized recommendation systems on their shopping website, which can potentially increase the basket size and the retention rate.
+
+
+
+We can use CLV to guide our marketing decisions. For example, if M&S decides to reduce the pass price to £79 per year, then the retention rate is expected to increase to 75%, and the clicker-to-trier rate will increase to 25%. Calculate the new CLV in this new scenario and compare it with the original CLV, and discuss which proposal is more profitable.
+
+
+
+# After-Class Exercise
+
+To facilitate the process, let's first see how to use **a user defined function** to compute CLV for any new scenario with ease.
+
+::: {.content-visible when-format="html"}
+
+```{r}
+computeCLV <- function(N = 5,
+                       membership = 89,
+                       n_visit = 40,
+                       revenue_each_visit = 100,
+                       profit_margin = 0.07,
+                       r = 0.7,
+                       k = 0.1,
+                       clicker_to_trier_rate = 0.1,
+                       trier_to_member_rate = 0.2,
+                       promo_first_order_each_trier = 10,
+                       deliverycost_each_visit = 5) {
+    # Step 3
+
+    ## compute M
+    M <- membership + revenue_each_visit * n_visit * profit_margin
+
+    c <- deliverycost_each_visit * n_visit
+
+    ## compute CF = M - c
+    g <- M - c
+
+    ## compute profit sequence
+    g_seq <- rep(g, N)
+
+    # Step 4: compute sequence of retention
+    r_seq <- r^(seq(1, N) - 1)
+
+    # Step 5: compute sequence of discount factors
+    d <- 1 / (1 + k)
+
+    d_seq <- d^(seq(1, N))
+
+    # Step 6: Compute CAC
+
+    ## Part I: costs for clicking
+    n_clickers_for_1newmember <- (1 / clicker_to_trier_rate) * (1 / trier_to_member_rate)
+
+    total_cost_clicks <- 0.4 * n_clickers_for_1newmember
+
+    ## Part II: free £10 goods
+    total_cost_promo <- promo_first_order_each_trier * # promotion amount
+        (1 - profit_margin) * # profit rate
+        (1 / trier_to_member_rate) # num of triers
+
+    ## Part III: delivery costs
+    profit_each_trier <- revenue_each_visit * profit_margin * 2
+
+    deliverycost_each_trier <- deliverycost_each_visit * 2
+
+    netcost_each_trier <- deliverycost_each_trier - profit_each_trier
+
+    totalcosts_from_all_triers <- netcost_each_trier * (1 / trier_to_member_rate)
+
+    ## Compute CAC
+    CAC <- total_cost_clicks + total_cost_promo + totalcosts_from_all_triers
+
+
+    # Step 7: Compute CLV
+
+    ## apply churn rate to profit sequence
+    g_seq_after_churn <- g_seq * r_seq
+
+    ## apply discount factor to profit sequence
+    g_seq_after_churn_discount <- g_seq_after_churn * d_seq
+
+    ## take sum and deduct the CAC
+    CLV <- sum(g_seq_after_churn_discount) - CAC
+
+    return(CLV)
+}
+```
+
+
+
+```{r}
+computeCLV()
+```
+
+:::
+
+## Use CLV to Guide Marketing Decisions
+
+-   (To guide customer acquisition) What if the company only offers £5 for first time purchase? This will save some CAC but the clicker-to-trier rate will decrease to 5%. Please compute the new CLV. Should you go ahead with the proposed change?
+
+::: {.content-visible when-format="html"}
+
+```{r}
+computeCLV(
+    promo_first_order_each_trier = 5,
+    clicker_to_trier_rate = 0.05
+)
+```
+
+:::
+
+-   (To guide customer retention) What if the company increases the annual membership fee to \$119? This will increase revenue from memberships but will also make some customers unhappy so their retention rate reduce to 55%. Please compute the new CLV. Should you go ahead with the proposed change?
+
+::: {.content-visible when-format="html"}
+
+```{r}
+computeCLV(
+    membership = 119,
+    r = 0.55
+)
+```
+:::
+
+# References {.unnumbered}

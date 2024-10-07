@@ -16,6 +16,7 @@ format:
 -   Teaching assistants
 
     -   Kayi Yeung, [ka.yeung.21\@ucl.ac.uk](mailto:ka.yeung.21@ucl.ac.uk) (UCL MSc BA 2022)
+    -  Divyansh Agrawal, [divyansh.agrawal.23\@ucl.ac.uk](mailto:divyansh.agrawal.23@ucl.ac.uk) (UCL MSc BA 2023)
     -   Jiafan Lu, [jiafan.lu\@ucl.ac.uk](mailto:jiafan.lu.22@ucl.ac.uk) (UCL PhD Management 2022)
 
 # Course Objective
