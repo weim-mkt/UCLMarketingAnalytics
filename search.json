@@ -81,7 +81,7 @@
     "href": "Week2-Lecture1.html",
     "title": "Class 3 Customer Lifetime Value",
     "section": "",
-    "text": "Understand the concept of customer-centric marketing and customer lifecycle\nUnderstand the concept of customer acquisition cost (CAC) and how to compute it with R\nUnderstand the concept of Customer Lifetime Value (CLV) and how to compute it with R\n\n\n\n\n\nIn the past, companies focused on product-centric marketing, while ignoring the long-term relationship with customers.\n\nProduct-centric marketing: focus on the promotion of a specific product or service\n\nCustomer-centric marketing is a strategy that places the individual customer at the center of marketing design and delivery.\n\nAcquisition: persuade a prospect customer to purchase for the first time\nDevelopment: Increase the customer’s value by upselling higher-margin products or cross-selling complementary products and services\nRetention: keep the customer loyal to the brand\n\n\n\n\n\n\n\n\n\n\n\nCustomer Life Cycle",
+    "text": "Understand the concept of customer-centric marketing and customer lifecycle\nUnderstand the concept of customer acquisition cost (CAC) and how to compute it with R\nUnderstand the concept of Customer Lifetime Value (CLV) and how to compute it with R\n\n\n\n\n\nIn the past, companies focused on product-centric marketing, while ignoring the long-term relationship with customers.\n\nProduct-centric marketing: focus on the promotion of a specific product or service\n\nCustomer-centric marketing is a strategy that places the individual customer at the center of marketing design and delivery.\n\nAcquisition: Persuade a prospect customer to purchase for the first time\nDevelopment: Increase the customer’s value by upselling higher-margin products or cross-selling complementary products and services\nRetention: keep the customer loyal to the brand\n\n\n\n\n\n\n\n\n\n\n\nCustomer Life Cycle",
     "crumbs": [
       "Lectures",
       "[Week 2] Customer Lifetime Value",
@@ -105,7 +105,19 @@
     "href": "Week2-Lecture1.html#from-product-centric-to-customer-centric-marketing",
     "title": "Class 3 Customer Lifetime Value",
     "section": "",
-    "text": "In the past, companies focused on product-centric marketing, while ignoring the long-term relationship with customers.\n\nProduct-centric marketing: focus on the promotion of a specific product or service\n\nCustomer-centric marketing is a strategy that places the individual customer at the center of marketing design and delivery.\n\nAcquisition: persuade a prospect customer to purchase for the first time\nDevelopment: Increase the customer’s value by upselling higher-margin products or cross-selling complementary products and services\nRetention: keep the customer loyal to the brand\n\n\n\n\n\n\n\n\n\n\n\nCustomer Life Cycle",
+    "text": "In the past, companies focused on product-centric marketing, while ignoring the long-term relationship with customers.\n\nProduct-centric marketing: focus on the promotion of a specific product or service\n\nCustomer-centric marketing is a strategy that places the individual customer at the center of marketing design and delivery.\n\nAcquisition: Persuade a prospect customer to purchase for the first time\nDevelopment: Increase the customer’s value by upselling higher-margin products or cross-selling complementary products and services\nRetention: keep the customer loyal to the brand\n\n\n\n\n\n\n\n\n\n\n\nCustomer Life Cycle",
+    "crumbs": [
+      "Lectures",
+      "[Week 2] Customer Lifetime Value",
+      "Lecture 1: Customer Lifetime Value"
+    ]
+  },
+  {
+    "objectID": "Week2-Lecture1.html#customer-acquisition-cost-cac",
+    "href": "Week2-Lecture1.html#customer-acquisition-cost-cac",
+    "title": "Class 3 Customer Lifetime Value",
+    "section": "2.1 Customer Acquisition Cost (CAC)",
+    "text": "2.1 Customer Acquisition Cost (CAC)\n\n\n\n\n\n\nDefinition\n\n\n\nCustomer Acquisition Cost (CAC) refers to the total expenses incurred by a business to acquire a new customer. This includes costs related to marketing, sales, and any other efforts made to attract and convert potential customers into actual buyers.\n\n\n\nWhy should we care about CAC?\n\nAcquiring new customers is not always beneficial if the costs of acquiring them exceed the revenue they generate.\nFor example, no company would want to spend £500 to acquire a new customer worth £300",
     "crumbs": [
       "Lectures",
       "[Week 2] Customer Lifetime Value",
@@ -116,8 +128,8 @@
     "objectID": "Week2-Lecture1.html#how-to-acquire-new-customers",
     "href": "Week2-Lecture1.html#how-to-acquire-new-customers",
     "title": "Class 3 Customer Lifetime Value",
-    "section": "2.1 How to Acquire New Customers",
-    "text": "2.1 How to Acquire New Customers\n\nFree sampling/trials",
+    "section": "2.2 How to Acquire New Customers",
+    "text": "2.2 How to Acquire New Customers\n\nFree sampling/trials",
     "crumbs": [
       "Lectures",
       "[Week 2] Customer Lifetime Value",
@@ -128,8 +140,8 @@
     "objectID": "Week2-Lecture1.html#how-to-acquire-new-customers-1",
     "href": "Week2-Lecture1.html#how-to-acquire-new-customers-1",
     "title": "Class 3 Customer Lifetime Value",
-    "section": "2.2 How to Acquire New Customers",
-    "text": "2.2 How to Acquire New Customers\n\nReferral Programs and Word of Mouth",
+    "section": "2.3 How to Acquire New Customers",
+    "text": "2.3 How to Acquire New Customers\n\nReferral Programs: Customer Lifetime Social Value (CLSV, week 2)",
     "crumbs": [
       "Lectures",
       "[Week 2] Customer Lifetime Value",
@@ -140,8 +152,8 @@
     "objectID": "Week2-Lecture1.html#customer-acquisition-cost-calculation",
     "href": "Week2-Lecture1.html#customer-acquisition-cost-calculation",
     "title": "Class 3 Customer Lifetime Value",
-    "section": "2.3 Customer Acquisition Cost: Calculation",
-    "text": "2.3 Customer Acquisition Cost: Calculation\n\nWhen the marketing cost can be attributed to individual customers, the CAC can be calculated as the cost of making a marketing offer divided by the response rate of the customer.\n\nMethod 1: CAC = (# of offers needed to acquire 1 customer) * (cost of making a marketing offer)\nMethod 2: CAC = (cost of making a marketing offer) / (customer response rate)\n\nAfter we study machine learning later in this module, we will be able to predict response rate for each individual customer and compute individual-specific CAC.",
+    "section": "2.4 Customer Acquisition Cost: Calculation",
+    "text": "2.4 Customer Acquisition Cost: Calculation\n\nWhen the marketing cost can be attributed to individual customers, the CAC can be calculated as the cost of making a marketing offer divided by the response rate of the customer.\n\nCAC = (# of offers needed to acquire 1 customer) * (cost of making a marketing offer)\nCAC = (cost of making 1 marketing offer) / (customer response rate)\n\nAfter we study machine learning later in this module, we will be able to predict response rate for each individual customer and compute individual-specific CAC.",
     "crumbs": [
       "Lectures",
       "[Week 2] Customer Lifetime Value",
@@ -152,8 +164,8 @@
     "objectID": "Week2-Lecture1.html#customer-acquisition-cost-an-example",
     "href": "Week2-Lecture1.html#customer-acquisition-cost-an-example",
     "title": "Class 3 Customer Lifetime Value",
-    "section": "2.4 Customer Acquisition Cost: An Example",
-    "text": "2.4 Customer Acquisition Cost: An Example\nA new Bubble Tea shop MeowMeow Bubble Tea in Canary Wharf is contemplating whether or not to attract new customers by sending ads leaflets to nearby residents.\nThe cost of sending a leaflet, which includes production and labor costs, is £0.5.\n\nSending out leaflets randomly to all nearby residents\n\nexpected response rate of 1%\n\nUsing names purchased from a marketing agency\n\neach name costs £0.2\nexpected response rate of 4% by analyzing the buying behavior and demographics of current customers\n\n\nCompute the CAC for each choice.\n\n\nCode\ncost_per_random_offer &lt;- 0.5\nresponse_rate_random_offer &lt;- 0.01\n# Following the formula in the previous slide\nCAC_random_offer &lt;- cost_per_random_offer / response_rate_random_offer\nCAC_random_offer\n\n\n[1] 50\n\n\n\n\nCode\ncost_per_targeted_offer &lt;- 0.5 + 0.2 \nresponse_rate_targeted_offer &lt;- 0.04\nCAC_targeted_offer &lt;- cost_per_targeted_offer/response_rate_targeted_offer\nCAC_targeted_offer\n\n\n[1] 17.5",
+    "section": "2.5 Customer Acquisition Cost: An Example",
+    "text": "2.5 Customer Acquisition Cost: An Example\nA new Bubble Tea shop MeowMeow Bubble Tea in Canary Wharf is contemplating whether or not to attract new customers by sending ads leaflets to nearby residents.\nThe cost of sending a leaflet, which includes production and labor costs, is £0.5.\n\nSending out leaflets randomly to all nearby residents\n\nexpected response rate of 1%\n\nUsing names purchased from a marketing agency\n\neach name costs £0.2\nexpected response rate of 4% by analyzing the buying behavior and demographics of current customers\n\n\nCompute the CAC for each choice.\n\n\nCode\ncost_per_random_offer &lt;- 0.5\nresponse_rate_random_offer &lt;- 0.01\n# Following the formula in the previous slide\nCAC_random_offer &lt;- cost_per_random_offer / response_rate_random_offer\nCAC_random_offer\n\n\n[1] 50\n\n\n\n\nCode\ncost_per_targeted_offer &lt;- 0.5 + 0.2 \nresponse_rate_targeted_offer &lt;- 0.04\nCAC_targeted_offer &lt;- cost_per_targeted_offer/response_rate_targeted_offer\nCAC_targeted_offer\n\n\n[1] 17.5",
     "crumbs": [
       "Lectures",
       "[Week 2] Customer Lifetime Value",
@@ -177,7 +189,7 @@
     "href": "Week2-Lecture1.html#clv-calculation",
     "title": "Class 3 Customer Lifetime Value",
     "section": "3.2 CLV: Calculation",
-    "text": "3.2 CLV: Calculation\n\\[\n\\mathrm{CLV} = - CAC + \\sum_{t=1}^{N} \\frac{g_t * r^{(t-1)}}{(1+k)^{t}},\nwhere \\space g_t = M_t - c_t\n\\tag{1}\\]\n\n\\(r\\) is the average retention rate for one period; \\(r^{(t-1)}\\) is the cumulative retention rate in period \\(t\\).\n\\(N\\) is the number of periods over which the relationship is calculated\n\\(M_{t}\\) is the profit margin the customer generates from buying products and services in period \\(t\\)\n\\(c_{t}\\) is the expected cost of variable marketing costs or other expenses to the customer in period \\(t\\)\n\\(g_{t}\\) is the net profit the customer generates in period \\(t\\) (sometimes denoted as CF)\n\\(k\\) is the discount rate for discounting future cash flows. The discount factor \\(d = 1/(1+k)\\).",
+    "text": "3.2 CLV: Calculation\n\\[\n\\mathrm{CLV} = - CAC + \\sum_{t=1}^{N} \\frac{g_t * r^{(t-1)}}{(1+k)^{t}},\nwhere \\space g_t = M_t - c_t\n\\]\n\n\\(r\\) is the average retention rate for one period; \\(r^{(t-1)}\\) is the cumulative retention rate in period \\(t\\)\n\\(N\\) is the number of periods over which the relationship is calculated\n\\(M_{t}\\) is the profit margin the customer generates from buying products and services in period \\(t\\)\n\\(c_{t}\\) is the expected cost of variable marketing costs or other expenses to the customer in period \\(t\\)\n\\(g_t\\) is the net profit the customer generates in period \\(t\\) (sometimes denoted as CF)\n\\(k\\) is the discount rate for discounting future cash flows. The discount factor \\(d = 1/(1+k)\\).",
     "crumbs": [
       "Lectures",
       "[Week 2] Customer Lifetime Value",
@@ -189,7 +201,7 @@
     "href": "Week2-Lecture1.html#retention-rate",
     "title": "Class 3 Customer Lifetime Value",
     "section": "3.3 Retention Rate",
-    "text": "3.3 Retention Rate\n\nThe churn rate, also known as the rate of attrition or rate of customer churn, is the rate (probability) at which customers stop doing business with the company. Sometimes we also use the term retention rate: retention rate = 1 - churn rate\n\nThe aggregate churn rate can be calculated as the number of customers lost during a certain time period divided by the number of customers at the beginning of that time period.\nThe individual churn rate: machine learning models to predict the churn rate of an individual customer (Week 5).\n\nAssumptions in the CLV formula in Equation 1:\n\nThe retention rate is constant over time.\nThe first period retention rate is 100% (all customers stay with us after the first period).",
+    "text": "3.3 Retention Rate\n\nThe churn rate, also known as the rate of attrition or rate of customer churn, is the rate (probability) at which customers stop doing business with the company. Sometimes we also use the term retention rate: retention rate = 1 - churn rate\n\nThe aggregate churn rate can be calculated as the number of customers lost during a certain time period divided by the number of customers at the beginning of that time period.\nThe individual churn rate: machine learning models to predict the churn rate of an individual customer (Week 5).\n\nAssumptions in the CLV formula\n\nThe retention rate is constant over time.\nThe first period retention rate is 100% (all customers stay with us after the first period).",
     "crumbs": [
       "Lectures",
       "[Week 2] Customer Lifetime Value",
@@ -285,7 +297,7 @@
     "href": "Week2-Lecture2.html#marketing-funnel-for-paid-search-ads",
     "title": "Class 4: (Case Study) CLV Analysis for M&S’s Delivery Pass",
     "section": "2.3 Marketing Funnel for Paid Search Ads",
-    "text": "2.3 Marketing Funnel for Paid Search Ads\nA marketing funnel is a model that represents the customer’s journey from the initial awareness of a product or service to the ultimate purchase. This journey is depicted as a funnel to illustrate the decrease in the number of potential customers at each stage.\n\n\n\n\n\n\n\n\n\nCAC Part I: Costs of paid search ads to get 1 new member.\n\n[…] about 10% of customers who click on an ad on search engine or social medias will sign up for a free trial (i.e., triers); triers will on average shop twice during the trial period. 20% of those trial users will eventually become paying customers.\n\n\nWe think from the bottom up. To get 1 new member, how many triers do we need?\n\n\n\nCode\n# clicker_to_trier_rate is the % of trier customers from clickers\ntrier_to_member_rate &lt;-\n\n\n\nTo get 1 trier, how many clickers do we need?\n\n\n\nCode\n# trier_to_member_rate is the % of a new member from triers\nclicker_to_trier_rate &lt;-\n\n\n\nHow many clickers are needed to get 1 trier and eventually convert 1 new member?\n\n\n\nCode\nn_clickers_for_1newmember &lt;- (1 / clicker_to_trier_rate) * (1 / trier_to_member_rate)\n\n\n\nNow, let’s calculate the total cost of acquiring 1 new member by multiplying the number of clickers needed by the cost per click.\n\n\n\nCode\ntotal_cost_clicks &lt;- 0.4 * n_clickers_for_1newmember",
+    "text": "2.3 Marketing Funnel for Paid Search Ads\nA marketing funnel is a model that represents the customer’s journey from the initial awareness of a product or service to the ultimate purchase. This journey is depicted as a funnel to illustrate the decrease in the number of potential customers at each stage.\n\n\n\n\n\n\n\n\n\nCAC Part I: Costs of paid search ads to get 1 new member.\n\n[…] about 10% of customers who click on an ad on search engine or social media will sign up for a free trial (i.e., triers); triers will on average shop twice during the trial period. 20% of those trial users will eventually become paying customers.\n\n\nWe think from the bottom up. To get 1 new member, how many triers do we need?\n\n\n\nCode\n# clicker_to_trier_rate is the % of trier customers from clickers\ntrier_to_member_rate &lt;-\n\n\n\nTo get 1 trier, how many clickers do we need?\n\n\n\nCode\n# trier_to_member_rate is the % of a new member from triers\nclicker_to_trier_rate &lt;-\n\n\n\nHow many clickers are needed to get 1 trier and eventually convert 1 new member?\n\n\n\nCode\nn_clickers_for_1newmember &lt;- (1 / clicker_to_trier_rate) * (1 / trier_to_member_rate)\n\n\n\nNow, let’s calculate the total cost of acquiring 1 new member by multiplying the number of clickers needed by the cost per click.\n\n\n\nCode\ntotal_cost_clicks &lt;- 0.4 * n_clickers_for_1newmember",
     "crumbs": [
       "Lectures",
       "[Week 2] Customer Lifetime Value",
@@ -441,7 +453,7 @@
     "href": "Week2-Lecture2.html#scenario",
     "title": "Class 4: (Case Study) CLV Analysis for M&S’s Delivery Pass",
     "section": "4.2 Scenario",
-    "text": "4.2 Scenario\n\nIf M&S decides to reduce the pass price to £79 per year, then the retention rate to 75%\nWe can write down an R user-defined function to solve the question.",
+    "text": "4.2 Scenario\n\nIf M&S decides to reduce the pass price to £79 per year, then the retention rate will increase to 75%\nWe can write down an R user-defined function to solve the question.",
     "crumbs": [
       "Lectures",
       "[Week 2] Customer Lifetime Value",
@@ -453,7 +465,7 @@
     "href": "Week2-Lecture2.html#after-class",
     "title": "Class 4: (Case Study) CLV Analysis for M&S’s Delivery Pass",
     "section": "4.3 After-class",
-    "text": "4.3 After-class\n\n(To guide customer acquisition) What if the company only offers $5 for first time purchase? This will save some CAC but the clicker-to-trier rate will decrease to 5%. Please compute the new CLV. Should you go ahead with the proposed change?\n(To guide customer retention) What if the company increases the annual membership fee to $119? This will increase revenue from memberships but will also make some customers unhappy so their retention rate reduce to 55%. Please compute the new CLV. Should you go ahead with the proposed change?",
+    "text": "4.3 After-class\n\n(To guide customer acquisition) What if the company only offers £5 for first time purchase? This will save some CAC but the clicker-to-trier rate will decrease to 5%. Please compute the new CLV. Should you go ahead with the proposed change?\n(To guide customer retention) What if the company increases the annual membership fee to $119? This will increase revenue from memberships but will also make some customers unhappy so their retention rate reduce to 55%. Please compute the new CLV. Should you go ahead with the proposed change?",
     "crumbs": [
       "Lectures",
       "[Week 2] Customer Lifetime Value",
