@@ -81,7 +81,7 @@
     "href": "Week2-Lecture1.html",
     "title": "Class 3 Customer Lifetime Value",
     "section": "",
-    "text": "Understand the concept of customer-centric marketing and customer lifecycle\nUnderstand the concept of customer acquisition cost (CAC) and how to compute it with R\nUnderstand the concept of Customer Lifetime Value (CLV) and how to compute it with R\n\n\n\n\n\nIn the past, companies focused on product-centric marketing, while ignoring the long-term relationship with customers.\n\nProduct-centric marketing: focus on the promotion of a specific product or service\n\nCustomer-centric marketing is a strategy that places the individual customer at the center of marketing design and delivery.\n\nAcquisition: Persuade a prospect customer to purchase for the first time\nDevelopment: Increase the customer’s value by upselling higher-margin products or cross-selling complementary products and services\nRetention: keep the customer loyal to the brand\n\n\n\n\n\n\n\n\n\n\n\nCustomer Life Cycle",
+    "text": "Understand the concept of customer-centric marketing and customer lifecycle\nUnderstand the concept of customer acquisition cost (CAC) and how to compute it with R\nUnderstand the concept of Customer Lifetime Value (CLV) and how to compute it with R\n\n\n\n\n\nIn the past, companies focused on product-centric marketing, while ignoring the long-term relationship with customers.\n\nProduct-centric marketing: focus on the promotion of a specific product or service\n\nCustomer-centric marketing is a strategy that places the individual customer at the center of marketing design and delivery.\n\n\n\n\n\nThe customer life cycle is a term used to describe the progression of steps a customer goes through when considering, purchasing, using, and maintaining loyalty to a firm.\n\nAcquisition: Persuade a prospect customer to purchase for the first time\nDevelopment: Increase the customer’s value by upselling higher-margin products or cross-selling complementary products and services\nRetention: keep the customer loyal to the brand\n\n\n\n\n\n\n\n\n\n\n\nCustomer Life Cycle",
     "crumbs": [
       "Lectures",
       "[Week 2] Customer Lifetime Value",
@@ -105,7 +105,19 @@
     "href": "Week2-Lecture1.html#from-product-centric-to-customer-centric-marketing",
     "title": "Class 3 Customer Lifetime Value",
     "section": "",
-    "text": "In the past, companies focused on product-centric marketing, while ignoring the long-term relationship with customers.\n\nProduct-centric marketing: focus on the promotion of a specific product or service\n\nCustomer-centric marketing is a strategy that places the individual customer at the center of marketing design and delivery.\n\nAcquisition: Persuade a prospect customer to purchase for the first time\nDevelopment: Increase the customer’s value by upselling higher-margin products or cross-selling complementary products and services\nRetention: keep the customer loyal to the brand\n\n\n\n\n\n\n\n\n\n\n\nCustomer Life Cycle",
+    "text": "In the past, companies focused on product-centric marketing, while ignoring the long-term relationship with customers.\n\nProduct-centric marketing: focus on the promotion of a specific product or service\n\nCustomer-centric marketing is a strategy that places the individual customer at the center of marketing design and delivery.",
+    "crumbs": [
+      "Lectures",
+      "[Week 2] Customer Lifetime Value",
+      "Lecture 1: Customer Lifetime Value"
+    ]
+  },
+  {
+    "objectID": "Week2-Lecture1.html#customer-life-cycle-1",
+    "href": "Week2-Lecture1.html#customer-life-cycle-1",
+    "title": "Class 3 Customer Lifetime Value",
+    "section": "",
+    "text": "The customer life cycle is a term used to describe the progression of steps a customer goes through when considering, purchasing, using, and maintaining loyalty to a firm.\n\nAcquisition: Persuade a prospect customer to purchase for the first time\nDevelopment: Increase the customer’s value by upselling higher-margin products or cross-selling complementary products and services\nRetention: keep the customer loyal to the brand\n\n\n\n\n\n\n\n\n\n\n\nCustomer Life Cycle",
     "crumbs": [
       "Lectures",
       "[Week 2] Customer Lifetime Value",
