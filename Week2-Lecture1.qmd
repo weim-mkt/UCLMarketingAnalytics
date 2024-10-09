@@ -22,6 +22,10 @@ title: "Class 3 Customer Lifetime Value"
     - **Product-centric marketing**: focus on the promotion of a specific product or service
 
 - **Customer-centric marketing** is a strategy that places the individual customer at the center of marketing design and delivery.
+
+## Customer Life Cycle
+
+- The **customer life cycle** is a term used to describe the progression of steps a customer goes through when considering, purchasing, using, and maintaining loyalty to a firm.
     - **Acquisition**: Persuade a prospect customer to purchase for the first time
     - **Development**: Increase the customer’s value by upselling higher-margin products or cross-selling complementary products and services
     - **Retention**: keep the customer loyal to the brand

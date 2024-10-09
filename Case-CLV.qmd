@@ -52,7 +52,8 @@ The following points provide some ideas why CLV can be used for enhancing a firm
 ::: callout
 **Question `r question_index<-question_index+1; question_index-1`**
 
-Are you using any grocery store's loyalty programs? Did you need to pay for the membership? Why do you think the grocery chains offer these loyalty programs?
+Are you using any grocery store's loyalty programs in the UK? Why do you think the grocery chains offer these loyalty programs at just nominal prices?
+
 :::
 ::::
 
@@ -78,7 +79,7 @@ In the next section, we will explore how M&S can apply CLV to its customer data 
 ::: callout
 **Question `r question_index<-question_index+1; question_index-1`**
 
-Conduct a 5C analysis for M&S. Based on the analysis
+Conduct a 5C analysis for M&S. Based on the analysis, identify key factors that may impact M&S's CLV calculation.
 :::
 ::::
 
