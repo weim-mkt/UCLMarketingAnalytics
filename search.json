@@ -85,7 +85,7 @@
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
-      "Lecture 2: (Caset Study) Descriptive Analytics for M&S"
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
     ]
   },
   {
@@ -97,7 +97,7 @@
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
-      "Lecture 2: (Caset Study) Descriptive Analytics for M&S"
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
     ]
   },
   {
@@ -109,7 +109,7 @@
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
-      "Lecture 2: (Caset Study) Descriptive Analytics for M&S"
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
     ]
   },
   {
@@ -121,31 +121,43 @@
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
-      "Lecture 2: (Caset Study) Descriptive Analytics for M&S"
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+    ]
+  },
+  {
+    "objectID": "Week3-Lecture2.html#example-of-descriptive-analytics-dashboard",
+    "href": "Week3-Lecture2.html#example-of-descriptive-analytics-dashboard",
+    "title": "Class 6 Descriptive Analytics for M&S",
+    "section": "2.2 Example of Descriptive Analytics Dashboard",
+    "text": "2.2 Example of Descriptive Analytics Dashboard",
+    "crumbs": [
+      "Lectures",
+      "[Week 3] Data Wrangling and Descriptive Analytics",
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
     ]
   },
   {
     "objectID": "Week3-Lecture2.html#summary-statistics",
     "href": "Week3-Lecture2.html#summary-statistics",
     "title": "Class 6 Descriptive Analytics for M&S",
-    "section": "2.2 Summary Statistics",
-    "text": "2.2 Summary Statistics\n\nSummary statistics are used to summarize a set of observations, in order to communicate the largest amount of information as simply as possible.\nThere are two main types of summary statistics used in evaluation:\n\nmeasures of central tendency: number of observations, mean, min, 25 percentile, median, 75 percentile, max, etc.\nmeasures of dispersion: range and standard deviation.\n\nIt’s important to include summary statistics table in your dissertation before any statistical analysis!",
+    "section": "2.3 Summary Statistics",
+    "text": "2.3 Summary Statistics\n\nSummary statistics are used to summarize a set of observations, in order to communicate the largest amount of information as simply as possible.\nThere are two main types of summary statistics used in evaluation:\n\nmeasures of central tendency: number of observations, mean, min, 25 percentile, median, 75 percentile, max, etc.\nmeasures of dispersion: range and standard deviation.\n\nIt’s important to include summary statistics table in your dissertation before any statistical analysis!",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
-      "Lecture 2: (Caset Study) Descriptive Analytics for M&S"
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
     ]
   },
   {
     "objectID": "Week3-Lecture2.html#summary-statistics-with-r",
     "href": "Week3-Lecture2.html#summary-statistics-with-r",
     "title": "Class 6 Descriptive Analytics for M&S",
-    "section": "2.3 Summary Statistics with R",
-    "text": "2.3 Summary Statistics with R\n\nIn R, a power package to report summary statistics is called modelsummary.\ndatasummary_skim() is a shortcut to conduct basic summary statistics\nFor more features, refer to the package tutorial here",
+    "section": "2.4 Summary Statistics with R",
+    "text": "2.4 Summary Statistics with R\n\nIn R, a power package to report summary statistics is called modelsummary.\ndatasummary_skim() is a shortcut to conduct basic summary statistics\nFor more features, refer to the package tutorial here\n\n\n\nCode\npacman::p_load(modelsummary)\ndata_full %&gt;%\n  datasummary_skim(type = \"numeric\")\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                 \n                Unique\n                Missing Pct.\n                Mean\n                SD\n                Min\n                Median\n                Max\n                Histogram\n              \n        \n        \n        \n                \n                  ID                 \n                  2000\n                  0\n                  5599.2 \n                  3242.0 \n                  0.0   \n                  5492.0 \n                  11191.0 \n                  \n                \n                \n                  MntWines           \n                  738 \n                  0\n                  306.1  \n                  338.3  \n                  0.0   \n                  176.5  \n                  1493.0  \n                  \n                \n                \n                  MntFruits          \n                  157 \n                  0\n                  26.4   \n                  39.9   \n                  0.0   \n                  8.0    \n                  199.0   \n                  \n                \n                \n                  MntMeatProducts    \n                  532 \n                  0\n                  167.9  \n                  225.3  \n                  0.0   \n                  68.0   \n                  1725.0  \n                  \n                \n                \n                  MntFishProducts    \n                  179 \n                  0\n                  37.6   \n                  54.6   \n                  0.0   \n                  12.0   \n                  259.0   \n                  \n                \n                \n                  MntSweetProducts   \n                  175 \n                  0\n                  27.5   \n                  41.8   \n                  0.0   \n                  8.0    \n                  263.0   \n                  \n                \n                \n                  MntGoldProds       \n                  207 \n                  0\n                  43.8   \n                  51.7   \n                  0.0   \n                  24.0   \n                  362.0   \n                  \n                \n                \n                  NumDealsPurchases  \n                  15  \n                  0\n                  2.3    \n                  2.0    \n                  0.0   \n                  2.0    \n                  15.0    \n                  \n                \n                \n                  NumWebPurchases    \n                  15  \n                  0\n                  4.1    \n                  2.8    \n                  0.0   \n                  4.0    \n                  27.0    \n                  \n                \n                \n                  NumCatalogPurchases\n                  14  \n                  0\n                  2.7    \n                  3.0    \n                  0.0   \n                  2.0    \n                  28.0    \n                  \n                \n                \n                  NumStorePurchases  \n                  14  \n                  0\n                  5.8    \n                  3.3    \n                  0.0   \n                  5.0    \n                  13.0    \n                  \n                \n                \n                  NumWebVisitsMonth  \n                  15  \n                  0\n                  5.3    \n                  2.5    \n                  0.0   \n                  6.0    \n                  20.0    \n                  \n                \n                \n                  Complain           \n                  2   \n                  0\n                  0.0    \n                  0.1    \n                  0.0   \n                  0.0    \n                  1.0     \n                  \n                \n                \n                  Response           \n                  2   \n                  0\n                  0.2    \n                  0.4    \n                  0.0   \n                  0.0    \n                  1.0     \n                  \n                \n                \n                  Year_Birth         \n                  59  \n                  0\n                  1968.8 \n                  12.0   \n                  1893.0\n                  1970.0 \n                  1996.0  \n                  \n                \n                \n                  Income             \n                  1783\n                  1\n                  52139.7\n                  21492.4\n                  1730.0\n                  51518.0\n                  162397.0\n                  \n                \n                \n                  Kidhome            \n                  3   \n                  0\n                  0.4    \n                  0.5    \n                  0.0   \n                  0.0    \n                  2.0     \n                  \n                \n                \n                  Teenhome           \n                  3   \n                  0\n                  0.5    \n                  0.5    \n                  0.0   \n                  0.0    \n                  2.0     \n                  \n                \n                \n                  Recency            \n                  100 \n                  0\n                  49.2   \n                  29.0   \n                  0.0   \n                  50.0   \n                  99.0    \n                  \n                \n        \n      \n    \n\n\n\nCode\ndata_full %&gt;%\n  datasummary_skim(type = \"categorical\")\n\n\nWarning: These variables were omitted because they include more than 50 levels:\nDt_Customer.\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                 \n                  \n                N\n                %\n              \n        \n        \n        \n                \n                  Education     \n                  2n Cycle  \n                  185\n                  9.2 \n                \n                \n                                \n                  Basic     \n                  43 \n                  2.1 \n                \n                \n                                \n                  Graduation\n                  992\n                  49.6\n                \n                \n                                \n                  Master    \n                  327\n                  16.4\n                \n                \n                                \n                  PhD       \n                  453\n                  22.6\n                \n                \n                  Marital_Status\n                  Alone     \n                  3  \n                  0.1 \n                \n                \n                                \n                  Divorced  \n                  206\n                  10.3\n                \n                \n                                \n                  Married   \n                  767\n                  38.4\n                \n                \n                                \n                  Single    \n                  436\n                  21.8\n                \n                \n                                \n                  Together  \n                  521\n                  26.0\n                \n                \n                                \n                  Widow     \n                  67 \n                  3.4",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
-      "Lecture 2: (Caset Study) Descriptive Analytics for M&S"
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
     ]
   },
   {
@@ -2535,7 +2547,7 @@
     "href": "Week3-Lecture1.html",
     "title": "Class 5 Data Wrangling with R",
     "section": "",
-    "text": "Understand the major steps to conduct data analytics. We will use improve the marketing efficiency for the M&S case study as an example.\nData collection: Learn how to collect first-hand survey data and how to load second-hand data into R\nData cleaning: Learn how to use the dplyr package to clean data\nData analysis: Learn how to conduct descriptive analytics for the M&S case study",
+    "text": "Understand the major steps to conduct data analytics. We will use improve the marketing efficiency for the M&S case study as an example.\nData collection: Learn how to collect first-hand survey data and how to load second-hand data into R\nData cleaning: Learn how to use the dplyr package to clean data\nData analysis: Learn how to conduct descriptive analytics for the M&S case study\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOur project for M&S in Weeks 3-5: Help M&S to improve marketing efficiency by improving its ROI on its targeted marketing offers. The project will involve data collection, data cleaning, and data analysis, including both descriptive and prescriptive analytics, to identify the most profitable customers and develop a personalized marketing targeting strategy.\n\n\n\n\nBurberry provides relevant product recommendations on Burberry.com to facilitate in-session product exploration and to create a more personalised user experience. This project is to develop a new product recommendation system that tailors suggestions to individual users based on their product selections and preferences.\nThe AXA project will explore fraud detection approaches using unsupervised ML including models such as isolation forests. The candidate will develop an understanding of the business problem and our data, formulating hypotheses and testing them. They will build, evaluate, and interpret their ML models.\nAt Waitrose, it’s crucial to balance product availability with minimizing waste by understanding sales rates. Factors like product shelf life, varying sales velocities, promotions, and unexpected trends make it challenging to find a one-size-fits-all solution. Current manual forecasting introduces inaccuracies and process delays. We aim to develop a machine learning algorithm to generate daily product forecasts, integrate with our stock management system, and enable automated, accurate forecasting.",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2555,11 +2567,11 @@
     ]
   },
   {
-    "objectID": "Week3-Lecture1.html#overview-1",
-    "href": "Week3-Lecture1.html#overview-1",
+    "objectID": "Week3-Lecture1.html#business-objective-our-business-question-in-weeks-3---5",
+    "href": "Week3-Lecture1.html#business-objective-our-business-question-in-weeks-3---5",
     "title": "Class 5 Data Wrangling with R",
-    "section": "2.1 Overview",
-    "text": "2.1 Overview",
+    "section": "",
+    "text": "Our project for M&S in Weeks 3-5: Help M&S to improve marketing efficiency by improving its ROI on its targeted marketing offers. The project will involve data collection, data cleaning, and data analysis, including both descriptive and prescriptive analytics, to identify the most profitable customers and develop a personalized marketing targeting strategy.",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2567,11 +2579,11 @@
     ]
   },
   {
-    "objectID": "Week3-Lecture1.html#our-business-question-in-weeks-2---4",
-    "href": "Week3-Lecture1.html#our-business-question-in-weeks-2---4",
+    "objectID": "Week3-Lecture1.html#business-objective-example-dissertation-projects-in-term-3",
+    "href": "Week3-Lecture1.html#business-objective-example-dissertation-projects-in-term-3",
     "title": "Class 5 Data Wrangling with R",
-    "section": "2.2 Our Business Question in Weeks 2 - 4",
-    "text": "2.2 Our Business Question in Weeks 2 - 4\nOur project for M&S in Weeks 3-5: Help M&S to improve marketing efficiency by improving its ROI on its targeted marketing offers. The project will involve data collection, data cleaning, and data analysis, including both descriptive and prescriptive analytics, to identify the most profitable customers and develop a personalized marketing targeting strategy.",
+    "section": "",
+    "text": "Burberry provides relevant product recommendations on Burberry.com to facilitate in-session product exploration and to create a more personalised user experience. This project is to develop a new product recommendation system that tailors suggestions to individual users based on their product selections and preferences.\nThe AXA project will explore fraud detection approaches using unsupervised ML including models such as isolation forests. The candidate will develop an understanding of the business problem and our data, formulating hypotheses and testing them. They will build, evaluate, and interpret their ML models.\nAt Waitrose, it’s crucial to balance product availability with minimizing waste by understanding sales rates. Factors like product shelf life, varying sales velocities, promotions, and unexpected trends make it challenging to find a one-size-fits-all solution. Current manual forecasting introduces inaccuracies and process delays. We aim to develop a machine learning algorithm to generate daily product forecasts, integrate with our stock management system, and enable automated, accurate forecasting.",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2579,11 +2591,11 @@
     ]
   },
   {
-    "objectID": "Week3-Lecture1.html#example-dissertation-projects-in-term-3",
-    "href": "Week3-Lecture1.html#example-dissertation-projects-in-term-3",
+    "objectID": "Week3-Lecture1.html#types-of-data-by-source",
+    "href": "Week3-Lecture1.html#types-of-data-by-source",
     "title": "Class 5 Data Wrangling with R",
-    "section": "2.3 Example Dissertation Projects in Term 3",
-    "text": "2.3 Example Dissertation Projects in Term 3\n\nBurberry provides relevant product recommendations on Burberry.com to facilitate in-session product exploration and to create a more personalised user experience. This project is to develop a new product recommendation system that tailors suggestions to individual users based on their product selections and preferences.\nThe AXA project will explore fraud detection approaches using unsupervised ML including models such as isolation forests. The candidate will develop an understanding of the business problem and our data, formulating hypotheses and testing them. They will build, evaluate, and interpret their ML models.\nAt Waitrose, it’s crucial to balance product availability with minimizing waste by understanding sales rates. Factors like product shelf life, varying sales velocities, promotions, and unexpected trends make it challenging to find a one-size-fits-all solution. Current manual forecasting introduces inaccuracies and process delays. We aim to develop a machine learning algorithm to generate daily product forecasts, integrate with our stock management system, and enable automated, accurate forecasting.",
+    "section": "2.1 Types of Data by Source",
+    "text": "2.1 Types of Data by Source\n\nPrimary Data: Data that are generated by the data analyst through surveys, interviews, experiments, specially designed for understanding and solving the research problem at hand.\nSecondary Data: Existing data generated by the company’s or consumer’s past activities, as part of organizational record keeping.\n\n\n\n\n\n\n\n\n\nBasis for Comparison\nPrimary Data\nSecondary Data\n\n\n\n\nMeaning\nPrimary data refers to the first-hand data gathered by the analyst.\nSecondary data means data collected by someone else earlier (usually by the company).\n\n\nData\nNew data\nHistorical data in the past\n\n\nSource\nSurveys, observations, experiments, questionnaire, personal interviews, etc.\nCompany databases, government publications, websites, books, journal articles, internal records, etc.\n\n\nCost\nExpensive; Very involved and costly\nEconomical; Quick and easy\n\n\nCollection time\nLong\nShort\n\n\nSpecific\nAlways specific to the researcher’s needs.\nMay or may not be specific to the researcher’s needs.",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2591,11 +2603,11 @@
     ]
   },
   {
-    "objectID": "Week3-Lecture1.html#collect-data-types-of-data",
-    "href": "Week3-Lecture1.html#collect-data-types-of-data",
+    "objectID": "Week3-Lecture1.html#types-of-data-by-structure",
+    "href": "Week3-Lecture1.html#types-of-data-by-structure",
     "title": "Class 5 Data Wrangling with R",
-    "section": "3.1 Collect Data: Types of Data",
-    "text": "3.1 Collect Data: Types of Data\n\nPrimary Data: Data that are generated by the data analyst through surveys, interviews, experiments, specially designed for understanding and solving the research problem at hand.\nSecondary Data: Existing data generated by the company’s or consumer’s past activities, as part of organizational record keeping.\n\n\n\n\n\n\n\n\n\nBasis for Comparison\nPrimary Data\nSecondary Data\n\n\n\n\nMeaning\nPrimary data refers to the first-hand data gathered by the analyst.\nSecondary data means data collected by someone else earlier (usually by the company).\n\n\nData\nNew data\nHistorical data in the past\n\n\nSource\nSurveys, observations, experiments, questionnaire, personal interviews, etc.\nCompany databases, government publications, websites, books, journal articles, internal records, etc.\n\n\nCost\nExpensive; Very involved and costly\nEconomical; Quick and easy\n\n\nCollection time\nLong\nShort\n\n\nSpecific\nAlways specific to the researcher’s needs.\nMay or may not be specific to the researcher’s needs.",
+    "section": "2.2 Types of Data by Structure",
+    "text": "2.2 Types of Data by Structure\n\nWe often consider 2 dimensions of a dataset: unit and time.\n\nCross-sectional data: data collected at a single point in time.\nLongitudinal data: data collected over time but may not contain the same individuals.\nPanel data: data collected over time and contain the same individuals.",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2603,11 +2615,11 @@
     ]
   },
   {
-    "objectID": "Week3-Lecture1.html#collect-data-marketing-surveys",
-    "href": "Week3-Lecture1.html#collect-data-marketing-surveys",
+    "objectID": "Week3-Lecture1.html#primary-data-marketing-surveys",
+    "href": "Week3-Lecture1.html#primary-data-marketing-surveys",
     "title": "Class 5 Data Wrangling with R",
-    "section": "3.2 Collect Data: Marketing Surveys",
-    "text": "3.2 Collect Data: Marketing Surveys\n\nA marketing survey is often the easiest and most cost-effective way to collect primary data. We often collect the following variables:\n\ndemographics: gender, age, income, education, etc., helps to segment customers\npurchase intention: how likely a customer will buy a product, helps to predict sales\nwillingness to pay: how much a customer is willing to pay for a product, helps to set the price\nshopping basket: what products a customer usually buys, helps to cross-sell\nshare of wallet: how much a customer spends on a product category, helps to identify the high-potential customers for market penetration\n\nLet’s see an example of how to design a marketing survey! You can design surveys to collect data for your term 1 projects or term 3 dissertation.\nThe quick start guide on how to conduct market research surveys",
+    "section": "2.3 Primary Data: Marketing Surveys",
+    "text": "2.3 Primary Data: Marketing Surveys\n\nA marketing survey is often the easiest and most cost-effective way to collect primary data. We often collect the following variables:\n\npurchase intention: how likely a customer will buy a product, helps to predict sales\nwillingness to pay: how much a customer is willing to pay for a product, helps to set the optimal price\nshopping basket: what products a customer usually buys, helps to cross-sell\nshare of wallet: how much a customer spends on a product category, helps to identify the high-potential customers for market penetration\ndemographics: gender, age, income, education, etc., helps to segment customers\n\nLet’s see an example in Mentimeter of how to design a marketing survey!\nYou can design surveys to collect data for your term 1 projects or term 3 dissertation.\n\nThe quick start guide on how to conduct market research surveys",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2618,8 +2630,8 @@
     "objectID": "Week3-Lecture1.html#limitation-of-marketing-surveys",
     "href": "Week3-Lecture1.html#limitation-of-marketing-surveys",
     "title": "Class 5 Data Wrangling with R",
-    "section": "3.3 Limitation of Marketing Surveys",
-    "text": "3.3 Limitation of Marketing Surveys\n\nSampling Bias: The sample may not be representative of the customer population.\nHawthorne Effect and Response Bias: Participants may answer in ways they think are socially desirable or expected, rather than their true feelings or behavior.\nFatigue: Long surveys may lead to respondent fatigue, causing rushed or careless answers toward the end. Do not ask too many questions!",
+    "section": "2.4 Limitation of Marketing Surveys",
+    "text": "2.4 Limitation of Marketing Surveys\n\nHawthorne Effect and Response Bias: Participants may answer in ways they think are socially desirable or expected, rather than their true feelings or behavior.\nSampling Bias: The sample may not be representative of the customer population.\nFatigue: Long surveys may lead to respondent fatigue, causing rushed or careless answers toward the end. Do not ask too many questions!",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2630,8 +2642,8 @@
     "objectID": "Week3-Lecture1.html#data-frame-basics",
     "href": "Week3-Lecture1.html#data-frame-basics",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.1 Data Frame Basics",
-    "text": "4.1 Data Frame Basics\n\nData Frame is the R object that we will deal with most of the time in the MSc program. You can think of data.frame as an Excel spreadsheet.\nEach row stands for an observation; usually a record for a customer\nEach column stands for a variable; each column should have a unique name.\nEach column must contain the same data type, but the different columns can store different data types.",
+    "section": "3.1 Data Frame Basics",
+    "text": "3.1 Data Frame Basics\n\nData Frame is the R object that we will deal with most of the time in the MSc program. You can think of data.frame as an Excel spreadsheet.\n\nEach row stands for an observation; usually a record for a customer\nEach column stands for a variable; each column should have a unique name.\nEach column must contain the same data type, but the different columns can store different data types.",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2642,8 +2654,8 @@
     "objectID": "Week3-Lecture1.html#install-and-load-the-dplyr-package",
     "href": "Week3-Lecture1.html#install-and-load-the-dplyr-package",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.2 Install and Load the dplyr package",
-    "text": "4.2 Install and Load the dplyr package\n\nIn R, we will be using the dplyr package for data cleaning and manipulation.1\n\n\n\nCode\npacman::p_load(dplyr)\n\n\n\nLoad a csv format dataset called data_full using read.csv()\n\n\n\nCode\ndata_full &lt;- read.csv(\"https://www.dropbox.com/scl/fi/2q7ppqtyca0pd3j486osl/data_full.csv?rlkey=gsyk51q27vd1skek4qpn5ikgm&dl=1\")\n\n\n\nTo browse the whole dataset, we can simply click the dataset in the environment",
+    "section": "3.2 Install and Load the dplyr package",
+    "text": "3.2 Install and Load the dplyr package\n\nIn R, we use the dplyr package for data cleaning and manipulation.1\n\n\n\nCode\npacman::p_load(dplyr)\n\n\n\nLoad a csv format dataset called data_full using read.csv()\n\n\n\nCode\ndata_full &lt;- read.csv(\"https://www.dropbox.com/scl/fi/2q7ppqtyca0pd3j486osl/data_full.csv?rlkey=gsyk51q27vd1skek4qpn5ikgm&dl=1\")\n\n\n\nTo browse the whole dataset, we can simply click the dataset in the environment",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2654,8 +2666,8 @@
     "objectID": "Week3-Lecture1.html#first-look-at-the-dataset",
     "href": "Week3-Lecture1.html#first-look-at-the-dataset",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.3 First Look at the Dataset",
-    "text": "4.3 First Look at the Dataset\n\nWhat variables do the data have? The data types of each variable?\n\n\n\nCode\nstr(data_full)\n\n\n'data.frame':   2000 obs. of  22 variables:\n $ ID                 : int  5524 2174 4141 6182 5324 7446 965 6177 4855 5899 ...\n $ MntWines           : int  635 11 426 11 173 520 235 76 14 28 ...\n $ MntFruits          : int  88 1 49 4 43 42 65 10 0 0 ...\n $ MntMeatProducts    : int  546 6 127 20 118 98 164 56 24 6 ...\n $ MntFishProducts    : int  172 2 111 10 46 0 50 3 3 1 ...\n $ MntSweetProducts   : int  88 1 21 3 27 42 49 1 3 1 ...\n $ MntGoldProds       : int  88 6 42 5 15 14 27 23 2 13 ...\n $ NumDealsPurchases  : int  3 2 1 2 5 2 4 2 1 1 ...\n $ NumWebPurchases    : int  8 1 8 2 5 6 7 4 3 1 ...\n $ NumCatalogPurchases: int  10 1 2 0 3 4 3 0 0 0 ...\n $ NumStorePurchases  : int  4 2 10 4 6 10 7 4 2 0 ...\n $ NumWebVisitsMonth  : int  7 5 4 6 5 6 6 8 9 20 ...\n $ Complain           : int  0 0 0 0 0 0 0 0 0 0 ...\n $ Response           : int  1 0 0 0 0 0 0 0 1 0 ...\n $ Year_Birth         : int  1957 1954 1965 1984 1981 1967 1971 1985 1974 1950 ...\n $ Education          : chr  \"Graduation\" \"Graduation\" \"Graduation\" \"Graduation\" ...\n $ Marital_Status     : chr  \"Single\" \"Single\" \"Together\" \"Together\" ...\n $ Income             : int  58138 46344 71613 26646 58293 62513 55635 33454 30351 5648 ...\n $ Kidhome            : int  0 1 0 1 1 0 0 1 1 1 ...\n $ Teenhome           : int  0 1 0 0 0 1 1 0 0 1 ...\n $ Dt_Customer        : chr  \"04/09/2012\" \"08/03/2014\" \"21/08/2013\" \"10/02/2014\" ...\n $ Recency            : int  58 38 26 26 94 16 34 32 19 68 ...",
+    "section": "3.3 First Look at the Dataset",
+    "text": "3.3 First Look at the Dataset\n\nWhat variables do the data have? The data types of each variable?\n\n\n\nCode\nstr(data_full)\n\n\n'data.frame':   2000 obs. of  22 variables:\n $ ID                 : int  5524 2174 4141 6182 5324 7446 965 6177 4855 5899 ...\n $ MntWines           : int  635 11 426 11 173 520 235 76 14 28 ...\n $ MntFruits          : int  88 1 49 4 43 42 65 10 0 0 ...\n $ MntMeatProducts    : int  546 6 127 20 118 98 164 56 24 6 ...\n $ MntFishProducts    : int  172 2 111 10 46 0 50 3 3 1 ...\n $ MntSweetProducts   : int  88 1 21 3 27 42 49 1 3 1 ...\n $ MntGoldProds       : int  88 6 42 5 15 14 27 23 2 13 ...\n $ NumDealsPurchases  : int  3 2 1 2 5 2 4 2 1 1 ...\n $ NumWebPurchases    : int  8 1 8 2 5 6 7 4 3 1 ...\n $ NumCatalogPurchases: int  10 1 2 0 3 4 3 0 0 0 ...\n $ NumStorePurchases  : int  4 2 10 4 6 10 7 4 2 0 ...\n $ NumWebVisitsMonth  : int  7 5 4 6 5 6 6 8 9 20 ...\n $ Complain           : int  0 0 0 0 0 0 0 0 0 0 ...\n $ Response           : int  1 0 0 0 0 0 0 0 1 0 ...\n $ Year_Birth         : int  1957 1954 1965 1984 1981 1967 1971 1985 1974 1950 ...\n $ Education          : chr  \"Graduation\" \"Graduation\" \"Graduation\" \"Graduation\" ...\n $ Marital_Status     : chr  \"Single\" \"Single\" \"Together\" \"Together\" ...\n $ Income             : int  58138 46344 71613 26646 58293 62513 55635 33454 30351 5648 ...\n $ Kidhome            : int  0 1 0 1 1 0 0 1 1 1 ...\n $ Teenhome           : int  0 1 0 0 0 1 1 0 0 1 ...\n $ Dt_Customer        : chr  \"04/09/2012\" \"08/03/2014\" \"21/08/2013\" \"10/02/2014\" ...\n $ Recency            : int  58 38 26 26 94 16 34 32 19 68 ...",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2666,8 +2678,8 @@
     "objectID": "Week3-Lecture1.html#common-data-wrangling-operations",
     "href": "Week3-Lecture1.html#common-data-wrangling-operations",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.4 Common Data Wrangling Operations",
-    "text": "4.4 Common Data Wrangling Operations\n\nFilter rows (filter)\nSort rows (arrange)\nSelect columns (select)\nGenerate new columns (mutate)\nGroup aggregation (group_by)\nMerge datasets (join)",
+    "section": "3.4 Common Data Wrangling Operations",
+    "text": "3.4 Common Data Wrangling Operations\n\nFilter rows (filter)\nSort rows (arrange)\nSelect columns (select)\nGenerate new columns (mutate)\nGroup aggregation (group_by)\nMerge datasets (join)",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2678,8 +2690,8 @@
     "objectID": "Week3-Lecture1.html#subset-rows-based-on-conditions-filter",
     "href": "Week3-Lecture1.html#subset-rows-based-on-conditions-filter",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.5 Subset Rows Based on Conditions: filter",
-    "text": "4.5 Subset Rows Based on Conditions: filter\n\nWe can use filter() to select rows that meet certain logical criteria.\n\n\n\n\n\n\n\n\n\n\n\nImportant: To store the generated new subset of data in RStudio, we need to assign it to a new object.\n\nExample: From data_full, find customers who are single\n\n\nCode\n# keep only single customers\nfilter(data_full, Marital_Status == \"Single\" )",
+    "section": "3.5 Subset Rows Based on Conditions: filter",
+    "text": "3.5 Subset Rows Based on Conditions: filter\n\nWe can use filter() to select rows that meet certain logical criteria.\n\n\n\n\n\n\n\n\n\n\n\nImportant: To store the generated new subset of data in RStudio, we need to assign it to a new object.\n\nExample: From data_full, find customers who are single\n\n\nCode\n# keep only single customers\nfilter(data_full, Marital_Status == \"Single\" )",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2690,8 +2702,8 @@
     "objectID": "Week3-Lecture1.html#the-pipe-operator",
     "href": "Week3-Lecture1.html#the-pipe-operator",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.6 The Pipe Operator",
-    "text": "4.6 The Pipe Operator\n\n4.6.1 Pipe Operator\n%&gt;% passes the object in front as the first argument of the subsequent function.2",
+    "section": "3.6 The Pipe Operator",
+    "text": "3.6 The Pipe Operator\n\n3.6.1 Pipe Operator\n%&gt;% passes the object in front as the first argument of the subsequent function.2",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2702,8 +2714,8 @@
     "objectID": "Week3-Lecture1.html#example-of-the-pipe-operator",
     "href": "Week3-Lecture1.html#example-of-the-pipe-operator",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.7 Example of the Pipe Operator",
-    "text": "4.7 Example of the Pipe Operator\n\n\nCode\n# without using pipe\nfilter(data_full, Marital_Status == 'Single')\n\n# with pipe \ndata_full %&gt;% filter(Marital_Status == 'Single')",
+    "section": "3.7 Example of the Pipe Operator",
+    "text": "3.7 Example of the Pipe Operator\n\n\nCode\n# without using pipe\nfilter(data_full, Marital_Status == 'Single')\n\n# with pipe \ndata_full %&gt;% filter(Marital_Status == 'Single')",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2714,8 +2726,8 @@
     "objectID": "Week3-Lecture1.html#why-do-we-need-pipe-operator-for-data-wrangling",
     "href": "Week3-Lecture1.html#why-do-we-need-pipe-operator-for-data-wrangling",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.8 Why Do We Need Pipe Operator for Data Wrangling?",
-    "text": "4.8 Why Do We Need Pipe Operator for Data Wrangling?\n\nExercise: find out single customers who have a PhD without using pipe.\n\n\n\nCode\n# based on data_full, find out customers who are single\ndata_full_single &lt;- filter(data_full, Marital_Status == 'Single')\n\n# based on data_full_single, find out customers who are single and have PhD\ndata_full_single_PhD &lt;- filter(data_full_single, Education == \"PhD\")\n\n\n\nExercise: find out single customers who have a PhD using pipe.\n\n\n\nCode\ndata_full_single_PhD &lt;- data_full %&gt;%\n  filter(Marital_Status == 'Single') %&gt;%\n  filter(Education == 'PhD')\n  \n  ## You can even continue with more filter steps with more pipe operators\n\n\n\nThe pipe works like a conveyor belt in a factory, passing the intermediate outputs from the previous data wrangling step to the next step for further processing until you finish your data wrangling task.",
+    "section": "3.8 Why Do We Need Pipe Operator for Data Wrangling?",
+    "text": "3.8 Why Do We Need Pipe Operator for Data Wrangling?\n\nExercise: find out single customers who have a PhD without using pipe.\n\n\n\nCode\n# based on data_full, find out customers who are single\ndata_full_single &lt;- filter(data_full, Marital_Status == \"Single\")\n\n# based on data_full_single, find out customers who are single and have PhD\ndata_full_single_PhD &lt;- filter(data_full_single, Education == \"PhD\")\n\n\n\nExercise: find out single customers who have a PhD using pipe.\n\n\n\nCode\ndata_full_single_PhD &lt;- data_full %&gt;%\n  filter(Marital_Status == 'Single') %&gt;%\n  filter(Education == 'PhD')\n  \n  ## You can even continue with more filter steps with more pipe operators\n\n\n\nThe pipe works like a conveyor belt in a factory, passing the intermediate outputs from the previous data wrangling step to the next step for further processing until you finish your data wrangling task.",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2726,8 +2738,8 @@
     "objectID": "Week3-Lecture1.html#sort-rows-arrange",
     "href": "Week3-Lecture1.html#sort-rows-arrange",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.9 Sort Rows: arrange",
-    "text": "4.9 Sort Rows: arrange\n\narrange() orders the rows by the values of selected columns.\n\nascending order by default; for descending order, put a minus sign in front of the variable.\nallows multiple sorting variables separated by comma.\n\nExample: sort customers based on income in descending order.\n\n\n\nCode\ndata_full %&gt;% \n  arrange(-Income) %&gt;%\n  head(10)\n\n\n\n  \n\n\n\n\nExercise: sort customers based on income in descending order and age in ascending order.",
+    "section": "3.9 Sort Rows: arrange",
+    "text": "3.9 Sort Rows: arrange\n\narrange() orders the rows by the values of selected columns.\n\nascending order by default; for descending order, put a minus sign in front of the variable.\nallows multiple sorting variables separated by comma.\n\nExample: sort customers based on income in descending order.\n\n\n\nCode\ndata_full %&gt;% \n  arrange(-Income) %&gt;%\n  head(10)\n\n\n\n  \n\n\n\n\nExercise: sort customers based on income in descending order and age in ascending order.",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2738,8 +2750,8 @@
     "objectID": "Week3-Lecture1.html#generate-new-variables-mutate",
     "href": "Week3-Lecture1.html#generate-new-variables-mutate",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.10 Generate New Variables: mutate",
-    "text": "4.10 Generate New Variables: mutate\n\nmutate() generates new variables in the dataset while preserving existing variables\nExample: create a new variable named Age from Year_Birth.\n\n\n\nCode\ndata_full %&gt;%\n  mutate(Age = 2023 - Year_Birth) %&gt;%\n  head(10)\n\n\n\n  \n\n\n\n\nExercise: create a new variable named totalkids, which is the sum of Kidhome and Teenhome.\n\n\n\nCode\ndata_full %&gt;%\n  mutate(totalkids = Kidhome + Teenhome) %&gt;%\n  head(10)",
+    "section": "3.10 Generate New Variables: mutate",
+    "text": "3.10 Generate New Variables: mutate\n\nmutate() generates new variables in the dataset while preserving existing variables\nExample: create a new variable named Age from Year_Birth.\n\n\n\nCode\ndata_full %&gt;%\n  mutate(Age = 2023 - Year_Birth) %&gt;%\n  head(10)\n\n\n\n  \n\n\n\n\nExercise: create a new variable named totalkids, which is the sum of Kidhome and Teenhome.\n\n\n\nCode\ndata_full %&gt;%\n  mutate(totalkids = Kidhome + Teenhome) %&gt;%\n  head(10)",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2750,8 +2762,8 @@
     "objectID": "Week3-Lecture1.html#aggregation-by-groups-group_by",
     "href": "Week3-Lecture1.html#aggregation-by-groups-group_by",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.11 Aggregation by Groups: group_by",
-    "text": "4.11 Aggregation by Groups: group_by\n\ngroup_by() allows us to aggregate data by group and compute statistics for each group\n\n\n\nCode\n# group by marital status\ndata_full %&gt;%\n  group_by(Marital_Status) \n\n\n\nInternally, the dataset is already grouped based on the specified variable(s).",
+    "section": "3.11 Aggregation by Groups: group_by",
+    "text": "3.11 Aggregation by Groups: group_by\n\ngroup_by() allows us to aggregate data by group and compute statistics for each group\n\n\n\nCode\n# group by marital status\ndata_full %&gt;%\n    group_by(Marital_Status) \n\n\n\nInternally, the dataset is already grouped based on the specified variable(s).",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2762,8 +2774,8 @@
     "objectID": "Week3-Lecture1.html#aggregation-by-groups-group_by-summarise",
     "href": "Week3-Lecture1.html#aggregation-by-groups-group_by-summarise",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.12 Aggregation by Groups: group_by() %>% summarise()",
-    "text": "4.12 Aggregation by Groups: group_by() %&gt;% summarise()\n\nAfter aggregating data, we can use summarise() to compute group-specific statistics for us.\n\nSimilar to mutate() in generating new variables\nDifferent from mutate() in that the new variable is computed based on groups.\n\n\n\n\nCode\n# compute the average income for each marital status group\ndata_full %&gt;%\n  group_by(Marital_Status) %&gt;% \n  summarise(avg_income = mean(Income,na.rm = T)) %&gt;%\n  ungroup()\n\n\n\nWhat if you replace summarise() with mutate()?",
+    "section": "3.12 Aggregation by Groups: group_by() %>% summarise()",
+    "text": "3.12 Aggregation by Groups: group_by() %&gt;% summarise()\n\nAfter aggregating data, we can use summarise() to compute group-specific statistics for us.\n\nSimilar to mutate() in generating new variables\nDifferent from mutate() in that the new variable is computed based on groups.\n\n\n\n\nCode\n# compute the average income for each marital status group\ndata_full %&gt;%\n  group_by(Marital_Status) %&gt;% \n  summarise(avg_income = mean(Income,na.rm = T)) %&gt;%\n  ungroup()\n\n\n\nWhat if you replace summarise() with mutate()?",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2774,8 +2786,8 @@
     "objectID": "Week3-Lecture1.html#aggregation-by-groups-group_by-multiple-groups",
     "href": "Week3-Lecture1.html#aggregation-by-groups-group_by-multiple-groups",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.13 Aggregation by Groups: group_by() Multiple Groups",
-    "text": "4.13 Aggregation by Groups: group_by() Multiple Groups\n\nWe can have multiple group variables for group_by , such as computing average income for each marital status, education combination\n\n\n\nCode\n# compute the average income for each marital, education group\ndata_full %&gt;%\n  group_by(Marital_Status,Education) %&gt;% \n  summarise(avg_income = mean(Income,na.rm = T)) %&gt;% \n  ungroup() %&gt;%\n  head(5)",
+    "section": "3.13 Aggregation by Groups: group_by() Multiple Groups",
+    "text": "3.13 Aggregation by Groups: group_by() Multiple Groups\n\nWe can have multiple group variables for group_by , such as computing average income for each marital status, education combination\n\n\n\nCode\n# compute the average income for each marital, education group\ndata_full %&gt;%\n  group_by(Marital_Status,Education) %&gt;% \n  summarise(avg_income = mean(Income,na.rm = T)) %&gt;% \n  ungroup() %&gt;%\n  head(5)",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
@@ -2786,8 +2798,8 @@
     "objectID": "Week3-Lecture1.html#after-class",
     "href": "Week3-Lecture1.html#after-class",
     "title": "Class 5 Data Wrangling with R",
-    "section": "4.14 After-Class",
-    "text": "4.14 After-Class\n\n(essential) Cheatsheet for dplyr. This cheatsheet provides a quick reference for the most commonly used functions in the dplyr package. It’s very important to familiarize yourself with these functions as you will use them a lot in your future projects.\n(optional) Complete the after-class exercise for Week 3. If you still have time, you can also complete the data camp exercise on the dplyr package. The link is here.",
+    "section": "3.14 After-Class",
+    "text": "3.14 After-Class\n\n(essential) Cheatsheet for dplyr. This cheatsheet provides a quick reference for the most commonly used functions in the dplyr package. It’s very important to familiarize yourself with these functions as you will use them a lot in your future projects.\n(optional) Complete the after-class exercise for Week 3. If you still have time, you can also complete the data camp exercise on the dplyr package. The link is here.",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
