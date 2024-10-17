@@ -1,183 +1,303 @@
 ---
 author: Dr Wei Miao
-date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(3))`"
-date-format: long
-institute: UCL School of Management
-title: "Class 7 Supervised Learning Basics"
-df-print: kable
-colorlinks: true
-code-line-numbers: true
-format:
-  html: 
-    toc: true
-    number-sections: true
-    page-layout: full
-    toc-depth: 2
-    code-line-numbers: true
-    code-copy: hover
-    suppress-bibliography: true
-  beamer: 
-    toc: false
-    toc-title: ""
-    slide-level: 2
-    section-titles: true
-    theme: Frankfurt
-    colortheme: beaver
-    fonttheme: structurebold
-    navigation: horizontal
-    tbl-colwidths: auto
-    fontsize: 9pt
-    suppress-bibliography: true
-knitr:
-  opts_chunk:
-    echo: true
-    warning: true
-    message: true
-    error: true
-execute: 
-  freeze: auto
-editor_options: 
-  chunk_output_type: inline
-bibliography: references.bib
+date: "`r (lubridate::ymd('20241002') + lubridate::dweeks(2))`"
+title: "Class 7 Customer Segmentation using Unsupervised Machine Learning"
 ---
 
-# Supervised Learning
+# Overview of Predictive Analytics
 
-## Motivation: Why Supervised Learning for Business?
+## Roadmap of Predictive Analytics
+
+-   The core of any business decision is **break-even analysis** (BEQ; NPV; CLV. Weeks 1 and 2)
+
+-   One effective way to increase firm profitability is to **reduce marketing costs**
+
+-   In Weeks 3 and 4, we will learn how to utilize **predictive analytics (i.e., machine learning models)** to reduce marketing costs and improve marketing efficiency
+
+![](images/roadmap_predictiveanalytics.png){fig-align="center" width="341"}
+
+## Types of Predictive Analytics
+
+-   Unsupervised Learning
+    -   Only observe X =\> Want to uncover unknown subgroups
+-   Supervised Learning
+    -   Observe both X and Y =\> Want to predict Y for new data
+-   Reinforcement Learning
+    -   Rewards and punishments =\> Learn the best decision rules
+    -   [Dynamic Coupon Targeting Using Batch Deep Reinforcement Learning: An Application to Livestream Shopping](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4146060)
+
+In Term 2, you will learn predictive analytics models systematically. By then, think about how those techniques can be applied back to these case studies.
+
+## Types of Predictive Analytics
+
+![](images/PredictiveAnalyticsTypes.png){fig-align="center" width="350"}
+
+## Learning Objectives
+
+-   Understand the concept of unsupervised learning and how to apply clustering analyses for customer segmentation
+
+# Segmentation with Unsupervised Learning
+
+## Customer Segmentation
+
+Segmentation is the first step in the strategy of marketing (STP), which is the process of dividing customers into meaningful groups based on any characteristics relevant to design and execution of your marketing strategy.
+
+It assumes that different customer groups offer different levels of value to the company and/or require different marketing programs to succeed with (e.g., based on different goals and needs).
+
+## Conventional Segmentation
+
+-   **Customer value segmentation** is for targeting decisions based on customers' potential long-term financial and strategic value to your company.
+
+-   **Benefit segmentation** is for positioning and marketing mix design on the basis of customer and consumer goals or usage, the needs, wants, problems and the trade-offs they are willing to make across benefits (e.g., price vs. quality).
+
+-   **Psychographic segmentation** is for positioning and marketing mix design based on the psychology of the customer and consumer, including attitudes, identity, lifestyle, personality, etc.
+
+-   **Demographic segmentation** uses variables such as age, gender, income, family life cycle, educational qualification, socio-economic status, religion, company size and income, etc. These serve as proxies for goals, preferences or psychographics, as well as to characterize segments for marketing mix decisions.
+
+Conventional segmentation methods require lots of subjective judgments. A more objective way is to "let the data speak" by using data analytics tools.
+
+## K-Means Clustering
+
+-   K-means clustering is one of the most commonly used unsupervised machine learning algorithms for partitioning a given data set into a set of *k* groups (i.e. *k* clusters), where *k* represents the number of groups pre-specified by the analyst.
+
+-   It can classify customers into multiple segments (i.e., clusters), such that customers within the same cluster are as similar as possible, whereas customers from different clusters are as dissimilar as possible. 
+
+<!-- -->
+
+-   Input: (1) customer characteristics; (2) the number of clusters
+-   Output: cluster membership of each customer
+
+## K-Means Clustering: Step 1
+
+::: columns
+::: {.column width="40%"}
+![](images/kmeans_1.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   Raw data points; each dot is a customer
+
+-   X and Y axis are customer characteristics
+
+-   Obviously there should be 2 segments
+
+-   Let's see how K-means uses a data-driven way to classify customers into 2 segments
+:::
+:::
+
+## K-Means Clustering: Step 2
+
+::: columns
+::: {.column width="40%"}
+![](images/kmeans_2.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   We specify 2 segments
+
+-   K-means initializes the process by **randomly** selecting 2 centroids[^1]
+:::
+:::
+
+[^1]: Due to this randomness, each different starting points might give different results. We need to reinitialize the process repeatedly to ensure **robustness** of results.
+
+## K-Means Clustering: Step 3
+
+::: columns
+::: {.column width="40%"}
+![](images/kmeans_3.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   K-means computes the distance of each customer to the red and blue centroids
+
+-   K-means assigns each customer to red segment or blue segment based on which centroid is closer
+:::
+:::
+
+## K-Means Clustering: Step 4
+
+::: columns
+::: {.column width="40%"}
+![](images/kmeans_4.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   K-means updates the new centroids of each segment
+
+-   The red cross and blue cross in the picture are the new centroids
+
+-   We still see some "outliers", so need to continue the algorithm
+:::
+:::
+
+## K-Means Clustering: Step 5
+
+::: columns
+::: {.column width="40%"}
+![](images/kmeans_5.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   K-means computes the distance of each customer to the red and blue centroids
+
+-   K-means updates each customer to red segment or blue segment based on which centroid is closer
+
+-   Now the outliers are correctly assigned each segment
+:::
+:::
+
+## K-Means Clustering: Step 6
+
+::: columns
+::: {.column width="50%"}
+![](images/kmeans_6.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   K-means updates the new centroid from the previous segmentation
+
+-   K-means computes the distance of each customer to the new centroids
+
+-   K-means finds that all customers are correctly segmented to nearest centroids, so no need to continue
+
+-   As the algorithm **converges**, the algorithm stops
+:::
+:::
+
+# Customer Segmentation for Tesco
+
+## Syntax of `kmeans()`
+
+1.  Decide to do customer segmentation based on *total spending* and *income*
+
+```{r}
+#| echo: false
+data_demo <- read.csv(file = "https://www.dropbox.com/s/a0v38lpydls2emy/demographics.csv?dl=1",
+                      header = T)
+
+# Load purchase history data, and call it data_purchase
+data_purchase <- read.csv(file = "https://www.dropbox.com/s/de435r8zdxydnhg/purchase.csv?dl=1" , header = T)
+pacman::p_load(dplyr)
+# left join
+data_full <- data_purchase %>%
+  left_join(data_demo, by = "ID") %>%
+  mutate(total_spending = MntFishProducts + MntFruits + MntGoldProds + MntMeatProducts + MntSweetProducts + MntWines)%>%
+  mutate(Income = replace(Income, is.na(Income), mean(Income,na.rm =T)))
+```
+
+![](images/k-means.png){fig-align="center" width="300"}
+
+-   `x`: data with selected variables to apply K-means
+-   `centers`: number of clusters
+-   `iter.max`: the maximum number of iterations allowed
+-   `nstart`: how many random sets should be chosen
+-   `algorithm`: which algorithm to choose; default often works
+-   `trace`: do you want to trace intermediate steps?
+
+## Data collection and cleaning
+
+-   Need to re-scale the two variables using `scale()`, because the two variables are of very different scales
+
+    -   **This is extremely important!**
+    -   `set.seed()` is to allow replication of results.
+    -   Refer to this data camp [tutorial](https://campus.datacamp.com/courses/sampling-in-r/introduction-to-sampling-1?ex=10) for more details.
+
+```{r}
+
+data_kmeans <- data_full%>%
+  select(Income,total_spending)%>%
+  mutate(Income = scale(Income),
+         total_spending = scale(total_spending))
+
+```
+
+## Conduct K-means clustering
+
+```{r}
+set.seed(888)
+result_kmeans <- kmeans(data_kmeans,
+                        centers = 2,
+                        nstart = 10)
+```
+
+## Examine the returned object, `result_kmeans`
 
 ::: {.content-visible when-format="html"}
-![](images/Supervised%20learning%20and%20unsupersied%20learning.png){fig-align="center" width="1000"}
+```{r}
+#| eval: true
+str(result_kmeans)
+```
 :::
 
 ::: {.content-visible when-format="beamer"}
-![](images/Supervised%20learning%20and%20unsupersied%20learning.png){fig-align="center" width="300"}
+```{r}
+#| eval: false
+str(result_kmeans)
+```
 :::
 
-## Supervised Learning
+-   `cluster`: **A vector of integers (from 1:k) indicating the cluster to which each point is allocated.**
 
--   A **supervised learning model** is used when we have one or more **explanatory variables** AND **a response variable** and we would like to learn the relationship (data generating process, or DGP) between the **explanatory** variables and the **response** variable as accurately as possible.
+-   `centers`: A matrix of cluster centers.
 
-::: {.content-visible when-format="beamer"}
-![](images/supervisedlearning.png){fig-align="center" width="200"}
-:::
+-   `totss`: The total sum of squares.
 
-::: {.content-visible when-format="html"}
-![](images/supervisedlearning.png){fig-align="center" width="400"}
-:::
+-   `withinss`: Vector of within-cluster sum of squares, one component per cluster.
 
-## Data Generating Process
+-   `tot.withinss`: Total within-cluster sum of squares, i.e. sum(withinss).
 
-$$
-Y = f(X;\theta) + \epsilon
-$$
+-   `betweenss`: The between-cluster sum of squares, i.e. \$totss-tot.withinss\$.
 
--   $f$ is the function that characterizes the true relationship between $X$ and $Y$, or DGP, which is never known to us[^1]
--   $Y$ the **response or outcome** variable to be predicted, e.g., if a customer responded to our marketing offer.
--   $X = (X_1,X_2,...,X_p)$ are a set of **explanatory variables,** sometimes called features or predictors, e.g.,
-    -   \(1\) customers' past purchase history (e.g., spending in each category, frequency of purchase, recency of purchase)
-    -   \(2\) demographic variables (e.g., gender, income, age, kids, etc.)
--   $\theta$ represents the set of **function** **parameters** to be trained
--   $\epsilon$ is the **error term**
+-   `size`: The number of points in each cluster.
 
-[^1]: "All model are wrong, but some are useful" -- George Box. As business analysts, we need to use the "wrong models" correctly.
+## Visualize the clusters
 
-## Types of Supervised Learning Algorithms
+-   We need 2 packages `cluster` and `factoextra`
 
-Depending on the type of the **response variable**, supervised learning tasks can be divided into two groups:
+-   Use function `fviz_cluster()` to generate visualizations
 
--   **Classification tasks** if the outcome is **categorical**
-    -   Whether a customer responds to marketing offers
-    -   Whether a customer churns
-    -   Which product a customer purchases
--   **Regression tasks** if the outcome is **continuous**
-    -   Customer total spending in each period
-    -   Demand forecasting such as the daily sales of a product
+```{r}
+#| out-width: "70%"
+#| fig-align: "center"
+pacman::p_load(cluster,factoextra)
+set.seed(888)
+fviz_cluster(result_kmeans,
+             data = data_kmeans)
+```
 
-## Difference between Supervised and Unsupervised Learning
+## Determine the optimal number of clusters: GAP Method
 
-::: {.content-visible when-format="beamer"}
-[![](images/SupervisedVSUnsupervised.png){fig-alt="source: Statology" fig-align="center" width="400"}](https://www.statology.org/supervised-vs-unsupervised-learning/)
-:::
+```{r}
+#| message: false
+#| warning: false
+#| cache: true
+#| out-width: "50%"
+#| fig-align: "center"
 
-::: {.content-visible when-format="html"}
-[![](images/SupervisedVSUnsupervised.png){fig-alt="source: Statology" fig-align="center"}](https://www.statology.org/supervised-vs-unsupervised-learning/)
-:::
+set.seed(888)
+gap_stat <- clusGap(data_kmeans, 
+                    FUN = kmeans,
+                    K.max = 10,
+                    B = 50)
+fviz_gap_stat(gap_stat)
+```
 
-# Fundamental Tradeoffs
+## Determine the optimal number of clusters: **Silhouette** Method
 
-## Accuracy-Interpretability Tradeoff
+```{r}
+#| out-width: "70%"
+#| fig-align: "center"
+set.seed(888)
+fviz_nbclust(data_kmeans, kmeans, method = "silhouette")
+```
 
--   Simpler models are easier to interpret but gives lower accuracy
--   Complicated models can give better prediction accuracy but results are hard to interpret
+## Business Implications
 
-::: {.content-visible when-format="beamer"}
-[![](images/AccuracyVersusInterpretability.png){fig-alt="Pichler, Maximilian & Hartig, Florian. (2022). Machine Learning and Deep Learning -- A review for Ecologists." fig-align="center" width="250"}](https://www.researchgate.net/publication/359890656_Machine_Learning_and_Deep_Learning_--_A_review_for_Ecologists)
-:::
+-   Compare the CLV in the two segments, and decide which segment to serve.
+    -   This is a general idea of segmentation and targeting using unsupervised learning
+    -   Finish this exercise after class
 
-::: {.content-hidden when-format="beamer"}
-[![](images/AccuracyVersusInterpretability.png){fig-alt="Pichler, Maximilian & Hartig, Florian. (2022). Machine Learning and Deep Learning -- A review for Ecologists." fig-align="center" width="1000"}](https://www.researchgate.net/publication/359890656_Machine_Learning_and_Deep_Learning_--_A_review_for_Ecologists)
-:::
+## After-Class Readings
 
-## Comparision of Classic Supervised Learning Models
-
--   Linear regression class models (easy to interpret, low accuracy)
-
-    -   Linear regression coefficients have economic interpretations but prediction accuracy is low
-
--   **Tree-based Models (balance between interpretability and accuracy)**
-
-    -   Decision tree, random forest
-
--   Neural-network based models (hard to interpret, high accuracy)
-
-    -   Deep learning only give estimated weights that have no direct business interpretations
-
-## Bias-Variance Tradeoff
-
--   After we have trained a machine learning model, **bias** is the prediction error of the model on the historical data; **variance** is the prediction error of the model on unseen, new data.
-
--   If a predictive model **fits** **historical data too well**, then it may not be flexible enough to accommodate future data and thus have a higher chance of failing to make predictions for new data accurately. This problem is called **overfitting**.
-
--   Overfitting leads to **low bias** but **high variance**. Hence the name bias-variance tradeoff or bias-variance dilemma.
-
-::: {.content-visible when-format="beamer"}
-![](images/overfitting.png){fig-align="center" width="150"}
-:::
-
-::: {.content-hidden when-format="beamer"}
-![](images/overfitting.png){fig-align="center" width="300"}
-:::
-
-# Overfitting and Underfitting
-
-## How to Mitigate Overfitting
-
--   To mitigate the overfitting problem, when training predictive models, we need to use the **cross-validation** technique by splitting the full **historical data** into a **training set** and a **test set**.
-    -   **A training** **set** (70% - 80% of labelled data)**:** we train the predictive model based on the training set.
-    -   **A test** **set** (20% - 30% of labelled data)**:** we pretend that we don't know the outcomes for the test set and make predictions from the predictive model. However, in fact, we do observe the actual outcomes for the test set, so that we can evaluate the prediction accuracy by comparing the predicted outcomes versus the actual outcomes.
-
-::: {.content-visible when-format="beamer"}
-![](images/trainingtest.png){fig-align="center" width="150"}
-:::
-
-::: {.content-visible when-format="html"}
-![](images/trainingtest.png){fig-align="center" width="500"}
-:::
-
--   For more complicated models with hyper-parameters such as deep learning models, we may even need to split our data into 3 sets (training, validation, and test sets).
-
-## Underfitting
-
--   **Underfitting** occurs when a predictive model cannot sufficiently capture the DGP on both historical data and new data.
-
--   Underfitting leads to **high bias** as well as **high variance**. Thus, underfitting is the worst case, which should be avoided by all means.
-
--   To mitigate the underfitting problem, we need to select more suitable models.
-
-::: {.content-visible when-format="beamer"}
-![](images/OverfittingUnderfitting.png){fig-align="center" width="300"}
-:::
-
-::: {.content-visible when-format="html"}
-![](images/OverfittingUnderfitting.png){fig-align="center" width="1000"}
-:::
+-   Useful source: [K-means Cluster Analysis](https://uc-r.github.io/kmeans_clustering)

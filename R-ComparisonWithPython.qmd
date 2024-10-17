@@ -1,6 +1,6 @@
 ---
 author: Dr Wei Miao
-date: "`r (lubridate::ymd('20240916'))`"
+date: "20240916"
 title: "Side-to-Side Comparison between R, Python, and Julia"
 date-modified: "20240916"
 date-format: long

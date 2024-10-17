@@ -193,12 +193,12 @@ You can try your best to use what we have learned in Week 1 to complete the case
 
 -   Read the case study: Preliminary Customer Analysis.
 
--   Please familiarize yourself with the variable definitions in the case study. **This is very important** as we will use the two datasets to learn data wrangling in R using the dplyr package. 
+-   Please familiarize yourself with the variable definitions in the case study. **This is very important** as we will use the dataset to learn data wrangling in R using the dplyr package. 
 
--   Open the two csv datasets (demographics.csv and purchase.csv) in Excel and inspect the data sets. Focus on the data structure, including what each row means and what each column means
+-   Open the csv file in Excel and inspect the data sets. Focus on the data structure, including what each row means and what each column means
 :::
 
-## Class 5: Data Wrangling with R: Part I
+## Class 5: Data Wrangling with R
 
 -   What you will learn
 
@@ -206,19 +206,17 @@ You can try your best to use what we have learned in Week 1 to complete the case
 
     -   How to use `filter`, `mutate`, `arrange`, and `group_by` for data manipulation with `dplyr` package in R
 
--   After-class reading and exercise
-
-    -   (essential) [Cheatsheet for `dplyr`](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
-
-    -   (optional) [Python Pandas vs. R Dplyr](R-DplyrVersusPandas). In David's class, you will learn how to use Python Pandas for data wrangling later this term. This cheat sheet provides a side-to-side comparison of the two libraries for your reference.
-
 ## Class 6: Data Wrangling for Descriptive Analytics
 
 -   What you will learn
 
-    -   How to use `dplyr` to conduct preliminary customer analyses
-    -   How to use `dplyr` to conduct RFM analysis
+    -   How to use `dplyr` to conduct preliminary customer analyses for Marks & Spencer
 
+-   After-class reading and exercise
+
+    -   (essential) [Cheatsheet for `dplyr`](https://rstudio.github.io/cheatsheets/html/data-transformation.html). This cheatsheet provides a quick reference for the most commonly used functions in the `dplyr` package. It's very important to familiarize yourself with these functions as you will use them a lot in your future projects.
+    -  (optional) Complete the after-class exercise for Week 3. If you still have time, you can also complete the data camp exercise on the dplyr package. The link is [here](https://learn.datacamp.com/courses/data-manipulation-with-dplyr-in-r).
+    
 # Week 4: Unsupervised Learning for Customer Segmentation
 
 ::: callout-important

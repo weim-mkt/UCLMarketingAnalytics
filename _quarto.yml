@@ -36,6 +36,14 @@ website:
                 text: "Case Study: CLV Analysis for M&S's Delivery Pass"
           - section: "[Week 3] Data Wrangling and Descriptive Analytics"
             contents:
+              - href: Week3-Lecture1.qmd
+                text: "Lecture 1: Data Wrangling with R"
+              - href: Week3-Lecture2.qmd
+                text: "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+              - href: Case-PreliminaryCustomerAnalysis.qmd
+                text: "Case Study: Descriptive Analytics for M&S"
+          - section: "[Week 4] Unsupervised Learning for Customer Segmentation"
+            contents:
               - LectureSlides.qmd
           - R-Exercise.qmd
       - section: "R Tutorials"
