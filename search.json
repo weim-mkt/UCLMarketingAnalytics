@@ -2739,7 +2739,7 @@
     "href": "Week3-Lecture1.html#sort-rows-arrange",
     "title": "Class 5 Data Wrangling with R",
     "section": "3.9 Sort Rows: arrange",
-    "text": "3.9 Sort Rows: arrange\n\narrange() orders the rows by the values of selected columns.\n\nascending order by default; for descending order, put a minus sign in front of the variable.\nallows multiple sorting variables separated by comma.\n\nExample: sort customers based on income in descending order.\n\n\n\nCode\ndata_full %&gt;% \n  arrange(-Income) %&gt;%\n  head(10)\n\n\n\n  \n\n\n\n\nExercise: sort customers based on income in descending order and age in ascending order.",
+    "text": "3.9 Sort Rows: arrange\n\narrange() orders the rows by the values of selected columns.\n\nascending order by default; for descending order, put a minus sign in front of the variable.\nallows multiple sorting variables separated by comma.\n\nExample: sort customers based on income in descending order.\n\n\n\nCode\ndata_full %&gt;% \n  arrange(-Income) %&gt;%\n  head(10)\n\n\n\n  \n\n\n\n\nExercise: sort customers based on income in descending order and age in ascending order.\n\n\n\nCode\ndata_full %&gt;% \n  mutate(Age = 2023 - Year_Birth) %&gt;%\n  arrange(-Income, Age) %&gt;%\n  head(10) # only show the first 10 rows using head(10)",
     "crumbs": [
       "Lectures",
       "[Week 3] Data Wrangling and Descriptive Analytics",
