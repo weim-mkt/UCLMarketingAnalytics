@@ -77,87 +77,399 @@
     ]
   },
   {
-    "objectID": "Week3-Lecture2.html",
-    "href": "Week3-Lecture2.html",
-    "title": "Class 6 Descriptive Analytics for M&S",
+    "objectID": "Week4-Lecture1.html",
+    "href": "Week4-Lecture1.html",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
     "section": "",
-    "text": "In R, missing values are represented by the symbol NA (i.e., not available).\nMost statistical models cannot handle missing values, so we need to deal with them in R.\nIf there are just a few missing values: remove them from analysis.\nIf there are many missing values: need to replace them with appropriate values:\n\nmean/median/imputation\n\n\n\n\n\n\nOutliers are data points that are significantly different from other data points in the dataset, such as unusually large and small values.\nWinsorization is a common method to deal with outliers. It replaces the extreme values with the nearest non-extreme value, usually the 99th or 1th percentile (or other thresholds as appropriate).",
+    "text": "The core of any business decision is profitability analysis (BEQ, NPV, CLV). To increase firm profitability,\n\nIncrease revenue\nReduce costs (CAC or variable marketing costs)\nReduce customer churn\n\nIn Weeks 4 and 5, we will learn how to utilize predictive analytics to improve profitability. Correspondingly,\n\nDevelop customers through ML recommender systems\nReduce costs by targeting more responsive customers\nPredict customer churn and take preventive actions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnsupervised Learning\n\nOnly observe X =&gt; Want to uncover unknown subgroups\n\nSupervised Learning\n\nObserve both X and Y =&gt; Want to predict Y for new data\n\n\nIn Term 2, you will learn predictive analytics models systematically. By then, think about how those techniques can be applied back to these case studies.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstand the concept of unsupervised learning\nUnderstand how to apply K-means clustering and find the optimal number of clusters\nHow to apply clustering analyses for customer segmentation for M&S",
     "crumbs": [
       "Lectures",
-      "[Week 3] Data Wrangling and Descriptive Analytics",
-      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
     ]
   },
   {
-    "objectID": "Week3-Lecture2.html#missing-values",
-    "href": "Week3-Lecture2.html#missing-values",
-    "title": "Class 6 Descriptive Analytics for M&S",
+    "objectID": "Week4-Lecture1.html#roadmap-for-predictive-analytics",
+    "href": "Week4-Lecture1.html#roadmap-for-predictive-analytics",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
     "section": "",
-    "text": "In R, missing values are represented by the symbol NA (i.e., not available).\nMost statistical models cannot handle missing values, so we need to deal with them in R.\nIf there are just a few missing values: remove them from analysis.\nIf there are many missing values: need to replace them with appropriate values:\n\nmean/median/imputation",
+    "text": "The core of any business decision is profitability analysis (BEQ, NPV, CLV). To increase firm profitability,\n\nIncrease revenue\nReduce costs (CAC or variable marketing costs)\nReduce customer churn\n\nIn Weeks 4 and 5, we will learn how to utilize predictive analytics to improve profitability. Correspondingly,\n\nDevelop customers through ML recommender systems\nReduce costs by targeting more responsive customers\nPredict customer churn and take preventive actions",
     "crumbs": [
       "Lectures",
-      "[Week 3] Data Wrangling and Descriptive Analytics",
-      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
     ]
   },
   {
-    "objectID": "Week3-Lecture2.html#outliers",
-    "href": "Week3-Lecture2.html#outliers",
-    "title": "Class 6 Descriptive Analytics for M&S",
+    "objectID": "Week4-Lecture1.html#types-of-predictive-analytics",
+    "href": "Week4-Lecture1.html#types-of-predictive-analytics",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
     "section": "",
-    "text": "Outliers are data points that are significantly different from other data points in the dataset, such as unusually large and small values.\nWinsorization is a common method to deal with outliers. It replaces the extreme values with the nearest non-extreme value, usually the 99th or 1th percentile (or other thresholds as appropriate).",
+    "text": "Unsupervised Learning\n\nOnly observe X =&gt; Want to uncover unknown subgroups\n\nSupervised Learning\n\nObserve both X and Y =&gt; Want to predict Y for new data\n\n\nIn Term 2, you will learn predictive analytics models systematically. By then, think about how those techniques can be applied back to these case studies.",
     "crumbs": [
       "Lectures",
-      "[Week 3] Data Wrangling and Descriptive Analytics",
-      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
     ]
   },
   {
-    "objectID": "Week3-Lecture2.html#two-major-tasks-of-descriptive-analytics",
-    "href": "Week3-Lecture2.html#two-major-tasks-of-descriptive-analytics",
-    "title": "Class 6 Descriptive Analytics for M&S",
-    "section": "2.1 Two Major Tasks of Descriptive Analytics",
-    "text": "2.1 Two Major Tasks of Descriptive Analytics\n\nYou can think of descriptive analytics as creating a dashboard to display the key information you would like to know for your business. For instance:\n\n\nDescribe data depending on your business purposes\n\n“How much do our customers spend each month on average?”\n“What percentage of our customers are unprofitable?”\n“What is the difference between the retention rates across different demographic groups?”\n\nConduct statistical tests (such as t-tests) for hypothesis testing.\n\nIs there any significant difference in the average spending between different age/gender groups?\nBased on our test mailing, can we conclude that ad-copy A works better than ad-copy B?",
+    "objectID": "Week4-Lecture1.html#learning-objectives-for-today",
+    "href": "Week4-Lecture1.html#learning-objectives-for-today",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
+    "section": "",
+    "text": "Understand the concept of unsupervised learning\nUnderstand how to apply K-means clustering and find the optimal number of clusters\nHow to apply clustering analyses for customer segmentation for M&S",
     "crumbs": [
       "Lectures",
-      "[Week 3] Data Wrangling and Descriptive Analytics",
-      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
     ]
   },
   {
-    "objectID": "Week3-Lecture2.html#example-of-descriptive-analytics-dashboard",
-    "href": "Week3-Lecture2.html#example-of-descriptive-analytics-dashboard",
-    "title": "Class 6 Descriptive Analytics for M&S",
-    "section": "2.2 Example of Descriptive Analytics Dashboard",
-    "text": "2.2 Example of Descriptive Analytics Dashboard",
+    "objectID": "Week4-Lecture1.html#k-means-clustering-1",
+    "href": "Week4-Lecture1.html#k-means-clustering-1",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
+    "section": "2.1 K-Means Clustering",
+    "text": "2.1 K-Means Clustering\n\nK-means clustering is one of the most commonly used unsupervised machine learning algorithms for partitioning a given data set into a set of k groups (i.e. k clusters), where k represents the number of groups pre-specified by the analyst.\nFor data scientists: It can classify customers into multiple segments (i.e., clusters), such that customers within the same cluster are as similar as possible, whereas customers from different clusters are as dissimilar as possible. \nInput: (1) customer characteristics; (2) the number of clusters\nOutput: cluster membership of each customer",
     "crumbs": [
       "Lectures",
-      "[Week 3] Data Wrangling and Descriptive Analytics",
-      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
     ]
   },
   {
-    "objectID": "Week3-Lecture2.html#summary-statistics",
-    "href": "Week3-Lecture2.html#summary-statistics",
-    "title": "Class 6 Descriptive Analytics for M&S",
-    "section": "2.3 Summary Statistics",
-    "text": "2.3 Summary Statistics\n\nSummary statistics are used to summarize a set of observations, in order to communicate the largest amount of information as simply as possible.\nThere are two main types of summary statistics used in evaluation:\n\nmeasures of central tendency: number of observations, mean, min, 25 percentile, median, 75 percentile, max, etc.\nmeasures of dispersion: range and standard deviation.\n\nIt’s important to include summary statistics table in your dissertation before any statistical analysis!",
+    "objectID": "Week4-Lecture1.html#similarity-and-dissimilarity",
+    "href": "Week4-Lecture1.html#similarity-and-dissimilarity",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
+    "section": "2.2 Similarity and Dissimilarity",
+    "text": "2.2 Similarity and Dissimilarity\n\nThe clustering of observations into groups requires computing the (dis)similarity between each pair of observations. The result of this computation is known as a dissimilarity or distance matrix.\nThe choice of similarity measures is a critical step in clustering.\nThe most common distance measures are the Euclidean distance (the default for K-means) and the Manhattan distance.",
     "crumbs": [
       "Lectures",
-      "[Week 3] Data Wrangling and Descriptive Analytics",
-      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
     ]
   },
   {
-    "objectID": "Week3-Lecture2.html#summary-statistics-with-r",
-    "href": "Week3-Lecture2.html#summary-statistics-with-r",
-    "title": "Class 6 Descriptive Analytics for M&S",
-    "section": "2.4 Summary Statistics with R",
-    "text": "2.4 Summary Statistics with R\n\nIn R, a power package to report summary statistics is called modelsummary.\ndatasummary_skim() is a shortcut to conduct basic summary statistics\nFor more features, refer to the package tutorial here\n\n\n\nCode\npacman::p_load(modelsummary)\ndata_full %&gt;%\n  datasummary_skim(type = \"numeric\")\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                 \n                Unique\n                Missing Pct.\n                Mean\n                SD\n                Min\n                Median\n                Max\n                Histogram\n              \n        \n        \n        \n                \n                  ID                 \n                  2000\n                  0\n                  5599.2 \n                  3242.0 \n                  0.0   \n                  5492.0 \n                  11191.0 \n                  \n                \n                \n                  MntWines           \n                  738 \n                  0\n                  306.1  \n                  338.3  \n                  0.0   \n                  176.5  \n                  1493.0  \n                  \n                \n                \n                  MntFruits          \n                  157 \n                  0\n                  26.4   \n                  39.9   \n                  0.0   \n                  8.0    \n                  199.0   \n                  \n                \n                \n                  MntMeatProducts    \n                  532 \n                  0\n                  167.9  \n                  225.3  \n                  0.0   \n                  68.0   \n                  1725.0  \n                  \n                \n                \n                  MntFishProducts    \n                  179 \n                  0\n                  37.6   \n                  54.6   \n                  0.0   \n                  12.0   \n                  259.0   \n                  \n                \n                \n                  MntSweetProducts   \n                  175 \n                  0\n                  27.5   \n                  41.8   \n                  0.0   \n                  8.0    \n                  263.0   \n                  \n                \n                \n                  MntGoldProds       \n                  207 \n                  0\n                  43.8   \n                  51.7   \n                  0.0   \n                  24.0   \n                  362.0   \n                  \n                \n                \n                  NumDealsPurchases  \n                  15  \n                  0\n                  2.3    \n                  2.0    \n                  0.0   \n                  2.0    \n                  15.0    \n                  \n                \n                \n                  NumWebPurchases    \n                  15  \n                  0\n                  4.1    \n                  2.8    \n                  0.0   \n                  4.0    \n                  27.0    \n                  \n                \n                \n                  NumCatalogPurchases\n                  14  \n                  0\n                  2.7    \n                  3.0    \n                  0.0   \n                  2.0    \n                  28.0    \n                  \n                \n                \n                  NumStorePurchases  \n                  14  \n                  0\n                  5.8    \n                  3.3    \n                  0.0   \n                  5.0    \n                  13.0    \n                  \n                \n                \n                  NumWebVisitsMonth  \n                  15  \n                  0\n                  5.3    \n                  2.5    \n                  0.0   \n                  6.0    \n                  20.0    \n                  \n                \n                \n                  Complain           \n                  2   \n                  0\n                  0.0    \n                  0.1    \n                  0.0   \n                  0.0    \n                  1.0     \n                  \n                \n                \n                  Response           \n                  2   \n                  0\n                  0.2    \n                  0.4    \n                  0.0   \n                  0.0    \n                  1.0     \n                  \n                \n                \n                  Year_Birth         \n                  59  \n                  0\n                  1968.8 \n                  12.0   \n                  1893.0\n                  1970.0 \n                  1996.0  \n                  \n                \n                \n                  Income             \n                  1783\n                  1\n                  52139.7\n                  21492.4\n                  1730.0\n                  51518.0\n                  162397.0\n                  \n                \n                \n                  Kidhome            \n                  3   \n                  0\n                  0.4    \n                  0.5    \n                  0.0   \n                  0.0    \n                  2.0     \n                  \n                \n                \n                  Teenhome           \n                  3   \n                  0\n                  0.5    \n                  0.5    \n                  0.0   \n                  0.0    \n                  2.0     \n                  \n                \n                \n                  Recency            \n                  100 \n                  0\n                  49.2   \n                  29.0   \n                  0.0   \n                  50.0   \n                  99.0    \n                  \n                \n        \n      \n    \n\n\n\nCode\ndata_full %&gt;%\n  datasummary_skim(type = \"categorical\")\n\n\nWarning: These variables were omitted because they include more than 50 levels:\nDt_Customer.\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                 \n                  \n                N\n                %\n              \n        \n        \n        \n                \n                  Education     \n                  2n Cycle  \n                  185\n                  9.2 \n                \n                \n                                \n                  Basic     \n                  43 \n                  2.1 \n                \n                \n                                \n                  Graduation\n                  992\n                  49.6\n                \n                \n                                \n                  Master    \n                  327\n                  16.4\n                \n                \n                                \n                  PhD       \n                  453\n                  22.6\n                \n                \n                  Marital_Status\n                  Alone     \n                  3  \n                  0.1 \n                \n                \n                                \n                  Divorced  \n                  206\n                  10.3\n                \n                \n                                \n                  Married   \n                  767\n                  38.4\n                \n                \n                                \n                  Single    \n                  436\n                  21.8\n                \n                \n                                \n                  Together  \n                  521\n                  26.0\n                \n                \n                                \n                  Widow     \n                  67 \n                  3.4",
+    "objectID": "Week4-Lecture1.html#euclidean-distance",
+    "href": "Week4-Lecture1.html#euclidean-distance",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
+    "section": "2.3 Euclidean Distance",
+    "text": "2.3 Euclidean Distance\n\nThe most common distance measure is the Euclidean distance. \\[\nd_{\\text{euc}}(x, y) = \\sqrt{\\sum_{i=1}^{n} (x_i - y_i)^2}\n\\]\nExample of Income and Spending for 3 customers\n\n\\(Income = (5, 10, 20)\\)\n\\(Spending = (3, 4, 12)\\)\n\nEuclidean distance\n\n\\(d_{\\text{euc}}(2, 1) = \\sqrt{(5-3)^2 + (10-4)^2} = \\sqrt{2^2 + 6^2} = \\sqrt{40}\\)\n\\(d_{\\text{euc}}(2, 3) = \\sqrt{(5-20)^2 + (10-12)^2} = \\sqrt{15^2 + 2^2} = \\sqrt{229}\\)\n\n\n\n\n\n\nCode\nIncome &lt;- c(5, 10, 20)\n\nSpending &lt;- c(3, 4, 12)\n\ndata &lt;- data.frame(Income, Spending, ID = c(\"Customer 1\", \"Customer 2\", \"Customer 3\"))\n\nggplot(data, aes(x = Income, y = Spending)) +\n    geom_point(aes(shape = ID, color = ID), size = 2.5) +\n    geom_text(aes(label = rownames(data)), vjust = -0.5) +\n    theme_stata()\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nIncome &lt;- c(5, 10, 20)\n\nSpending &lt;- c(3, 4, 12)\n\ndata &lt;- data.frame(Income, Spending, ID = c(\"Customer 1\", \"Customer 2\", \"Customer 3\"))\n\nggplot(data, aes(x = Income, y = Spending)) +\n    geom_point(aes(shape = ID, color = ID), size = 2.5) +\n    geom_text(aes(label = rownames(data)), vjust = -0.5) +\n    theme_stata() +\n    # show the Eucleadian distance between Customer 1 and Customer 2; also show the vertical and horizontal lines\n    geom_segment(aes(x = 5, y = 3, xend = 10, yend = 4), linetype = \"dashed\") +\n    geom_segment(aes(x = 5, y = 3, xend = 5, yend = 4), linetype = \"dashed\") +\n    geom_segment(aes(x = 5, y = 4, xend = 10, yend = 4), linetype = \"dashed\") +\n    geom_text(aes(x = 7.5, y = 3.5, label = \"d_euc(1, 2) = sqrt(2^2 + 6^2) = sqrt(40)\"), vjust = 1) +\n\n    # show the Eucleadian distance between Customer 2 and Customer 3; also show the vertical and horizontal lines\n    geom_segment(aes(x = 10, y = 4, xend = 20, yend = 12), linetype = \"dashed\") +\n    geom_segment(aes(x = 10, y = 4, xend = 10, yend = 12), linetype = \"dashed\") +\n    geom_segment(aes(x = 10, y = 12, xend = 20, yend = 12), linetype = \"dashed\") +\n    geom_text(aes(x = 15, y = 8, label = \"d_euc(2, 3) = sqrt(15^2 + 2^2) = sqrt(229)\"), vjust = 1)",
     "crumbs": [
       "Lectures",
-      "[Week 3] Data Wrangling and Descriptive Analytics",
-      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture1.html#manhattan-distance",
+    "href": "Week4-Lecture1.html#manhattan-distance",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
+    "section": "2.4 Manhattan Distance",
+    "text": "2.4 Manhattan Distance\n\nAnother common distance measure is the Manhattan distance, which is less commonly used because the absolute value function is not differentiable.\n\n\\[\nd_{\\text{man}}(x, y) = \\sum_{i=1}^{n} |x_i - y_i|\n\\]\n\nExample of Income and Spending for 3 customers\n\n\\(Income = c(5, 10, 20)\\)\n\\(Spending = c(3, 4, 12)\\)\n\nDistance\n\n\\(d_{\\text{man}}(2, 1) = |5-3| + |10-4| = 2 + 6 = 8\\)\n\\(d_{\\text{euc}}(2, 3) = |5-20| + |10-12| = 15 + 2 = 17\\)",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture1.html#k-means-clustering-step-1",
+    "href": "Week4-Lecture1.html#k-means-clustering-step-1",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
+    "section": "2.5 K-Means Clustering: Step 1",
+    "text": "2.5 K-Means Clustering: Step 1\n\n\n\n\n\n\n\n\n\nRaw data points; each dot is a customer\nX and Y axis are customer characteristics, say, income and spending\nObviously there should be 2 segments\nLet’s see how K-means uses a data-driven way to classify customers into 2 segments",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture1.html#k-means-clustering-step-2",
+    "href": "Week4-Lecture1.html#k-means-clustering-step-2",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
+    "section": "2.6 K-Means Clustering: Step 2",
+    "text": "2.6 K-Means Clustering: Step 2\n\n\n\n\n\n\n\n\n\nWe specify 2 segments\nK-means initializes the process by randomly selecting 2 centroids\n\n\n\nDue to this randomness, different starting points may yield varying results. We need to reinitialize the process repeatedly to ensure robustness of results.",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture1.html#k-means-clustering-step-3",
+    "href": "Week4-Lecture1.html#k-means-clustering-step-3",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
+    "section": "2.7 K-Means Clustering: Step 3",
+    "text": "2.7 K-Means Clustering: Step 3\n\n\n\n\n\n\n\n\n\nK-means computes the distance of each customer to the red and blue centroids\nK-means assigns each customer to red segment or blue segment based on which centroid is closer",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture1.html#k-means-clustering-step-4",
+    "href": "Week4-Lecture1.html#k-means-clustering-step-4",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
+    "section": "2.8 K-Means Clustering: Step 4",
+    "text": "2.8 K-Means Clustering: Step 4\n\n\n\n\n\n\n\n\n\nK-means updates the new centroids of each segment\nThe red cross and blue cross in the picture are the new centroids\nWe still see some “outliers”, so the algorithm continues",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture1.html#k-means-clustering-step-5",
+    "href": "Week4-Lecture1.html#k-means-clustering-step-5",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
+    "section": "2.9 K-Means Clustering: Step 5",
+    "text": "2.9 K-Means Clustering: Step 5\n\n\n\n\n\n\n\n\n\nK-means computes the distance of each customer to the red and blue centroids\nK-means updates each customer to red segment or blue segment based on which centroid is closer\nNow the outliers are correctly assigned each segment",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture1.html#k-means-clustering-step-6",
+    "href": "Week4-Lecture1.html#k-means-clustering-step-6",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
+    "section": "2.10 K-Means Clustering: Step 6",
+    "text": "2.10 K-Means Clustering: Step 6\n\n\n\n\n\n\n\n\n\nK-means updates the new centroid from the previous clustering\nK-means computes the distance of each customer to the new centroids\nK-means finds that all customers are correctly assigned to their nearest centroids, so the algorithm does not need to continue\nWe say, the algorithm converges, and the algorithm stops",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture1.html#after-class-readings",
+    "href": "Week4-Lecture1.html#after-class-readings",
+    "title": "Class 7 Unsupervised Learning and K-Means Clustering",
+    "section": "2.11 After-Class Readings",
+    "text": "2.11 After-Class Readings\n\nMore technical details: K-means Cluster Analysis",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 1: Unsupervised Learning and K-Means Clustering"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html",
+    "href": "Week4-Lecture2.html",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "",
+    "text": "Segmentation is a key step in the marketing strategy (STP) process, where customers are divided into meaningful groups based on characteristics relevant to designing and executing your marketing strategy.\n\n\n\n\n\n\n\n\n\nIt assumes that different customer groups provide varying levels of value to the company and/or require distinct marketing programs to succeed (e.g., based on differing goals and needs).\n\n\n\n\nCustomer value segmentation is for targeting decisions based on customers’ potential long-term financial and strategic value to your company.\nDemographic segmentation uses variables such as age, gender, income, family life cycle, educational qualification, socio-economic status, religion, company size and income, etc. These serve as proxies for goals, preferences or psychographics, as well as to characterize segments for marketing mix decisions.\nPsychographic segmentation is for positioning and marketing mix design based on the psychology of the customer and consumer, including attitudes, identity, lifestyle, personality, etc.\n\nConventional segmentation methods often require subjective judgments. A more objective approach is to ‘let the data speak’ by utilizing data analytics tools.\n\n\n\n\n\n\n\n\n\n\n\n\n\nx: data with selected variables to apply K-means\ncenters: number of clusters\niter.max: the maximum number of iterations allowed\nnstart: how many random sets should be chosen\nalgorithm: which algorithm to choose; default often works\ntrace: do you want to trace intermediate steps?",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#customer-segmentation",
+    "href": "Week4-Lecture2.html#customer-segmentation",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "",
+    "text": "Segmentation is a key step in the marketing strategy (STP) process, where customers are divided into meaningful groups based on characteristics relevant to designing and executing your marketing strategy.\n\n\n\n\n\n\n\n\n\nIt assumes that different customer groups provide varying levels of value to the company and/or require distinct marketing programs to succeed (e.g., based on differing goals and needs).",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#conventional-segmentation",
+    "href": "Week4-Lecture2.html#conventional-segmentation",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "",
+    "text": "Customer value segmentation is for targeting decisions based on customers’ potential long-term financial and strategic value to your company.\nDemographic segmentation uses variables such as age, gender, income, family life cycle, educational qualification, socio-economic status, religion, company size and income, etc. These serve as proxies for goals, preferences or psychographics, as well as to characterize segments for marketing mix decisions.\nPsychographic segmentation is for positioning and marketing mix design based on the psychology of the customer and consumer, including attitudes, identity, lifestyle, personality, etc.\n\nConventional segmentation methods often require subjective judgments. A more objective approach is to ‘let the data speak’ by utilizing data analytics tools.",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#syntax-of-kmeans",
+    "href": "Week4-Lecture2.html#syntax-of-kmeans",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "",
+    "text": "x: data with selected variables to apply K-means\ncenters: number of clusters\niter.max: the maximum number of iterations allowed\nnstart: how many random sets should be chosen\nalgorithm: which algorithm to choose; default often works\ntrace: do you want to trace intermediate steps?",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#data-loading",
+    "href": "Week4-Lecture2.html#data-loading",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "2.1 Data Loading",
+    "text": "2.1 Data Loading\n\nLet’s first try customer segmentation based on total spending and Income.\nExercise: load data_full, create total_spending, and select total_spending and Income as the clustering variables into a new data frame data_kmeans.\n\n\n\nCode\npacman::p_load(dplyr, ggplot2, ggthemes, broom)\ndata_full &lt;- read.csv(\"images/data_full.csv\") %&gt;%\n    mutate(total_spending = MntWines + MntFruits + MntMeatProducts + MntFishProducts + MntSweetProducts + MntGoldProds)\n\ndata_kmeans &lt;- data_full %&gt;%\n    select(total_spending, Income)",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#data-pre-processing-1",
+    "href": "Week4-Lecture2.html#data-pre-processing-1",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "2.2 Data Pre-processing",
+    "text": "2.2 Data Pre-processing\n\nTo perform a cluster analysis in R, generally, the data should be prepared as follows:\n\nRows are observations (individuals) and columns are variables of interest for clustering.\nAny missing value in the data must be removed or imputed.\nThe data must be standardized (i.e., scaled) to make variables comparable. Standardization consists of transforming the variables such that they have mean zero and standard deviation one.1",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#data-pre-processing-missing-values",
+    "href": "Week4-Lecture2.html#data-pre-processing-missing-values",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "2.3 Data Pre-processing: Missing Values",
+    "text": "2.3 Data Pre-processing: Missing Values\n\nCheck if there are any missing values in the data.\nUse mean imputation to fill in missing values.\n\n\n\nCode\ndata_kmeans &lt;- data_kmeans %&gt;%\n    mutate(Income = ifelse(is.na(Income), mean(Income, na.rm = TRUE), Income))",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#data-pre-processing-standardization",
+    "href": "Week4-Lecture2.html#data-pre-processing-standardization",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "2.4 Data Pre-processing: Standardization",
+    "text": "2.4 Data Pre-processing: Standardization\n\nNeed to re-scale the clustering variables using scale(), because the variables can be of very different scales.\n\nExercise: Scale the variables and create a new data frame data_kmeans_scaled.\nThis is extremely important!\n\n\n\n\nCode\n# method 1\ndata_kmeans_scaled &lt;- data_kmeans %&gt;%\n    select(total_spending, Income) %&gt;%\n    mutate(\n        total_spending = scale(total_spending),\n        Income = scale(Income)\n    )\n\n# method 2: using across when there are many variables with the same transformation\ndata_kmeans_scaled &lt;- data_kmeans %&gt;%\n    select(total_spending, Income) %&gt;%\n    mutate(across(everything(), scale))",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#visualization-of-the-data",
+    "href": "Week4-Lecture2.html#visualization-of-the-data",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "2.5 Visualization of the Data",
+    "text": "2.5 Visualization of the Data\n\nLet’s visualize the data to see if there are any natural clusters.\nExercise: Create a scatter plot of total_spending and Income using ggplot2.\nRefer to the ggplot2 cheat sheet for more information on data visualization in R.",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#apply-k-means-clustering-with-2-clusters",
+    "href": "Week4-Lecture2.html#apply-k-means-clustering-with-2-clusters",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "3.1 Apply K-Means Clustering with 2 Clusters",
+    "text": "3.1 Apply K-Means Clustering with 2 Clusters\n\nset.seed() is to allow replication of results.\nkmeans() is the function to perform K-means clustering.\ncenters is the number of clusters to form.\nnstart is the number of sets to be chosen.\n\n\n\nCode\nset.seed(888)\nresult_kmeans &lt;- kmeans(data_kmeans_scaled,\n    centers = 2,\n    nstart = 10\n)",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#examine-the-returned-object-result_kmeans",
+    "href": "Week4-Lecture2.html#examine-the-returned-object-result_kmeans",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "3.2 Examine the returned object, result_kmeans",
+    "text": "3.2 Examine the returned object, result_kmeans\n\n\nCode\ntidy(result_kmeans)\n\n\n\n  \n\n\n\n\nsize: The number of points in each cluster.\ncluster: A vector of integers (from 1:k) indicating the cluster to which each point is allocated.\nwithinss: Vector of within-cluster sum of squares, one component per cluster.",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#visualize-the-clusters",
+    "href": "Week4-Lecture2.html#visualize-the-clusters",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "3.3 Visualize the clusters",
+    "text": "3.3 Visualize the clusters\n\nWe need 2 packages cluster and factoextra\nUse function fviz_cluster() to generate visualizations\n\n\n\nCode\npacman::p_load(cluster, factoextra)\n\nfviz_cluster(result_kmeans,\n    data = data_kmeans_scaled\n)",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#determine-the-optimal-number-of-clusters-gap-method",
+    "href": "Week4-Lecture2.html#determine-the-optimal-number-of-clusters-gap-method",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "4.1 Determine the optimal number of clusters: GAP Method",
+    "text": "4.1 Determine the optimal number of clusters: GAP Method\n\nThe gap statistic compares the total within intra-cluster variation for different values of k with their expected values under null reference distribution of the data. The estimate of the optimal clusters will be the value that maximizes the gap statistic.\n\n\n\nCode\nset.seed(888)\ndata_kmeans_scaled %&gt;%\n    clusGap(FUN = kmeans, K.max = 10, B = 50) %&gt;%\n    fviz_gap_stat()",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#determine-the-optimal-number-of-clusters-silhouette-method",
+    "href": "Week4-Lecture2.html#determine-the-optimal-number-of-clusters-silhouette-method",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "4.2 Determine the optimal number of clusters: Silhouette Method",
+    "text": "4.2 Determine the optimal number of clusters: Silhouette Method\n\nThe silhouette value measures how similar an object is to its cluster (cohesion) compared to other clusters (separation). The silhouette ranges from -1 to 1, where a high value indicates that the object is well matched to its own cluster and poorly matched to neighboring clusters.\n\n\n\nCode\nset.seed(888)\ndata_kmeans_scaled %&gt;%\n    fviz_nbclust(kmeans, method = \"silhouette\")",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#next-steps-after-segmentation",
+    "href": "Week4-Lecture2.html#next-steps-after-segmentation",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "4.3 Next Steps After Segmentation",
+    "text": "4.3 Next Steps After Segmentation\n\nCompare the CLV in different segments, and decide which segments to serve.\nDevelop marketing strategies for each segment. For example, for the high-value segment, you may want to increase the frequency of purchase by offering discounts or promotions.\nDevelop a customer journey map for each segment.",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#term-3-project-scopes",
+    "href": "Week4-Lecture2.html#term-3-project-scopes",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "4.4 Term 3 Project Scopes",
+    "text": "4.4 Term 3 Project Scopes\n\nSmartphones contain sensors, from which we can apply machine learning models to understand the context of the user, whether it be relaxing on the sofa, jogging in a park, or working indoors in an office. The task is to consume this real life data and produce visualisations, and to produce an anomaly detection engine. The project may be extended to clustering users according to their behavioural patterns in an unsupervised fashion.\nThe project will explore fraud detection approaches using unsupervised ML including models such as isolation forests. The candidate will develop an understanding of the business problem and our data, formulating hypotheses and testing them. They will build, evaluate, and interpret their ML models.",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#after-class-readings",
+    "href": "Week4-Lecture2.html#after-class-readings",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "4.5 After-Class Readings",
+    "text": "4.5 After-Class Readings\n\nAfter-class Exercise: Try total spending, Frequency, and Recency as clustering covariates. Why these three variables? Then, find the optimal number of clusters. Visualize the clusters.\n\nBecause they are the most important variables for customer segmentation, i.e., RFM (Recency, Frequency, Monetary) analysis.\n\nUseful source: K-means Cluster Analysis",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+    ]
+  },
+  {
+    "objectID": "Week4-Lecture2.html#footnotes",
+    "href": "Week4-Lecture2.html#footnotes",
+    "title": "Class 8: Customer Segmentation Using Unsupervised Learning for M&S",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAnother common method is to normalize the data, which consists of transforming the variables such that they have a minimum of zero and a maximum of one.↩︎",
+    "crumbs": [
+      "Lectures",
+      "[Week 4] Unsupervised Learning for Customer Segmentation",
+      "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
     ]
   },
   {
@@ -1093,307 +1405,87 @@
     ]
   },
   {
-    "objectID": "R-errors.html",
-    "href": "R-errors.html",
-    "title": "Troubleshooting R",
+    "objectID": "Case-CLV.html",
+    "href": "Case-CLV.html",
+    "title": "CLV Analysis for M&S Delivery Pass Program",
     "section": "",
-    "text": "In this page, I summarize the common issues running R and the troubleshooting tips. If you run into any R issues, please refer to this page as the first step for any solution.",
+    "text": "M&S in Jubilee Place, Canary Wharf, London",
     "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
+      "Lectures",
+      "[Week 2] Customer Lifetime Value",
+      "Case Study: CLV Analysis for M&S's Delivery Pass"
     ]
   },
   {
-    "objectID": "R-errors.html#could-not-find-function-error",
-    "href": "R-errors.html#could-not-find-function-error",
-    "title": "Troubleshooting R",
-    "section": "1 ‘could not find function’ Error",
-    "text": "1 ‘could not find function’ Error\nThis error arises when (1) an R package is not loaded properly, or (2) due to misspelling of the functions.\nAs you can see in the screenshot below, when we run the code, we get a could not find function “praise” error in the console. This is because we have not loaded the package “praise” to which the praise() function belongs.\n\nWe need to first load the package that contains the function we want to run using library() as shown below:\n\n\nCode\nlibrary(praise)\n\n\nand then use the function praise() to run it error-free.\n\n\nCode\npraise()\n\n\n[1] \"You are fantabulous!\"\n\n\nMeanwhile, if we misspell the praise() function, for instance, to prais(), this will also throw up a could not find function “prais” error.\n\n\nCode\nprais()\n\n\nError in prais(): could not find function \"prais\"",
+    "objectID": "Case-CLV.html#the-business-problem-for-ms-a-delivery-pass-program",
+    "href": "Case-CLV.html#the-business-problem-for-ms-a-delivery-pass-program",
+    "title": "CLV Analysis for M&S Delivery Pass Program",
+    "section": "2.1 The Business Problem for M&S: A Delivery Pass Program",
+    "text": "2.1 The Business Problem for M&S: A Delivery Pass Program\nIt was just six months after Tom, our proud (but perhaps overly confident?) graduate from our MSc BA program, made a series of … let’s say, “bold” decisions at his first job at Apple Inc. The influencer marketing campaign didn’t exactly influence anyone—except maybe the CMO to rethink her hiring decisions. Turns out, Tom hadn’t spent enough time learning R basics (despite countless reminders from Dr. Meow that “R is the best language in the world”), and he completely miscalculated the NPV of the campaign. Tom really regretted not having taken Dr. Meow’s advice on spending more time on the Marketing Analytics module instead of the Business Strategy module during the MSc BA program. Obviously, he had underestimated the importance of marketing analytics for his career as a business analyst.\nAs you might have guessed, Tom was promptly shown the door, and it wasn’t to Apple’s employee spa. But luck or maybe just a very sympathetic friend from his UCL days, Jerry, landed him a new gig at Marks & Spencer (M&S). Now, with a slightly more humble outlook on life and an unhealthy amount of bubble tea, Tom is trying to redeem himself as a data scientist in M&S’s marketing analytics team.\nM&S is a multinational retailer that sells groceries, clothing, and home products. M&S has been successful in building a loyal customer base through its Sparks loyalty program, which offers customers exclusive discounts, personalized offers, and early access to sales. However, M&S is looking to further enhance its customer relationships and drive long-term profitability. One area to improve is the online sales channel. Other grocery chains such as Tesco and Sainsbury’s have been offering online delivery passes, which provide customers with unlimited deliveries for a fixed annual fee. M&S is considering launching a similar program to attract more customers and increase customer loyalty.\nTom’s job is to calculate the Customer Lifetime Value (CLV) of this potential new program—a task that would require him to remember at least some of what he learned in Marketing Analytics Week 2’s class (if only he had stayed awake). This time, Tom knows one thing for sure: he better not mess this up. Otherwise, he might end up selling bubble teas at a Canary Wharf stall next to the Rice Guys instead of analyzing data at M&S.\nAs Tom learned in Week 2’s class, customer lifetime value (CLV) can be a powerful metric that can help M&S understand the long-term value of its customers and guide strategic marketing decisions such as the profitability of introducing a delivery pass program. By calculating the CLV of customers who sign up for the delivery pass program, M&S can determine the program’s potential and identify the most valuable customer segments.\nIn order to conduct the CLV analysis, Tom needs to consider the following key factors:\nPrice of the Delivery Pass: As a starting point, Tom needs to determine the price of the delivery pass and the benefits it offers to customers. The price of the delivery pass will surely influence customer acquisition and retention rates, as well as the overall profitability of the program. At the moment, Tesco’s delivery pass is priced at £84 per year, while Sainsbury’s delivery pass is priced at £80 per year. Therefore, Tom would like to price M&S’s delivery pass at £89 per year, which is competitive with other grocery chains and offers customers a cost-effective option for unlimited deliveries.\nTime Unit of Analysis: Although customers frequently shop at M&S throughout the year, the yearly approach is the most convenient, especially since M&S’s Sparks program offers benefits that often encourage long-term loyalty.\nNumber of Years (N): M&S will assess the CLV over a 5-year period. While a longer time horizon could be considered, uncertainty increases with time due to changes in the economy, competition, and customer preferences. Therefore, M&S uses a 5-year horizon for most revenue and profitability projections.\nGross Profit (g): M&S’s analysis starts by calculating the gross profit generated by a typical customer each year. From the historical customer transaction data, the marketing analytics team estimates that an average M&S customer shops at M&S 40 times a year, spending an average of £100 per visit.\nProfit Margin: M&S’s profit margin on each purchase is 7%, meaning that the cost of goods sold (COGS) is 93% of the purchase price. However, M&S incurs costs to provide these services included in the delivery pass, such as delivery fees for online orders. Each delivery costs M&S a £5 to pay for the delivery driver and other operational expenses.\nRetention Rate (r): The retention rate is the probability that a customer continues to shop with M&S year after a year. Based on historical data, M&S’s customer retention rate is 70%, meaning that 70% of customers remain loyal and are likely to renew their delivery pass each year. This retention rate forms the basis for estimating future customer value.\nDiscount Rate (k): M&S applies a yearly discount rate of 10%, as recommended by its finance department. This discount rate reflects the cost of capital and the opportunity cost of investing elsewhere. All future profits will be discounted to reflect their present value, assuming that the profits from customer purchases are received at the end of each year.\nCustomer Acquisition Costs (CAC): M&S invests heavily in customer acquisition, using paid search ads on search engines. Such promotion is also called search engine marketing or pay-per-click marketing. M&S decideds to bid £0.4 for each click.1 Based on the bid, M&S estimates that about 1% of Google users will see the the ads; at the £89 annual subscription price, 10% of exposed customers who click on an ad on search engine or social medias will sign up for a free trial (i.e., triers); triers will on average shop twice during the 2-week trial period. 20% of those triers will eventually become paying customers. In order to increase market penetration, M&S offers a £10 discount on the first purchase on top of a customer’s £100 shopping basket. M&S also offers free delivery for triers during the trial period.\n\n\n\n\n\n\n\n\nFigure 1: M&S’s Marketing Funnel\n\n\n\n\n\nBased on the above information, Tom will conduct a CLV analysis to determine the potential profitability of M&S’s delivery pass program and provide recommendations to the senior marketing manager.",
     "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
+      "Lectures",
+      "[Week 2] Customer Lifetime Value",
+      "Case Study: CLV Analysis for M&S's Delivery Pass"
     ]
   },
   {
-    "objectID": "R-errors.html#object-not-found-error",
-    "href": "R-errors.html#object-not-found-error",
-    "title": "Troubleshooting R",
-    "section": "2 ‘object not found’ error",
-    "text": "2 ‘object not found’ error\nThis error occurs when the particular object used in the code is not yet created or existing in the R environment.\nIn the example below we are trying to compute x plus 4. As you can see, we get an ‘object ’x’ not found’ error as the “x” object is not yet created and missing in our R environment.\n\n\nCode\nx+4\n\n\nError in eval(expr, envir, enclos): object 'x' not found\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\nBased on the missing object, go back to your previous codes and check why the object is missing. Did you forget to create it? Did you accidentally delete it?",
+    "objectID": "Case-CLV.html#compute-customer-acquisition-cost",
+    "href": "Case-CLV.html#compute-customer-acquisition-cost",
+    "title": "CLV Analysis for M&S Delivery Pass Program",
+    "section": "2.2 Compute Customer Acquisition Cost",
+    "text": "2.2 Compute Customer Acquisition Cost\n\nQuestion 3Answer\n\n\nWatch the intro video by Google, Introduction to Search Engine Marketing, before class. Understand how SEM works and think about how these concepts apply to M&S’s case as in Figure 1.\nCompute the customer acquisition costs (CAC) for M&S’s delivery pass program\n\n\nCAC = total costs for customer ad clicks + total costs of £10 promo + total costs of free deliveries\nCAC Part I: Costs of paid search ads to get 1 new member.\n\n[…] “about 10% of customers who click on an ad on search engine or social medias will sign up for a free trial, and 20% of those trial users will eventually become paying customers.”\n\n\n\nCode\n# clicker_to_trier_rate is the % of trier customers from clickers\nclicker_to_trier_rate &lt;- 0.1\n\n# trier_to_member_rate is the % of a new member from triers\ntrier_to_member_rate &lt;- 0.2\n\n\n\nHow many customers need to click the ad to get 1 new customer?\n\n\n\nCode\nn_clickers_for_1newmember &lt;- (1 / clicker_to_trier_rate) * (1 / trier_to_member_rate)\n\nn_clickers_for_1newmember\n\n\n[1] 50\n\n\n\nTotal costs for customer clicks\n\n\n\nCode\ntotal_cost_clicks &lt;- 0.4 * n_clickers_for_1newmember\ntotal_cost_clicks\n\n\n[1] 20\n\n\nCAC Part II: total costs of £10 promo for first order each trier customer\n\nWhat is the total promo cost for these trier customers’ first order?\n\n\n\nCode\npromo_first_order_each_trier &lt;- 10\nprofit_margin &lt;- 0.07\n\ntotal_cost_promo &lt;- promo_first_order_each_trier * # promotion amount\n    (1 - profit_margin) * # COGS rate\n    (1 / trier_to_member_rate) # num of triers\n\ntotal_cost_promo\n\n\n[1] 46.5\n\n\nCAC Part III: total costs from selling groceries for each trier\n\n2 visits for each trier, the profits from the 2 visits are\n\n\n\nCode\nrevenue_each_visit &lt;- 100\n\nprofit_each_trier &lt;- revenue_each_visit * profit_margin * 2\n\nprofit_each_trier\n\n\n[1] 14\n\n\n\nThe 2 visits are free of delivery charges, which are costs to M&S\n\n\n\nCode\ndeliverycost_each_trier &lt;- 5 * 2\ndeliverycost_each_trier\n\n\n[1] 10\n\n\n\nNet costs for each trier from the 2 visits\n\n\n\nCode\nnetcost_each_trier &lt;- deliverycost_each_trier - profit_each_trier\n\nnetcost_each_trier\n\n\n[1] -4\n\n\n\nTotal net profits from all triers\n\n\n\nCode\ntotalcosts_from_all_triers &lt;- netcost_each_trier * (1 / trier_to_member_rate)\n\ntotalcosts_from_all_triers\n\n\n[1] -20\n\n\n\nCAC = total costs for customer ad clicks + total costs of £10 promo + total costs of free deliveries\n\n\n\nCode\nCAC &lt;- total_cost_clicks + total_cost_promo + totalcosts_from_all_triers\n\nCAC\n\n\n[1] 46.5",
     "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
+      "Lectures",
+      "[Week 2] Customer Lifetime Value",
+      "Case Study: CLV Analysis for M&S's Delivery Pass"
     ]
   },
   {
-    "objectID": "R-errors.html#banner-packages-xxx-required-but-are-not-installed",
-    "href": "R-errors.html#banner-packages-xxx-required-but-are-not-installed",
-    "title": "Troubleshooting R",
-    "section": "3 Banner: “Packages XXX required but are not installed”",
-    "text": "3 Banner: “Packages XXX required but are not installed”\nIf you see this banner in your RStudio in the screenshot, it means RStudio detects some packages mentioned in the R Markdown file or R script but are not yet installed on your computer. So it prompts you for installation.\n\nFor instance, in this case, the error message means, knitr and pacman are found in the .Rmd file, but they are not installed, so RStudio is smart enough to prompt you to install.\n\n\n\n\n\n\nSolution\n\n\n\nJust click install button in the banner. RStudio will install the missing components.",
+    "objectID": "Case-CLV.html#compute-customer-lifetime-value",
+    "href": "Case-CLV.html#compute-customer-lifetime-value",
+    "title": "CLV Analysis for M&S Delivery Pass Program",
+    "section": "2.3 Compute Customer Lifetime Value",
+    "text": "2.3 Compute Customer Lifetime Value\n\n2.3.1 Step 1: Determine time unit of analysis\n\nQuestion 4Answer\n\n\nFind the time unit of analysis in the case study.\nShould we use monthly analysis?\n\n\nWhen there is strong within-year seasonality of customer purchases\n\n\n\n\n\n2.3.2 Step 2: Determine number of years\n\nQuestion 5Answer\n\n\nFind \\(N\\): the number of years over which the customer relationship is assessed\n\n\n\n\nCode\nN &lt;- 5\n\n\n\n\n\n\n\n2.3.3 Step 3: Compute profit margin for each period\n\nQuestion 6Answer\n\n\n\\(g = M - c\\): profit each year, which is the profit from sales M minus marketing costs c\n\n\n\nThe annual membership fee is £89\n\n\n\nCode\nmembership &lt;- 89\n\n\n\nn_visit: 40 visits each year; each time £100; with profit margin 7% (COGS 93%)\n\n\n\nCode\nn_visit &lt;- 40\n\n\n\nM: profit margin each period\n\n\n\nCode\nM &lt;- membership + revenue_each_visit * n_visit * profit_margin\nM\n\n\n[1] 369\n\n\n\nc: variable delivery costs each order\n\n\n\nCode\ndeliverycost_each_visit &lt;- 5\nc &lt;- deliverycost_each_visit * n_visit\nc\n\n\n[1] 200\n\n\n\ng: the period net profit from customers\n\n\n\nCode\ng &lt;- M - c\ng_seq &lt;- rep(g, N)\ng_seq\n\n\n[1] 169 169 169 169 169\n\n\n\n\n\n\n\n2.3.4 Step 4: Compute sequence of retention rate\n\nQuestion 7Answer\n\n\n\\(r\\): retention rate\n\n\n\n\nCode\n# retention_rate is the probability of customer staying with us after 1 year\nr &lt;- 0.7\n\n# create a geometric sequence of accumulative retention rate for N years\nr_seq &lt;- r^(seq(1, N) - 1)\nr_seq\n\n\n[1] 1.0000 0.7000 0.4900 0.3430 0.2401\n\n\n\n\n\n\n\n2.3.5 Step 5: Compute sequence of discount factors\n\nQuestion 8Answer\n\n\n\\(k\\): the discount rate\n\n\n\n\nCode\nk &lt;- 0.1\nd &lt;- 1 / (1 + k)\nd_seq &lt;- d^(seq(1, N))\nd_seq\n\n\n[1] 0.9090909 0.8264463 0.7513148 0.6830135 0.6209213\n\n\n\n\n\n\n\n2.3.6 Step 6: Compute CLV\n\nQuestion 9Answer\n\n\nCompute the CLV based on the CLV formula\n\n\n\nRevenues, variables costs, and profit for the next 5 years\n\n\n\nCode\ng_seq\n\n\n[1] 169 169 169 169 169\n\n\n\nApply retention rate\n\n\n\nCode\ng_seq_after_churn &lt;- g_seq * r_seq\ng_seq_after_churn\n\n\n[1] 169.0000 118.3000  82.8100  57.9670  40.5769\n\n\n\nApply discount factor\n\n\n\nCode\ng_seq_after_churn_discount &lt;- g_seq_after_churn * d_seq\n\ng_seq_after_churn_discount\n\n\n[1] 153.63636  97.76860  62.21638  39.59224  25.19506\n\n\n\nCompute CLV by summing up future expected profits\n\n\n\nCode\nsum(g_seq_after_churn_discount)\n\n\n[1] 378.4086\n\n\nCode\nsum(g_seq_after_churn_discount) - CAC\n\n\n[1] 331.9086",
     "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
+      "Lectures",
+      "[Week 2] Customer Lifetime Value",
+      "Case Study: CLV Analysis for M&S's Delivery Pass"
     ]
   },
   {
-    "objectID": "R-errors.html#prompt-window-r-packages-not-up-to-date",
-    "href": "R-errors.html#prompt-window-r-packages-not-up-to-date",
-    "title": "Troubleshooting R",
-    "section": "4 Prompt Window: “R packages not up-to-date”",
-    "text": "4 Prompt Window: “R packages not up-to-date”\nSince the R packages are being updated every day (just like our mobile apps, there could be bugs so that the developers have to update R packages to fix those bugs), sometimes, though we may have installed some packages, they are too old to run the functions. And you may see this prompted message:\n\nIt means, the aforementioned packages, base64enc, digest, etc. are outdated and must be updated to function.\n\n\n\n\n\n\nSolution\n\n\n\nClick Yes and RStudio will update all the packages for you.",
+    "objectID": "Case-CLV.html#use-clv-to-guide-marketing-decisions-1",
+    "href": "Case-CLV.html#use-clv-to-guide-marketing-decisions-1",
+    "title": "CLV Analysis for M&S Delivery Pass Program",
+    "section": "4.1 Use CLV to Guide Marketing Decisions",
+    "text": "4.1 Use CLV to Guide Marketing Decisions\n\n(To guide customer acquisition) What if the company only offers £5 for first time purchase? This will save some CAC but the clicker-to-trier rate will decrease to 5%. Please compute the new CLV. Should you go ahead with the proposed change?\n\n\n\nCode\ncomputeCLV(\n    promo_first_order_each_trier = 5,\n    clicker_to_trier_rate = 0.05\n)\n\n\n[1] 335.1586\n\n\n\n(To guide customer retention) What if the company increases the annual membership fee to $119? This will increase revenue from memberships but will also make some customers unhappy so their retention rate reduce to 55%. Please compute the new CLV. Should you go ahead with the proposed change?\n\n\n\nCode\ncomputeCLV(\n    membership = 119,\n    r = 0.55\n)\n\n\n[1] 304.0114",
     "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
+      "Lectures",
+      "[Week 2] Customer Lifetime Value",
+      "Case Study: CLV Analysis for M&S's Delivery Pass"
     ]
   },
   {
-    "objectID": "R-errors.html#latex-not-found-when-kniting-the-.rmd.qmd-file.",
-    "href": "R-errors.html#latex-not-found-when-kniting-the-.rmd.qmd-file.",
-    "title": "Troubleshooting R",
-    "section": "5 Latex not found when kniting the .rmd/.qmd file.",
-    "text": "5 Latex not found when kniting the .rmd/.qmd file.\nIf this is your first time to knit the PDF document, you may see an error message as below:\n\nThe error message has usually told us everything on how to troubleshoot (that’s what an error message is for!).\nIn this screenshot, if you read along, you will find the cause of problem:\n\n[…] LaTex failed to compile,\n\nbecause\n\n[…] No LaTeX installation detected (LaTeX is required to create PDF output).\n\nand the solution is also consideratebly given in this error message:\n\n[…] You should install a LaTeX distribution for your platform: https://www.latex-project.org/get/\n\n\nIf you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()\n\nSo this error message tells us the solution:\n\n\n\n\n\n\nSolution\n\n\n\n\nAlternative solution 1:\nRun the following command in Console\ntinytex::install_tinytex()\nin order to install tinytex, a simplied version of LaTex, on your laptop.\n\n\nAlternative solution 2:\nInstall LaTex on your computer following the R installation guide\n\n\n\nIf you run the command in R Console, you will see that Latex is being installed\n\nAfter this progress bar finishes, you will be able to knit the PDF document!",
+    "objectID": "Case-CLV.html#footnotes",
+    "href": "Case-CLV.html#footnotes",
+    "title": "CLV Analysis for M&S Delivery Pass Program",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nCost per click (CPC) is a pricing model used in online advertising where advertisers pay each time a user clicks on their ad. It is a key metric in digital marketing campaigns and is commonly used in platforms like Google Ads, Facebook Ads, and other search engines or social media networks. https://www.investopedia.com/terms/c/cpc.asp↩︎",
     "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
+      "Lectures",
+      "[Week 2] Customer Lifetime Value",
+      "Case Study: CLV Analysis for M&S's Delivery Pass"
     ]
   },
   {
-    "objectID": "R-errors.html#error-connection-not-found",
-    "href": "R-errors.html#error-connection-not-found",
-    "title": "Troubleshooting R",
-    "section": "6 Error: Connection Not Found",
-    "text": "6 Error: Connection Not Found\nConnection Not Found error is usually caused by RStudio being unable to locate your files on your hard disk.\nIf you don’t know how to find the path names for a file on your computer, please refer to\n\nthis link for Windows\n\nthis link for Mac",
-    "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
-    ]
-  },
-  {
-    "objectID": "R-errors.html#more-questions",
-    "href": "R-errors.html#more-questions",
-    "title": "Troubleshooting R",
-    "section": "7 More Questions",
-    "text": "7 More Questions\nPlease leave a screenshot of error message in the MSTeams channel named “R QnA”. I will keep updating this webpage as more questions come in.",
-    "crumbs": [
-      "R Tutorials",
-      "Troubleshooting R"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html",
-    "href": "Week1-Lecture1.html",
-    "title": "Class 1 Intro to Marketing Analytics",
+    "objectID": "LectureSlides.html",
+    "href": "LectureSlides.html",
+    "title": "Lecture Slides",
     "section": "",
-    "text": "Hi there, I’m Wei!\nI did my PhD in Quant Marketing at NUS (Singapore) and an undergrad degree in Finance at Fudan (Shanghai)\nI love musical instruments, video games, and food (bubble tea is my soul mate)!\nMy research focuses on digital marketing, sharing economy, and platform design.\n\n\n\n\n\nDetailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Wednesday, usually with 3 sessions\n\nA short quiz at the beginning of each class to review the previous week’s content\nA methodology session, in which we learn a new data analytics tool\nA case study session, to learn how the newly learned analytics tool can be applied to a real-life business scenario\n\n\n\n\n\n\nNo exams; 3 individual assignments, which are similar to case studies in class, and you will apply what you’ve learned in class to solve real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 25\n2nd assignment, 30% weight, 1500 words, due on Nov 15\n3rd assignment, 40% weight, 2000 words, due on Dec 13\n\nHow to submit?\n\nPlease ensure submissions are in PDF (preferred) or Word format; submissions in other formats won’t be accepted for marking.\nThe quarto-based answer sheets (qmd files) will be given to you.\n\n\n\nWord count and late submission penalties will be applied by BA admin. For related queries and EC applications, please directly contact BA admin at mgmt.ba-admin@ucl.ac.uk.\nWe have random second marking in place to mitigate marking errors. Please refrain from emailing teaching assistants for re-marking as re-marking is not allowed by school policy.",
+    "text": "Lecture slides of subsequent weeks will be released on Monday each week. Stay tuned!",
     "crumbs": [
       "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#about-me",
-    "href": "Week1-Lecture1.html#about-me",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "",
-    "text": "Hi there, I’m Wei!\nI did my PhD in Quant Marketing at NUS (Singapore) and an undergrad degree in Finance at Fudan (Shanghai)\nI love musical instruments, video games, and food (bubble tea is my soul mate)!\nMy research focuses on digital marketing, sharing economy, and platform design.",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#weekly-arrangements",
-    "href": "Week1-Lecture1.html#weekly-arrangements",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "",
-    "text": "Detailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Wednesday, usually with 3 sessions\n\nA short quiz at the beginning of each class to review the previous week’s content\nA methodology session, in which we learn a new data analytics tool\nA case study session, to learn how the newly learned analytics tool can be applied to a real-life business scenario",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#assignments",
-    "href": "Week1-Lecture1.html#assignments",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "",
-    "text": "No exams; 3 individual assignments, which are similar to case studies in class, and you will apply what you’ve learned in class to solve real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 25\n2nd assignment, 30% weight, 1500 words, due on Nov 15\n3rd assignment, 40% weight, 2000 words, due on Dec 13\n\nHow to submit?\n\nPlease ensure submissions are in PDF (preferred) or Word format; submissions in other formats won’t be accepted for marking.\nThe quarto-based answer sheets (qmd files) will be given to you.\n\n\n\nWord count and late submission penalties will be applied by BA admin. For related queries and EC applications, please directly contact BA admin at mgmt.ba-admin@ucl.ac.uk.\nWe have random second marking in place to mitigate marking errors. Please refrain from emailing teaching assistants for re-marking as re-marking is not allowed by school policy.",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#role-of-marketing",
-    "href": "Week1-Lecture1.html#role-of-marketing",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.1 Role of Marketing",
-    "text": "2.1 Role of Marketing\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinance (finance a company’s business activities)\nAccounting (bookkeeping of past transactions)\nOperations (supply chain, manufacturing, inventory management)\nMarketing (directly deal with consumer; value exchange and value realization)",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#what-is-marketing-2",
-    "href": "Week1-Lecture1.html#what-is-marketing-2",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.2 What is Marketing?",
-    "text": "2.2 What is Marketing?\n\nKotler (1991): “Marketing is a social and managerial process by which individuals and groups obtain what they want and need through creating, offering and exchanging products of value with others.”\nBritish Chartered Institute of Marketing (2000s): “Marketing is the management process responsible for identifying, anticipating and satisfying customers’ requirements profitably.”\nAmerican Marketing Association (2017): “Marketing is the activity, set of institutions, and processes for creating, communicating, delivering, and exchanging offerings that have value for customers, clients, partners, and society at large.”",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#what-is-marketing-a-text-mining-approach",
-    "href": "Week1-Lecture1.html#what-is-marketing-a-text-mining-approach",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.3 What is Marketing? A Text Mining Approach",
-    "text": "2.3 What is Marketing? A Text Mining Approach\n\n\nCode\npacman::p_load(tm, wordcloud, RColorBrewer,wordcloud2, data.table)\n# generate text corpus\ndf_mkt &lt;-  'Marketing is a social and managerial process by which individuals and groups obtain what they  want and need through creating, offering and exchanging products of value with others.\nMarketing is the management process responsible for identifying, anticipating and satisfying customers requirements profitably.\nMarketing is the activity, set of institutions, and processes for creating, communicating, delivering, and exchanging offerings that have value for customers, clients, partners, and society at large.'\n\ndf_mkt_corpus &lt;- Corpus(VectorSource(df_mkt))\n# text cleaning \ndf_mkt_corpus &lt;- df_mkt_corpus |&gt; \n  tm_map(removePunctuation) |&gt;\n  tm_map(stripWhitespace) |&gt;\n  tm_map(content_transformer(tolower)) |&gt;\n  tm_map(removeWords, stopwords(\"english\"))\n# Create a document-term-matrix\ndf_mkt_dtm &lt;- TermDocumentMatrix(df_mkt_corpus)\ndf_mkt_matrix &lt;-  as.matrix(df_mkt_dtm)\ndf &lt;- data.table(words = rownames(df_mkt_matrix),\n                 freq = df_mkt_matrix[,1])\n# draw wordcloud\nset.seed(888)\nwordcloud(words = df$words, freq = df$freq, min.freq = 1, max.words=200, random.order=FALSE, colors=brewer.pal(8, \"Dark2\"))\n\n\n\n\n\n\n\n\n\n\nMarketing is a management process that creates and exchanges values for the company by selling the right products to the right customers. - Wei, 2024",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#marketing-process",
-    "href": "Week1-Lecture1.html#marketing-process",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.4 Marketing Process",
-    "text": "2.4 Marketing Process\n\n\n\n\n\n\n\n\n\n\nWe will go through the four steps using Uber and Apple.",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#situation-analysis-5-cs",
-    "href": "Week1-Lecture1.html#situation-analysis-5-cs",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.5 Situation Analysis: 5 C’s",
-    "text": "2.5 Situation Analysis: 5 C’s\n\nAny marketing decision can benefit from a deep understanding of the players within the market ecosystem—your own company, current and potential customers, collaborators and competitors—and the context they interact within: the 5Cs for short.\n\n\n\n\n\n\n\n\nCompany\n\nBusiness model\nGoals, objectives, and culture\n\n\n\nCustomers\n\nWho are the customers\nMarket size, segments\nOverall customer satisfaction and perceived value by customers\n\n\n\nCompetitors\n\nDirect/indirect/potential competitors\nStrengths, weaknesses, opportunities, and threats (SWOT)\n\n\n\nCollaborators\n\nSuppliers/distributors/alliances and partners\n\n\n\nClimate\n\nPESTLE",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#situation-analysis-company",
-    "href": "Week1-Lecture1.html#situation-analysis-company",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.6 Situation Analysis: Company",
-    "text": "2.6 Situation Analysis: Company\n\nCompany analysis is a strategic planning method used to assess the internal strengths and weaknesses of your company.\n\nBusiness model is the way your company makes money.\nGoals, objectives, and culture are the guiding principles that shape your company’s actions.\n\nCustomer is the most important player in the market ecosystem.\n\nMarket size, segments are the number of potential customers and the different groups they can be divided into.\nOverall customer satisfaction and perceived value by customers are the key to marketing success.\n\n\n\n\n\n\n\n\n\nWhat is the business model of Uber? Does it directly provide transportation services? If not, who does?\nWho are Uber’s customers?",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#situation-analysis-collaborators",
-    "href": "Week1-Lecture1.html#situation-analysis-collaborators",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.7 Situation Analysis: Collaborators",
-    "text": "2.7 Situation Analysis: Collaborators\n\nCollaborators are entities that work with your company to help you deliver your product or service to the customer.\n\nSuppliers provide the raw materials or components needed to produce your product.\nDistributors help you get your product to the customer.\nRetailers sell your product to the customer.\n\n\n\n\n\n\n\n\n\nWho are the collaborators of Uber?",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#situation-analysis-competitors",
-    "href": "Week1-Lecture1.html#situation-analysis-competitors",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.8 Situation Analysis: Competitors",
-    "text": "2.8 Situation Analysis: Competitors\n\nWe tend to pay more attention towards more salient direct competitors, but we should also consider indirect and potential competitors.\n\nIndirect competitors are companies that satisfy the same customer goals, even if they offer different products or services.\nPotential competitors are those who might pose a competitive threat in the future; who possess equivalent resources that would allow them to enter the market",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#situation-analysis-contextclimate",
-    "href": "Week1-Lecture1.html#situation-analysis-contextclimate",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.9 Situation Analysis: Context/Climate",
-    "text": "2.9 Situation Analysis: Context/Climate\n\nContext/Climate analysis is a strategic planning method used to assess major external factors that influence the market ecosystem, and is often referred to as PESTLE analysis.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPolitical: Brexit\nEconomic: Minimum wage, inflation, economy recession\nSocial: Gig economy\nTechnological: Big Data, mobile tech penetration\nLegal: GDPR, government regulations (BBC: partner or employee?)\nEnvironmental: sustainability, CSR",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#strategy-stp",
-    "href": "Week1-Lecture1.html#strategy-stp",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.10 Strategy: STP",
-    "text": "2.10 Strategy: STP\n\nSituation analysis is a critical input into marketing strategy, i.e., the sequential application of the processes of segmentation, targeting, and positioning.",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#tactics-4ps",
-    "href": "Week1-Lecture1.html#tactics-4ps",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "2.11 Tactics: 4P’s",
-    "text": "2.11 Tactics: 4P’s\n\nThe marketing mix provides an implementation of your positioning. Segmentation is here applied at the tactical level, to optimally design the marketing mix or 4Ps.",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#big-data-era",
-    "href": "Week1-Lecture1.html#big-data-era",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "3.1 Big Data Era",
-    "text": "3.1 Big Data Era\nWith the advancement in ICTs and computing power, data scientists nowadays are equipped with data analytics tools powerful than ever!\nFirms now have access to enormously rich information trail of customers\n\nDemographic profiles (DoB, gender, ethnicity, income)\nPurchase history (recency, frequency, monetary value, spending behavior)\nOnline browsing and search history (browsing, click through, add to cart, purchase)\nGPS data from mobile phones for offline store visits\nSocial media (location, consumer preference, social network)",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#our-roadmap",
-    "href": "Week1-Lecture1.html#our-roadmap",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "3.2 Our Roadmap",
-    "text": "3.2 Our Roadmap\n\nWeeks 1-3: Marketing Process and Profitability Analysis\n\nConcepts and R basics, which lay the foundation for the rest of the course\n\nWeeks 4-5: Machine Learning and Predictive Analytics\n\nHow to reduce the costs of marketing campaigns\n\nWeeks 6-10: Causal Inference\n\nHow to correctly evaluate the benefits of marketing campaigns",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture1.html#unique-position-of-marketing-analytics",
-    "href": "Week1-Lecture1.html#unique-position-of-marketing-analytics",
-    "title": "Class 1 Intro to Marketing Analytics",
-    "section": "3.3 Unique Position of Marketing Analytics",
-    "text": "3.3 Unique Position of Marketing Analytics",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 1: Introduction to Marketing Analytics"
+      "[Week 5] Supervised Learning for Customer Targeting",
+      "Lecture Slides"
     ]
   },
   {
@@ -1613,88 +1705,343 @@
     ]
   },
   {
-    "objectID": "LectureSlides.html",
-    "href": "LectureSlides.html",
-    "title": "Lecture Slides",
+    "objectID": "Week1-Lecture1.html",
+    "href": "Week1-Lecture1.html",
+    "title": "Class 1 Intro to Marketing Analytics",
     "section": "",
-    "text": "Lecture slides of subsequent weeks will be released on Monday each week. Stay tuned!",
+    "text": "Hi there, I’m Wei!\nI did my PhD in Quant Marketing at NUS (Singapore) and an undergrad degree in Finance at Fudan (Shanghai)\nI love musical instruments, video games, and food (bubble tea is my soul mate)!\nMy research focuses on digital marketing, sharing economy, and platform design.\n\n\n\n\n\nDetailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Wednesday, usually with 3 sessions\n\nA short quiz at the beginning of each class to review the previous week’s content\nA methodology session, in which we learn a new data analytics tool\nA case study session, to learn how the newly learned analytics tool can be applied to a real-life business scenario\n\n\n\n\n\n\nNo exams; 3 individual assignments, which are similar to case studies in class, and you will apply what you’ve learned in class to solve real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 25\n2nd assignment, 30% weight, 1500 words, due on Nov 15\n3rd assignment, 40% weight, 2000 words, due on Dec 13\n\nHow to submit?\n\nPlease ensure submissions are in PDF (preferred) or Word format; submissions in other formats won’t be accepted for marking.\nThe quarto-based answer sheets (qmd files) will be given to you.\n\n\n\nWord count and late submission penalties will be applied by BA admin. For related queries and EC applications, please directly contact BA admin at mgmt.ba-admin@ucl.ac.uk.\nWe have random second marking in place to mitigate marking errors. Please refrain from emailing teaching assistants for re-marking as re-marking is not allowed by school policy.",
     "crumbs": [
       "Lectures",
-      "[Week 4] Unsupervised Learning for Customer Segmentation",
-      "Lecture Slides"
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
     ]
   },
   {
-    "objectID": "Case-CLV.html",
-    "href": "Case-CLV.html",
-    "title": "CLV Analysis for M&S Delivery Pass Program",
+    "objectID": "Week1-Lecture1.html#about-me",
+    "href": "Week1-Lecture1.html#about-me",
+    "title": "Class 1 Intro to Marketing Analytics",
     "section": "",
-    "text": "M&S in Jubilee Place, Canary Wharf, London",
+    "text": "Hi there, I’m Wei!\nI did my PhD in Quant Marketing at NUS (Singapore) and an undergrad degree in Finance at Fudan (Shanghai)\nI love musical instruments, video games, and food (bubble tea is my soul mate)!\nMy research focuses on digital marketing, sharing economy, and platform design.",
     "crumbs": [
       "Lectures",
-      "[Week 2] Customer Lifetime Value",
-      "Case Study: CLV Analysis for M&S's Delivery Pass"
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
     ]
   },
   {
-    "objectID": "Case-CLV.html#the-business-problem-for-ms-a-delivery-pass-program",
-    "href": "Case-CLV.html#the-business-problem-for-ms-a-delivery-pass-program",
-    "title": "CLV Analysis for M&S Delivery Pass Program",
-    "section": "2.1 The Business Problem for M&S: A Delivery Pass Program",
-    "text": "2.1 The Business Problem for M&S: A Delivery Pass Program\nIt was just six months after Tom, our proud (but perhaps overly confident?) graduate from our MSc BA program, made a series of … let’s say, “bold” decisions at his first job at Apple Inc. The influencer marketing campaign didn’t exactly influence anyone—except maybe the CMO to rethink her hiring decisions. Turns out, Tom hadn’t spent enough time learning R basics (despite countless reminders from Dr. Meow that “R is the best language in the world”), and he completely miscalculated the NPV of the campaign. Tom really regretted not having taken Dr. Meow’s advice on spending more time on the Marketing Analytics module instead of the Business Strategy module during the MSc BA program. Obviously, he had underestimated the importance of marketing analytics for his career as a business analyst.\nAs you might have guessed, Tom was promptly shown the door, and it wasn’t to Apple’s employee spa. But luck or maybe just a very sympathetic friend from his UCL days, Jerry, landed him a new gig at Marks & Spencer (M&S). Now, with a slightly more humble outlook on life and an unhealthy amount of bubble tea, Tom is trying to redeem himself as a data scientist in M&S’s marketing analytics team.\nM&S is a multinational retailer that sells groceries, clothing, and home products. M&S has been successful in building a loyal customer base through its Sparks loyalty program, which offers customers exclusive discounts, personalized offers, and early access to sales. However, M&S is looking to further enhance its customer relationships and drive long-term profitability. One area to improve is the online sales channel. Other grocery chains such as Tesco and Sainsbury’s have been offering online delivery passes, which provide customers with unlimited deliveries for a fixed annual fee. M&S is considering launching a similar program to attract more customers and increase customer loyalty.\nTom’s job is to calculate the Customer Lifetime Value (CLV) of this potential new program—a task that would require him to remember at least some of what he learned in Marketing Analytics Week 2’s class (if only he had stayed awake). This time, Tom knows one thing for sure: he better not mess this up. Otherwise, he might end up selling bubble teas at a Canary Wharf stall next to the Rice Guys instead of analyzing data at M&S.\nAs Tom learned in Week 2’s class, customer lifetime value (CLV) can be a powerful metric that can help M&S understand the long-term value of its customers and guide strategic marketing decisions such as the profitability of introducing a delivery pass program. By calculating the CLV of customers who sign up for the delivery pass program, M&S can determine the program’s potential and identify the most valuable customer segments.\nIn order to conduct the CLV analysis, Tom needs to consider the following key factors:\nPrice of the Delivery Pass: As a starting point, Tom needs to determine the price of the delivery pass and the benefits it offers to customers. The price of the delivery pass will surely influence customer acquisition and retention rates, as well as the overall profitability of the program. At the moment, Tesco’s delivery pass is priced at £84 per year, while Sainsbury’s delivery pass is priced at £80 per year. Therefore, Tom would like to price M&S’s delivery pass at £89 per year, which is competitive with other grocery chains and offers customers a cost-effective option for unlimited deliveries.\nTime Unit of Analysis: Although customers frequently shop at M&S throughout the year, the yearly approach is the most convenient, especially since M&S’s Sparks program offers benefits that often encourage long-term loyalty.\nNumber of Years (N): M&S will assess the CLV over a 5-year period. While a longer time horizon could be considered, uncertainty increases with time due to changes in the economy, competition, and customer preferences. Therefore, M&S uses a 5-year horizon for most revenue and profitability projections.\nGross Profit (g): M&S’s analysis starts by calculating the gross profit generated by a typical customer each year. From the historical customer transaction data, the marketing analytics team estimates that an average M&S customer shops at M&S 40 times a year, spending an average of £100 per visit.\nProfit Margin: M&S’s profit margin on each purchase is 7%, meaning that the cost of goods sold (COGS) is 93% of the purchase price. However, M&S incurs costs to provide these services included in the delivery pass, such as delivery fees for online orders. Each delivery costs M&S a £5 to pay for the delivery driver and other operational expenses.\nRetention Rate (r): The retention rate is the probability that a customer continues to shop with M&S year after a year. Based on historical data, M&S’s customer retention rate is 70%, meaning that 70% of customers remain loyal and are likely to renew their delivery pass each year. This retention rate forms the basis for estimating future customer value.\nDiscount Rate (k): M&S applies a yearly discount rate of 10%, as recommended by its finance department. This discount rate reflects the cost of capital and the opportunity cost of investing elsewhere. All future profits will be discounted to reflect their present value, assuming that the profits from customer purchases are received at the end of each year.\nCustomer Acquisition Costs (CAC): M&S invests heavily in customer acquisition, using paid search ads on search engines. Such promotion is also called search engine marketing or pay-per-click marketing. M&S decideds to bid £0.4 for each click.1 Based on the bid, M&S estimates that about 1% of Google users will see the the ads; at the £89 annual subscription price, 10% of exposed customers who click on an ad on search engine or social medias will sign up for a free trial (i.e., triers); triers will on average shop twice during the 2-week trial period. 20% of those triers will eventually become paying customers. In order to increase market penetration, M&S offers a £10 discount on the first purchase on top of a customer’s £100 shopping basket. M&S also offers free delivery for triers during the trial period.\n\n\n\n\n\n\n\n\nFigure 1: M&S’s Marketing Funnel\n\n\n\n\n\nBased on the above information, Tom will conduct a CLV analysis to determine the potential profitability of M&S’s delivery pass program and provide recommendations to the senior marketing manager.",
+    "objectID": "Week1-Lecture1.html#weekly-arrangements",
+    "href": "Week1-Lecture1.html#weekly-arrangements",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "",
+    "text": "Detailed weekly arrangements can be found in this link\n\nAdd bookmark for easier reference\n\nEach week, we have a 3-hour lecture on Wednesday, usually with 3 sessions\n\nA short quiz at the beginning of each class to review the previous week’s content\nA methodology session, in which we learn a new data analytics tool\nA case study session, to learn how the newly learned analytics tool can be applied to a real-life business scenario",
     "crumbs": [
       "Lectures",
-      "[Week 2] Customer Lifetime Value",
-      "Case Study: CLV Analysis for M&S's Delivery Pass"
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
     ]
   },
   {
-    "objectID": "Case-CLV.html#compute-customer-acquisition-cost",
-    "href": "Case-CLV.html#compute-customer-acquisition-cost",
-    "title": "CLV Analysis for M&S Delivery Pass Program",
-    "section": "2.2 Compute Customer Acquisition Cost",
-    "text": "2.2 Compute Customer Acquisition Cost\n\nQuestion 3Answer\n\n\nWatch the intro video by Google, Introduction to Search Engine Marketing, before class. Understand how SEM works and think about how these concepts apply to M&S’s case as in Figure 1.\nCompute the customer acquisition costs (CAC) for M&S’s delivery pass program\n\n\nCAC = total costs for customer ad clicks + total costs of £10 promo + total costs of free deliveries\nCAC Part I: Costs of paid search ads to get 1 new member.\n\n[…] “about 10% of customers who click on an ad on search engine or social medias will sign up for a free trial, and 20% of those trial users will eventually become paying customers.”\n\n\n\nCode\n# clicker_to_trier_rate is the % of trier customers from clickers\nclicker_to_trier_rate &lt;- 0.1\n\n# trier_to_member_rate is the % of a new member from triers\ntrier_to_member_rate &lt;- 0.2\n\n\n\nHow many customers need to click the ad to get 1 new customer?\n\n\n\nCode\nn_clickers_for_1newmember &lt;- (1 / clicker_to_trier_rate) * (1 / trier_to_member_rate)\n\nn_clickers_for_1newmember\n\n\n[1] 50\n\n\n\nTotal costs for customer clicks\n\n\n\nCode\ntotal_cost_clicks &lt;- 0.4 * n_clickers_for_1newmember\ntotal_cost_clicks\n\n\n[1] 20\n\n\nCAC Part II: total costs of £10 promo for first order each trier customer\n\nWhat is the total promo cost for these trier customers’ first order?\n\n\n\nCode\npromo_first_order_each_trier &lt;- 10\nprofit_margin &lt;- 0.07\n\ntotal_cost_promo &lt;- promo_first_order_each_trier * # promotion amount\n    (1 - profit_margin) * # COGS rate\n    (1 / trier_to_member_rate) # num of triers\n\ntotal_cost_promo\n\n\n[1] 46.5\n\n\nCAC Part III: total costs from selling groceries for each trier\n\n2 visits for each trier, the profits from the 2 visits are\n\n\n\nCode\nrevenue_each_visit &lt;- 100\n\nprofit_each_trier &lt;- revenue_each_visit * profit_margin * 2\n\nprofit_each_trier\n\n\n[1] 14\n\n\n\nThe 2 visits are free of delivery charges, which are costs to M&S\n\n\n\nCode\ndeliverycost_each_trier &lt;- 5 * 2\ndeliverycost_each_trier\n\n\n[1] 10\n\n\n\nNet costs for each trier from the 2 visits\n\n\n\nCode\nnetcost_each_trier &lt;- deliverycost_each_trier - profit_each_trier\n\nnetcost_each_trier\n\n\n[1] -4\n\n\n\nTotal net profits from all triers\n\n\n\nCode\ntotalcosts_from_all_triers &lt;- netcost_each_trier * (1 / trier_to_member_rate)\n\ntotalcosts_from_all_triers\n\n\n[1] -20\n\n\n\nCAC = total costs for customer ad clicks + total costs of £10 promo + total costs of free deliveries\n\n\n\nCode\nCAC &lt;- total_cost_clicks + total_cost_promo + totalcosts_from_all_triers\n\nCAC\n\n\n[1] 46.5",
+    "objectID": "Week1-Lecture1.html#assignments",
+    "href": "Week1-Lecture1.html#assignments",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "",
+    "text": "No exams; 3 individual assignments, which are similar to case studies in class, and you will apply what you’ve learned in class to solve real-life marketing analytics problems.\n\n1st assignment, 30% weight, 1500 words, due on Oct 25\n2nd assignment, 30% weight, 1500 words, due on Nov 15\n3rd assignment, 40% weight, 2000 words, due on Dec 13\n\nHow to submit?\n\nPlease ensure submissions are in PDF (preferred) or Word format; submissions in other formats won’t be accepted for marking.\nThe quarto-based answer sheets (qmd files) will be given to you.\n\n\n\nWord count and late submission penalties will be applied by BA admin. For related queries and EC applications, please directly contact BA admin at mgmt.ba-admin@ucl.ac.uk.\nWe have random second marking in place to mitigate marking errors. Please refrain from emailing teaching assistants for re-marking as re-marking is not allowed by school policy.",
     "crumbs": [
       "Lectures",
-      "[Week 2] Customer Lifetime Value",
-      "Case Study: CLV Analysis for M&S's Delivery Pass"
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
     ]
   },
   {
-    "objectID": "Case-CLV.html#compute-customer-lifetime-value",
-    "href": "Case-CLV.html#compute-customer-lifetime-value",
-    "title": "CLV Analysis for M&S Delivery Pass Program",
-    "section": "2.3 Compute Customer Lifetime Value",
-    "text": "2.3 Compute Customer Lifetime Value\n\n2.3.1 Step 1: Determine time unit of analysis\n\nQuestion 4Answer\n\n\nFind the time unit of analysis in the case study.\nShould we use monthly analysis?\n\n\nWhen there is strong within-year seasonality of customer purchases\n\n\n\n\n\n2.3.2 Step 2: Determine number of years\n\nQuestion 5Answer\n\n\nFind \\(N\\): the number of years over which the customer relationship is assessed\n\n\n\n\nCode\nN &lt;- 5\n\n\n\n\n\n\n\n2.3.3 Step 3: Compute profit margin for each period\n\nQuestion 6Answer\n\n\n\\(g = M - c\\): profit each year, which is the profit from sales M minus marketing costs c\n\n\n\nThe annual membership fee is £89\n\n\n\nCode\nmembership &lt;- 89\n\n\n\nn_visit: 40 visits each year; each time £100; with profit margin 7% (COGS 93%)\n\n\n\nCode\nn_visit &lt;- 40\n\n\n\nM: profit margin each period\n\n\n\nCode\nM &lt;- membership + revenue_each_visit * n_visit * profit_margin\nM\n\n\n[1] 369\n\n\n\nc: variable delivery costs each order\n\n\n\nCode\ndeliverycost_each_visit &lt;- 5\nc &lt;- deliverycost_each_visit * n_visit\nc\n\n\n[1] 200\n\n\n\ng: the period net profit from customers\n\n\n\nCode\ng &lt;- M - c\ng_seq &lt;- rep(g, N)\ng_seq\n\n\n[1] 169 169 169 169 169\n\n\n\n\n\n\n\n2.3.4 Step 4: Compute sequence of retention rate\n\nQuestion 7Answer\n\n\n\\(r\\): retention rate\n\n\n\n\nCode\n# retention_rate is the probability of customer staying with us after 1 year\nr &lt;- 0.7\n\n# create a geometric sequence of accumulative retention rate for N years\nr_seq &lt;- r^(seq(1, N) - 1)\nr_seq\n\n\n[1] 1.0000 0.7000 0.4900 0.3430 0.2401\n\n\n\n\n\n\n\n2.3.5 Step 5: Compute sequence of discount factors\n\nQuestion 8Answer\n\n\n\\(k\\): the discount rate\n\n\n\n\nCode\nk &lt;- 0.1\nd &lt;- 1 / (1 + k)\nd_seq &lt;- d^(seq(1, N))\nd_seq\n\n\n[1] 0.9090909 0.8264463 0.7513148 0.6830135 0.6209213\n\n\n\n\n\n\n\n2.3.6 Step 6: Compute CLV\n\nQuestion 9Answer\n\n\nCompute the CLV based on the CLV formula\n\n\n\nRevenues, variables costs, and profit for the next 5 years\n\n\n\nCode\ng_seq\n\n\n[1] 169 169 169 169 169\n\n\n\nApply retention rate\n\n\n\nCode\ng_seq_after_churn &lt;- g_seq * r_seq\ng_seq_after_churn\n\n\n[1] 169.0000 118.3000  82.8100  57.9670  40.5769\n\n\n\nApply discount factor\n\n\n\nCode\ng_seq_after_churn_discount &lt;- g_seq_after_churn * d_seq\n\ng_seq_after_churn_discount\n\n\n[1] 153.63636  97.76860  62.21638  39.59224  25.19506\n\n\n\nCompute CLV by summing up future expected profits\n\n\n\nCode\nsum(g_seq_after_churn_discount)\n\n\n[1] 378.4086\n\n\nCode\nsum(g_seq_after_churn_discount) - CAC\n\n\n[1] 331.9086",
+    "objectID": "Week1-Lecture1.html#role-of-marketing",
+    "href": "Week1-Lecture1.html#role-of-marketing",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.1 Role of Marketing",
+    "text": "2.1 Role of Marketing\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinance (finance a company’s business activities)\nAccounting (bookkeeping of past transactions)\nOperations (supply chain, manufacturing, inventory management)\nMarketing (directly deal with consumer; value exchange and value realization)",
     "crumbs": [
       "Lectures",
-      "[Week 2] Customer Lifetime Value",
-      "Case Study: CLV Analysis for M&S's Delivery Pass"
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
     ]
   },
   {
-    "objectID": "Case-CLV.html#use-clv-to-guide-marketing-decisions-1",
-    "href": "Case-CLV.html#use-clv-to-guide-marketing-decisions-1",
-    "title": "CLV Analysis for M&S Delivery Pass Program",
-    "section": "4.1 Use CLV to Guide Marketing Decisions",
-    "text": "4.1 Use CLV to Guide Marketing Decisions\n\n(To guide customer acquisition) What if the company only offers £5 for first time purchase? This will save some CAC but the clicker-to-trier rate will decrease to 5%. Please compute the new CLV. Should you go ahead with the proposed change?\n\n\n\nCode\ncomputeCLV(\n    promo_first_order_each_trier = 5,\n    clicker_to_trier_rate = 0.05\n)\n\n\n[1] 335.1586\n\n\n\n(To guide customer retention) What if the company increases the annual membership fee to $119? This will increase revenue from memberships but will also make some customers unhappy so their retention rate reduce to 55%. Please compute the new CLV. Should you go ahead with the proposed change?\n\n\n\nCode\ncomputeCLV(\n    membership = 119,\n    r = 0.55\n)\n\n\n[1] 304.0114",
+    "objectID": "Week1-Lecture1.html#what-is-marketing-2",
+    "href": "Week1-Lecture1.html#what-is-marketing-2",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.2 What is Marketing?",
+    "text": "2.2 What is Marketing?\n\nKotler (1991): “Marketing is a social and managerial process by which individuals and groups obtain what they want and need through creating, offering and exchanging products of value with others.”\nBritish Chartered Institute of Marketing (2000s): “Marketing is the management process responsible for identifying, anticipating and satisfying customers’ requirements profitably.”\nAmerican Marketing Association (2017): “Marketing is the activity, set of institutions, and processes for creating, communicating, delivering, and exchanging offerings that have value for customers, clients, partners, and society at large.”",
     "crumbs": [
       "Lectures",
-      "[Week 2] Customer Lifetime Value",
-      "Case Study: CLV Analysis for M&S's Delivery Pass"
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
     ]
   },
   {
-    "objectID": "Case-CLV.html#footnotes",
-    "href": "Case-CLV.html#footnotes",
-    "title": "CLV Analysis for M&S Delivery Pass Program",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nCost per click (CPC) is a pricing model used in online advertising where advertisers pay each time a user clicks on their ad. It is a key metric in digital marketing campaigns and is commonly used in platforms like Google Ads, Facebook Ads, and other search engines or social media networks. https://www.investopedia.com/terms/c/cpc.asp↩︎",
+    "objectID": "Week1-Lecture1.html#what-is-marketing-a-text-mining-approach",
+    "href": "Week1-Lecture1.html#what-is-marketing-a-text-mining-approach",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.3 What is Marketing? A Text Mining Approach",
+    "text": "2.3 What is Marketing? A Text Mining Approach\n\n\nCode\npacman::p_load(tm, wordcloud, RColorBrewer,wordcloud2, data.table)\n# generate text corpus\ndf_mkt &lt;-  'Marketing is a social and managerial process by which individuals and groups obtain what they  want and need through creating, offering and exchanging products of value with others.\nMarketing is the management process responsible for identifying, anticipating and satisfying customers requirements profitably.\nMarketing is the activity, set of institutions, and processes for creating, communicating, delivering, and exchanging offerings that have value for customers, clients, partners, and society at large.'\n\ndf_mkt_corpus &lt;- Corpus(VectorSource(df_mkt))\n# text cleaning \ndf_mkt_corpus &lt;- df_mkt_corpus |&gt; \n  tm_map(removePunctuation) |&gt;\n  tm_map(stripWhitespace) |&gt;\n  tm_map(content_transformer(tolower)) |&gt;\n  tm_map(removeWords, stopwords(\"english\"))\n# Create a document-term-matrix\ndf_mkt_dtm &lt;- TermDocumentMatrix(df_mkt_corpus)\ndf_mkt_matrix &lt;-  as.matrix(df_mkt_dtm)\ndf &lt;- data.table(words = rownames(df_mkt_matrix),\n                 freq = df_mkt_matrix[,1])\n# draw wordcloud\nset.seed(888)\nwordcloud(words = df$words, freq = df$freq, min.freq = 1, max.words=200, random.order=FALSE, colors=brewer.pal(8, \"Dark2\"))\n\n\n\n\n\n\n\n\n\n\nMarketing is a management process that creates and exchanges values for the company by selling the right products to the right customers. - Wei, 2024",
     "crumbs": [
       "Lectures",
-      "[Week 2] Customer Lifetime Value",
-      "Case Study: CLV Analysis for M&S's Delivery Pass"
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
     ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#marketing-process",
+    "href": "Week1-Lecture1.html#marketing-process",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.4 Marketing Process",
+    "text": "2.4 Marketing Process\n\n\n\n\n\n\n\n\n\n\nWe will go through the four steps using Uber and Apple.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#situation-analysis-5-cs",
+    "href": "Week1-Lecture1.html#situation-analysis-5-cs",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.5 Situation Analysis: 5 C’s",
+    "text": "2.5 Situation Analysis: 5 C’s\n\nAny marketing decision can benefit from a deep understanding of the players within the market ecosystem—your own company, current and potential customers, collaborators and competitors—and the context they interact within: the 5Cs for short.\n\n\n\n\n\n\n\n\nCompany\n\nBusiness model\nGoals, objectives, and culture\n\n\n\nCustomers\n\nWho are the customers\nMarket size, segments\nOverall customer satisfaction and perceived value by customers\n\n\n\nCompetitors\n\nDirect/indirect/potential competitors\nStrengths, weaknesses, opportunities, and threats (SWOT)\n\n\n\nCollaborators\n\nSuppliers/distributors/alliances and partners\n\n\n\nClimate\n\nPESTLE",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#situation-analysis-company",
+    "href": "Week1-Lecture1.html#situation-analysis-company",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.6 Situation Analysis: Company",
+    "text": "2.6 Situation Analysis: Company\n\nCompany analysis is a strategic planning method used to assess the internal strengths and weaknesses of your company.\n\nBusiness model is the way your company makes money.\nGoals, objectives, and culture are the guiding principles that shape your company’s actions.\n\nCustomer is the most important player in the market ecosystem.\n\nMarket size, segments are the number of potential customers and the different groups they can be divided into.\nOverall customer satisfaction and perceived value by customers are the key to marketing success.\n\n\n\n\n\n\n\n\n\nWhat is the business model of Uber? Does it directly provide transportation services? If not, who does?\nWho are Uber’s customers?",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#situation-analysis-collaborators",
+    "href": "Week1-Lecture1.html#situation-analysis-collaborators",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.7 Situation Analysis: Collaborators",
+    "text": "2.7 Situation Analysis: Collaborators\n\nCollaborators are entities that work with your company to help you deliver your product or service to the customer.\n\nSuppliers provide the raw materials or components needed to produce your product.\nDistributors help you get your product to the customer.\nRetailers sell your product to the customer.\n\n\n\n\n\n\n\n\n\nWho are the collaborators of Uber?",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#situation-analysis-competitors",
+    "href": "Week1-Lecture1.html#situation-analysis-competitors",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.8 Situation Analysis: Competitors",
+    "text": "2.8 Situation Analysis: Competitors\n\nWe tend to pay more attention towards more salient direct competitors, but we should also consider indirect and potential competitors.\n\nIndirect competitors are companies that satisfy the same customer goals, even if they offer different products or services.\nPotential competitors are those who might pose a competitive threat in the future; who possess equivalent resources that would allow them to enter the market",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#situation-analysis-contextclimate",
+    "href": "Week1-Lecture1.html#situation-analysis-contextclimate",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.9 Situation Analysis: Context/Climate",
+    "text": "2.9 Situation Analysis: Context/Climate\n\nContext/Climate analysis is a strategic planning method used to assess major external factors that influence the market ecosystem, and is often referred to as PESTLE analysis.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPolitical: Brexit\nEconomic: Minimum wage, inflation, economy recession\nSocial: Gig economy\nTechnological: Big Data, mobile tech penetration\nLegal: GDPR, government regulations (BBC: partner or employee?)\nEnvironmental: sustainability, CSR",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#strategy-stp",
+    "href": "Week1-Lecture1.html#strategy-stp",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.10 Strategy: STP",
+    "text": "2.10 Strategy: STP\n\nSituation analysis is a critical input into marketing strategy, i.e., the sequential application of the processes of segmentation, targeting, and positioning.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#tactics-4ps",
+    "href": "Week1-Lecture1.html#tactics-4ps",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "2.11 Tactics: 4P’s",
+    "text": "2.11 Tactics: 4P’s\n\nThe marketing mix provides an implementation of your positioning. Segmentation is here applied at the tactical level, to optimally design the marketing mix or 4Ps.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#big-data-era",
+    "href": "Week1-Lecture1.html#big-data-era",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "3.1 Big Data Era",
+    "text": "3.1 Big Data Era\nWith the advancement in ICTs and computing power, data scientists nowadays are equipped with data analytics tools powerful than ever!\nFirms now have access to enormously rich information trail of customers\n\nDemographic profiles (DoB, gender, ethnicity, income)\nPurchase history (recency, frequency, monetary value, spending behavior)\nOnline browsing and search history (browsing, click through, add to cart, purchase)\nGPS data from mobile phones for offline store visits\nSocial media (location, consumer preference, social network)",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#our-roadmap",
+    "href": "Week1-Lecture1.html#our-roadmap",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "3.2 Our Roadmap",
+    "text": "3.2 Our Roadmap\n\nWeeks 1-3: Marketing Process and Profitability Analysis\n\nConcepts and R basics, which lay the foundation for the rest of the course\n\nWeeks 4-5: Machine Learning and Predictive Analytics\n\nHow to reduce the costs of marketing campaigns\n\nWeeks 6-10: Causal Inference\n\nHow to correctly evaluate the benefits of marketing campaigns",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture1.html#unique-position-of-marketing-analytics",
+    "href": "Week1-Lecture1.html#unique-position-of-marketing-analytics",
+    "title": "Class 1 Intro to Marketing Analytics",
+    "section": "3.3 Unique Position of Marketing Analytics",
+    "text": "3.3 Unique Position of Marketing Analytics",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 1: Introduction to Marketing Analytics"
+    ]
+  },
+  {
+    "objectID": "R-errors.html",
+    "href": "R-errors.html",
+    "title": "Troubleshooting R",
+    "section": "",
+    "text": "In this page, I summarize the common issues running R and the troubleshooting tips. If you run into any R issues, please refer to this page as the first step for any solution.",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "R-errors.html#could-not-find-function-error",
+    "href": "R-errors.html#could-not-find-function-error",
+    "title": "Troubleshooting R",
+    "section": "1 ‘could not find function’ Error",
+    "text": "1 ‘could not find function’ Error\nThis error arises when (1) an R package is not loaded properly, or (2) due to misspelling of the functions.\nAs you can see in the screenshot below, when we run the code, we get a could not find function “praise” error in the console. This is because we have not loaded the package “praise” to which the praise() function belongs.\n\nWe need to first load the package that contains the function we want to run using library() as shown below:\n\n\nCode\nlibrary(praise)\n\n\nand then use the function praise() to run it error-free.\n\n\nCode\npraise()\n\n\n[1] \"You are fantabulous!\"\n\n\nMeanwhile, if we misspell the praise() function, for instance, to prais(), this will also throw up a could not find function “prais” error.\n\n\nCode\nprais()\n\n\nError in prais(): could not find function \"prais\"",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "R-errors.html#object-not-found-error",
+    "href": "R-errors.html#object-not-found-error",
+    "title": "Troubleshooting R",
+    "section": "2 ‘object not found’ error",
+    "text": "2 ‘object not found’ error\nThis error occurs when the particular object used in the code is not yet created or existing in the R environment.\nIn the example below we are trying to compute x plus 4. As you can see, we get an ‘object ’x’ not found’ error as the “x” object is not yet created and missing in our R environment.\n\n\nCode\nx+4\n\n\nError in eval(expr, envir, enclos): object 'x' not found\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\nBased on the missing object, go back to your previous codes and check why the object is missing. Did you forget to create it? Did you accidentally delete it?",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "R-errors.html#banner-packages-xxx-required-but-are-not-installed",
+    "href": "R-errors.html#banner-packages-xxx-required-but-are-not-installed",
+    "title": "Troubleshooting R",
+    "section": "3 Banner: “Packages XXX required but are not installed”",
+    "text": "3 Banner: “Packages XXX required but are not installed”\nIf you see this banner in your RStudio in the screenshot, it means RStudio detects some packages mentioned in the R Markdown file or R script but are not yet installed on your computer. So it prompts you for installation.\n\nFor instance, in this case, the error message means, knitr and pacman are found in the .Rmd file, but they are not installed, so RStudio is smart enough to prompt you to install.\n\n\n\n\n\n\nSolution\n\n\n\nJust click install button in the banner. RStudio will install the missing components.",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "R-errors.html#prompt-window-r-packages-not-up-to-date",
+    "href": "R-errors.html#prompt-window-r-packages-not-up-to-date",
+    "title": "Troubleshooting R",
+    "section": "4 Prompt Window: “R packages not up-to-date”",
+    "text": "4 Prompt Window: “R packages not up-to-date”\nSince the R packages are being updated every day (just like our mobile apps, there could be bugs so that the developers have to update R packages to fix those bugs), sometimes, though we may have installed some packages, they are too old to run the functions. And you may see this prompted message:\n\nIt means, the aforementioned packages, base64enc, digest, etc. are outdated and must be updated to function.\n\n\n\n\n\n\nSolution\n\n\n\nClick Yes and RStudio will update all the packages for you.",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "R-errors.html#latex-not-found-when-kniting-the-.rmd.qmd-file.",
+    "href": "R-errors.html#latex-not-found-when-kniting-the-.rmd.qmd-file.",
+    "title": "Troubleshooting R",
+    "section": "5 Latex not found when kniting the .rmd/.qmd file.",
+    "text": "5 Latex not found when kniting the .rmd/.qmd file.\nIf this is your first time to knit the PDF document, you may see an error message as below:\n\nThe error message has usually told us everything on how to troubleshoot (that’s what an error message is for!).\nIn this screenshot, if you read along, you will find the cause of problem:\n\n[…] LaTex failed to compile,\n\nbecause\n\n[…] No LaTeX installation detected (LaTeX is required to create PDF output).\n\nand the solution is also consideratebly given in this error message:\n\n[…] You should install a LaTeX distribution for your platform: https://www.latex-project.org/get/\n\n\nIf you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()\n\nSo this error message tells us the solution:\n\n\n\n\n\n\nSolution\n\n\n\n\nAlternative solution 1:\nRun the following command in Console\ntinytex::install_tinytex()\nin order to install tinytex, a simplied version of LaTex, on your laptop.\n\n\nAlternative solution 2:\nInstall LaTex on your computer following the R installation guide\n\n\n\nIf you run the command in R Console, you will see that Latex is being installed\n\nAfter this progress bar finishes, you will be able to knit the PDF document!",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "R-errors.html#error-connection-not-found",
+    "href": "R-errors.html#error-connection-not-found",
+    "title": "Troubleshooting R",
+    "section": "6 Error: Connection Not Found",
+    "text": "6 Error: Connection Not Found\nConnection Not Found error is usually caused by RStudio being unable to locate your files on your hard disk.\nIf you don’t know how to find the path names for a file on your computer, please refer to\n\nthis link for Windows\n\nthis link for Mac",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "R-errors.html#more-questions",
+    "href": "R-errors.html#more-questions",
+    "title": "Troubleshooting R",
+    "section": "7 More Questions",
+    "text": "7 More Questions\nPlease leave a screenshot of error message in the MSTeams channel named “R QnA”. I will keep updating this webpage as more questions come in.",
+    "crumbs": [
+      "R Tutorials",
+      "Troubleshooting R"
+    ]
+  },
+  {
+    "objectID": "Case-PredictiveAnalyticsI.html",
+    "href": "Case-PredictiveAnalyticsI.html",
+    "title": "Improving Marketing Efficiency Using Predictive Analytics for M&S (I): Customer Segmentation Using K-Means Clustering",
+    "section": "",
+    "text": "Machine learning (ML) refers to the study of methods or algorithms designed to learn the underlying patterns in the data and make predictions based on these patterns. A key characteristic of predictive analytics techniques is their ability to produce accurate out-of-sample predictions. Consider the problem of predicting whether a user will click on an ad. We do not have a comprehensive theory of users’ clicking behavior. Predictive analytics methods can automatically learn which of these factors affect user behavior and how they interact with each other, potentially in a highly non-linear fashion, to derive the best functional form that explains user behavior virtually in real time. Predictive analytics methods typically assume a model or structure to learn, but they use a general class of models that can be very rich.\nPredictive analytics models can be divided into two major groups: supervised learning and unsupervised learning.\nSupervised learning requires input data that has both predictor (independent) variables and a target (dependent) variable whose value is to be estimated. If the goal of an analysis is to predict the value of some target variable (e.g., whether customer responds to our marketing offers; whether customers churn at some point in time), then supervised learning is used.\nOn the other hand, unsupervised learning does not identify a target variable, but rather treats all of the variables equally as inputs. In this case, the goal is not to predict the value of a variable, but rather to look for patterns, groupings, or other ways to characterize the data that may lead to an understanding of the way the data interrelate. Clustering analysis is an example of unsupervised learning, which helps data analysts find customer segments based on provided characteristics.\nIn this case study, we are going to analyze the same dataset as in “Descriptive Analytics for M&S”. Our task is to use predictive analytics tools to help M&S conduct more effective targeted marketing.\nAs a quick recap, the variable definitions are as follows,\nDemographic Variables\n\nID: Customer’s unique identifier\nYear_Birth: Customer’s birth year\nEducation: Customer’s education level\nMarital_Status: Customer’s marital status\nIncome: Customer’s yearly household income\nKidhome: Number of children in customer’s household\nTeenhome: Number of teenagers in customer’s household\nDt_Customer: Date of customer’s enrollment with the company\n\nCustomer Purchase History Data\n\nID: Customer’s unique identifier\nMntWines: Amount spent on wine in last 2 years\nMntFruits: Amount spent on fruits in last 2 years\nMntMeatProducts: Amount spent on meat in last 2 years\nMntFishProducts: Amount spent on fish in last 2 years\nMntSweetProducts: Amount spent on sweets in last 2 years\nNumDealsPurchases: Number of purchases made with a discount\nNumWebPurchases: Number of purchases made through the company’s web site\nNumCatalogPurchases: Number of purchases made using a catalogue\nNumStorePurchases: Number of purchases made directly in stores\nNumWebVisitsMonth: Number of visits to company’s web site in the last month\nComplain: 1 if customer complained in the last 2 years, 0 otherwise\nResponse: 1 if customer accepted the offer in the last campaign, 0 otherwise\nRecency: Number of days since customer’s last purchase"
+  },
+  {
+    "objectID": "Case-PredictiveAnalyticsI.html#data-collection",
+    "href": "Case-PredictiveAnalyticsI.html#data-collection",
+    "title": "Improving Marketing Efficiency Using Predictive Analytics for M&S (I): Customer Segmentation Using K-Means Clustering",
+    "section": "2.1 Data Collection",
+    "text": "2.1 Data Collection\nPlease load the M&S dataset from your local machine. You can use the “import dataset” button in RStudio to upload the dataset. The dataset is named data_full.csv. Name the dataset data_full.\n\nQuestion 1Answer\n\n\nload data_full, create total_spending, and select total_spending and Income as the clustering variables into a new data frame data_kmeans.\n\n\n\n\nCode\npacman::p_load(dplyr, ggplot2, ggthemes, broom)\ndata_full &lt;- read.csv(\"images/data_full.csv\") %&gt;%\n    mutate(total_spending = MntWines + MntFruits + MntMeatProducts + MntFishProducts + MntSweetProducts + MntGoldProds)\n\ndata_kmeans &lt;- data_full %&gt;%\n    select(total_spending, Income)"
+  },
+  {
+    "objectID": "Case-PredictiveAnalyticsI.html#data-preprocessing",
+    "href": "Case-PredictiveAnalyticsI.html#data-preprocessing",
+    "title": "Improving Marketing Efficiency Using Predictive Analytics for M&S (I): Customer Segmentation Using K-Means Clustering",
+    "section": "2.2 Data Preprocessing",
+    "text": "2.2 Data Preprocessing\nFirst, we need to check missing values and resolve them as the k-means algorithm cannot handle missing values directly.\n\nQuestion 2Answer\n\n\nWe find that the Income variable has missing values. We can replace the missing values with the mean of the Income variable.\n\n\n\n\nCode\ndata_kmeans &lt;- data_kmeans %&gt;%\n    mutate(Income = ifelse(is.na(Income), mean(Income, na.rm = TRUE), Income))\n\n\n\n\n\nNext, we need to re-scale the two variables using scale(), because the two variables are of very different scales.\n\nQuestion 3Answer\n\n\nScale the variables and create a new data frame data_kmeans_scaled.\n\n\n\n\nCode\n# method 1\ndata_kmeans_scaled &lt;- data_kmeans %&gt;%\n    select(total_spending, Income) %&gt;%\n    mutate(\n        total_spending = scale(total_spending),\n        Income = scale(Income)\n    )\n\n# method 2: using across when there are many variables with the same transformation\ndata_kmeans_scaled &lt;- data_kmeans %&gt;%\n    select(total_spending, Income) %&gt;%\n    mutate(across(everything(), scale))"
+  },
+  {
+    "objectID": "Case-PredictiveAnalyticsI.html#data-analytics",
+    "href": "Case-PredictiveAnalyticsI.html#data-analytics",
+    "title": "Improving Marketing Efficiency Using Predictive Analytics for M&S (I): Customer Segmentation Using K-Means Clustering",
+    "section": "2.3 Data Analytics",
+    "text": "2.3 Data Analytics\n\nQuestion 4Answer\n\n\n\nApply K-Means Clustering with 2 Clusters\n\n\n\n\n\nCode\nset.seed(888)\nresult_kmeans &lt;- kmeans(data_kmeans_scaled,\n    centers = 2,\n    nstart = 10\n)\n\n\n\n\n\n\nQuestion 5Answer\n\n\n\nWe can examine the structure of the result_kmeans using tidy()\n\n\n\n\n\nCode\nresult_kmeans %&gt;%\n    tidy()\n\n\n\n  \n\n\n\n\n\n\n\nQuestion 6Answer\n\n\n\nVisualize the clustering\n\n\n\n\n\nCode\npacman::p_load(cluster, factoextra)\nset.seed(888)\nfviz_cluster(result_kmeans,\n    data = data_kmeans\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuestion 7Answer\n\n\n\nDetermine the optimal number of clusters using statistical criteria\n\n\n\nGap Method\n\n\nCode\nset.seed(888)\ngap_stat &lt;- clusGap(data_kmeans_scaled,\n    FUN = kmeans,\n    K.max = 10,\n    B = 50\n)\n\n\nWarning: did not converge in 10 iterations\n\n\nCode\nfviz_gap_stat(gap_stat)\n\n\n\n\n\n\n\n\n\nSilhouette method\n\n\nCode\nset.seed(888)\nfviz_nbclust(data_kmeans_scaled, kmeans, method = \"silhouette\")\n\n\n\n\n\n\n\n\n\nFrom both methods, it seems K = 2 is the best choice."
+  },
+  {
+    "objectID": "Case-PredictiveAnalyticsI.html#business-recommendations",
+    "href": "Case-PredictiveAnalyticsI.html#business-recommendations",
+    "title": "Improving Marketing Efficiency Using Predictive Analytics for M&S (I): Customer Segmentation Using K-Means Clustering",
+    "section": "2.4 Business Recommendations",
+    "text": "2.4 Business Recommendations\nAfter segmenting the customers into two groups, we can now analyze the two segments to understand their characteristics and behaviors For example, we can compare the average response rates to marketing offers in the two segments, and decide which segment to serve when launching the next marketing compagine to save marketing costs.\nAs we would like to save marketing costs by sending marketing offers to responsive customers, we need to compute the average response rate for each segment generated by the K-means algorithm\n\nGenerate the customer segment in data_full\n\n\n\nCode\ndata_full &lt;- data_full %&gt;%\n    mutate(segment = result_kmeans$cluster)\n\n\n\nCompute the average response rate for each segment\n\n\n\nCode\ndata_full %&gt;%\n    group_by(segment) %&gt;%\n    summarise(avg_response_rate = mean(Response, na.rm = T)) %&gt;%\n    ungroup()\n\n\n\n  \n\n\n\nWe observe that Segment 1 has a much higher average response rate of more than 20%, so we should send marketing offers to Segment 1 customers."
   },
   {
     "objectID": "WeeklyArrangements.html",
@@ -1796,44 +2143,44 @@
     ]
   },
   {
-    "objectID": "WeeklyArrangements.html#class-6-data-wrangling-for-descriptive-analytics",
-    "href": "WeeklyArrangements.html#class-6-data-wrangling-for-descriptive-analytics",
+    "objectID": "WeeklyArrangements.html#class-6-case-study-descriptive-analytics-for-ms",
+    "href": "WeeklyArrangements.html#class-6-case-study-descriptive-analytics-for-ms",
     "title": "Weekly Arrangements",
-    "section": "Class 6: Data Wrangling for Descriptive Analytics",
-    "text": "Class 6: Data Wrangling for Descriptive Analytics\n\nWhat you will learn\n\nHow to use dplyr to conduct preliminary customer analyses for Marks & Spencer\n\nAfter-class reading and exercise\n\n(essential) Cheatsheet for dplyr. This cheatsheet provides a quick reference for the most commonly used functions in the dplyr package. It’s very important to familiarize yourself with these functions as you will use them a lot in your future projects.\n(optional) Complete the after-class exercise for Week 3. If you still have time, you can also complete the data camp exercise on the dplyr package. The link is here.",
+    "section": "Class 6: (Case Study) Descriptive Analytics for M&S",
+    "text": "Class 6: (Case Study) Descriptive Analytics for M&S\n\nWhat you will learn\n\nHow to use dplyr to conduct preliminary customer analyses for Marks & Spencer\n\nAfter-class reading and exercise\n\n(essential) Cheatsheet for dplyr. This cheatsheet provides a quick reference for the most commonly used functions in the dplyr package. It’s very important to familiarize yourself with these functions as you will use them a lot in your future projects.\n(optional) Complete the after-class exercise for Week 3. If you still have time, you can also complete the data camp exercise on the dplyr package. The link is here.",
     "crumbs": [
       "Lectures",
       "Weekly Arrangements"
     ]
   },
   {
-    "objectID": "WeeklyArrangements.html#class-7-unsupervised-learning-for-customer-segmentation",
-    "href": "WeeklyArrangements.html#class-7-unsupervised-learning-for-customer-segmentation",
+    "objectID": "WeeklyArrangements.html#class-7-unsupervised-learning-and-k-means-clustering",
+    "href": "WeeklyArrangements.html#class-7-unsupervised-learning-and-k-means-clustering",
     "title": "Weekly Arrangements",
-    "section": "Class 7: Unsupervised Learning for Customer Segmentation",
-    "text": "Class 7: Unsupervised Learning for Customer Segmentation\n\nWhat you will learn\n\nThe concept of predictive analytics\nThe difference between supervised and unsupervised learning\nImportant concepts in predictive analytics\nConcept of unsupervised learning\nHow to run K-means clustering in R\n\nAfter-class reading and exercise\n\n(optional) K-means Cluster Analysis, which provides more details on the maths behind the K-means clustering",
+    "section": "Class 7: Unsupervised Learning and K-Means Clustering",
+    "text": "Class 7: Unsupervised Learning and K-Means Clustering\n\nWhat you will learn\n\nThe concept of predictive analytics\nThe difference between supervised and unsupervised learning\nImportant concepts in predictive analytics\nConcept of unsupervised learning\nHow to run K-means clustering in R",
     "crumbs": [
       "Lectures",
       "Weekly Arrangements"
     ]
   },
   {
-    "objectID": "WeeklyArrangements.html#class-8-supervised-learning-basics",
-    "href": "WeeklyArrangements.html#class-8-supervised-learning-basics",
+    "objectID": "WeeklyArrangements.html#class-8-case-study-customer-segmentation-using-k-means-for-ms",
+    "href": "WeeklyArrangements.html#class-8-case-study-customer-segmentation-using-k-means-for-ms",
     "title": "Weekly Arrangements",
-    "section": "Class 8: Supervised Learning Basics",
-    "text": "Class 8: Supervised Learning Basics\n\nWhat you will learn\n\nDefinition of supervised learning\nTypes of supervised learning\nFundamental tradeoffs in supervised learning\nOverfitting and underfitting issues and how to overcome them\n\nAfter-class reading and exercise\n\n(optional) Varian, Hal R. “Big data: New tricks for econometrics.” Journal of Economic Perspectives 28, no. 2 (2014): 3-28",
+    "section": "Class 8: (Case Study) Customer Segmentation Using K-Means for M&S",
+    "text": "Class 8: (Case Study) Customer Segmentation Using K-Means for M&S\n\nWhat you will learn\n\nHow to apply K-means clustering to help Marks & Spencer segment its customers\n\nAfter-class reading and exercise\n\n(optional) K-means Cluster Analysis, which provides more details on the maths behind the K-means clustering",
     "crumbs": [
       "Lectures",
       "Weekly Arrangements"
     ]
   },
   {
-    "objectID": "WeeklyArrangements.html#class-9-tree-based-machine-learning-models",
-    "href": "WeeklyArrangements.html#class-9-tree-based-machine-learning-models",
+    "objectID": "WeeklyArrangements.html#class-9-supervised-learning-and-tree-based-models",
+    "href": "WeeklyArrangements.html#class-9-supervised-learning-and-tree-based-models",
     "title": "Weekly Arrangements",
-    "section": "Class 9: Tree-based Machine Learning Models",
-    "text": "Class 9: Tree-based Machine Learning Models\n\nWhat you will learn\n\nIntuition behind decision tree and random forest models\nHow to build random forest models in R\n\nAfter-class reading and exercise\n\n(optional) Decision tree in R and Random forest in R. Both tutorials introduce the detailed maths behind the two models if you would like to learn more\n(optional) Available machine learning model packages in R. In class, we have learned how to use R packages to run random forest models. This link lists all other machine learning packages that can be used in R. You can learn how to use these models following their manuals.",
+    "section": "Class 9: Supervised Learning and Tree-based Models",
+    "text": "Class 9: Supervised Learning and Tree-based Models\n\nWhat you will learn\n\nDefinition of supervised learning\nTypes of supervised learning\nFundamental tradeoffs in supervised learning\nOverfitting and underfitting issues and how to overcome them\nIntuition behind decision tree and random forest models\nHow to build random forest models in R\n\nAfter-class reading and exercise\n\n(optional) Varian, Hal R. “Big data: New tricks for econometrics.” Journal of Economic Perspectives 28, no. 2 (2014): 3-28\n(optional) Decision tree in R and Random forest in R. Both tutorials introduce the detailed maths behind the two models if you would like to learn more",
     "crumbs": [
       "Lectures",
       "Weekly Arrangements"
@@ -1851,11 +2198,11 @@
     ]
   },
   {
-    "objectID": "WeeklyArrangements.html#class-11-causal-inference-and-rubins-causal-model",
-    "href": "WeeklyArrangements.html#class-11-causal-inference-and-rubins-causal-model",
+    "objectID": "WeeklyArrangements.html#class-11-causal-inference-and-potential-outcome-framework",
+    "href": "WeeklyArrangements.html#class-11-causal-inference-and-potential-outcome-framework",
     "title": "Weekly Arrangements",
-    "section": "Class 11: Causal Inference and Rubin’s Causal Model",
-    "text": "Class 11: Causal Inference and Rubin’s Causal Model\n\nWhat you will learn\n\nConcept of causal inference\nConcept of Rubin’s potential outcome framework and treatment effects\nWhy randomized experiments (A/B testings) is the gold standard of causal inference\n\nAfter-class reading and exercise\n\n(optional) Varian, Hal R. ‘Causal Inference in Economics and Marketing’. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310–15.",
+    "section": "Class 11: Causal Inference and Potential Outcome Framework",
+    "text": "Class 11: Causal Inference and Potential Outcome Framework\n\nWhat you will learn\n\nConcept of causal inference\nConcept of Rubin’s potential outcome framework and treatment effects\nWhy randomized experiments (A/B testings) is the gold standard of causal inference\n\nAfter-class reading and exercise\n\n(optional) Varian, Hal R. ‘Causal Inference in Economics and Marketing’. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310–15.",
     "crumbs": [
       "Lectures",
       "Weekly Arrangements"
@@ -2540,6 +2887,90 @@
     "crumbs": [
       "R Tutorials",
       "R Basics (Induction Week)"
+    ]
+  },
+  {
+    "objectID": "Week3-Lecture2.html",
+    "href": "Week3-Lecture2.html",
+    "title": "Class 6 Descriptive Analytics for M&S",
+    "section": "",
+    "text": "In R, missing values are represented by the symbol NA (i.e., not available).\nMost statistical models cannot handle missing values, so we need to deal with them in R.\nIf there are just a few missing values: remove them from analysis.\nIf there are many missing values: need to replace them with appropriate values:\n\nmean/median/imputation\n\n\n\n\n\n\nOutliers are data points that are significantly different from other data points in the dataset, such as unusually large and small values.\nWinsorization is a common method to deal with outliers. It replaces the extreme values with the nearest non-extreme value, usually the 99th or 1th percentile (or other thresholds as appropriate).",
+    "crumbs": [
+      "Lectures",
+      "[Week 3] Data Wrangling and Descriptive Analytics",
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+    ]
+  },
+  {
+    "objectID": "Week3-Lecture2.html#missing-values",
+    "href": "Week3-Lecture2.html#missing-values",
+    "title": "Class 6 Descriptive Analytics for M&S",
+    "section": "",
+    "text": "In R, missing values are represented by the symbol NA (i.e., not available).\nMost statistical models cannot handle missing values, so we need to deal with them in R.\nIf there are just a few missing values: remove them from analysis.\nIf there are many missing values: need to replace them with appropriate values:\n\nmean/median/imputation",
+    "crumbs": [
+      "Lectures",
+      "[Week 3] Data Wrangling and Descriptive Analytics",
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+    ]
+  },
+  {
+    "objectID": "Week3-Lecture2.html#outliers",
+    "href": "Week3-Lecture2.html#outliers",
+    "title": "Class 6 Descriptive Analytics for M&S",
+    "section": "",
+    "text": "Outliers are data points that are significantly different from other data points in the dataset, such as unusually large and small values.\nWinsorization is a common method to deal with outliers. It replaces the extreme values with the nearest non-extreme value, usually the 99th or 1th percentile (or other thresholds as appropriate).",
+    "crumbs": [
+      "Lectures",
+      "[Week 3] Data Wrangling and Descriptive Analytics",
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+    ]
+  },
+  {
+    "objectID": "Week3-Lecture2.html#two-major-tasks-of-descriptive-analytics",
+    "href": "Week3-Lecture2.html#two-major-tasks-of-descriptive-analytics",
+    "title": "Class 6 Descriptive Analytics for M&S",
+    "section": "2.1 Two Major Tasks of Descriptive Analytics",
+    "text": "2.1 Two Major Tasks of Descriptive Analytics\n\nYou can think of descriptive analytics as creating a dashboard to display the key information you would like to know for your business. For instance:\n\n\nDescribe data depending on your business purposes\n\n“How much do our customers spend each month on average?”\n“What percentage of our customers are unprofitable?”\n“What is the difference between the retention rates across different demographic groups?”\n\nConduct statistical tests (such as t-tests) for hypothesis testing.\n\nIs there any significant difference in the average spending between different age/gender groups?\nBased on our test mailing, can we conclude that ad-copy A works better than ad-copy B?",
+    "crumbs": [
+      "Lectures",
+      "[Week 3] Data Wrangling and Descriptive Analytics",
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+    ]
+  },
+  {
+    "objectID": "Week3-Lecture2.html#example-of-descriptive-analytics-dashboard",
+    "href": "Week3-Lecture2.html#example-of-descriptive-analytics-dashboard",
+    "title": "Class 6 Descriptive Analytics for M&S",
+    "section": "2.2 Example of Descriptive Analytics Dashboard",
+    "text": "2.2 Example of Descriptive Analytics Dashboard",
+    "crumbs": [
+      "Lectures",
+      "[Week 3] Data Wrangling and Descriptive Analytics",
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+    ]
+  },
+  {
+    "objectID": "Week3-Lecture2.html#summary-statistics",
+    "href": "Week3-Lecture2.html#summary-statistics",
+    "title": "Class 6 Descriptive Analytics for M&S",
+    "section": "2.3 Summary Statistics",
+    "text": "2.3 Summary Statistics\n\nSummary statistics are used to summarize a set of observations, in order to communicate the largest amount of information as simply as possible.\nThere are two main types of summary statistics used in evaluation:\n\nmeasures of central tendency: number of observations, mean, min, 25 percentile, median, 75 percentile, max, etc.\nmeasures of dispersion: range and standard deviation.\n\nIt’s important to include summary statistics table in your dissertation before any statistical analysis!",
+    "crumbs": [
+      "Lectures",
+      "[Week 3] Data Wrangling and Descriptive Analytics",
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
+    ]
+  },
+  {
+    "objectID": "Week3-Lecture2.html#summary-statistics-with-r",
+    "href": "Week3-Lecture2.html#summary-statistics-with-r",
+    "title": "Class 6 Descriptive Analytics for M&S",
+    "section": "2.4 Summary Statistics with R",
+    "text": "2.4 Summary Statistics with R\n\nIn R, a power package to report summary statistics is called modelsummary.\ndatasummary_skim() is a shortcut to conduct basic summary statistics\nFor more features, refer to the package tutorial here\n\n\n\nCode\npacman::p_load(modelsummary)\ndata_full %&gt;%\n  datasummary_skim(type = \"numeric\")\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                 \n                Unique\n                Missing Pct.\n                Mean\n                SD\n                Min\n                Median\n                Max\n                Histogram\n              \n        \n        \n        \n                \n                  ID                 \n                  2000\n                  0\n                  5599.2 \n                  3242.0 \n                  0.0   \n                  5492.0 \n                  11191.0 \n                  \n                \n                \n                  MntWines           \n                  738 \n                  0\n                  306.1  \n                  338.3  \n                  0.0   \n                  176.5  \n                  1493.0  \n                  \n                \n                \n                  MntFruits          \n                  157 \n                  0\n                  26.4   \n                  39.9   \n                  0.0   \n                  8.0    \n                  199.0   \n                  \n                \n                \n                  MntMeatProducts    \n                  532 \n                  0\n                  167.9  \n                  225.3  \n                  0.0   \n                  68.0   \n                  1725.0  \n                  \n                \n                \n                  MntFishProducts    \n                  179 \n                  0\n                  37.6   \n                  54.6   \n                  0.0   \n                  12.0   \n                  259.0   \n                  \n                \n                \n                  MntSweetProducts   \n                  175 \n                  0\n                  27.5   \n                  41.8   \n                  0.0   \n                  8.0    \n                  263.0   \n                  \n                \n                \n                  MntGoldProds       \n                  207 \n                  0\n                  43.8   \n                  51.7   \n                  0.0   \n                  24.0   \n                  362.0   \n                  \n                \n                \n                  NumDealsPurchases  \n                  15  \n                  0\n                  2.3    \n                  2.0    \n                  0.0   \n                  2.0    \n                  15.0    \n                  \n                \n                \n                  NumWebPurchases    \n                  15  \n                  0\n                  4.1    \n                  2.8    \n                  0.0   \n                  4.0    \n                  27.0    \n                  \n                \n                \n                  NumCatalogPurchases\n                  14  \n                  0\n                  2.7    \n                  3.0    \n                  0.0   \n                  2.0    \n                  28.0    \n                  \n                \n                \n                  NumStorePurchases  \n                  14  \n                  0\n                  5.8    \n                  3.3    \n                  0.0   \n                  5.0    \n                  13.0    \n                  \n                \n                \n                  NumWebVisitsMonth  \n                  15  \n                  0\n                  5.3    \n                  2.5    \n                  0.0   \n                  6.0    \n                  20.0    \n                  \n                \n                \n                  Complain           \n                  2   \n                  0\n                  0.0    \n                  0.1    \n                  0.0   \n                  0.0    \n                  1.0     \n                  \n                \n                \n                  Response           \n                  2   \n                  0\n                  0.2    \n                  0.4    \n                  0.0   \n                  0.0    \n                  1.0     \n                  \n                \n                \n                  Year_Birth         \n                  59  \n                  0\n                  1968.8 \n                  12.0   \n                  1893.0\n                  1970.0 \n                  1996.0  \n                  \n                \n                \n                  Income             \n                  1783\n                  1\n                  52139.7\n                  21492.4\n                  1730.0\n                  51518.0\n                  162397.0\n                  \n                \n                \n                  Kidhome            \n                  3   \n                  0\n                  0.4    \n                  0.5    \n                  0.0   \n                  0.0    \n                  2.0     \n                  \n                \n                \n                  Teenhome           \n                  3   \n                  0\n                  0.5    \n                  0.5    \n                  0.0   \n                  0.0    \n                  2.0     \n                  \n                \n                \n                  Recency            \n                  100 \n                  0\n                  49.2   \n                  29.0   \n                  0.0   \n                  50.0   \n                  99.0    \n                  \n                \n        \n      \n    \n\n\n\nCode\ndata_full %&gt;%\n  datasummary_skim(type = \"categorical\")\n\n\nWarning: These variables were omitted because they include more than 50 levels:\nDt_Customer.\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                 \n                  \n                N\n                %\n              \n        \n        \n        \n                \n                  Education     \n                  2n Cycle  \n                  185\n                  9.2 \n                \n                \n                                \n                  Basic     \n                  43 \n                  2.1 \n                \n                \n                                \n                  Graduation\n                  992\n                  49.6\n                \n                \n                                \n                  Master    \n                  327\n                  16.4\n                \n                \n                                \n                  PhD       \n                  453\n                  22.6\n                \n                \n                  Marital_Status\n                  Alone     \n                  3  \n                  0.1 \n                \n                \n                                \n                  Divorced  \n                  206\n                  10.3\n                \n                \n                                \n                  Married   \n                  767\n                  38.4\n                \n                \n                                \n                  Single    \n                  436\n                  21.8\n                \n                \n                                \n                  Together  \n                  521\n                  26.0\n                \n                \n                                \n                  Widow     \n                  67 \n                  3.4",
+    "crumbs": [
+      "Lectures",
+      "[Week 3] Data Wrangling and Descriptive Analytics",
+      "Lecture 2: Caset Study: Descriptive Analytics for M&S"
     ]
   },
   {
