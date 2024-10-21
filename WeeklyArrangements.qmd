@@ -66,7 +66,7 @@ After each week's lecture, you will find a list of After-class reading and exerc
 +------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
 | 6                            | Causal Inference                                        | Rubin Causal Model, Potential Outcome Framework, and A/B Testing |                                                                                 |
 +------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| 7                            | A/B Testing                                             | Linear Regression and ordinary least square                      | Testing Marketing Ideas Using A/B Testing (I)                                   |
+| 7                            | Marketing Mix Modeling                                  | Linear Regression and ordinary least square                      | Testing Marketing Ideas Using A/B Testing (I)                                   |
 +------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
 | 8                            | Platform Design                                         | Instrumental variable and two-stage least square                 | Testing Marketing Ideas Using A/B Testing (II)                                  |
 |                              |                                                         |                                                                  |                                                                                 |
@@ -110,14 +110,13 @@ After each week's lecture, you will find a list of After-class reading and exerc
 ::: callout-important
 ## Pre-class Preparation
 
-1. Please bring your laptop to class every week. We will be practicing R programming in class. 
+1.  Please bring your laptop to class every week. We will be practicing R programming in class.
 
-2. Review R basics lecture notes covered by Wei on Friday in the induction week (the recording is under the Induction week section);  If you missed the session, it's very important to catch up by watching the recording.
+2.  Review R basics lecture notes covered by Wei on Friday in the induction week (the recording is under the Induction week section); If you missed the session, it's very important to catch up by watching the recording.
 
-3. Complete the pre-class R exercise on the Case-BreakEvenAnalysis-Stu.qmd. You can find and download the file below.
+3.  Complete the pre-class R exercise on the Case-BreakEvenAnalysis-Stu.qmd. You can find and download the file below.
 
-4. Read the Case study: "Profitability Analyses for Apple Inc". Don't worry about the questions yet, please focus on the case background. information.
-
+4.  Read the Case study: "Profitability Analyses for Apple Inc". Don't worry about the questions yet, please focus on the case background. information.
 :::
 
 ## Class 1: Module Introduction
@@ -206,7 +205,7 @@ You can try your best to use what we have learned in Week 1 to complete the case
 
     -   How to use `filter`, `mutate`, `arrange`, and `group_by` for data manipulation with `dplyr` package in R
 
-## Class 6: Data Wrangling for Descriptive Analytics
+## Class 6: (Case Study) Descriptive Analytics for M&S
 
 -   What you will learn
 
@@ -215,8 +214,8 @@ You can try your best to use what we have learned in Week 1 to complete the case
 -   After-class reading and exercise
 
     -   (essential) [Cheatsheet for `dplyr`](https://rstudio.github.io/cheatsheets/html/data-transformation.html). This cheatsheet provides a quick reference for the most commonly used functions in the `dplyr` package. It's very important to familiarize yourself with these functions as you will use them a lot in your future projects.
-    -  (optional) Complete the after-class exercise for Week 3. If you still have time, you can also complete the data camp exercise on the dplyr package. The link is [here](https://learn.datacamp.com/courses/data-manipulation-with-dplyr-in-r).
-    
+    -   (optional) Complete the after-class exercise for Week 3. If you still have time, you can also complete the data camp exercise on the dplyr package. The link is [here](https://learn.datacamp.com/courses/data-manipulation-with-dplyr-in-r).
+
 # Week 4: Unsupervised Learning for Customer Segmentation
 
 ::: callout-important
@@ -225,7 +224,7 @@ You can try your best to use what we have learned in Week 1 to complete the case
 -   Read the case study: Improving Marketing Efficiency for Marks & Spencer Using Predictive Analytics.
 :::
 
-## Class 7: Unsupervised Learning for Customer Segmentation
+## Class 7: Unsupervised Learning and K-Means Clustering
 
 -   What you will learn
 
@@ -239,25 +238,15 @@ You can try your best to use what we have learned in Week 1 to complete the case
 
     -   How to run K-means clustering in R
 
--   After-class reading and exercise
-
-    -   (optional) [K-means Cluster Analysis](https://uc-r.github.io/kmeans_clustering), which provides more details on the maths behind the K-means clustering
-
-## Class 8: Supervised Learning Basics
+## Class 8: (Case Study) Customer Segmentation Using K-Means for M&S
 
 -   What you will learn
 
-    -   Definition of supervised learning
-
-    -   Types of supervised learning
-
-    -   Fundamental tradeoffs in supervised learning
-
-    -   Overfitting and underfitting issues and how to overcome them
+    -   How to apply K-means clustering to help Marks & Spencer segment its customers
 
 -   After-class reading and exercise
 
-    -   (optional) [Varian, Hal R. "Big data: New tricks for econometrics." Journal of Economic Perspectives 28, no. 2 (2014): 3-28](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_proquest_miscellaneous_1541646040)
+    -   (optional) [K-means Cluster Analysis](https://uc-r.github.io/kmeans_clustering), which provides more details on the maths behind the K-means clustering
 
 # Week 5: Supervised Learning for Customer Targeting
 
@@ -269,9 +258,17 @@ You can try your best to use what we have learned in Week 1 to complete the case
     -   Please carefully read the case background before class, especially review the definitions of Response.
 :::
 
-## Class 9: Tree-based Machine Learning Models
+## Class 9: Supervised Learning and Tree-based Models
 
 -   What you will learn
+
+    -   Definition of supervised learning
+
+    -   Types of supervised learning
+
+    -   Fundamental tradeoffs in supervised learning
+
+    -   Overfitting and underfitting issues and how to overcome them
 
     -   Intuition behind decision tree and random forest models
 
@@ -279,9 +276,9 @@ You can try your best to use what we have learned in Week 1 to complete the case
 
 -   After-class reading and exercise
 
-    -   (optional) [Decision tree in R](http://uc-r.github.io/regression_trees) and [Random forest in R](http://uc-r.github.io/random_forests). Both tutorials introduce the detailed maths behind the two models if you would like to learn more
+    -   (optional) [Varian, Hal R. "Big data: New tricks for econometrics." Journal of Economic Perspectives 28, no. 2 (2014): 3-28](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_proquest_miscellaneous_1541646040)
 
-    -   (optional) [Available machine learning model packages in R](https://cran.r-project.org/web/views/MachineLearning.html). In class, we have learned how to use R packages to run random forest models. This link lists all other machine learning packages that can be used in R. You can learn how to use these models following their manuals.
+    -   (optional) [Decision tree in R](http://uc-r.github.io/regression_trees) and [Random forest in R](http://uc-r.github.io/random_forests). Both tutorials introduce the detailed maths behind the two models if you would like to learn more
 
 ## Class 10: (Case Study) Improve Marketing Efficiency for Marks & Spencer Using Supervised Learning
 
@@ -291,7 +288,7 @@ You can try your best to use what we have learned in Week 1 to complete the case
 
 # Week 6: Causal Inference
 
-## Class 11: Causal Inference and Rubin's Causal Model
+## Class 11: Causal Inference and Potential Outcome Framework
 
 -   What you will learn
 

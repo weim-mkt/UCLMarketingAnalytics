@@ -44,6 +44,14 @@ website:
                 text: "Case Study: Descriptive Analytics for M&S"
           - section: "[Week 4] Unsupervised Learning for Customer Segmentation"
             contents:
+              - href: Week4-Lecture1.qmd
+                text: "Lecture 1: Unsupervised Learning and K-Means Clustering"
+              - href: Week4-Lecture2.qmd
+                text: "Lecture 2: Case Study: Customer Segmentation Using K-Means for M&S"
+              - href: Case-PredictiveAnalyticsI.qmd
+                text: "Case Study: Customer Segmentation Using K-Means for M&S"
+          - section: "[Week 5] Supervised Learning for Customer Targeting"
+            contents:
               - LectureSlides.qmd
           - R-Exercise.qmd
       - section: "R Tutorials"
@@ -61,7 +69,7 @@ website:
           - RTip-BLAS.qmd
 format:
   html:
-    author: "Dr. Wei Miao"
+    author: "Dr Wei Miao"
     institute: "UCL School of Management"
     date-format: long
     theme:

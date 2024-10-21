@@ -2,6 +2,7 @@
 author: Dr Wei Miao
 date: "`r (lubridate::ymd('20240927'))`"
 date-format: long
+date-modified: "`r (lubridate::ymd('20241021'))`"
 institute: UCL School of Management
 toc: true
 toc-depth: 2
@@ -981,12 +982,102 @@ Example:
 
 ```{r}
 magic <- function(x, y) {
-    return(x^2 + y)
+    results <- x^2 + y
+
+    return(results)
 }
 
-magic(1, 3)
+magic(2, 3)
 
 ```
+
+### Arguments
+
+- Default values: UDF can have default values for arguments by using `arg = default_value`. If the user does not provide a value for the argument when calling the UDF, the default value will be used. 
+
+```{r}
+
+magic <- function(x, y = 1) {
+    results <- x^2 + y
+
+    return(results)
+}
+
+magic(2)
+
+```
+
+- Missing values: If the user does not provide a value for an argument without a default value, R will throw an error. 
+
+```{r}
+#| error: true
+
+
+magic <- function(x, y) {
+    results <- x^2 + y
+
+    return(results)
+}
+
+magic(2)
+
+```
+
+- Order of arguments: The order of arguments matters when calling the UDF. If you want to provide a value for the second argument, you must provide a value for the first argument as well.
+
+```{r}
+
+magic <- function(y, x) {
+    results <- x^2 + y
+
+    return(results)
+}
+
+magic(3, 2)
+```
+
+### Returned Value
+
+- We can return a value from a function using the `return()` function. The value returned can be of any data type.
+
+```{r}
+
+magic <- function(x, y) {
+    result <- x^2 + y
+
+    return(result)
+}
+
+magic(2, 3)
+
+```
+
+
+- If the function does not have a `return()` statement, it will return the last value calculated in the function.
+
+```{r}
+magic <- function(x, y) {
+    x + y
+}
+
+magic(2, 3)
+```
+
+## Variable Scope
+
+-   Variables created inside a function are local to the function, and cannot be accessed outside the function.
+
+```{r}
+#| echo: true
+magic <- function(x, y) {
+    result <- x^2 + y
+
+    return(result)
+}
+
+result
+```
+
 
 ## A comprehensive example
 

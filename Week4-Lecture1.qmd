@@ -1,0 +1,271 @@
+---
+date: "`r (lubridate::ymd('20241002') + lubridate::dweeks(3))`"
+title: "Class 7 Unsupervised Learning and K-Means Clustering"
+---
+
+# Overview of Predictive Analytics
+
+```{r}
+#| echo: false
+
+pacman::p_load(dplyr, ggplot2, ggthemes)
+
+```
+
+## Roadmap for Predictive Analytics
+
+-   The core of any business decision is **profitability analysis** (BEQ, NPV, CLV). To increase firm profitability,
+    (1) Increase revenue 
+    (2) Reduce costs (CAC or variable marketing costs) 
+    (3) Reduce customer churn
+
+-   In Weeks 4 and 5, we will learn how to utilize **predictive analytics** to improve profitability. Correspondingly, 
+    (1) Develop customers through ML recommender systems
+    (2) **Reduce costs by targeting more responsive customers**
+    (3) Predict customer churn and take preventive actions
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics("images/CourseStructure2024.png")
+```
+
+## Types of Predictive Analytics
+
+-   Unsupervised Learning
+    -   Only observe X =\> Want to uncover unknown subgroups
+-   Supervised Learning
+    -   Observe both X and Y =\> Want to predict Y for new data
+
+In Term 2, you will learn predictive analytics models systematically. By then, think about how those techniques can be applied back to these case studies.
+
+## Types of Predictive Analytics
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 4/PredictiveAnalyticsTypes.png")
+```
+
+## Learning Objectives for Today
+
+-   Understand the concept of unsupervised learning 
+
+-   Understand how to apply K-means clustering and find the optimal number of clusters
+
+-   How to apply clustering analyses for customer segmentation for M&S
+
+# K-Means Clustering
+
+## K-Means Clustering
+
+-   K-means clustering is one of the most commonly used unsupervised machine learning algorithms for partitioning a given data set into a set of *k* groups (i.e. *k* clusters), where *k* represents the number of groups pre-specified by the analyst.
+
+-  For data scientists: It can classify customers into multiple segments (i.e., clusters), such that customers within the same cluster are as **similar** as possible, whereas customers from different clusters are as **dissimilar** as possible. 
+
+-   Input: (1) customer characteristics; (2) the number of clusters
+
+-   Output: cluster membership of each customer
+
+## Similarity and Dissimilarity
+
+- The clustering of observations into groups requires computing the (dis)similarity between each pair of observations. The result of this computation is known as a dissimilarity or distance matrix. 
+
+- The choice of similarity measures is a critical step in clustering.
+
+- The most common distance measures are the Euclidean distance (the default for K-means) and the Manhattan distance. 
+
+## Euclidean Distance
+
+- The most common distance measure is the Euclidean distance.
+$$
+d_{\text{euc}}(x, y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
+$$
+
+- Example of Income and Spending for 3 customers
+    - $Income = (5, 10, 20)$
+    - $Spending = (3, 4, 12)$
+
+- Euclidean distance 
+    - $d_{\text{euc}}(2, 1) = \sqrt{(5-3)^2 + (10-4)^2} = \sqrt{2^2 + 6^2} = \sqrt{40}$
+    - $d_{\text{euc}}(2, 3) = \sqrt{(5-20)^2 + (10-12)^2} = \sqrt{15^2 + 2^2} = \sqrt{229}$
+
+::: {.content-visible when-format='beamer'}
+
+## Visualization of Euclidean Distance
+:::
+
+::: {.columns}
+
+::: {.column width='50%'}
+
+```{r}
+#| out.width: "100%"
+#| warning: false
+
+Income <- c(5, 10, 20)
+
+Spending <- c(3, 4, 12)
+
+data <- data.frame(Income, Spending, ID = c("Customer 1", "Customer 2", "Customer 3"))
+
+ggplot(data, aes(x = Income, y = Spending)) +
+    geom_point(aes(shape = ID, color = ID), size = 2.5) +
+    geom_text(aes(label = rownames(data)), vjust = -0.5) +
+    theme_stata()
+
+```
+
+:::
+
+::: {.column width='50%'}
+
+```{r}
+#| out.width: "100%"
+#| warning: false
+
+Income <- c(5, 10, 20)
+
+Spending <- c(3, 4, 12)
+
+data <- data.frame(Income, Spending, ID = c("Customer 1", "Customer 2", "Customer 3"))
+
+ggplot(data, aes(x = Income, y = Spending)) +
+    geom_point(aes(shape = ID, color = ID), size = 2.5) +
+    geom_text(aes(label = rownames(data)), vjust = -0.5) +
+    theme_stata() +
+    # show the Eucleadian distance between Customer 1 and Customer 2; also show the vertical and horizontal lines
+    geom_segment(aes(x = 5, y = 3, xend = 10, yend = 4), linetype = "dashed") +
+    geom_segment(aes(x = 5, y = 3, xend = 5, yend = 4), linetype = "dashed") +
+    geom_segment(aes(x = 5, y = 4, xend = 10, yend = 4), linetype = "dashed") +
+    geom_text(aes(x = 7.5, y = 3.5, label = "d_euc(1, 2) = sqrt(2^2 + 6^2) = sqrt(40)"), vjust = 1) +
+
+    # show the Eucleadian distance between Customer 2 and Customer 3; also show the vertical and horizontal lines
+    geom_segment(aes(x = 10, y = 4, xend = 20, yend = 12), linetype = "dashed") +
+    geom_segment(aes(x = 10, y = 4, xend = 10, yend = 12), linetype = "dashed") +
+    geom_segment(aes(x = 10, y = 12, xend = 20, yend = 12), linetype = "dashed") +
+    geom_text(aes(x = 15, y = 8, label = "d_euc(2, 3) = sqrt(15^2 + 2^2) = sqrt(229)"), vjust = 1)
+
+```
+
+:::
+
+:::
+
+## Manhattan Distance
+
+- Another common distance measure is the Manhattan distance, which is less commonly used because the absolute value function is not differentiable.
+
+$$
+d_{\text{man}}(x, y) = \sum_{i=1}^{n} |x_i - y_i|
+$$
+
+- Example of Income and Spending for 3 customers
+    - $Income = c(5, 10, 20)$
+    - $Spending = c(3, 4, 12)$
+
+- Distance
+    - $d_{\text{man}}(2, 1) = |5-3| + |10-4| = 2 + 6 = 8$
+    - $d_{\text{euc}}(2, 3) = |5-20| + |10-12| = 15 + 2 = 17$
+
+## K-Means Clustering: Step 1
+
+::: columns
+::: {.column width="40%"}
+![](images/Week 4/kmeans_1.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   Raw data points; each dot is a customer
+
+-   X and Y axis are customer characteristics, say, income and spending
+
+-   Obviously there should be 2 segments
+
+-   Let's see how K-means uses a data-driven way to classify customers into 2 segments
+:::
+:::
+
+## K-Means Clustering: Step 2
+
+::: columns
+::: {.column width="40%"}
+![](images/Week 4/kmeans_2.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   We specify 2 segments
+
+-   K-means initializes the process by **randomly** selecting 2 centroids
+:::
+:::
+
+Due to this randomness, different starting points may yield varying results. We need to reinitialize the process repeatedly to ensure **robustness** of results.
+
+## K-Means Clustering: Step 3
+
+::: columns
+::: {.column width="40%"}
+![](images/Week 4/kmeans_3.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   K-means computes the distance of each customer to the red and blue centroids
+
+-   K-means assigns each customer to red segment or blue segment based on which centroid is closer
+:::
+:::
+
+## K-Means Clustering: Step 4
+
+::: columns
+::: {.column width="40%"}
+![](images/Week 4/kmeans_4.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   K-means updates the new centroids of each segment
+
+-   The red cross and blue cross in the picture are the new centroids
+
+-   We still see some "outliers", so the algorithm continues
+:::
+:::
+
+## K-Means Clustering: Step 5
+
+::: columns
+::: {.column width="40%"}
+![](images/Week 4/kmeans_5.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   K-means computes the distance of each customer to the red and blue centroids
+
+-   K-means updates each customer to red segment or blue segment based on which centroid is closer
+
+-   Now the outliers are correctly assigned each segment
+:::
+:::
+
+## K-Means Clustering: Step 6
+
+::: columns
+::: {.column width="50%"}
+![](images/Week 4/kmeans_6.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   K-means updates the new centroid from the previous clustering
+
+-   K-means computes the distance of each customer to the new centroids
+
+-   K-means finds that all customers are correctly assigned to their nearest centroids, so the algorithm does not need to continue
+
+-   We say, the algorithm **converges**, and the algorithm stops
+:::
+:::
+
+## After-Class Readings
+
+- More technical details: [K-means Cluster Analysis](https://uc-r.github.io/kmeans_clustering)
