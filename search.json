@@ -2886,7 +2886,18 @@
     "href": "R-Basics.html#user-defined-functions",
     "title": "R Basics",
     "section": "9.4 User-Defined Functions",
-    "text": "9.4 User-Defined Functions\nA function takes the argument as input, run some specified actions, and then return the result to us.\nFunctions are very useful. When we would like to test different ideas, we can combine functions with loops: We can write a function which takes different parameters as input, and we can use a loop to go through all the possible combinations of parameters.\n\n9.4.1 User-defined function syntax\nHere is how to define a function in general:\n\n\nCode\nfunction_name &lt;- function(arg1, arg2 = default_value) {\n    # write the actions to be done with arg1 and arg2\n    # you can have any number of arguments, with or without defaults\n    return() # the last line is to return some value\n}\n\n\nExample:\n\n\nCode\nmagic &lt;- function(x, y) {\n    return(x^2 + y)\n}\n\nmagic(1, 3)\n\n\n[1] 4",
+    "text": "9.4 User-Defined Functions\nA function takes the argument as input, run some specified actions, and then return the result to us.\nFunctions are very useful. When we would like to test different ideas, we can combine functions with loops: We can write a function which takes different parameters as input, and we can use a loop to go through all the possible combinations of parameters.\n\n9.4.1 User-defined function syntax\nHere is how to define a function in general:\n\n\nCode\nfunction_name &lt;- function(arg1, arg2 = default_value) {\n    # write the actions to be done with arg1 and arg2\n    # you can have any number of arguments, with or without defaults\n    return() # the last line is to return some value\n}\n\n\nExample:\n\n\nCode\nmagic &lt;- function(x, y) {\n    results &lt;- x^2 + y\n\n    return(results)\n}\n\nmagic(2, 3)\n\n\n[1] 7\n\n\n\n\n9.4.2 Arguments\n\nDefault values: UDF can have default values for arguments by using arg = default_value. If the user does not provide a value for the argument when calling the UDF, the default value will be used.\n\n\n\nCode\nmagic &lt;- function(x, y = 1) {\n    results &lt;- x^2 + y\n\n    return(results)\n}\n\nmagic(2)\n\n\n[1] 5\n\n\n\nMissing values: If the user does not provide a value for an argument without a default value, R will throw an error.\n\n\n\nCode\nmagic &lt;- function(x, y) {\n    results &lt;- x^2 + y\n\n    return(results)\n}\n\nmagic(2)\n\n\nError in magic(2): argument \"y\" is missing, with no default\n\n\n\nOrder of arguments: The order of arguments matters when calling the UDF. If you want to provide a value for the second argument, you must provide a value for the first argument as well.\n\n\n\nCode\nmagic &lt;- function(y, x) {\n    results &lt;- x^2 + y\n\n    return(results)\n}\n\nmagic(3, 2)\n\n\n[1] 7\n\n\n\n\n9.4.3 Returned Value\n\nWe can return a value from a function using the return() function. The value returned can be of any data type.\n\n\n\nCode\nmagic &lt;- function(x, y) {\n    result &lt;- x^2 + y\n\n    return(result)\n}\n\nmagic(2, 3)\n\n\n[1] 7\n\n\n\nIf the function does not have a return() statement, it will return the last value calculated in the function.\n\n\n\nCode\nmagic &lt;- function(x, y) {\n    x + y\n}\n\nmagic(2, 3)\n\n\n[1] 5",
+    "crumbs": [
+      "R Tutorials",
+      "R Basics (Induction Week)"
+    ]
+  },
+  {
+    "objectID": "R-Basics.html#variable-scope",
+    "href": "R-Basics.html#variable-scope",
+    "title": "R Basics",
+    "section": "9.5 Variable Scope",
+    "text": "9.5 Variable Scope\n\nVariables created inside a function are local to the function, and cannot be accessed outside the function.\n\n\n\nCode\nmagic &lt;- function(x, y) {\n    result &lt;- x^2 + y\n\n    return(result)\n}\n\nresult\n\n\nError in eval(expr, envir, enclos): object 'result' not found",
     "crumbs": [
       "R Tutorials",
       "R Basics (Induction Week)"
@@ -2896,8 +2907,8 @@
     "objectID": "R-Basics.html#a-comprehensive-example",
     "href": "R-Basics.html#a-comprehensive-example",
     "title": "R Basics",
-    "section": "9.5 A comprehensive example",
-    "text": "9.5 A comprehensive example\nTask: write a function, which takes a vector as input, and returns the max value of the vector\n\n\nCode\nget_max &lt;- function(input) {\n    max_value &lt;- input[1]\n    for (i in 2:length(input)) {\n        if (input[i] &gt; max_value) {\n            max_value &lt;- input[i]\n        }\n    }\n\n    return(max_value)\n}\n\nget_max(c(-1, 3, 2))\n\n\n[1] 3\n\n\n\n\n\n\n\n\nExercise\n\n\n\nWrite your own version of which.max() function",
+    "section": "9.6 A comprehensive example",
+    "text": "9.6 A comprehensive example\nTask: write a function, which takes a vector as input, and returns the max value of the vector\n\n\nCode\nget_max &lt;- function(input) {\n    max_value &lt;- input[1]\n    for (i in 2:length(input)) {\n        if (input[i] &gt; max_value) {\n            max_value &lt;- input[i]\n        }\n    }\n\n    return(max_value)\n}\n\nget_max(c(-1, 3, 2))\n\n\n[1] 3\n\n\n\n\n\n\n\n\nExercise\n\n\n\nWrite your own version of which.max() function",
     "crumbs": [
       "R Tutorials",
       "R Basics (Induction Week)"
