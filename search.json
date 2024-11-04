@@ -1498,22 +1498,22 @@
     ]
   },
   {
-    "objectID": "WeeklyArrangements.html#class-11-causal-inference-and-potential-outcome-framework",
-    "href": "WeeklyArrangements.html#class-11-causal-inference-and-potential-outcome-framework",
+    "objectID": "WeeklyArrangements.html#class-11-causal-inference-potential-outcome-framework",
+    "href": "WeeklyArrangements.html#class-11-causal-inference-potential-outcome-framework",
     "title": "Weekly Arrangements",
-    "section": "Class 11: Causal Inference and Potential Outcome Framework",
-    "text": "Class 11: Causal Inference and Potential Outcome Framework\n\nWhat you will learn\n\nConcept of causal inference\nConcept of Rubin’s potential outcome framework and treatment effects\nWhy randomized experiments (A/B testings) is the gold standard of causal inference\n\nAfter-class reading and exercise\n\n(optional) Varian, Hal R. ‘Causal Inference in Economics and Marketing’. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310–15.",
+    "section": "Class 11: Causal Inference, Potential Outcome Framework",
+    "text": "Class 11: Causal Inference, Potential Outcome Framework\n\nWhat you will learn\n\nConcept of causal inference\nConcept of Rubin’s potential outcome framework and treatment effects\nWhy randomized experiments (A/B testings) is the gold standard of causal inference\n\nAfter-class reading and exercise\n\n(optional) Varian, Hal R. ‘Causal Inference in Economics and Marketing’. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310–15.",
     "crumbs": [
       "Lectures",
       "Weekly Arrangements"
     ]
   },
   {
-    "objectID": "WeeklyArrangements.html#class-12-randomized-experiments-and-ab-testing",
-    "href": "WeeklyArrangements.html#class-12-randomized-experiments-and-ab-testing",
+    "objectID": "WeeklyArrangements.html#class-12-ab-testing",
+    "href": "WeeklyArrangements.html#class-12-ab-testing",
     "title": "Weekly Arrangements",
-    "section": "Class 12: Randomized Experiments and A/B Testing",
-    "text": "Class 12: Randomized Experiments and A/B Testing\n\nWhat you will learn\n\nHow to design and conduct randomized experiments\nHow to interpret the results of randomized experiments\nHow to use randomized experiments to solve real-life marketing problems",
+    "section": "Class 12: A/B Testing",
+    "text": "Class 12: A/B Testing\n\nWhat you will learn\n\nHow to design and conduct randomized experiments\nHow to interpret the results of randomized experiments\nHow to use randomized experiments to solve real-life marketing problems",
     "crumbs": [
       "Lectures",
       "Weekly Arrangements"
@@ -1756,6 +1756,654 @@
     ]
   },
   {
+    "objectID": "Week6-Lecture1.html",
+    "href": "Week6-Lecture1.html",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "",
+    "text": "Any business activity brings benefits and costs. We’re given the benefit information in all the case studies so far\n\nApple (Week 1): influencer marketing increases sales by 2.5%\n1st assignment: loyalty program increases retention rate to 95%\n\nIn reality, this benefit information is often not readily available, and we need to measure them using causal inference tools.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstand key concepts of causal inference\n\nRubin’s potential outcome framework\nFundamental problem of causal inference\nAverage treatment effect (ATE) and randomization\n\nLearn the steps to conduct randomized controlled trials (RCTs)\n\n\n\n\nTom purchases paid ads on Instagram to advertise his new bubble tea shop. Instagram ads are targeted to individuals who are predicted to have a higher likelihood of being bubble tea lovers. In the end, some Instagram users saw no ads and some saw the ads. The purchase rates for each group are shown below.\n\n\n\n\n\n\n\n\n\nQuestion: Can Tom be confident to conclude the Instagram ads are effective in converting new customers?\n\n\n\nTom bought a marketing survey data from a consulting agency. The survey collected prices and store visits (sales) for different bubble tea shops in Canary Wharf. Tom finds that there seems to be a positive relationship between prices and store visits.\n\n\n\n\n\n\n\n\n\nQuestion: Can Tom conclude that he should also increase the prices for his bubble tea shop to increase the store visits?\n\n\n\nThis is a fighter plane that just returned from the battlefield. Red dots are bullet holes.\nWhich part of A, B, and C would you reinforce to increase the pilot’s survival rate?\n\n\n\n\n\n\n\n\n\n\n\n\nI have held a secret from you for a long time, it’s time for me to confess ….\n\n\n\n\n\n\n\n\n\n\n\n\n\n[…] the other half jointly to Joshua D. Angrist and Guido W. Imbens “for their methodological contributions to the analysis of causal relationships.”\n\n\n\n\n\nCausal inference is the process of estimating the unbiased causal effects of a particular policy/business intervention on the outcome variables of interest.\nCorrelation != Causation: Machine learning models are good at finding correlations, but not causations. For example, on rainy days, we observe more umbrellas on the street\n\ncorrect correlation statement: number of umbrellas is positively correlated with rainfall\ncorrect causal statement: heavier rain leads to more umbrellas\nincorrect causal statement: more umbrellas lead to heavier rain\n\nCausality becomes more complex in the business world. Managers can easily make mistakes without causal inference training.\n\nImagine if the actual causal effect of Instagram ads on incremental profit per customer is £1 for Tom, and Tom pays £1.5 for each click",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#our-journey-so-far",
+    "href": "Week6-Lecture1.html#our-journey-so-far",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "",
+    "text": "Any business activity brings benefits and costs. We’re given the benefit information in all the case studies so far\n\nApple (Week 1): influencer marketing increases sales by 2.5%\n1st assignment: loyalty program increases retention rate to 95%\n\nIn reality, this benefit information is often not readily available, and we need to measure them using causal inference tools.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#learning-objectives",
+    "href": "Week6-Lecture1.html#learning-objectives",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "",
+    "text": "Understand key concepts of causal inference\n\nRubin’s potential outcome framework\nFundamental problem of causal inference\nAverage treatment effect (ATE) and randomization\n\nLearn the steps to conduct randomized controlled trials (RCTs)",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#why-causal-inference-matters-example-1",
+    "href": "Week6-Lecture1.html#why-causal-inference-matters-example-1",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "",
+    "text": "Tom purchases paid ads on Instagram to advertise his new bubble tea shop. Instagram ads are targeted to individuals who are predicted to have a higher likelihood of being bubble tea lovers. In the end, some Instagram users saw no ads and some saw the ads. The purchase rates for each group are shown below.\n\n\n\n\n\n\n\n\n\nQuestion: Can Tom be confident to conclude the Instagram ads are effective in converting new customers?",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#why-causal-inference-matters-example-2",
+    "href": "Week6-Lecture1.html#why-causal-inference-matters-example-2",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "",
+    "text": "Tom bought a marketing survey data from a consulting agency. The survey collected prices and store visits (sales) for different bubble tea shops in Canary Wharf. Tom finds that there seems to be a positive relationship between prices and store visits.\n\n\n\n\n\n\n\n\n\nQuestion: Can Tom conclude that he should also increase the prices for his bubble tea shop to increase the store visits?",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#why-causal-inference-matters-example-3",
+    "href": "Week6-Lecture1.html#why-causal-inference-matters-example-3",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "",
+    "text": "This is a fighter plane that just returned from the battlefield. Red dots are bullet holes.\nWhich part of A, B, and C would you reinforce to increase the pilot’s survival rate?",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#why-causal-inference-matters-example-4",
+    "href": "Week6-Lecture1.html#why-causal-inference-matters-example-4",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "",
+    "text": "I have held a secret from you for a long time, it’s time for me to confess ….",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#nobel-prize-in-economics-2021",
+    "href": "Week6-Lecture1.html#nobel-prize-in-economics-2021",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "",
+    "text": "[…] the other half jointly to Joshua D. Angrist and Guido W. Imbens “for their methodological contributions to the analysis of causal relationships.”",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#causal-inference-1",
+    "href": "Week6-Lecture1.html#causal-inference-1",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "",
+    "text": "Causal inference is the process of estimating the unbiased causal effects of a particular policy/business intervention on the outcome variables of interest.\nCorrelation != Causation: Machine learning models are good at finding correlations, but not causations. For example, on rainy days, we observe more umbrellas on the street\n\ncorrect correlation statement: number of umbrellas is positively correlated with rainfall\ncorrect causal statement: heavier rain leads to more umbrellas\nincorrect causal statement: more umbrellas lead to heavier rain\n\nCausality becomes more complex in the business world. Managers can easily make mistakes without causal inference training.\n\nImagine if the actual causal effect of Instagram ads on incremental profit per customer is £1 for Tom, and Tom pays £1.5 for each click",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#rubin-causal-model-and-the-potential-outcome-framework",
+    "href": "Week6-Lecture1.html#rubin-causal-model-and-the-potential-outcome-framework",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "2.1 Rubin Causal Model and the Potential Outcome Framework",
+    "text": "2.1 Rubin Causal Model and the Potential Outcome Framework\n\nThe Rubin causal model (RCM) or the Potential Outcome Framework is the well accepted framework for thinking about causal effects.\nFor each customer \\(i\\), we can define the potential outcomes in order to evaluate the causal effect of a treatment on their outcomes:\n\n\\(Y^{1}_i\\): the outcome if the customer is exposed to the treatment, ceteris paribus\n\\(Y^{0}_i\\): the outcome if the customer is not exposed to the treatment, ceteris paribus",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#definition-individual-treatment-effects",
+    "href": "Week6-Lecture1.html#definition-individual-treatment-effects",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "2.2 Definition: Individual Treatment Effects",
+    "text": "2.2 Definition: Individual Treatment Effects\n\nThe causal effect of the treatment on the individual \\(i\\) is the difference between the two potential outcomes. We define the individual treatment effect \\(\\delta_i\\) as follows\n\n\\[\n        \\delta_i = Y^1_i - Y^0_i\n\\]\n\n\n\n\n\n\nImportant\n\n\n\nThese two potential outcomes do not depend on whether or not the individual is exposed to the treatment in reality.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#example",
+    "href": "Week6-Lecture1.html#example",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "2.3 Example",
+    "text": "2.3 Example\nTom would like to measure the causal effect of seeing a displayed ad on customer purchase probability.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#examples-of-individual-treatment-effects",
+    "href": "Week6-Lecture1.html#examples-of-individual-treatment-effects",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "2.4 Examples of Individual Treatment Effects",
+    "text": "2.4 Examples of Individual Treatment Effects\nLet’s say we have retrieved all infinity stones from Thanos, and have created 2 parallel universes\n\nIn Universe 1, with a displayed ad\n\nDr Strange has a rate of 70%\n\nIn Universe 2, without a displayed ad\n\nDr Strange has a rate of 60%\n\n\n\n\n\n\n\nCustomer\nY1\nY0\nTE\n\n\n\n\nDr Strange\n0.7\n0.6\n0.1",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#a-motivating-example-a-group-of-customers",
+    "href": "Week6-Lecture1.html#a-motivating-example-a-group-of-customers",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "2.5 A Motivating Example: A Group of Customers",
+    "text": "2.5 A Motivating Example: A Group of Customers\n\nConceptually, we can collect a sample of customers, and estimate individual treatment effect for each of them\n\n\n\n\n\n\nCustomer\nY1\nY0\nTE\n\n\n\n\nDr Strange\n0.70\n0.60\n0.10\n\n\nIron Man\n0.55\n0.50\n0.05\n\n\nThor\n0.80\n0.72\n0.08\n\n\nHulk\n0.60\n0.62\n-0.02",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#fundamental-problem-of-causal-inference",
+    "href": "Week6-Lecture1.html#fundamental-problem-of-causal-inference",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "2.6 Fundamental Problem of Causal Inference",
+    "text": "2.6 Fundamental Problem of Causal Inference\n\nTo measure the individual treatment effect of the ads on a customer’s purchase rate, we need to observe all potential outcomes of the same individual in parallel universes (i.e., with and without being exposed to the treatment).\nWe use \\(D_i = 1\\) to denote the treated/treatment group and \\(D_i = 0\\) to denote the untreated/control group in reality.\nWe only observe one potential outcome, the realized outcome, in our reality\n\nFor treated customers, we only observe their realized outcomes of being treated: \\(Y^1_i|D_i = 1\\)\nFor untreated customers, we only observe their realized outcomes of being untreated \\(Y^0_i|D_i = 0\\)\n\nThe remaining potential outcomes, i.e., counterfactual outcomes, are never observed in our reality\n\nFor treated customers, we never observe their outcomes when being untreated: \\(Y^0_i|D_i = 1\\)\nFor untreated customers, we never observe their outcomes when treated: \\(Y^1_i|D_i = 0\\)",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#exercise",
+    "href": "Week6-Lecture1.html#exercise",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "2.7 Exercise",
+    "text": "2.7 Exercise\n\nIn the previous table, let’s say, Dr Strange and Hulk are treated (by the ads) in reality, while Iron Man and Thor are not treated.\nBased on this information, we can find out the values of the realized outcomes and counterfactual outcomes for each customer.\nFor example, for Dr Strange:\n\nRealized outcome: \\(Y^1_i |D_i = 1 = 0.7\\) (Note that we only observe this value in reality)\nCounterfactual outcome: \\(Y^0_i |D_i = 1 = 0.6\\) (Note that we don’t observe this value in reality)\n\n\n\n\n\n\n\nCustomer\nY1\nY0\nTreated\n\n\n\n\nDr Strange\n0.70\n0.60\nYes\n\n\nIron Man\n0.55\n0.50\nNo\n\n\nThor\n0.80\n0.72\nNo\n\n\nHulk\n0.60\n0.62\nYes",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#fundamental-problem-of-causal-inference-1",
+    "href": "Week6-Lecture1.html#fundamental-problem-of-causal-inference-1",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "2.8 Fundamental Problem of Causal Inference",
+    "text": "2.8 Fundamental Problem of Causal Inference\n\nHowever, in reality, we would never know the counterfactual outcomes for each individual.\n\n\n\n\n\n\nsubject\nTreated\nY1\nY0\nY1-Y0\n\n\n\n\nDr Strange\nYes\n0.7\n?\n?\n\n\nIron Man\nNo\n?\n0.5\n?\n\n\nThor\nNo\n?\n0.72\n?\n\n\nHulk\nYes\n0.6\n?\n?\n\n\n\n\n\n\n\n\nSince it is impossible to see both potential outcomes at once, one of the potential outcomes is always missing, so we can never quantify the individual treatment effects. This dilemma is called the Fundamental Problem of Causal Inference.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#the-average-treatment-effect",
+    "href": "Week6-Lecture1.html#the-average-treatment-effect",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "3.1 The Average Treatment Effect",
+    "text": "3.1 The Average Treatment Effect\n\nSince individual treatment effects are unobservable, we often care more about the average treatment effects (ATE) on the population level. The ATE is defined as the average of individual treatment effects across the population.\n\n\\[\nATE = E[Y^1_i - Y^0_i] = \\frac{1}{N} \\sum_{i=1}^{N} (Y^1_i - Y^0_i)\n\\]\n\nFor display ads, can we obtain the ATE by directly calculating the difference in the average outcomes between the treatment group and control group. Why?\n\n\\[\\begin{align*}\nE[Y^1|D_i = 1] - E[Y^0|D_i = 0] &= E[Y^1|D_i = 1] - E[Y^0|D_i = 1] \\\\\n                                 &+ E[Y^0|D_i = 1] - E[Y^0|D_i = 0]\n\\end{align*}\\]",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#data-example",
+    "href": "Week6-Lecture1.html#data-example",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "3.2 Data Example",
+    "text": "3.2 Data Example\n\nPlease load data_treatmenteffects in the data folder into your RStudio.\n\n\n\nCode\ndata_treatmenteffects &lt;- read.csv(\"https://www.dropbox.com/scl/fi/ndvvwr298xkdtsj42y6az/individual-treatment-effects.csv?rlkey=z3mluwbqt9k1gtnb63xlc3l88&dl=1\")\n\n\n\nThis data are generated from Instagram’s paid ads, treated customers are those who see Instagram’s ads.\n\nCompute the difference in the average rates between the treated and untreated customers.\nCompute the ATE based on the individual treatment effects.\nCompare the two results.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#the-average-treatment-effect-1",
+    "href": "Week6-Lecture1.html#the-average-treatment-effect-1",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "3.3 The Average Treatment Effect",
+    "text": "3.3 The Average Treatment Effect\n\nTo quantify the correct ATE, we must randomize who receives the treatment, instead of targeting or letting the individuals choose the treatment.\nAfter randomization, we can then obtain the ATE by comparing the difference in the average outcomes across the treatment group and control group. Because randomization ensures that\n\nSelection bias is fully removed1\nThe treatment effects on the treatment group individuals and the control group individuals should be equal. The former is called the average treatment effects on the treated (ATT), and the latter is called the average treatment effects on the untreated (ATU).",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#gold-standard-of-causal-inference",
+    "href": "Week6-Lecture1.html#gold-standard-of-causal-inference",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "3.4 Gold Standard of Causal Inference",
+    "text": "3.4 Gold Standard of Causal Inference\n\nBasic identity of causal inference:\n\n\\[\\begin{align*}\nE[Y^1|D_i = 1] - E[Y^0|D_i = 0] &= E[Y^1|D_i = 1] - E[Y^0|D_i = 1] \\\\\n                                 &+ E[Y^0|D_i = 1] - E[Y^0|D_i = 0]\n\\end{align*}\\]\n\n\n\n\n\n\n\n\n\n\nRandomized experiments are the gold standard of causal inference.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture1.html#footnotes",
+    "href": "Week6-Lecture1.html#footnotes",
+    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSelection bias refers to the pre-existing difference between the treatment group and control group even without the treatment↩︎",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 1: Causal Inference and Potential Outcome Framework"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html",
+    "href": "Week6-Lecture2.html",
+    "title": "Class 12 A/B Testing",
+    "section": "",
+    "text": "A randomized controlled trial (RCT) is an experimental form of impact evaluation in which the population receiving the intervention is chosen at random from the eligible population, and a control group is also chosen at random from the same eligible population.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab Experiment\nField Experiment\n\n\n\n\nLocation\nIn a controlled, laboratory environment\nIn the field\n\n\nInternal validity\nHigh\nLow\n\n\nExternal validity\nLow (Hawthorne effect)\nHigh\n\n\n\n\nInternal validity refers to the extent to which the experiment is free from selection bias.\nExternal validity refers to the extent to which the results can be generalized to the real world or other contexts.\n\n\n\n\n\nA/B testing (treatment group + control group)\n\nLoyalty program\nNo loyalty program\n\nA/B/N testing (multiple treatment groups + control group)\n\nPoint-based loyalty program; points can be redeemed for price vouchers\nPoint-based loyalty program; points can be redeemed for gifts\nPoint-based loyalty program; points can be redeemed for free top ups\nNo loyalty program\n\nFactorial design\n\nmore than 2 dimensions of treatments, used if we care about the interaction effects",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html#randomized-controlled-trials-1",
+    "href": "Week6-Lecture2.html#randomized-controlled-trials-1",
+    "title": "Class 12 A/B Testing",
+    "section": "",
+    "text": "A randomized controlled trial (RCT) is an experimental form of impact evaluation in which the population receiving the intervention is chosen at random from the eligible population, and a control group is also chosen at random from the same eligible population.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html#types-of-rcts-based-on-location",
+    "href": "Week6-Lecture2.html#types-of-rcts-based-on-location",
+    "title": "Class 12 A/B Testing",
+    "section": "",
+    "text": "Lab Experiment\nField Experiment\n\n\n\n\nLocation\nIn a controlled, laboratory environment\nIn the field\n\n\nInternal validity\nHigh\nLow\n\n\nExternal validity\nLow (Hawthorne effect)\nHigh\n\n\n\n\nInternal validity refers to the extent to which the experiment is free from selection bias.\nExternal validity refers to the extent to which the results can be generalized to the real world or other contexts.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html#types-of-rcts-based-on-treatment-design",
+    "href": "Week6-Lecture2.html#types-of-rcts-based-on-treatment-design",
+    "title": "Class 12 A/B Testing",
+    "section": "",
+    "text": "A/B testing (treatment group + control group)\n\nLoyalty program\nNo loyalty program\n\nA/B/N testing (multiple treatment groups + control group)\n\nPoint-based loyalty program; points can be redeemed for price vouchers\nPoint-based loyalty program; points can be redeemed for gifts\nPoint-based loyalty program; points can be redeemed for free top ups\nNo loyalty program\n\nFactorial design\n\nmore than 2 dimensions of treatments, used if we care about the interaction effects",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html#motivating-example-of-toms-loyalty-program",
+    "href": "Week6-Lecture2.html#motivating-example-of-toms-loyalty-program",
+    "title": "Class 12 A/B Testing",
+    "section": "2.1 Motivating Example of Tom’s Loyalty Program",
+    "text": "2.1 Motivating Example of Tom’s Loyalty Program\n\nShould we introduce a loyalty program for our customers?\n\nCons: increased costs due to free drinks\nPros: it may increase spending and retention rate, and hence future CLV\n\nHow to estimate the causal effect of introducing a loyalty program?",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html#step-1-decide-on-the-unit-of-randomization",
+    "href": "Week6-Lecture2.html#step-1-decide-on-the-unit-of-randomization",
+    "title": "Class 12 A/B Testing",
+    "section": "2.2 Step 1: Decide on the Unit of Randomization",
+    "text": "2.2 Step 1: Decide on the Unit of Randomization\nWe decide the granularity of randomization unit based on the research question at hand.\n\nindividual\nhousehold\nstore\nother levels more granular (e.g., device level) or even less granular (e.g., city level)",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html#step-1-decide-on-the-unit-of-randomization-1",
+    "href": "Week6-Lecture2.html#step-1-decide-on-the-unit-of-randomization-1",
+    "title": "Class 12 A/B Testing",
+    "section": "2.3 Step 1: Decide on the Unit of Randomization",
+    "text": "2.3 Step 1: Decide on the Unit of Randomization\nProposal 1: Randomize the treatment based on West London and East London.\n\nDo you expect the “randomize” to be true randomization?1\n\n\nNo, because East London and West London are intrinsically different. Randomization can only work well when the number of randomization units are large enough.\n\nProposal 2: Randomize the treatment among individual customers.\n\nIs this true randomization?\n\n\nYes, as long as we have a large number of individual customers, after randomization, we should see the treatment group and control group customers to have balanced characteristics.\n\n\nWhat problems can we still have?\n\n\n\nSpillover: Customers may talk to each other, so individual customers in the control group (who are not supposed to see the loyalty program) may also become aware of the loyalty program.\nCrossover: the same individual may accidentally receive different treatments.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html#step-1-pros-and-cons-of-granularity",
+    "href": "Week6-Lecture2.html#step-1-pros-and-cons-of-granularity",
+    "title": "Class 12 A/B Testing",
+    "section": "2.4 Step 1: Pros and Cons of Granularity",
+    "text": "2.4 Step 1: Pros and Cons of Granularity\nDisadvantages of granularity:\n\nCosts and logistics\nSpillovers and crossovers\n\nAdvantages of granularity:\n\nIncrease the chance of successful randomization, thereby mitigating any systematic unbalance of covariates before the experiment.\n\nExercise:\n\nIf we would like to randomize prices, how can we randomize individualized price discounts to customers?\n\n\nWe can send individually personalized coupons to customers, e.g., Co-op weekly offers, Uber’s dynamic pricing.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html#step-2-mitigate-spillover-and-crossover-effects",
+    "href": "Week6-Lecture2.html#step-2-mitigate-spillover-and-crossover-effects",
+    "title": "Class 12 A/B Testing",
+    "section": "2.5 Step 2: Mitigate Spillover and Crossover Effects",
+    "text": "2.5 Step 2: Mitigate Spillover and Crossover Effects\n\nCrossover Effects: A crossover occurs when an individual who was supposed to be assigned to one treatment is accidentally exposed to another or more treatments.\n\ne.g., For online A/B testing, a notorious crossover effect is that when browsers reset the cookies, the same individual customer may be treated as a different new customer.\n\nSpillover effects: The behavior of the treatment group can affect control group as well\n\ne.g., customers may share the promotions with family members and friends.\n\n\nQuestion: How should we mitigate spillover and crossover effects?\n\n\nMake sure that the same unit receives the same treatment throughout the experiment, e.g., forcing the customers to log into the website using their user accounts. User IDs should be unique.\nRandomize at the level of plausibly isolated social networks such as a community, rather than individual level.\nHowever, we must acknowledge that, it is really challenging to implement an A/B testing without any crossover or spillover in the field.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html#step-3-decide-on-randomization-allocation-scheme",
+    "href": "Week6-Lecture2.html#step-3-decide-on-randomization-allocation-scheme",
+    "title": "Class 12 A/B Testing",
+    "section": "2.6 Step 3: Decide on Randomization Allocation Scheme",
+    "text": "2.6 Step 3: Decide on Randomization Allocation Scheme\n\nIndividuals (or the relevant unit of randomization) are allocated at random into a treatment condition based on some decision rules.\nDue to the high costs and potential risks of A/B testing, we often select a small percentage of customers into the treatment condition, while the remaining customer should do “business-as-usual”.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html#step-4-collect-data",
+    "href": "Week6-Lecture2.html#step-4-collect-data",
+    "title": "Class 12 A/B Testing",
+    "section": "2.7 Step 4: Collect Data",
+    "text": "2.7 Step 4: Collect Data\n\nAny field experiment should be aware of the need for a sufficiently large sample size, or sufficient statistical power.\n\nThe larger sample size, the higher statistical power for the experiment; meanwhile, larger sample size brings higher costs and risks.\nRun a power calculation in R\n\nCollect both data on the outcome variables of interest and consumer characteristics data\n\nProposal: We need to collect customers’ spending and retention data and link the data with their treatment assignment.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html#step-5-interpreting-results-from-a-field-experiment",
+    "href": "Week6-Lecture2.html#step-5-interpreting-results-from-a-field-experiment",
+    "title": "Class 12 A/B Testing",
+    "section": "2.8 Step 5: Interpreting Results from a Field Experiment",
+    "text": "2.8 Step 5: Interpreting Results from a Field Experiment\nStep 5.1: Randomization check\n\nWe need to check if the treatment group and control group are well-balanced in terms of their pre-treatment characteristics, especially the outcome variables.\n\nStep 5.2: Analyze the data and estimate the ATE\n\nt-test to examine the difference in the average outcome between the treatment group and control group. In R, we can use t.test()\nRegression analysis when analyzing A/B/N testing or multivariate experiments.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html#after-class-readings",
+    "href": "Week6-Lecture2.html#after-class-readings",
+    "title": "Class 12 A/B Testing",
+    "section": "2.9 After-Class Readings",
+    "text": "2.9 After-Class Readings\n\n(optional) Varian, Hal R. ‘Causal Inference in Economics and Marketing’. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310–15.",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week6-Lecture2.html#footnotes",
+    "href": "Week6-Lecture2.html#footnotes",
+    "title": "Class 12 A/B Testing",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAll answers to questions in the slides are on the webpage version of lecture notes.↩︎",
+    "crumbs": [
+      "Lectures",
+      "[Week 6] Causal Inference and A/B Testing",
+      "Lecture 2: A/B Testing"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html",
+    "href": "Week1-Lecture2.html",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "",
+    "text": "How to conduct break-even analysis for a marketing proposal\nHow to conduct net present value analysis for a marketing proposal\nPractice R basic calculations and vector operations in the case study",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#learning-objectives",
+    "href": "Week1-Lecture2.html#learning-objectives",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "",
+    "text": "How to conduct break-even analysis for a marketing proposal\nHow to conduct net present value analysis for a marketing proposal\nPractice R basic calculations and vector operations in the case study",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#decisions-for-marketing-managers",
+    "href": "Week1-Lecture2.html#decisions-for-marketing-managers",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "2.1 Decisions for Marketing Managers",
+    "text": "2.1 Decisions for Marketing Managers\n\nThe ultimate goal of marketing (and other business activities) is to create value and improve profitability for firms.\nAs any marketing activity comes with a cost, data analysts need to correctly evaluate whether a campaign creates or destroys value to the company.\nSuch analyses are called cost-benefit analyses, sometimes referred to as profitability analysis or break-even analysis in different contexts.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#break-even-quantity",
+    "href": "Week1-Lecture2.html#break-even-quantity",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "2.2 Break-Even Quantity",
+    "text": "2.2 Break-Even Quantity\n\nWe often use break-even analyses to evaluate the financial feasibility of a marketing campaign. In marketing, we often compute the break-even quantity.\n\n\n\n\n\n\n\nDefinition\n\n\n\nThe break-even quantity (BEQ) calculates the number of incremental units the firm needs to sell to cover the cost of the marketing campaign.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#compute-beq",
+    "href": "Week1-Lecture2.html#compute-beq",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "2.3 Compute BEQ",
+    "text": "2.3 Compute BEQ\nThe difference between the price per unit and variable costs per unit is defined as the contribution margin per unit. That is,\n\n\n\n\n\n\nDefinition\n\n\n\nContribution Margin Per Unit = Price Per Unit - Variable Costs Per Unit\n\n\n\nPrice per unit: retail price customers pay\nVariable costs per unit: Costs of goods sold (COGS)1 + any other variable costs per unit\n\nThis gives the second formula for BEQ:\n\n\n\n\n\n\nDefinition\n\n\n\nBEQ = Marketing Expenditure / Contribution Margin Per Unit",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#break-even-quantity-steps-and-decision-rule",
+    "href": "Week1-Lecture2.html#break-even-quantity-steps-and-decision-rule",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "2.4 Break-Even Quantity: Steps and Decision Rule",
+    "text": "2.4 Break-Even Quantity: Steps and Decision Rule\n\nSteps to conduct break-even analysis\n\nStep 1: Compute the BEQ based on the company’s product demand and production cost structure. This is the minimum quantity the company needs to sell to cover the costs of the marketing campaign.\nStep 2: Evaluate whether the campaign can generate an incremental quantity larger than BEQ\n\nThe decision rule\n\nif incremental quantity sales &gt; BEQ, the company makes money, so accept the campaign; otherwise, reject the campaign",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#background",
+    "href": "Week1-Lecture2.html#background",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "3.1 Background",
+    "text": "3.1 Background\n\n\n\n\n\n\n\n\n\n\n\n\nTom, senior marketing manager of Apple UK, is looking to launch a series of marketing campaigns to promote the iPhone 16 series that are just released. Tom was a proud graduate from UCL MSc BA program in 2020. He remembered from the Marketing Analytics module that break-even analysis helps evaluate different types of marketing decisions.\n\n\n\n\nCode\nprice &lt;- 799  # retail price of iPhone 16 in £\nquantity &lt;- 10  # sales quantity in million units\nendorsement_fee &lt;- 100  # endorsement fee in million pounds\nendorsement_sales_increase &lt;- 0.025 # sales increase percentage due to endorsement\nCOGS &lt;- 0.47 # cost of goods sold; 47% of retail price, i.e., 47% of £799\nRD_costs &lt;- 100 # R&D costs in million pounds\nmonthly_sales_increase_1stmonth &lt;- 0.003 # sales increase percentage in the first month\nmonthly_sales_increase_after &lt;- 0.002 # sales increase percentage in the following months\nWACC &lt;- 0.1 # weighted average cost of capital\n\n\nCase objectives:\n\nPractice situation analysis and compare with Uber’s case\nPractice how to conduct break-even analyses for a marketing compaign\nPractice R basic computations and vector operations",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#apple-inc-key-information",
+    "href": "Week1-Lecture2.html#apple-inc-key-information",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "3.2 Apple Inc: Key Information",
+    "text": "3.2 Apple Inc: Key Information\nFrom the case: The marketing analytics team at Apple Inc had applied sales forecasting models on historical sales data and predicted that the sales this year will reach 10 million units at the retail price of £799, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of Apple 16, which is 47%. The Research and Development (R&D) costs for iPhone 16 is 100 million pounds.\n\nOpen the .qmd answer sheet downloaded from Moodle Week 1. And let’s solve this case using the R basics we learned!\nQuestion 1: Conduct a 5C analysis for Apple Inc, and compare with Uber’s case.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#apple-inc-bea-question-2",
+    "href": "Week1-Lecture2.html#apple-inc-bea-question-2",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "3.3 Apple Inc: BEA Question 2",
+    "text": "3.3 Apple Inc: BEA Question 2\n\nQuestion 2: Compute the contribution margin\n\nDo we need to consider R&D costs?\n\n\n\n\nCode\ncontribution_margin &lt;- (1 - COGS) * price\ncontribution_margin\n\n\n[1] 423.47",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#sunk-costs-and-sunk-costs-fallacy",
+    "href": "Week1-Lecture2.html#sunk-costs-and-sunk-costs-fallacy",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "3.4 Sunk Costs and Sunk Costs Fallacy",
+    "text": "3.4 Sunk Costs and Sunk Costs Fallacy\n\nSunk costs are costs that have already been incurred in the past and cannot be recovered. They should not be considered in decision-making.\nHowever, behavioral economics research shows that people often fall into the sunk costs fallacy, where they tend to consider sunk costs in decision-making instead of focusing on future costs and benefits.\nWhen making decisions, you should stand in the present and consider only future costs and benefits. In our case, the R&D costs are sunk costs and should not be considered in the break-even analysis.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#apple-inc-bea-question-3",
+    "href": "Week1-Lecture2.html#apple-inc-bea-question-3",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "3.5 Apple Inc: BEA Question 3",
+    "text": "3.5 Apple Inc: BEA Question 3\n\nQuestion 3: Based on the information at hand, should Tom approve the influencer marketing plan?",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#definition-of-npv",
+    "href": "Week1-Lecture2.html#definition-of-npv",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "4.1 Definition of NPV",
+    "text": "4.1 Definition of NPV\n\nWhen the effect of the marketing campaign is expected to have a long-term effect or when time value of money is important to the question at hand, we need to take the future into account.\n\n\n\n\n\n\n\nDefinition\n\n\n\nNet present value (NPV) is the difference between the present value of cash inflows and the present value of cash outflows over a period of time.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#formula-of-npv",
+    "href": "Week1-Lecture2.html#formula-of-npv",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "4.2 Formula of NPV",
+    "text": "4.2 Formula of NPV\n\\[\nN P V=-I_{0}+\\frac{CF_{1}}{(1+k)}+\\frac{C F_{2}}{(1+k)^{2}}+\\cdots+\\frac{C F_{n}}{(1+k)^{n}}\n\\]\n\n\\(I_{0}\\) is the initial marketing investment/expense\n\\(C F_{n}\\) is the incremental profits in period \\(n\\): it must be the additional profits due to the marketing campaign\n\\(k\\) (sometimes \\(r\\) or \\(i\\)) is the discount rate, which reflects the value of time: the same £1 today is worth \\(£1 * (1+k)\\) in the next period.\nThe decision rule\n\nif NPV &gt; 0, then the marketing campaign can bring in more values to the company, so it should be accepted.\nif NPV &lt; 0, then the marketing campaign will decrease the company’s value, so it should be rejected.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#apple-inc-npv-influencer-marketing-i",
+    "href": "Week1-Lecture2.html#apple-inc-npv-influencer-marketing-i",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "4.3 Apple Inc: NPV Influencer Marketing I",
+    "text": "4.3 Apple Inc: NPV Influencer Marketing I\nQuestion 4: Based on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?\n\nCompute the sequence of monthly cash flows\n\nGenerate a sequence of incremental sales for 12 months (a vector with 12 elements)\n\nHint: use rep(), c(), and vector element-wise multiplication\n\n\n\n\n\nCode\nmonthly_sales_increase_1stmonth &lt;- 0.003\nmonthly_sales_increase_after &lt;- 0.002\n# incremental profit each month\nmonthly_incremental_sales &lt;- c(monthly_sales_increase_1stmonth,\n                     rep(monthly_sales_increase_after,11))\n\nCF &lt;-  monthly_incremental_sales * \n                    quantity * \n                    contribution_margin \n\n\nThe resulting monthly CFs are: 12.7041, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#apple-inc-npv-influencer-marketing-ii",
+    "href": "Week1-Lecture2.html#apple-inc-npv-influencer-marketing-ii",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "4.4 Apple Inc: NPV Influencer Marketing II",
+    "text": "4.4 Apple Inc: NPV Influencer Marketing II\n\nCompute the sequence of discount factors\n\nGenerate a sequence of WACC for 12 months (a vector with 12 elements)\nGenerate a sequence of discount rate for 12 months (a vector with 12 elements)\n\nHint: use seq() to generate geometric sequence with patterns\n\n\n\n\n\nCode\nmonthly_WACC &lt;- 0.1/12 # this is the discount rate\ndiscount_factor &lt;- (1/(1+monthly_WACC))^c(1:12) # this is the discount factor\n\n\nThe resulting monthly discount factors are: 0.9917355, 0.9835394, 0.975411, 0.9673497, 0.9593551, 0.9514265, 0.9435635, 0.9357654, 0.9280319, 0.9203622, 0.9127559, 0.9052124",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#apple-inc-npv-influencer-marketing-iii",
+    "href": "Week1-Lecture2.html#apple-inc-npv-influencer-marketing-iii",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "4.5 Apple Inc: NPV Influencer Marketing III",
+    "text": "4.5 Apple Inc: NPV Influencer Marketing III\n\nCompute the NPV\n\nGenerate a sequence of discounted CFs for 12 months\nSum up all discounted CFs across the 12 months using sum()\nSubtract endorsement fee from the sum to get NPV\n\n\n\n\nCode\nNetPresentValue &lt;- sum(CF * discount_factor) - endorsement_fee\n\n\n\nThe NPV is 0.5349641",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#after-class",
+    "href": "Week1-Lecture2.html#after-class",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "4.6 After-class",
+    "text": "4.6 After-class\n\nReview the coding practice from today’s class and ensure you understand how to calculate NPV in R. Complete the R coding exercise for Week 1, and feel free to bring any questions to next week’s class.",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
+    "objectID": "Week1-Lecture2.html#footnotes",
+    "href": "Week1-Lecture2.html#footnotes",
+    "title": "Class 2 Marketing Profitability Analysis",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nMaterial and production labor costs for producing a unit of product, often represented in percentage terms, e.g., COGS of 60% means the costs are 60% of retail prices. An iPhone with a retail price of £1000 and COGS of 30% means the COGS is £300.↩︎",
+    "crumbs": [
+      "Lectures",
+      "[Week 1] Module Introduction and Profitability Analysis",
+      "Lecture 2: Marketing Profitability Analysis"
+    ]
+  },
+  {
     "objectID": "Week1-Lecture1.html",
     "href": "Week1-Lecture1.html",
     "title": "Class 1 Intro to Marketing Analytics",
@@ -1972,222 +2620,6 @@
     ]
   },
   {
-    "objectID": "Week1-Lecture2.html",
-    "href": "Week1-Lecture2.html",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "",
-    "text": "How to conduct break-even analysis for a marketing proposal\nHow to conduct net present value analysis for a marketing proposal\nPractice R basic calculations and vector operations in the case study",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#learning-objectives",
-    "href": "Week1-Lecture2.html#learning-objectives",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "",
-    "text": "How to conduct break-even analysis for a marketing proposal\nHow to conduct net present value analysis for a marketing proposal\nPractice R basic calculations and vector operations in the case study",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#decisions-for-marketing-managers",
-    "href": "Week1-Lecture2.html#decisions-for-marketing-managers",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "2.1 Decisions for Marketing Managers",
-    "text": "2.1 Decisions for Marketing Managers\n\nThe ultimate goal of marketing (and other business activities) is to create value and improve profitability for firms.\nAs any marketing activity comes with a cost, data analysts need to correctly evaluate whether a campaign creates or destroys value to the company.\nSuch analyses are called cost-benefit analyses, sometimes referred to as profitability analysis or break-even analysis in different contexts.",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#break-even-quantity",
-    "href": "Week1-Lecture2.html#break-even-quantity",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "2.2 Break-Even Quantity",
-    "text": "2.2 Break-Even Quantity\n\nWe often use break-even analyses to evaluate the financial feasibility of a marketing campaign. In marketing, we often compute the break-even quantity.\n\n\n\n\n\n\n\nDefinition\n\n\n\nThe break-even quantity (BEQ) calculates the number of incremental units the firm needs to sell to cover the cost of the marketing campaign.",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#compute-beq",
-    "href": "Week1-Lecture2.html#compute-beq",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "2.3 Compute BEQ",
-    "text": "2.3 Compute BEQ\nThe difference between the price per unit and variable costs per unit is defined as the contribution margin per unit. That is,\n\n\n\n\n\n\nDefinition\n\n\n\nContribution Margin Per Unit = Price Per Unit - Variable Costs Per Unit\n\n\n\nPrice per unit: retail price customers pay\nVariable costs per unit: Costs of goods sold (COGS)1 + any other variable costs per unit\n\nThis gives the second formula for BEQ:\n\n\n\n\n\n\nDefinition\n\n\n\nBEQ = Marketing Expenditure / Contribution Margin Per Unit",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#break-even-quantity-steps-and-decision-rule",
-    "href": "Week1-Lecture2.html#break-even-quantity-steps-and-decision-rule",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "2.4 Break-Even Quantity: Steps and Decision Rule",
-    "text": "2.4 Break-Even Quantity: Steps and Decision Rule\n\nSteps to conduct break-even analysis\n\nStep 1: Compute the BEQ based on the company’s product demand and production cost structure. This is the minimum quantity the company needs to sell to cover the costs of the marketing campaign.\nStep 2: Evaluate whether the campaign can generate an incremental quantity larger than BEQ\n\nThe decision rule\n\nif incremental quantity sales &gt; BEQ, the company makes money, so accept the campaign; otherwise, reject the campaign",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#background",
-    "href": "Week1-Lecture2.html#background",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "3.1 Background",
-    "text": "3.1 Background\n\n\n\n\n\n\n\n\nTom, senior marketing manager of Apple UK, is looking to launch a series of marketing campaigns to promote the iPhone 16 series that are just released. Tom was a proud graduate from UCL MSc BA program in 2020. He remembered from the Marketing Analytics module that break-even analysis helps evaluate different types of marketing decisions.\n\n\n\n\nCode\nprice &lt;- 799  # retail price of iPhone 16 in £\nquantity &lt;- 10  # sales quantity in million units\nendorsement_fee &lt;- 100  # endorsement fee in million pounds\nendorsement_sales_increase &lt;- 0.025 # sales increase percentage due to endorsement\nCOGS &lt;- 0.47 # cost of goods sold; 47% of retail price, i.e., 47% of £799\nRD_costs &lt;- 100 # R&D costs in million pounds\nmonthly_sales_increase_1stmonth &lt;- 0.003 # sales increase percentage in the first month\nmonthly_sales_increase_after &lt;- 0.002 # sales increase percentage in the following months\nWACC &lt;- 0.1 # weighted average cost of capital\n\n\nCase objectives:\n\nPractice situation analysis and compare with Uber’s case\nPractice how to conduct break-even analyses for a marketing compaign\nPractice R basic computations and vector operations",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#apple-inc-key-information",
-    "href": "Week1-Lecture2.html#apple-inc-key-information",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "3.2 Apple Inc: Key Information",
-    "text": "3.2 Apple Inc: Key Information\nFrom the case: The marketing analytics team at Apple Inc had applied sales forecasting models on historical sales data and predicted that the sales this year will reach 10 million units at the retail price of £799, without any additional marketing activities. The team had also collected the information on the Cost of Goods Sold of Apple 16, which is 47%. The Research and Development (R&D) costs for iPhone 16 is 100 million pounds.\n\nOpen the .qmd answer sheet downloaded from Moodle Week 1. And let’s solve this case using the R basics we learned!\nQuestion 1: Conduct a 5C analysis for Apple Inc, and compare with Uber’s case.",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#apple-inc-bea-question-2",
-    "href": "Week1-Lecture2.html#apple-inc-bea-question-2",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "3.3 Apple Inc: BEA Question 2",
-    "text": "3.3 Apple Inc: BEA Question 2\n\nQuestion 2: Compute the contribution margin\n\nDo we need to consider R&D costs?\n\n\n\n\nCode\ncontribution_margin &lt;- (1 - COGS) * price\ncontribution_margin\n\n\n[1] 423.47",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#sunk-costs-and-sunk-costs-fallacy",
-    "href": "Week1-Lecture2.html#sunk-costs-and-sunk-costs-fallacy",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "3.4 Sunk Costs and Sunk Costs Fallacy",
-    "text": "3.4 Sunk Costs and Sunk Costs Fallacy\n\nSunk costs are costs that have already been incurred in the past and cannot be recovered. They should not be considered in decision-making.\nHowever, behavioral economics research shows that people often fall into the sunk costs fallacy, where they tend to consider sunk costs in decision-making instead of focusing on future costs and benefits.\nWhen making decisions, you should stand in the present and consider only future costs and benefits. In our case, the R&D costs are sunk costs and should not be considered in the break-even analysis.",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#apple-inc-bea-question-3",
-    "href": "Week1-Lecture2.html#apple-inc-bea-question-3",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "3.5 Apple Inc: BEA Question 3",
-    "text": "3.5 Apple Inc: BEA Question 3\n\nQuestion 3: Based on the information at hand, should Tom approve the influencer marketing plan?",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#definition-of-npv",
-    "href": "Week1-Lecture2.html#definition-of-npv",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "4.1 Definition of NPV",
-    "text": "4.1 Definition of NPV\n\nWhen the effect of the marketing campaign is expected to have a long-term effect or when time value of money is important to the question at hand, we need to take the future into account.\n\n\n\n\n\n\n\nDefinition\n\n\n\nNet present value (NPV) is the difference between the present value of cash inflows and the present value of cash outflows over a period of time.",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#formula-of-npv",
-    "href": "Week1-Lecture2.html#formula-of-npv",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "4.2 Formula of NPV",
-    "text": "4.2 Formula of NPV\n\\[\nN P V=-I_{0}+\\frac{CF_{1}}{(1+k)}+\\frac{C F_{2}}{(1+k)^{2}}+\\cdots+\\frac{C F_{n}}{(1+k)^{n}}\n\\]\n\n\\(I_{0}\\) is the initial marketing investment/expense\n\\(C F_{n}\\) is the incremental profits in period \\(n\\): it must be the additional profits due to the marketing campaign\n\\(k\\) (sometimes \\(r\\) or \\(i\\)) is the discount rate, which reflects the value of time: the same £1 today is worth \\(£1 * (1+k)\\) in the next period.\nThe decision rule\n\nif NPV &gt; 0, then the marketing campaign can bring in more values to the company, so it should be accepted.\nif NPV &lt; 0, then the marketing campaign will decrease the company’s value, so it should be rejected.",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#apple-inc-npv-influencer-marketing-i",
-    "href": "Week1-Lecture2.html#apple-inc-npv-influencer-marketing-i",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "4.3 Apple Inc: NPV Influencer Marketing I",
-    "text": "4.3 Apple Inc: NPV Influencer Marketing I\nQuestion 4: Based on the information at hand, should Tom approve the influencer marketing plan based on Net Present Value method?\n\nCompute the sequence of monthly cash flows\n\nGenerate a sequence of incremental sales for 12 months (a vector with 12 elements)\n\nHint: use rep(), c(), and vector element-wise multiplication\n\n\n\n\n\nCode\nmonthly_sales_increase_1stmonth &lt;- 0.003\nmonthly_sales_increase_after &lt;- 0.002\n# incremental profit each month\nmonthly_incremental_sales &lt;- c(monthly_sales_increase_1stmonth,\n                     rep(monthly_sales_increase_after,11))\n\nCF &lt;-  monthly_incremental_sales * \n                    quantity * \n                    contribution_margin \n\n\nThe resulting monthly CFs are: 12.7041, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694, 8.4694",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#apple-inc-npv-influencer-marketing-ii",
-    "href": "Week1-Lecture2.html#apple-inc-npv-influencer-marketing-ii",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "4.4 Apple Inc: NPV Influencer Marketing II",
-    "text": "4.4 Apple Inc: NPV Influencer Marketing II\n\nCompute the sequence of discount factors\n\nGenerate a sequence of WACC for 12 months (a vector with 12 elements)\nGenerate a sequence of discount rate for 12 months (a vector with 12 elements)\n\nHint: use seq() to generate geometric sequence with patterns\n\n\n\n\n\nCode\nmonthly_WACC &lt;- 0.1/12 # this is the discount rate\ndiscount_factor &lt;- (1/(1+monthly_WACC))^c(1:12) # this is the discount factor\n\n\nThe resulting monthly discount factors are: 0.9917355, 0.9835394, 0.975411, 0.9673497, 0.9593551, 0.9514265, 0.9435635, 0.9357654, 0.9280319, 0.9203622, 0.9127559, 0.9052124",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#apple-inc-npv-influencer-marketing-iii",
-    "href": "Week1-Lecture2.html#apple-inc-npv-influencer-marketing-iii",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "4.5 Apple Inc: NPV Influencer Marketing III",
-    "text": "4.5 Apple Inc: NPV Influencer Marketing III\n\nCompute the NPV\n\nGenerate a sequence of discounted CFs for 12 months\nSum up all discounted CFs across the 12 months using sum()\nSubtract endorsement fee from the sum to get NPV\n\n\n\n\nCode\nNetPresentValue &lt;- sum(CF * discount_factor) - endorsement_fee\n\n\n\nThe NPV is 0.5349641",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#after-class",
-    "href": "Week1-Lecture2.html#after-class",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "4.6 After-class",
-    "text": "4.6 After-class\n\nReview the coding practice from today’s class and ensure you understand how to calculate NPV in R. Complete the R coding exercise for Week 1, and feel free to bring any questions to next week’s class.",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
-    "objectID": "Week1-Lecture2.html#footnotes",
-    "href": "Week1-Lecture2.html#footnotes",
-    "title": "Class 2 Marketing Profitability Analysis",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nMaterial and production labor costs for producing a unit of product, often represented in percentage terms, e.g., COGS of 60% means the costs are 60% of retail prices. An iPhone with a retail price of £1000 and COGS of 30% means the COGS is £300.↩︎",
-    "crumbs": [
-      "Lectures",
-      "[Week 1] Module Introduction and Profitability Analysis",
-      "Lecture 2: Marketing Profitability Analysis"
-    ]
-  },
-  {
     "objectID": "LectureSlides.html",
     "href": "LectureSlides.html",
     "title": "Lecture Slides",
@@ -2195,7 +2627,7 @@
     "text": "Lecture slides of subsequent weeks will be released on Monday each week. Stay tuned!",
     "crumbs": [
       "Lectures",
-      "[Week 6] Causal Inference and A/B Testing",
+      "[Week 7] Linear Regression Models",
       "Lecture Slides"
     ]
   },
