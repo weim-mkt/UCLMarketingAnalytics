@@ -1,293 +1,106 @@
 ---
-author: Dr Wei Miao
-date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(4))`"
-date-format: long
-institute: UCL School of Management
-title: "Class 10 Causal Inference and Randomized Controlled Trials"
-df-print: kable
-colorlinks: true
-code-line-numbers: true
-format:
-  html: 
-    toc: true
-    number-sections: true
-    page-layout: full
-    toc-depth: 2
-    code-line-numbers: true
-    code-copy: hover
-  beamer: 
-    toc: false
-    toc-title: ""
-    slide-level: 2
-    section-titles: true
-    theme: Frankfurt
-    colortheme: beaver
-    fonttheme: structurebold
-    navigation: horizontal
-    tbl-colwidths: auto
-    fontsize: 9pt
-    suppress-bibliography: true
-knitr:
-  opts_chunk:
-    echo: true
-    warning: true
-    message: true
-    error: true
-execute: 
-  freeze: auto
-editor_options: 
-  chunk_output_type: inline
-bibliography: references.bib
+date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(4))`"
+title: "Class 10 (Case Study) Customer Targeting Using Supervised Learning for M&S"
+format: 
+    beamer: 
+        echo: true
+        eval: false
+        error: true
+    html: 
+        eval: false
 ---
 
-# Causal Inference
+# Business Objective
 
-## Our Journey So Far
+## Background
 
--   Any business activity brings benefits and costs. We're given the benefit information in all the case studies so far
+Recently, M&S has launched its highly anticipated [Beauty Advent Calendar for 2024](https://www.marksandspencer.com/c/beauty-box), a curated selection of beauty and skincare products worth over £300. This limited-edition calendar is available to customers for only **£50**. With the holiday season approaching, M&S wants to maximize the reach and response of its marketing campaign by promoting the advent calendar offer to the right customers.
 
-    -   **PineApple (Week 1)**: influencer marketing increases sales by 2.5%
+M&S decides to use a conventional mailing marketing strategy, where customers receive color-printed leaflets via Royal Mail to their doorsteps. Each mail costs **£1.5** **to produce** and another **£0.5** **to mail** to the customers. If a customer responds to the offer, M&S expects them to spend **£35** on full-price clothing, homeware or beauty, and purchase the advent calendar at **£50**. The COGS for clothing, homeware, and beauty products is **85%**. And the COGS for the advent calendar is **90%**. 
 
-    -   **1st assignment (Week 4)**: loyalty program increases retention rate to 96%
 
--   In reality, this benefit information is often not readily available, and we need to estimate them using **causal inference tools**.
+## Cost-Benefit Analyses
 
-## Causal Inference Road Map
+-   **Cost**: Each mail costs **£1.5** **to produce** and another **£0.5** **to mail** to the customers.
+-   The cost is the marketing offer we send, `cost_per_offer`
 
-![](images/causal%20inference%20road%20map.png){fig-align="center" width="451"}
+Based on the information provided, calculate the following values:
 
-## Learning Objectives
-
--   Understand key concepts of **causal inference** and **Rubin's potential outcome framework**
-
--   Learn the steps to conduct **randomized controlled trials** (RCTs)
-
-## Why Causal Inference Matters? Example 1
-
-Tom purchases Google banner ads to advertise his new bubble tea shop. Google ads are targeted to individuals who are predicted to have a higher likelihood of being bubble lovers. In the end, some Google users saw no ads (casual bubble users) and some saw the ads (bubble lovers). The **purchase rates** for each group are shown below.
+1. `cost_per_offer`: the cost of sending an marketing offer
 
 ::: {.content-visible when-format="beamer"}
-![](images/Bubble%20tea%20ads.png){fig-align="center" width="200"}
+## Cost-Benefit Analyses
 :::
 
-::: {.content-visible when-format="html"}
-![](images/Bubble%20tea%20ads.png){fig-align="center" width="800"}
-:::
+-   **Benefit**: If customer responds to the offer, the management expects customers to buy our products and generate profits for M&S.
 
-**Question**: Can Tom be confident to conclude the Google ads are effective in converting new customers?
+-   The benefit is the profit margin if a customer responds, `profit_per_customer`
 
-## Why Causal Inference Matters? Example 2
+2. `profit_per_customer`: the profit from a customer if a customer responds to the marketing offer
 
-Tom bought a marketing survey data from a consulting agency. The survey collected prices and store visits (sales) for different bubble shops in Canary Wharf. Tom finds that there is a positive correlation between prices and store visits.
+## ROI for Blanket Marketing
 
-::: {.content-visible when-format="beamer"}
-![](images/pricesales.png){fig-align="center" width="200"}
-:::
+-   **Blanket marketing**: Send marketing offers to all 2000 customers. Compute the ROI for blanket marketing.
 
-::: {.content-visible when-format="html"}
-![](images/pricesales.png){fig-align="center" width="800"}
-:::
+-   We already know the cost of sending an offer is `cost_per_offer`. We can calculate the total marketing costs by multiplying the cost per offer by the number of customers in the dataset.
 
-**Question**: Can Tom conclude that he should also increase the prices for his bubble tea shop to increase the store visits?
+-   Based on the `Response` variable in the dataset, calculate the total number of customers who responded to the marketing offer. And then calculate the total profit from the marketing campaign.
+    
+    - Tip: you can use `data_full$Response` to extract the `Response` variable as a vector in the dataset. Based on this vector, you can calculate the total number of responding customers and the total profit from the marketing campaign.
 
-## Why Causal Inference Matters? Example 3
 
-This is a plane that just returned from the battlefield. Red dots are bullet holes.
+# Targeting Using Supervised Learning
 
-Which part of A, B, and C would you reinforce to increase the pilot's survival rate?
+## Break-Even Analysis: Break-Even Response Rate
 
-::: {.content-visible when-format="beamer"}
-![](images/SurvivalBias.png){fig-align="center" width="150"}
-:::
+-   In order to break-even, we can calculate the break-even response rate from customers, which is the **minimum response rate** we need of a customer in order not to lose money from sending the marketing offer[^1]
 
-::: {.content-visible when-format="html"}
-![](images/SurvivalBias.png){fig-align="center" width="400"}
-:::
+[^1]: The idea break-even is similar to the break-even quantity we learned in Week 1, the minimum incremental quantity we need to sell in order not to lose any money.
 
-## Why Causal Inference Matters? Example 4
+-   Only if a customer responds to us with at least the break-even response rate can we recover the costs of making an marketing offer.
 
-I have held a secret from you for a long time....
+-   If we send offers to customers whose expected response rate is lower than the break-even response rate, we make a loss by expectation.
 
-## Nobel Prize in Economics (2021)
+## Workflow using Supervised Learning
 
-::: {.content-visible when-format="beamer"}
-![](images/NobelEcon.png){fig-align="center" width="300"}
-:::
+-   **Data collection and cleaning**
 
-::: {.content-visible when-format="html"}
-![](images/NobelEcon.png){fig-align="center" width="800"}
-:::
+    -  Send marketing offers to a random sample of customers and collect their responses (done by M&S)
 
-> \[...\] the other half jointly to Joshua D. Angrist and Guido W. Imbens "for their methodological contributions to the analysis of causal relationships."
+    -   Split the data into a training set and a test set
 
-## Causal Inference
+-   **Data analytics**
 
--   Causal inference is the process of estimating the unbiased causal effects of a particular policy intervention on the outcome variable.
+    -   Train predictive models on the training set
 
--   Correlation != Causation: On rainy days, we observe more umbrellas on the street
+    -   Predict customer response rate on the test set
 
-    -   correct correlation statement: number of umbrellas **is positively correlated** with rainfall
+-   **Business recommendations**
 
-    -   correct causal statement: heavier rain **leads to** more umbrellas
+    -   Target customers based on predicted response rate
 
-    -   incorrect causal statement: more umbrellas **lead to** heavier rain
+    -   Compute and compare ROIs for each targeting method: (1) blanket marketing; (2) decision tree; (3) random forest
 
--   Causality becomes more complex in the business world. Managers can easily make mistakes without causal inference training.
+**Let's work on the Quarto document together!**
 
-    -   Imagine if the the actual causal effect of Google ads on incremental profit per customer is £1 for Tom, and Tom pays £1.5 for each click
+# Improve Marketing Efficiency Using Supervised Learning
 
-# Potential Outcome Framework
+## Customer Life Cycle
 
-## Rubin Causal Model and the Potential Outcome Framework
+-   Acquisition
 
--   The **Rubin causal model (RCM)** or the **Potential Outcome Framework** is the well accepted framework for estimating causal effects.
--   For each customer $i$, we can define two **potential outcomes** to evaluate the causal effect of Google ads on their outcomes:
-    -   $Y^1_i$: the outcome if the customer sees the ads
+    -   Use predictive analytics to target responsive customers to reduce marketing costs
 
-    -   $Y^0_i$: the outcome if the customer does not see the ads
+-   Development
 
-    -   The causal effect of ads is the difference between the two
--   We can define the **individual treatment effect** $\delta_i$ as follows.
+    -   Use predictive analytics to recommend products to customers (personalized recommendation system); for each customer, promote the item with the highest purchase probability
 
-$$
-        \delta_i = Y^1_i - Y^0_i
-$$
+-   Retention
 
-## Examples of Individual Treatment Effects
-
-**Tom would like to measure the causal effect of introducing a loyalty program on customer retention.** Let's say we have retrieved all infinity stones from Thanos, and have created 2 parallel universes
-
--   In Universe 1, with loyalty program
-
-    -   Dr Strange has a retention rate of 70%
-
--   In Universe 2, without loyalty program
-
-    -   Dr Strange has a retention rate of 60%
+    -   Use predictive analytics to find valuable customers who are likely to churn and conduct targeted churn management
 
 ```{r}
 #| echo: false
-pacman::p_load(data.table,knitr,kableExtra)
-
-kable(data.frame(Customer = c("Dr Strange"), 
-           Y1 = 0.7,
-           Y0 = 0.6,
-           TreatmentEffect = 0.1),
-      escape = F) |>
-  kable_styling(font_size = 8, bootstrap_options = c("striped", "hover"))
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 2/CustomerLifeCycle.png")
 ```
-
-## A Motivating Example: A Group of Customers
-
--   We can collect a sample of customers, and estimate individual treatment effect for each of them
-
-```{r}
-#| echo: false
-kable(data.frame(Customer = c("Dr Strange","Iron Man","Thor","Hulk"), 
-           Y1 = c(0.7,0.55,0.8,0.6),
-           Y0 = c(0.6,0.5,0.72,0.62),
-           TreatmentEffect = c(0.7,0.55,0.8,0.6) - c(0.6,0.5,0.72,0.62)),
-      escape = F) %>%
-  kable_styling(font_size = 8, bootstrap_options = c("striped", "hover"))
-```
-
-## Fundamental Problem of Causal Inference
-
-In reality, to measure the treatment effect of loyalty program on a customer's retention rate
-
--   We need to compare the outcome of the **same customer** in **parallel universes**, with and without the treatment.
-
--   However, in reality, we only observe one of these two outcomes, but never both.
-
-    -   **Realized actual outcome**, including $Y^1_i|D_i = 1$ and $Y^0_i|D_i = 0$
-
-    -   **Counterfactual** **outcome**, including $Y^0_i|D_i = 1$ and $Y^1_i|D_i = 0$
-
-![](images/potentialoutcome.png){fig-align="center" width="350" height="61"}
-
-## Fundamental Problem of Causal Inference
-
--   Example:
-
-```{r}
-#| echo: false
-kable(data.frame(subject = c("Dr Strange","Iron Man","Thor","Hulk"), 
-                 Treated = c('Yes','No','No','Yes'),
-           Y1 = c(0.7,"?","?",0.6),
-           Y0 = c("?",0.5,0.72,"?"),
-           `Y1-Y0` = c("?","?","?","?"),
-           check.names = F),
-      escape = F) %>%
-  kable_styling(font_size = 8, bootstrap_options = c("striped", "hover"))
-```
-
--   Since it is impossible to see both potential outcomes at once, one of the potential outcomes is always missing, so we can never observe the individual treatment effects. This dilemma is called the **Fundamental Problem of Causal Inference**.
-
-## Average Treatment Effect (ATE) and Randomization
-
--   As data scientists, we often care more about the **average effects** on the **population**, which is often referred to as the **average treatment effects (ATE)**.
-
-$$
-ATE = \frac{\sum (Y^1_i - Y^0_i)}{N}
-$$
-
--   To estimate the ATE, we **must randomize who receives the treatment,** instead of letting the individuals choose the treatment.
-
--   After randomization, we can obtain ATE by comparing the difference in the average outcomes across the treatment group and control group. Because randomization ensures that
-
-    -   Selection bias is fully removed[^1]
-
-    -   The treatment effects on the treatment group individuals and the control group individuals should be equal. The former is called the **average treatment effects on the treated** (ATT), and the latter is called the **average treatment effects on the untreated** (ATU).
-
--   Randomized experiments are the **gold standard of causal inference**.
-
-[^1]: Selection bias refers to the pre-existing difference between the treatment group and control group even without the treatment
-
-# Randomized Controlled Trials
-
-## Randomized Controlled Trials
-
-::: block
-### Randomized Controlled Trials {.unnumbered}
-
-A **randomized controlled trial** (RCT) is an experimental form of impact evaluation in which the population receiving the program or policy intervention is chosen *at random* from the eligible population, and a control group is also chosen *at random* from the same eligible population.
-:::
-
-::: {.content-visible when-format="beamer"}
-![](images/RCT.jpg){fig-align="center" width="250"}
-:::
-
-::: {.content-visible when-format="html"}
-![](images/RCT.jpg){fig-align="center" width="800"}
-:::
-
-## Types of RCTs: Based on Location
-
-::: {.content-visible when-format="beamer"}
-![](images/LabVersusField.png){fig-align="center" width="300"}
-:::
-
-::: {.content-visible when-format="html"}
-![](images/LabVersusField.png){fig-align="center" width="800"}
-:::
-
-## Types of RCTs: Based on Treatment Design
-
--   A/B testing (treatment group + control group)
-    1.  Loyalty program
-    2.  No loyalty program
--   A/B/N testing (multiple treatment groups + control group)
-    1.  Point-based loyalty program; points can be redeemd for price vouchers
-    2.  Point-based loyalty program; points can be redeemd for gifts
-    3.  Point-based loyalty program; points can be redeemd for free top ups
-    4.  No loyalty program
--   Factorial design
-    -   more than 2 dimensions of treatments, used if we care about the interaction effects[^2]
-
-[^2]: Chintagunta, Pradeep K. and Huang, Liqiang and Miao, Wei and Zhang, Wanqing, Measuring Seller Response to Buyer-initiated Disintermediation: Evidence from a Field Experiment on a Service Platform (April 19, 2023). Available at SSRN: <https://ssrn.com/abstract=4423917> or [http://dx.doi.org/10.2139/ssrn.4423917](https://dx.doi.org/10.2139/ssrn.4423917)
-
-## After-Class Readings
-
--   (optional) [Varian, Hal R. 'Causal Inference in Economics and Marketing'. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310--15.](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_pubmedcentral_primary_oai_pubmedcentral_nih_gov_4941501)
-
--   (optional) [Angrist, Joshua & Pischke, Jörn-Steffen. (2009). Mostly Harmless Econometrics: An Empiricist's Companion.](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/hd4h9s/alma9931045212804761)

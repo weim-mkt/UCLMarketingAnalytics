@@ -90,7 +90,11 @@ BEQ = Marketing Expenditure / Contribution Margin Per Unit
 
 ::: columns
 ::: {.column width="50%"}
-![](images/iPhone16.png){fig-align="center" width="150"}
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 1/iphone 16.png')
+```
 :::
 
 ::: {.column width="50%"}

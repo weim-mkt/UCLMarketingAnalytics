@@ -1,0 +1,477 @@
+---
+title: "Improving Marketing Efficiency Using Predictive Analytics for M&S (II): Customer Targeting Using Supervised Learning"
+author: Dr. Wei Miao
+thanks: "This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module based on. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. All copyrights reserved."
+subtitle: "MSIN0094 Case Study"
+institute: UCL School of Management
+date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(4))`"
+date-format: long
+format:
+  html: default
+  pdf: 
+    number-sections: true
+    toc: false
+    number-depth: 2
+    fontsize: 9pt
+    linestretch: 1.25
+    knitr:
+      opts_chunk:
+        echo: false
+        include: false
+        warning: false
+        message: false
+        error: true
+bibliography: references.bib
+execute: 
+  freeze: auto
+  cache: true
+---
+
+```{r}
+#| echo: false
+#| include: true
+#| fig-align: 'center'
+#| out-width: '10cm'
+knitr::include_graphics("images/Week 5/M&SCalendar.png")
+```
+
+Last week, M&S used unsupervised learning to segment customers based on their spending and income. While segmentation allows M&S to identify customer groups and tailor general marketing strategies, it doesn't directly tell us which customers M&S should target. In this part of the case study, we take a step further by targeting individual customers using supervised learning models, which help identify who is most likely to respond positively to marketing offers.
+
+Recently, M&S has launched its highly anticipated [Beauty Advent Calendar for 2024](https://www.marksandspencer.com/c/beauty-box), a curated selection of beauty and skincare products worth over £300. This limited-edition calendar is available to customers for only £50. With the holiday season approaching, M&S wants to maximize the reach and response of its marketing campaign by promoting the advent calendar offer to the right customers.
+
+M&S decides to use a conventional mailing marketing strategy, where customers receive color-printed leaflets via Royal Mail to their doorsteps. Each mail costs £1.5 to produce and another £0.5 to mail to the customers. If a customer responds to the offer, M&S expects them to spend £35 on full-price clothing, homeware or beauty, and purchase the advent calendar at £50. The COGS for clothing, homeware, and beauty products is 85%. And the COGS for the advent calendar is 90%. 
+
+
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Based on the information provided, calculate the following values:
+
+1. `cost_per_offer`: the cost of sending an marketing offer
+
+2. `profit_per_customer`: the profit from a customer if a customer responds to the marketing offer
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+Based on the information provided, calculate the following values:
+
+1. `cost_per_offer`: the cost of sending an marketing offer
+
+2. `profit_per_customer`: the profit from a customer if a customer responds to the marketing offer
+
+### Answer
+
+The cost of sending an offer is the sum of the production cost and mailing cost. 
+
+```{r}
+# cost of sending an offer
+# production cost + mailing cost
+
+cost_per_offer <- 1.5 + 0.5
+
+```
+
+The profit from a customer is the revenue from the customer minus the cost of goods sold (COGS). Note that the COGS for clothing, homeware, and beauty products is 85%, and the COGS for the advent calendar is 90%. And the responding customer is expected to spend £35 on full-price clothing, homeware, or beauty products, and purchase the advent calendar at £50.
+
+```{r}
+
+# profit from a responding customer
+
+COGS_grocery <- 0.85
+COGS_advent <- 0.90
+
+profit_per_customer <- 35 * (1 - COGS_grocery) + 50 * (1 - COGS_advent)
+
+```
+
+:::
+
+:::
+
+# Blanket marketing
+
+M&S’s starting point is blanket marketing, a simple strategy where marketing offers are sent to all customers in the data set. Although easy to implement, blanket marketing can lead to wasted marketing costs, as not all customers are interested or responsive. To analyze the effectiveness of blanket marketing, we’ll calculate the Return on Investment (ROI) for this strategy and compare it to more targeted approaches.
+
+M&S has used blanket marketing and sent marketing offers to all 2000 customers in the database. Please calculate the total marketing costs below.
+
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Please calculate the total marketing costs for sending marketing offers to all 2000 customers in the dataset. The dataset is the same dataset used in the previous case study.
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+Please calculate the total marketing costs for sending marketing offers to all 2000 customers in the dataset. The dataset is the same dataset used in the previous case study.
+
+### Answer
+
+First, we can load the dataset.
+```{r}
+pacman::p_load(dplyr, ranger, rpart, rpart.plot)
+data_full <- read.csv("https://www.dropbox.com/scl/fi/2q7ppqtyca0pd3j486osl/data_full.csv?rlkey=gsyk51q27vd1skek4qpn5ikgm&dl=1")
+
+data_full <- data_full %>%
+    mutate(Income = ifelse(is.na(Income), mean(Income, na.rm = TRUE), Income))
+
+```
+
+Next, we already know the cost of sending an offer is `cost_per_offer <- 1.5 + 0.5`. We can calculate the total marketing costs by multiplying the cost per offer by the number of customers in the dataset.
+
+```{r}
+total_costs_of_mailing_blanket <- cost_per_offer * nrow(data_full)
+total_costs_of_mailing_blanket
+```
+
+:::
+
+:::
+
+
+Next, we’ll calculate the total profit from blanket marketing by summing up the profits from all responsive customers in the dataset. M&S has sent out the mail to all 2000 customers in the dataset, and recorded their responses. There is a variable `Response` in the dataset, which indicates whether a customer responded to the marketing offer. We can use this variable to identify responsive customers and calculate the total profit from the marketing campaign.
+
+First, let's calculate how many customers responded to the marketing offer in the dataset.
+
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Based on the `Response` variable in the dataset, calculate the total number of customers who responded to the marketing offer. And then calculate the total profit from the marketing campaign.
+
+- Tip: you can use `data_full$Response` to extract the `Response` variable from the dataset as an R vector. Based on this vector, you can calculate the total number of responding customers and the total profit from the marketing campaign.
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+Based on the `Response` variable in the dataset, calculate the total number of customers who responded to the marketing offer. And then calculate the total profit from the marketing campaign.
+
+- Tip: you can use `data_full$Response` to extract the `Response` variable as a vector in the dataset. Based on this vector, you can calculate the total number of responding customers and the total profit from the marketing campaign.
+
+### Answer
+
+- First, we can calculate the total number of customers who responded to the marketing offer in the dataset. We use the `sum()` function to sum up the `Response` variable, which is a binary variable indicating whether a customer responded to the marketing offer.
+
+```{r}
+# below is the total number of responding customers in the test set
+sum(data_full$Response)
+```
+
+- Second, among the customers who responded, we can calculate the total profit from the marketing campaign. Each responding customer is expected to bring us a profit of `profit_per_customer`.
+
+```{r}
+# Multiply it with profit_per_customer, we get total profits from the marketing campaign
+total_profit_blanket <- sum(data_full$Response) * profit_per_customer
+```
+
+:::
+
+:::
+
+::: callout-note
+## Return on Investment
+
+ROI = (Profits - Initial Investments) / Initial Investments, which means the return rate of an investment activity.
+
+-   ROI needs to be a positive number in order for the company to make profits from the investment.
+:::
+
+
+Therefore, the **Return on Investment** **(ROI)** on the marketing offer would be
+
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Calculate the Return on Investment (ROI) from blanket marketing.
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+Calculate the Return on Investment (ROI) from blanket marketing.
+
+### Answer
+
+```{r}
+# net profits = total_profit_blanket - total_costs_of_mailing_blanket
+# initial investment = total_costs_of_mailing_blanket
+# So ROI is below:
+
+ROI_blanket <- (total_profit_blanket - total_costs_of_mailing_blanket) / total_costs_of_mailing_blanket
+
+ROI_blanket
+```
+
+:::
+
+:::
+
+A negative ROI from blanket marketing means, the company makes a loss from sending offers to all customers. The reason is that, not all customers are responsive to our marketing offers. It does M&S no good from sending offers to those customers who would not respond anyway.
+
+# Customer Targeting Using Supervised Learning
+
+We have seen that blanket marketing is not an efficient strategy for M&S. In this section, we will use supervised learning models to target customers who are more likely to respond to the marketing offer. By doing so, we hope that M&S can improve its marketing efficiency and increase the ROI of the marketing campaign.
+
+## Break-Even Analysis: Break-Even Response Rate
+
+In order to break-even, we can calculate the break-even response rate from customers, which is the **minimum response rate** we need of a customer in order not to lose money from sending the marketing offer.
+
+Only if a customer responds to us with the minimum response rate can we recover the costs of making a marketing offer. The higher the response rate, the more expected profit we can make from the marketing campaign.
+
+If we send offers to customers whose expected response rate is lower than the break-even response rate, we make a loss by expectation.
+
+
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Calculate the break-even response rate from customers. The break-even response rate is the minimum response rate we need from a customer in order not to lose money from sending the marketing offer.
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+Calculate the break-even response rate from customers. The break-even response rate is the minimum response rate we need from a customer in order not to lose money from sending the marketing offer.
+
+### Answer
+
+```{r}
+
+break_even_response <- cost_per_offer / profit_per_customer
+
+break_even_response
+
+```
+
+:::
+
+:::
+
+Next, we will use supervised learning models to predict the response rate of individual customers. We will then target customers whose predicted response rate is higher than the break-even response rate.
+
+## Data Analytics Using Supervised Machine Learning
+
+### Select meaningful features/predictors from `data_full`, named `data_full_small`
+
+We need to select meaningful features/predictors from the dataset to train the supervised learning models. We can use the following features as predictors:
+
+-   Since ID is solely a customer identifier, it should be removed from the final data
+
+-   Since `Dt_Customer` is a character string, which cannot be directly used in the model, we should also remove it
+
+```{r}
+# Use select to remove the above two variables
+# Tip: a minus sign before the variable name can remove that variable
+
+data_full_smaller <- data_full %>%
+    select(-ID) %>%
+    select(-Dt_Customer)
+```
+
+### Construct a training set and a test set
+
+*Tasks*: randomly divide `data_full` into a training set and a test set
+
+```{r}
+# use nrow() to count the number of rows in data_full_smaller
+n_rows_data_full <- nrow(data_full_smaller)
+
+# set a seed, so that we can get the same set of results every time we rerun the model
+set.seed(8888)
+
+# use sample() to randomly draw row index from data_full
+training_index <- sample(
+    x = 1:n_rows_data_full, # draw from 1 until 2000
+    size = 0.7 * n_rows_data_full, # size is 70% of 2000
+    replace = FALSE
+) # do not sample with replacement
+
+# think of data_full_smaller as a matrix, we can select rows based on training_index
+data_training <- data_full_smaller %>%
+    slice(training_index)
+
+# minus sign means deselecting rows
+data_test <- data_full_smaller %>%
+    slice(-training_index)
+```
+
+### Train a decision tree
+
+*Tasks*: load the `rpart` and `rpart.plot` packages. Follow the code examples in the lecture notes and try to train a decision tree on `data_training`
+
+```{r}
+pacman::p_load(rpart, rpart.plot)
+
+# write your codes below from what we learned in class.
+
+decision_tree <- rpart(
+    formula = Response ~ MntWines + MntFruits + MntMeatProducts + MntFishProducts +
+        MntSweetProducts + MntGoldProds + NumDealsPurchases + NumWebPurchases + NumCatalogPurchases +
+        NumStorePurchases + NumWebVisitsMonth + Complain + Year_Birth + Education +
+        Marital_Status + Income + Kidhome + Teenhome + Recency,
+    data = data_training,
+    method = "anova"
+) # because we need probabilities (a continuous variable) later on to decide targeting, here we sepcify "anova" rather than "class"
+
+```
+
+```{r}
+# visualize the decision tree we have built
+rpart.plot(decision_tree)
+```
+
+### Train a random forest
+
+*Tasks*: load the `ranger` packages. Follow the code examples in the lecture notes and try to train a random forest on `data_training`
+
+```{r}
+
+pacman::p_load(ranger)
+
+# write your codes below:
+
+set.seed(888)
+randomforest <- ranger(
+    formula = Response ~ MntWines + MntFruits + MntMeatProducts + MntFishProducts +
+        MntSweetProducts + MntGoldProds + NumDealsPurchases + NumWebPurchases + NumCatalogPurchases +
+        NumStorePurchases + NumWebVisitsMonth + Complain + Year_Birth + Education +
+        Marital_Status + Income + Kidhome + Teenhome + Recency,
+    data = data_training,
+    probability = TRUE,
+    num.trees = 500
+)
+
+# make prediction on the test set, which returns a model prediction object
+prediction_from_randomforest <- predict(randomforest, data_test)
+
+# mutate a new column in data_test for the predicted probability from random forest
+# the prediction_from_randomforest$predictions gives a matrix
+# so we need to the take the second column using [,2]
+data_test <- data_test %>%
+    mutate(predicted_prob_randomforest = prediction_from_randomforest$predictions[, 2])
+
+```
+
+
+### Predict response rate from decision tree model
+
+First, we have already trained the decision tree model, named `decision_tree`, from the training set. We can predict the probability of test set customer responding to our marketing offer, using `predict()`.
+
+```{r}
+# use predict() to make prediction on the test set
+# Note that prediction_from_decision_tree is already a vector,
+# which we can directly mutate into
+prediction_from_decision_tree <- predict(decision_tree, data_test)
+
+# mutate a new column in data_test for the predicted probability
+# note that from decision tree, predict() can directly give a vector rather than matrix
+# so we no longer need to extract the second column (as we did with random forest)
+data_test <- data_test %>%
+    mutate(predicted_prob_decisiontree = prediction_from_decision_tree)
+
+```
+
+*Tasks*: We should only send marketing offers to consumers whose expected or predicted response rate is larger than the break-even response rate. This is called targeted marketing.
+
+```{r}
+# mutate a new binary indicator for whether to target a customer based on predicted prob from decision tree model
+data_test <- data_test %>%
+    mutate(is_target_decisiontree = ifelse(predicted_prob_decisiontree > break_even_response, 1, 0))
+```
+
+Finally, we have decided to send marketing offers to selected responsive customers. We can then compute the ROI for targeted marketing as in the blanket marketing case.
+
+```{r}
+
+# total marketing costs
+total_costs_of_mailing_decisiontree <- cost_per_offer * # cost per offer
+    sum(data_test$is_target_decisiontree) # the sum of is_target is the total number of customers who receive the offer
+
+# filter out customers who receive the marketing offer
+data_test_targeted_customers <- data_test %>%
+    filter(is_target_decisiontree == 1)
+
+# total profits from responding customers
+
+total_profit_decisiontree <- sum(data_test_targeted_customers$Response) * # sum up to get how many targeted customers actually responded
+    profit_per_customer # the profit per responding customer
+
+# Compute ROI
+ROI_decisiontree <- (total_profit_decisiontree - total_costs_of_mailing_decisiontree) / total_costs_of_mailing_decisiontree
+
+ROI_decisiontree
+```
+
+If M&S uses random forest, an arguably better supervised learning model, to conduct targeted marketing, we can follow a similar logic as above, and compute the ROI from using random forest.
+
+```{r}
+
+# mutate a new binary indicator for whether to target a customer based on predicted prob from random forest model
+data_test <- data_test %>%
+    mutate(is_target_randomforest = ifelse(predicted_prob_randomforest > break_even_response, 1, 0))
+
+# total marketing costs
+total_costs_of_mailing_randomforest <- cost_per_offer * sum(data_test$is_target_randomforest)
+
+# get the number of responding customers who are targeted: the second method
+
+data_responding_targeted_customers <- data_test %>%
+    filter(is_target_randomforest == 1) %>% # who are targeted
+    filter(Response == 1) # who responding among targeted customers
+
+# total profits from responding customers
+total_profit_randomforest <- nrow(data_responding_targeted_customers) * profit_per_customer
+
+# Compute ROI
+ROI_randomforest <- (total_profit_randomforest - total_costs_of_mailing_randomforest) / total_costs_of_mailing_randomforest
+
+ROI_randomforest
+```
+
+Predictive analytics model can help the company boost the marketing ROI by allowing M&S to target customers who are more likely to respond to the marketing offers than the break-even response rate. By doing so, M&S saves unnecessary marketing costs on those unresponsive customers and therefore improves its marketing efficiency.

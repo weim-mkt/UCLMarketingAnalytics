@@ -38,7 +38,7 @@ WACC <- 0.1 # weighted average cost of capital
 
 ```{r}
 #| echo: false
-include_graphics("images/iPhone16.png")
+include_graphics("images/Week 1/iPhone 16.png")
 ```
 
 # Situation Analysis
@@ -157,7 +157,7 @@ After a few months of researching, the marketing analytics team under Tom's lead
 [^2]: Dr Meow's personal favorite! Highly recommended after a long day of studies. Go for 30% sugar, less ice—trust me, it’s perfection! 🧋
 
 ```{r}
-include_graphics("images/QQStyle.jpeg")
+include_graphics("images/Week 1/QQStyle.jpeg")
 ```
 
 ## Marketing Decision: A Static View

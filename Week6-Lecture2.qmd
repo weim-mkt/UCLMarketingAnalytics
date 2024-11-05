@@ -1,252 +1,168 @@
 ---
-author: Dr Wei Miao
-date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(5))`"
-date-format: long
-institute: UCL School of Management
-title: "Class 12 OLS Regression Basics"
-df-print: kable
-colorlinks: true
-code-line-numbers: true
-format:
-  html: 
-    toc: true
-    number-sections: true
-    page-layout: full
-    toc-depth: 2
-    code-line-numbers: true
-    code-copy: hover
-  beamer: 
-    toc: false
-    toc-title: ""
-    slide-level: 2
-    section-titles: true
-    theme: Frankfurt
-    colortheme: beaver
-    fonttheme: structurebold
-    navigation: horizontal
-    tbl-colwidths: auto
-    fontsize: 9pt
-    suppress-bibliography: true
-knitr:
-  opts_chunk:
-    echo: true
-    warning: true
-    message: true
-    error: true
-execute: 
-  freeze: auto
-editor_options: 
-  chunk_output_type: inline
-bibliography: references.bib
+date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(5))`"
+title: "Class 12 A/B Testing"
 ---
 
-# Basics of Linear Regression
+# Randomized Controlled Trials
+
+## Randomized Controlled Trials
+
+::: block
+### Randomized Controlled Trials {.unnumbered}
+
+A **randomized controlled trial** (RCT) is an experimental form of impact evaluation in which the population receiving the intervention is chosen *at random* from the eligible population, and a control group is also chosen *at random* from the same eligible population.
+:::
 
 ```{r}
 #| echo: false
-data_full <- readRDS("/Users/weimiao/Dropbox/UCL/Teaching/MSIN0094 Marketing Analytics/UCL 2021 - 2022/slides/Week 4/data_full.rds")
-pacman::p_load(dplyr,ggplot2,ggthemes)
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 6/RCT.jpg")
 ```
 
-## Linear Regression Models
+## Types of RCTs: Based on Location
 
--   A simple linear regression is a model as follows. $$
-    Y_i = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k + \epsilon_i
-    $$
+|                     | **Lab Experiment**                          | **Field Experiment**      |
+|---------------------|---------------------------------------------|---------------------------|
+| **Location**        | In a controlled, laboratory environment     | In the field              |
+| **Internal validity** | High                                     | Low                       |
+| **External validity** | Low (Hawthorne effect)                   | High                      |
 
--   $y_i$: Outcome variable/dependent variable/regressand/response variable/LHS variable
+- Internal validity refers to the extent to which the experiment is free from selection bias.
 
--   $\beta$: Regression coefficients/estimates/parameters; $\beta_0$: intercept
+- External validity refers to the extent to which the results can be generalized to the real world or other contexts.
 
--   $x_k$: Control variable/independent variable/regressor/explanatory variable/RHS variable
+## Types of RCTs: Based on Treatment Design
 
-    -   Lower case such as $x_1$ usually indicates a single variable while upper case such as $X_{ik}$ indicates a set of several variables
+-   A/B testing (treatment group + control group)
+    1.  Loyalty program
+    2.  No loyalty program
+-   A/B/N testing (multiple treatment groups + control group)
+    1.  Point-based loyalty program; points can be redeemed for price vouchers
+    2.  Point-based loyalty program; points can be redeemed for gifts
+    3.  Point-based loyalty program; points can be redeemed for free top ups
+    4.  No loyalty program
+-   Factorial design
+    -   more than 2 dimensions of treatments, used if we care about the interaction effects
 
--   $\epsilon_i$: Error term, which captures the deviation of Y from the prediction
+# Procedures of A/B Testings
 
-    -   Expected mean should be 0, i.e., $E[\epsilon|X]=0$
+## Motivating Example of Tom's Loyalty Program
 
-    -   If we take the expectation of Y, we should have $$
-        E[Y|X] = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k 
-        $$
+-   Should we introduce a loyalty program for our customers?
 
-## Why the Name "Regression"?
+    -   Cons: increased costs due to free drinks
 
--   The term "regression" was coined by Francis Galton to describe a biological phenomenon: The heights of descendants of tall ancestors tend to regress down towards a normal average.
+    -   Pros: it may increase spending and retention rate, and hence future CLV
 
--   The term "regression" was later extended by statisticians Udny Yule and Karl Pearson to a more general statistical context (Pearson, 1903).
+-   How to estimate the causal effect of introducing a loyalty program?
 
--   In supervised learning models, "regression" has a different meaning: when outcome is continuous, the task is called regression task.[^1]
+## Step 1: Decide on the Unit of Randomization
 
-[^1]: ML models are developed by computer science; causal inference models are developed by economists.
+We decide **the granularity of randomization unit** based on the research question at hand.
 
-# Estimation of Coefficients
+-   **individual** 
 
-## How to Run Regression in R
+-   household
 
--   In R, there are tons of packages that can run OLS regression.
+-   store
 
--   In this module, we will be using the `fixest` package, because it's able to estimate high-dimensional fixed effects.
+-   other levels more granular (e.g., device level) or even less granular (e.g., city level)
+
+## Step 1: Decide on the Unit of Randomization
+
+**Proposal 1**: Randomize the treatment based on West London and East London.
+
+-   Do you expect the "randomize" to be true randomization?^[All answers to questions in the slides are on the webpage version of lecture notes.]
+
+::: {.content-hidden when-format="beamer"}
+> No, because East London and West London are intrinsically different. Randomization can only work well when the number of randomization units are large enough.
+:::
+
+**Proposal 2**: Randomize the treatment among individual customers.
+
+-   Is this true randomization?
+
+::: {.content-hidden when-format="beamer"}
+> Yes, as long as we have a large number of individual customers, after randomization, we should see the treatment group and control group customers to have balanced characteristics.
+:::
+
+-   What problems can we still have?
+
+> ::: {.content-hidden when-format="beamer"}
+> 1.  Spillover: Customers may talk to each other, so individual customers in the control group (who are not supposed to see the loyalty program) may also become aware of the loyalty program.
+> 2.  Crossover: the same individual may accidentally receive different treatments.
+> :::
+
+## Step 1: Pros and Cons of Granularity
+
+**Disadvantages of granularity:**
+
+-   Costs and logistics
+
+-   Spillovers and crossovers
+
+**Advantages of granularity:**
+
+-   Increase the chance of successful randomization, thereby mitigating any systematic unbalance of covariates before the experiment.
+
+**Exercise:**
+
+-  If we would like to randomize prices, how can we randomize individualized price discounts to customers?
+
+::: {.content-hidden when-format="beamer"}
+> We can send individually personalized coupons to customers, e.g., Co-op weekly offers, Uber's dynamic pricing.
 
 ```{r}
-#| echo: true
-pacman::p_load(modelsummary,fixest)
-
-OLS_result <- feols( 
-   fml = total_spending ~ Income, # Y ~ X
-   data = data_full, # dataset from Tesco
-   ) 
-
-```
-
-## Report Regression Results
-
-```{r}
-modelsummary(OLS_result,
-    stars = TRUE  # export statistical significance
-  )
-```
-
-## Parameter Estimation: Univariate Regression Case
-
--   Let's take a **univariate regression**[^2] as an example
-
-[^2]: Regressions with a single regressor is called univariate regressions.
-
-$$
-    y = a + b x_1  + \epsilon
-$$
-
--   For each guess of a and b, we can compute the error for customer $i$, $$
-    e_i = y_{i}-a-b x_{1i}
-    $$
-
--   We can compute the **sum of squared residuals (SSR)** across all customers
-
-$$
-        SSR =\sum_{i=1}^{n}\left(y_{i}-a-b x_{1i}\right)^{2}
-$$
-
--   **Objective of estimation**: Search for the unique set of $a$ and $b$ that can minimize the SSR.
-
--   This estimation method that minimizes SSR is called **Ordinary Least Square (OLS).**
-
-## Visualization: Estimation of Univariate Regression
-
--   If in the Tesco dataset, if we regress **total spending** (Y) on **income** (X)
-
-::: {.content-visible when-format="beamer"}
-```{r}
-#| out-width: "50%"
-#| fig-align: "center"
 #| echo: false
-library(ggplot2)
-
-lm_obj <- lm(data = data_full,
-             total_spending ~ Income)
-
-get_ssr <- function(a,b){
-  return(sum(data_full$total_spending - a - b * data_full$Income)^2)
-}
-
-ggplot(data = data_full, 
-       aes(x = Income, y = total_spending)) + 
-  geom_point() + 
-  theme_stata() + 
-  geom_abline(slope = 0.004, intercept = 0, color = "red") + 
-  # geom_abline(slope = 0.004, intercept = 200, color = "blue") + 
-  geom_abline(slope = 0.06, intercept = - 552, color = "purple") + 
-  geom_abline(slope = lm_obj$coefficients[2], 
-              intercept = lm_obj$coefficients[1], color = "green") 
-  
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 6/coopcoupon.jpeg')
 ```
 :::
 
-::: {.content-visible when-format="html"}
-```{r}
-#| fig-align: "center"
-#| echo: false
-library(ggplot2)
+## Step 2: Mitigate Spillover and Crossover Effects
 
-lm_obj <- lm(data = data_full,
-             total_spending ~ Income)
+-   **Crossover Effects**: A crossover occurs when an individual who was supposed to be assigned to one treatment is accidentally exposed to another or more treatments.
+    -   e.g., For online A/B testing, a notorious crossover effect is that when browsers reset the cookies, the same individual customer may be treated as a different new customer.
+-   **Spillover effects**: The behavior of the treatment group can affect control group as well
+    -   e.g., customers may share the promotions with family members and friends.
 
-get_ssr <- function(a,b){
-  return(sum(data_full$total_spending - a - b * data_full$Income)^2)
-}
+**Question**: How should we mitigate spillover and crossover effects?
 
-ggplot(data = data_full, 
-       aes(x = Income, y = total_spending)) + 
-  geom_point() + 
-  theme_stata() + 
-  geom_abline(slope = 0.004, intercept = 0, color = "red") + 
-  # geom_abline(slope = 0.004, intercept = 200, color = "blue") + 
-  geom_abline(slope = 0.06, intercept = - 552, color = "purple") + 
-  geom_abline(slope = lm_obj$coefficients[2], 
-              intercept = lm_obj$coefficients[1], color = "green") 
-  
-```
-:::
+> ::: {.content-hidden when-format="beamer"}
+> -   Make sure that the same unit receives the same treatment throughout the experiment, e.g., forcing the customers to log into the website using their user accounts. User IDs should be unique.
+>
+> -   Randomize at the level of plausibly isolated social networks such as a community, rather than individual level.
+>
+> -   However, we must acknowledge that, it is really challenging to implement an A/B testing without any crossover or spillover in the field.
+> :::
 
-| Model                  | Color  | Sum of Squared Error    |
-|------------------------|--------|-------------------------|
-| $Y = -552 + 0.06 * X$  | Purple | `r get_ssr(-552,0.06)`  |
-| $Y = 0 + 0.004 * X$    | Red    | `r get_ssr(0,0.004)`    |
-| $Y = -552 + 0.021 * X$ | Green  | `r get_ssr(-552,0.021)` |
+## Step 3: Decide on Randomization Allocation Scheme
 
-## Multivariate Regression
+-   Individuals (or the relevant unit of randomization) are allocated at random into a treatment condition based on some decision rules.
 
--   The OLS estimation also applies to multivariate regression with multiple regressors.
+-   Due to the high costs and potential risks of A/B testing, we often select a small percentage of customers into the treatment condition, while the remaining customer should do "business-as-usual".
 
-$$
-y_i = b_0 + b_1 x_{1} + ... + b_k x_{k}+\epsilon_i
-$$
+## Step 4: Collect Data
 
--   **Objective of estimation**: Search for the **unique** set of $b$ that can minimize the **sum of squared residuals**.
+-   Any field experiment should be aware of the need for a sufficiently large sample size, or sufficient statistical power.
+    -   The larger sample size, the higher statistical power for the experiment; meanwhile, larger sample size brings higher costs and risks.
+    -   Run a [power calculation in R](https://cran.r-project.org/web/packages/pwrss/vignettes/examples.html)
 
-$$
-    SSR= \sum_{i=1}^{n}\left(y_{i}-b_0 - b_1 x_{1} - ... - b_k x_{k} \right)^{2}
-$$
+-   Collect both data on the outcome variables of interest and consumer characteristics data
 
-# Interpretation of Coefficients
+**Proposal:** We need to collect customers' spending and retention data and link the data with their treatment assignment.
 
-## Coefficients Interpretation
+## Step 5: Interpreting Results from a Field Experiment
 
--   Now on your Quarto document, let's run a new regression, where the DV is $total\_spending$, and X includes $Income$ and $Kidhome$.
+**Step 5.1: Randomization check**
 
-\footnotesize
+-   We need to check if the treatment group and control group are well-balanced in terms of their **pre-treatment** characteristics, especially the outcome variables.
 
-```{r}
-#| echo: false
-feols(data = data_full,
-     fml = total_spending ~ Income + Kidhome) %>%
-  modelsummary(stars = T)
-```
+**Step 5.2: Analyze the data and estimate the ATE**
 
-\normalsize
+-   **t-test** to examine the difference in the average outcome between the treatment group and control group. In R, we can use `t.test()`
+-   **Regression analysis** when analyzing A/B/N testing or multivariate experiments.
 
--   **Controlling for** Kidhome, one unit increase in `Income` increases `totalspending` by £0.019.
+## After-Class Readings
 
-## Standard Errors and P-Values
-
--   Because the regression is estimated on a random sample of the population, so if we rerun the regression on different samples, we would get a different set of regression coefficients each time.
-
--   In theory, the regression coefficients estimates follows a **t-distribution**: the mean is the true $\beta$. The **standard error** of the estimates is the estimated standard deviation of the error.
-
--   We can test whether the coefficients are statistically different from 0 using **hypothesis testing**.
-
-    -   Null hypothesis: the true regression coefficient $\beta$ is 0
-
--   `Income`/`Kidhome` is statistically significant at the 1% level.
-
-## R-Squared
-
--   R-squared (R2) is a statistical measure that represents the proportion of the variance for a dependent variable that's explained by all included variables in a regression.
-
--   Interpretation: 65.8% of the variation in `totalspending` can be explained by `Income` and `Kidhome`.
-
--   As the number of variables increases, the $R^2$ will naturally increase, so sometimes we may need to penalize the number of variables using the so-called **adjusted R-squared**.
-
-    ::: callout-important
-    R-Squared is only important for supervised learning prediction tasks, because it measures the predictive power of the X. However, In causal inference tasks, $R^2$ does not matter much.
-    :::
+-   (optional) [Varian, Hal R. 'Causal Inference in Economics and Marketing'. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310--15.](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_pubmedcentral_primary_oai_pubmedcentral_nih_gov_4941501)

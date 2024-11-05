@@ -52,6 +52,20 @@ website:
                 text: "Case Study: Customer Segmentation Using K-Means for M&S"
           - section: "[Week 5] Supervised Learning for Customer Targeting"
             contents:
+              - href: Week5-Lecture1.qmd
+                text: "Lecture 1: Supervised Learning and Tree-Based Models"
+              - href: Week5-Lecture2.qmd
+                text: "Lecture 2: Case Study: Customer Targeting Using Supervised Learning for M&S"
+              - href: Case-PredictiveAnalyticsII.qmd
+                text: "Case Study: Customer Targeting Using Supervised Learning for M&S"
+          - section: "[Week 6] Causal Inference and A/B Testing"
+            contents: 
+              - href: Week6-Lecture1.qmd
+                text: "Lecture 1: Causal Inference and Potential Outcome Framework"
+              - href: Week6-Lecture2.qmd
+                text: "Lecture 2: A/B Testing"
+          - section: "[Week 7] Linear Regression Models"
+            contents:
               - LectureSlides.qmd
           - R-Exercise.qmd
       - section: "R Tutorials"

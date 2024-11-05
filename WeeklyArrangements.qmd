@@ -253,9 +253,10 @@ You can try your best to use what we have learned in Week 1 to complete the case
 ::: callout-important
 ### Pre-class preparation
 
--   Case Study: Improving Marketing Efficiency Using Targeted Marketing
+-   Case Study: Customer Targeting Using Supervised Learning for Marks & Spencer
 
-    -   Please carefully read the case background before class, especially review the definitions of Response.
+    -   Please carefully read the case background before class, and complete the pre-class coding exercise.
+
 :::
 
 ## Class 9: Supervised Learning and Tree-based Models
@@ -286,9 +287,9 @@ You can try your best to use what we have learned in Week 1 to complete the case
 
     -   How to apply supervised learning models (random forest and others) to help Marks & Spencer improve its marketing efficiency
 
-# Week 6: Causal Inference
+# Week 6: Causal Inference, Potential Outcome Framework, and A/B Testing
 
-## Class 11: Causal Inference and Potential Outcome Framework
+## Class 11: Causal Inference, Potential Outcome Framework
 
 -   What you will learn
 
@@ -302,7 +303,7 @@ You can try your best to use what we have learned in Week 1 to complete the case
 
     -   (optional) [Varian, Hal R. 'Causal Inference in Economics and Marketing'. Proceedings of the National Academy of Sciences 113, no. 27 (5 July 2016): 7310--15.](https://ucl.primo.exlibrisgroup.com/permalink/44UCL_INST/18kagqf/cdi_pubmedcentral_primary_oai_pubmedcentral_nih_gov_4941501)
 
-## Class 12: Randomized Experiments and A/B Testing
+## Class 12: A/B Testing
 
 -   What you will learn
 

@@ -1,9 +1,10 @@
 ---
 title: "Improve User Engagement on Social Media Platforms Using A/B Testing"
+thanks: "This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module based on. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. All copyrights reserved."
 author: Dr Wei Miao
 subtitle: "MSIN0094 Case Study"
 institute: UCL School of Management
-date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(5))`"
+date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(5))`"
 date-format: long
 colorlinks: true
 code-line-numbers: true
@@ -39,15 +40,11 @@ editor_options:
   chunk_output_type: inline
 ---
 
-# Business Objective[^1]
-
-[^1]: This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module. This case was adapted from Wei Miao's research with his coauthors, "FIGHTING FOR MY IDOLS: THE VALUE OF GAMIFIED VOTING SYSTEM". The case study is developed to provide materials for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. All copyrights reserved.
+# Business Objective
 
 ## Company background
 
-Undoubtedly, user activity stands as a crucial objective pursued by platform managers, as it serves as the primary source of value creation. The world's largest social media platform, X (formerly Twitter), has over 450 million monthly active users in 2023 and at least 500 million tweets are sent every day. Heightened user activity leads to increased time spent by users on the platform, thereby contributing to higher user retention rates and more ads revenues. By monitoring user interactions, platforms could gain valuable insights into user preferences, behavior patterns, and content preferences. This information assists platform administrators in making informed decisions regarding feature enhancements, content curation, and overall improvements to the user experience. Additionally, continuous customer participation serves as the foundation for cultivating a sense of belonging and ownership. It is worth noting that platform managers can truly understand their customers only when they obtain rich data from their diverse behaviors. This understanding empowers the implementation of various innovative strategies such as recommendation systems.
 
-In this case study, we are going to draw upon **social comparison theory** and **gamification** to help Twitter further improve its user engagement in its newly introduced feature called "Communities" on the platform. "Communities" is a twitter feature that aims to enrich user engagement by catering to specific interests and subjects. These Communities offer users a dedicated space to convene around shared topics of interest, spanning domains such as celebrity fandoms, movie enthusiasts, and various hobbies. The Communities feature empowers users to delve deeper into their chosen subjects, fostering vibrant interactions and discussions among like-minded individuals within the platform's ecosystem. Once a user joins a Community, he or she will receive up-to-date information, news, and images posted by fellow users within the same Community. @fig-taylorswift presents illustrative instances of Communities for Taylor Swift.
 
 Task: Conduct a situation analysis for Twitter in the UK market. Focus on the following point:
 
