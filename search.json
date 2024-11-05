@@ -1758,7 +1758,7 @@
   {
     "objectID": "Week6-Lecture1.html",
     "href": "Week6-Lecture1.html",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "",
     "text": "Any business activity brings benefits and costs. We’re given the benefit information in all the case studies so far\n\nApple (Week 1): influencer marketing increases sales by 2.5%\n1st assignment: loyalty program increases retention rate to 95%\n\nIn reality, this benefit information is often not readily available, and we need to measure them using causal inference tools.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstand key concepts of causal inference\n\nRubin’s potential outcome framework\nFundamental problem of causal inference\nAverage treatment effect (ATE) and randomization\n\nLearn the steps to conduct randomized controlled trials (RCTs)\n\n\n\n\nTom purchases paid ads on Instagram to advertise his new bubble tea shop. Instagram ads are targeted to individuals who are predicted to have a higher likelihood of being bubble tea lovers. In the end, some Instagram users saw no ads and some saw the ads. The purchase rates for each group are shown below.\n\n\n\n\n\n\n\n\n\nQuestion: Can Tom be confident to conclude the Instagram ads are effective in converting new customers?\n\n\n\nTom bought a marketing survey data from a consulting agency. The survey collected prices and store visits (sales) for different bubble tea shops in Canary Wharf. Tom finds that there seems to be a positive relationship between prices and store visits.\n\n\n\n\n\n\n\n\n\nQuestion: Can Tom conclude that he should also increase the prices for his bubble tea shop to increase the store visits?\n\n\n\nThis is a fighter plane that just returned from the battlefield. Red dots are bullet holes.\nWhich part of A, B, and C would you reinforce to increase the pilot’s survival rate?\n\n\n\n\n\n\n\n\n\n\n\n\nI have held a secret from you for a long time, it’s time for me to confess ….\n\n\n\n\n\n\n\n\n\n\n\n\n\n[…] the other half jointly to Joshua D. Angrist and Guido W. Imbens “for their methodological contributions to the analysis of causal relationships.”\n\n\n\n\n\nCausal inference is the process of estimating the unbiased causal effects of a particular policy/business intervention on the outcome variables of interest.\nCorrelation != Causation: Machine learning models are good at finding correlations, but not causations. For example, on rainy days, we observe more umbrellas on the street\n\ncorrect correlation statement: number of umbrellas is positively correlated with rainfall\ncorrect causal statement: heavier rain leads to more umbrellas\nincorrect causal statement: more umbrellas lead to heavier rain\n\nCausality becomes more complex in the business world. Managers can easily make mistakes without causal inference training.\n\nImagine if the actual causal effect of Instagram ads on incremental profit per customer is £1 for Tom, and Tom pays £1.5 for each click",
     "crumbs": [
@@ -1770,7 +1770,7 @@
   {
     "objectID": "Week6-Lecture1.html#our-journey-so-far",
     "href": "Week6-Lecture1.html#our-journey-so-far",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "",
     "text": "Any business activity brings benefits and costs. We’re given the benefit information in all the case studies so far\n\nApple (Week 1): influencer marketing increases sales by 2.5%\n1st assignment: loyalty program increases retention rate to 95%\n\nIn reality, this benefit information is often not readily available, and we need to measure them using causal inference tools.",
     "crumbs": [
@@ -1782,7 +1782,7 @@
   {
     "objectID": "Week6-Lecture1.html#learning-objectives",
     "href": "Week6-Lecture1.html#learning-objectives",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "",
     "text": "Understand key concepts of causal inference\n\nRubin’s potential outcome framework\nFundamental problem of causal inference\nAverage treatment effect (ATE) and randomization\n\nLearn the steps to conduct randomized controlled trials (RCTs)",
     "crumbs": [
@@ -1794,7 +1794,7 @@
   {
     "objectID": "Week6-Lecture1.html#why-causal-inference-matters-example-1",
     "href": "Week6-Lecture1.html#why-causal-inference-matters-example-1",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "",
     "text": "Tom purchases paid ads on Instagram to advertise his new bubble tea shop. Instagram ads are targeted to individuals who are predicted to have a higher likelihood of being bubble tea lovers. In the end, some Instagram users saw no ads and some saw the ads. The purchase rates for each group are shown below.\n\n\n\n\n\n\n\n\n\nQuestion: Can Tom be confident to conclude the Instagram ads are effective in converting new customers?",
     "crumbs": [
@@ -1806,7 +1806,7 @@
   {
     "objectID": "Week6-Lecture1.html#why-causal-inference-matters-example-2",
     "href": "Week6-Lecture1.html#why-causal-inference-matters-example-2",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "",
     "text": "Tom bought a marketing survey data from a consulting agency. The survey collected prices and store visits (sales) for different bubble tea shops in Canary Wharf. Tom finds that there seems to be a positive relationship between prices and store visits.\n\n\n\n\n\n\n\n\n\nQuestion: Can Tom conclude that he should also increase the prices for his bubble tea shop to increase the store visits?",
     "crumbs": [
@@ -1818,7 +1818,7 @@
   {
     "objectID": "Week6-Lecture1.html#why-causal-inference-matters-example-3",
     "href": "Week6-Lecture1.html#why-causal-inference-matters-example-3",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "",
     "text": "This is a fighter plane that just returned from the battlefield. Red dots are bullet holes.\nWhich part of A, B, and C would you reinforce to increase the pilot’s survival rate?",
     "crumbs": [
@@ -1830,7 +1830,7 @@
   {
     "objectID": "Week6-Lecture1.html#why-causal-inference-matters-example-4",
     "href": "Week6-Lecture1.html#why-causal-inference-matters-example-4",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "",
     "text": "I have held a secret from you for a long time, it’s time for me to confess ….",
     "crumbs": [
@@ -1842,7 +1842,7 @@
   {
     "objectID": "Week6-Lecture1.html#nobel-prize-in-economics-2021",
     "href": "Week6-Lecture1.html#nobel-prize-in-economics-2021",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "",
     "text": "[…] the other half jointly to Joshua D. Angrist and Guido W. Imbens “for their methodological contributions to the analysis of causal relationships.”",
     "crumbs": [
@@ -1854,7 +1854,7 @@
   {
     "objectID": "Week6-Lecture1.html#causal-inference-1",
     "href": "Week6-Lecture1.html#causal-inference-1",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "",
     "text": "Causal inference is the process of estimating the unbiased causal effects of a particular policy/business intervention on the outcome variables of interest.\nCorrelation != Causation: Machine learning models are good at finding correlations, but not causations. For example, on rainy days, we observe more umbrellas on the street\n\ncorrect correlation statement: number of umbrellas is positively correlated with rainfall\ncorrect causal statement: heavier rain leads to more umbrellas\nincorrect causal statement: more umbrellas lead to heavier rain\n\nCausality becomes more complex in the business world. Managers can easily make mistakes without causal inference training.\n\nImagine if the actual causal effect of Instagram ads on incremental profit per customer is £1 for Tom, and Tom pays £1.5 for each click",
     "crumbs": [
@@ -1866,7 +1866,7 @@
   {
     "objectID": "Week6-Lecture1.html#rubin-causal-model-and-the-potential-outcome-framework",
     "href": "Week6-Lecture1.html#rubin-causal-model-and-the-potential-outcome-framework",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "2.1 Rubin Causal Model and the Potential Outcome Framework",
     "text": "2.1 Rubin Causal Model and the Potential Outcome Framework\n\nThe Rubin causal model (RCM) or the Potential Outcome Framework is the well accepted framework for thinking about causal effects.\nFor each customer \\(i\\), we can define the potential outcomes in order to evaluate the causal effect of a treatment on their outcomes:\n\n\\(Y^{1}_i\\): the outcome if the customer is exposed to the treatment, ceteris paribus\n\\(Y^{0}_i\\): the outcome if the customer is not exposed to the treatment, ceteris paribus",
     "crumbs": [
@@ -1878,7 +1878,7 @@
   {
     "objectID": "Week6-Lecture1.html#definition-individual-treatment-effects",
     "href": "Week6-Lecture1.html#definition-individual-treatment-effects",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "2.2 Definition: Individual Treatment Effects",
     "text": "2.2 Definition: Individual Treatment Effects\n\nThe causal effect of the treatment on the individual \\(i\\) is the difference between the two potential outcomes. We define the individual treatment effect \\(\\delta_i\\) as follows\n\n\\[\n        \\delta_i = Y^1_i - Y^0_i\n\\]\n\n\n\n\n\n\nImportant\n\n\n\nThese two potential outcomes do not depend on whether or not the individual is exposed to the treatment in reality.",
     "crumbs": [
@@ -1890,7 +1890,7 @@
   {
     "objectID": "Week6-Lecture1.html#example",
     "href": "Week6-Lecture1.html#example",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "2.3 Example",
     "text": "2.3 Example\nTom would like to measure the causal effect of seeing a displayed ad on customer purchase probability.",
     "crumbs": [
@@ -1902,7 +1902,7 @@
   {
     "objectID": "Week6-Lecture1.html#examples-of-individual-treatment-effects",
     "href": "Week6-Lecture1.html#examples-of-individual-treatment-effects",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "2.4 Examples of Individual Treatment Effects",
     "text": "2.4 Examples of Individual Treatment Effects\nLet’s say we have retrieved all infinity stones from Thanos, and have created 2 parallel universes\n\nIn Universe 1, with a displayed ad\n\nDr Strange has a rate of 70%\n\nIn Universe 2, without a displayed ad\n\nDr Strange has a rate of 60%\n\n\n\n\n\n\n\nCustomer\nY1\nY0\nTE\n\n\n\n\nDr Strange\n0.7\n0.6\n0.1",
     "crumbs": [
@@ -1914,7 +1914,7 @@
   {
     "objectID": "Week6-Lecture1.html#a-motivating-example-a-group-of-customers",
     "href": "Week6-Lecture1.html#a-motivating-example-a-group-of-customers",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "2.5 A Motivating Example: A Group of Customers",
     "text": "2.5 A Motivating Example: A Group of Customers\n\nConceptually, we can collect a sample of customers, and estimate individual treatment effect for each of them\n\n\n\n\n\n\nCustomer\nY1\nY0\nTE\n\n\n\n\nDr Strange\n0.70\n0.60\n0.10\n\n\nIron Man\n0.55\n0.50\n0.05\n\n\nThor\n0.80\n0.72\n0.08\n\n\nHulk\n0.60\n0.62\n-0.02",
     "crumbs": [
@@ -1926,7 +1926,7 @@
   {
     "objectID": "Week6-Lecture1.html#fundamental-problem-of-causal-inference",
     "href": "Week6-Lecture1.html#fundamental-problem-of-causal-inference",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "2.6 Fundamental Problem of Causal Inference",
     "text": "2.6 Fundamental Problem of Causal Inference\n\nTo measure the individual treatment effect of the ads on a customer’s purchase rate, we need to observe all potential outcomes of the same individual in parallel universes (i.e., with and without being exposed to the treatment).\nWe use \\(D_i = 1\\) to denote the treated/treatment group and \\(D_i = 0\\) to denote the untreated/control group in reality.\nWe only observe one potential outcome, the realized outcome, in our reality\n\nFor treated customers, we only observe their realized outcomes of being treated: \\(Y^1_i|D_i = 1\\)\nFor untreated customers, we only observe their realized outcomes of being untreated \\(Y^0_i|D_i = 0\\)\n\nThe remaining potential outcomes, i.e., counterfactual outcomes, are never observed in our reality\n\nFor treated customers, we never observe their outcomes when being untreated: \\(Y^0_i|D_i = 1\\)\nFor untreated customers, we never observe their outcomes when treated: \\(Y^1_i|D_i = 0\\)",
     "crumbs": [
@@ -1938,9 +1938,9 @@
   {
     "objectID": "Week6-Lecture1.html#exercise",
     "href": "Week6-Lecture1.html#exercise",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "2.7 Exercise",
-    "text": "2.7 Exercise\n\nIn the previous table, let’s say, Dr Strange and Hulk are treated (by the ads) in reality, while Iron Man and Thor are not treated.\nBased on this information, we can find out the values of the realized outcomes and counterfactual outcomes for each customer.\nFor example, for Dr Strange:\n\nRealized outcome: \\(Y^1_i |D_i = 1 = 0.7\\) (Note that we only observe this value in reality)\nCounterfactual outcome: \\(Y^0_i |D_i = 1 = 0.6\\) (Note that we don’t observe this value in reality)\n\n\n\n\n\n\n\nCustomer\nY1\nY0\nTreated\n\n\n\n\nDr Strange\n0.70\n0.60\nYes\n\n\nIron Man\n0.55\n0.50\nNo\n\n\nThor\n0.80\n0.72\nNo\n\n\nHulk\n0.60\n0.62\nYes",
+    "text": "2.7 Exercise\n\nIn the previous table, let’s say, Dr Strange and Hulk are treated (by the ads) in reality, while Iron Man and Thor are not treated.\nBased on this information, we can find out the values of the realized outcomes and counterfactual outcomes for each customer.\nFor example, for Dr Strange:\n\nRealized outcome: \\(Y^1_i |D_i = 1 = 0.7\\) (Note that we only observe this value in reality)\nCounterfactual outcome: \\(Y^0_i |D_i = 1 = 0.6\\) (Note that we don’t observe this value in reality)\n\n\n\n\n\n\n\nCustomer\nY1\nY0\nTreated\n\n\n\n\nDr Strange\n0.7\n?\nYes\n\n\nIron Man\n?\n0.5\nNo\n\n\nThor\n?\n0.72\nNo\n\n\nHulk\n0.6\n?\nYes",
     "crumbs": [
       "Lectures",
       "[Week 6] Causal Inference and A/B Testing",
@@ -1950,9 +1950,9 @@
   {
     "objectID": "Week6-Lecture1.html#fundamental-problem-of-causal-inference-1",
     "href": "Week6-Lecture1.html#fundamental-problem-of-causal-inference-1",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "2.8 Fundamental Problem of Causal Inference",
-    "text": "2.8 Fundamental Problem of Causal Inference\n\nHowever, in reality, we would never know the counterfactual outcomes for each individual.\n\n\n\n\n\n\nsubject\nTreated\nY1\nY0\nY1-Y0\n\n\n\n\nDr Strange\nYes\n0.7\n?\n?\n\n\nIron Man\nNo\n?\n0.5\n?\n\n\nThor\nNo\n?\n0.72\n?\n\n\nHulk\nYes\n0.6\n?\n?\n\n\n\n\n\n\n\n\nSince it is impossible to see both potential outcomes at once, one of the potential outcomes is always missing, so we can never quantify the individual treatment effects. This dilemma is called the Fundamental Problem of Causal Inference.",
+    "text": "2.8 Fundamental Problem of Causal Inference\n\nSince it is impossible to see both potential outcomes at once, one of the potential outcomes is always missing, so we can never quantify the individual treatment effects. This dilemma is called the Fundamental Problem of Causal Inference.\n\n\n\n\n\n\nsubject\nTreated\nY1\nY0\nY1-Y0\n\n\n\n\nDr Strange\nYes\n0.7\n?\n?\n\n\nIron Man\nNo\n?\n0.5\n?\n\n\nThor\nNo\n?\n0.72\n?\n\n\nHulk\nYes\n0.6\n?\n?",
     "crumbs": [
       "Lectures",
       "[Week 6] Causal Inference and A/B Testing",
@@ -1962,9 +1962,9 @@
   {
     "objectID": "Week6-Lecture1.html#the-average-treatment-effect",
     "href": "Week6-Lecture1.html#the-average-treatment-effect",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "3.1 The Average Treatment Effect",
-    "text": "3.1 The Average Treatment Effect\n\nSince individual treatment effects are unobservable, we often care more about the average treatment effects (ATE) on the population level. The ATE is defined as the average of individual treatment effects across the population.\n\n\\[\nATE = E[Y^1_i - Y^0_i] = \\frac{1}{N} \\sum_{i=1}^{N} (Y^1_i - Y^0_i)\n\\]\n\nFor display ads, can we obtain the ATE by directly calculating the difference in the average outcomes between the treatment group and control group. Why?\n\n\\[\\begin{align*}\nE[Y^1|D_i = 1] - E[Y^0|D_i = 0] &= E[Y^1|D_i = 1] - E[Y^0|D_i = 1] \\\\\n                                 &+ E[Y^0|D_i = 1] - E[Y^0|D_i = 0]\n\\end{align*}\\]",
+    "text": "3.1 The Average Treatment Effect\n\nSince individual treatment effects are unobservable, we often care more about the average treatment effects (ATE) on the population level. The ATE is defined as the average of individual treatment effects across the population.\n\n\\[\nATE = E[Y^1_i - Y^0_i] = \\frac{1}{N} \\sum_{i=1}^{N} (Y^1_i - Y^0_i)\n\\]\n\nFor display ads, can we obtain the ATE by directly calculating the difference in the average outcomes between the treatment group and control group. Why?\n\n\\[\\begin{align*}\n& E[Y^1|D_i = 1] - E[Y^0|D_i = 0] \\\\\n& = E[Y^1|D_i = 1] - E[Y^0|D_i = 1] \\\\\n&+ E[Y^0|D_i = 1] - E[Y^0|D_i = 0]\n\\end{align*}\\]",
     "crumbs": [
       "Lectures",
       "[Week 6] Causal Inference and A/B Testing",
@@ -1974,9 +1974,9 @@
   {
     "objectID": "Week6-Lecture1.html#data-example",
     "href": "Week6-Lecture1.html#data-example",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "3.2 Data Example",
-    "text": "3.2 Data Example\n\nPlease load data_treatmenteffects in the data folder into your RStudio.\n\n\n\nCode\ndata_treatmenteffects &lt;- read.csv(\"https://www.dropbox.com/scl/fi/ndvvwr298xkdtsj42y6az/individual-treatment-effects.csv?rlkey=z3mluwbqt9k1gtnb63xlc3l88&dl=1\")\n\n\n\nThis data are generated from Instagram’s paid ads, treated customers are those who see Instagram’s ads.\n\nCompute the difference in the average rates between the treated and untreated customers.\nCompute the ATE based on the individual treatment effects.\nCompare the two results.",
+    "text": "3.2 Data Example\n\nPlease load data_treatmenteffect in the data folder into your RStudio.\n\n\n\nCode\ndata_treatmenteffect &lt;- read.csv(\"https://www.dropbox.com/scl/fi/ndvvwr298xkdtsj42y6az/individual-treatment-effects.csv?rlkey=z3mluwbqt9k1gtnb63xlc3l88&dl=1\")\n\n\n\nExercise: This data are generated from Instagram’s paid ads, treated customers are those who see Instagram’s ads.\n\nCompute the difference in the average rates between the treated and untreated customers.\nCompute the ATE based on the individual treatment effects.\nCompare the two results.",
     "crumbs": [
       "Lectures",
       "[Week 6] Causal Inference and A/B Testing",
@@ -1986,9 +1986,9 @@
   {
     "objectID": "Week6-Lecture1.html#the-average-treatment-effect-1",
     "href": "Week6-Lecture1.html#the-average-treatment-effect-1",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "3.3 The Average Treatment Effect",
-    "text": "3.3 The Average Treatment Effect\n\nTo quantify the correct ATE, we must randomize who receives the treatment, instead of targeting or letting the individuals choose the treatment.\nAfter randomization, we can then obtain the ATE by comparing the difference in the average outcomes across the treatment group and control group. Because randomization ensures that\n\nSelection bias is fully removed1\nThe treatment effects on the treatment group individuals and the control group individuals should be equal. The former is called the average treatment effects on the treated (ATT), and the latter is called the average treatment effects on the untreated (ATU).",
+    "text": "3.3 The Average Treatment Effect\n\nTo quantify the correct ATE, we must randomize who receives the treatment, instead of targeting or letting the individuals choose the treatment.\nAfter randomization, we can then obtain the ATE by comparing the difference in the average outcomes across the treatment group and control group. Because randomization ensures that\n\nSelection bias is fully removed1\nThe treatment effects on the treatment group individuals and the control group individuals should be equal. The former is called the average treatment effects on the treated (ATT), and the latter is called the average treatment effects on the untreated (ATU).\n\n\nExercise: Let’s go back to the previous data example and compute the ATT and ATU after randomization.",
     "crumbs": [
       "Lectures",
       "[Week 6] Causal Inference and A/B Testing",
@@ -1998,9 +1998,9 @@
   {
     "objectID": "Week6-Lecture1.html#gold-standard-of-causal-inference",
     "href": "Week6-Lecture1.html#gold-standard-of-causal-inference",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "3.4 Gold Standard of Causal Inference",
-    "text": "3.4 Gold Standard of Causal Inference\n\nBasic identity of causal inference:\n\n\\[\\begin{align*}\nE[Y^1|D_i = 1] - E[Y^0|D_i = 0] &= E[Y^1|D_i = 1] - E[Y^0|D_i = 1] \\\\\n                                 &+ E[Y^0|D_i = 1] - E[Y^0|D_i = 0]\n\\end{align*}\\]\n\n\n\n\n\n\n\n\n\n\nRandomized experiments are the gold standard of causal inference.",
+    "text": "3.4 Gold Standard of Causal Inference\n\nMathematically, the previous slide can be represented by the Basic Identity of Causal Inference:\n\n\\[\\begin{align*}\n& E[Y^1|D_i = 1] - E[Y^0|D_i = 0] \\\\\n& = E[Y^1|D_i = 1] - E[Y^0|D_i = 1] \\\\\n&+ E[Y^0|D_i = 1] - E[Y^0|D_i = 0]\n\\end{align*}\\]\n\n\n\n\n\n\n\n\n\n\nRandomized experiments makes ATT equal to ATE, and removes selection bias. Thus, randomized experiments are the gold standard of causal inference.",
     "crumbs": [
       "Lectures",
       "[Week 6] Causal Inference and A/B Testing",
@@ -2010,7 +2010,7 @@
   {
     "objectID": "Week6-Lecture1.html#footnotes",
     "href": "Week6-Lecture1.html#footnotes",
-    "title": "Class 11 Causal Inference, Potential Outcome Framework",
+    "title": "Class 11 Causal Inference & Potential Outcome Framework",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nSelection bias refers to the pre-existing difference between the treatment group and control group even without the treatment↩︎",
     "crumbs": [
