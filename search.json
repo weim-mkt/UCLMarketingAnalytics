@@ -2809,7 +2809,7 @@
     "href": "Week7-Lecture2.html",
     "title": "Class 14 Linear Regression for Causal Inference",
     "section": "",
-    "text": "A simple linear regression is a model as follows. \\[\ny_i = \\beta_0 + x_1 \\beta_1 + x_2\\beta_2+ \\ldots + x_k\\beta_k + \\epsilon_i\n\\]\n\\(y_i\\): Dependent variable/outcome variable\n\\(x_k\\): Independent variable/explanatory variable/control variable\n\\(\\beta\\): Regression coefficients; \\(\\beta_0\\): intercept (should always be included)\n\\(\\epsilon_i\\): Error term, which captures the deviation of Y from the line. Expected mean should be 0, i.e., \\(E[\\epsilon|X]=0\\)\n\n\n\n\n\nIf we take the expectation of Y, we should have \\[\nE[Y|X] = \\beta_0 + x_1 \\beta_1 + x_2\\beta_2+ \\ldots + x_k\\beta_k\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe term “regression” was first coined by Francis Galton to describe a biological phenomenon: The heights of descendants of tall ancestors tend to regress down towards a normal average.\nThe term “regression” was later extended by statisticians Udny Yule and Karl Pearson to a more general statistical context (Pearson, 1903).\nIn supervised learning models, “regression” has a different meaning: when outcome is continuous, the task is called regression task. This is because ML models are developed by computer science; causal inference models are developed by statisticians and economists.",
+    "text": "A simple linear regression is a model as follows. \\[\ny_i = \\beta_0 + x_1 \\beta_1 + x_2\\beta_2+ \\ldots + x_k\\beta_k + \\epsilon_i\n\\]\n\\(y_i\\): Dependent variable/outcome variable\n\\(x_k\\): Independent variable/explanatory variable/control variable\n\\(\\beta\\): Regression coefficients; \\(\\beta_0\\): intercept (should always be included)\n\\(\\epsilon_i\\): Error term, which captures the deviation of Y from the line. Expected mean should be 0, i.e., \\(E[\\epsilon|X]=0\\)\n\n\n\n\n\nIf we take the expectation of Y, we should have \\[\nE[Y|X] = \\beta_0 + x_1 \\beta_1 + x_2\\beta_2+ \\ldots + x_k\\beta_k\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe term “regression” was first coined by Francis Galton to describe a biological phenomenon: The heights of descendants of tall ancestors tend to regress down towards a normal average.\nThe term “regression” was later extended by statisticians Udny Yule and Karl Pearson to a more general statistical context (Pearson, 1903).\nIn supervised learning models, “regression” has a different meaning: when the outcome variable to be predicted is continuous, the task is called a regression task. This is because ML models are developed by computer science; causal inference models are developed by statisticians and economists.",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -2845,7 +2845,7 @@
     "href": "Week7-Lecture2.html#origin-of-the-name-regression",
     "title": "Class 14 Linear Regression for Causal Inference",
     "section": "",
-    "text": "The term “regression” was first coined by Francis Galton to describe a biological phenomenon: The heights of descendants of tall ancestors tend to regress down towards a normal average.\nThe term “regression” was later extended by statisticians Udny Yule and Karl Pearson to a more general statistical context (Pearson, 1903).\nIn supervised learning models, “regression” has a different meaning: when outcome is continuous, the task is called regression task. This is because ML models are developed by computer science; causal inference models are developed by statisticians and economists.",
+    "text": "The term “regression” was first coined by Francis Galton to describe a biological phenomenon: The heights of descendants of tall ancestors tend to regress down towards a normal average.\nThe term “regression” was later extended by statisticians Udny Yule and Karl Pearson to a more general statistical context (Pearson, 1903).\nIn supervised learning models, “regression” has a different meaning: when the outcome variable to be predicted is continuous, the task is called a regression task. This is because ML models are developed by computer science; causal inference models are developed by statisticians and economists.",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -2857,7 +2857,7 @@
     "href": "Week7-Lecture2.html#how-to-run-regression-in-r",
     "title": "Class 14 Linear Regression for Causal Inference",
     "section": "2.1 How to Run Regression in R",
-    "text": "2.1 How to Run Regression in R\n\nIn R, there are many packages that can run OLS regression. The basic function is lm().\nIn this module, we will be using the fixest package, because it’s able to accommondate more complex regressions, especially high-dimensional fixed effects.1\n\n\n\nCode\npacman::p_load(modelsummary, fixest)\n\nOLS_result &lt;- feols(\n    fml = total_spending ~ Income, # Y ~ X\n    data = data_full, # dataset from M&S\n)",
+    "text": "2.1 How to Run Regression in R\n\nIn R, there are many packages that can run OLS regression. The basic function is lm().\nIn this module, we will be using the fixest package, because it’s able to accommodate more complex regressions, especially high-dimensional fixed effects.1\n\n\n\nCode\npacman::p_load(modelsummary, fixest)\n\nOLS_result &lt;- feols(\n    fml = total_spending ~ Income, # Y ~ X\n    data = data_full, # dataset from M&S\n)",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -2881,7 +2881,7 @@
     "href": "Week7-Lecture2.html#parameter-estimation-univariate-regression-case",
     "title": "Class 14 Linear Regression for Causal Inference",
     "section": "2.3 Parameter Estimation: Univariate Regression Case",
-    "text": "2.3 Parameter Estimation: Univariate Regression Case\n\nRegressions with a single regressor is called univariate regressions. Let’s take a univariate regression as an example:\n\n\\[\ntotal\\_spending = a + b \\cdot income  + \\epsilon\n\\]\n\nFor each guess of a and b, we can compute the error for customer \\(i\\),\n\n\\[\ne_i = total\\_spending_{i}-a-b \\cdot income_{i}\n\\]\n\nWe can compute the sum of squared residuals (SSR) across all customers\n\n\\[\nSSR =\\sum_{i=1}^{n}\\left(total\\_spending_{i}-a-b \\cdot income_{i}\\right)^{2}\n\\]\n\nObjective of estimation: Search for the unique set of \\(a\\) and \\(b\\) that can minimize the SSR.\nThis estimation method that minimizes SSR is called Ordinary Least Square (OLS).",
+    "text": "2.3 Parameter Estimation: Univariate Regression Case\n\nRegressions with a single regressor are called univariate regressions. Let’s take a univariate regression as an example:\n\n\\[\ntotal\\_spending = a + b \\cdot income  + \\epsilon\n\\]\n\nFor each guess of a and b, we can compute the error for customer \\(i\\),\n\n\\[\ne_i = total\\_spending_{i}-a-b \\cdot income_{i}\n\\]\n\nWe can compute the sum of squared residuals (SSR) across all customers\n\n\\[\nSSR =\\sum_{i=1}^{n}\\left(total\\_spending_{i}-a-b \\cdot income_{i}\\right)^{2}\n\\]\n\nObjective of estimation: Search for the unique set of \\(a\\) and \\(b\\) that can minimize the SSR.\nThis estimation method that minimizes SSR is called Ordinary Least Square (OLS).",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -2929,7 +2929,7 @@
     "href": "Week7-Lecture2.html#standard-errors-and-p-values",
     "title": "Class 14 Linear Regression for Causal Inference",
     "section": "3.2 Standard Errors and P-Values",
-    "text": "3.2 Standard Errors and P-Values\n\nBecause the regression is estimated on a random sample of the population, so if we rerun the regression on different samples from the same population, we would get a different set of regression coefficients each time.\nIn theory, the regression coefficients estimates follows a t-distribution: the mean is the true \\(\\beta\\). The standard error of the estimates is the estimated standard deviation of the error.\nKnowing that the coefficients follow a t-distribution, we can test whether the coefficients are statistically different from 0 using hypothesis testing.\nIncome/Kidhome is statistically significant at the 1% level.",
+    "text": "3.2 Standard Errors and P-Values\n\nIf we collect all data from the whole population, the regression coefficient is called the population regression coefficient.\nBecause the regression is estimated on a random sample of the population, if we rerun the regression on different samples from the same population, we would obtain a different set of sample regression coefficients each time.\nIn theory, the sample regression coefficients estimates follows a t-distribution: the mean is the true \\(\\beta\\). The standard error of the estimates is the estimated standard deviation of the error.\nKnowing that the coefficients follow a t-distribution, we can test whether the coefficients are statistically different from 0 using hypothesis testing.\nIncome/Kidhome is statistically significant at the 1% level.",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -2941,7 +2941,7 @@
     "href": "Week7-Lecture2.html#r-squared",
     "title": "Class 14 Linear Regression for Causal Inference",
     "section": "3.3 R-Squared",
-    "text": "3.3 R-Squared\n\nR-squared (R2) is a statistical measure that represents the proportion of the variance for a dependent variable that’s explained by all included variables in a regression.\nInterpretation: 66% of the variation in total_spending can be explained by Income and Kidhome.\nAs the number of variables increases, the \\(R^2\\) will naturally increase, so sometimes we may need to penalize the number of variables using the so-called adjusted R-squared.\n\n\n\n\n\n\n\nImportant\n\n\n\nR-Squared is only important for supervised learning prediction tasks, because it measures the predictive power of the X. However, In causal inference tasks, \\(R^2\\) does not matter much.",
+    "text": "3.3 R-Squared\n\nR-squared (R2) is a statistical measure that represents the proportion of the variance for a dependent variable that’s explained by all included variables in a regression.\nInterpretation: 66% of the variation in total_spending can be explained by Income and Kidhome.\nAs the number of variables increases, the \\(R^2\\) will naturally increase, so sometimes we may need to penalize the number of variables using the so-called adjusted R-squared.\n\n\n\n\n\n\n\nImportant\n\n\n\nR-Squared is only important for supervised learning prediction tasks, because it measures the predictive power of the X. However, in causal inference tasks, \\(R^2\\) does not matter much.",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3001,7 +3001,7 @@
     "href": "Week7-Lecture2.html#interpretation-of-coefficients-for-categorical-variables",
     "title": "Class 14 Linear Regression for Causal Inference",
     "section": "4.5 Interpretation of Coefficients for Categorical Variables",
-    "text": "4.5 Interpretation of Coefficients for Categorical Variables\n\nIn general, R encode factor variables with K levels into K-1 coefficients, with one level as the baseline group.\nThe interpretation of coefficients for factor variables: Ceteris paribus, compared with the [baseline group], the [outcome variable] of [group X] is higher/lower by [coefficient], and the coefficient is statistically [significant/insignificant].\n\nCeteris paribus, compared with the basic education group, the total spending of PhD group is lower by 153.190 dollars. The coefficient is statistically significant at the 1% level.\n\nNow please rerun the regression using Education_factor and interpret the coefficients. What’s your finding?\n\nConclusion: factor variables can only measure the relative difference in outcome variable across different groups rather than the absolute levels.",
+    "text": "4.5 Interpretation of Coefficients for Categorical Variables\n\nIn general, R encode factor variables with K levels into K-1 coefficients, with one level as the baseline group.\nThe interpretation of coefficients for factor variables: Ceteris paribus, compared with the [baseline group], the [outcome variable] of [group X] is higher/lower by [coefficient], and the coefficient is statistically [significant/insignificant].\n\nCeteris paribus, compared with the basic education group, the total spending of PhD group is lower by 153.190 dollars. The coefficient is statistically significant at the 1% level.\n\nNow please rerun the regression using Education_factor and interpret the coefficients. What’s your finding?\n\nConclusion: factor variables can only measure the relative difference in the outcome variable across different groups rather than telling us about the absolute levels of each group.",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3049,7 +3049,7 @@
     "href": "Week7-Lecture1.html",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
     "section": "",
-    "text": "Instagram aims to increase user engagement and activity through\nWe can propose gamification strategies based on scientific theories\nNeed to empirically test whether proposed gamification strategies are effective using A/B/N testings\n\n\n\n\nConduct a situation analysis to understand the business environment of Instagram in UK:1\n\nWhat is Instagram’s business model?\nHow does Instagram make revenues?\nWho are Instagram’s customers?\nWhat are the major competitors and their relative strengths and weaknesses compared with Instagram?\nWho are the collaborators of Instagram?\nPESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?",
+    "text": "Instagram aims to increase user engagement and activity.\nWe can propose gamification strategies based on scientific theories\nNeed to empirically test whether proposed gamification strategies are effective using A/B/N testings\n\n\n\n\nConduct a situation analysis to assess Instagram’s business environment in the UK:1\n\nWhat is Instagram’s business model?\nHow does Instagram make revenues?\nWho are Instagram’s customers?\nWhat are the major competitors and their relative strengths and weaknesses compared with Instagram?\nWho are the collaborators of Instagram?\nPESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3061,7 +3061,7 @@
     "href": "Week7-Lecture1.html#business-objective",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
     "section": "",
-    "text": "Instagram aims to increase user engagement and activity through\nWe can propose gamification strategies based on scientific theories\nNeed to empirically test whether proposed gamification strategies are effective using A/B/N testings",
+    "text": "Instagram aims to increase user engagement and activity.\nWe can propose gamification strategies based on scientific theories\nNeed to empirically test whether proposed gamification strategies are effective using A/B/N testings",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3073,7 +3073,7 @@
     "href": "Week7-Lecture1.html#situation-analysis",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
     "section": "",
-    "text": "Conduct a situation analysis to understand the business environment of Instagram in UK:1\n\nWhat is Instagram’s business model?\nHow does Instagram make revenues?\nWho are Instagram’s customers?\nWhat are the major competitors and their relative strengths and weaknesses compared with Instagram?\nWho are the collaborators of Instagram?\nPESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?",
+    "text": "Conduct a situation analysis to assess Instagram’s business environment in the UK:1\n\nWhat is Instagram’s business model?\nHow does Instagram make revenues?\nWho are Instagram’s customers?\nWhat are the major competitors and their relative strengths and weaknesses compared with Instagram?\nWho are the collaborators of Instagram?\nPESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3085,7 +3085,7 @@
     "href": "Week7-Lecture1.html#theoretical-motivation-for-business-ideas",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
     "section": "2.1 Theoretical Motivation for Business Ideas",
-    "text": "2.1 Theoretical Motivation for Business Ideas\n\nWhen proposing business ideas, we should base our proposals on scientific, well-established theories from different disciplines.\n\nBottom-up approach: start with theories and then generate business ideas\nTop-down approach: start with business ideas and then find theories to support them\n\nLet’s first see some examples of behavorial theories!",
+    "text": "2.1 Theoretical Motivation for Business Ideas\n\nWhen proposing business ideas, we should base our proposals on scientific, well-established theories from different disciplines.\n\nBottom-up approach: start with theories and then generate business ideas\nTop-down approach: start with business ideas and then find theories to support them\n\nLet’s first see some examples of behavioral economics theories!",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3109,7 +3109,7 @@
     "href": "Week7-Lecture1.html#social-comparison-theory",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
     "section": "2.3 Social Comparison Theory",
-    "text": "2.3 Social Comparison Theory\n\nPeople evaluate their own opinions and abilities by comparing themselves to others\nSocial comparison can be upward or downward\nSocial comparison can motivate people to improve their performance; however, it can also lead to negative emotions",
+    "text": "2.3 Social Comparison Theory\n\nPeople evaluate their own opinions and abilities by comparing themselves to others, especially when comparing oneself to similar others.\nSocial comparison can be upward or downward.\nSocial comparison can motivate people to improve their performance; however, it can also lead to negative emotions.",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3121,7 +3121,7 @@
     "href": "Week7-Lecture1.html#prospect-theory",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
     "section": "2.4 Prospect Theory",
-    "text": "2.4 Prospect Theory\n\nProspect theory posits that when people feel more pain from losing something than pleasure from gaining something.\nThis theory can be used to explain why people are more likely to engage in activities that prevent loss than those that promote gain.",
+    "text": "2.4 Prospect Theory\n\nProspect theory posits that people feel more pain from losing something than pleasure from gaining something.\nThis theory can be used to explain why people are more likely to engage in activities that prevent loss than those that promote gain.",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3145,7 +3145,7 @@
     "href": "Week7-Lecture1.html#potential-strategies",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
     "section": "2.6 Potential Strategies",
-    "text": "2.6 Potential Strategies\n\nEndowment effect: Points system and badge system for engagement (likes, comments, shares)\nSocial comparison theory: Leaderboards showing top users; Social comparison through activity rankings\nProspect theory: Time-limited rewards and achievements",
+    "text": "2.6 Potential Strategies\n\nEndowment effect: Implementing a points and badge system to create sense of ownership and encourage engagement (e.g., likes, comments, shares).\nSocial comparison theory: Leaderboards showing top users; Social comparison through activity rankings\nProspect theory: Time-limited rewards and achievements",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3229,7 +3229,7 @@
     "href": "Week7-Lecture1.html#footnotes",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nAll answers are on the website.↩︎",
+    "text": "Footnotes\n\n\nSuggested answers are on the course website.↩︎",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3572,7 +3572,7 @@
     "href": "Case-CausalInference.html",
     "title": "Improve User Engagement for Instagram Using A/B/N Testing",
     "section": "",
-    "text": "Instagram, one of the world’s leading social media platforms, has achieved significant success by providing users with a visually driven, interactive space for self-expression, connection, and content sharing. With over a billion active users, Instagram has become a major platform for individuals, influencers, and businesses to connect with broader audiences. Despite its popularity, Instagram faces bottlenecks in maintaining high levels of user engagement and growth, particularly as competition from other platforms increases. To address these challenges, Instagram must continuously innovate and find new ways to keep users active and engaged.\n\n\n\n\n\n\n\n\n\nInstagram App\n\n\n\n\n\nQuestion 1Answer\n\n\n\nWhat is Instagram’s business model?\nHow does Instagram make revenues?\nWho are Instagram’s customers?\nWhat are the major competitors and their relative strengths and weaknesses compared with Instagram?\nWho are the collaborators of Instagram?\nPESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?\n\n\n\n\nWhat is Instagram’s business model?\n\nPlatform business model. Network effect is the key to success.\n\nHow does Instagram make revenues?\n\nAdvertising: Sponsored posts, stories, and videos.\nE-commerce: Shopping features that allow users to purchase products directly from the platform.\n\nWho are Instagram’s customers?\n\nUsers: Individuals who use the platform to share photos, videos, and stories, connect with friends, and discover new content.\nAdvertisers: Brands and businesses that promote their products and services to Instagram’s user base through sponsored content and ads.\nContent Creators: Influencers, celebrities, and creators who produce engaging content to attract followers and monetize their presence on the platform.\n\nWhat are the major competitors and their relative strengths and weaknesses compared with Instagram?\n\nDirect: Other social media platforms like Facebook, Tiktok, etc.\nIndirect: News websites, discussion forums like Reddit, and alternative communication platforms that offer different ways for people to obtain information and interact online.\n\nWho are the collaborators of Instagram?\n\nBusiness Partners: Companies that integrate Instagram content into their services, such as news organizations or broadcasters.\nInfluencers and celebrities who attract and engage large audiences.\n\nPESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?\n\nLegal and Regulatory Issues: Changes in regulations related to data privacy, online speech, and censorship can significantly impact operations.\n\n\n\n\n\nGamification offers a promising approach to deepen engagement and retain users, creating a more interactive and rewarding experience that may align with Instagram’s focus on community building and personal expression. In recent years, gamification has emerged as a powerful tool in marketing and business, aimed at enhancing user engagement and loyalty across various industries. Gamification involves integrating game-like elements—such as points, levels, badges, and rewards—into non-game contexts to make experiences more engaging and enjoyable (Seaborn and Fels 2015). By tapping into fundamental human motivations like achievement, competition, and social interaction, gamification encourages users to interact more frequently and meaningfully with a platform or brand. From loyalty programs to interactive challenges, gamification strategies are designed to increase user activity and foster a deeper emotional connection to the brand.",
+    "text": "Instagram, one of the world’s leading social media platforms, has achieved significant success by providing users with a visually driven, interactive space for self-expression, connection, and content sharing. With over a billion active users, Instagram has become a major platform for individuals, influencers, and businesses to connect with broader audiences. Despite its popularity, Instagram faces bottlenecks in maintaining high levels of user engagement and growth, particularly as competition from other platforms increases. To address these challenges, Instagram must continuously innovate and find new ways to keep users active and engaged.\n\n\n\n\n\n\n\n\n\nScreenshot of A Nobody’s Instagram\n\n\n\n\n\nQuestion 1Answer\n\n\n\nWhat is Instagram’s business model?\nHow does Instagram make revenues?\nWho are Instagram’s customers?\nWhat are the major competitors and their relative strengths and weaknesses compared with Instagram?\nWho are the collaborators of Instagram?\nPESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?\n\n\n\n\nWhat is Instagram’s business model?\n\nPlatform business model. Network effect is the key to success.\n\nHow does Instagram make revenues?\n\nAdvertising: Sponsored posts, stories, and videos.\nE-commerce: Shopping features that allow users to purchase products directly from the platform.\n\nWho are Instagram’s customers?\n\nUsers: Individuals who use the platform to share photos, videos, and stories, connect with friends, and discover new content.\nAdvertisers: Brands and businesses that promote their products and services to Instagram’s user base through sponsored content and ads.\nContent Creators: Influencers, celebrities, and creators who produce engaging content to attract followers and monetize their presence on the platform.\n\nWhat are the major competitors and their relative strengths and weaknesses compared with Instagram?\n\nDirect: Other social media platforms like Facebook, Tiktok, etc.\nIndirect: News websites, discussion forums like Reddit, and alternative communication platforms that offer different ways for people to obtain information and interact online.\n\nWho are the collaborators of Instagram?\n\nBusiness Partners: Companies that integrate Instagram content into their services, such as news organizations or broadcasters.\nInfluencers and celebrities who attract and engage large audiences.\n\nPESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?\n\nLegal and Regulatory Issues: Changes in regulations related to data privacy, online speech, and censorship can significantly impact operations.\n\n\n\n\n\nGamification offers a promising approach to deepen engagement and retain users, creating a more interactive and rewarding experience that may align with Instagram’s focus on community building and personal expression. In recent years, gamification has emerged as a powerful tool in marketing and business, aimed at enhancing user engagement and loyalty across various industries. Gamification involves integrating game-like elements—such as points, levels, badges, and rewards—into non-game contexts to make experiences more engaging and enjoyable (Seaborn and Fels 2015). By tapping into fundamental human motivations like achievement, competition, and social interaction, gamification encourages users to interact more frequently and meaningfully with a platform or brand. From loyalty programs to interactive challenges, gamification strategies are designed to increase user activity and foster a deeper emotional connection to the brand.",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
