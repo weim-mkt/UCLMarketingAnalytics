@@ -3049,7 +3049,7 @@
     "href": "Week7-Lecture1.html",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
     "section": "",
-    "text": "Instagram aims to increase user engagement and activity.\nWe can propose gamification strategies based on scientific theories\nNeed to empirically test whether proposed gamification strategies are effective using A/B/N testings\n\n\n\n\nConduct a situation analysis to assess Instagram’s business environment in the UK:1\n\nWhat is Instagram’s business model?\nHow does Instagram make revenues?\nWho are Instagram’s customers?\nWhat are the major competitors and their relative strengths and weaknesses compared with Instagram?\nWho are the collaborators of Instagram?\nPESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?",
+    "text": "Instagram aims to increase user engagement and activity.\nWe can propose gamification strategies based on scientific theories.\nNeed to empirically test whether proposed gamification strategies are effective using A/B/N testings.\n\n\n\n\nConduct a situation analysis to assess Instagram’s business environment in the UK:1\n\nWhat is Instagram’s business model?\nHow does Instagram make revenues?\nWho are Instagram’s customers?\nWhat are the major competitors and their relative strengths and weaknesses compared with Instagram?\nWho are the collaborators of Instagram?\nPESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3061,7 +3061,7 @@
     "href": "Week7-Lecture1.html#business-objective",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
     "section": "",
-    "text": "Instagram aims to increase user engagement and activity.\nWe can propose gamification strategies based on scientific theories\nNeed to empirically test whether proposed gamification strategies are effective using A/B/N testings",
+    "text": "Instagram aims to increase user engagement and activity.\nWe can propose gamification strategies based on scientific theories.\nNeed to empirically test whether proposed gamification strategies are effective using A/B/N testings.",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3097,7 +3097,31 @@
     "href": "Week7-Lecture1.html#behavioral-theories",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
     "section": "2.2 Behavioral Theories",
-    "text": "2.2 Behavioral Theories\n\nFraming effect\nEndowment effect\nLeft-digit effect\nSocial comparison theory\nProspect theory\nMany more…",
+    "text": "2.2 Behavioral Theories\n\nFraming effect\nEndowment effect\nMental accounting",
+    "crumbs": [
+      "Lectures",
+      "[Week 7] Linear Regression Models",
+      "Lecture 1: Improve User Engagement for Instagram Using A/B/N Testing"
+    ]
+  },
+  {
+    "objectID": "Week7-Lecture1.html#default-effect",
+    "href": "Week7-Lecture1.html#default-effect",
+    "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
+    "section": "2.3 Default Effect",
+    "text": "2.3 Default Effect\n\nDefault effect",
+    "crumbs": [
+      "Lectures",
+      "[Week 7] Linear Regression Models",
+      "Lecture 1: Improve User Engagement for Instagram Using A/B/N Testing"
+    ]
+  },
+  {
+    "objectID": "Week7-Lecture1.html#left-digit-bias",
+    "href": "Week7-Lecture1.html#left-digit-bias",
+    "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
+    "section": "2.4 Left-Digit Bias",
+    "text": "2.4 Left-Digit Bias\n\nLeft-digit bias",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3108,8 +3132,8 @@
     "objectID": "Week7-Lecture1.html#social-comparison-theory",
     "href": "Week7-Lecture1.html#social-comparison-theory",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
-    "section": "2.3 Social Comparison Theory",
-    "text": "2.3 Social Comparison Theory\n\nPeople evaluate their own opinions and abilities by comparing themselves to others, especially when comparing oneself to similar others.\nSocial comparison can be upward or downward.\nSocial comparison can motivate people to improve their performance; however, it can also lead to negative emotions.",
+    "section": "2.5 Social Comparison Theory",
+    "text": "2.5 Social Comparison Theory\n\nPeople evaluate their own opinions and abilities by comparing themselves to others, especially when comparing oneself to similar others.\nSocial comparison can be upward or downward.\nSocial comparison can motivate people to improve their performance; however, it can also lead to negative emotions.",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3120,8 +3144,8 @@
     "objectID": "Week7-Lecture1.html#prospect-theory",
     "href": "Week7-Lecture1.html#prospect-theory",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
-    "section": "2.4 Prospect Theory",
-    "text": "2.4 Prospect Theory\n\nProspect theory posits that people feel more pain from losing something than pleasure from gaining something.\nThis theory can be used to explain why people are more likely to engage in activities that prevent loss than those that promote gain.",
+    "section": "2.6 Prospect Theory",
+    "text": "2.6 Prospect Theory\n\nProspect theory posits that people feel more pain from losing something than pleasure from gaining something.\nThis theory can be used to explain why people are more likely to engage in activities that prevent loss than those that promote gain.",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3132,8 +3156,8 @@
     "objectID": "Week7-Lecture1.html#business-proposal",
     "href": "Week7-Lecture1.html#business-proposal",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
-    "section": "2.5 Business Proposal",
-    "text": "2.5 Business Proposal\n\nImplement gamification features on Instagram to increase user activity based on the theories of Social Comparison and Prospect Theory.\nLet’s have a brainstorm discussion and come up with some ideas on how to implement gamification features on Instagram.",
+    "section": "2.7 Business Proposal",
+    "text": "2.7 Business Proposal\n\nImplement gamification features on Instagram to increase user activity based on the theories of Social Comparison and Prospect Theory.\nLet’s think about ideas that can boost user engagement on Instagram.",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
@@ -3144,8 +3168,8 @@
     "objectID": "Week7-Lecture1.html#potential-strategies",
     "href": "Week7-Lecture1.html#potential-strategies",
     "title": "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing",
-    "section": "2.6 Potential Strategies",
-    "text": "2.6 Potential Strategies\n\nEndowment effect: Implementing a points and badge system to create sense of ownership and encourage engagement (e.g., likes, comments, shares).\nSocial comparison theory: Leaderboards showing top users; Social comparison through activity rankings\nProspect theory: Time-limited rewards and achievements",
+    "section": "2.8 Potential Strategies",
+    "text": "2.8 Potential Strategies\n\nEndowment effect: Implementing a points and badge system to create sense of ownership and encourage engagement (e.g., likes, comments, shares).\nSocial comparison theory: Leaderboards showing top users; Social comparison through activity rankings\nProspect theory: Time-limited rewards and achievements",
     "crumbs": [
       "Lectures",
       "[Week 7] Linear Regression Models",
