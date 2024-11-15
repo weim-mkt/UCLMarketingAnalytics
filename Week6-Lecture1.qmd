@@ -297,3 +297,4 @@ knitr::include_graphics("images/Week 6/BasicIdentityofCausalInference.png")
 ```
 
 -   Randomized experiments makes ATT equal to ATE, and removes selection bias. Thus, randomized experiments are the **gold standard of causal inference**.
+

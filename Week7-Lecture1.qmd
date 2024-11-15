@@ -1,663 +1,177 @@
 ---
-author: Dr Wei Miao
-date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(6))`"
-date-format: long
-institute: UCL School of Management
-title: "Class 13 OLS Regression Advanced"
-df-print: kable
-colorlinks: true
-code-line-numbers: true
-format:
-  html: 
-    toc: true
-    embed-resources: true
-    number-sections: true
-    page-layout: full
-    toc-depth: 2
-    code-line-numbers: true
-    code-copy: hover
-  beamer: 
-    toc: false
-    toc-title: ""
-    slide-level: 2
-    section-titles: true
-    theme: Frankfurt
-    colortheme: beaver
-    fonttheme: structurebold
-    navigation: horizontal
-    tbl-colwidths: auto
-    fontsize: 9pt
-    suppress-bibliography: true
-knitr:
-  opts_chunk:
-    echo: true
-    warning: true
-    message: true
-    error: false
-execute: 
-  freeze: auto
-editor_options: 
-  chunk_output_type: inline
-bibliography: references.bib
+date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(6))`"
+title: "Class 13 Case Study: Improve User Engagement for Instagram Using A/B/N Testing"
 ---
-
 
 # Case Background
 
-## Situation Analysis
-
--   Business model of Twitter, and other social media platforms in general?
-
-::: {.content-visible when-format="html"}
-> Platform business model. Network effect is the key to success.
-:::
-
--   How does Twitter make money?
-
-> ::: {.content-visible when-format="html"}
-> -   Ads
->
-> -   Freemium strategy: though general everyday use is free, for premium features, customers have to pay
-> :::
-
--   Who are Twitter's customers?
-
-> ::: {.content-visible when-format="html"}
-> -   Users
->
-> -   Advertisers
-> :::
-
--   Who are the collaborators of Twitter?
-
-> ::: {.content-hidden when-format="beamer"}
-> -   Business Partners: Companies that integrate Twitter content into their services, such as news organizations or broadcasters.
-> -   Advertisers and Marketers: Agencies that develop campaigns for the platform.
-> -   Content Creators: Influencers and celebrities who attract and engage large audiences.
-> :::
-
--   Who are Twitter's direct and indirect competitors?
-
-> ::: {.content-hidden when-format="beamer"}
-> -   Direct: Other social media platforms like Facebook, Instagram, etc.
-> -   Indirect: News websites, discussion forums like Reddit, and alternative communication platforms that offer different ways for people to obtain information and interact online.
-> :::
-
--   Which PESTLE factors should we focus on?
-
-> ::: {.content-hidden when-format="beamer"}
-> -   Legal and Regulatory Issues: Changes in regulations related to data privacy, online speech, and censorship can significantly impact operations.
-> :::
-
 ## Business Objective
 
-> \[...\] we are going to draw upon **social comparison theory** and **gamification** to help Twitter further improve its user engagement in its newly introduced feature called "Communities" on the platform. "Communities" is a twitter feature that aims to enrich user engagement by catering to specific interests and subjects. These Communities offer users a dedicated space to convene around shared topics of interest, spanning domains such as celebrity fandoms, movie enthusiasts, and various hobbies.
+- Instagram aims to increase user engagement and activity.
 
-## Theoretical Motivation
+- We can propose gamification strategies based on scientific theories.
 
-When proposing business ideas, we should base our proposals on scientific, well-established theories from different disciplines such as Psychology and Behavioral Economics:
+- Need to empirically test whether proposed gamification strategies are effective using A/B/N testings.
 
--   Social comparison theory (Twitter's case study)
+## Situation Analysis
 
--   [Framing effect](https://www.investopedia.com/framing-effect-7371439)
+Conduct a situation analysis to assess Instagram’s business environment in the UK:^[Suggested answers are on the course website.]
 
--   [Prospect theory](https://www.investopedia.com/terms/p/prospecttheory.asp)
+-   What is Instagram's business model?
 
--   [Bandwagon effect](https://www.investopedia.com/terms/b/bandwagon-effect.asp)
+-   How does Instagram make revenues?
+
+-   Who are Instagram's customers?
+
+-   What are the major competitors and their relative strengths and weaknesses compared with Instagram?
+
+-   Who are the collaborators of Instagram?
+
+-   PESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?
+
+# Theoretical Motivations
+
+## Theoretical Motivation for Business Ideas
+
+- When proposing business ideas, we should base our proposals on scientific, well-established theories from different disciplines.
+
+    - **Bottom-up approach**: start with theories and then generate business ideas
+
+    - **Top-down approach**: start with business ideas and then find theories to support them
+
+- Let's first see some examples of behavioral economics theories!
+
+## Behavioral Theories
+
+- [Framing effect](https://www.investopedia.com/framing-effect-7371439)
+
+- [Endowment effect](https://www.investopedia.com/terms/e/endowment-effect.asp)
+
+- [Mental accounting](https://www.investopedia.com/terms/m/mentalaccounting.asp)
+
+## Default Effect
+
+- [Default effect](https://en.wikipedia.org/wiki/Default_effect)
+
+::: {.columns}
+
+::: {.column width='50%'}
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 7/organ donation.png")
+```
+
+:::
+
+::: {.column width='50%'}
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 7/default effect.png")
+```
+
+:::
+
+:::
+
+
+## Left-Digit Bias
+
+- [Left-digit bias](https://journals.sagepub.com/doi/full/10.1177/0022243720932532)
+
+::: {.columns}
+
+::: {.column width='50%'}
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 7/iPhone pricing.png")
+```
+
+:::
+
+::: {.column width='50%'}
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 7/left digit bias.jpg")
+```
+
+:::
+
+:::
+
+## Social Comparison Theory
+
+- People evaluate their own opinions and abilities by comparing themselves to others, especially when comparing oneself to similar others.
+
+- Social comparison can be upward or downward.
+
+- Social comparison can motivate people to improve their performance; however, it can also lead to negative emotions.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 7/Social Comparison Theory.jpeg")
+```
+
+## Prospect Theory
+
+- Prospect theory posits that people feel more pain from losing something than pleasure from gaining something.
+
+- This theory can be used to explain why people are more likely to engage in activities that prevent loss than those that promote gain.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 7/Prospect Theory 2.png")
+```
 
 ## Business Proposal
 
--   We propose to implement a leaderboard to rank different communities based on points based on **Gamification Theory** and **Social Comparison Theory**.
+- Implement gamification features on Instagram to increase user activity based on the theories of Social Comparison and Prospect Theory.
 
-::: columns
-::: {.column width="50%"}
+- Let's think about ideas that can boost user engagement on Instagram.
 
-```{r}
-#| echo: false
-#| fig-align: 'center'
-knitr::include_graphics("images/getpoints.png")
-```
+## Potential Strategies
 
-:::
+- **Endowment effect**: Implementing a points and badge system to create sense of ownership and encourage engagement (e.g., likes, comments, shares).
 
-::: {.column width="50%"}
+- **Social comparison theory**: Leaderboards showing top users; Social comparison through activity rankings
 
-```{r}
-#| echo: false
-#| fig-align: 'center'
-knitr::include_graphics("images/leaderboard.png")
-```
+- **Prospect theory**: Time-limited rewards and achievements
 
-:::
-:::
-
-# A/B Testing for Twitter
+# A/B/N Testing for Instagram
 
 ## Step 1: Decide on the Unit of Randomization
 
 -   What would be the best unit of randomization?
 
-::: {.content-visible when-format="html"}
-> The best level would be user level. Device level would be too granular and can easily cause crossover effects.
-:::
-
 ## Step 2: Mitigate Spillover and Crossover Effects
 
 -   What are the potential problems for spillover and crossover?
-
-::: {.content-visible when-format="html"}
-> -   A user may use multiple devices, causing crossover effects
->
-> -   A user may talk to family members/friends, causing spillover effects.
-:::
 
 ## Step 3: Decide on Randomization Allocation Scheme
 
 -   How should we determine the randomization scheme?
 
-::: {.content-visible when-format="html"}
-> -   Since A/B testing can be costly and risky, normally we would **not** use all the users.
->
->     -   On the first day of A/B testing, we can randomize a small percent of arriving customers (e.g., 10%) into the treatment condition
->
->     -   The remaining arriving customers will be in the control group
->
-> -   After randomization is assigned, the treatment should remain the same for each user.
-:::
-
 ## Step 4: Collect Data
 
 -   What is the sample size we need?
 
-::: {.content-visible when-format="html"}
-> We can do a power analysis using `pwr` package in R, or simply some websites, e.g., this [link](https://clincalc.com/stats/samplesize.aspx).
-:::
-
 -   What data should we collect?
-
-::: {.content-visible when-format="html"}
-> -   Demographic data, including registration date, age, gender, etc.
->
-> -   Behavioral data, including logs of tweeting, retweeting, likes, and comments
->
-> The above data serve 2 purposes: (1) randomization check (2) estimation of treatment effects
-:::
 
 ## Step 5: Data analytics
 
 -   Randomization checks
 
-::: {.content-visible when-format="html"}
-> We should do this on Day 1 right after randomization is done, just to ensure the randomization worked well.
-:::
-
 -   How to estimate the treatment effects?
 
-::: {.content-visible when-format="html"}
-> \(1\) ATE is the difference in the group means across the treatment group and control groups. We can conduct a paired t-test to statistically test the effectiveness of B.
->
-> \(2\) To ensure the difference is statistically significant, we need to do a hypothesis test using t-test.
->
-> \(3\) Next week, we will see that, we can also run a linear regression to obtain the average treatment effects.
-:::
+## After-Class
 
-# Basics of Linear Regression
-
-```{r}
-#| echo: false
-data_full <- readRDS("/Users/weimiao/Dropbox/UCL/Teaching/MSIN0094 Marketing Analytics/UCL 2021 - 2022/slides/Week 4/data_full.rds")
-pacman::p_load(dplyr,ggplot2,ggthemes)
-```
-
-## Linear Regression Models
-
--   A simple linear regression is a model as follows. $$
-    Y_i = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k + \epsilon_i
-    $$
-
--   $y_i$: Outcome variable/dependent variable/regressand/response variable/LHS variable
-
--   $\beta$: Regression coefficients/estimates/parameters; $\beta_0$: intercept
-
--   $x_k$: Control variable/independent variable/regressor/explanatory variable/RHS variable
-
-    -   Lower case such as $x_1$ usually indicates a single variable while upper case such as $X_{ik}$ indicates a set of several variables
-
--   $\epsilon_i$: Error term, which captures the deviation of Y from the prediction
-
-    -   Expected mean should be 0, i.e., $E[\epsilon|X]=0$
-
-    -   If we take the expectation of Y, we should have $$
-        E[Y|X] = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k 
-        $$
-
-## Why the Name "Regression"?
-
--   The term "regression" was coined by Francis Galton to describe a biological phenomenon: The heights of descendants of tall ancestors tend to regress down towards a normal average.
-
--   The term "regression" was later extended by statisticians Udny Yule and Karl Pearson to a more general statistical context (Pearson, 1903).
-
--   In supervised learning models, "regression" has a different meaning: when outcome is continuous, the task is called regression task.[^1]
-
-[^1]: ML models are developed by computer science; causal inference models are developed by economists.
-
-# Estimation of Coefficients
-
-## How to Run Regression in R
-
--   In R, there are tons of packages that can run OLS regression.
-
--   In this module, we will be using the `fixest` package, because it's able to estimate high-dimensional fixed effects.
-
-```{r}
-#| echo: true
-pacman::p_load(modelsummary,fixest)
-
-OLS_result <- feols( 
-   fml = total_spending ~ Income, # Y ~ X
-   data = data_full, # dataset from Tesco
-   ) 
-
-```
-
-## Report Regression Results
-
-```{r}
-modelsummary(OLS_result,
-    stars = TRUE  # export statistical significance
-  )
-```
-
-## Parameter Estimation: Univariate Regression Case
-
--   Let's take a **univariate regression**[^2] as an example
-
-[^2]: Regressions with a single regressor is called univariate regressions.
-
-$$
-    y = a + b x_1  + \epsilon
-$$
-
--   For each guess of a and b, we can compute the error for customer $i$, $$
-    e_i = y_{i}-a-b x_{1i}
-    $$
-
--   We can compute the **sum of squared residuals (SSR)** across all customers
-
-$$
-        SSR =\sum_{i=1}^{n}\left(y_{i}-a-b x_{1i}\right)^{2}
-$$
-
--   **Objective of estimation**: Search for the unique set of $a$ and $b$ that can minimize the SSR.
-
--   This estimation method that minimizes SSR is called **Ordinary Least Square (OLS).**
-
-## Visualization: Estimation of Univariate Regression
-
--   If in the Tesco dataset, if we regress **total spending** (Y) on **income** (X)
-
-::: {.content-visible when-format="beamer"}
-```{r}
-#| out-width: "50%"
-#| fig-align: "center"
-#| echo: false
-library(ggplot2)
-
-lm_obj <- lm(data = data_full,
-             total_spending ~ Income)
-
-get_ssr <- function(a,b){
-  return(sum(data_full$total_spending - a - b * data_full$Income)^2)
-}
-
-ggplot(data = data_full, 
-       aes(x = Income, y = total_spending)) + 
-  geom_point() + 
-  theme_stata() + 
-  geom_abline(slope = 0.004, intercept = 0, color = "red") + 
-  # geom_abline(slope = 0.004, intercept = 200, color = "blue") + 
-  geom_abline(slope = 0.06, intercept = - 552, color = "purple") + 
-  geom_abline(slope = lm_obj$coefficients[2], 
-              intercept = lm_obj$coefficients[1], color = "green") 
-  
-```
-:::
-
-::: {.content-visible when-format="html"}
-```{r}
-#| fig-align: "center"
-#| echo: false
-library(ggplot2)
-
-lm_obj <- lm(data = data_full,
-             total_spending ~ Income)
-
-get_ssr <- function(a,b){
-  return(sum(data_full$total_spending - a - b * data_full$Income)^2)
-}
-
-ggplot(data = data_full, 
-       aes(x = Income, y = total_spending)) + 
-  geom_point() + 
-  theme_stata() + 
-  geom_abline(slope = 0.004, intercept = 0, color = "red") + 
-  # geom_abline(slope = 0.004, intercept = 200, color = "blue") + 
-  geom_abline(slope = 0.06, intercept = - 552, color = "purple") + 
-  geom_abline(slope = lm_obj$coefficients[2], 
-              intercept = lm_obj$coefficients[1], color = "green") 
-  
-```
-:::
-
-| Model                  | Color  | Sum of Squared Error    |
-|------------------------|--------|-------------------------|
-| $Y = -552 + 0.06 * X$  | Purple | `r get_ssr(-552,0.06)`  |
-| $Y = 0 + 0.004 * X$    | Red    | `r get_ssr(0,0.004)`    |
-| $Y = -552 + 0.021 * X$ | Green  | `r get_ssr(-552,0.021)` |
-
-## Multivariate Regression
-
--   The OLS estimation also applies to multivariate regression with multiple regressors.
-
-$$
-y_i = b_0 + b_1 x_{1} + ... + b_k x_{k}+\epsilon_i
-$$
-
--   **Objective of estimation**: Search for the **unique** set of $b$ that can minimize the **sum of squared residuals**.
-
-$$
-    SSR= \sum_{i=1}^{n}\left(y_{i}-b_0 - b_1 x_{1} - ... - b_k x_{k} \right)^{2}
-$$
-
-# Interpretation of Coefficients
-
-## Coefficients Interpretation
-
--   Now on your Quarto document, let's run a new regression, where the DV is $total\_spending$, and X includes $Income$ and $Kidhome$.
-
-\footnotesize
-
-```{r}
-#| echo: false
-feols(data = data_full,
-     fml = total_spending ~ Income + Kidhome) %>%
-  modelsummary(stars = T)
-```
-
-\normalsize
-
--   **Controlling for** Kidhome, one unit increase in `Income` increases `totalspending` by £0.019.
-
-## Standard Errors and P-Values
-
--   Because the regression is estimated on a random sample of the population, so if we rerun the regression on different samples, we would get a different set of regression coefficients each time.
-
--   In theory, the regression coefficients estimates follows a **t-distribution**: the mean is the true $\beta$. The **standard error** of the estimates is the estimated standard deviation of the error.
-
--   We can test whether the coefficients are statistically different from 0 using **hypothesis testing**.
-
-    -   Null hypothesis: the true regression coefficient $\beta$ is 0
-
--   `Income`/`Kidhome` is statistically significant at the 1% level.
-
-## R-Squared
-
--   R-squared (R2) is a statistical measure that represents the proportion of the variance for a dependent variable that's explained by all included variables in a regression.
-
--   Interpretation: 65.8% of the variation in `totalspending` can be explained by `Income` and `Kidhome`.
-
--   As the number of variables increases, the $R^2$ will naturally increase, so sometimes we may need to penalize the number of variables using the so-called **adjusted R-squared**.
-
-    ::: callout-important
-    R-Squared is only important for supervised learning prediction tasks, because it measures the predictive power of the X. However, In causal inference tasks, $R^2$ does not matter much.
-    :::
-
-
-# Categorical Variables
-
-## Categorical variables
-
-::: {.content-visible when-format="beamer"}
-```{r}
-#| echo: false
-pacman::p_load(dplyr,ggplot2,ggthemes)
-# Load both datasets
-data_full <- read.csv(file = "https://www.dropbox.com/scl/fi/hhweiqsuwgcwgd1jiuyte/data_full.csv?rlkey=jwyd9z409b5wpwz41ow8d1otj&dl=1", 
-                      header = T)
-```
-:::
-
-::: {.content-visible when-format="html"}
-```{r}
-#| echo: true
-pacman::p_load(dplyr,ggplot2,ggthemes)
-# Load both datasets
-data_full <- read.csv(file = "https://www.dropbox.com/scl/fi/hhweiqsuwgcwgd1jiuyte/data_full.csv?rlkey=jwyd9z409b5wpwz41ow8d1otj&dl=1", 
-                      header = T)
-```
-:::
-
--   So far, the independent variables we have used are `Income` and `Kidhome`, which are **continuous variables**.
-
--   Some variables are intrinsically not countable; we need to treat them as **categorical variables**
-
-    -   e.g., gender, education group, city.
-
-## Handling Categorical Variables in R using `factor()`
-
--   In R, we need to use a function `factor()` to explicitly inform R that this variable is a categorical variable, such that statistical models will treat them differently from continuous variables.
-    -   e.g., we can use `factor(Education)` to indicate that, `Education` is a categorical variable.
-
-```{r}
-data_full <- data_full %>%
-  mutate(Education_factor = factor(Education))
-```
-
--   We can use `levels()` to check how many categories there are in the factor variable.
-    -   e.g., `Education` has 5 different levels.
-
-```{r}
-# check levels of a factor
-levels(data_full$Education_factor)
-```
-
-::: {.content-visible when-format="beamer"}
-## Handling Categorical Variables using `factor()`
-
--   `factor()` will check all levels of the categorical variables, and then choose the default level based on alphabetic order.
--   If needed, we can revise the baseline group to another group using `relevel()` function.
-
-```{r}
-# Create a new factor variable, with Basic as the baseline.
-data_full <- data_full %>%
-  mutate(Education_factor_2 = relevel(Education_factor, 
-                                      ref = "Basic") )
-
-levels(data_full$Education_factor_2)
-```
-:::
-
-::: {.content-visible when-format="html"}
-```{r}
-# Create a new factor variable, with Basic as the baseline.
-data_full <- data_full %>%
-  mutate(Education_factor_2 = relevel(Education_factor, ref = "Basic") )
-
-levels(data_full$Education_factor_2)
-```
-:::
-
-## Running Regression with Factor Variables
-
-\tiny
-
-```{r}
-pacman::p_load(fixest,modelsummary)
-feols_categorical <- feols(data = data_full,
-  fml = total_spending ~ Income + Kidhome + Education_factor_2)
-modelsummary(feols_categorical,
-             stars = T,
-             gof_map = c('nobs','r.squared'))
-```
-
-## One-Hot Encoding of `factor()`
-
--   In the raw data, Education is label-encoded with 5 levels.
-
-![](images/onehot_encoding1.png){fig-align="center" width="76"}
-
--   After factorizing education with "*Basic"* as the baseline group, internally, we have 4 binary indicators as follows. Because we have the intercept,"*Basic*" is omitted as the baseline group. Other groups represent the comparison relative to the baseline group.
-
-![](images/onehot_encoding2.png){fig-align="center" width="201"}
-
-## Interpretation of Coefficients for Categorical Variables
-
--   In general, R uses **one-hot encoding** to encode factor variables with **K** levels into **K-1** binary variables.
-    -   As we have the intercept term, we can only have **K-1** binary variables.
--   The interpretation of coefficients for factor variables: Ceteris paribus, compared with the ***\[baseline group\]***, the ***\[outcome variable\]*** of ***\[group X\]*** is higher/lower by ***\[coefficient\]***, and the coefficient is statistically ***\[significant/insignificant\]***.
-    -   Ceteris paribus, compared with the basic education group, the total spending of PhD group is lower by 153.190 dollars. The coefficient is statistically significant at the 1% level.
--   Now please rerun the regression using `Education_factor` and interpret the coefficients. What's your finding?
-    -   Conclusion: factor variables can only measure the relative difference in outcome variable across different groups rather than the absolute levels.
-
-## Application of Categorical Variables in Marketing
-
--   Analyze the treatment effects in A/B/N testing, where $Treatment_i$ is a categorical variable that specifies the treatment group customer $i$ is in:
-
-$$
-Outcome_i = \beta_0 + \delta Treatment_i + \epsilon
-$$
-
--   Analyze the brand premiums or country-of-origin effects:
-
-$$
-Sales_i = \beta_0 + \beta_1 Brand_i + \beta_2 Country_i + X\beta +\epsilon
-$$
-
-# Non-linear Effects
-
-## Quadratic Terms
-
--   If we believe the relationship between the outcome variable and explanatory variable is a quadratic function, we can include **an additional quadratic term** in the regression to model such non-linear relationship.
-
-$$
-totalspending = \beta_0 + \beta_1Income + \beta_2Income^2  + \epsilon
-$$
-
-::: {.content-visible when-format="beamer"}
-```{r}
-#| echo: false
-#| out-width: 50%
-#| fig-align: 'center'
-
-ggplot(data = data_full,
-       aes(x = Income, y = total_spending)) + 
-  geom_point()+theme_stata()
-```
-:::
-
-::: {.content-visible when-format="html"}
-```{r}
-#| echo: true
-
-ggplot(data = data_full,
-       aes(x = Income, y = total_spending)) + 
-  geom_point()+theme_stata()
-```
-:::
-
-## Quadratic Terms
-
--   If the coefficient for $Income^2$ is negative, then we have an downward open parabola. That is, as income increases, total spending first increases and then decreases, i.e., a non-linear, non-monotonic effect.
-    -   As income first increases, customers increase their spending with Tesco due to the **income effect**; however, as customers get even richer, they may switch to more premium brands such as Waitrose, so their spending may decrease due to the **substitution effect**.
-
-![](images/parabola.jpeg){fig-align="center" width="300"}
-
-## Quadratic Terms in Linear Regression
-
--   Let's run two regressions in the Quarto document, with and without the quadratic term.
-
-```{r}
-
-# model 1: without quadratic term
-feols_noquadratic <- feols(data = data_full,
-  fml = total_spending ~ Income )
-
-# model 2: with quadratic term
-feols_quadratic <- feols(data = data_full%>%
-                           mutate(Income_squared = Income^2 ),
-  fml = total_spending ~ Income  + Income_squared )
-
-```
-
-::: {.content-visible when-format="html"}
-```{r}
-modelsummary(list(feols_noquadratic,
-       feols_quadratic),
-       stars = T,
-       fmt = fmt_sprintf("%.2e"),
-       gof_map = c('nobs','r.squared'))
-```
-:::
-
-::: {.content-visible when-format="beamer"}
-## Quadratic Terms in Linear Regression
-
-```{r}
-modelsummary(list(feols_noquadratic,
-       feols_quadratic),
-       stars = T,
-       fmt = fmt_sprintf("%.2e"),
-       gof_map = c('nobs','r.squared'))
-```
-:::
-
-## Quadratic Terms: Compute the Vertex
-
--   We can compute the vertex point where total spending is maximized by income
-
-```{r}
-# extract the coeffcient vector using $ sign
-feols_coefficient <- feols_quadratic$coefficients
-feols_coefficient
-
-# Use b / (-2a) to get the vertex
-- feols_coefficient[2]/ 
-  (2 * feols_coefficient[3])
-
-```
-
-# Linear Probability Model
-
-## Linear Probability Model
-
--   In Predictive Analytics, we learned how to use decision tree and random forest to make predictions for binary outcome variables.
-
--   In fact, linear regression can also be used as another supervised learning model to predict binary outcomes. When the outcome variable is a binary variable, the linear regression model is also called linear probability model.
-
-    -   On the one hand, regression predicts the expectation of response $Y$ conditional on $X$; that is $$
-        E[Y]= E[X\beta+\epsilon]=X\beta
-        $$
-
-    -   On the other hand, for a binary outcome variable, if the probability of outcome occurring is $p$, then we can write the expectation of $Y$ is $$
-        E[Y] = 1 * p + 0 * (1 - p) = p
-        $$
-
-    -   As a result, we have the following equation $$
-           p = X \beta
-        $$
-
--   Interpretation of LPM coefficients: Everything else equal, a unit change in $x$ will change the **probability of the outcome occurring** by $\beta$.
-
-## Pros and Cons of LPM
-
--   We use linear regression function `feols()` to train the LPM on the **training data** and make predictions using `predict(LPM, data_test)` to make predictions on the **test data**.
-
--   Advantages
-
-    -   Fast to run, even with a large number of fixed effects and features
-    -   High interpretability: coefficients have clear economic meanings
-
--   Disadvantages
-
-    -   Predicted probabilities of occurring may fall out of the \[0,1\] range
-    -   Accuracy tends to be low
+-   (optional) [Test and learn: How a culture of experimentation can help grow your business](https://www.thinkwithgoogle.com/intl/en-gb/marketing-strategies/data-and-measurement/test-learn-experiment-culture/)

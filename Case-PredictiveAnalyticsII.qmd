@@ -474,4 +474,12 @@ ROI_randomforest <- (total_profit_randomforest - total_costs_of_mailing_randomfo
 ROI_randomforest
 ```
 
+::: {.callout-caution}
+
+Note that random forest model package in R uses C++ as the backend to speed up the computation. Therefore, if you use a Macbook, you should see the same ROI as above; however, if you use a Windows machine, you may see a slightly different ROI due to the different random number generation algorithms used in C++ on Windows and Mac OS. 
+
+On Windows, if you see 1.217836, it is correct. 
+
+:::
+
 Predictive analytics model can help the company boost the marketing ROI by allowing M&S to target customers who are more likely to respond to the marketing offers than the break-even response rate. By doing so, M&S saves unnecessary marketing costs on those unresponsive customers and therefore improves its marketing efficiency.

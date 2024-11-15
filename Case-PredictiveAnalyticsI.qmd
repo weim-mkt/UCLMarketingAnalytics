@@ -1,6 +1,6 @@
 ---
 title: "Improving Marketing Efficiency Using Predictive Analytics for M&S (I): Customer Segmentation Using K-Means Clustering"
-thanks: "This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module based on. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. All copyrights reserved."
+thanks: "This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. All copyrights reserved."
 author: Dr Wei Miao
 subtitle: "MSIN0094 Case Study"
 institute: UCL School of Management

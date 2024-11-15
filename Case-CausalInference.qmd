@@ -1,10 +1,10 @@
 ---
-title: "Improve User Engagement on Social Media Platforms Using A/B Testing"
-thanks: "This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module based on. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. All copyrights reserved."
+title: "Improve User Engagement for Instagram Using A/B/N Testing"
+thanks: "This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. All copyrights reserved."
 author: Dr Wei Miao
 subtitle: "MSIN0094 Case Study"
 institute: UCL School of Management
-date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(5))`"
+date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(6))`"
 date-format: long
 colorlinks: true
 code-line-numbers: true
@@ -40,282 +40,415 @@ editor_options:
   chunk_output_type: inline
 ---
 
-# Business Objective
 
-## Company background
+# Case background
+
+Instagram, one of the world’s leading social media platforms, has achieved significant success by providing users with a visually driven, interactive space for self-expression, connection, and content sharing. With over a billion active users, Instagram has become a major platform for individuals, influencers, and businesses to connect with broader audiences. Despite its popularity, Instagram faces bottlenecks in maintaining high levels of user engagement and growth, particularly as competition from other platforms increases. To address these challenges, Instagram must continuously innovate and find new ways to keep users active and engaged. 
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: "3cm"
+#| fig-cap: "Screenshot of A Nobody's Instagram"
+knitr::include_graphics("images/Week 7/instagram.png")
+```
 
 
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
 
-Task: Conduct a situation analysis for Twitter in the UK market. Focus on the following point:
+Conduct a situation analysis for Instagram in the UK market. Focus on the following point:
 
--   What is Twitter's business model?
+-   What is Instagram's business model?
 
-::: {.content-hidden when-format="pdf"}
-> -   Platform business model. Network effect is the key to success.
+-   How does Instagram make revenues?
+
+-   Who are Instagram's customers?
+
+-   What are the major competitors and their relative strengths and weaknesses compared with Instagram?
+
+-   Who are the collaborators of Instagram?
+
+-   PESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
+-   What is Instagram's business model?
+
+-   How does Instagram make revenues?
+
+-   Who are Instagram's customers?
+
+-   What are the major competitors and their relative strengths and weaknesses compared with Instagram?
+
+-   Who are the collaborators of Instagram?
+
+-   PESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?
+
+### Answer
+
+-   What is Instagram's business model?
+
+    -   Platform business model. Network effect is the key to success.
+
+-   How does Instagram make revenues?
+
+    -   Advertising: Sponsored posts, stories, and videos.
+
+    -   E-commerce: Shopping features that allow users to purchase products directly from the platform.
+
+-   Who are Instagram's customers?
+
+    -   Users: Individuals who use the platform to share photos, videos, and stories, connect with friends, and discover new content.
+
+    -   Advertisers: Brands and businesses that promote their products and services to Instagram's user base through sponsored content and ads.
+
+    -   Content Creators: Influencers, celebrities, and creators who produce engaging content to attract followers and monetize their presence on the platform.
+
+-   What are the major competitors and their relative strengths and weaknesses compared with Instagram?
+
+    -   Direct: Other social media platforms like Facebook, Tiktok, etc.
+
+    -   Indirect: News websites, discussion forums like Reddit, and alternative communication platforms that offer different ways for people to obtain information and interact online.
+
+-   Who are the collaborators of Instagram?
+
+    -   Business Partners: Companies that integrate Instagram content into their services, such as news organizations or broadcasters.
+
+    -   Influencers and celebrities who attract and engage large audiences.
+
+-   PESTLE analysis: any particular legal and regulatory issues that Instagram needs to be aware of?
+
+    -   Legal and Regulatory Issues: Changes in regulations related to data privacy, online speech, and censorship can significantly impact operations.
+:::
+::::
+
+Gamification offers a promising approach to deepen engagement and retain users, creating a more interactive and rewarding experience that may align with Instagram’s focus on community building and personal expression. In recent years, gamification has emerged as a powerful tool in marketing and business, aimed at enhancing user engagement and loyalty across various industries. Gamification involves integrating game-like elements—such as points, levels, badges, and rewards—into non-game contexts to make experiences more engaging and enjoyable [@seaborn2015]. By tapping into fundamental human motivations like achievement, competition, and social interaction, gamification encourages users to interact more frequently and meaningfully with a platform or brand. From loyalty programs to interactive challenges, gamification strategies are designed to increase user activity and foster a deeper emotional connection to the brand.
+
+# Gamification strategies for Instagram
+
+Social media platforms, in particular, are leveraging gamification to boost user engagement and retention. With features like badges, leaderboards, and interactive challenges, these platforms aim to make user interactions feel rewarding and enjoyable. In this case study, we will explore how gamification can be effectively applied on Instagram, using psychological and behavioral economic theories to design features that drive user engagement.
+
+## Prospect theory
+
+Prospect theory, a behavioral economic theory, describes how people make decisions under uncertainty [@kahneman1979]. It suggests that individuals evaluate potential gains and losses relative to a reference point and tend to be risk-averse in the domain of gains but risk-seeking in the domain of losses. 
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| fig-cap: "Prospect Theory"
+knitr::include_graphics("images/Week 7/Prospect theory.png")
+```
+
+In e-commerce, many platforms use prospect theory by presenting “limited time only” sales or “only 3 items left!” notifications. For instance, an online clothing retailer might display a countdown for flash sales on specific products, encouraging customers to buy now or miss out. Additionally, a feature like “items left in your cart are almost sold out” leverages loss aversion to encourage users to complete their purchases. This taps into the user’s fear of missing out (FOMO), driving them to act quickly to avoid potential regret over a lost deal.
+
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Based on the Prospect Theory, how could Instagram leverage the concept of loss aversion to increase user engagement?
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
+Based on the Prospect Theory, how could Instagram leverage the concept of loss aversion to increase user engagement?
+
+### Answer
+
+Instagram could introduce a time-limited reward system where users earn exclusive virtual items or features by engaging with the platform within a specific timeframe. For example, users could receive a special badge or virtual currency for posting a certain number of stories or liking a certain number of posts within a week. If users fail to meet the activity goal, they lose the opportunity to earn the reward, creating a sense of loss aversion that motivates them to participate more actively to avoid missing out.
+:::
+::::
+
+## Social comparison theory
+
+Social comparison theory posits that individuals gauge their social and personal worth by comparing themselves to others [@ye2022]. People engage in social comparison to assess their abilities, opinions, and status relative to others. By creating a leaderboard, users could see their standings based on metrics like follower engagement, post interactions, or content quality. Ranking users against one another could motivate them to post more frequently, improve content quality, or engage more with other users’ posts. The leaderboard would provide real-time feedback, fostering both upward and downward comparisons. Users higher up the leaderboard would feel motivated to maintain their status, while those lower might be motivated to increase their activity to climb the ranks.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| fig-cap: "Social Comparison Theory"
+knitr::include_graphics("images/Week 7/social comparison theory.jpeg")
+```
+
+Fitness apps often incorporate social comparison to keep users motivated. For example, a fitness app might display a leaderboard that ranks users by steps taken, calories burned, or workout streaks. Users can compare their progress with friends or a larger community. This often motivates users to stay active and improve their standing. By allowing users to see both how they compare to others and celebrate their achievements, such apps encourage regular engagement and goal completion. Companies like Strava, which adds social aspects to running and cycling, have successfully used this approach to drive sustained engagement.
+
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Think about how Instagram could leverage the Social Comparison Theory to increase user engagement. Provide a specific example of a feature or mechanism that Instagram could implement to encourage social comparison among users.
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+
+::: panel-tabset
+
+### **Question `r question_index-1`**
+
+Think about how Instagram could leverage the Social Comparison Theory to increase user engagement. Provide a specific example of a feature or mechanism that Instagram could implement to encourage social comparison among users.
+
+### Answer
+
+Instagram could introduce a gamified leaderboard system that ranks users based on their daily activity levels, such as the number of posts, likes, comments, or stories shared. Users could see their rankings relative to other users, encouraging competition and social comparison. For example, Instagram could display a daily leaderboard that shows the top users based on their activity metrics, motivating others to increase their engagement to climb the rankings. This feature would leverage social comparison theory by creating a sense of competition and achievement among users, driving them to engage more actively with the platform.
+
 :::
 
--   How does Twitter make revenues?
+::::
 
-::: {.content-hidden when-format="pdf"}
-> -   Ads
-> -   Freemium strategy: though general everyday use is free, for premium features, customers have to pay
-:::
+# Testing proposals using A/B/N testing
 
--   Who are Twitter's customers?
-
-::: {.content-hidden when-format="pdf"}
-> -   Users
-> -   Advertisers
-:::
-
--   What are the major competitors and their relative strengths and weaknesses compared with Twitter?
-
-::: {.content-hidden when-format="pdf"}
-> -   Direct: Other social media platforms like Facebook, Instagram, etc.
-> -   Indirect: News websites, discussion forums like Reddit, and alternative communication platforms that offer different ways for people to obtain information and interact online.
-:::
-
--   Who are the collaborators of Twitter?
-
-::: {.content-hidden when-format="pdf"}
-> -   Business Partners: Companies that integrate Twitter content into their services, such as news organizations or broadcasters.
-> -   Advertisers and Marketers: Agencies that develop campaigns for the platform.
-> -   Content Creators: Influencers and celebrities who attract and engage large audiences.
-:::
-
--   PESTLE analysis
-
-::: {.content-hidden when-format="pdf"}
-> -   Legal and Regulatory Issues: Changes in regulations related to data privacy, online speech, and censorship can significantly impact operations.
-:::
-
-![Twitter Community for Taylor Swift](images/TaylorSwift.png){#fig-taylorswift fig-align="center" width="500"}
-
-# Theoretical Motivations
-
-Despite the widely recognized value of boosting user activity on online platforms, only a few strategies have been utilized in both practice and theory. Our business recommendations should be driven by theories that are well proved in the field of psychology, social science, and enonomics.
-
-## Fan Economy
-
-In recent years, practitioners have started to utilize the approach of leveraging internet celebrities or idols as a new business model on online shopping platforms. This strategy aims to create a new battleground to attract users and increase their engagement. Integrating internet celebrities and idols into the online shopping environment presents e-commerce platforms with new opportunities to tap into the vast fan base and social influence of these individuals. Platforms such as TikTok have successfully captured the attention and loyalty of users by incorporating popular influencers into the online shopping experience. Celebrity influencers serve as powerful tools to promote products, provide endorsements, and engage with customers through various interactive methods such as live streaming, product reviews, and personalized recommendations (Reilly 2018; Salge et al. 2022). This trend signifies the evolving landscape of marketing strategies in the digital age, with platforms leveraging this approach to boost user activity.
-
-## Gamification and Social Comparison Theory
-
-Gamification refers to a central strategy that involves designing game-like elements to incentivize users, thereby enhancing engagement, motivation, and overall user experience. By integrating game mechanics into non-gaming contexts, platforms can effectively drive user behavior, increase participation, and achieve specific business objectives. Studies from various perspectives have consistently demonstrated the effectiveness of gamification in platform governance, as it leads to increased user engagement, motivation, attainment, behavioral guidance, social interaction, competition, and skill development.
-
-Social comparison theory (SCT) suggests that individuals determine their own worth and evaluate their abilities and opinions by comparing themselves to others (Festinger 1954). It states that people have an inherent drive to evaluate themselves by comparing their abilities, opinions, and social status to those of others. Social comparisons provide individuals with reference points to assess their own worth, skills, and achievements. In the context of online platforms, social comparison plays a significant role in driving user engagement and activity. Users on online platforms engage in social comparison by observing the activities and achievements of others (Yan 2018). Platforms that facilitate social comparison by providing visibility to user actions, achievements, and rankings can effectively drive user activity. Gamified designs such as leaderboards or progress indicators create a sense of competition and motivate users to increase their engagement to achieve higher rankings or recognition (Spohrer et al. 2021).
-
-The leaderboard is a popular feature that represents social comparison and is also the focus of our study. It is a visual display that ranks and shows the performance or achievements of players on an online platform. It often lists the top players or teams based on their scores, levels, or other relevant metrics such as the points voted. The leaderboard serves as a means of comparison among players, creating a competitive environment and fostering engagement.
-
-In this study, we propose to design **a gamified leaderboard that focuses on voting for celebrities or idols**, **rather than the players themselves**. This means that social comparison occurs not between fans competing with other fans for themselves, but rather in the context of fans fighting for their celebrities or idols. The social comparison theory suggests that individuals have a natural tendency to compare themselves to others to establish their social identity and sense of belongingness. By participating in voting on a leaderboard, fans can align themselves with a particular internet celebrity or fan community, which strengthens their sense of belonging. The act of voting allows fans to show support for their favorite celebrity and solidify their connection to the fan community.
-
-## Proposed Strategy
-
-Based on the social comparison theory and gamification. We propose to introduce a gamified voting system and a leaderboard for Twitter Communities as follows.
-
-First, users need to earn points by completing a series of quests set by the platform, which include (1) daily log-in (up to 8 times a day, each time 1-5 points based on users' level in the Communities); (2) retweeting or comment on a post (up to 8 times a day; each time 2 points); (3) getting comments from more than 5 users (up to 4 times a day; each time 4 points); (4) joining new Communities (with no upper limit; each time 8 points). A screenshot of such tasks is attached in @fig-points .
-
-![How to get points](images/getpoints.png){#fig-points fig-align="center"}
-
-After gathering points from the above channels, users can then contribute their points to a specific Community in order to boost the ranking of that Community on the public leaderboard. @fig-contributepoints shows an example of how users can contribute points: For instance, under the Community of Taylor Swift, a user can choose from a list of options (1, 10, 66, all points) and click the "contribute" button to donate the chosen points to the Community.
-
-![How to contribute points](images/points.jpg){#fig-contributepoints fig-align="center"}
-
-The platform will then compute the accumulative points for each Community and then rank all Communities on a public leaderboard which is updated in real-time. @fig-leaderboard shows a screenshot of the leaderboard. On the leaderboard, users can observe the name of the Community, the corresponding rankings, the points accumulated under the celebrity names, and a button to join the Community. On the other hand, Taylor Swift had the most contributed points (100 million points as in @fig-leaderboard) and ranked first.
-
-![Leaderboard](images/leaderboard.png){#fig-leaderboard fig-align="center"}
-
-# Data collection using A/B testing
-
-To test whether gamified leaderboard can indeed improve user engagement on social media platforms, we need to run a randomized controlled trial, or A/B testing. When designing a A/B testing, we can follow the following 5 steps.
+We have proposed various strategies to boost user activity on Instagram. Now, we need to design an A/B/N testing plan to evaluate the effectiveness of these strategies.
 
 ## Step 1: Decide on the Unit of Randomization
 
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+-   What would be the best unit of randomization?
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
 -   What would be the best unit of randomization?
 
-::: {.content-visible when-format="html"}
-> The best level would be user level. Device level would be too granular and can easily cause crossover effects.
+### Answer
+
+-   The ideal randomization level would be the user level.
+
+-   Device level would be too granular and can easily cause crossover effects.
+
+-   Need to force users to log in using the same account to make sure there is no crossover effect. This explains why websites and apps always ask users to log in before using the service.
 :::
+::::
 
 ## Step 2: Mitigate Spillover and Crossover Effects
 
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+-   What are the potential problems for spillover and crossover?
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
 -   What are the potential problems for spillover and crossover?
 
-::: {.content-visible when-format="html"}
-> -   A user may use multiple devices, causing crossover effects
->
-> -   A user may talk to family members/friends, causing spillover effects.
+### Answer
+
+-   A user may use multiple devices, causing crossover effects; that is, the same user may be exposed to different treatments on their phones, laptops, and tablets.
+
+    -   This can be mitigated by forcing users to log in using the same account on all devices.
+
+-   Spillover effects may occur when a user talks to family members or friends about the treatment they received, potentially influencing their behavior as well as the user's. Meanwhile, even if the user does not directly talk to others about the treatment, they may still influence others' behavior through their actions on the platform due to the network effect.
+
+    -   This can be mitigated by ensuring that users are not aware of the treatment they received and by keeping the treatment confidential.
 :::
+::::
 
 ## Step 3: Decide on Randomization Allocation Scheme
 
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
+-   How should we determine the randomization scheme?
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
 -   How should we determine the randomization scheme?
 
-::: {.content-visible when-format="html"}
-> -   Since A/B testing can be costly and risky, normally we would **not** use all the users.
->
->     -   On the first day of A/B testing, we can randomize a small percent of arriving customers (e.g., 1%) into the treatment condition
->
->     -   The remaining arriving customers will be in the control group
->
-> -   After randomization is assigned, the treatment should remain the same for each user.
-:::
+### Answer
 
-::: {.content-visible when-format="html" }
+-   Since A/B/N testing can be costly and risky, normally we would **not** use all the users.
+
+    -   Method 1: On testing launch date, we can randomly assign users to different treatment groups based on their user ID. For instance, we can assign 10% of users to the treatment group and 90% to the control group. Then, we can take the last digit of the user ID and assign the user to the treatment group if the last digit is 0, and to the control group if the last digit is 1-9.
+
+    -   Method 2: We can also randomly assign users to different treatment groups based on random sampling. See the codes below.
+
+-   After randomization is assigned, the treatment should remain the same for each user during the experiment period.
+
+
 ```{r}
-# load the user characteristics data
-data_user <- read.csv('https://www.dropbox.com/scl/fi/xn8koj0wuwbm0wurfkfi7/data_twitter_small.csv?rlkey=jxzg4aof4eew2l3z8eyny65hp&dl=1')
-
-# how to randomize the treatment?
-
-set.seed(888)
-treatment_probability <- 0.1
-treated_index <- sample(1:nrow(data_user), 
-                  nrow(data_user) * treatment_probability,
-                  replace = F)
-
-data_user <- data_user %>%
-  mutate(treated = ifelse(ID %in% treated_index,
-                          1,
-                          0))
-```
-
-:::
-
-::: {.content-hidden when-format="html" }
-```{r}
+#| echo: true
 #| eval: false
-# load the user characteristics data
-data_user <- read.csv('https://www.dropbox.com/scl/fi/xn8koj0wuwbm0wurfkfi7/data_twitter_small.csv?rlkey=jxzg4aof4eew2l3z8eyny65hp&dl=1')
 
-# how to randomize the treatment?
-
-set.seed(888)
-treatment_probability <- 0.1
-treated_index <- sample( , 
-                   ,
-                   )
+# Method 1: Randomization using user ID
 
 data_user <- data_user %>%
-  mutate(treated = ifelse(,
-                          1,
-                          0))
-```
-:::
+    mutate(treated = ifelse(ID %% 10 == 0, 1, 0 ))
 
+```
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Method 2: Randomization using R
+
+# how to randomize the treatment if there is 1 control group and 1 treatment group
+
+set.seed(888)
+
+# assign 10% of users to the treatment group
+treatment_probability <- 0.1
+
+treated_index <- sample(1:nrow(data_user),
+    nrow(data_user) * treatment_probability,
+    replace = F
+)
+
+data_user <- data_user %>%
+    mutate(treated = ifelse(ID %in% treated_index,
+        1,
+        0
+    ))
+```
+
+:::
+::::
 
 ## Step 4: Collect Data
 
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
+
 -   What is the sample size we need?
 
-::: {.content-visable when-format="html"}
-> We can do a power analysis using `pwr` package in R, or simply some websites, e.g., this [link](https://clincalc.com/stats/samplesize.aspx).
+-   What data should we collect?
 :::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
+-   What is the sample size we need?
 
 -   What data should we collect?
 
-::: {.content-visible when-format="html"}
-> -   Demographic data, including registration date, age, gender, etc.
->
-> -   Behavioral data, including logs of tweeting, retweeting, likes, and comments
->
-> The above data serve 2 purposes: (1) randomization check (2) estimation of treatment effects
+### Answer
+
+-   We can do a power analysis using `pwr` package in R, or simply some websites, e.g., this [link](https://clincalc.com/stats/samplesize.aspx).
+
+-   We need to collect the following two types of data. The data serve 2 purposes: (1) randomization check (2) estimation of treatment effects
+
+    -   Demographic data, this helps us to conduct the randomization check.
+
+    -   Behavioral data, this helps us to estimate the treatment effects.
 :::
+::::
 
 ## Step 5: Data analytics
 
--   First, we need to do a randomization check to ensure that the treatment group and control group users have similar characteristics before the A/B testing takes place.
+:::: {.content-visible when-format="pdf"}
+::: callout
+**Question `r question_index<-question_index+1; question_index-1`**
 
-::: {.content-visible when-format="html" }
+- Once data are collected, how can we test our hypothesis?
+:::
+::::
+
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+### **Question `r question_index-1`**
+
+- Once data are collected, how can we test our hypothesis?
+
+### Answer
+
+-   First, we need to do a randomization check to ensure that the treatment group and control group users have similar characteristics. For any significant differences, we need to run a regression model to control for these differences.
+
 ```{r}
 pacman::p_load(dplyr)
-data_twitter <- read.csv("https://www.dropbox.com/scl/fi/f4e4ub0t7cpffty2oo723/data_twitter.csv?rlkey=dbbjtdy7fvmc6jiud3zhbc4ol&dl=1")
+data_instagram <- read.csv("https://www.dropbox.com/scl/fi/wf7al7k8go8tg9rkf033r/instagram_ab_test.csv?rlkey=5u43dxj705iepx1bir5h7snkg&dl=1")
 
 
 # examine if there is any difference across the treatment and control groups
-t.test(age~treated,
-       data = data_twitter)
+t.test(age ~ treatment,
+    data = data_instagram %>%
+    filter(treatment %in% c('control','A'))
+)
 
-t.test(gender~treated,
-       data = data_twitter)
+t.test(age ~ treatment,
+    data = data_instagram %>%
+    filter(treatment %in% c('control','B'))
+)
 
-t.test(pre_n_activity~treated,
-       data = data_twitter)
 ```
-:::
 
-::: {.content-hidden when-format="html" }
-```{r}
-#| eval: false
-#| error: true
-pacman::p_load(dplyr)
-data_twitter <- read.csv("https://www.dropbox.com/scl/fi/f4e4ub0t7cpffty2oo723/data_twitter.csv?rlkey=dbbjtdy7fvmc6jiud3zhbc4ol&dl=1")
+-   Next, we can analyze the treatment effects by comparing the key activity metrics between the treatment and control groups. We can use pairwise t-tests if it's A/B testing, or linear regression models if it's A/B/N testing.
 
-
-# examine if there is any difference across the treatment and control groups
-t.test(age~treated,
-       data = data_twitter)
-
-t.test(
-       data = data_twitter)
-
-t.test(
-       data = data_twitter)
-```
-:::
-
-
-::: {.content-visible when-format="html"}
-> We should do this on Day 1 right after randomization is done, just to ensure the randomization worked well.
-:::
-
--   Then, we can aggregate the raw user log data into user-day level panel data, and estimate the treatment effects accordingly.
-
-::: {.content-visible when-format="html"}
-> \(1\) ATE is the difference in the group means across the treatment group and control groups. We can conduct a paired t-test to statistically test the effectiveness of B.
->
-> \(2\) To ensure the difference is statistically significant, we need to do a hypothesis test using t-test.
->
-> \(3\) Next week, we will see that, we can also run a linear regression to obtain the average treatment effects.
-:::
-
-::: {.content-visible when-format="html" }
 ```{r}
 #| echo: true
 
-data_twitter_avg <- data_twitter %>%
-  group_by(treated) %>%
-  summarise(avg_post_n_activity = mean(post_n_activity)) %>%
-  ungroup()
+data_instagram_avg <- data_instagram %>%
+    group_by(treatment) %>%
+    summarise(avg_post_total_activity = mean(post_total_activity)) %>%
+    ungroup()
 
-data_twitter_avg$avg_post_n_activity[2] - data_twitter_avg$avg_post_n_activity[1]
+# compare the treatment effects for proposal A versus control
+data_instagram_avg$avg_post_total_activity[1] - data_instagram_avg$avg_post_total_activity[3]
+
+# compare the treatment effects for proposal B versus control
+data_instagram_avg$avg_post_total_activity[2] - data_instagram_avg$avg_post_total_activity[3]
 
 # is the difference statistically significant?
-t.test(post_n_activity ~ treated,
-       data = data_twitter)
-```
-:::
+t.test(post_total_activity ~ treatment,
+    data = data_instagram %>%
+    filter(treatment %in% c('control','A'))
+)
 
-::: {.content-hidden when-format="html" }
+t.test(post_total_activity ~ treatment,
+    data = data_instagram %>%
+    filter(treatment %in% c('control','B'))
+)
+```
+
+-  We will see that, we can also run a linear regression to obtain the average treatment effects for A/B/N testings.
+
 ```{r}
-#| echo: true
-#| eval: false
-data_twitter_avg <- data_twitter %>%
-  group_by(treated) %>%
-  summarise() %>%
-  ungroup()
 
-data_twitter_avg$avg_post_n_activity[2] - data_twitter_avg$avg_post_n_activity[1]
+pacman::p_load(modelsummary, fixest)
+# run a linear regression model to estimate the treatment effects
 
-# is the difference statistically significant?
-t.test()
+# create dummy variables for treatment groups
+
+data_instagram <- data_instagram %>%
+mutate(treatment_factor = as.factor(treatment)) %>%
+mutate(treatment_factor = relevel(treatment_factor, ref = "control"))
+
+feols(fml = post_total_activity ~ treatment_factor,
+data = data_instagram) %>%
+modelsummary(stars = TRUE)
+
 ```
+
 :::
 
+::::
 
+Based on the analyses, it seems that both proposal A and proposal B have a significant positive impact on user engagement. However, we need to consider the costs and feasibility of implementing these features on Instagram. By conducting A/B/N testing, we can evaluate the effectiveness of different gamification strategies and make data-driven decisions to optimize user engagement on the platform.
 
-# Business recommendations
-
-Our A/B testing has explored the strategies for increasing user activity on social media platforms in the case of Twitter, with a particular focus on the effectiveness of gamification and the integration of celebrity influencers. It highlights the significance of user activity in platform governance, as it directly impacts value creation and platform sustainability. By incorporating game-like elements through gamification, platforms can effectively drive user behavior, increase participation, and achieve specific business objectives. The findings show that the gamification design by voting for celebrities or idols significantly increases users' key activity behavior, including the tweets, retweets, and comments, thus potentially helping the platform to achieve greater user engagement and potential monetization.
-
-Moreover, this project has discussed the emergence of celebrity influencers as a new business model in the online shopping environment. Integrating internet celebrities and idols into the platform provides opportunities for platforms to tap into their vast fan base and social influence. By leveraging the popularity of these influencers, platforms can effectively promote products, provide endorsements, and engage with customers through various interactive methods. This approach reflects the evolving landscape of marketing strategies in the digital age, and platforms utilizing this approach have witnessed increased user activity and engagement. As theorized, the findings of our study reveal that gamified voting system has significantly positive effects on users' tweeting, retweeting, and commenting behavior.
+# References {.unnumbered}

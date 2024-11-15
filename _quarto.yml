@@ -66,6 +66,14 @@ website:
                 text: "Lecture 2: A/B Testing"
           - section: "[Week 7] Linear Regression Models"
             contents:
+              - href: Week7-Lecture1.qmd
+                text: "Lecture 1: Improve User Engagement for Instagram Using A/B/N Testing"
+              - href: Week7-Lecture2.qmd
+                text: "Lecture 2: Linear Regression for Causal Inference"
+              - href: Case-CausalInference.qmd
+                text: "Case Study: Improve User Engagement for Instagram Using A/B/N Testing"
+          - section: "[Week 8] Endogeneity and Instrumental Variables"
+            contents:
               - LectureSlides.qmd
           - R-Exercise.qmd
       - section: "R Tutorials"

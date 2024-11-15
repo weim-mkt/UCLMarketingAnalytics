@@ -1,169 +1,347 @@
 ---
-author: Dr Wei Miao
-date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(6))`"
-date-format: long
-institute: UCL School of Management
-title: "Class 14 Marketing Mix Modeling"
-df-print: kable
-colorlinks: true
-code-line-numbers: true
-format:
-  html: 
-    toc: true
-    number-sections: true
-    page-layout: full
-    toc-depth: 2
-    code-line-numbers: true
-    code-copy: hover
-  beamer: 
-    toc: false
-    toc-title: ""
-    slide-level: 2
-    section-titles: true
-    theme: Frankfurt
-    colortheme: beaver
-    fonttheme: structurebold
-    navigation: horizontal
-    tbl-colwidths: auto
-    fontsize: 9pt
-    suppress-bibliography: true
-knitr:
-  opts_chunk:
-    echo: true
-    warning: true
-    message: true
-    error: true
-execute: 
-  freeze: auto
-editor_options: 
-  chunk_output_type: inline
-bibliography: references.bib
+date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(6))`"
+title: "Class 14 Linear Regression for Causal Inference"
 ---
 
-# Marketing Mix Modeling
 
-## Marketing Mix
+# Basics of Linear Regression
+
+```{r}
+#| echo: false
+
+pacman::p_load(dplyr,fixest, modelsummary, ggplot2, ggthemes)
+data_full <- read.csv("https://www.dropbox.com/scl/fi/2q7ppqtyca0pd3j486osl/data_full.csv?rlkey=gsyk51q27vd1skek4qpn5ikgm&dl=1")
+
+data_full <- data_full %>%
+    mutate(Income = ifelse(is.na(Income),
+        mean(Income, na.rm = T),
+        Income
+    )) %>%
+    mutate(total_spending = MntWines + MntFruits + MntMeatProducts + MntFishProducts + MntSweetProducts + MntGoldProds)
+```
+
+## Linear Regression Models
+
+-   A simple linear regression is a model as follows. 
+$$
+y_i = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k + \epsilon_i
+$$
+
+-   $y_i$: Dependent variable/outcome variable
+
+-   $x_k$: Independent variable/explanatory variable/control variable
+
+-   $\beta$: Regression coefficients; $\beta_0$: intercept (should always be included)
+
+-   $\epsilon_i$: Error term, which captures the deviation of Y from the line. Expected mean should be 0, i.e., $E[\epsilon|X]=0$
+
+## Linear Regression Models
+
+-   If we take the expectation of Y, we should have 
+$$
+E[Y|X] = \beta_0 + x_1 \beta_1 + x_2\beta_2+ \ldots + x_k\beta_k 
+$$
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 7/linear regression.png')
+```
+
+## Origin of the Name "Regression"
+
+-   The term "regression" was first coined by Francis Galton to describe a biological phenomenon: The heights of descendants of tall ancestors tend to regress down towards a normal average.
+
+-   The term "regression" was later extended by statisticians Udny Yule and Karl Pearson to a more general statistical context (Pearson, 1903).
+
+-   In supervised learning models, "regression" has a different meaning: when the outcome variable to be predicted is continuous, the task is called a regression task. This is because ML models are developed by computer science; causal inference models are developed by statisticians and economists.
+
+# Estimation of Coefficients
+
+## How to Run Regression in R
+
+-   In R, there are many packages that can run OLS regression. The basic function is `lm()`.
+
+-   In this module, we will be using the `fixest` package, because it's able to accommodate more complex regressions, especially high-dimensional fixed effects.^[Fixed effects are a type of control variable that is constant within a group, such as country, year, or individual, to control for unobserved heterogeneity. See this [link](https://towardsdatascience.com/fixed-effect-regression-simply-explained-ab690bd885cf).]
+
+```{r}
+#| echo: true
+pacman::p_load(modelsummary, fixest)
+
+OLS_result <- feols(
+    fml = total_spending ~ Income, # Y ~ X
+    data = data_full, # dataset from M&S
+)
+
+```
+
+## Report Regression Results
+
+\tiny
+```{r}
+#| echo: true
+modelsummary(OLS_result,
+    stars = TRUE # export statistical significance
+)
+```
+
+## Parameter Estimation: Univariate Regression Case
+
+-  Regressions with a single regressor are called univariate regressions. Let's take a **univariate regression** as an example: 
+
+$$
+total\_spending = a + b \cdot income  + \epsilon
+$$
+
+-   For each guess of a and b, we can compute the error for customer $i$, 
+
+$$
+e_i = total\_spending_{i}-a-b \cdot income_{i}
+$$
+
+-   We can compute the **sum of squared residuals (SSR)** across all customers
+
+$$
+SSR =\sum_{i=1}^{n}\left(total\_spending_{i}-a-b \cdot income_{i}\right)^{2}
+$$
+
+-   **Objective of estimation**: Search for the unique set of $a$ and $b$ that can minimize the SSR.
+
+-   This estimation method that minimizes SSR is called **Ordinary Least Square (OLS).**
+
+## Visualization: Estimation of Univariate Regression
+
+-   If in the M&S dataset, if we regress **total spending** (Y) on **income** (X)
 
 ::: {.content-visible when-format="beamer"}
-![](images/marketingmix.png){fig-align="center" width="250"}
+```{r}
+#| out-width: "50%"
+#| fig-align: "center"
+#| echo: false
+library(ggplot2)
+
+lm_obj <- lm(data = data_full,
+             total_spending ~ Income)
+
+get_ssr <- function(a,b){
+  return(sum(data_full$total_spending - a - b * data_full$Income)^2)
+}
+
+ggplot(data = data_full, 
+       aes(x = Income, y = total_spending)) + 
+  geom_point() + 
+  theme_stata() + 
+  geom_abline(slope = 0.004, intercept = 0, color = "red") + 
+  # geom_abline(slope = 0.004, intercept = 200, color = "blue") + 
+  geom_abline(slope = 0.06, intercept = - 552, color = "purple") + 
+  geom_abline(slope = lm_obj$coefficients[2], 
+              intercept = lm_obj$coefficients[1], color = "green") 
+  
+```
 :::
 
 ::: {.content-visible when-format="html"}
-![](images/marketingmix.png){fig-align="center" width="400"}
+```{r}
+#| fig-align: "center"
+#| echo: false
+library(ggplot2)
+
+lm_obj <- lm(data = data_full,
+             total_spending ~ Income)
+
+get_ssr <- function(a,b){
+  return(sum(data_full$total_spending - a - b * data_full$Income)^2)
+}
+
+ggplot(data = data_full, 
+       aes(x = Income, y = total_spending)) + 
+  geom_point() + 
+  theme_stata() + 
+  geom_abline(slope = 0.004, intercept = 0, color = "red") + 
+  # geom_abline(slope = 0.004, intercept = 200, color = "blue") + 
+  geom_abline(slope = 0.06, intercept = - 552, color = "purple") + 
+  geom_abline(slope = lm_obj$coefficients[2], 
+              intercept = lm_obj$coefficients[1], color = "green") 
+  
+```
 :::
 
-## What is Marketing Mix Modeling
+| Model                  | Color  | Sum of Squared Error    |
+|------------------------|--------|-------------------------|
+| $Y = -556.823 + 0.06 * X$  | Purple | `r get_ssr(-556.823,0.06)`  |
+| $Y = 0 + 0.004 * X$    | Red    | `r get_ssr(0,0.004)`    |
+| $Y = -556.823 + 0.022 * X$ | Green  | `r get_ssr(-556.823,0.022)` |
 
-::: block
-### Marketing Mix Modeling
+## Multivariate Regression
 
-Marketing Mix Modeling (MMM) is the use of statistical analysis to **estimate the causal impact** of various **marketing** **mix variables (**especially **pricing** and **promotions)** on **sales**.
-:::
-
--   **Core idea**: find an appropriate statistical model that can characterize the DGP between sales and various marketing mix variables. After estimating the causal effect of each variable, we are able to do budget optimization.
+-   The OLS estimation also applies to multivariate regression with multiple regressors.
 
 $$
-sales_t = \beta_0 + \beta_1Price_t + \beta_2Ads_t + \beta_3Channels_t + ... + \epsilon_t
+y_i = b_0 + b_1 x_{1} + ... + b_k x_{k}+\epsilon_i
 $$
 
-\small
-
--   <div>
-
-    > \[Project scope for Buberry in previous years\] "Marketing Mix Modelling is a holistic modelling technique that helps to estimate the effectiveness of marketing efforts. It enables the measurement of business drivers and provides insights to the stakeholders to make decisions regarding budget allocation. Bayesian Methods are currently regarded as one of the most advanced techniques to build these models. We already have Bayesian MMM models in place for some regions, and as part of this project, we would want to explore Hierarchical Bayesian MMM model for an easier expansion to other regions."
-
-    </div>
-
-# Steps to Build MMM
-
-## Phase 1: Data Collection
-
-We need to think about which marketing mix variables are likely affect your sales?
-
--   Channels for selling the products (online, offline, different locations)
-
--   Channels for advertising the product (TV, social media, search engine, influencer marketing, etc.)
-
--   Promotional activities in each period
-
-::: {.content-visible when-format="beamer"}
-![](images/class8_WhatToInclude.png){fig-align="center" width="254"}
-:::
-
-::: {.content-hidden when-format="beamer"}
-![](images/class8_WhatToInclude.png){fig-align="center" width="635"}
-:::
-
-## Phase 2: Modeling Considerations (Non-linear Effects)
-
-**What functional forms and specifications to use for each variable?**
-
-***Case 1***: Are [diminishing returns](https://www.investopedia.com/terms/l/lawofdiminishingmarginalreturn.asp) or any nonlinear effects expected on the variable?
-
--   e.g., **advertising saturation**: Increasing the amount of advertising increases the percentage of the audience reached by the advertising, hence increasing demand, but a linear increase in the advertising exposure doesn't have a similar linear effect on demand. Typically each incremental amount of advertising causes a progressively lesser effect on demand increase.
-
-::: {.content-visible when-format="beamer"}
-[![Ads Saturation (source: Wiki)](images/ad-saturation.png){fig-align="center" width="200"}](https://en.wikipedia.org/wiki/Advertising_adstock)
-:::
-
-::: {.content-hidden when-format="beamer"}
-[![Ads Saturation (source: Wiki)](images/ad-saturation.png){fig-align="center"}](https://en.wikipedia.org/wiki/Advertising_adstock)
-:::
-
-## Phase 2: Modelling Considerations (AdStock Analysis)
-
-***Case 2***: Advertising builds up product awareness among consumers. We can model the current awareness level as a stock variable.
-
--   Without new exposures, the stock of past ads eventually decay to zero
-
--   New ads increase awareness on top of the current stock level
-
--   Mathematically, we can model the ads stock as follows:
+-   **Objective of estimation**: Search for the **unique** set of $b$ that can minimize the **sum of squared residuals**.
 
 $$
-Adstock_t=NewAds_t+\lambda Adstock_{t-1}, \quad t=1, \ldots, n
+SSR= \sum_{i=1}^{n}\left(y_{i}-b_0 - b_1 x_{1} - ... - b_k x_{k} \right)^{2}
 $$
 
--   $\lambda$ depends on the industry, with a half-life range of around 7-- 12 weeks.
+# Interpretation of Coefficients
+
+## Coefficients Interpretation
+
+-   Now on your Quarto document, let's run a new regression, where the DV is $total\_spending$, and X includes $Income$ and $Kidhome$.
+
+\tiny
 
 ```{r}
-#| eval: false
-# for example, in R, we can mutate Adstock as follow:
-data_sales <- data_sales %>%
-  mutate(Adstock = NewAds + lag(Adstock) * 0.5 )
+#| echo: false
+feols(data = data_full,
+     fml = total_spending ~ Income + Kidhome) %>%
+  modelsummary(stars = T)
 ```
 
-## Phase 3: Model-Based Marketing Mix Optimization
+\normalsize
 
-The estimates from the MMM need to eventually address the profit maximization problem.
+-   **Controlling for** Kidhome, one unit increase in `Income` increases `totalspending` by £0.019.
 
--   The MMM model will produce a host of outputs that measure how each marketing mix variable affects sales.
--   We can then use the outputs to compute optimal levels of marketing mix variables for profit maximization (or other business objectives that align with the company's marketing strategy).
+## Standard Errors and P-Values
 
-## Toy Example: Optimal Pricing to Maximize Profit
+- If we collect all data from the whole population, the regression coefficient is called the **population regression coefficient**.
 
--   We can utilize the outputs to compute the optimal pricing[^1] $$
-    sales_t = 1000 - 20 * Price_t + 0.1 * Adstock_t+ \epsilon_t
-    $$
+-   Because the regression is estimated on a random sample of the population, if we rerun the regression on different samples from the same population, we would obtain a different set of **sample regression coefficients** each time.
 
-[^1]: In term 2's Operations Analytics module, you will learn how to find the optimal pricing, given the estimated marketing mix model.
+-   In theory, the sample regression coefficients estimates follows a **t-distribution**: the mean is the true $\beta$. The **standard error** of the estimates is the estimated standard deviation of the error.
 
-<!-- -->
+-  Knowing that the coefficients follow a t-distribution, we can test whether the coefficients are statistically different from 0 using **hypothesis testing**.
 
--   Then we know, conditional on $X_t$, the total revenue would be $$
-    revenue = Price *sales = Price * (1000 - 20 Price_t + 0.1 Adstock_t)
-    $$
+-   `Income`/`Kidhome` is statistically significant at the 1% level.
 
--   We can derive the optimal price to maximize revenue. $$
-    \partial revenue/\partial price = (1000 - 20 Price_t + 0.1 Adstock_t) - 20 Price = 0
-    $$
+## R-Squared
 
--   The optimal price that can maximize the revenue/profit is $\frac{1000 + 0.1 Adstock_t}{40}$
+-   R-squared (R2) is a statistical measure that represents the proportion of the variance for a dependent variable that's explained by all included variables in a regression.
 
-    -   There is an optimal price to set at each ads level. The higher ads spending, the higher price we can charge customers.
+-   Interpretation: 66% of the variation in `total_spending` can be explained by `Income` and `Kidhome`.
 
-## After-class
+-   As the number of variables increases, the $R^2$ will naturally increase, so sometimes we may need to penalize the number of variables using the so-called **adjusted R-squared**.
 
--   [A complete guide to Marketing Mix Modeling](https://www.latentview.com/marketing-mix-modeling/)
+::: callout-important
 
--   [Bayesian Marketing Mix Modeling](https://towardsdatascience.com/understanding-bayesian-marketing-mix-modeling-a-deep-dive-into-prior-specifications-af400adb836e)
+R-Squared is only important for supervised learning prediction tasks, because it measures the predictive power of the X. However, in causal inference tasks, $R^2$ does not matter much.
+
+:::
+
+
+# Regression for A/B/N Testing
+
+## Categorical variables
+
+::: {.content-visible when-format="beamer"}
+```{r}
+#| echo: false
+pacman::p_load(dplyr,ggplot2,ggthemes)
+# Load both datasets
+data_full <- read.csv(file = "https://www.dropbox.com/scl/fi/hhweiqsuwgcwgd1jiuyte/data_full.csv?rlkey=jwyd9z409b5wpwz41ow8d1otj&dl=1", 
+                      header = T)
+```
+:::
+
+::: {.content-visible when-format="html"}
+```{r}
+#| echo: true
+pacman::p_load(dplyr,ggplot2,ggthemes)
+# Load both datasets
+data_full <- read.csv(file = "https://www.dropbox.com/scl/fi/hhweiqsuwgcwgd1jiuyte/data_full.csv?rlkey=jwyd9z409b5wpwz41ow8d1otj&dl=1", 
+                      header = T)
+```
+:::
+
+-   So far, the independent variables we have used are `Income` and `Kidhome`, which are **continuous variables**.
+
+-   Some variables are intrinsically not countable; we need to treat them as **categorical variables**, e.g., gender, education group, city.
+
+- In A/B/N testings, the treatment assignment is also a categorical variable. 
+
+## Handling Categorical Variables in R using `factor()`
+
+-   In R, we need to use a function `factor()` to explicitly inform R that this variable is a categorical variable, such that statistical models will treat them differently from continuous variables.
+    -   e.g., we can use `factor(Education)` to indicate that, `Education` is a categorical variable.
+
+```{r}
+#| echo: true
+data_full <- data_full %>%
+  mutate(Education_factor = factor(Education))
+```
+
+-   We can use `levels()` to check how many categories there are in the factor variable.
+    -   e.g., `Education` has 5 different levels.
+
+```{r}
+#| echo: true
+# check levels of a factor
+levels(data_full$Education_factor)
+```
+
+
+## Handling Categorical Variables using `factor()`
+
+-   `factor()` will check all levels of the categorical variables, and then choose the default level based on alphabetic order.
+
+-   If needed, we can revise the baseline group to another group using `relevel()` function.
+
+```{r}
+#| echo: true
+# Create a new factor variable, with Basic as the baseline.
+data_full <- data_full %>%
+    mutate(Education_factor_2 = relevel(Education_factor,
+        ref = "Basic"
+    ))
+
+levels(data_full$Education_factor_2)
+```
+
+
+## Running Regression with Factor Variables
+
+\tiny
+
+```{r}
+#| echo: true
+#| eval: false
+pacman::p_load(fixest, modelsummary)
+
+feols_categorical <- feols(
+    data = data_full,
+    fml = total_spending ~ Income + Kidhome + Education_factor_2
+)
+
+modelsummary(feols_categorical,
+    stars = T,
+    gof_map = c("nobs", "r.squared"))
+```
+
+## Interpretation of Coefficients for Categorical Variables
+
+-   In general, R encode factor variables with **K** levels into **K-1** coefficients, with one level as the baseline group.
+-   The interpretation of coefficients for factor variables: Ceteris paribus, compared with the ***\[baseline group\]***, the ***\[outcome variable\]*** of ***\[group X\]*** is higher/lower by ***\[coefficient\]***, and the coefficient is statistically ***\[significant/insignificant\]***.
+    -   Ceteris paribus, compared with the basic education group, the total spending of PhD group is lower by 153.190 dollars. The coefficient is statistically significant at the 1% level.
+-   Now please rerun the regression using `Education_factor` and interpret the coefficients. What's your finding?
+    -   Conclusion: factor variables can only measure the relative difference in the outcome variable across different groups rather than telling us about the absolute levels of each group.
+
+## Application of Categorical Variables in Marketing
+
+-   Quantify the treatment effects in A/B/N testing, where $Treatment_i$ is a categorical variable that specifies the treatment group customer $i$ is in:
+
+$$
+Outcome_i = \beta_0 + \delta Treatment_i + \epsilon
+$$
+
+-   Quantify the brand premiums or country-of-origin effects:
+
+$$
+Sales_i = \beta_0 + \beta_1 Brand_i + \beta_2 Country_i + X\beta +\epsilon
+$$
+
+## Application: A/B/N Testing Analysis Using Regression
+
+- Let's analyze our Instagram gamification experiment data using linear regression.

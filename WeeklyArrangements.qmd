@@ -6,7 +6,7 @@ format:
 date: "2024/09/22"
 institute: UCL School of Management
 author: Wei Miao
-date-modified: "2024/09/22"
+date-modified: "2024/11/11"
 date-format: long
 ---
 
@@ -66,9 +66,9 @@ After each week's lecture, you will find a list of After-class reading and exerc
 +------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
 | 6                            | Causal Inference                                        | Rubin Causal Model, Potential Outcome Framework, and A/B Testing |                                                                                 |
 +------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| 7                            | Marketing Mix Modeling                                  | Linear Regression and ordinary least square                      | Testing Marketing Ideas Using A/B Testing (I)                                   |
+| 7                            | A/B/N Testing                                           | Linear Regression for Causal Inference                           | Improve User Engagement for Instagram Using A/B/N Testing                       |
 +------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| 8                            | Platform Design                                         | Instrumental variable and two-stage least square                 | Testing Marketing Ideas Using A/B Testing (II)                                  |
+| 8                            | Platform Design                                         | Instrumental variable and two-stage least square                 |                                                                                 |
 |                              |                                                         |                                                                  |                                                                                 |
 | **2nd assignment due**       |                                                         |                                                                  |                                                                                 |
 |                              |                                                         |                                                                  |                                                                                 |
@@ -256,7 +256,6 @@ You can try your best to use what we have learned in Week 1 to complete the case
 -   Case Study: Customer Targeting Using Supervised Learning for Marks & Spencer
 
     -   Please carefully read the case background before class, and complete the pre-class coding exercise.
-
 :::
 
 ## Class 9: Supervised Learning and Tree-based Models
@@ -318,12 +317,10 @@ You can try your best to use what we have learned in Week 1 to complete the case
 ::: callout-important
 ### Pre-class preparation
 
--   Case study: Testing Marketing Ideas Using A/B Testings. Please carefully read the case background before class; we will be discussing the case in class
-
--   Conduct a 5C situation analysis for the case study.
+-   Case study: Improve User Engagement for Instagram Using A/B/N Testing. Please carefully read the case background before class; we will be discussing the case in class
 :::
 
-## Class 13: (Case Study) Testing Marketing Ideas Using A/B Testings
+## Class 13: (Case Study) Improve User Engagement for Instagram Using A/B/N Testing
 
 -   What you will learn
 
@@ -331,13 +328,13 @@ You can try your best to use what we have learned in Week 1 to complete the case
 
     -   The business model of social media platforms
 
-    -   Design an A/B testing to solve real-life marketing problems
+    -   Design an A/B testing to help Instagram to improve user engagement
 
 -   After-class reading and exercise
 
     -   (optional) [Test and learn: How a culture of experimentation can help grow your business](https://www.thinkwithgoogle.com/intl/en-gb/marketing-strategies/data-and-measurement/test-learn-experiment-culture/)
 
-## Class 14: Linear Regression and Ordinary Least Square
+## Class 14: Linear Regression for Causal Inference
 
 -   What you will learn
 
@@ -348,8 +345,6 @@ You can try your best to use what we have learned in Week 1 to complete the case
     -   How to run linear regression models in R
 
     -   How to interpret the regression coefficients and statistics
-
-    -   How to model non-linear relationship using linear regression
 
     -   How to interpret the coefficients of categorical variables
 
