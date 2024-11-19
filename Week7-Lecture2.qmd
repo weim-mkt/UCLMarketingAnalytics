@@ -10,7 +10,7 @@ title: "Class 14 Linear Regression for Causal Inference"
 #| echo: false
 
 pacman::p_load(dplyr,fixest, modelsummary, ggplot2, ggthemes)
-data_full <- read.csv("https://www.dropbox.com/scl/fi/2q7ppqtyca0pd3j486osl/data_full.csv?rlkey=gsyk51q27vd1skek4qpn5ikgm&dl=1")
+data_full <- read.csv("images/Week 7/data_full.csv")
 
 data_full <- data_full %>%
     mutate(Income = ifelse(is.na(Income),

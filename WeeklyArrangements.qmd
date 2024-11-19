@@ -358,23 +358,23 @@ You can try your best to use what we have learned in Week 1 to complete the case
 
 -   What you will learn
 
-    -   How to build linear regression-based marketing mix models to solve pricing and promotion optimization problems
+    - Understand the reasoning why linear regression can almost never provide causal effects from non-experimental data.
+
+    - Understand the concept of endogeneity and its causes.
 
 -   After-class reading and exercise
 
     -   [A complete guide to Marketing Mix Modeling](https://www.latentview.com/marketing-mix-modeling/)
 
-## Class 16: Instrumental Variables
+## Class 16: Instrumental Variables and Two-Stage Least Square
 
 -   What you will learn
 
     -   Intuition of why instrumental variables solve endogeneity problems
 
-    -   The two requirements of a valid instrumental variable and how to find good instruments
+    -   The requirements of a valid instrumental variable and how to find good instruments
 
     -   Apply two-stage least square method to estimate the causal effects using instrumental variables
-
-    -   Application of instrumental variables in the marketing and business field
 
 -   After-class reading and exercise
 

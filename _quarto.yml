@@ -74,6 +74,12 @@ website:
                 text: "Case Study: Improve User Engagement for Instagram Using A/B/N Testing"
           - section: "[Week 8] Endogeneity and Instrumental Variables"
             contents:
+              - href: Week8-Lecture1.qmd
+                text: "Lecture 1: Endogeneity"
+              - href: Week8-Lecture2.qmd
+                text: "Lecture 2: Instrumental Variables and Two-Stage Least Squares"
+          - section: "[Week 9] Natural Experiment"
+            contents:
               - LectureSlides.qmd
           - R-Exercise.qmd
       - section: "R Tutorials"

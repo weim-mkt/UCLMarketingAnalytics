@@ -1,0 +1,340 @@
+---
+date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(7))`"
+title: "Class 15 Endogeneity and Its Causes"
+---
+
+# Causal Inference with OLS
+
+## Class Objective 
+
+- Understand the reasoning why linear regression can almost never provide causal effects from non-experimental data.
+    - Direct and Indirect Effects
+    - Causal Inference from Regression Models
+    - Understand the difference between RCT and non-experimental data.
+
+
+- Understand the concept of endogeneity and its causes.
+    - Omitted Variable Bias
+    - Reverse Causality
+    - Measurement Error (Optional)
+
+## Causal Effect from Non-Experimental Secondary Data
+
+-   ***Task***: M&S wants to understand the causal impact of customer $Income$ on customer $Spending$, i.e., the Marginal Propensity to Consume (MPS).[^1]
+
+[^1]: In economics, MPC refers to the proportion of an additional unit of income that is spent on consumption.
+
+```{r}
+#| echo: false
+pacman::p_load(dplyr, ggplot2, ggthemes)
+# Load both datasets
+data_full <- read.csv("images/Week 7/data_full.csv")
+
+data_full <- data_full %>%
+    mutate(Income = ifelse(is.na(Income),
+        mean(Income, na.rm = T),
+        Income
+    )) %>%
+    mutate(total_spending = MntWines + MntFruits + MntMeatProducts + MntFishProducts + MntSweetProducts + MntGoldProds)
+```
+
+-   Please run the two regressions on your Quarto document and export the regression table:
+
+    -   Regression 1: $Spending$ \~ $Income$
+
+    -   Regression 2: $Spending$ \~ $Income$ + $Kidhome$
+
+## Regression Results
+
+::: {.content-visible when-format="html"}
+
+```{r}
+#| echo: true
+pacman::p_load(fixest,modelsummary)
+
+regression1 <- feols(data = data_full,
+     fml = total_spending ~ Income ) 
+
+regression2 <- feols(data = data_full,
+     fml = total_spending ~ Income + Kidhome) 
+
+
+
+modelsummary(list(regression1,regression2),
+             stars = TRUE,
+             gof_map = c('nobs','r.squared'))
+```
+:::
+
+::: {.content-visible when-format="beamer"}
+```{r}
+#| echo: false
+pacman::p_load(fixest,modelsummary)
+
+regression1 <- feols(data = data_full,
+     fml = total_spending ~ Income ) 
+
+regression2 <- feols(data = data_full,
+     fml = total_spending ~ Income + Kidhome) 
+
+
+
+modelsummary(list(regression1,regression2),
+             stars = TRUE,
+             gof_map = c('nobs','r.squared'))
+```
+:::
+
+-   ***Question***: if we want to evaluate income's causal effect on spending, which value (0.022\*\*\***,** 0.019\*\*\*) should we use?
+
+## Direct and Indirect Effects
+
+Using our common sense, let's think about how income can causally affect total spending:
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 8/directindirecteffect.png')
+```
+
+::: columns
+::: {.column width="50%"}
+-   Causal effect
+    -   Direct effect keeping other variables ﬁxed
+:::
+
+::: {.column width="50%"}
+-   Total Effect
+    -   Direct effect + indirect effects through other variables
+:::
+:::
+
+## Causal Inference from Regression Models
+
+-   To obtain causal effects from non-experimental data, we refer to obtaining the **direct effects** of a focal $X$ variable on the outcome variable $Y$.
+
+-   However, if we do not include `Kidhome` in the regression, the regression coefficient 0.022 measures the **total effects of income,** including
+
+    -   **direct effects** of income on total spending, 0.019
+
+    -   **indirect effects** of income on other intermediate variables, which in turn affect income. These intermediate variables are called **confounding variables** or **confounders**.
+
+-   Therefore, it is important to **include all other confounding variables**, which affect income and total spending at the same time, to **control for the indirect effects** via other variables, in order to tease out the clean direct effect of income on total spending.
+
+## Practical Tips for Running Regression Models for Causal Inference
+
+1.  For causal inference tasks, we need to use business senses to decide which confounding variables to control. We face the **good control and bad control problems**.[^2]
+
+[^2]: Angrist, Joshua D., and Jörn-Steffen Pischke. *Mostly harmless econometrics: An empiricist's companion*. Princeton university press, 2009.
+
+\
+
+> "Some variables are bad controls and should not be included in a regression model, even when their inclusion might be expected to change the short regression coefficients. Bad controls are variables that are themselves outcome variables in the notional experiment at hand. That is, bad controls might just as well be dependent variables too. Good controls are variables that we can think of having been fixed at the time the regressor of interest was determined."
+
+::: {.content-visible when-format="beamer"}
+## Practical Tips for Running Regression Models (Cont.)
+:::
+
+2.  Sometimes, control variables may be statistically insignificant, they should **NOT** be removed from the regression because they still serve the purpose of control variables.
+
+3.  A high correlation between independent variables is generally not an issue in practice. However, if some variables are mechanically correlated, then we should not put them altogether in the regression to avoid perfect collinearity problems.
+
+4. For correct statistical inference, we should construct the correct standard errors
+    
+    -   [**Robust standard errors**](https://en.wikipedia.org/wiki/Heteroskedasticity-consistent_standard_errors) for cross-sectional data. This is to account for the heteroskedasticity of errors. `vcov = "hetero"` in `feols()`.
+    -   [**Clustered robust standard errors**](https://en.wikipedia.org/wiki/Clustered_standard_errors) for panel data or longitudinal with group structures. This is to account for the correlation of errors within the same group. `cluster = ~ ID` in `feols()`.
+        
+***Question***: what is the best you can do with `data_full` to estimate the causal effect of income on spending?
+
+## Causal Inference from Regressions
+
+Now that we have included `Kidhome` to tease out the effect of kids, what problems do we still have that prevent us from getting causal effect of income on total spending?
+
+-   Due to data availability, we are never able to include all confounding variables in the regression. Therefore, strictly speaking, we can **never obtain causal effects** from **non-experimental data** by merely controlling confounding variables in a linear regression.
+
+-   Mathematically speaking, because we can never control all confounding factors, the error term is always correlated with income to some extent, violating the **exogeneity assumption** of a linear regression model $E[\epsilon|X] = 0$.
+
+## Revisit RCT: the Gold Standard of Causal Inference
+
+-   Why RCTs are the gold standard for causal inference? Why we can obtain causal inference from primary data collected from RCTs?
+    -   If we randomize people into different income groups, we can then collect the `total_spending` for each individual in each `Income` group.
+    -   We can run a linear regression to examine the impact of `Income` on `total_spending`.
+
+$$
+Spending = \beta_0 + \beta_1Income + \epsilon
+$$
+
+-   In the above regression, are there still any confounding effects?
+
+::: {.content-visible when-format="html"}
+No, there are no confounders remaining, because Income is randomized, so Income should be uncorrelated with anything. Thus no confounders remain.
+:::
+
+## Comparison of RCT versus Secondary Data
+
+::: columns
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 8/directindirecteffect.png')
+```
+
+-   In non-experiment setting without randomization, `Income` can be correlated with other unobserved confounding factors
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 8/RCTDirectEffect.png')
+```
+
+-   In experiment setting with randomization, `Income` is randomized so should be uncorrelated with any other unobserved factors.
+
+:::
+:::
+
+# Endogeneity: Omitted Variable Bias
+
+## Endogeneity
+
+::: block
+### Endogeneity
+
+Endogeneity refers to an econometric issue with OLS linear regression, in which a focal explanatory variable is correlated with the error term, such that the **Conditional Independence Assumption (CIA)** for OLS linear regression, $E[\epsilon|X] = 0$, is violated.
+:::
+
+## Cause I: Omitted Variable Bias
+
+::: block
+### Omitted Variable Bias (OVB)
+
+An omitted variable is a determinant of the outcome variable $y_i$ that is correlated with the focal explanatory variable $x_i$, but is not included in the regression, either due to data unavailability or ignorance of data scientists.
+:::
+
+-   Two conditions for omitted variable bias
+
+    -   The omitted variable affects the dependent variable.
+
+    -   The omitted variable is correlated with the focal explanatory variable.[^3]
+
+[^3]: If the omitted variable is uncorrelated with X, then we do not have OVB problem, but the error term will have a larger noise and coefficients will have larger standard errors. Therefore, it's better to control these variables if possible.
+
+## Example I of OVB
+
+-   If we would like to understand the causal effect of `Education` on a person's `salary`.
+
+$$
+Salary_t = \beta_0 + \beta_1 Education_t + \epsilon_t
+$$
+
+-   Can we get causal effect from this regression? What would be the issue here?
+
+::: {.content-visible when-format='html'}
+
+> The issue here is that `Education` is correlated with other unobserved factors, such as `IQ`, `personality`, `family background`, etc. These unobserved factors may also affect `salary`. Therefore, the error term $\epsilon$ is correlated with `Education`, violating the exogeneity assumption of OLS regression.
+
+:::
+
+## Example II of OVB
+
+-   When predicting unit sales from prices, the common practice in the industry is to regress the sales in each period on the price in each period (marketing mix modeling).
+
+$$
+Sales_t = \beta_0 + \beta_1 Price_t + \epsilon_t
+$$
+
+-   However, is this regression correct?
+
+::: {.content-visible when-format='html'}
+
+> The issue here is that the price is correlated with other unobserved factors, such as `brand image`, `product quality`, `advertising`, etc. These unobserved factors may also affect `sales`. Therefore, the error term $\epsilon$ is correlated with `Price`, violating the exogeneity assumption of OLS regression.
+
+:::
+
+::: {.content-visible when-format="beamer"}
+## Example II of OVB
+:::
+
+-   Very often, if we regress sales only on price, we get a positive coefficient for price.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 8/pricesales.png')
+```
+
+# Endogeneity: Reverse Causality
+
+## Cause II: Reverse Causality (Simultaneity)
+
+::: block
+### Reverse Causality
+
+Reverse causality refers to the phenomenon that the independent variable $X_i$ affects the dependent variable $y_i$ and the dependent variable $y_i$ also affects the independent variable $X_i$ at the same time.
+:::
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: "2cm"
+knitr::include_graphics('images/Week 8/ReverseCausality.png')
+```
+
+## Example I of Reverse Causality (Simultaneity)
+
+-   Besides potential omitted variable biases, there may also exist reverse causality problems with marketing mix modelling.
+
+$$
+Sales_t = \beta_0 + \beta_1 Price_t + \epsilon_t
+$$
+
+-   Price affects demand, and demand affects sellers' price setting decisions.
+    -   Higher price leads to lower sales. (X =\> Y)
+    -   If sellers expect higher demand, sellers may increase the price to increase profits. (Y =\> X)
+
+## Example II of Reverse Causality (Simultaneity)
+
+-   UberEat interview question: If we have historical data on **number of restaurants on UberEat** in each month, and **the total number of orders in each month**, can we run an OLS regression to get the causal impact of network effect?
+
+$$
+NumOrders_t = \beta_0 + \beta_1 NumRestaurants_t + \epsilon_t
+$$
+
+-   If not, how can we measure the causal effects for UberEat?
+
+::: {.content-hidden when-format="beamer"}
+We need to run A/B testings and randomize how many restaurants a customer can see on their apps.
+:::
+
+-   This question is not just limited to UberEat; it is in fact related to any platform business with network effect!
+
+    -   Amazon; Airbnb; Uber Ridesharing; etc.
+
+# Endogeneity: Measurement Error
+
+## Cause III: Measurement Error (Optional)
+
+Suppose that a perfect measure of an independent variable is impossible. That is, instead of observing $x^{real}$, what is actually observed is $x^{observed} = x^{real} + \nu$ where $\nu$ is the measurement error with random "noise". In this case, a model given by 
+$$ 
+y_i=\alpha+\beta x^{observed}_i+\varepsilon_i
+$$ 
+
+would not give us the coefficients from the regression we actually want to run 
+$$ 
+y_i=\alpha+\beta x^{real}_i+\varepsilon_i
+$$
+
+This endogeneity issue is called **measurement error**. 
+
+## When to Worry About Measurement Errors?
+
+- This problem needs to be addressed when you expect a high measurement error in the **independent variable**, especially when using **proxy variables**. For example, 
+    - `grades` as a proxy for `Ability`
+    - `ESGRating` as a proxy for firms' `ESGPerformance`
+    - `audit fee` as a proxy for `audit quality`
+
+- Meanwhile, if the measurement error is in the **dependent variable**, and the expectation of the measurement error is zero, then the OLS estimator is still unbiased. 
