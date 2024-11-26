@@ -1599,7 +1599,7 @@
     "href": "Week9-Lecture1.html#join-multiple-data-frames",
     "title": "Class 17 Case Study: Estimating Causal Effects for Platform Businesses Using Instrumental Variables",
     "section": "2.3 Join Multiple Data Frames",
-    "text": "2.3 Join Multiple Data Frames\n\nWe can consolidate (marge, join) multiple data frames using the left_join() function in the dplyr package.\nWe need to determine the main data frame that will be retained as the final data for analyses. The other data frame will be used as the supplementary data to provide additional information.\n\nWe often use the most granular data frame (usually panel data) as the main data frame\nThe less granular data such as demographic data can be joined onto the main data frame\n\nIn this case, we will use the driver data as the main data frame and join the COVID-19 data onto it.",
+    "text": "2.3 Join Multiple Data Frames\n\nWe can consolidate (merge, join) multiple data frames using the left_join() function in the dplyr package.\nWe need to determine the main data frame that will be retained as the final data for analyses. The other data frame will be used as the supplementary data to provide additional information.\n\nWe often use the most granular data frame (usually panel data) as the main data frame\nThe less granular data such as demographic data can be joined onto the main data frame\n\nIn this case, we will use the driver data as the main data frame and join the COVID-19 data onto it.",
     "crumbs": [
       "Lectures",
       "[Week 9] Natural Experiment",
