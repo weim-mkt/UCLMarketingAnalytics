@@ -1,0 +1,430 @@
+---
+title: "Estimating Causal Effects for Ride-sharing Platforms with Instrumental Variables: A Case Study"
+date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(8))`"
+thanks: "This case was prepared by Wei Miao, UCL School of Management, University College London for MSIN0094 Marketing Analytics module. This case was developed to provide material for class discussion rather than to illustrate either effective or ineffective handling of a business situation. Names and data may have been disguised or fabricated. Please do not circulate without permission. Copyrights reserved."
+subtitle: "MSIN0094 Case Study"
+author: Dr. Wei Miao
+institute: UCL School of Management
+date-format: long
+colorlinks: true
+code-line-numbers: true
+format:
+  html: default
+  pdf: 
+    number-sections: true
+    toc: false
+    number-depth: 2
+    fontsize: 9pt
+    linestretch: 1.25
+    knitr:
+      opts_chunk:
+        echo: false
+        include: false
+        warning: false
+        message: false
+        error: true
+knitr:
+  opts_chunk:
+    echo: true
+    warning: false
+    message: false
+    error: false
+execute: 
+  freeze: auto
+bibliography: references.bib
+---
+
+# Industry Background
+
+The sharing economy has been booming in recent years, leading to a rapid increase in jobs in the "gig" economy. According to Hossain (2020), in the US alone, the sharing economy sector has created 6.23 million jobs with 78 million service providers, and 800 million people engage with it. The transportation sector is one of the most salient beneficiaries of the burgeoning sharing economy. For instance, commuting to work by shared bicycle (e.g., Citi Bike) has become an increasingly popular transportation option [@fordRidingWallStreet2019]. The ride-sharing service (e.g., Uber) allows drivers to enjoy more flexibility in work, which is proven valuable to drivers and has improved capacity utilization [@cramerDisruptiveChangeTaxi2016]. 
+
+The COVID-19 pandemic has brought unprecedented disruptions to many industries, and the transportation industry is among the most disrupted ones. Further, the COVID-19 has raised concerns about the survivability of the sharing economy in general. It is reported that gross bookings on Uber rides were down by 75% in the three months through June 2020, and that Lyft's April ridership was down by 75% from April 2019. Some Uber drivers were extremely cautious about their shift decisions and taking measures to prevent COVID from spreading.
+
+Unlike the traditional taxi market, where taxi drivers rent vehicles from taxi companies and then directly provide transportation services to consumers, modern ride-sharing platforms typically serve as the matching intermediary between drivers and passengers. Due to such two-sided market nature, the profitability of modern ride-sharing platforms (and sharing economy in general) highly depends on the interdependence or externality between the two sides of economic agents [@rysmanEconomicsTwosidedMarkets2009]. Therefore, **a ride-sharing platform would benefit from the network effect if more drivers work for them.** It is thus managerially important for the ride-sharing platform to understand whether COVID-19 has affected drivers' labor supply patterns and if yes, the magnitude of the effect across drivers and over time.
+
+In this case study, we will answer the above causal question using the instrumental variable method.
+
+# Data Description and Data Wrangling
+
+## Driver Daily Trip Data
+
+In a ride-sharing company's database, the raw trip log records each trip's details, including the driver's ID, the passenger's ID, the booking date and time, the trip's start and end locations, the trip's distance, the trip's fare, and the trip's status (e.g., completed, cancelled, or passenger no shows). The data science team has aggregated the **raw trip-level data** into a **driver-day** level **panel data**. 
+
+Panel data structure refers to a dataset that includes multiple observations over time for the same units (in our case, drivers). It combines cross-sectional data (observations at a single point in time) and time series data (observations of a single subject over multiple time periods), thus enabling analysis that captures both individual dynamics and temporal variations.
+
+Our first data set summarizes drivers' daily shift each day in April 2020, right during the period when the pandemic began to spread in the UK. The data set consists of a random sample of around 4000 drivers across 3 UK cities (anonymized as `g`, `s`, and `c`) in 2020.
+
+```{r}
+#| echo: false
+pacman::p_load(dplyr, tidyr, broom)
+# load the driver data from dropbox
+data_driver <- read.csv("https://www.dropbox.com/s/9qisr9zau53gix6/data_driver.csv?dl=1")
+data_driver %>%
+    glimpse()
+```
+
+## COVID-19 Data
+
+To measure the severity of COVID-19, the data science team collected daily number of new cases in each city from the government database.
+
+```{r}
+data_covid <- read.csv("https://www.dropbox.com/s/j5vs1egwl5j51f4/data_covid.csv?dl=1")
+```
+
+## Data Wrangling
+
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+-   Join the two datasets using `dplyr`. Please observe the data structure of the two datasets and carefully think about how we should do the data join in this case. Explain your rationale.
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+-   Join the two datasets using `dplyr`. Please observe the data structure of the two datasets and carefully think about how we should do the data join in this case. Explain your rationale.
+
+### Answer
+
+```{r}
+data_driver <- data_driver %>%
+    left_join(data_covid, by = c("city" = "city", "booking_date" = "booking_date"))
+
+```
+
+-  We use `left_join()` to join the two datasets. The `left_join()` function keeps all rows from the left data frame (`data_driver`) and only the rows from the right data frame (`data_covid`) that match based on the common columns (`city` and `booking_date`). In layman's terms, we are adding the COVID-19 data for each city and each day to the driver data. Since the driver data is the main data frame, we use it as the left data frame. 
+
+- The `by` argument specifies the columns to match on. In this case, we match the `city` and `booking_date` columns in both data frames. In other words, drivers in the same city and on the same day will have the corresponding COVID-19 data joined to their records.
+
+- After the join, the `data_driver` data frame will contain the COVID-19 data for each city and each day, which can be used for further analysis.
+
+```{r}
+
+data_driver %>%
+    slice(1:10)
+
+```
+
+:::
+
+:::
+
+## Key Dependent Variables
+
+To facilitate the empirical analysis of drivers' responses to COVID-19, the data science team has computed key outcome variables of interest for each driver, including both extensive margin (i.e., whether to work) and intensive margin (i.e., how much to work) of drivers' labor supply. 
+
+1.  **Whether or not to work on a day**, a binary outcome variable which equals 1 if a driver has at least one ride request on the day and 0 otherwise. We can use this variable to measure drivers' shift decision, i.e., willingness to work on a day, which proxies for the extensive margin of drivers' labor supply. It is ambiguous ex-ante how the number of new cases affects a driver's shift decision. On the one hand, more new cases may increase the risk of infection, which decease drivers' expected wellbeing, and therefore discourage drivers from working on a specific day; on the other hand, fewer drivers on the street suggest less competition among drivers and therefore higher chances of getting a passenger and potentially higher hourly earnings, which may motivate drivers to work. It is important for the ride-sharing company to understand how the severity of COVID-19 affects drivers' willingness to work, so that the company can adjust their stimulus plans for drivers accordingly.
+2.  **Total** **number of completed orders**, which contain three aspects of information which are of policy and managerial interest. First, the variable can proxy for the length of drivers' daily labor supply. Conditional on working, if a driver decides to work for longer hours, then we expect the driver to have a larger number of requests/orders. Second, both variables contain information on consumer demand. We expect the total number of requests/orders to decrease if there is a lower demand for ride-sharing service from consumers due to the COVID-19 outbreak. Finally, both variables can measure the intensity of competition among drivers. Keeping the level of demand fixed, the total number of requests/orders would be larger when there are fewer drivers working on the day. Due to the complexity of information contained, ex-ante, it is not straightforward how the COVID-19 measures affect the total number of orders for individual drivers.
+3.  **Earnings**. Earnings measure the driver's income from providing ride-sharing services, which is highly correlated with the number of completed orders and total trip distance. It allows us to directly assess the impact of the COVID-19 on drivers' financial wellbeing.
+4.  **Average trip distance**. In our empirical context, drivers cannot reject a booking request once being matched with a passenger, therefore, the trip distance is largely determined by passengers. Since passengers may be reluctant to take long distance trips during the pandemic, we expect a negative impact of the number of new cases on the average trip distance.
+
+
+# Empirical Analysis
+
+## OLS Linear Regression 
+
+To empirically investigate the causal impact of COVID-19 cases on driver behavior, we can first try linear regressions to regress the labor supply measures of driver $i$, in city $j$, on day $t$ on the COVID-19 measure and other covariates as follows:
+
+$$
+LaborOutcome_{ijt} = \beta_0 + \alpha NewCases_{jt} + \varepsilon_{ijt}
+$${#eq-ols}
+
+where $LaborOutcome_{ijt}$ is the dependent variable of interest, $NewCases_{jt}$ is the daily new COVID-19 cases in city $j$ on day $t$, and $\varepsilon_{ijt}$ is the error term.
+
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Please run linear regressions based on the above equation, with the outcome being the aforementioned dependent variables and explanatory variable being new cases. Please report the results in a single table.
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+Please run linear regressions based on the above equation, with the outcome being the aforementioned dependent variables and explanatory variable being new cases. Please report the results in a single table.
+
+### Answer
+
+```{r}
+#| label: tbl-ols
+#| tbl-cap: "OLS Regression Results"
+pacman::p_load(fixest, modelsummary)
+
+# run the 4 OLS regressions below
+OLS_is_work <- feols(
+    fml = is_work ~ new_cases,
+    data = data_driver
+)
+OLS_income <- feols(
+    fml = income ~ new_cases,
+    data = data_driver
+)
+OLS_n_order <- feols(
+    fml = n_order ~ new_cases,
+    data = data_driver
+)
+OLS_avg_distance <- feols(
+    fml = avg_distance ~ new_cases,
+    data = data_driver
+)
+
+# Use a list() to store the 4 OLS regression results into one R list, and then use modelsummary() to output the results in a single table
+list(
+    "Work" = OLS_is_work,
+    "shift income" = OLS_income,
+    "# orders" = OLS_n_order,
+    "avg distance" = OLS_avg_distance
+) %>%
+    modelsummary(
+        gof_map = c("nobs", "r.squared"),
+        stars = TRUE
+    )
+```
+
+:::
+
+:::
+
+## Fixed Effect OLS Regressions
+
+What confounding factors do we need to control in the above OLS regressions to mitigate the omitted variable bias?
+
+We first need to include **driver fixed effects** to control for **driver-specific** characteristics that may affect drivers' labor supply patterns. Such characteristics include, but are not limited to, the driver's socio-demographic characteristics (e.g., gender and age), the driver's degree of risk aversion, whether a driver is driving full-time or part-time, and the driver's innate abilities to search for passengers, etc.
+
+For instance, less risk-averse drivers may prefer to work on days when there are more new cases because they expect less competition from peer drivers and potentially higher profitability on such days. Another example is that, full-time drivers can be more subject to the impact of new cases compared to part-time drivers, because full-time drivers' income largely comes from providing ride-sharing services via the focal company. Driver fixed effects can mitigate such driver-specific time-invariant confounding effects and help us obtain more accurate estimates for our focal explanatory variable `NewCases`.
+
+In addition to driver fixed effects that remove cross-sectional confounding effects across drivers, we also include **time fixed effects** in Equation (1) to mitigate the inter-temporal confounding effects. We consider time fixed effects at the day level. 
+
+Moreover, given that the local government in each city may have enacted different policies on fighting COVID-19 and/or stimulating economy (e.g., subsidizing drivers) during our data period, we further control for **city fixed effects**.
+
+$$
+LaborOutcome_{ijt} = \beta_0 + \alpha NewCases_{jt} + DriverFE + DayFE + CityFE + \varepsilon_{ijt}
+$$
+
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Run the fixed effect regressions for the dependent variables. Please report the results in a single table.
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+Run the fixed effect regressions for the dependent variables. Please report the results in a single table.
+
+### Answer
+
+```{r}
+#| label: tbl-fe
+#| tbl-cap: "Fixed Effects Regression"
+FE_is_work <- feols(
+    fml = is_work ~ new_cases |
+        driver_id + booking_date + city,
+    data = data_driver
+)
+FE_income <- feols(
+    fml = income ~ new_cases |
+        driver_id + booking_date + city,
+    data = data_driver
+)
+FE_n_order <- feols(
+    fml = n_order ~ new_cases |
+        driver_id + booking_date + city,
+    data = data_driver
+)
+FE_avg_distance <- feols(
+    fml = avg_distance ~ new_cases |
+        driver_id + booking_date + city,
+    data = data_driver
+)
+
+
+list(
+    "Work" = FE_is_work,
+    "shift income" = FE_income,
+    "# orders" = FE_n_order,
+    "avg distance" = FE_avg_distance
+) %>%
+    modelsummary(
+        stars = TRUE,
+        gof_map = "nobs"
+    )
+```
+
+
+:::
+
+:::
+
+
+# Instrumental Variable Analyses
+
+## Potential Endogeneity
+
+After including the driver, city, date fixed effects fixed effects in the above regression, the remaining challenge to obtaining causal inference is the potential reverse causality of `NewCases`.
+
+Equation (1) could be subject to **simultaneity issues** because drivers' labor supply decisions and number of new cases may be interdependent. On the one hand, drivers may adjust their labor supply accordingly to the number of new cases. On the other hand, prior research has demonstrated the potential effect of mobility on the COVID-19 case growth rate. If a city has a higher volume of private transportation through ride-sharing services, given the highly contagious nature of COVID-19, the city may have a higher number of new cases.
+
+## Instrumental Variables
+
+To tackle the potential endogeneity issue, we use the instrumental variable (IV) method, leveraging exogenous sources of variation in the explanatory variable that are uncorrelated with the error term in Equation (1) using two-stage least squares (2SLS). We can potentially select two instrumental variables. 
+
+The first instrumental variable is *imported new cases*, which measures the number of infected travelers from overseas in each city as disclosed by local government. Because the imported cases relate to travelers from overseas, it should be exogenous to local confirmed cases and meet the **exogeneity requirement**. 
+
+The second instrumental variable is *other city new cases*, which is the number of new cases confirmed in neighboring cities. Since confirmed cases in other cities should not directly affect the focal city's ride-sharing market, the variable *other city new cases* should also satisfy the **exogeneity requirement**.
+
+The first-stage regression is specified below in Equation @eq-firststage, where the definitions of variables are the same as in Equation @eq-ols:
+
+$$
+NewCases_{jt} = \pi_0 + \pi_1 OtherCityNewCases_{jt} + DriverFE + DayFE + CityFE + \varepsilon_{ijt}
+$${#eq-firststage}
+
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Run the first stage regression and report the results.
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+Run the first stage regression and report the results.
+
+### Answer
+
+```{r}
+# Run first stage regression: new_cases ~ other_city_new_cases + controls
+IV_is_work_1ststage <- feols(
+    fml = new_cases ~ other_city_new_cases |
+        driver_id + booking_date + city,
+    data = data_driver
+)
+
+# mutate predicted new_cases in data_driver
+data_driver <- data_driver %>%
+    mutate(predicted_new_cases = predict(IV_is_work_1ststage))
+
+```
+
+From the first stage result, we observe that the coefficient of `other_city_new_cases` is significantly different from zero, indicating that the instrumental variable is relevant. Therefore, we have confirmed that the relevance condition is satisfied.
+
+:::
+
+:::
+
+
+In the second stage regression, we regress the outcome variables on the predicted new cases from the 1st stage, controlling for the same set of control variables:
+
+$$
+LaborOutcome_{ijt} = \beta_0 + \alpha \hat{NewCases}_{jt} + DriverFE + DayFE + CityFE + \varepsilon_{ijt}
+$$
+
+::: {.content-visible when-format='pdf'}
+
+::: {.callout}
+
+**Question `r question_index<-question_index+1; question_index-1`**
+
+Run the second stage regression and report the results.
+
+:::
+
+:::
+
+::: {.content-visible when-format='html'}
+
+::: {.panel-tabset}
+
+### **Question `r question_index-1`**
+
+Run the second stage regression and report the results.
+
+### Answer
+
+```{r}
+# Run second stage regression: is_work ~ predicted_new_cases + controls
+IV_is_work_2ndstage <- feols(
+    fml = is_work ~ predicted_new_cases |
+        driver_id + booking_date + city,
+    data = data_driver
+)
+
+modelsummary(list(IV_is_work_1ststage, IV_is_work_2ndstage),
+    stars = TRUE
+)
+```
+
+```{r}
+# We can also run the second stage regressions for other dependent variables
+IV_income_2ndstage <- feols(
+    fml = income ~ predicted_new_cases |
+        driver_id + booking_date + city,
+    data = data_driver
+)
+
+IV_n_order_2ndstage <- feols(
+    fml = n_order ~ predicted_new_cases |
+        driver_id + booking_date + city,
+    data = data_driver
+)
+
+IV_avg_distance_2ndstage <- feols(
+    fml = avg_distance ~ predicted_new_cases |
+        driver_id + booking_date + city,
+    data = data_driver
+)
+
+list(
+    "Work" = IV_is_work_2ndstage,
+    "shift income" = IV_income_2ndstage,
+    "# orders" = IV_n_order_2ndstage,
+    "avg distance" = IV_avg_distance_2ndstage
+) %>%
+    modelsummary(
+        stars = TRUE,
+        gof_map = "nobs"
+    )
+```
+
+The instrumental variable analyses reveal that the causal effect of new cases on shift decisions is not different from zero, suggesting that the number of new cases does not significantly affect drivers' willingness to work. However, the number of new cases has a significant positve effect on the number of orders and a significant positive effect on shift income, indicating that the number of new cases increases the drivers' earnings during the sample period.
+
+:::
+
+:::
+
+# References {.unnumbered}

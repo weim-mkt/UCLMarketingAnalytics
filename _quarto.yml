@@ -80,6 +80,14 @@ website:
                 text: "Lecture 2: Instrumental Variables and Two-Stage Least Squares"
           - section: "[Week 9] Natural Experiment"
             contents:
+              - href: Week9-Lecture1.qmd
+                text: "Lecture 1: Case Study: Estimating Causal Effects for Platform Businesses Using Instrumental Variables"
+              - href: Week9-Lecture2.qmd
+                text: "Lecture 2: Natural Experiment I: Regression Discontinuity Design"
+              - href: Case-IV.qmd
+                text: "Case Study: Case Study: Estimating Causal Effects for Platform Businesses Using Instrumental Variables"
+          - section: "[Week 10] Frontiers of Marketing Analytics"
+            contents:
               - LectureSlides.qmd
           - R-Exercise.qmd
       - section: "R Tutorials"

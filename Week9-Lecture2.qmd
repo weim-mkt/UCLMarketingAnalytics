@@ -1,45 +1,21 @@
 ---
-author: Dr Wei Miao
-institute: UCL School of Management
-date: "`r (lubridate::ymd('20231004')+lubridate::dweeks(8))`"
-date-format: long
-title: "Class 17 Regression Discontinuity Design"
-df-print: kable
-colorlinks: true
-code-line-numbers: true
-format:
-  html: 
-    toc: true
-    number-sections: true
-    page-layout: full
-    toc-depth: 2
-    code-line-numbers: true
-    code-copy: hover
-  beamer: 
-    toc: false
-    toc-title: ""
-    slide-level: 2
-    section-titles: true
-    theme: Frankfurt
-    colortheme: beaver
-    fonttheme: structurebold
-    navigation: horizontal
-    tbl-colwidths: auto
-    fontsize: 9pt
-knitr:
-  opts_chunk:
-    echo: true
-    warning: true
-    message: true
-    error: true
+date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(8))`"
+title: "Class 18 Natural Experiment I: Regression Discontinuity Design"
 execute: 
-  freeze: auto
-editor_options: 
-  chunk_output_type: inline
-bibliography: references.bib
+  cache: false
 ---
 
+
 # Natural Experiment
+
+## Class Objectives
+
+  -   Concept of regression discontinuity design
+
+  -   Estimation of causal effects using regression discontinuity design
+
+  -   Application of regression discontinuity design in the business field
+
 
 ## From RCTs to Secondary Data
 
@@ -91,11 +67,16 @@ A **natural experiment** is an event in which individuals are exposed to the exp
 
 -   A **regression discontinuity design (RDD)** is a natural-experimental design that aims to determine the causal effects of interventions by identifying a **cutoff** around which an intervention is as if randomized across individuals.
 
-![Visual illustration of RDD](images/RDD.png){fig-align="center" width="349"}
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| fig-cap: 'Visual illustration of RDD'
+knitr::include_graphics("images/Week 9/RDD.png")
+```
 
 ## Motivating Example
 
-**Business objective**: What is the causal effect of receiving a Master's degree with Distinction versus Merit on students' future salary?
+**Business objective**: What is the causal effect of receiving a Master's degree with Distinction versus Non-Distinction on students' future salary?
 
 ::: {.content-visible when-format="beamer"}
 -   Can we run the following simple linear regression and obtain the causal effects?
@@ -129,11 +110,15 @@ $$
 
 -   The above setting gives us a nice natural experiment:
 
-    -   Students may improve their average grades from 60% to 69% by working harder, but they cannot perfectly control their average grades around the cutoff, say from 69.9% to 70%.
+    -   Students may improve their average grades significantly, such as moving from 60% to 69% by working harder, but they cannot perfectly control their average grades around the cutoff, say, from 69.9% to 70%.
 
 ## Visual Illustration of RDD: An Example of Distinction on Salary
 
-![](images/RDDExample.png){fig-align="center" width="350"}
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 9/RDDExample.png")
+```
 
 ## Why RDD Gives Causal Effects?
 
@@ -145,7 +130,7 @@ $$
 
 -   All else being equal, a sudden change in the outcome variable at the cutoff can only be attributed to the treatment effect.
 
-## When Can We Use an RDD
+## Conditions for Using an RDD
 
 -   An RDD design arises when treatment is assigned based on whether an underlying **continuous variable** crosses a cutoff.
     -   The continuous variable is often referred to as the **running variable**.
@@ -180,166 +165,146 @@ No, because sellers can have perfect control over their sales around the cutoff 
 3.  Regress the outcome variable on the treatment indicator to obtain the causal effect.
 
 $$
-Y_i = \beta_0 + \beta_1 Treated + \epsilon_i
+Y_i = \beta_0 + \beta_1 Treated + \beta_2 running\_variable + \epsilon_i
 $$
 
 -   $Treated$ is a binary variable for whether or not the running variable is above the cutoff.
 
--   Sometimes, we may also want to control the running variable in the regression to mitigate its confounding effects.
+-   We may also want to control the running variable in the regression to mitigate its confounding effects.
 
 ## The Causal Effect of Distinction on Salary
 
--   Generate a synthetic dataset
+-  We collect a dataset of 1000 graduates with their MSc final grade and salary.
 
 ```{r}
-pacman::p_load(dplyr,fixest,modelsummary)
-n <- 1000 # 1000 individuals
-set.seed(888)
-score<-runif(n,61,75) # generate scores between 61 and 75
-experience<-runif(n,0,3) # generate work experience between 0 and 3
+pacman::p_load(dplyr, fixest, modelsummary, ggplot2)
+data_rdd <- read.csv("https://www.dropbox.com/scl/fi/z4rgm15cmp19m3i65il3a/data_rdd.csv?rlkey=wnb5ypssg79whq2x4iiov6vte&dl=1") %>%
+    mutate(Distinction = ifelse(score >= 70, 1, 0))
 
-salary<-30000+ 2000*(score>=70) + # causal effect is 2000
-  500 * score  + 400*experience + rnorm(n,0,800)
-
-data_rdd <- data.frame(ID = 1:n,
-                       score = score,
-                       experience = experience,
-                       salary = salary)
+data_rdd %>%
+    slice(1:5)
 ```
 
--   Generate the treatment indicator, Distinction, in the dataset using dplyr
-
-::: {.content-hidden when-format="beamer"}
-```{r}
-data_rdd <- data_rdd %>%
-  mutate(Distinction = ifelse(score >= 70, 1, 0))
-```
-:::
-
-::: {.content-visible when-format="beamer"}
-```{r}
-#| echo: false
-data_rdd <- data_rdd %>%
-  mutate(Distinction = ifelse(score >= 70, 1, 0))
-```
-:::
 
 ## Linear Regression Analyses
 
 -   Run a linear regression: `salary ~ Distinction`
 
-::: {.content-visible when-format="beamer"}
+\footnotesize
 ```{r}
-#| echo: false
+#| echo: true
 feols(
-  fml  = salary ~ Distinction ,
-  data = data_rdd) %>%
-  modelsummary(stars = T,
-               gof_map = c('nobs','r.squared'))
+    fml  = salary ~ Distinction,
+    data = data_rdd
+) %>%
+    modelsummary(
+        stars = T,
+        gof_map = c("nobs", "r.squared")
+    )
 ```
-:::
 
-::: {.content-hidden when-format="beamer"}
-```{r}
-feols(
-  fml  = salary ~ Distinction ,
-  data = data_rdd) %>%
-  modelsummary(stars = T,
-               gof_map = c('nobs','r.squared'))
-```
-:::
-
--   The result suggests that Distinction can increase the salary by 5.5k, which is far from the true causal effect.
+\normalsize
+-   The result suggests that Distinction can increase the salary by 5.5k, which is likely over-estimated due to omitted variable bias.
 
 ## RDD Analysis
 
 -   Step 1: Select a bandwidth around the cutoff, between 68% to 72%
-
 -   Step 2: Examine discontinuity of other variables (randomization check).
+-   Step 3: Run a linear regression on the subsample.
 
--   Step 3: Run the linear regression on the smaller sample.
-
-::: {.content-visible when-format="beamer"}
 ```{r}
-#| echo: false
-feols(
-  fml  = salary ~ Distinction,
-  data = data_rdd %>%
-    filter(score > 68 & score < 72)) %>%
-  modelsummary(stars = T, 
-             gof_map = c('nobs','r.squared'))
+result_RDD <- feols(
+    fml = salary ~ Distinction,
+    data = data_rdd %>%
+        filter(score > 68 & score < 72)
+)
 ```
-:::
 
-::: {.content-hidden when-format="beamer"}
+## RDD Results
+
 ```{r}
-feols(
-  fml  = salary ~ Distinction,
-  data = data_rdd %>%
-    filter(score > 68 & score < 72)) %>%
-  modelsummary(stars = T, 
-             gof_map = c('nobs','r.squared'))
+result_RDD %>%
+    modelsummary(
+        stars = T,
+        gof_map = c("nobs", "r.squared")
+    )
 ```
-:::
 
--   Let's try other bandwidths on the Quarto document. As we tighten the bandwidth, what do you find?
-
-::: {.content-hidden when-format="beamer"}
-As we use stricter bandwidths, the coefficient of Distinction is getting closer to the real treatment effects. The reason is that treatment and control group individuals are getting more similar.
-:::
+- The result suggests that Distinction can increase the salary by 2.898k, which is likely a more accurate estimate of the causal effect than the OLS estimate.
 
 ## Visualization of RDD
 
--   `rdrobust` package provides a nice visualization tool for RDD.
+::: {.columns}
 
-::: {.content-visible when-format="beamer"}
+::: {.column width='50%'}
+
+\tiny
 ```{r}
+#| echo: true
 #| eval: false
-pacman::p_load(rdrobust)
-rdplot(y = salary, # outcome variable 
-       x = score, # x is the running variable
-      c = 70, # c is the cutoff point
-      p = 2 # polynomial order to fit the trends
-)
+pacman::p_load(ggplot2, ggthemes)
+data_rdd %>%
+    ggplot(aes(x = score, y = salary)) +
+    geom_point() +
+    geom_vline(xintercept = 70, linetype = "dashed") +
+    labs(
+        title = "RDD: Distinction on Salary",
+        x = "Final Score",
+        y = "Salary"
+    ) +
+    geom_smooth(
+        data = subset(data_rdd, score < 70),
+        method = "lm", se = FALSE,
+        color = "red"
+    ) +
+    geom_smooth(
+        data = subset(data_rdd, score >= 70),
+        method = "lm", se = FALSE,
+        color = "blue"
+    ) +
+    theme_minimal()
 ```
 
-## Visualization of RDD
-
-```{r}
-#| echo: false
-pacman::p_load(rdrobust)
-rdplot(y = salary, # outcome variable 
-       x = score, # x is the running variable
-      c = 70, # c is the cutoff point
-      p = 2 # polynomial order to fit the trends
-)
-```
 :::
 
-::: {.content-hidden when-format="beamer"}
+::: {.column width='50%'}
+
 ```{r}
-pacman::p_load(rdrobust)
-rdplot(y = salary, # outcome variable 
-       x = score, # x is the running variable
-      c = 70, # c is the cutoff point
-      p = 2 # polynomial order to fit the trends
-)
+pacman::p_load(ggplot2, ggthemes)
+data_rdd %>%
+    ggplot(aes(x = score, y = salary)) +
+    geom_point() +
+    geom_vline(xintercept = 70, linetype = "dashed") +
+    labs(
+        title = "RDD: Distinction on Salary",
+        x = "Final Score",
+        y = "Salary"
+    ) +
+    geom_smooth(
+        data = subset(data_rdd, score < 70),
+        method = "lm", se = FALSE,
+        color = "red"
+    ) +
+    geom_smooth(
+        data = subset(data_rdd, score >= 70),
+        method = "lm", se = FALSE,
+        color = "blue"
+    ) +
+    theme_minimal()
 ```
+
 :::
 
-## Regression Discontinuity in Time
+:::
 
--   A natural experiment occurred on a day affecting all customers, we can then implement a **Regression Discontinuity in Time** **design** (**RDiT**) as follows
-    -   The running variable is time; the cutoff is the day on which the natural experiment took place
+## Application of RDD in Marketing and Business Context
 
-$$
-Y_{it}=\alpha+\beta_{1} Post_{it} + \mu_{i t}
-$$
+- [Scores vs. stars: A regression discontinuity study of online consumer reviews](https://www.sciencedirect.com/science/article/abs/pii/S037872061730054X): 4.49 rating vs. 4.5 rating result in a significant difference in sales.
 
--   The underlying assumption for RDiT is that, the pre-treatment outcomes before the natural experiment are good counterfactuals for the post-treatment outcomes if the natural experiment had not happened.
-    -   For the underlying assumption to hold, we need to take a short time window before and after the natural experiment, e.g., 7 days, 14 days, or 30 days.
--   The coefficient $\beta_1$ then measures the changes in the outcome variable before and after the natural experiment.
+- [The causal effect of Uber's surge pricing on demand and driver labor supply](https://www.nber.org/papers/w22627): On the Uber platform, surge multiplier is rounded to the nearest 0.1, which creates a natural experiment for RDD.
+
 
 ## After-class Reading
 
 -   (recommended) [Quasi-experiment](https://www.econometrics-with-r.org/13-4-quasi-experiments.html) (Econometrics with R)
+

@@ -6,7 +6,7 @@ format:
 date: "2024/09/22"
 institute: UCL School of Management
 author: Wei Miao
-date-modified: "2024/11/11"
+date-modified: "2024/11/24"
 date-format: long
 ---
 
@@ -74,7 +74,7 @@ After each week's lecture, you will find a list of After-class reading and exerc
 |                              |                                                         |                                                                  |                                                                                 |
 | **Friday, 15 November 2024** |                                                         |                                                                  |                                                                                 |
 +------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| 9                            | Privacy Regulations and Its Impact on Marketing         | Difference-in-Differences & Regression Discontinuity Design      | Testing Marketing Ideas Using A/B Testing (III)                                 |
+| 9                            | Platform Design         | Difference-in-Differences & Regression Discontinuity Design      | Estimating Causal Effects for Platform Businesses Using Instrumental Variables  |
 +------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
 | 10                           | Frontiers in Marketing Analytics                        | Causal machine learning                                          | The Causal Effect of Privacy Regulation                                         |
 +------------------------------+---------------------------------------------------------+------------------------------------------------------------------+---------------------------------------------------------------------------------+
@@ -385,42 +385,23 @@ You can try your best to use what we have learned in Week 1 to complete the case
 ::: callout-important
 ### Pre-class preparation
 
--   Case Study: Estimating the Treatment Effects on the Treated Using Instrumental Variables
+-   Case Study: Estimating Causal Effects for Platform Businesses Using Instrumental Variables
 
     -   Please carefully read the case background before class and we will be discussing the case in class.
 
-    -   Finish the coding exercise in the Quarto document.
 :::
 
-## Class 17: (Case Study) Estimating the Treatment Effects on the Treated Using Instrumental Variables
+## Class 17: (Case Study) Estimating Causal Effects for Platform Businesses Using Instrumental Variables
 
 -   What you will learn
 
-    -   How to apply instrumental variables to estimate the treatment effects on the treated
+    - Understand the importance of causal inference for platform businesses
 
-    -   How to interpret the results of instrumental variables
+    - Learn how to estimate causal effects using instrumental variables with an application to ride-sharing platforms
 
-    -   How to use instrumental variables to solve real-life marketing problems
+-   (highly recommended) [Encouragement Designs and Instrumental Variables for A/B Testing at Spotify](https://engineering.atspotify.com/2023/08/encouragement-designs-and-instrumental-variables-for-a-b-testing/)
 
--   (highly recommended) [Encouragement Designs and Instrumental Variables for A/B Testing at Spotify](Encouragement%20Designs%20and%20Instrumental%20Variables%20for%20A/B%20Testing)
-
-## Class 18: Difference-in-Differences Design
-
--   What you will learn
-
-    -   Concept of difference-in-differences (DiD) design
-
-    -   Estimation of causal effects using the DiD design
-
-    -   Application of DiD design in the business field
-
--   After-class reading and exercise
-
-    -   (optional) [Econometrics with R: Quasi-experiments](https://www.econometrics-with-r.org/13.4-qe.html)
-
-# Week 10: Frontiers of Marketing Analytics
-
-## Class 19: Regression Discontinuity Design
+## Class 18: Natural Experiment I: Regression Discontinuity Design
 
 -   What you will learn
 
@@ -429,6 +410,22 @@ You can try your best to use what we have learned in Week 1 to complete the case
     -   Estimation of causal effects using regression discontinuity design
 
     -   Application of regression discontinuity design in the business field
+
+-   After-class reading and exercise
+
+    -   (optional) [Econometrics with R: Quasi-experiments](https://www.econometrics-with-r.org/13.4-qe.html)
+
+# Week 10: Frontiers of Marketing Analytics
+
+## Class 19: Natural Experiment II: Difference-in-Differences Design
+
+-   What you will learn
+
+    -   Concept of difference-in-differences (DiD) design
+
+    -   Estimation of causal effects using the DiD design
+
+    -   Application of DiD design in the business field
 
 ## Class 20: Frontiers of Marketing Analytics
 
