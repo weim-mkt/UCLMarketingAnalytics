@@ -2268,6 +2268,306 @@
     ]
   },
   {
+    "objectID": "Week10-Lecture2.html",
+    "href": "Week10-Lecture2.html",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "",
+    "text": "Causal Machine Learning (CML) represents the state-of-the-art development in the field of data science.\n\nConventional machine learning excels at finding patterns and making predictions, but it often falls short in understanding causation.\nConventional causal inference techniques (instrumental variable, DiD, RDD) estimate average treatment effects, and they mostly rely on linear regressions and are not good at estimating heterogeneous treatment effects across individuals.\n\nThis is where causal machine learning steps in, aiming to uncover these causal relationships borrowing the predictive power of machine learning tools.\n\nMicrosoft Research has developed EconML, which is the industrial pioneer in CML.\n\n\n\n\n\n\nCausal Forest developed by Athey, Tibshirani, and Wager (2019) (Generalized Random Forest), a part of the CML toolkit, is an extension of the original random forest algorithm.\nThe core idea of Causal Forest is to estimate the causal effect of a treatment using recursive binary splitting similar to decision trees in random forest. It does so by building a large number of causal trees, each based on a subset of data and features.\n\n\n\n\n\n\n\n\n\n\n\ngrf is the R package that can implement causal forest. Stanford Youtube channel also provides comprehensive tutorial videos on causal forest.\n\n\n\nCode\npacman::p_load(grf,fixest,dplyr,ggplot2,ggthemes)\n## Use the DiD data to illustrate the causal forest\ndata(\"base_did\")\ndata_Y &lt;- base_did %&gt;%\n  mutate(Post = ifelse(period &gt;=6,1,0))%&gt;%\n  group_by(id,Post)%&gt;%\n  summarise(avg_outcome = mean(y)) %&gt;%\n  group_by(id) %&gt;%\n  summarise(first_diff = avg_outcome[2] - avg_outcome[1] )%&gt;%\n  ungroup()\n\ndata_W &lt;- base_did %&gt;%\n  select(id, treat) %&gt;%\n  unique()\n\ndata_X &lt;- base_did %&gt;%\n  filter(period &lt;6) %&gt;%\n  group_by(id) %&gt;%\n  summarise(avg_x = mean(x1)) %&gt;%\n  ungroup()\n\n\n\n\n\n\nWe can use causal forest to estimate the treatment effects for each individual and plot the histogram.\n\n\n\n\n\nCode\ncf &lt;- causal_forest(\n    X = data.matrix(data_X$avg_x),\n    Y = data.matrix(data_Y$first_diff),\n    W = data_W$treat\n)\n\npredicted_CATE &lt;- predict(cf)\n\nggplot() +\n    geom_histogram(\n        data = predicted_CATE,\n        aes(x = predictions),\n        color = \"black\", fill = \"white\"\n    ) +\n    theme_stata()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOnce we know the treatment effects for each individual, we can further automate the targeting decision using the estimated treatment effects. This is called policy learning in the causal machine learning field.",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#when-machine-learning-meets-causal-inference",
+    "href": "Week10-Lecture2.html#when-machine-learning-meets-causal-inference",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "",
+    "text": "Causal Machine Learning (CML) represents the state-of-the-art development in the field of data science.\n\nConventional machine learning excels at finding patterns and making predictions, but it often falls short in understanding causation.\nConventional causal inference techniques (instrumental variable, DiD, RDD) estimate average treatment effects, and they mostly rely on linear regressions and are not good at estimating heterogeneous treatment effects across individuals.\n\nThis is where causal machine learning steps in, aiming to uncover these causal relationships borrowing the predictive power of machine learning tools.\n\nMicrosoft Research has developed EconML, which is the industrial pioneer in CML.",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#causal-forest-a-powerhouse-in-causal-machine-learning",
+    "href": "Week10-Lecture2.html#causal-forest-a-powerhouse-in-causal-machine-learning",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "",
+    "text": "Causal Forest developed by Athey, Tibshirani, and Wager (2019) (Generalized Random Forest), a part of the CML toolkit, is an extension of the original random forest algorithm.\nThe core idea of Causal Forest is to estimate the causal effect of a treatment using recursive binary splitting similar to decision trees in random forest. It does so by building a large number of causal trees, each based on a subset of data and features.\n\n\n\n\n\n\n\n\n\n\n\ngrf is the R package that can implement causal forest. Stanford Youtube channel also provides comprehensive tutorial videos on causal forest.\n\n\n\nCode\npacman::p_load(grf,fixest,dplyr,ggplot2,ggthemes)\n## Use the DiD data to illustrate the causal forest\ndata(\"base_did\")\ndata_Y &lt;- base_did %&gt;%\n  mutate(Post = ifelse(period &gt;=6,1,0))%&gt;%\n  group_by(id,Post)%&gt;%\n  summarise(avg_outcome = mean(y)) %&gt;%\n  group_by(id) %&gt;%\n  summarise(first_diff = avg_outcome[2] - avg_outcome[1] )%&gt;%\n  ungroup()\n\ndata_W &lt;- base_did %&gt;%\n  select(id, treat) %&gt;%\n  unique()\n\ndata_X &lt;- base_did %&gt;%\n  filter(period &lt;6) %&gt;%\n  group_by(id) %&gt;%\n  summarise(avg_x = mean(x1)) %&gt;%\n  ungroup()",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#application-of-causal-forest-in-causal-inference",
+    "href": "Week10-Lecture2.html#application-of-causal-forest-in-causal-inference",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "",
+    "text": "We can use causal forest to estimate the treatment effects for each individual and plot the histogram.\n\n\n\n\n\nCode\ncf &lt;- causal_forest(\n    X = data.matrix(data_X$avg_x),\n    Y = data.matrix(data_Y$first_diff),\n    W = data_W$treat\n)\n\npredicted_CATE &lt;- predict(cf)\n\nggplot() +\n    geom_histogram(\n        data = predicted_CATE,\n        aes(x = predictions),\n        color = \"black\", fill = \"white\"\n    ) +\n    theme_stata()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOnce we know the treatment effects for each individual, we can further automate the targeting decision using the estimated treatment effects. This is called policy learning in the causal machine learning field.",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#text-mining-in-marketing-analytics",
+    "href": "Week10-Lecture2.html#text-mining-in-marketing-analytics",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "2.1 Text Mining in Marketing Analytics",
+    "text": "2.1 Text Mining in Marketing Analytics\n\nNatural language processing (NLP) and text mining are powerful tools for analyzing unstructured text data in marketing analytics. Refer to the book Text Mining with R for more details.\nSentiment analysis is the process of determining the sentiment (positive, negative, or neutral) of a piece of text. It is widely used in social media monitoring, customer feedback analysis, and brand reputation management.\n\nIn R, the tidytext package implements sentiment analysis.\n\n\n\n\n\n\n\n\n\n\n\n\nApplication: Use sentiment analysis to analyze customer reviews, social media posts, and other text data to understand customer sentiment.",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#topic-modeling",
+    "href": "Week10-Lecture2.html#topic-modeling",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "2.2 Topic Modeling",
+    "text": "2.2 Topic Modeling\n\nTopic modeling is a type of statistical model for discovering the abstract “topics” that occur in a collection of documents. Latent Dirichlet Allocation (LDA) is one of the most popular topic modeling algorithms.\n\nIn R, topicmodels package implements LDA topic modeling.\n\n\n\n\n\n\n\n\n\n\n\n\nApplication: Use topic modeling to analyze customer feedback, social media posts, and other text data to identify key topics and themes.",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#transformers-bert-gpt-and-llm",
+    "href": "Week10-Lecture2.html#transformers-bert-gpt-and-llm",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "2.3 Transformers, BERT, GPT, and LLM",
+    "text": "2.3 Transformers, BERT, GPT, and LLM\n\nBERT (Bidirectional Encoder Representations from Transformers) and GPT (Generative Pre-trained Transformer) are two of the most popular models in the field of natural language processing (NLP) at the moment.\n\nBERT is designed to understand the context of words in a sentence, while GPT is designed to generate human-like text.\n\nLLM is the model that combines the strengths of BERT and GPT. It is designed to understand the context of words in a sentence and then generate human-like text.\nApplications in marketing analytics:\n\nUse GPT to copilot with human managers regarding product descriptions, email messages, or social media posts.\nUse LLM to generate survey responses for your term 3 dissertation project. Follow this guide.\nMore applications of LLM in marketing: Generative AI in innovation and marketing processes: A roadmap of research opportunities",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-1-marketing-process",
+    "href": "Week10-Lecture2.html#week-1-marketing-process",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.1 Week 1: Marketing Process",
+    "text": "3.1 Week 1: Marketing Process\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nConduct a situation analysis in the Introduction section of your dissertation.",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-1-2-profitability-analysis",
+    "href": "Week10-Lecture2.html#week-1-2-profitability-analysis",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.2 Week 1-2: Profitability Analysis",
+    "text": "3.2 Week 1-2: Profitability Analysis\n\nBreak-even analysis is essential to any business activity\n\nFor business campaigns: Break-even quantity (BEQ) and Net present value (NPV)\nFor customers: Customer lifetime value (CLV)\n\nCase study:\n\nCLV Analysis for M&S’s Delivery Pass (Week 2)\nCLV for Tom’s Bubble Tea Shop (1st assignment)\n\n\n\n\n\n\n\n\nTip\n\n\n\n\nFulton: “Calculate the predictive lifetime value of customers”\nLebara: “building a tenure prediction model that will feed into and enhance our CLTV model.”\nEconomist: “goes through an A/B test to assess its impact on key metrics such as Customer Lifetime Value (CLTV)”",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-1-hey-im-wei-and-im-a-youtuber",
+    "href": "Week10-Lecture2.html#week-1-hey-im-wei-and-im-a-youtuber",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.3 Week 1: Hey, I’m Wei, and I’m a Youtuber!",
+    "text": "3.3 Week 1: Hey, I’m Wei, and I’m a Youtuber!",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-3-data-wrangling-and-descriptive-analytics-with-dplyr",
+    "href": "Week10-Lecture2.html#week-3-data-wrangling-and-descriptive-analytics-with-dplyr",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.4 Week 3: Data Wrangling and Descriptive Analytics with dplyr",
+    "text": "3.4 Week 3: Data Wrangling and Descriptive Analytics with dplyr\n\nData wrangling with dplyr\n\nbasic operations: filter, mutate, select, arrange\ngroup aggregation: group_by\nmulti-data joining: left_join\n\nDescriptive analytics with ggplot2 (visualization), modelsummary (summary statistics), and dplyr (data wrangling).\n\n\n\n\n\n\n\nTip\n\n\n\n\nYou will need to submit data and code for your dissertation. Therefore, it’s important to use version control tools like Git and GitHub.",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-3-hey-im-wei-and-im-a-musician",
+    "href": "Week10-Lecture2.html#week-3-hey-im-wei-and-im-a-musician",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.5 Week 3: Hey, I’m Wei, and I’m a musician!",
+    "text": "3.5 Week 3: Hey, I’m Wei, and I’m a musician!",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-4-unsupervised-learning-for-customer-segmentation",
+    "href": "Week10-Lecture2.html#week-4-unsupervised-learning-for-customer-segmentation",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.6 Week 4: Unsupervised Learning for Customer Segmentation",
+    "text": "3.6 Week 4: Unsupervised Learning for Customer Segmentation\n\nUnsupervised learning such as K-means clustering help classify individuals into different segments. We then decide which segment(s) to serve based on our business objective.\n\n\n\n\n\n\n\nTip\n\n\n\n\nITV: “a summary of key points for each campaign test based on free text fields, using topic modelling (e.g. K-means, LDA) to identify thematic trends”\nDataVisionServices: “… we will build a framework of site selection for the client. To do so we see the student using multiple techniques, such as location analysis, clustering and building algorithms…",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-5-supervised-learning-for-customer-targeting",
+    "href": "Week10-Lecture2.html#week-5-supervised-learning-for-customer-targeting",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.7 Week 5: Supervised Learning for Customer Targeting",
+    "text": "3.7 Week 5: Supervised Learning for Customer Targeting\n\nSupervised learning models learn the relationship between outcome \\(Y\\) and \\(X\\) and can make individualized prediction.\n\n\n\n\n\n\n\n\n\n\n\nFundamental concepts in supervised learning:\n\nBias-variance trade-off\nOverfitting and underfitting\nAccuracy-interpretability trade-off\n\nDecision tree and random forest",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-5-application-in-marketing-personalized-targeting",
+    "href": "Week10-Lecture2.html#week-5-application-in-marketing-personalized-targeting",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.8 Week 5: Application in Marketing: Personalized Targeting",
+    "text": "3.8 Week 5: Application in Marketing: Personalized Targeting\n\nWith targeted marketing from supervised learning, we can effectively reduce marketing costs and boost the ROI.\n\nImproving Marketing Efficiency Using Predictive Analytics for M&S (Week 5)\n2nd assignment: Amazon Prime case\n\n\n\n\n\n\n\n\nTip\n\n\n\n\nBritish Transport Police: “use ML to predict victims of crime”\nEconomist: “which picture to attach to social media post to increase engagement”\nBarclay: “use predictive analytics to predict house prices”\netc.",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-6-why-causal-inference-matters",
+    "href": "Week10-Lecture2.html#week-6-why-causal-inference-matters",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.9 Week 6: Why Causal Inference Matters?",
+    "text": "3.9 Week 6: Why Causal Inference Matters?\n\nManagers easily make costly mistakes if they do not understand causal inference.",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-6-im-wei-and-im-from-hogwarts",
+    "href": "Week10-Lecture2.html#week-6-im-wei-and-im-from-hogwarts",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.10 Week 6: I’m Wei and I’m from Hogwarts!",
+    "text": "3.10 Week 6: I’m Wei and I’m from Hogwarts!",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-6-potential-outcomes-and-ab-testing",
+    "href": "Week10-Lecture2.html#week-6-potential-outcomes-and-ab-testing",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.11 Week 6: Potential Outcomes and A/B Testing",
+    "text": "3.11 Week 6: Potential Outcomes and A/B Testing\n\nThe gold standard for causal inference in marketing analytics is A/B testing.\nBasic Identity of Causal Inference\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\n\nDesigning or analyzing A/B testing data: Economist/Fehmida/4thewords/etc.\nGenerally not recommended if you need to run A/B testing for your dissertation due to higher risks. Analyzing previous A/B testing data is a better choice.",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-7-week-8-linear-regression-endogeneity-and-instrument-variables",
+    "href": "Week10-Lecture2.html#week-7-week-8-linear-regression-endogeneity-and-instrument-variables",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.12 Week 7 & Week 8: Linear Regression, Endogeneity, and Instrument Variables",
+    "text": "3.12 Week 7 & Week 8: Linear Regression, Endogeneity, and Instrument Variables\n\nLinear regression on secondary data can never give causal inference due to endogeneity problems.\nEndogeneity: (1) omitted variable bias; (2) reverse causality/simultaneity; (3) measurement error.\nAn instrument variable can give causal inference, which satisfies (1) exogeneity (2) exclusion restriction (3) relevance (4) observable (implicit).\n\n\n\n\n\n\n\nTip\n\n\n\n\nMarketing Mix Modelling (MMM) is a common application of linear regression in marketing analytics. Many dissertation companies require students to build MMM models.",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-9-regression-discontinuity-design",
+    "href": "Week10-Lecture2.html#week-9-regression-discontinuity-design",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.13 Week 9: Regression Discontinuity Design",
+    "text": "3.13 Week 9: Regression Discontinuity Design\n\n\n\n\n\n\n\n\n\n\nReceiving “Distinction” on students’ salaries: 69.9 versus 70\nReview stars on sales on e-Commerce platforms: 4.49 versus 4.5\nSurge pricing on demand: 1.249 versus 1.250",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#week-10-difference-in-differences-design",
+    "href": "Week10-Lecture2.html#week-10-difference-in-differences-design",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "3.14 Week 10: Difference-in-Differences Design",
+    "text": "3.14 Week 10: Difference-in-Differences Design\n\n\n\n\n\n\n\n\n\n\nA new policy/regulation (GDPR, lockdown, etc.) and we have a control group which remains unaffected\nIf parallel trend is violated, we can use synthetic difference-in-differences method.",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#weeks-not-enough",
+    "href": "Week10-Lecture2.html#weeks-not-enough",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "4.1 10 Weeks Not Enough?",
+    "text": "4.1 10 Weeks Not Enough?\n\nMore learning materials on marketing analytics\n\nOptional reading materials in each week\nI will keep uploading R tutorials/data analytics tools tutorials on my Youtube channel. It’s never too late to subscribe!\n\nI love new challenges so my door is always open even after the module is over. Welcome to talk to me about your dissertation ideas; I’m more than happy to help with your dissertation project.",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#what-i-learned",
+    "href": "Week10-Lecture2.html#what-i-learned",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "4.2 What I learned",
+    "text": "4.2 What I learned\n\nImpressed with your perseverance and willingness to learn\n\nMy bestie predicts you would chase me out of the classroom for making you learn Marketing, R, and many new models at the same time\n\nYou’ve given me a lot of inspiration and motivation to keep innovating, learning and improving (b^_^)b\n\nIt gives me a huge sense of achievement to see that you are able to apply the tools learned in various scenarios!\nIt gives me a weird sense of achievement to receive questions for other modules (´･_･`)",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#thank-you-for-being-the-best-students-i-can-ever-dream-of",
+    "href": "Week10-Lecture2.html#thank-you-for-being-the-best-students-i-can-ever-dream-of",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "4.3 Thank you for being the BEST Students I can ever dream of!!",
+    "text": "4.3 Thank you for being the BEST Students I can ever dream of!!\n\n\nCode\nlibrary(ggplot2)\nt &lt;- seq(0, 2*pi, length.out = 1000)\nx &lt;- 16 * sin(t)^3\ny &lt;- 13 * cos(t) - 5 * cos(2*t) - 2 * cos(3*t) - cos(4*t)\n\ndata_of_love &lt;- data.frame(love_x = x,\n                        love_y = y)\n\nggplot(data_of_love, aes(x = love_x, y = love_y)) +\n    geom_point(color = \"red\", size = 0.5) +\n    theme_minimal() +\n    annotate(\"text\", x = 0, y = 0, label = \"To My Lovely BA Students\", color = \"red\", size = 5, hjust = 0.5, vjust = 0.5)\n\n\n\n\n\n\n\n\n\nIn 5 years you may forget the lectures but only remember the following\n\nA module leader who is crazy about bubble teas and makes lousy weekly pre-class videos; he wants to be a good musician, Youtuber, magician, and lecturer\nA lame senior named Tom, who messed up everything because he spent too much time on Python (I forgive you, Tom)",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
+    "objectID": "Week10-Lecture2.html#one-last-thing",
+    "href": "Week10-Lecture2.html#one-last-thing",
+    "title": "Class 20 Looking Back & Moving Forward",
+    "section": "4.4 One Last Thing…",
+    "text": "4.4 One Last Thing…\n\nI owe you one …",
+    "crumbs": [
+      "Lectures",
+      "[Week 10] Frontiers of Marketing Analytics",
+      "Lecture 2: Looking Back & Moving Forward"
+    ]
+  },
+  {
     "objectID": "Case-CLV.html",
     "href": "Case-CLV.html",
     "title": "CLV Analysis for M&S Delivery Pass Program",
