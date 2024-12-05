@@ -1,0 +1,252 @@
+---
+date: "`r (lubridate::ymd('20241004')+lubridate::dweeks(9))`"
+title: "Class 19 Natural Experiment II: Difference-in-Differences Design"
+execute: 
+  warning: false
+---
+
+# Difference-in-Differences Design
+
+## Learning Objectives
+
+-   Understand the economic intuition of the difference-in-differences (DiD) design.
+
+-   Learn how to estimate the treatment effect using DiD design.
+
+-   The intuition of Synthetic Difference-in-Differences when the parallel pre-trend assumption is violated.
+
+## Introduction to DiD
+
+-   **Difference-in-Differences Design** (**DiD**, **DD**, **Diff-in-Diff**) is a statistical technique used in economics and business that attempts to mimic an experimental research design using secondary data by comparing the changes in the outcomes of the treatment group with the changes in the outcomes of the control group.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 10/DiDGraph.png")
+```
+
+## Requirement for Using Difference-in-Differences
+
+-   **Control group**: We need to find a group of units who are unaffected by the natural experiment
+
+-   **Treatment group**: We need to find a treatment group of units who are affected by the natural experiment
+
+-   **No cross-over and spill-over**: There is no interference between the treatment and control group that can cause cross-over or spill-over effects.
+
+-   **Parallel trend assumption**: The treatment and control groups must have similar trends before treatment occurs.
+
+::: callout-note
+The first 3 requirements apply to A/B testings as well.
+
+Parallel trend is new for DiD analysis, and is the fundamental assumption that must be satisfied.
+:::
+
+## DiD Estimation: Linear Regression
+
+\small
+$$
+Outcome_{i, t}=\beta_0+ \beta_{1} Post_{t}+\beta_{2} Treated_{i}+\beta_{3}  Treated_{i} \times Post_{t}  + \mu_{i, t}
+$$
+
+-   $Post_{t}$ controls for the seasonality for both treatment and control groups
+-   $Treated_{i}$ controls for the pre-existing difference between the treatment group and control group.
+-   After accounting for (1) seasonality ($\beta_1$) and (2) pre-existing across-group differences ($\beta_2$), the interaction term ($\beta_3$) measures the treatment effect.[^1]
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 10/DiDGraph.png")
+```
+
+[^1]: DiD method can only give average treatment effect on the treated (ATT).
+
+# Implementation of DiD Using R
+
+## Application of DiD: The Causal Effect of Privacy Regulation
+
+-   Firms routinely collect consumer data on mobile apps and develop algorithms to target customers with personalized ads. However, consumers increasingly value privacy as an intrinsic human right: "the right to be left alone".
+
+-   Regulators and mobile ecosystems have enacted various regulations to restrict firms' collection of sensitive customer data.
+    -   EU's GDPR (2018), California's CCPA (2020), China's PIPL (2022)
+    -   Apple's App Tracking Transparency (2021), Android's Privacy Sandbox
+
+-   It's important to understand the causal effects of the privacy regulations on firms and consumers: (1) Trust-enhancing effect (2) Efficiency-decreasing effect
+
+## Apple's App Tracking Transparency Policy on Consumer Spending
+
+-   Before iOS 14.5 (26 April 2021), user data tracking on iOS lacked explicit user consent: iOS apps and advertisers could track user activities across different apps through the Identifier for Advertisers (IDFA).
+
+-   After iOS 14.5, Apple introduced the App Tracking Transparency (ATT) policy, which requires apps to obtain explicit user consent before tracking user activities across different apps.
+
+-   **Causal Question**: How does the implementation of Apple's App Tracking Transparency Policy affect consumer spending at your business?
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: "2cm"
+knitr::include_graphics("images/Week 10/ATT.png")
+```
+
+## The Causal Effect of the Introduction of ATT Policy
+
+-   $y$: standardized customer spending.
+-   $x1$: standardized customer income.
+-   $id$: Identifier of the customer.
+-   $period$: normalized time period. 0 is the month in which the ATT policy was introduced.
+-   $post$: equals 1 for after ATT was introduced.
+-   $treat$: equals 1 for iPhone customers.
+
+```{r}
+pacman::p_load(fixest, modelsummary, dplyr)
+data("base_did")
+base_did <- base_did %>%
+    mutate(period = period - 6)
+```
+
+## Data Preprocessing
+
+-   When you run DiD analysis, you need to construct a panel dataset similar to the following dataset.
+
+-   If the raw data are transaction data, you need to aggregate the data at the unit-time level, such as customer-month level.
+
+```{r}
+head(base_did, 6)
+```
+
+## Estimation of DiD Using Linear Regressions
+
+-   We need to run a linear regression with 3 variables: `treat`, `post`, and the interaction term `treat * post`
+$$
+Outcome_{i, t}=\beta_0+ \beta_{1} post_{t}+\beta_{2} treat_{i}+\beta_{3}  treat_{i} \times post_{t}  + \mu_{i, t}
+$$
+
+```{r}
+#| echo: true
+est_did <- feols(
+    fml = y ~ treat + post + treat:post, # method 1 for interactions
+    # fml = y ~ treat * post # method 2 for interactions
+    data = base_did
+)
+```
+
+## Report the DiD Results
+
+\footnotesize
+```{r}
+#| echo: false
+modelsummary(est_did,
+    stars = TRUE,
+    gof_map = c("nobs", "r.squared")
+)
+```
+
+\normalsize
+
+-   The coefficient of the interaction term `treat:post` is the treatment effect of the ATT policy.
+-   After introducing the ATT policy, iPhone users increased their spending by 4.993 units compared to Android users.
+
+## Testing the Parallel Pre-trend Assumption
+
+-  Before we make the causal conclusion, we must test the parallel pre-trend assumption by plotting the average outcome for the treatment and control group over time.
+
+```{r}
+#| message: false
+#| warning: false
+pacman::p_load(dplyr, ggplot2, ggthemes)
+
+group_did <- base_did %>%
+    group_by(treat, period) %>%
+    summarise(avg_y = mean(y, na.rm = T)) %>%
+    ungroup()
+
+ggplot() +
+    geom_line(
+        data = group_did,
+        aes(
+            x = period,
+            y = avg_y,
+            color = factor(treat)
+        )
+    ) +
+    scale_x_continuous(breaks = unique(base_did$period)) +
+    theme_stata()
+
+```
+
+- The graph indicates a violation of the parallel pre-trend assumption.
+
+# Synthetic Difference-in-Differences
+
+## When the Parallel Pre-Trend is Violated
+
+-   If the parallel pre-trend assumption is violated, we can use [synthetic difference-in-differences](https://synth-inference.github.io/synthdid/), which is a method that combines synthetic control and difference-in-differences.
+
+-   The **Synthetic Control Method** is a method that uses unit weighting to create a synthetic control group that approximates the pre-treatment outcomes of the treatment group [@abadieSyntheticControlMethods2010a].
+
+-   However, Synthetic Control is very restrictive in many ways. Most importantly, it forces the treatment group to have the same level of the outcome variable as the synthetic control group, which is a very strong restriction.
+
+## Synthetic Difference-in-Differences
+
+-   Synthetic Difference-in-Differences is a method that uses synthetic control methods to estimate the treatment effect when the parallel pre-trend assumption is violated [@arkhangelskySyntheticDifferenceinDifferences2021; @clarkeSyntheticDifferenceDifferences2023].
+
+```{r}
+#| echo: true
+#| eval: false
+# devtools is required to install the synthdid package
+pacman::p_load(devtools)
+# install the synthdid package from GitHub
+devtools::install_github("synth-inference/synthdid")
+```
+
+- Compared with the Synthetic Control Method, Synthetic DiD is more flexible and allows the treatment group to have different levels of the outcome variable.
+
+- Compared with the DiD method, Synthetic DiD can estimate the treatment effect when the parallel pre-trend assumption is violated.
+
+## Prepare the Data for Synthetic DiD
+
+-   We need to prepare the data for the synthetic DiD method to the required format.
+
+```{r}
+#| echo: true
+library(synthdid)
+# Prepare the data
+
+final_data <- panel.matrices(
+    base_did %>% # treat must be treated * post
+        mutate(treat = treat * post),
+    unit = 3, # unit id
+    time = 4, # period id
+    outcome = 1, # outcome variable
+    treatment = 6 # treat * post
+)
+
+
+```
+
+## Run SynthDiD
+
+-   After the dataset is prepared according to the `panel.matrices` function, we can run the `synthdid_estimate()` function to estimate the treatment effect.
+
+```{r}
+#| echo: true
+sdid_result <- synthdid_estimate(
+    final_data$Y,
+    final_data$N0,
+    final_data$T0
+)
+
+print(sdid_result)
+```
+
+## Visualization of SynthDiD
+
+-   Within the synthdid package, the `plot()` function can be used to visualize the results of the synthetic DiD method.
+
+```{r}
+#| echo: true
+#| cache: true
+plot(sdid_result, overlay = 1, se.method = "bootstrap")
+```
+
+
+## References 

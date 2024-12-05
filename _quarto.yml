@@ -88,7 +88,10 @@ website:
                 text: "Case Study: Case Study: Estimating Causal Effects for Platform Businesses Using Instrumental Variables"
           - section: "[Week 10] Frontiers of Marketing Analytics"
             contents:
-              - LectureSlides.qmd
+              - href: Week10-Lecture1.qmd
+                text: "Lecture 1: Natural Experiment II: Difference-in-Differences"
+              - href: Week10-Lecture2.qmd
+                text: "Lecture 2: Looking Back & Moving Forward"
           - R-Exercise.qmd
       - section: "R Tutorials"
         contents:

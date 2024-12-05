@@ -1,0 +1,493 @@
+---
+date: "`r (lubridate::ymd('20241002')+lubridate::dweeks(9))`"
+title: "Class 20 Looking Back & Moving Forward"
+suppress-bibliography: true
+---
+
+# Causal Machine Learning
+
+## When Machine Learning Meets Causal Inference
+
+-   **Causal Machine Learning** (CML) represents the state-of-the-art development in the field of data science.
+
+    -   Conventional machine learning excels at finding patterns and making predictions, but it often falls short in understanding causation.
+
+    -   Conventional causal inference techniques (instrumental variable, DiD, RDD) estimate average treatment effects, and they mostly rely on linear regressions and are not good at estimating heterogeneous treatment effects across individuals.
+
+-   This is where causal machine learning steps in, aiming to uncover these causal relationships borrowing the predictive power of machine learning tools.
+    -   Microsoft Research has developed [`EconML`](https://www.microsoft.com/en-us/research/project/econml/overview/), which is the industrial pioneer in CML.
+
+## Causal Forest: A Powerhouse in Causal Machine Learning
+
+-   Causal Forest developed by @atheyGeneralizedRandomForests2019 (Generalized Random Forest), a part of the CML toolkit, is an extension of the original random forest algorithm. 
+
+- The core idea of Causal Forest is to estimate the causal effect of a treatment using recursive binary splitting similar to decision trees in random forest. It does so by building a large number of *causal trees*, each based on a subset of data and features.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 10/causal forest.png")
+```
+
+-   [`grf`](https://grf-labs.github.io/grf/) is the R package that can implement causal forest. Stanford Youtube channel also provides comprehensive [tutorial videos](https://youtube.com/playlist?list=PLxq_lXOUlvQAoWZEqhRqHNezS30lI49G-&si=evF_BJyNkymdvhow) on causal forest.
+
+```{r}
+#| message: false
+#| warning: false
+pacman::p_load(grf,fixest,dplyr,ggplot2,ggthemes)
+## Use the DiD data to illustrate the causal forest
+data("base_did")
+data_Y <- base_did %>%
+  mutate(Post = ifelse(period >=6,1,0))%>%
+  group_by(id,Post)%>%
+  summarise(avg_outcome = mean(y)) %>%
+  group_by(id) %>%
+  summarise(first_diff = avg_outcome[2] - avg_outcome[1] )%>%
+  ungroup()
+
+data_W <- base_did %>%
+  select(id, treat) %>%
+  unique()
+
+data_X <- base_did %>%
+  filter(period <6) %>%
+  group_by(id) %>%
+  summarise(avg_x = mean(x1)) %>%
+  ungroup()
+```
+
+## Application of Causal Forest in Causal Inference
+
+-   We can use causal forest to estimate the treatment effects for each individual and plot the histogram.
+
+::: {.columns}
+
+::: {.column width='50%'}
+
+\tiny
+```{r}
+#| echo: true
+#| eval: false
+cf <- causal_forest(
+    X = data.matrix(data_X$avg_x),
+    Y = data.matrix(data_Y$first_diff),
+    W = data_W$treat
+)
+
+predicted_CATE <- predict(cf)
+
+ggplot() +
+    geom_histogram(
+        data = predicted_CATE,
+        aes(x = predictions),
+        color = "black", fill = "white"
+    ) +
+    theme_stata()
+```
+
+
+:::
+
+::: {.column width='50%'}
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-align: center
+#| echo: false
+cf <- causal_forest(
+    X = data.matrix(data_X$avg_x),
+    Y = data.matrix(data_Y$first_diff),
+    W = data_W$treat
+)
+
+predicted_CATE <- predict(cf)
+
+ggplot() +
+    geom_histogram(
+        data = predicted_CATE,
+        aes(x = predictions),
+        color = "black", fill = "white"
+    ) +
+    theme_stata()
+```
+
+
+:::
+
+:::
+
+- Once we know the treatment effects for each individual, we can further automate the targeting decision using the estimated treatment effects. This is called policy learning in the causal machine learning field.
+
+# NLP and LLM
+
+## Text Mining in Marketing Analytics
+
+- Natural language processing (NLP) and text mining are powerful tools for analyzing unstructured text data in marketing analytics. Refer to the book [Text Mining with R](https://www.tidytextmining.com/) for more details.
+
+-   **Sentiment analysis** is the process of determining the sentiment (positive, negative, or neutral) of a piece of text. It is widely used in social media monitoring, customer feedback analysis, and brand reputation management. 
+    - In R, the [`tidytext`](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html) package implements sentiment analysis.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 10/sentimentanalysis.png')
+```
+
+- Application: Use sentiment analysis to analyze customer reviews, social media posts, and other text data to understand customer sentiment.
+
+## Topic Modeling
+
+-   **Topic modeling** is a type of statistical model for discovering the abstract "topics" that occur in a collection of documents. Latent Dirichlet Allocation (LDA) is one of the most popular topic modeling algorithms. 
+    - In R, [`topicmodels`](https://cran.r-project.org/web/packages/topicmodels/vignettes/topicmodels.pdf) package implements LDA topic modeling.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 10/topicmodeling.png')
+```
+
+- Application: Use topic modeling to analyze customer feedback, social media posts, and other text data to identify key topics and themes.
+
+## Transformers, BERT, GPT, and LLM
+
+-   BERT (Bidirectional Encoder Representations from Transformers) and GPT (Generative Pre-trained Transformer) are two of the most popular models in the field of natural language processing (NLP) at the moment.
+    -   BERT is designed to understand the context of words in a sentence, while GPT is designed to generate human-like text.
+
+-   LLM is the model that combines the strengths of BERT and GPT. It is designed to understand the context of words in a sentence and then generate human-like text.
+
+- Applications in marketing analytics:
+    - Use GPT to copilot with human managers regarding product descriptions, email messages, or social media posts.
+    - Use LLM to generate survey responses for your term 3 dissertation project. Follow this [guide](https://www.sciencedirect.com/science/article/pii/S2949719123000171).
+    - More applications of LLM in marketing: [Generative AI in innovation and marketing processes: A roadmap of research opportunities](https://link.springer.com/article/10.1007/s11747-024-01044-7)
+
+# Marketing Analytics: Our Journey
+
+- Let’s reflect on our journey this term and see how you can apply them in your dissertation project and future career.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: "10cm"
+knitr::include_graphics('images/CourseStructure2024.png')
+```
+
+## Week 1: Marketing Process
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics("images/Week 1/marketingprocess.png")
+```
+
+\vspace{0.5cm}
+
+::: {.callout-tip}
+
+Conduct a situation analysis in the Introduction section of your dissertation.
+
+:::
+
+
+## Week 1-2: Profitability Analysis
+
+-   Break-even analysis is essential to any business activity
+    -   For business campaigns: Break-even quantity (BEQ) and Net present value (NPV)
+    -   For customers: Customer lifetime value (CLV)
+
+-  **Case study**:
+    - CLV Analysis for M&S’s Delivery Pass (Week 2)
+    - CLV for Tom’s Bubble Tea Shop (1st assignment)
+
+\vspace{0.5cm}
+
+::: {.callout-tip}
+
+- Fulton: "Calculate the predictive lifetime value of customers"
+- Lebara: "building a tenure prediction model that will feed into and enhance our CLTV model."
+- Economist: "goes through an A/B test to assess its impact on key metrics such as Customer Lifetime Value (CLTV)"
+:::
+
+## Week 1: Hey, I'm Wei, and I'm a Youtuber!
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: "8cm"
+knitr::include_graphics('images/Week 10/Youtube2024.png')
+```
+
+
+## Week 3: Data Wrangling and Descriptive Analytics with `dplyr`
+
+-   Data wrangling with `dplyr`
+    -   basic operations: `filter`, `mutate`, `select`, `arrange`
+    -   group aggregation: `group_by`
+    -   multi-data joining: `left_join`
+
+-  Descriptive analytics with `ggplot2` (visualization), `modelsummary` (summary statistics), and `dplyr` (data wrangling).
+
+\vspace{0.5cm}
+
+::: {.callout-tip}
+
+- You will need to submit data and code for your dissertation. Therefore, it's important to use version control tools like Git and GitHub.
+
+:::
+
+## Week 3: Hey, I'm Wei, and I'm a musician!
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: "2cm"
+knitr::include_graphics('images/Week 10/ShapeOfYou.png')
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 10/survey.png')
+```
+:::
+:::
+
+## Week 4: Unsupervised Learning for Customer Segmentation
+
+-   Unsupervised learning such as K-means clustering help classify individuals into different segments. We then decide which segment(s) to serve based on our business objective.
+
+\vspace{0.5cm}
+
+::: {.callout-tip}
+
+- ITV: "a summary of key points for each campaign test based on free text fields, using topic modelling (e.g. K-means, LDA) to identify thematic trends"
+
+- DataVisionServices: "... we will build a framework of site selection for the client. To do so we see the student using multiple techniques, such as location analysis, clustering and building algorithms... 
+
+:::
+
+## Week 5: Supervised Learning for Customer Targeting
+
+-  Supervised learning models learn the relationship between outcome $Y$ and $X$ and can make **individualized** prediction.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 5/supervisedlearning.png')
+```
+
+- Fundamental concepts in supervised learning:
+    -   Bias-variance trade-off
+    -   Overfitting and underfitting
+    -   Accuracy-interpretability trade-off
+
+- Decision tree and random forest
+
+## Week 5: Application in Marketing: Personalized Targeting
+
+-   With targeted marketing from supervised learning, we can effectively reduce marketing costs and boost the ROI.
+    -   Improving Marketing Efficiency Using Predictive Analytics for M&S (Week 5)
+    -   2nd assignment: Amazon Prime case
+
+\vspace{0.5cm}
+
+::: {.callout-tip}
+- British Transport Police: "use ML to predict victims of crime"
+- Economist: "which picture to attach to social media post to increase engagement"
+- Barclay: "use predictive analytics to predict house prices"
+- etc.
+:::
+
+## Week 6: Why Causal Inference Matters?
+
+-   Managers easily make costly mistakes if they do not understand causal inference.
+
+::: {.columns}
+
+::: {.column width='30%'}
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: "3cm"
+knitr::include_graphics('images/Week 6/Bubble tea ads.png')
+```
+
+:::
+
+::: {.column width='30%'}
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: "2cm"
+knitr::include_graphics('images/Week 6/pricesales.png')
+```
+
+:::
+
+::: {.column width='30%'}
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: "3cm"
+knitr::include_graphics('images/Week 6/survivalbias.png')
+```
+
+:::
+
+:::
+
+## Week 6: I'm Wei and I'm from Hogwarts!
+
+::: {.columns}
+
+::: {.column width='50%'}
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 10/magic2024.png')
+```
+
+
+:::
+
+::: {.column width='50%'}
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 10/costume.jpeg')
+```
+
+:::
+
+:::
+
+
+## Week 6: Potential Outcomes and A/B Testing
+
+- The gold standard for causal inference in marketing analytics is A/B testing.
+- Basic Identity of Causal Inference
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 6/BasicIdentityofCausalInference.png')
+```
+
+\vspace{0.5cm}
+
+::: {.callout-tip}
+- Designing or analyzing A/B testing data: Economist/Fehmida/4thewords/etc.
+
+- Generally not recommended if you need to run A/B testing for your dissertation due to higher risks. Analyzing previous A/B testing data is a better choice.
+
+:::
+
+## Week 7 & Week 8: Linear Regression, Endogeneity, and Instrument Variables
+
+-  Linear regression on secondary data can **never give causal inference** due to endogeneity problems. 
+
+-  Endogeneity: (1) omitted variable bias; (2) reverse causality/simultaneity; (3) measurement error.
+
+-   An instrument variable can give causal inference, which satisfies (1) exogeneity (2) exclusion restriction (3) relevance (4) observable (implicit).
+
+\vspace{0.5cm}
+
+::: {.callout-tip}
+
+- Marketing Mix Modelling (MMM) is a common application of linear regression in marketing analytics. Many dissertation companies require students to build MMM models.
+
+:::
+
+## Week 9: Regression Discontinuity Design
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 9/RDD.png')
+```
+
+-  Receiving "Distinction" on students' salaries: 69.9 versus 70
+-  Review stars on sales on e-Commerce platforms: 4.49 versus 4.5
+-  Surge pricing on demand: 1.249 versus 1.250
+
+## Week 10: Difference-in-Differences Design
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+knitr::include_graphics('images/Week 10/DiDGraph.png')
+```
+
+-   A new policy/regulation (GDPR, lockdown, etc.) and we have a control group which remains unaffected
+- If parallel trend is violated, we can use synthetic difference-in-differences method.
+
+# Concluding Remarks
+
+## 10 Weeks Not Enough?
+
+
+-   More learning materials on marketing analytics
+
+    -   Optional reading materials in each week
+
+    -   I will keep uploading R tutorials/data analytics tools tutorials on my Youtube channel. **It's never too late to subscribe!**
+
+-   I love new challenges so my door is always open even after the module is over. Welcome to talk to me about your dissertation ideas; I'm more than happy to help with your dissertation project.
+
+
+## What I learned
+
+-   Impressed with your perseverance and willingness to learn
+    
+    -   My bestie predicts you would chase me out of the classroom for making you learn Marketing, R, and many new models at the same time
+
+-   You've given me a lot of inspiration and motivation to keep innovating, learning and improving (b^_^)b
+
+    -   It gives me a huge sense of achievement to see that you are able to apply the tools learned in various scenarios!
+
+    -   It gives me a weird sense of achievement to receive questions for other modules (´･_･`)
+
+## **Thank you for being the BEST Students I can ever dream of!!**
+
+
+```{r}
+library(ggplot2)
+t <- seq(0, 2*pi, length.out = 1000)
+x <- 16 * sin(t)^3
+y <- 13 * cos(t) - 5 * cos(2*t) - 2 * cos(3*t) - cos(4*t)
+
+data_of_love <- data.frame(love_x = x,
+                        love_y = y)
+
+ggplot(data_of_love, aes(x = love_x, y = love_y)) +
+    geom_point(color = "red", size = 0.5) +
+    theme_minimal() +
+    annotate("text", x = 0, y = 0, label = "To My Lovely BA Students", color = "red", size = 5, hjust = 0.5, vjust = 0.5)
+
+```
+
+In 5 years you may forget the lectures but only remember the following
+
+-   A module leader who is crazy about bubble teas and makes lousy weekly pre-class videos; he wants to be a good musician, Youtuber, magician, and lecturer
+
+-   A lame senior named Tom, who messed up everything because he spent too much time on Python (I forgive you, Tom)
+
+## One Last Thing...
+
+- I owe you one ...
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+#| out-width: "3cm"
+knitr::include_graphics('images/Week 10/HeyTom.png')
+```
